@@ -12,7 +12,7 @@
    project:
      - name: 计算机基础
        type: article
-       link: /basis/
+       link: /computer-basic/
      - name: 编程语言
        type: article
        link: /language/

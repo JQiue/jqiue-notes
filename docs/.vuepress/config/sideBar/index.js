@@ -1,7 +1,7 @@
 module.exports = {
-  "/basis/": require('./basis'),
+  "/computer-basic/": require('./computer-basic'),
   "/language/": require('./language'),
-  "/ds_algorithm/": require('./ds_algorithm'),
+  "/ds-algorithm/": require('./ds-algorithm'),
   "/database/": require('./database'),
   "/application/web/": require('./application').web,
   "/application/backend/": require('./application').backend,

@@ -2,45 +2,39 @@ module.exports = {
   web: [
     '',
     {
-      title: 'HTML',
-      prefix: 'html/',
-      collapsable: false,
-      children: ['1', '2', '3', '4', '5', '6']
-    },
-    {
-      title: 'CSS',
-      prefix: 'css/',
-      collapsable: false,
-      children: ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+      title: 'HTML-CSS',
+      prefix: 'html-css/',
+      collapsable: true,
+      children: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
     },
     {
       title: 'Canvas',
       prefix: 'canvas/',
-      collapsable: false,
+      collapsable: true,
       children: ['1']
     },
     {
       title: 'WebAPI',
       prefix: 'webapi/',
-      collapsable: false,
+      collapsable: true,
       children: ['1', '2', '3', '4', '5', '6']
     },
     {
       title: 'Vue',
       prefix: 'vue/',
-      collapsable: false,
-      children: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
+      collapsable: true,
+      children: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
     },
     {
       title: 'NPM',
       prefix: 'npm/',
-      collapsable: false,
+      collapsable: true,
       children: ['1', '2', '3']
     },
     {
       title: 'Webpack',
       prefix: 'webpack/',
-      collapsable: false,
+      collapsable: true,
       children: ['1']
     }
   ],

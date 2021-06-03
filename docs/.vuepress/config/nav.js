@@ -3,12 +3,12 @@ module.exports = [
   {
     text: '计算机基础',
     icon: 'jisuanji',
-    link: '/basis/'
+    link: '/computer-basic/'
   },
   { 
     text: '数据结构与算法',
     icon: 'suanfa',
-    link: '/ds_algorithm/'
+    link: '/ds-algorithm/'
   },
   {
     text: '编程语言',
