@@ -16,13 +16,13 @@
      - name: 编程语言
        type: article
        link: /language/
-     - name: Web
+     - name: Web 前端
        type: article
        link: /application/web/
      - name: 桌面端
        type: article
        link: /application/desktop/
-     - name: 后端
+     - name: 后端开发
        type: article
        link: /application/backend/
      - name: 数据库
@@ -30,8 +30,8 @@
        link: /database/
      - name: 知识分享
        type: article
-       link: /store/share/1/            
+       link: /sundry/share/1/            
      - name: 资源和工具
        type: article
-       link: /store/tools/
+       link: /sundry/tools/
 ---

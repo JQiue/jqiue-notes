@@ -26,7 +26,7 @@ public class JQiue extends Man implements ProgrammingDoge {
 
 会点 Web 前端开发，我 f*** 这该死的 CSS，刚开始是一个切图仔，感谢前端的发展，让我不再关注 UI，只注重数据展示
 
-也会用 Java，NodeJS，Python 做点后端服务，用了框架其实没什么太大难度，增删改查（~~ CRUD~~）而已
+也会用 Java，NodeJS，Python 做点后端服务，用了框架其实没什么太大难度，增删改查（~~CRUD~~）而已
 
 数据库也能搞一搞，比如：MongoDB，MySQL，Redis
 
@@ -50,6 +50,6 @@ public class JQiue extends Man implements ProgrammingDoge {
 2. 学习算法
 3. 为 CET-4 背单词啦（~~英语永远的痛~~）
 4. 练练书法，拯救我这人神共愤的字体
-5. 正在想去考研和还是工作
+5. 正准备在职考研
 
 > 来就来了，留个言再走？

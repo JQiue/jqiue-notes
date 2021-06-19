@@ -7,7 +7,6 @@ module.exports = {
   "/application/backend/": require('./application').backend,
   "/application/desktop/": require('./application').desktop,
   "/subject/": require('./subject'),
-  "/devtools/": require('./devtools'),
-  "/store/": require('./store'),
-  "/about/": ['me', 'content', 'changelist']
+  "/sundry/": require('./sundry'),
+  "/about/": ['me', 'content']
 };

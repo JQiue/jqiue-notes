@@ -5,14 +5,14 @@ module.exports = [
     prefix: "english/",
     collapsable: false,
     children: [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
-      '7',
-      '8',
+      '1.basic',
+      '2.parts-of-speech',
+      '3.sentence',
+      '4.tense-voice',
+      '5.non-predicate-verbs',
+      '6.accumulation',
+      '7.nce1',
+      '8.nce2',
     ]
   },
   {
@@ -20,10 +20,10 @@ module.exports = [
     prefix: "math/",
     collapsable: false,
     children: [
-      '1',
-      '2',
-      '3',
-      '4',
+      '1.set',
+      '2.sufficient-and-necessary-condition',
+      '3.inequality',
+      '4.function',
     ]
   }
 ];
