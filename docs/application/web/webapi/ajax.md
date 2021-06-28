@@ -55,7 +55,7 @@ JavaScript 发起 HTTP 请求必须通过`XMLHttpRequest`创建一个请求对�
 
 ```javascript
 document.getElementById('ajax-example1').addEventListener('click', function () {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://www.httpbin.org/get', true);
   xhr.send();
   xhr.onreadystatechange = function () {
@@ -80,13 +80,22 @@ document.getElementById('ajax-example1').addEventListener('click', function () {
 ```
 
 ```javascript
-var http = (function () {
-  var xhr = new XMLHttpRequest();
-  if (!xhr) {
-    throw new Error('浏览器不支持发起异步请求');
+const http = (function () {
+
+  const xhr = new XMLHttpRequest();
+
+  if (!xhr) throw new Error('浏览器不支持发起异步请求');
+
+  function formatData(obj) {
+    const str = '';
+    for (const key in obj) {
+      str += key + '=' + obj[key] + '&';
+    }
+    return str.replace(/&$/, '');
   }
+
   function _doAjax(opt) {
-    var opt = opt || {},
+    const opt = opt || {},
       type = (opt.type || 'GET').toUpperCase(),
       async = opt.async || true,
       url = opt.url,
@@ -94,28 +103,16 @@ var http = (function () {
       error = opt.error || function () { },
       success = opt.success || function () { },
       complete = opt.complete || function () { };
-    if (!url) {
-      throw new Error('未传入 URL');
-    }
+  
+    if (!url) throw new Error('未传入 URL');
+
     xhr.open(type, url, async);
     xhr.send(type === 'GET' ? null : formatData(data));
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        success(JSON.parse(xhr.responseText));
-      }
-      if (xhr.status === 404) {
-        error();
-      }
+      if (xhr.readyState === 4 && xhr.status === 200) success(JSON.parse(xhr.responseText));
+      if (xhr.status === 404) error();
       complete();
     }
-  }
-
-  function formatData(obj) {
-    var str = '';
-    for (var key in obj) {
-      str += key + '=' + obj[key] + '&';
-    }
-    return str.replace(/&$/, '');
   }
 
   return {
@@ -150,13 +147,33 @@ document.getElementById('ajax-example3').addEventListener('click', function () {
 :::
 
 ```javascript
-var http = (function () {
-  var xhr = new XMLHttpRequest();
-  if (!xhr) {
-    throw new Error('浏览器不支持发起异步请求');
+/* 
+ * 支持 GET，POST 请求
+ * 只有 3 个方法
+ * 1. ajax(option)
+ * 2. get(url, callback)
+ * 3. post(url, data, callback)
+ * 
+*/
+const http = (function () {
+
+  const xhr = new XMLHttpRequest();
+  if (!xhr) throw new Error('浏览器不支持发起异步请求');
+
+  // 处理 Date
+  function formatData(obj) {
+    let str = '';
+    for (const key in obj) {
+      str += key + '=' + obj[key] + '&';
+    }
+    return str.replace(/&$/, '');
   }
+
+  // 封装请求过程
   function _doAjax(opt) {
-    var opt = opt || {},
+
+    // 初始化请求参数
+    const opt = opt || {},
       type = (opt.type || 'GET').toUpperCase(),
       async = opt.async || true,
       url = opt.url,
@@ -164,29 +181,19 @@ var http = (function () {
       error = opt.error || function () { },
       success = opt.success || function () { },
       complete = opt.complete || function () { };
-    if (!url) {
-      throw new Error('未传入 URL');
-    }
+  
+    if (!url) throw new Error('未传入 URL');
+
+    // 设置请求
     xhr.open(type, url, async);
+    // 根据 type 发送指定类型请求
     xhr.send(type === 'GET' ? null : formatData(data));
+    // 监听请求状态
     xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        success(JSON.parse(xhr.responseText));
-      }
-      if (xhr.status === 404) {
-        error();
-      }
+      if (xhr.readyState === 4 && xhr.status === 200) success(JSON.parse(xhr.responseText));
+      if (xhr.status === 404) error();
       complete();
     }
-  }
-
-  // 处理请求参数
-  function formatData(obj) {
-    var str = '';
-    for (var key in obj) {
-      str += key + '=' + obj[key] + '&';
-    }
-    return str.replace(/&$/, '');
   }
 
   return {
@@ -194,19 +201,10 @@ var http = (function () {
       _doAjax(opt);
     },
     get: function (url, callback) {
-      _doAjax({
-        type: 'GET',
-        url: url,
-        success: callback
-      });
+      _doAjax({ type: 'GET', url: url, success: callback });
     },
     post: function (url, data, callback) {
-      _doAjax({
-        type: 'POST',
-        url: url,
-        data: data,
-        success: callback
-      });
+      _doAjax({ type: 'POST', url: url, data: data, success: callback });
     }
   }
 })();

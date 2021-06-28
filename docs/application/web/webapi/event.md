@@ -302,3 +302,25 @@ document.getElementById('father').addEventListener('click', function (event) {
 ::: danger
 事件委托应该看情况使用，不是所有的事件都应该委托，否则会产生事件误判的问题，本不应该触发的事件却被触发了
 :::
+
+## 剪切板事件
+
+剪切板是界面中最常用的操作之一，IE 是最早支持的，随着 HTML5 到来，剪切板事件已经纳入了标准
+
+要访问剪切板中的数据，可以通过 clipboard 对象，它由 navigator.clipboard 返回，所有的操作都通过这个对象进行
+
+由于用户可能会将敏感数据放在剪切板，所以这个 API 的安全限制比较多，调用的时候必须明确获得用户的许可，“写入权限”会自动授予，但是“读取权限”必须被明确授予，也就是说在进行读取操作的时候，浏览器会弹一个对话框询问用户是否同意
+
+clipboard 提供了四个方法用于读写剪切板，他们都是异步方法，返回 promise 对象
+
++ readText() 用于读取剪切板中的文本信息
+
+```javascript
+navigator.clipboard.readText();
+```
+
++ read() 读取剪切板中的数据，可以是文本也可以是二进制
+
+```javascript
+navigator.clipboard.read();
+```

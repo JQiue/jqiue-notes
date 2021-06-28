@@ -5,10 +5,10 @@ next: false
 article: false
 ---
 
-+ [C](./c/1)
-+ [Java](./java/1)
-+ [JavaScript](./js/1)
-+ [Python](./python/1)
++ [C](./c/basic)
++ [Java](./java/basic)
++ [JavaScript](./js/basic)
++ [Python](./python/basic)
 
 这里列举的是大部分编程语言中的通用的基本概念，这样做会让文章整体偏向于简洁，而不是重复编写一些额外的工作，同时也能对一些编程语言的写法差异性有个大致的了解
 

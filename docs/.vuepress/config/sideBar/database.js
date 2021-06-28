@@ -4,12 +4,17 @@ module.exports = [
     title: 'SQL',
     prefix: '/database/sql/',
     collapsable: false,
-    children: ['sql-syntax', 'mysql']
+    children: [
+      'sql-syntax',
+      'mysql',
+    ]
   },
   {
     title: 'NoSQL',
     prefix: '/database/nosql/',
     collapsable: false,
-    children: ['mongodb']
+    children: [
+      'mongodb',
+    ]
   }
 ];

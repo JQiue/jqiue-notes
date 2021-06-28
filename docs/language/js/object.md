@@ -8,7 +8,7 @@ article: false
 
 对象是一种复杂的类型，用于存储更复杂的实体，JavaScript 可以使用两种方式创建对象
 
-```javascript
+```js
 let foo = new Object(); // 构造函数形式
 let bar = {}; // 字面量形式
 ```
@@ -19,7 +19,7 @@ let bar = {}; // 字面量形式
 
 对象的属性是一种键值对形式，其中“键”位于`:`的左边，“值”在`:`的右边，属性可以在对象创建时指定，也可以在之后添加
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23
@@ -28,7 +28,7 @@ let user = {
 
 可以通过`.`来访问对象的属性值，同时可以进行修改
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23
@@ -40,7 +40,7 @@ console.log(user.name) // "ls"
 
 添加一个属性
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23
@@ -51,7 +51,7 @@ console.log(user.gender) // "male"
 
 使用`delete`移除属性
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23
@@ -64,7 +64,7 @@ console.log(user.age) // undefined
 
 属性值还可以是多字词语，但必须加上引号
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23,
@@ -74,7 +74,7 @@ let user = {
 
 但访问这种多字属性，`.`就没有作用了，应该使用方括号`[]`访问
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23,
@@ -86,7 +86,7 @@ user["is little boy"] // ok
 
 方括号非常强大，甚至可以根据表达式来获取属性名，而`.`却做不了这一点
 
-```javascript
+```js
 let key = "is little boy"
 let user = {
   name: "zs",
@@ -98,7 +98,7 @@ user[key] // ok
 
 当然创建对象的时候也可以使用方括号
 
-```javascript
+```js
 let key = "is little boy"
 let user = {
   name: "zs",
@@ -113,7 +113,7 @@ let user = {
 
 这是新特性提供的内容，当属性值和属性名相同时，即可简写
 
-```javascript
+```js
 let user = {
   name, // 与 name: name 相同
   age: 23
@@ -124,7 +124,7 @@ let user = {
 
 对于对象的属性来说，它并不遵守关键字以及保留字规范，那么使用这些作为键是没有问题的
 
-```javascript
+```js
 let obj = {
   var: 1,
   let: 2,
@@ -139,14 +139,14 @@ let obj = {
 
 属性即使不存在，访问也不会报错，因为会动态的创建一个不存在的属性，而这个属性值默认为`undefined`，因此可以写一些代码进行检查
 
-```javascript
+```js
 let user = {};
 console.log(user.name === undefined); // true
 ```
 
 但 JavaScript 提供了一个特别的检查属性是否存在的操作符`in`
 
-```javascript
+```js
 let user = {
   name: "zs"
 };
@@ -162,7 +162,7 @@ console.log("age" in user); // false
 
 `for...in`可以遍历一个对象的所有键，这和`for`循环是不一样的东西
 
-```javascript
+```js
 for (key in object){
   // 每遍历一个键就执行的代码
 }
@@ -170,7 +170,7 @@ for (key in object){
 
 比如
 
-```javascript
+```js
 let user = {
   name: "zs",
   age: 23
@@ -185,7 +185,7 @@ for (let key in user) {
 
 遍历键时会按照一定的顺序排序，对于整数属性来说，会按照小到大进行排序
 
-```javascript
+```js
 let codes = {
   "3": 3,
   "2": 2,
@@ -206,7 +206,7 @@ for (let key in codes) {
 
 与原始类型相比，对象的根本区别在于，对象是通过“引用”来访问的
 
-```javascript
+```js
 let foo = "balabala";
 let bar = foo;
 foo = "moximoxi";
@@ -215,7 +215,7 @@ console.log(bar); // balabala
 
 这是原始类型的存储和复制，拷贝过来的值是独立的，不会被后续的操作所影响，但对象不是这样的
 
-```javascript
+```js
 let user = {
   name: "zs"
 };
@@ -230,7 +230,7 @@ console.log(admin.name); // "ls"
 
 对象之间进行比较时，实际上比较的是引用，由于两个变量都保存的同一个引用，所以它们相等，这也说明引用相等，那么对象就是相等的
 
-```javascript
+```js
 let user = {};
 let userClone = user;
 console.log(user == cloneUser); // true
@@ -239,7 +239,7 @@ console.log(user === cloneUser); // true
 
 如果想要拷贝一个对象，但是简单的赋值操作会创建一个相同对象的引用，可以通过遍历对象现有的属性结构，将之赋值给新的对象
 
-```javascript
+```js
 let user = {
   name: 'zs',
   age: 23
@@ -255,7 +255,7 @@ console.log(user == cloneObj); // false
 
 当然，JavaScript 提供了`Object.assign`方法达到同样的效果，`Object.assign(dest, [src1, src2, ...])`，该方法会将第二个参数中所有对象的属性都拷贝到第一个参数的对象中，如果属性存在，那么它会被覆盖
 
-```javascript
+```js
 let user = {
   name: 'zs'
 };
@@ -273,7 +273,7 @@ console.log(user); // user = {name: 'zs', canView: true, canEdit: true}
 
 对象通常是用来表示真实世界中的实体，在现实世界中，用户可以进行一些操作行为，那么在 JavaScript 中，行为由属性中的函数表示
 
-```javascript
+```js
 let user = {
   name: 'zs',
   age: 23
@@ -288,7 +288,7 @@ user.sayHello(); // hello
 
 作为对象属性的函数被称为方法，这里是在对象创建后才指定的一个函数作为方法，当然也可以在创建时指定
 
-```javascript
+```js
 let user = {
   name: 'zs',
   age: 23,
@@ -300,7 +300,7 @@ let user = {
 
 这种声明方式可以被简写，也就是去掉了`function`
 
-```javascript
+```js
 let user = {
   name: 'zs',
   age: 23,
@@ -314,7 +314,7 @@ let user = {
 
 通常情况下，对象中的方法都是访问对象中存储的信息来完成相关操作
 
-```javascript
+```js
 let user = {
   name: 'zs',
   sayName () {
@@ -327,7 +327,7 @@ user.sayName(); // 'zs'
 
 但是这种方式存在一些问题
 
-```javascript
+```js
 let user = {
   name: 'zs',
   sayName () {
@@ -342,7 +342,7 @@ admin.sayName(); // TypeError: Cannot read property 'name' of null
 
 这样的代码是不可靠的，那么`this`就是这种问题的解决方案，因为`this`永远代表着调用该方法的对象
 
-```javascript
+```js
 let user = {
   name: 'zs',
   sayName () {
@@ -357,7 +357,7 @@ admin.sayName(); // 'zs'
 
 不同于其他编程语言，`this`在 JavaScript 中可以用于任意函数，而不仅仅是对象的方法
 
-```javascript
+```js
 function sayHi() {
   console.log(this.name);
 }
@@ -365,7 +365,7 @@ function sayHi() {
 
 上面的代码不会报错，因为`this`的值会在运行时计算出来，取决于代码的上下文
 
-```javascript
+```js
 function sayHi() {
   console.log(this.name);
 }
@@ -392,7 +392,7 @@ admin.sayHi(); // 'admin'
 
 构造函数就是一个普通的函数，没什么区别，可以被当作普通函数调用，也可以当作构造器产生一个对象，一般构造函数的命名是以大写开头的
 
-```javascript
+```js
 function User(name){
   this.name = name;
 }
@@ -405,7 +405,7 @@ console.log(user.name); // zs
 
 它和`{...}`语法创建的对象是差不多的
 
-```javascript
+```js
 let user = {
   name: 'zs'
 }
@@ -420,7 +420,7 @@ let user = {
 1. 如果返回的是一个对象，则返回该对象，而不是`this`
 2. 如果返回的是原始类型，则忽略，继续返回`this`
 
-```javascript
+```js
 function User(name) {
   this.name = name;
   return {};
@@ -436,7 +436,7 @@ console.log(user.name); // undefined
 
 在构造器中也是可以定义方法的
 
-```javascript
+```js
 function User(name) {
   this.name = name;
   this.sayName = function() {
@@ -452,7 +452,7 @@ zs.sayName(); // 'zs'
 
 在一个函数内部，可以使用`new.target`来检查该函数是否被`new`调用，还是常规调用
 
-```javascript
+```js
 function Foo() {
   console.log(new.target);
 }
@@ -468,7 +468,7 @@ new Foo(); // Function: Foo
 
 在这种情况下，如果用户没有提供`user.address`，当尝试访问`user.address.street`会得到一个错误
 
-```javascript
+```js
 let user = {}
 console.log(user.address.street); // TypeError: Cannot read property 'street' of undefined
 ```
@@ -477,7 +477,7 @@ console.log(user.address.street); // TypeError: Cannot read property 'street' of
 
 一般的解决方式是使用`if`或条件运算符`?`来对值进行检查
 
-```javascript
+```js
 let user = {}
 if (user.address) {
   console.log(user.address.street);
@@ -491,7 +491,7 @@ console.log(user.address?user.address.street:undefined)
 
 这就是可选链`?.`加入的原因，只是替代了`.`调用，当前面的引用是`undefined`或`null`，他会停止继续调用，立即返回该部分
 
-```javascript
+```js
 let user = {};
 console.log(user?.address?.street) // undefined
 ```
@@ -506,7 +506,7 @@ console.log(user?.address?.street) // undefined
 
 可选链不是一个运算符，而是一个特殊的语法结构，它还可以与函数和方括号一起使用
 
-```javascript
+```js
 let user = {};
 user?.['name']; // 访问不存在的属性
 user.sayHi?.(); // 调用不存在的方法
@@ -516,4 +516,269 @@ user.sayHi?.(); // 调用不存在的方法
 
 ::: tip
 可选链不能成为被赋值的部分，这会抛出一个错误
+:::
+
+## Symbol
+
+对象的属性只能是字符串或 Symbol 类型，而 Symbol 类型使用来给对象创建隐藏属性的
+
+可以使用`Symbol()`来创建一个唯一的标识符类型：
+
+```js
+// id 是 symbol 实例化的对象
+let id = Symbol();
+```
+
+在创建的同时，也可以给 Symbol 一个描述：
+
+```js
+let id = Symbol('id');
+```
+
+Symbol 是绝对唯一的，并不会因为具有相同的描述而一样：
+
+```js
+let id1 = Symbol('id');
+let id2 = Symbol('id');
+console.log(id1 == id2); // false
+```
+
+前面说过，Symbol 就是为了给对象创建一个隐藏属性的，其他地方不能访问且重写这些属性：
+
+```js
+let id = Symbol('id');
+let user = {
+  name: 'foo'
+};
+
+// Symbol 对象作为对象的键并赋值
+user[id] = 1;
+// 通过 Symbol 访问
+console.log(user[id]); // 1
+```
+
+和字符串键不同的是，Symbol 永远也不会产生冲突
+
+如果想要在字面量对象中使用 Symbol，需要使用方括号：
+
+```js
+let id = Symbol("id");
+
+let user = {
+  name: "foo",
+  [id]: 1
+};
+```
+
+由于隐藏特性，for...in 是无法遍历它们的，但是`Object.assign()`会同时复制字符串和 Symbol 属性
+
+::: tip
+Symbol 并不是绝对的隐藏的，有一个内置方法`Object.getOwnPropertySymbols(obj)`允许获得该对象所有的 Symbol
+:::
+
+一般情况下，Symbol 是不相同的，虽然它们有相同的名字，但是如果要获得名字相同的 Symbol 具有相同的实体，就必须借助一个全局的 Symbol 注册表，可以保证每次访问相同名字的 Symbol 时返回的都是相同的 Symbol。使用`Symbol.for()`即可读取一个 Symbol（不存在时则创建），如果有则返回该 Symbol，没有则创建一个 Symbol
+
+```js
+let id = Symbol.for('id');
+let theId = Symbol.for('id');
+console.log(id === theId); // true
+```
+
+和全局 Symbol 相反的是，还有一个反向调用的`Symbol.keyFor()`，作用是完全反过来，通过全局 Symbol 返回描述
+
+```js
+let id = Symbol.for('id');
+let idDesc = Symbol.keyFor(id);
+console.log(idDesc); // id
+```
+
+`Symbol.keyFor`只适用于全局 Symbol，如果是非全局的，将会返回`undefined`
+
+### 系统 Symbol
+
+JavaScript 也有很多内置的 Symbol，可以用来微调对象的各个方面
+
+## 可迭代对象
+
+可迭代对象是数组的泛化，不仅仅数组可以被迭代，字符串，以及其他对象都可以被迭代的，可迭代对象就是属性中有`Symbol.iterator`的对象
+
+总结来说，可以使用`for...of`的对象被称为可迭代对象，因为可迭代对象必须实现`Symbol.iterator`方法，该方法会被`for...of`自动调用，一些内置的可迭代对象比如字符串和数组，都实现了`Symbol.iterator`
+
+## 全局对象
+
+全局对象提供了可以在任何地方使用的变量和函数，被内置于语言的环境中
+
+在浏览器中，它的名字是`window`，而 NodeJS 则是`global`，其他的环境也可能是别的名字
+
+但是在最近，`globalThis`被作为全局对象的标准加入到了 JavaScript 中，所有的环境都应该支持该对象
+
+在浏览器中，使用`var`定义的全局变量以及函数才会成为对象的属性，而`let/const`则不行
+
+## 属性配置
+
+虽然对象的属性看起来像简单的键值对，但实际上属性是一个更加强大的东西
+
+对象的属性除了有一个 value 值以外，还有三个特殊的特性，也叫做标志：
+
++ `writable`：为`true`时，可以被修改，否则只是可读的
++ `enumerable`：为`true`时，可以被迭代，否则不能
++ `configurable`：为`true`时，可以被删除
+  
+通常为对象创建属性时，它们都默认为`true`
+
+如果想要获得属性的标志，就要用到`Object.getOwnPropertyDescriptor(obj, propertyName)`，它会返回一个描述该属性标志的对象
+
+```js
+let foo = { name: 'foo' };
+
+let descriptor = Object.getOwnPropertyDescriptor(foo, 'name');
+console.log(descriptor); // { value: 'foo', writable: true, enumerable: true, configurable: true }
+```
+
+Javascript 提供了`Object.defineProperty(obj, propertyName, descriptor)`来为一个对象定义属性
+
+如果属性存在，就会更新标志，否则就会用给的值和标志来创建属性，没错，这是另一个为对象创建属性的方法，但是如果没有提供标志，那么默认为`false`
+
+```js
+let foo = {};
+
+Object.defineProperty(foo, 'name', {
+  value: "foo"
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(foo, 'name');
+console.log(descriptor); // { value: 'foo', writable: false, enumerable: false, configurable: false }
+```
+
+现在看看当标志对属性的影响
+
+当`writable:false`时，属性值是一种只读状态，是无法修改的，没有人能够修改它，除非再次使用`defineProperty`覆盖
+
+```js
+let foo = { name: 'foo' };
+
+Object.defineProperty(foo, 'name', {
+  writable: false
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(foo, 'name');
+console.log(descriptor);
+
+foo.name = 'bar';
+console.log(foo); // { name: 'foo' }
+```
+
+::: tip
+另外，在非严格模式下是不会出现报错的，只是会默默的忽略掉
+:::
+
+这是`enumerable:false`的情况，通常内置的`toString`是不会被枚举出来的，但是如果自定义了`toString`，就会被枚举，如果不想被枚举，那么该标志就派上了用场
+
+```js
+let foo = {
+  name: 'foo',
+  toString() {
+    return this.name;
+  }
+};
+
+Object.defineProperty(foo, 'toString', {
+  enumerable: false
+});
+
+for (const key in foo) console.log(key); // name
+```
+
+`configurable:false`一般被预设为内置对象中，通常用于防止更改属性标志，以及属性不能被删除
+
+```js
+let foo = { name: 'foo' };
+
+Object.defineProperty(foo, 'name', {
+  configurable: false
+});
+
+// 在此之前 writable: true
+Object.defineProperty(foo, 'name', {
+  writable: false,
+}); // TypeError: Cannot redefine property: name
+```
+
+一旦`configurable:false`时，这个属性标识就不能够再改变了，连覆盖都不行，可以用来创建一个“永不可变”的属性
+
+```js
+let foo = { name: 'foo' };
+
+Object.defineProperty(foo, 'name', {
+  writable: false,
+  configurable: false
+});
+
+// 下面都是无效的
+foo.name = 'foooo';
+Object.defineProperty(foo, 'name', {
+  value: 'foooooooo',
+});
+```
+
+## getter 和 setter
+
+对象属性有两种类型，一个是数据属性，还有一个是访问器属性
+
+访问器属性由“getter”和“setter”方法表示，通常用`get`和`set`声明
+
+```js
+let user = {
+  firstName: 'f',
+  lastName: 'oo',
+  get fullName(){
+    return this.firstName + this.lastName;
+  },
+  set fullName(value){
+    [this.firstName, this.lastName] = value.split(' ');
+  }
+};
+
+console.log(user.fullName); // foo
+user.fullName = 'b ar';
+console.log(user.fullName); // bar
+```
+
+当访问`p.fullName`时，getter 会起作用，当`p.fullName`被赋值时，setter 会起作用
+
+访问器属性的描述也是有所不同的，没有`value`和`writable`，但是有`get`和`set`
+
++ `get`：一个无参数的函数，读取时使用
++ `set`：一个参数的函数，写入时使用
++ `enumerable`：可被枚举
++ `configurable`：可配置属性
+
+```js
+let user = {
+  firstName: 'f',
+  lastName: 'oo'
+};
+
+Object.defineProperty(user, 'fullName', {
+  get() {
+    return this.firstName + this.lastName;
+  },
+  set(value) {
+    [this.firstName, this.lastName] = value.split(' ');
+  }
+})
+
+console.log(user.fullName); // foo
+user.fullName = 'b ar';
+console.log(user.fullName); // bar
+```
+
+另外，一个对象属性不能同时是数据属性和访问器属性
+
+getter 和 setter 的作用就是为了在取值和赋值之前进一步封装，控制和调整这些属性的行为
+
+并且最大的好处就是处理一些兼容性，因为有的对象属性需要被保留，旧的代码不能被删掉，就可以添加一个访问器属性用来添加一个额外的属性，且旧的属性也能工作
+
+::: tip
+另外，几乎所有的键值对获取方法，都不会考虑继承属性，只会对对象自身进行操作
 :::

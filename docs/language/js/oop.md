@@ -10,7 +10,7 @@ article: false
 
 JavaScript 并不是像其它语言一样通过`class`关键字来定义类，而是通过构造器函数的方式来创建类的实例：
 
-```javascript
+```js
 function Person() {}
 var foo = new Person();
 ```
@@ -19,7 +19,7 @@ var foo = new Person();
 
 通过`new`关键字配合函数的调用产生了对象的实例，JavaScript 虽然使用的类来实现面向对象编程，但是类却由构造器来定义，而构造器使用函数来实现，比如`Person()`。按照定义，一个类有自己的属性和方法，而 JavaScript 是动态的，因此能够在类被实例化后动态的为对象添加属性和方法：
 
-```javascript
+```js
 foo.age = 18;
 foo.say = functioin (){
   console.log('我是 foo');
@@ -30,7 +30,7 @@ foo.say = functioin (){
 
 也可以通过`this`关键字在构造器中定义属性和方法，这样初始化的时候就会自带一些属性和方法：
 
-```javascript
+```js
 function Person() {
   this.name = 'foo';
   this.age = '18';
@@ -46,7 +46,7 @@ function Person() {
 
 类的属性可以通过构造器的参数传递
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -59,7 +59,7 @@ var foo = new Person('foo', 18);
 
 所有的实例对象都有一个`constructor`属性指向构造器，如果对实例使用`constructor`，将会返回构造器的引用，于是就有了下面的写法：
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -75,7 +75,7 @@ var bar = new foo.constructor();
 
 除了在构造器中定义属性和方法以外，还可以通过`prototype`定义，每一个构造器都有`prototype`属性，这个属性是静态的，无需实例化，一旦通过`prototype`定义了属性或方法，所有的实例对象都可以使用
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -95,7 +95,7 @@ foo.sayHello();
 
 每个实例都有个`__proto__`属性指向创建它的构造器的`prototype`属性，于是产生了这种写法：
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;
@@ -119,7 +119,7 @@ bar.run();
 
 并非所有的类都必须通过`new`运算符来实例化，也可以使用`Object`来实例化一个对象
 
-```javascript
+```js
 var foo = new Object({
     name: 'foo',
     age: 22,
@@ -143,7 +143,7 @@ var bar = {
 
 为构造器的`prototype`定义属性或方法，实例都可获得，那么说明`prototype`指向的也是一个对象，因此可以让`prototype`重新指向一个新对象就可以实现定义属性和方法：
 
-```javascript
+```js
 function Person() {}
 Person.prototype = {
   name: 'foo';
@@ -159,7 +159,7 @@ var foo = new Person();
 
 在面向对象编程中，属性往往是无法直接读写的，如果想要实现单独的控制就应该使用一些办法来屏蔽外部直接访问属性的接口，通过`this`和`prototype`定义的属性都是可以被读写的，所以应该使用`var`来定义属性，因为`var`定义的属性是有局部作用域的，变相的实现了私有属性，然后通过方法来实现属性的读写
 
-```javascript
+```js
 function Person() { 
   var name = null;
   this.getName = function(){
@@ -179,7 +179,7 @@ foo.name // Error
 
 在类中，`this`一般指向自己的实例，`this`的行为和当前类的实例变量一样。但是`this`会在方法内的嵌套函数中形成一个新的环境，在这里的`this`会指向全局对象`window`，而不是对象的实例
 
-```javascript
+```js
 function Foo() { 
   this.method = function(){
     function test(){
@@ -192,7 +192,7 @@ function Foo() {
 
 因此想要在嵌套函数中使用实例的`this`，最好使用中间变量引用一下：
 
-```javascript
+```js
 function Foo() { 
   this.method = function(){
     var that = this;
@@ -212,7 +212,7 @@ function Foo() {
 
 通过`prototype`定义的方法叫实例方法，实例方法要通过一个变量指向构造函数的新对象，而静态方法则可以直接在构造器上定义，因为函数本身就是一个对象：
 
-```javascript
+```js
 function Foo() {}
 Foo.a = function name() {
   console.log('static method a');
@@ -230,7 +230,7 @@ Foo.a();
 
 JavaScript 是通过`prototype`来实现继承的，要想继承一个类，可以使用`prototype`指向该类的实例：
 
-```javascript
+```js
 function Person(name , age){
   this.name = name;
   this.age = age;
@@ -243,7 +243,7 @@ zs.name = 'zs'; // zs
 
 如果想在创建子类实例的时候赋予初始值，则应该手动在子类中写调用父类的构造器方法来实现
 
-```javascript
+```js
 function Person(name , age){
   this.name = name;
   this.age = age;
@@ -259,7 +259,7 @@ zs.name; // zs
 
 `super`是 JavaScript 中的保留字，不能作为标识符使用。很多语言都定义了`super()`方法来实现调用父类的构造器，但是`JavaScript`没有定义这种方法，所以要手动实现`super()`方法。由于 JavaScript 所有的类都是由`Object`派生的，只要为`Object`定义一个`$super()`，就可以作用于所有的类
 
-```javascript
+```js
 Object.prototype.$super = function () {
   var result;
   try {
@@ -288,7 +288,7 @@ zs.name; // zs
 
 当一个类无法形成继承关系，则无法使用继承来重用类，但是一个类的属性可以是另一个类，也就是说，一个类的成员含有一个或多个类的对象，这种结构的类就叫组合类
 
-```javascript
+```js
 function Window() {
   this.open = function () { }
   this.close = function () { }
@@ -328,7 +328,7 @@ function House() {
 
 有一些类虽然可以实例化，但是其中的某一些属性和方法也具有一定的唯一性，这些都应该被定义为静态成员。如果想要将成员声明为静态的，则直接将静态成语赋值给类本身
 
-```javascript
+```js
 function Person(name, age) {
   this.name = name;
   this.age = age;

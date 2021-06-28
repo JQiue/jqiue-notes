@@ -8,17 +8,11 @@ article: false
 
 ## 一个生物的自我介绍
 
-我是 JQiue，98 年从天而降，来自湖北随州的准程序猿（现在还没），当地有名的穷光蛋，盆友圈人设仅供参考，具体性格看你是谁，夜间行动不便加耳背者
-
-```java
-public class JQiue extends Man implements ProgrammingDoge {
-    String id = "JQiue";
-    String qq = "861947542";
-    String site = "wjqis.me";
-    String email = "jqiue@foxmail.com";
-    String github = "https://github.com/JQiue";
-}
-```
++ 我的互联网 ID：JQiue
++ 我的 QQ：861947542
++ 我的邮箱：jqiue@foxmail.com
++ Github：[https://github.com/JQiue](https://github.com/JQiue)
++ 目前使用的站点域名：wjqis.me
 
 ## 这个人会什么
 
@@ -50,6 +44,5 @@ public class JQiue extends Man implements ProgrammingDoge {
 2. 学习算法
 3. 为 CET-4 背单词啦（~~英语永远的痛~~）
 4. 练练书法，拯救我这人神共愤的字体
-5. 正准备在职考研
 
 > 来就来了，留个言再走？

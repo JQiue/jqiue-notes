@@ -10,7 +10,7 @@ article: false
 
 ## 注释
 
-```javascript
+```js
 // 单行注释，只能注释单行
 
 /*
@@ -41,11 +41,11 @@ JavaScript 会将换行符理解成“分号”，但有部分例外，比如在
 甚至允许非英文字母，从技术上来讲，这样是没问题的，但是使用英文字母是惯例
 :::
 
-## 变量
+## 变量和常量
 
 通过关键字`var`声明，由于 JavaScript 是动态语言，不需要显式声明变量的数据类型且初始化，数据类型可以随意改变，通过`=`运算符赋值
 
-```javascript
+```js
 var foo;
 var bar = 3;
 ```
@@ -54,25 +54,32 @@ var bar = 3;
 即使不使用`var`也可以直接使用变量名，当解释程序遇到未声明过的变量时，会用该变量名创建一个全局变量，并将其初始化为指定的值，不过这样做非常危险
 :::
 
+为了避免上述问题，在 ES6 中新增了`let`关键字，它和`var`大致相同，但`let`是最推荐的变量声明方式
+
+```js
+let foo;
+let bar = 3;
+```
+
+let 和 var 的区别是：
+
+1. `var`没有块级作用域，只有函数作用域以及全局作用域，所以它会穿透一些代码块，而`let`是具有局部作用域的
+2. `var`允许同一个作用于下重新声明，而`let`是不允许的
+3. `var`声明的变量会被提前，可以在声明前使用变量，而`let`是不会的
+
 ::: danger 变量提升
 如果使用了一个未声明的变量，且在后面进行了声明，解释器会将该变量的声明进行提前。如果在声明的同时赋值，赋值操作不会被提前
 :::
 
-为了避免上述问题，在 ES6 中新增了`let`关键字，它和`var`大致相同，但`let`是最推荐的变量声明方式
+ES5 前不支持常量定义，但可以通过`Object.defineProperty()`间接实现定义常量，后在 ES6 中支持以`const`关键字定义常量（只读变量），它和`let`成为了声明变量的主要方式
 
-## 常量
-
-ES5 前不支持常量定义，但可以通过`Object.defineProperty()`间接实现定义常量，后在 ES6 中支持以`const`关键字定义
-
-```javascript
+```js
 const PI = 3.14;
 ```
 
-当一个数值出现正无穷大时会出现`Infinity`，负无穷大时会出现`-Infinity`，当一个未定义的变量进行数值运算时会出现`NaN`
-
 ## 数据类型
 
-JavaScript 中有八种基本的数据类型（七种原始类型，一种复杂类型）
+JavaScript 有八种基本的数据类型（七种原始类型，一种复杂类型）
 
 + Number：代表整数和浮点数，除了常规的数字，还包括一些“特殊数值”也属于这种类型：`Infinity`,`-Infinity`,`NaN`，在 JavaScript 中做数学运算是足够安全的，不会因为任何错误而停止，最坏的情况下会得到`NaN`
 + Bigint：任意长的整数
@@ -126,13 +133,13 @@ JavaScript 中有八种基本的数据类型（七种原始类型，一种复杂
 
 通常情况下加法用于求和，但是如果用于字符串，它将连接字符串，在表达式中如果有一个字符串，那么都会被转换为字符串，但运算符是按照顺序工作的
 
-```javascript
+```js
 1 + 1 + '1' // '21' 而不是 '111'
 ```
 
 `+`有时候也可作为一元运算符，这会将值合法的转换数字类型，它的效果和`Number()`相同，但更加简短
 
-```javascript
+```js
 +true // 1
 +"" // 0
 ```
@@ -141,7 +148,7 @@ JavaScript 中有八种基本的数据类型（七种原始类型，一种复杂
 
 `=`也是一个运算符，只不过优先级比较低，所以总是等到其他表达式运算完成才轮到`=`，`=`不仅仅可以赋值，也会返回一个值，这很有趣，但是不要使用这样的代码
 
-```javascript
+```js
 let foo = 1;
 let bar = 2;
 let qux = 3 - (foo = bar + 1);
@@ -151,7 +158,7 @@ console.log(bar); // 0
 
 当然也支持链式赋值，尽量不使用这种方式，因为可读性变差了
 
-```javascript
+```js
 let foo, bar;
 foo = bar = 5;
 console.log(foo); // 5
@@ -160,7 +167,7 @@ console.log(bar); // 5
 
 不仅如此，还支持原地修改，因为经常需要对某个变量进行允许，且存储在该变量中，类似于一种“修改并赋值”的操作
 
-```javascript
+```js
 let foo = 2;
 foo = foo + 2;
 foo = foo * 2;
@@ -168,7 +175,7 @@ foo = foo * 2;
 
 可以使用`+=`和`*=`来表示
 
-```javascript
+```js
 foo += 2; // 等同于 foo = foo + 2
 foo *= 2; // 等同于 foo = foo * 2
 ```
@@ -181,7 +188,7 @@ foo *= 2; // 等同于 foo = foo * 2
 
 在进行字符串的大小比较时，会按字符逐个进行比较（字符编码）
 
-```javascript
+```js
 'z' > 'a' // true
 'abd' > 'abc' // true
 'aaa' > 'aa' // true
@@ -195,14 +202,14 @@ foo *= 2; // 等同于 foo = foo * 2
 
 对于不同类型的比较，会将值转换为数值再判定大小
 
-```javascript
+```js
 '3' > 1 // true，'3' 被转换为数字 2
 '03' > 1 // true，'03' 被转换为数字 1
 ```
 
 对布尔类型而言，`true`会被转换为`1`,`false`则被转换为`0`
 
-```javascript
+```js
 true == 1 // true
 false == 0 // true
 ```
@@ -223,7 +230,7 @@ JavaScript 有三个逻辑运算符：`||`，`&&`，`!`，它们可以用于任�
 
 `||`不仅有传统编程上的作用，在 JavaScript 中还有着更为特殊的用法
 
-```javascript
+```js
 let result = value1 || value2 || value3;
 ```
 
@@ -237,7 +244,7 @@ let result = value1 || value2 || value3;
 
 `&&`在传统的编程中，只有操作数都是`true`时才会返回`true`，像`||`一样，操作数可以是任意类型的值，当然它也有着特殊的用法
 
-```javascript
+```js
 let result = value1 && value2 && value3;
 ```
 
@@ -255,13 +262,13 @@ let result = value1 && value2 && value3;
 
 `!`运算就更加简单了，它只接收一个参数，然后将参数转换为布尔值，并进行取反
 
-```javascript
+```js
 !true // false
 ```
 
 使用`!!`可以将某个值转换为布尔值，也就是取反再取反
 
-```javascript
+```js
 !!1 // true 
 ```
 
@@ -273,7 +280,7 @@ let result = value1 && value2 && value3;
 
 通常`??`的使用场景，是为可能未定义的变量提供一个默认值
 
-```javascript
+```js
 let user = 'foo';
 console.log(user ?? "bar");
 ```
@@ -285,7 +292,7 @@ console.log(user ?? "bar");
 
 `||`无法区分`false`，`0`，空串，以及`null/undefined`，它无法考虑下面这种情况
 
-```javascript
+```js
 let height = 0;
 console.log(height || 100); // 100
 console.log(height ?? 100); // 0
@@ -295,7 +302,7 @@ console.log(height ?? 100); // 0
 
 出于安全，JavaScript 禁止`??`和`||`以及`&&`连用，除非明确的使用括号来指定优先级
 
-```javascript
+```js
 let x = 1 && 2 ?? 3; // Syntax error
 let y = (1 && 2) ?? 3; // ok
 ```
@@ -306,13 +313,13 @@ let y = (1 && 2) ?? 3; // ok
 
 `if`语句和条件运算符`?`均可实现根据条件来执行不同的语句
 
-```javascript
+```js
 if (2 == 2) console.log('2 == 2');
 ```
 
 在上面这个例子中，括号中的表达式会被转换为布尔值，为`true`则执行，`false`则不执行，这仅执行一条语句，如果想执行多条，必须将执行的语句放在`{}`中
 
-```javascript
+```js
 if (2 == 2) {
   console.log('1');
   console.log('2');
@@ -325,7 +332,7 @@ if (2 == 2) {
 
 `if`也可以包含一个可选的`case`块，如果条件不成立，就会执行`case`代码块中的语句
 
-```javascript
+```js
 let age = 17;
 if (age > 18) {
   console.log('成年了');
@@ -336,7 +343,7 @@ if (age > 18) {
 
 在这个基础上还能使用`else if`产生更多的条件分支
 
-```javascript
+```js
 let score = 59;
 if (score >= 90) {
   console.log('你太优秀了');
@@ -353,7 +360,7 @@ if (score >= 90) {
 
 有时候需要更加简单的方式达到目的，而条件运算符可以帮忙做到这一点
 
-```javascript
+```js
 let ageFlag;
 let age;
 if (age > 18) {
@@ -365,7 +372,7 @@ if (age > 18) {
 
 使用`?`
 
-```javascript
+```js
 let age;
 let ageFlag = age > 18 ? true : false;
 ```
@@ -388,7 +395,7 @@ while (condition) {
 
 这是`do...while`的循环结构，它将检查条件移动到下方，这导致无论如何循环体都会执行一次，然后再判断条件
 
-```javascript
+```js
 do {
   // 代码
 } while
@@ -396,7 +403,7 @@ do {
 
 `for`循环是最为复杂的，但也是最常用的
 
-```javascript
+```js
 for (begin; condition; step){
   // code
 }
@@ -419,7 +426,7 @@ switch 可以代替多个`if`，它比`if`描述的更加形象
 
 switch 至少有一个`case`代码块和一个可选的`default`代码块
 
-```javascript
+```js
 switch (x) {
   case 'value1':
     // code
@@ -444,7 +451,7 @@ switch (x) {
 
 `case`也有分组的能力
 
-```javascript
+```js
 let a = 3;
 
 switch (a) {
@@ -469,27 +476,28 @@ switch (a) {
 
 使用`function`关键字声明函数，然后通过函数名调用
 
-```javascript
-function foo() {
-}
-foo();
+```js
+function foo() {}
+foo(); 
 ```
 
 由于定义的函数是被看作全局对象`window`的方法，所以也支持这种调用方式：
 
-```javascript
-function foo() {
-}
+```js
+function foo() {}
 window.foo();
 window['foo'];
 ```
 
+::: danger
+至少在浏览器环境中是这样的，但是在其他环境中不一定
+:::
+
 函数能够嵌套定义，但是内部函数必须在嵌套它的函数作用域中调用
 
-```javascript
+```js
 function foo() {
-  function bar() {
-  }
+  function bar() {}
   bar(); // 正确
 }
 bar(); // ReferenceError
@@ -499,7 +507,7 @@ bar(); // ReferenceError
 
 在函数中声明的变量只在该函数内部可见
 
-```javascript
+```js
 function foo() {
   let a = 'a';
   console.log(a);
@@ -509,7 +517,7 @@ console.log(a); // undefined;
 
 函数对定义在外部的变量拥有全部的访问权限
 
-```javascript
+```js
 let a = 'a';
 function foo() {
   console.log(a);
@@ -523,7 +531,7 @@ console.log(a);
 
 当一个函数内部中的变量和外部变量重名，那么会优先使用局部变量
 
-```javascript
+```js
 let a = 'a';
 function foo() {
   let a = 'aa';
@@ -536,7 +544,7 @@ console.log(a); // a
 
 可定义参数将任意数据传递给函数
 
-```javascript
+```js
 function foo(a) {
   console.log(a); // a
 }
@@ -545,7 +553,7 @@ foo('a');
 
 如果没有提供参数，那么定义的参数默认值为`undefined`
 
-```javascript
+```js
 function foo(a) {
   console.log(a); // undefined
 }
@@ -554,7 +562,7 @@ foo();
 
 也可以在定义参数的同时指定默认值，当没有传入数据时，就会为该参数赋予默认值
 
-```javascript
+```js
 function foo(a = 'a') {
   console.log(a); // 'a'
 }
@@ -563,19 +571,19 @@ foo();
 
 最新的 JavaScript 语法还支持指定参数传值，不过为了兼容性，应该少使用
 
-```javascript
+```js
 function foo(a, b = 'b') {
-  console.log(a);
-  console.log(b);
+  console.log(a); // 'a'
+  console.log(b); // 'b'
 }
-foo(a='a');
+foo(a = 'a');
 ```
 
 ### 返回值
 
 `return`可以出现在函数中任意位置，后面跟上返回值，甚至不带返回值也是可以的
 
-```javascript
+```js
 function foo() {
   return;
 }
@@ -587,21 +595,20 @@ function foo() {
 
 另外，不要在`return`与返回值之间添加新的一行，这导致 JavaScript 在`return`后面直接加了`;`，不会返回后面的表达式结果
 
-```javascript
+```js
 function foo() {
   return
     1 + 2 + 3
 }
-console.log(foo()) // undefined
+console.log(foo()); // undefined
 ```
 
 ### 函数表达式
 
 函数在 JavaScript 中不是“语言结构”，而是一种特殊的值，还有另外一种创建函数的语法叫做**函数表达式**
 
-```javascript
-let foo = function() {
-};
+```js
+let foo = function() {};
 foo();
 ```
 
@@ -609,60 +616,73 @@ foo();
 
 下面这种写法也是 OK 的，看起来就像变量存储了函数，函数可以被当作值一样传递
 
-```javascript
-function foo () {
-}
+```js
+function foo () {}
 let fc = foo;
 fc();
+```
+
+另外这种写法也没什么区别，任然是一个函数表达式，即使增加了`func`，但它也会成为表达式的一部分，但是它允许函数内部引用自己
+
+```js
+let foo = func (){};
 ```
 
 ::: tip 声明函数和函数表达式的区别
 声明函数可以无视定义的顺序调用，因为它会被解释器提前，而函数表达式只能在定义后调用，这不难理解，因为函数表达式只有赋值给变量后才能被引用。如果不是特殊用途不推荐使用函数表达式，因为阅读性较差，且定义更为繁琐
 :::
 
+::: tip 作为值的函数
+既然函数也是引用类型，它的引用也可以被传递，访问不带`()`的函数名即可
+:::
+
 ### 箭头函数
 
-创建函数还有另一种非常简单的语法，且这种方式比函数表达式更好，它被称为“箭头函数”
+创建函数还有另一种非常简单的语法，且这种方式比函数表达式更好，它被称为**箭头函数**
 
-```javascript
-let foo = () => {}
+```js
+let foo = () => {};
 ```
 
 它是下面的简单版本
 
-```javascript
-let foo = function (){}
+```js
+let foo = function (){};
 ```
 
 箭头函数可以更简洁，当参数只有一个时，`()`可以省略，但没有参数的时候必须保留
 
-```javascript
-let double = n => {n * 2}
+```js
+let double = n => { n * 2 };
 console.log(double(2)); // 4
 ```
 
 如果`{}`只有一行语句，也可以省略掉
 
-```javascript
+```js
 let double = n => n * 2
 console.log(double(2)); // 4
 ```
 
-除此之外还有其他有趣的特性，不在这里过多描述
+除此之外还有其他有趣的特性：
+
+1. 没有`this`，访问到的`this`来自外部的普通函数
+2. 没有`arguments`，访问到的`arguments`来自外部的普通函数
+3. 不能作为构造器使用`new`调用，这是不具有`this`
 
 ### 回调函数
 
 既然函数可以传递，就产生了下面的写法
 
-```javascript
-function foo(bar){
-  bar();
+```js
+function foo(callback) {
+  callback();
 }
-bar(){}
-foo(bar)；
+function bar(){}
+foo(bar);
 ```
 
-从这里看来，`bar`被当作参数传递给`foo`，然后在`foo`中调用，因此`bar`可以被称为**回调函数**
+从这里看来，`bar`被当作参数传递给`foo`，然后在`foo`中调用，因此`bar`被称为**回调函数**
 
 回调函数的主要思想就是通过传递一个函数，且期望在稍后时将其进行回调
 
@@ -670,7 +690,7 @@ foo(bar)；
 
 如果在定义一个函数的同时调用这个函数，就会实现立即自执行函数的方式，为什么使用匿名函数而不是具名函数呢？因为在这种调用方式下函数有无标识都没有关系，不影响程序的执行，于是出现了下面的写法
 
-```javascript
+```js
 var foo = function () {}();
 (function (){})();
 (function (){}());
@@ -686,33 +706,21 @@ function (){}() // 抛出语法错误
 
 这种函数的定义方式有一个封闭的作用域范围，因此可以封装一些变量和函数，由于外部无法引用内部的变量，就能避免和全局对象的冲突。如果想要扩大作用域，可以为函数定义一个参数，将外部的定义的对象作为参数传入，并将内部的变量和函数绑定到对象上，即可实现全局变量和函数，jQuery 就是这么做的：
 
-```javascript
+```js
 (function (window, undefined) {
   // jQuery 逻辑实现
 })(window);
 ```
 
-### Function 类
-
-在 JavaScript 中函数本身也是一个对象，所以提供了`Function`类来创建一个函数：`var func_name = new Function(arg1, arg2, ..., func_body)`，在这个形式中，每个参数都是字符串，而参数列表是可以省略的
-
-::: tip 作为值的函数
-既然函数也是引用类型，它的引用也可以被传递，访问不带`()`的函数名即可
-:::
-
 ### arguments
 
-`arguments`是每个函数对象都有的属性，它是一个类数组的对象，包含传入函数中的所有参数
-
-::: tip 函数的 length
-`length`会返回函数的参数列表长度
-:::
+`arguments`是每个函数都有的属性，它是一个类数组的对象，包含传入函数中的所有参数，这是过去的一种获取所有参数的唯一办法，至今仍然有效
 
 ### 闭包函数
 
 将一个函数作为返回值的函数就是闭包函数，它的目的是变相的扩大了局部变量的作用域，这导致在任何地方调用该函数都可以访问该作用域中的变量，下面这个例子中`temp`本质是一个局部变量，而`bar`被`foo`当作返回值在外部调用，却仍能够访问`temp`，但实际上不应该再访问到`temp`，这就是闭包函数的作用。闭包的核心就是无论在何处调用该函数，仍然能够访问它所处于环境中的变量，而这个变量是无法被其他程序访问到的
 
-```javascript
+```js
 function foo (){
   var temp = 'abc';
     function bar (){
@@ -720,8 +728,36 @@ function foo (){
     }
     return bar;
   }
-  foo()();
+foo()();
 ```
+
+### 函数也是对象
+
+在 JavaScript 中函数本身也是一个对象，因为函数也可以作为一个值传递，必然属于某种类型，函数是一个可被调用的对象，不仅可以调用，也可以当作对象来处理，进行属性操作，以及引用传递等
+
+那么作为对象就应该有自己的一些属性：
+
+1. `name`：函数的名字，如果没有声明名字，则会根据上下文推测一个
+2. `length`：返回函数入参的个数，但是 rest 参数不参与计数
+
+::: tip
+如果直接在一个数组中声明函数，那么该函数的`name`是无法推断的
+:::
+
+### Function 类
+
+JavaScript 也提供了另一种创建函数的方法，只不过很少使用，所以提供了`Function`类来创建一个函数：`let func_name = new Function(arg1, arg2, ..., func_body)`，在这个形式中，每个参数都是字符串，而参数列表是可以省略的
+
+```js
+let func = new Function('a', 'b', 'return a + b');
+console.log(func(1, 2)); // 3
+```
+
+与其他的方法相比，它是通过字符串创建的，允许将字符串变为函数，这种应用场景只有比较复杂的地方可以用到：从服务器种获得代码并编译成函数允许
+
+::: tip 闭包
+通常闭包指向创建函数时自身所处于的环境，但是使用`new Function()`创建的函数却指向全局环境
+:::
 
 ### 内置函数
 
@@ -729,7 +765,7 @@ JavaScript 也内置了一些与定义的函数，用于处理一些常见的操
 
 `eval()`是一个很强大的函数，它的作用是计算一个字符串，并转换为对应的表达式或语句执行，它本身并不返回什么数据，目的就是执行字符串中的表达式或语句
 
-```javascript
+```js
 var x3 = 2;
 eval('x' + 3); // 会变成 x3 ，并返回访问 x3 变量的值
 eval('')

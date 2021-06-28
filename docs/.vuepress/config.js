@@ -11,7 +11,8 @@ module.exports = config({
   head: [
     ['link', { rel: 'stylesheet', href: '/animate.min.css' }],
     ['script', { src: '/vue.min.js' }],
-    ['script', { src: '/vuex.min.js' }]
+    ['script', { src: '/vuex.min.js' }],
+    ['script', { src: '/mock-min.js' }],
   ],
   themeConfig: {
     logo: "/logo.png",

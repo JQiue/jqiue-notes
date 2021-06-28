@@ -40,7 +40,7 @@ JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，
 
 1. 全局Functionm模式：把功能封装成不同的全局函数
 
-```javascript
+```js
 function foo() {
   //...
 }
@@ -51,7 +51,7 @@ function bar() {
 
 2. 简单封装：(Namespace)模式：减少了全局变量，但本质是对象，外部可以直接修改，不安全
 
-```javascript
+```js
 const module = {
     foo: function(){},
     bar: function(){}
@@ -64,7 +64,7 @@ module.bar();
 将数据进行了私有化，外部只能通过暴露的方法操作，提高了安全性  
 缺点是不能和其他模块产生依赖关系
 
-```javascript
+```js
 const module = (function() {
   let value = '';
   // 封装私有化
@@ -87,7 +87,7 @@ const module = (function() {
 
 实现了依赖关系，但是引入js文件，模块等必须要有一定的先后顺序
 
-```javascript
+```js
 (function(window, $) {
   const body = $('body');
   function foo(){
@@ -119,20 +119,20 @@ require 命令用于加载文件，后缀名默认为`.js`
 
 暴露模块：
 
-```javascript
+```js
 let foo = 5;
 module.exports.foo = foo;
 ```
 
 引入第三方模块：
 
-```javascript
+```js
 let foo = require('notes/module/AMD/module/foo.js');
 ```
 
 引入核心模块：
 
-```javascript
+```js
 const path = require('path');
 ```
 
@@ -159,7 +159,7 @@ Node.js主要用于服务器编程，模块文件一般都已经存在于本地�
 
 定义模块：
 
-```javascript
+```js
 // 没有依赖其他模块
 define(function() {
   return m
@@ -173,7 +173,7 @@ define(['依赖的模块1','依赖的模块2'],function(m1,m2) {
 
 引入模块：
 
-```javascript
+```js
 require([m1,m2],function(m1,m2){})
 ```
 
@@ -197,7 +197,7 @@ require([m1,m2],function(m1,m2){})
 
 暴露模块：
 
-```javascript
+```js
 define(function(require,exports,module){
 // 定义没有依赖的暴露模块
   exports.xxx = value;
@@ -220,7 +220,7 @@ define(function(require,exports,module){
 
 引入模块：
 
-```javascript
+```js
 // 使用引入模块
 define(function(require){
   const foobaz = require('./foobaz');
@@ -245,7 +245,7 @@ define(function(require){
 
 暴露模块：分别暴露
 
-```javascript
+```js
 export function foo() {
   // ...
 }
@@ -257,7 +257,7 @@ export function bar() {
 
 暴露模块：默认暴露
 
-```javascript
+```js
 export default function() {
   // ...
 }
@@ -265,7 +265,7 @@ export default function() {
 
 引入模块：
 
-```javascript
+```js
 import {foo,bar} from 'xxx.js'
 
 import xxx from 'xxx.js'

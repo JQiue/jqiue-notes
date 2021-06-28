@@ -6,7 +6,121 @@ author: JQiue
 article: false
 ---
 
+存储方式|存储类型|访问限制|存储时长|适用场景
+---|---|---|---|---
+Cookie|格式化字符串|同源，可自定义访问域|自定义时长|用户认证
+sessionStorage|k-v，仅字符串|同标签下的同域名|当前会话|当前页音视频的播放进度
+localStorage|k-v，仅字符串|同域名，可不同的标签|永久存储|本地缓存
+WebSQL|关系型数据库|同域名|永久存储|大量的本地缓存
+IndexedDB|文档型数据库|同域名|永久存储|大量的本地缓存
+
 客户端存储提供了网页能够将数据存储在浏览器上的技术，这有益于在弱网环境下的浏览体验，浏览器提供了一些 API 来实现了这种技术，当网络正常时就请求服务器获得数据，否则就访问本地存储中的数据
+
+## Cookie
+
+Cookie 是服务器发送到用户浏览器并保存在本地的一种数据，它会在浏览器下次向同一服务器发送请求时被携带，这种操作使得无状态的 HTTP 拥有了一种记录稳定状态的可能
+
+```javascript
+document.cookie
+```
+
+`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种键值对方式，当需要添加一条 cookie 时，就直接赋值即可
+
+```javascript
+document.cookie = "name=foo"
+```
+
+当没有该条 Cookie 时，会添加到所有的 Cookie 中，这种方法一次只能对一个 Cookie 进行设置或更新
+
+`document.cookie`返回所有 cookie，得到指定 cookie 的值是非常麻烦的
+
+```javascript
+let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)keyName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+```
+
+但是可以借助一些专门处理 cookie 的库来简化处理
+
+::: details cookies.js
+
+```javascript
+/*\
+|*|
+|*|  :: cookies.js ::
+|*|
+|*|  A complete cookies reader/writer framework with full unicode support.
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/DOM/document.cookie
+|*|
+|*|  This framework is released under the GNU Public License, version 3 or later.
+|*|  http://www.gnu.org/licenses/gpl-3.0-standalone.html
+|*|
+|*|  Syntaxes:
+|*|
+|*|  * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
+|*|  * docCookies.getItem(name)
+|*|  * docCookies.removeItem(name[, path], domain)
+|*|  * docCookies.hasItem(name)
+|*|  * docCookies.keys()
+|*|
+\*/
+
+var docCookies = {
+  getItem: function (sKey) {
+    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+  },
+  setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+    if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+    var sExpires = "";
+    if (vEnd) {
+      switch (vEnd.constructor) {
+        case Number:
+          sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+          break;
+        case String:
+          sExpires = "; expires=" + vEnd;
+          break;
+        case Date:
+          sExpires = "; expires=" + vEnd.toUTCString();
+          break;
+      }
+    }
+    document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
+    return true;
+  },
+  removeItem: function (sKey, sPath, sDomain) {
+    if (!sKey || !this.hasItem(sKey)) { return false; }
+    document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
+    return true;
+  },
+  hasItem: function (sKey) {
+    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
+  },
+  keys: /* optional method: you can safely remove it! */ function () {
+    var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
+    for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+    return aKeys;
+  }
+};
+```
+
+:::
+
+一条 cookie 的写入，不仅有必须写入的 name 和 value 还有一些其他的可选参数，比如：
+
++ expires：规定 cookie 有效期（GMT）
++ domain：规定 cookie 的域名
++ path：规定 cookie 的路径
++ secure：规定 cookie 是否通过 https 所访问（boolean/null）
+
+这是一个限制有效期 cookie 的例子：
+
+```javascript
+document.cookie = "test=time; expires=" + new Date().toString();
+```
+
+::: tip
+时间戳应该是一个 GMT 格式
+:::
 
 ## 本地存储和会话存储
 
@@ -172,110 +286,6 @@ request.onsucess = function (event) {
 };
 ```
 
-## Cookie
-
-Cookie 是服务器发送到用户浏览器并保存在本地的一种数据，它会在浏览器下次向同一服务器发送请求时被携带，这种操作使得无状态的 HTTP 拥有了一种记录稳定状态的可能
-
-```javascript
-document.cookie
-```
-
-`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种键值对方式，当需要添加一条 cookie 时，就直接赋值即可
-
-```javascript
-document.cookie = "name=foo"
-```
-
-当没有该条 Cookie 时，会添加到所有的 Cookie 中，这种方法一次只能对一个 Cookie 进行设置或更新
-
-`document.cookie`返回所有 cookie，得到指定 cookie 的值是非常麻烦的
-
-```javascript
-let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)keyName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-```
-
-但是可以借助一些专门处理 cookie 的库来简化处理
-
-::: details cookies.js
-
-```javascript
-/*\
-|*|
-|*|  :: cookies.js ::
-|*|
-|*|  A complete cookies reader/writer framework with full unicode support.
-|*|
-|*|  https://developer.mozilla.org/en-US/docs/DOM/document.cookie
-|*|
-|*|  This framework is released under the GNU Public License, version 3 or later.
-|*|  http://www.gnu.org/licenses/gpl-3.0-standalone.html
-|*|
-|*|  Syntaxes:
-|*|
-|*|  * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
-|*|  * docCookies.getItem(name)
-|*|  * docCookies.removeItem(name[, path], domain)
-|*|  * docCookies.hasItem(name)
-|*|  * docCookies.keys()
-|*|
-\*/
-
-var docCookies = {
-  getItem: function (sKey) {
-    return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
-  },
-  setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-    if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
-    var sExpires = "";
-    if (vEnd) {
-      switch (vEnd.constructor) {
-        case Number:
-          sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
-          break;
-        case String:
-          sExpires = "; expires=" + vEnd;
-          break;
-        case Date:
-          sExpires = "; expires=" + vEnd.toUTCString();
-          break;
-      }
-    }
-    document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
-    return true;
-  },
-  removeItem: function (sKey, sPath, sDomain) {
-    if (!sKey || !this.hasItem(sKey)) { return false; }
-    document.cookie = encodeURIComponent(sKey) + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT" + ( sDomain ? "; domain=" + sDomain : "") + ( sPath ? "; path=" + sPath : "");
-    return true;
-  },
-  hasItem: function (sKey) {
-    return (new RegExp("(?:^|;\\s*)" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=")).test(document.cookie);
-  },
-  keys: /* optional method: you can safely remove it! */ function () {
-    var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "").split(/\s*(?:\=[^;]*)?;\s*/);
-    for (var nIdx = 0; nIdx < aKeys.length; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
-    return aKeys;
-  }
-};
-```
-
-:::
-
-一条 cookie 的写入，不仅有必须写入的 name 和 value 还有一些其他的可选参数，比如：
-
-+ expires：规定 cookie 有效期（GMT）
-+ domain：规定 cookie 的域名
-+ path：规定 cookie 的路径
-+ secure：规定 cookie 是否通过 https 所访问（boolean/null）
-
-这是一个限制有效期 cookie 的例子：
-
-```javascript
-document.cookie = "test=time; expires=" + new Date().toString();
-```
-
-::: tip
-时间戳应该是一个 GMT 格式
-:::
-
 ## 缓存存储
+
+它最初是为 service workers 建立的，可以缓存任何 HTTP 网络请求
