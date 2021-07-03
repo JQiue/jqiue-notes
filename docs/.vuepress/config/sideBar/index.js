@@ -6,6 +6,7 @@ module.exports = {
   "/application/web/": require('./application').web,
   "/application/backend/": require('./application').backend,
   "/application/desktop/": require('./application').desktop,
+  "/application/mobile/": require('./application').mobile,
   "/subject/": require('./subject'),
   "/sundry/": require('./sundry'),
   "/about/": ['me', 'content']

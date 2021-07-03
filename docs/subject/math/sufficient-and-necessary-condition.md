@@ -1,5 +1,7 @@
 ---
 title: 充分必要条件
+category: 学科
+tag: 数学
 author: JQiue
 article: false
 ---

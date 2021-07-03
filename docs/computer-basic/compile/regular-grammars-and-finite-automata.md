@@ -1,6 +1,7 @@
 ---
 title: 正则文法和有限自动机
 category: 计算机基础
+tag: 编译原理
 author: JQiue
 ---
 

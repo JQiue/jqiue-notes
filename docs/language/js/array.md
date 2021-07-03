@@ -158,7 +158,7 @@ splice 和 slice 还支持反向索引，从 -1 开始
 + `includes(item, from)`：从 from 处开始搜索 item，找到就返回 true
 + `find(callback(item, index, array))`：如果返回 true，则停止迭代并返回 item
 + `filter(callback(item, index, array))`：如果返回 true，就将 item 添加到一个数组中并继续迭代，迭代完成后返回数组
-+ `map(callback(item, index, array))`：返回后的结果会替换当前元素的位置，并将整个数组返回
++ `map(callback(item, index, array))`：返回后的结果会替换当前位置的元素，并将整个数组返回
 + `sort(callback())`：对数组进行原位排序，并不返回新的数组，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
 
 ::: tip

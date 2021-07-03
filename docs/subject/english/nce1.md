@@ -1,13 +1,14 @@
 ---
 title: 新概念：第一册课文
-category: 英语
+category: 学科
+tag: 英语
 author: JQiue
 article: false
 ---
 
-## 学前导读
-
+::: warning 学前导读
 新概念第一册比较注重对话，只在后续有些重要的语法概念，所以简单分析即可，积累词汇才是重点
+:::
 
 ## Lesson 1 Excuse me
 

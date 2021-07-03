@@ -1,6 +1,7 @@
 ---
 title: 词汇和短语的积累
-category: 英语
+category: 学科
+tag: 英语
 author: JQiue
 article: false
 ---

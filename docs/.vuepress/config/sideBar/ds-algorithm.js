@@ -11,7 +11,8 @@ module.exports = [
       'stack',
       'queue',
     ]
-  }, {
+  }, 
+  {
     title: '算法',
     prefix: '/ds-algorithm/algorithm/',
     collapsable: false,

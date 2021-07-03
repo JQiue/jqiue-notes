@@ -1,6 +1,7 @@
 ---
 title: 句型
-category: 英语
+category: 学科
+tag: 英语
 author: JQiue
 article: false
 ---

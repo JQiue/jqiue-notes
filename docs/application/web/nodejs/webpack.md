@@ -1,5 +1,5 @@
 ---
-title: 介绍 && 核心概念
+title: Webpack 快速上手
 category: Web
 tag: Webpack
 author: JQiue

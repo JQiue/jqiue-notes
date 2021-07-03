@@ -17,7 +17,8 @@ module.exports = [
     items: [
       { text: 'Web', icon: 'liulanqi', link: 'web/' },
       { text: '后端', icon: 'shujuchuli', link: 'backend/' },
-      { text: '桌面端', icon: 'zuixing-86', link: 'desktop/' }
+      { text: '移动', icon: 'shoujiyingyong', link: 'mobile/' },
+      { text: '桌面', icon: 'zuixing-86', link: 'desktop/' }
     ]
   },
   {

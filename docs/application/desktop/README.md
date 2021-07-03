@@ -1,7 +1,7 @@
 ---
-title: 桌面端
+title: 桌面
 author: JQiue
 article: false
 ---
 
-+ [Electron](./electron/1)
+指运行在电脑上的应用

@@ -1,6 +1,7 @@
 ---
 title: 走进计算机
 category: 计算机基础
+tag: 计算机组成
 author: JQiue
 article: false
 ---

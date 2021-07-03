@@ -24,7 +24,7 @@ module.exports = {
       title: 'Canvas',
       prefix: 'canvas/',
       collapsable: false,
-      children: ['1']
+      children: ['basic']
     },
     {
       title: 'WebAPI',
@@ -58,22 +58,24 @@ module.exports = {
       ]
     },
     {
-      title: 'NPM',
-      prefix: 'npm/',
+      title: 'NodeJS',
+      prefix: 'nodejs/',
       collapsable: false,
-      children: ['1', '2', '3']
+      children: [
+        'basic', 
+        'api', 
+        'npm',
+        'webpack',
+      ]
     },
-    {
-      title: 'Webpack',
-      prefix: 'webpack/',
-      collapsable: false,
-      children: ['1']
-    }
   ],
   backend: [
-    ''
+    '',
   ],
   desktop: [
-    ''
+    '',
+  ],
+  mobile: [
+    '',
   ]
 };

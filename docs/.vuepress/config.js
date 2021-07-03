@@ -49,7 +49,8 @@ module.exports = config({
       demo: true,
       align: true,
       sup: true,
-      sub: true
+      sub: true,
+      tasklist: true,
     },
     comment: {
       type: "valine",

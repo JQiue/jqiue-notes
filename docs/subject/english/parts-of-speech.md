@@ -1,6 +1,7 @@
 ---
 title: 词类和成分
-category: 英语
+category: 学科
+tag: 英语
 author: JQiue
 article: false
 ---
@@ -332,21 +333,21 @@ He was talking with his friends just now. 就在刚才他和他的朋友正在�
 
 帮助构成将来时：
 
-1. will 和 shall 这两个助动词可以构成将来时态，基本结构：`will/shall + 动词原形`
++ will 和 shall 这两个助动词可以构成将来时态，基本结构：`will/shall + 动词原形`
 
 ```text
 They will go to Shanghai by ship tomorrow.
 We shall leave for Shanghai next month.
 ```
 
-2. “be going to + 动词原形”用来表示近期或事先考虑过的将要发生的动作，意为：“打算、将要”
-
++ “be going to + 动词原形”用来表示近期或事先考虑过的将要发生的动作，意为：“打算、将要”
+  
 ```text
 They are going to play football this afternoon.
 She is going to leave French next year.
 ```
 
-3. “be + doing”表示位置转移的动词，比如：go，come，leave，start，arrive，可用现在进行时表将来
++ “be + doing”表示位置转移的动词，比如：go，come，leave，start，arrive，可用现在进行时表将来
 
 ```text
 They are leaving for Japan.

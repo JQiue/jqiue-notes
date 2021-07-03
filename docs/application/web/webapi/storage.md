@@ -30,6 +30,10 @@ document.cookie
 document.cookie = "name=foo"
 ```
 
+::: tip 为什么代码会失效
+通过本地资源路径打开的 HTML 文件，设置 cookie 的代码是失效的，应该通过一个 Web 服务来启动它
+:::
+
 当没有该条 Cookie 时，会添加到所有的 Cookie 中，这种方法一次只能对一个 Cookie 进行设置或更新
 
 `document.cookie`返回所有 cookie，得到指定 cookie 的值是非常麻烦的

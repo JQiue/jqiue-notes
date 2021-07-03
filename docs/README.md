@@ -10,24 +10,12 @@
    actionText: 了解更多 →
    actionLink: /about/content/
    project:
-     - name: 计算机基础
-       type: article
-       link: /computer-basic/
      - name: 编程语言
        type: article
        link: /language/
      - name: Web 前端
        type: article
        link: /application/web/
-     - name: 桌面端
-       type: article
-       link: /application/desktop/
-     - name: 后端开发
-       type: article
-       link: /application/backend/
-     - name: 数据库
-       type: article
-       link: /database/
      - name: 知识分享
        type: article
        link: /sundry/share/1/            

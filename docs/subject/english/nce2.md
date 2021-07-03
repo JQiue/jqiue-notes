@@ -1,13 +1,14 @@
 ---
 title: 新概念：第二册课文
-category: 英语
+category: 学科
+tag: 英语
 author: JQiue
 article: false
 ---
 
-## 学前导读
-
+::: warning 学前导读
 在第一册的基础上加强了语法的使用，熟悉语法的同时也要积累词汇
+:::
 
 ## Lesson 1 Private conversation
 

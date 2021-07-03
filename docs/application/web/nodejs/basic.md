@@ -1,20 +1,20 @@
 ---
-title: NodeJS：介绍
+title: 介绍与起步
 category: 编程语言
 tag: [NodeJS, Runtime]
 author: JQiue
 article: false
 ---
 
-在学习 NodeJS 之前应先了解前端模块化]
+在学习 NodeJS 之前应先了解前端模块化
 
-NodeJS 内置 V8 引擎，是 JavaScript 的一个运行环境，NodeJS 扩展了 JavaScript 功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的，NodeJS 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时 NodeJS 还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上
+NodeJS 内置 V8 引擎，是 JavaScript 的一个运行环境，NodeJS 提供了浏览器中没有的功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的，NodeJS 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时 NodeJS 还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上
 
 NodeJS 的目的就是为了实现高性能的 Web 服务器，作者看中的是事件机制和异步 IO 模型的优势，并不是 JavaScript。作者需要一种不带 IO 功能，且支持事件机制的语言，于是自然选择了 JavaScript
 
-## 安装NodeJS?
+## 安装 NodeJS
 
-+ 用于所有主流平台的官方软件包，可访问 [NodeJS官网](http://nodejs.cn/download/)
++ 用于所有主流平台的官方软件包，可访问[NodeJS官网](http://nodejs.cn/download/)
 + 使用[NVM（NodeJS 版本管理器）](https://github.com/coreybutler/nvm-windows/releases) 安装 NodeJS
 
 ## 运行 JavaScript

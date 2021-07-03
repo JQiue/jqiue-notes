@@ -1,5 +1,7 @@
 ---
 title: 函数
+category: 学科
+tag: 数学
 author: JQiue
 article: false
 ---
