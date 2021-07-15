@@ -10,7 +10,7 @@ article: false
 
 过去式不规则变化：
 
-```text
+```plain
 buy -> bought
 lose -> lost
 see -> saw
@@ -20,14 +20,14 @@ get -> got
 
 过去分词不规则变化：
 
-```text
+```plain
 be -> been
 see -> seen
 ```
 
 不规则复数变化：
 
-```text
+```plain
 man -> men
 woman -> women
 child -> children
@@ -39,7 +39,7 @@ goose -> geese
 
 ## 短语
 
-```text
+```plain
 put on 穿上
 take off 脱掉
 turn on 开
@@ -64,14 +64,14 @@ all the time 一直，始终
 
 large 仅指物理上的大，是 small 的反义词，通常指体积、面积、形状、数量方面的大，修饰人时指个子大
 
-```text
+```plain
 China is a large country.
 Look at that large woman in white.
 ```
 
 big 所表示的大不仅指体积大，还很重，在修饰人时，通常指大人物，但个子未必高大
 
-```text
+```plain
 It is a big house.
 She's very big in the filmdom.
 ```
@@ -80,13 +80,13 @@ She's very big in the filmdom.
 
 small 指物理上的小或少，是 large 的反义词
 
-```text
+```plain
 It is small factory.
 ```
 
 little 也表示小和少，但有小而可爱的感情色，是 big 的反义词
 
-```text
+```plain
 There is a little garden behind our house.
 She has the sweetest little smile.
 ```
@@ -95,12 +95,12 @@ She has the sweetest little smile.
 
 desk 通常是指有抽屉的桌子，用于办公、读书、写字等
 
-```text
+```plain
 He is working at his desk.
 ```
 
 table 通常指若干条腿支撑着的评判，没有抽屉，比如“餐桌”、“会议桌”、“工作台”等
 
-```text
+```plain
 I've booked a table for two at 7.00.
 ```

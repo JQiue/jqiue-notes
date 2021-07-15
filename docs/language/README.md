@@ -5,6 +5,10 @@ next: false
 article: false
 ---
 
+::: info
+无论如何，编程语言只是一个工具而已，能够解决问题的思维永远是最重要的
+:::
+
 + [C](./c/basic)
 + [Java](./java/basic)
 + [JavaScript](./js/basic)
@@ -141,13 +145,13 @@ JScript、JavaScript、V8 等遵守 ECMA-262 标准，它们是 ECMA-262 标准�
 
 ### 临时变量
 
-在 cmd 中使用`set`命令会显示所有的环境变量，如果要修改环境变量，`set [variable]=[value]`则是基本的操作，但是这种做法会将原有的值覆盖掉，可以通过`%variable%new_Value`的方式来实现追加
+在终端中使用`set`命令会显示所有的环境变量，如果要修改环境变量，`set [variable]=[value]`则是基本的操作，但是这种做法会将原有的值覆盖掉，可以通过`%variable%new_Value`的方式来实现追加
 
 ### 永久变量
 
 下面指令作为`bat`执行，默认是用户变量，如果想要设置系统变量就加上`\m`参数
 
-```bat
+```sh
 setx PATH "%PATH%;new_path;"
 ```
 

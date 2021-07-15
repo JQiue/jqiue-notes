@@ -3,7 +3,6 @@ title: Rest 和 Spread
 category: 编程语言
 tag: JavaScript
 author: JQiue
-article: false
 ---
 
 在 JavaScript 中，无论函数定义了多少个参数，都可以传入任意数量的参数，且不会报错，但是只有部分参数被当作值传递，为了解决这个问题，JavaScript 支持`...`语法来将剩余的参数收集到数组中

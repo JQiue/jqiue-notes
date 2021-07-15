@@ -22,8 +22,8 @@ module.exports = config({
     repoDisplay: false,
     docsDir: "docs",
     docsBranch: 'master',
-    nav: require("./config/nav"),
-    sidebar: require("./config/sideBar"),
+    nav: require("./navbar"),
+    sidebar: require("./sidebar"),
     blog: {
       name: "JQiue",
       avatar: "/avatar.png",

@@ -278,7 +278,7 @@ ClassName cn = new ClassName();
 
 ### 方法的定义
 
-```text
+```plain
 修饰符 返回类型 方法名(参数列表){
   语句序列
   return 返回值

@@ -3,7 +3,6 @@ title: 对象
 category: 编程语言
 tag: JavaScript
 author: JQiue
-article: false
 ---
 
 对象是一种复杂的类型，用于存储更复杂的实体，JavaScript 可以使用两种方式创建对象
@@ -107,7 +106,7 @@ let user = {
 }
 ```
 
-这非常牛逼，意味着可以写很复杂的表达式，但是相对于`.`来说更加麻烦，所以当属性名简单就是用`.`，需要一些复杂的内容，就用方括号
+这非常牛逼，意味着可以写很复杂的表达式，但是相对于`.`来说更加麻烦。所以当属性名简单就用`.`，需要一些复杂的内容，就用方括号
 
 ## 简写属性
 
@@ -144,7 +143,7 @@ let user = {};
 console.log(user.name === undefined); // true
 ```
 
-但 JavaScript 提供了一个特别的检查属性是否存在的操作符`in`
+JavaScript 提供了一个特别的检查属性是否存在的操作符`in`
 
 ```js
 let user = {
@@ -154,7 +153,7 @@ console.log("name" in user); // true
 console.log("age" in user); // false
 ```
 
-使用字符串形式的属性，如果不这么做，JavaScript 会将该属性视为一个变量
+应该使用字符串形式的属性，如果不这么做，JavaScript 会将该属性视为一个变量
 
 大部分情况下使用`undefined`比较就可以判断了，但是有一个例外情况，就是属性存在，且存储的值是`undefined`，所以这种对比方式有问题，但是`in`仍是对的
 

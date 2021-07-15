@@ -287,7 +287,7 @@ npm install babel-preset-es2015 --save-dev
 
 使用Babel时要在项目根目录创建一个`.babelrc`文件，用于babel运行时的控制
 
-```text
+```JSON
 {
   "presets": ["es2015"]
 }

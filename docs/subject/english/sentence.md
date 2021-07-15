@@ -24,7 +24,7 @@ article: false
 
 首先要知道英语的语序和中文不一定是一样的，比如下面的句子：
 
-```text
+```
 He learns English every day.（他学英语每一天）
 他每天学习英语
 ```
@@ -33,7 +33,7 @@ He learns English every day.（他学英语每一天）
 
 主谓结构是整个句子最基本的结构，其他的句式都是由主谓结构发展而来，主谓句式由表示陈述和被陈述关系的 2 个成分组成
 
-```text
+```
 The universe remians.
 宇宙长存
 ```
@@ -42,7 +42,7 @@ The universe remians.
 
 主系表结构是较为特殊的结构，系动词是用来连接主语和表语的，没有实在意义，而表语是用来修饰主语的状态，比如性质、特点、位置
 
-```text
+```
 The food is delicions.
 这个食物很美味
 ```
@@ -51,7 +51,7 @@ The food is delicions.
 
 主谓宾结构是最常用的结构，通产表示一个对象对另一个对象所做的动作
 
-```text
+```
 He took his bag and left.
 他拿着他的包离开了
 ```
@@ -60,7 +60,7 @@ He took his bag and left.
 
 主谓宾宾补结构通常作用于两个物体身上
 
-```text
+```
 Her father bought her a dictionary.
 她的爸爸给她买了一本字典
 ```
@@ -69,7 +69,7 @@ Her father bought her a dictionary.
 
 主谓宾宾补通常用于补充说明宾语的情况
 
-```text
+```
 We made him our monitor.
 我们选他当我们的班长
 ```
@@ -92,7 +92,7 @@ We made him our monitor.
 
 对`He bought three books yesterday`不同的部分进行提问
 
-```text
+```
 询问主语：Who bought three books yesterday?
 询问宾语：What did he buy three books yesterday?
 询问时间：When did he buy three books?
@@ -102,7 +102,7 @@ We made him our monitor.
 
 补充：How long，How far，How often
 
-```text
+```
 They have been in China for three years. 对时间提问
 How long have they been in China?
 
@@ -122,14 +122,14 @@ How 和一些形容词结合，可以形成更丰富的提问
 
 whose 用来询问所有关系，回答时总是一个名字加`'s`形式，或者是名词所有格代词
 
-```text
+```
 Whose is that car?
 That is mine.
 ```
 
 which 用来询问物体或物质，which 总是一种限定的，特指的选择：
 
-```text
+```
 Which book?
 ```
 
@@ -153,7 +153,7 @@ Which book?
 
 祈使句的主语通常省略，其谓语动词用原型，用来表示请求、建议、命令、叮嘱等
 
-```text
+```
 Follow me.
 Shut the door, please.
 Look out!
@@ -161,7 +161,7 @@ Look out!
 
 有些祈使句可以跟 and 和另一个动词
 
-```text
+```
 Come and meet our employees.
 Wait and see.
 ```
@@ -170,6 +170,6 @@ Wait and see.
 
 在说明或询问人、物等的存在时即可使用 there + be 结构，there + be 结构可将重要的新信息放在句末，以示强调，此结构中的主语实际上是 be 后面的名词
 
-```text
+```
 There is an ice cream man.
 ```

@@ -13,7 +13,7 @@ article: false
 原因：Tomcat 默认编码为 UTF-8，和当前操作系统（windows）编码不一致  
 解决：打开 tomcat 安装目录下的 conf/logging-properties 文件，修改如下参数项
 
-```text
+```
 java.util.logging.ConsoleHandler.encoding = gbk
 ```
 
@@ -49,7 +49,7 @@ set-ExecutionPolicy RemoteSigned
 
 此时计算机会提示如下信息：选择 Y 或者 A，回车即可
 
-```text
+```
 执行策略更改
 执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170
 中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?
@@ -80,13 +80,13 @@ git config --local -e
 
 将配置中的：
 
-```text
+```
 url = git@github.com:username/repo.git
 ```
 
 改为：
 
-```text
+```
 url = https://github.com/username/repo.git
 ```
 

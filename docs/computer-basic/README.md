@@ -8,3 +8,6 @@ article: false
 
 - [计算机组成](./organization/1)
 - [编译原理](./compile/1)
+- 操作系统
+- 计算机网络
+- 数据库原理

@@ -15,14 +15,14 @@ article: false
 
 驼峰命名法：如果一个标识符由多个完整单词或者单词缩写构成，如果统一大写或者小写形式并不有利于阅读，规则很简单，就是将构成标识符的单词或单词缩写的首字符大写，也叫小驼峰
 
-```text
+```plain
 getName
 getNameById
 ```
 
 帕斯卡命名法：帕斯卡命名法也叫大驼峰命名法，和小驼峰区别就是所有的首字符全部大写
 
-```text
+```plain
 GetName
 GetNameById
 ```
@@ -33,7 +33,7 @@ GetNameById
 + 类型部分：数组 a，函数 fn，无效 v，句柄 h，布尔 b，浮点型 f，字符串 sz，短整型 n，双精度浮点 d，整型 i
 + 描述部分：，最大 Max，最小 Min，初始化 Init，临时变量 T（或Temp），源对象 Src，目的对象 Dest
 
-```text
+```plain
 g_index   // 全局变量
 bFlag     // 布尔型变量
 aList     // 数组

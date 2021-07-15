@@ -1,5 +1,5 @@
 ---
-title: DOM 操作
+title: DOM
 category: Web
 tab: 前端
 author: JQiue

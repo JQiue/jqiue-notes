@@ -26,6 +26,6 @@ author: JQiue
 + time：时间
 + datetime：日期时间
 
-```tip
+::: tip
 在 MySQL 中，字符和日期都需要用单引号表示
-```
+:::

@@ -3,7 +3,6 @@ title: Map 和 Set
 category: 编程语言
 tag: JavaScript
 author: JQiue
-article: false
 ---
 
 ## Map

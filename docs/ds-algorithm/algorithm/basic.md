@@ -1,5 +1,6 @@
 ---
 title: 算法的定义与特性
+tag: 算法
 author: JQiue
 article: false
 ---

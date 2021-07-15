@@ -3,7 +3,6 @@ title: 包管理器：NPM
 category: Web
 tag: NPM
 author: JQiue
-article: false
 ---
 
 在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“，简而言之，一个包中有一个或多个模块，在NodeJS中为了方便开发人员发布、安装和管理包, NodeJS 推出了一个包管理工具：**NPM（Node Package Manager）**

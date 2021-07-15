@@ -65,7 +65,7 @@ article: false
 
 一个 ADT 包含两个部分：数据的声明和运算的声明
 
-```text
+```plain
 ADT 抽象数据类型名
 Data
     数据元素之间逻辑关系的定义

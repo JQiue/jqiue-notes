@@ -36,14 +36,14 @@ be 动词的过去式中，第一人称和第三人称单数用`was`，其他情
 
 一般现在时时态主要表示经常性习惯性的动作以及现在的状态
 
-```text
+```
 He often gets up late. 经常性
 I am a student. 现在的状态
 ```
 
 除此之外还可以表示“永恒”：客观事实、科学真理、名言警句
 
-```text
+```
 The earth is round.
 The earth moves around the sun.
 Knowledge is power.
@@ -60,7 +60,7 @@ Knowledge is power.
 
 表示现在的将来，即将做某事
 
-```text
+```
 I will make a new plan tomorrow.
 I will buy a car in 2020.
 We are going to study abroad next year.
@@ -75,7 +75,7 @@ will 通常表示临时决定，be going to 表示计划好的
 
 表示过去的将来
 
-```text
+```
 Tony finished his work. and then he would leave for London.
 ```
 

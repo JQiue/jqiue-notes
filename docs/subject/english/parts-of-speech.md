@@ -68,19 +68,19 @@ article: false
 
 可数名词前可以加`a/an`或量词进行修饰，看情况变复数
 
-```text
+```
 an apple, a box of apples, a tomato, a bag of tomatoes
 ```
 
 不可数名词前不能加`a/an`，没有复数形式，但可以用量词修饰
 
-```text
+```
 a cup of coffee
 ```
 
 句子示例：
 
-```text
+```
 He bought me a box of chocolate.
 He bought me a bike.
 ```
@@ -148,7 +148,7 @@ This is an A/E/F/H/I/L/M/N/O/S/X.
 
 实义动词在句中具有实在意义，而不是像 be 动词一样无意义，比如：come，read，go，watch，play，fly
 
-```text
+```
 He comes from Huibei.
 She is reading story books.
 ```
@@ -161,7 +161,7 @@ She is reading story books.
 在过去式中动词没有单复数变化
 :::
 
-```text
+```
 I don't go to shcool by bus.
 She doesn't watch TV every day.
 They didn't swim last night.
@@ -181,7 +181,7 @@ can/could/may/might
 
 + can/could 表示能力，用 be able to 代替 can/could 现在过去的能力，客观可能性表示请求和允许
 
-```text
+```
 He can/could/is able to swim.
 He can/could come tomorrow.
 Can/Could I stay here?
@@ -189,14 +189,14 @@ Can/Could I stay here?
 
 + may/might 表示可能性，may 的可能性较大，请求允许用 might 更委婉
 
-```text
+```
 He may/might come here by bus.
 May/Might I join you?
 ```
 
 + must/have to 表示必须，必要，must 表示主观上多一些，而 have to 则表示客观多一些，have to 有时态和数量变化，must 和 have to 二者之间的否定意义有所不同
 
-```text
+```
 You must get up early.
 It's going to rain, I have to go home now.
 You mustn't go. 你不能去
@@ -205,35 +205,35 @@ You don't have to go. 你不必去
 
 + should/ought to 表示劝告，建议，命令，should 强调主观看法，而 ought to 强调客观要求，在疑问句中通常用 should 代替 ought to
 
-```text
+```
 You should/ought to do the job right now.
 Should they stay here now?
 ```
 
 + need/don't have to
 
-```text
+```
 He need come here early.
 He needn't come here early.
 ```
 
 回答 must/have to 的提问句时，否定使用 needn't/don't have to 等回答方式
 
-```text
+```
 -Must I come here early tomorow?
 -No, you needn't/don't have to.
 ```
 
 + had better 表示“最好做某事”，had 虽然是过去式，但不表示过去，better 后接动词原形
 
-```text
+```
 He had better eat more.
 You'd better finish it right now.
 ```
 
 + would rather 表示“宁愿，宁可，最好，还是...为好”，语感上比“had better”要轻
 
-```text
+```
 You would rather deal with it now.
 ```
 
@@ -242,7 +242,7 @@ You would rather deal with it now.
 had better not + 动词原形
 would rather not + 动词原形
 
-```text
+```
 He had better not eat more.
 You would rather not deal with it now.
 ```
@@ -261,7 +261,7 @@ You would rather not deal with it now.
 2. 根据动作进行的状态：一般，进行和完成
 3. 使用动词时一般将前两者结合，比如：一般现在时，过去进行时
 
-```text
+```
 He goes to shchool every day.
 He went to hospital last night.
 ```
@@ -278,7 +278,7 @@ He went to hospital last night.
 
 > 有点像名词的复数变化，要做一些词性上的区分
 
-```text
+```
 They often get up at 7:00. 他们经常在 7:00 起床（习惯性动作）
 He often gets up at 7:00. 他经常在 7:00 起床（习惯性动作）
 ```
@@ -287,7 +287,7 @@ He often gets up at 7:00. 他经常在 7:00 起床（习惯性动作）
 
 现在进行时：表示现在进行或发生的动作，剧中通常有 now 等时间副词，基本构成形式为：`be + doing`，`doing`表示动词的现在分词形式
 
-```text
+```
 They are watching TV. 他们正在看电视
 He is watching TV. 他正在看电视
 I am watching TV. 我正在看电视
@@ -302,7 +302,7 @@ I am watching TV. 我正在看电视
 
 否定句和疑问句，将 be 动词提前即可，不需要助动词
 
-```text
+```
 They are watching TV. => Are they watching TV?
 He is watching TV. => Is he watching TV?
 ```
@@ -317,14 +317,14 @@ He is watching TV. => Is he watching TV?
 4. 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
 5. 不规则变化，需要记忆
 
-```text
+```
 He worked very hard last night. 他昨天晚上工作的非常努力
 They came here by car. 他们开车来到了这里
 ```
 
 过去进行时：在过去的某一时刻或某一段时间内持续进行或发生的动作，基本结构：`was/were + doing`
 
-```text
+```
 They were waiting for you. 他们在等你
 He was talking with his friends just now. 就在刚才他和他的朋友正在谈话
 ```
@@ -335,28 +335,28 @@ He was talking with his friends just now. 就在刚才他和他的朋友正在�
 
 + will 和 shall 这两个助动词可以构成将来时态，基本结构：`will/shall + 动词原形`
 
-```text
+```
 They will go to Shanghai by ship tomorrow.
 We shall leave for Shanghai next month.
 ```
 
 + “be going to + 动词原形”用来表示近期或事先考虑过的将要发生的动作，意为：“打算、将要”
   
-```text
+```
 They are going to play football this afternoon.
 She is going to leave French next year.
 ```
 
 + “be + doing”表示位置转移的动词，比如：go，come，leave，start，arrive，可用现在进行时表将来
 
-```text
+```
 They are leaving for Japan.
 She is arriving tomorrow.
 ```
 
 现在完成时：动作已经发生，已经完成，对现在造成影响或后果，有可能还会持续，基本结构：`have/has + 过去分词`，通常和一些时间状语连用：already（已经），yet（还）
 
-```text
+```
 They have already arrived in Shanghai. 他们已经到了上海
 She has played soccer for 3 hours. 他已经踢了三个小时的足球（已经发生，还在持续）
 She hasn't finished the homework yet. 她还没有完成家庭作业
@@ -364,7 +364,7 @@ She hasn't finished the homework yet. 她还没有完成家庭作业
 
 过去完成时：动作发生在过去，已经完成，且对过去造成了一定的影响，基本结构：`had + 过去分词`
 
-```text
+```
 They had already arrived in Shanghai. 他们已经到了上海
 She had played soccer for 3 hours. 她已经踢了三个小时的足球
 She hadn't finished the homework yet.  她还没有完成家庭作业
@@ -394,7 +394,7 @@ be 动词的作用就是对主语补充说明
 + was/were：单数/复数
 + being/been：现在分词/过去分词
 
-```text
+```
 The man is back.
 They ar back.
 He was back.
@@ -404,7 +404,7 @@ They have been back.
 
 be 动词后面接名词、形容词、地点副词或短语作补足语
 
-```text
+```
 The man is a teacher.
 Mary's new dresses are colorful.
 My mother was in the kitchen.
@@ -429,7 +429,7 @@ My mother was in the kitchen.
 
 + 主格代词：I，he，she，it，you，we，they
 
-```text
+```
 I am a teacher.
 He is a teacher.
 you are teacher
@@ -437,7 +437,7 @@ you are teacher
 
 + 宾格代词：me，him，her，it，you，us，them
 
-```text
+```
 I like it.
 I like them.
 He like me.
@@ -454,7 +454,7 @@ They know him.
 1. 单：my，your，his/her/its/，one's
 2. 复：our，yours，their
 
-```text
+```
 This is my book.
 We love our motherland.
 Those are your socks.
@@ -465,7 +465,7 @@ Those are your socks.
 1. mine，yours，his/hers/its，one's
 2. ours，yours，theirs
 
-```text
+```
 The book is ours.
 The apple is hers.
 This computer is theirs.
@@ -488,7 +488,7 @@ They|them|their|theirs
 + 单：myself，yourself，herself，himself，itself
 + 复：yourselves，ourselves，themselves
 
-```text
+```
 Please help yourself to some fish. 随便吃一些鱼吧（作宾语）
 We enjoyed ourselves last night.
 The thing itself is not important. 这件事它本身不重要（作同位语）
@@ -498,7 +498,7 @@ The thing itself is not important. 这件事它本身不重要（作同位语）
 
 标记人或事物的代词，通常用来替代上文中出现过的名词：this（these），that（those）
 
-```text
+```
 This is his book.
 Those apples were his.
 ```
@@ -507,7 +507,7 @@ Those apples were his.
 
 替代不确定的人或事物：one，the other，some，any，something，nothing ...，不仅如此还包含 some-，any-，no- 等合成代词
 
-```text
+```
 No one knows where he is. 没有人知道他在哪
 I know nothing about this person. 我对这个人一无所知
 I have something to tell you. 我有一些事告诉你
@@ -525,13 +525,13 @@ I have something to tell you. 我有一些事告诉你
 
 是一种修饰名词的词，说明人、物等是什么样或看上去是怎么样的，形容词作定语时一般放在名词前：
 
-```text
+```
 the beautiful girl
 ```
 
 the + 形容词 = 名词复数，表示一类人或事物，后面动词用复数
 
-```text
+```
 The old need more care than the young. 老年人比年轻人需要更多的关心
 ```
 
@@ -546,7 +546,7 @@ The old need more care than the young. 老年人比年轻人需要更多的关�
 
 + 副词可以修饰动词、形容词、其他副词以及其他结构
 
-```text
+```
 He runs fast. 修饰动词
 She is very beautiful. 修饰形容词
 They work very hard.
@@ -557,7 +557,7 @@ They work very hard.
   2. 形容词之前，其他副词之 前或之后
   3. 多个助动词时，副词一般放在第一个助动词后
 
-```text
+```
 He speaks very fast.
 They have already left.
 They have already been repaired.
@@ -565,7 +565,7 @@ They have already been repaired.
 
 + 常用的频度副词（akways，usually，often，sometimes，never）的位置通常放在一般动词前面，be 动词后面，助动词和实意动词之间
 
-```text
+```
 They always come early.
 Sam often writes homework at 7:00.
 ```
@@ -598,7 +598,7 @@ Sam often writes homework at 7:00.
 
 构成：基数词作分子，序数词作分母。当分子大于 1 时，分子用单数形式，分母用复数形式
 
-```text
+```
 1/3 one-third; 3/37 three and three-sevenths;
 ```
 
@@ -633,25 +633,25 @@ Sam often writes homework at 7:00.
 
 + some，any 都表示“一些”，some 主要用在肯定句，希望能得到肯定回答时，也可以用在疑问句中，any 主要用在否定和疑问句中
 
-```text
+```
 I'd been expecting some letters the whole morning, but there weren't any for me.
 ```
 
 + most 作形容词表示大部分的，后接复数名词
 
-```text
+```
 Most people here are from China.
 ```
 
 + every 表示“每一个，所有的”，后接单数名词
 
-```text
+```
 Every one likes the film.
 ```
 
 + all 表示“所有”，后接可数名词复数、不可数名词
 
-```text
+```
 All the cars are parked in the parking lot.
 All the coffee is served on time.
 ```
@@ -662,7 +662,7 @@ All the coffee is served on time.
 + either 表示“两者中的任意一个”
 + neigher 表示“两者都不”
 
-```text
+```
 Both his eyes were severely burned.
 There are trees on either side of the street.
 Neither answer is correct.
@@ -674,7 +674,7 @@ Neither answer is correct.
 + much 修饰不可数名词，表许多
 + a lot of，lots of，plenty of 可修饰可数和不可数名词
 
-```text
+```
 many books.
 much water.
 a lot of/lots of/plenty of water.
@@ -685,7 +685,7 @@ a lot of/lots of/plenty of water.
 + a few 表肯定含义，“几个”，与可数名词连用
 + few 表否定含义，“没几个”，与可数名词连用
 
-```text
+```
 A few books are put into the box. 箱子里放了几本书
 Few books are put into the box. 箱子里没有几本书
 ```
@@ -695,14 +695,14 @@ Few books are put into the box. 箱子里没有几本书
 + a little 表肯定含义，“一点儿”，与不可数名词连用
 + little 表否定含义，“没多少”，与不可数名词连用
 
-```text
+```
 There is a little water in the bottle. 瓶子里还有一点水
 There is little water in the bottle. 瓶子里没有多少水了
 ```
 
 补充：none 和 no one 的意思相同，主要作代词，翻译“一个也不，一点也不”，none 可接 of 短语，动词可用单数，也可用复数，no one 不能接短语，动词只能用单数
 
-```text
+```
 No one knows the answer. 没有人知道答案
 None of us have arrived. 我们都没有到
 ```
@@ -711,7 +711,7 @@ None of us have arrived. 我们都没有到
 
 There/Here + be 根据上下文，有多种翻译方法，可以翻译成“有”，“是”，be 动词根据后面的名词进行单复数变化
 
-```text
+```
 There is a book on the bookshelf.
 There are some book on the bookshelf.
 

@@ -4,7 +4,6 @@ category: 编程语言
 tag: JavaScript
 author: JQiue
 prev: false
-article: false
 ---
 
 作为万维网前端最重要的编程语言，JavaScript 的出现使网页和用户之间实现了实时和动态的交互关系，所有的浏览器都嵌入了 JavaScript 解释引擎

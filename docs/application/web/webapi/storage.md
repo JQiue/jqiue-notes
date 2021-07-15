@@ -3,7 +3,6 @@ title: 客户端存储
 category: Web
 tab: 前端
 author: JQiue
-article: false
 ---
 
 存储方式|存储类型|访问限制|存储时长|适用场景
@@ -24,7 +23,7 @@ Cookie 是服务器发送到用户浏览器并保存在本地的一种数据，�
 document.cookie
 ```
 
-`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种键值对方式，当需要添加一条 cookie 时，就直接赋值即可
+`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种格式，当需要添加一条 cookie 时，就直接赋值即可
 
 ```javascript
 document.cookie = "name=foo"

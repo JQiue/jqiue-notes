@@ -1,5 +1,5 @@
 ---
-title: BOM 操作
+title: BOM
 category: Web
 tab: 前端
 author: JQiue
