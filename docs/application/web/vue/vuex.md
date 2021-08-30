@@ -1,7 +1,7 @@
 ---
 title: 状态管理
 category: 框架
-tag: Vue
+tags: [Vue, Alpha]
 author: JQiue
 article: false
 ---
@@ -106,7 +106,7 @@ export default {
 
 Vuex 提供了额外的配置项`mutations`来解决这个问题，这个选项用于保存修改共享数据的方法
 
-```javascript
+```js
 const store = new Vuex.Store({
   state: {
     count: 0

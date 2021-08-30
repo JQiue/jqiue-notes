@@ -4,15 +4,16 @@ module.exports = config({
   title: "JQiue's notes",
   description: "每一个想要学习的念头，都有可能是未来的你在向你求救",
   locales: {
-    "/": {
-      lang: "zh-CN"
-    }
+    "/": { lang: "zh-CN" }
   },
   head: [
     ['link', { rel: 'stylesheet', href: '/animate.min.css' }],
     ['script', { src: '/vue.min.js' }],
     ['script', { src: '/vuex.min.js' }],
     ['script', { src: '/mock-min.js' }],
+  ],
+  plugins: [
+    '@vuepress/nprogress'
   ],
   themeConfig: {
     logo: "/logo.png",
@@ -24,10 +25,15 @@ module.exports = config({
     docsBranch: 'master',
     nav: require("./navbar"),
     sidebar: require("./sidebar"),
+    encrypt: {
+      config: {
+        "/subject/": "123456"
+      }
+    },
     blog: {
       name: "JQiue",
       avatar: "/avatar.png",
-      intro: "/about/me.html",
+      intro: "/about/index.html",
       sidebarDisplay: "mobile",
       links: {
         QQ: "http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes",
@@ -69,7 +75,10 @@ module.exports = config({
       appleIcon: "/assets/icon/appleIcon152.png",
       msTileImage: "/assets/icon/msIcon144.png",
       msTileColor: "#ffffff",
-      cachePic: true
-    }
+      cachePic: true,
+      maxSize: 10240,
+      maxPicSize: 5000,
+    },
+    feed: false,
   }
 });

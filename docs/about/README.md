@@ -8,9 +8,9 @@ sticky: true
 
 ## 一个生物的自我介绍
 
-+ 我的互联网 ID：JQiue
-+ 我的 QQ：861947542
-+ 我的邮箱：jqiue@foxmail.com
++ 互联网 ID：JQiue
++ QQ：861947542
++ 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
 + 目前使用的站点域名：wjqis.me
 
@@ -65,7 +65,7 @@ sticky: true
 
 ## 内容
 
-本站的内容记录的是我自大学以来学习的各类知识，想写的很多，且体系庞大，总结和写文章是一种很花精力的事情，无法避免有错误的地方，目前大饼画完了 10% 不到，目标是 2021 年 9 月份完成整张饼的 20%，暂时缺乏大量图片，无法避免阅读疲劳，这些将在完成度达到 50 % 时补充
+本站的内容记录的是我自大学以来学习的各类知识，想写的很多，且体系庞大，总结和写文章是一种很花精力的事情，无法避免有错误的地方。目前大饼画完了 10% 不到，目标是 2021 年 9 月份完成整张饼的 20%，暂时缺乏大量图片，无法避免阅读疲劳，这些将在完成度达到 50 % 时补充
 
 - [x] 10%（2021.3.21）
 - [ ] 20%
@@ -73,6 +73,12 @@ sticky: true
 ::: tip
 当本站已经更新且没有清除本站的缓存时，再次访问将从右下角看到更新内容的按钮
 :::
+
+所有的文章都遵循三个阶段：Alpha，Beta，Gamma，它们都会以标签的形式显示标记
+
++ 处于 alpha 阶段的文章，内容仅作参考，问题较多，随时会进行修改
++ 处于 beta 阶段的文章，内容初步完善，还存在一些问题，需要一些时间的审稿检查，，可能退回 alpha 阶段
++ 处于 gamma 阶段的文章，内容逻辑顺畅，可以阅读，不会有什么太多指导性的错误
 
 ## 适合什么样的人阅读
 
@@ -85,7 +91,7 @@ sticky: true
 > 星星表示需要完成或学习的优先级、重要程度
 
 1. [计算机基础](/computer-basic/)
-    + 计算机组成（正在学习）:star::star:
+    + 计算机组成原理（正在学习）:star::star:
     + 操作系统（正在学习）:star::star:
     + 编译原理（正在学习）:star:
     + 计算机网络（正在学习）:star::star::star:
@@ -104,9 +110,9 @@ sticky: true
     + 领域算法（正在学习）:star:
 4. [数据库](/database/)
     + SQL 语言（正在完成）:star::star:
-    + SQL-MySQL（正在完成）:star::star:
-    + NoSQL-MongoDB（正在学习）:star::star:
-    + NoSQL-Redis（正在学习）:star:
+    + MySQL（正在完成）:star::star:
+    + MongoDB（正在学习）:star::star:
+    + Redis（正在学习）:star:
 5. 应用开发
     + [WEB](/application/web/):star::star::star:
     + [移动应用](/application/mobile/):star:
@@ -121,11 +127,11 @@ sticky: true
     + Nginx（正在学习）:star::star:
 8. 其他杂项
     + 编辑器/IDE（正在完成）:star:
-    + Markdown（正在完成）:star:
+    + [Markdown](/sundry/markdown/)（正在完成）:star:
     + CI & CD（正在学习）:star:
-    + Git（正在学习）:star::star:
+    + [Git](/sundry/git/)（正在学习）:star::star:
     + Linux（正在学习）:star::star:
-    + 设计模式（正在学习）:star::star::star:
+    + [设计模式](/sundry/share/design-pattern/)（正在学习）:star::star::star:
     + Docker（正在学习）:star:
     + 代码质量（正在学习）:star:
     + 正则表达式（正在学习）:star::star:
@@ -137,12 +143,6 @@ sticky: true
     + 方法论（正在学习）:star:
 
 > 全站预估为 118800 字，可花 396 分钟浏览完成，本人日产 1000 字左右
-
-## 还有什么
-
-::: danger 再次感谢
-多谢看到这里，有很多文章写了部分，但是自我感觉不成体系，所有没有放出来，请多给我一些时间，当然不仅仅这些内容
-:::
 
 ## 错误更正
 

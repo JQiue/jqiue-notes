@@ -1,16 +1,12 @@
 ---
 title: 编译预处理
 category: 编程语言
-tag: C
+tags: [C, Alpha]
 author: JQiue
 article: false
 ---
 
-编译预处理是编译程序之前的操作，以`#`开头，包括：**文件包含，宏定义，条件编译**
-
-在开始编译程序之前，预处理器会查找源程序，然后在程序编译之前处理它们
-
-它们不是 C 的组成成分，但 C 离不开他们
+在 C 中，所有以`#`开头的行都由预处理器处理，它是编译器调用的程序，简单来说就是预处理器接收一个 C 代码并生成另一个 C，然后再交给编译器处理，包括：**文件包含，宏定义，条件编译**
 
 ## 文件包含
 
@@ -28,9 +24,66 @@ article: false
 
 ## 宏定义
 
-+ 格式：#define 标识符 值
+当对常量使用`#define`时，预处理器会搜索 C 中所有的匹配标记并替换为给定的表达式
 
-编译之前，预处理程序会把程序中的名字替换成值，是一种完全的文本替换
+```c
+#define foo 100
+
+int main(void) {
+  printf("%d", foo); // 100
+  return 0;
+}
+```
+
+也可以使用类似参数的函数，他不会检查类型
+
+```c
+#define increment(x) ++x
+
+int main(void) {
+  int x = 10;
+  printf("%d", increment(x)); // 11
+  return 0;
+}
+```
+
+在宏进行扩展之前，它是不会评估参数的
+
+```c
+#define foo(a, b) a*b
+
+int main(void)
+{
+  // 实际上，它会被替换为 1 + 2 * 3 + 4，并不是 3 * 7
+  printf("%d", foo(1 + 2, 3 + 4)); // 11
+  return 0;
+}
+```
+
+但是可以这么做
+
+```c
+#define foo(a, b) (a)*(b)
+
+int main(void)
+{
+  // 现在它才是 (1 + 2) * (3 + 4)
+  printf("%d", foo(1 + 2, 3 + 4)); 21
+  return 0;
+}
+```
+
+也可以使用`##`进行连接
+
+```c
+#define foo(a, b) a##b
+
+int main(void)
+{
+  printf("%d", foo(1,2)); 12
+  return 0;
+}
+```
 
 如果一个宏当中有其他宏的名字，也是会被替换的
 

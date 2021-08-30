@@ -1,7 +1,7 @@
 ---
 title: BOM
 category: Web
-tab: 前端
+tags: [WebAPI, BOM, Alpha]
 author: JQiue
 article: false
 ---
@@ -11,14 +11,14 @@ article: false
 + 间隔调用：`window.setInterval()`可以指定一定时长的间隔事件来循环调用一个函数，只到使用了`window.clearInterval()`方法取消
 + 延时调用：`window.setTimeout()`在一定的延迟后调用函数，仅仅只调用一次，可以在时间段内使用`window.clearTimeout()`方法取消
 
-```javascript
+```js
 setInterval(function () {}, 5000);
 setTimeout(function () {}, 5000);
 ```
 
 时间单位都是毫秒，定时器函数调用后会返回一个值，将这个值传入对应的取消函数中就可以取消定时器，虽然没有一个内建的方法能够清除所有的定时器函数，但是可以自己实现一个强制清除的逻辑
 
-```javascript
+```js
 for (var i = 1; i < 1000; i++){
   clearInterval(i);
   clearTimeout(i);

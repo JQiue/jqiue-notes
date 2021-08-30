@@ -1,7 +1,7 @@
 ---
 title: 模块化
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
 article: false
 ---
@@ -12,9 +12,9 @@ article: false
 
 早期的网站将所有的代码全部写到一个文件，容易产生污染
 
-JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些 js 代码很多在一个文件中就可以完成了，所以，我们只需要在 html 文件中添加一个 script 标签引入这些代码
+JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些代码很多在一个文件中就可以完成了，所以，我们只需要在 HTML 文件中添加一个`<script>`引入这些代码
 
-随着前端复杂度提高，为了能够提高项目代码的可读性、可扩展性等，js 文件逐渐多了起来，不再是一个 js 文件就可以解决的了，而是把每一个 js 文件当做一个模块
+随着前端复杂度提高，为了能够提高项目代码的可读性、可扩展性等，`.js`文件逐渐多了起来，不再是一个文件就可以解决的了，而是把每一个文件当做一个模块
 
 于是出现了以下引入方式：
 
@@ -26,19 +26,15 @@ JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，
 <script src="main.js"></script>
 ```
 
-即简单的将所有的 js 文件放在一起。但是这些文件的引入顺序不能出错，比如 jQuery 需要先引入，才能引入 jQuery 有关的插件
+即简单的将所有的文件放在一起，但是这些文件的引入顺序不能出错，比如 jQuery 需要先引入，才能引入 jQuery 有关的插件。优点是相比于使用一个文件，这种多个文件实现最简单的模块化的思想是进步的
 
-优点是相比于使用一个 js 文件，这种多个 js 文件实现最简单的模块化的思想是进步的
+缺点是因为每个模块都是暴露在全局的，简单的使用，会导致全局变量命名冲突，当然，我们也可以使用命名空间的方式来解决。对于大型项目，各种`.js`文件很多，开发人员必须手动解决模块和代码库的依赖关系，后期维护成本较高。还会导致依赖关系不明显，难以维护，可能一个 js 文件需要使用 jQuery，如果忘记引入了 jQuery 就会报错
 
-缺点是因为每个模块都是暴露在全局的，简单的使用，会导致全局变量命名冲突，当然，我们也可以使用命名空间的方式来解决。对于大型项目，各种 js 文件很多，开发人员必须手动解决模块和代码库的依赖关系，后期维护成本较高。还会导致依赖关系不明显，难以维护，可能一个 js 文件需要使用 jQuery，如果忘记引入了 jQuery 就会报错
-
-模块化能降低代码耦合度，功能模块直接不相互影响。
-
-根据定义，每个模块都是独立的，良好设计的模块会尽量与外部的代码撇清关系，以便于独立对其进行改进和维护。维护一个独立的模块比起一团凌乱的代码来说要轻松很多。
+模块化能降低代码耦合度，功能模块直接不相互影响，根据定义，每个模块都是独立的，良好设计的模块会尽量与外部的代码撇清关系，以便于独立对其进行改进和维护。维护一个独立的模块比起一团凌乱的代码来说要轻松很多
 
 ## 模块化的解决方案
 
-1. 全局Functionm模式：把功能封装成不同的全局函数
+全局 Function 模式：把功能封装成不同的全局函数
 
 ```js
 function foo() {
@@ -49,59 +45,55 @@ function bar() {
 }
 ```
 
-2. 简单封装：(Namespace)模式：减少了全局变量，但本质是对象，外部可以直接修改，不安全
++ 简单封装：(Namespace)模式：减少了全局变量，但本质是对象，外部可以直接修改，不安全
 
 ```js
-const module = {
-    foo: function(){},
-    bar: function(){}
+const moduleName = {
+  foo: function() {},
+  bar: function() {},
 };
 module.foo();
 module.bar();
 ```
 
-1. 匿名闭包：IIFE模式  
-将数据进行了私有化，外部只能通过暴露的方法操作，提高了安全性  
-缺点是不能和其他模块产生依赖关系
++ 匿名闭包：IIFE 模式：将数据进行了私有化，外部只能通过暴露的方法操作，提高了安全性，缺点是不能和其他模块产生依赖关系
 
 ```js
-const module = (function() {
+const moduleName = (function () {
   let value = '';
   // 封装私有化
-  const setValue = function(value){
-    value = this.value;
+  const setValue = function (value) {
+    this.value = value;
   };
   // 封装私有化
-  const getValue = function(){
-    return value
+  const getValue = function () {
+    return this.value;
   };
   // 向外暴露
   return {
     setValue: setValue,
     getValue: getValue
   }
-})()
+})();
 ```
 
-4. IIFE 模式增强
-
-实现了依赖关系，但是引入js文件，模块等必须要有一定的先后顺序
++ IIFE 模式增强：实现了依赖关系，但是引入`.js`文件，模块等必须要有一定的先后顺序
 
 ```js
-(function(window, $) {
-  const body = $('body');
-  function foo(){
-    return body
+(function(window, module1) {
+  const data = '';
+  function foo() {
+    module1.xxx();
   }
-  function bar(){
+  function bar() {
     // ...
   }
-  // 给window添加属性来实现暴露
-  window.body = {foo, bar};
-})(window, jquery)
+  // 给全局对象添加属性来实现暴露
+  window.module2 = {foo, bar};
+})(window, module1);
 ```
 
-## 模块化规范
+## 模块化的库
 
 ### CommonJS
 
@@ -174,7 +166,7 @@ define(['依赖的模块1','依赖的模块2'],function(m1,m2) {
 引入模块：
 
 ```js
-require([m1,m2],function(m1,m2){})
+require([m1,m2],function(m1,m2) {})
 ```
 
 页面使用：
@@ -187,7 +179,7 @@ require([m1,m2],function(m1,m2){})
 **暴露模块：**  
   + 没有依赖的模块，define()传入回调函数并返回暴露的模块
   + 有依赖的模块，define()第一个参数传入一个数组导入依赖的模块，传入回调函数使用形参接受模块，并返回暴露的模块
-**引入模块：**require([m1,m2,...], function(m1,m2,...){})
+**引入模块：**require([m1,m2,...], function(m1,m2,...) {})
 
 **使用：** 因为浏览器不认识AMD语法，所以需要下载[require.js](https://requirejs.org/docs/release/2.3.6/comments/require.js)库来编译打包
 
@@ -198,7 +190,7 @@ require([m1,m2],function(m1,m2){})
 暴露模块：
 
 ```js
-define(function(require,exports,module){
+define(function(require,exports,module) {
 // 定义没有依赖的暴露模块
   exports.xxx = value;
   // 暴露模块
@@ -206,11 +198,11 @@ define(function(require,exports,module){
 });
 
 // 定义有依赖的暴露模块
-define(function(require,exports,module){
+define(function(require,exports,module) {
   // 同步引入模块
   const foobaz = require('./foobaz');
   // 异步引入模块
-  require.async('./bar', function(bar){
+  require.async('./bar', function(bar) {
     // ...
   });
   // 暴露模块
@@ -222,7 +214,7 @@ define(function(require,exports,module){
 
 ```js
 // 使用引入模块
-define(function(require){
+define(function(require) {
   const foobaz = require('./foobaz');
   const bar = require('./bar');
 });
@@ -279,7 +271,7 @@ import xxx from 'xxx.js'
 
 **使用：** 因为大部分浏览器目前不认识ES6语法，所以需要babel和browserify来帮助编译
 
-```shell script
+```sh
 npm install browserify -g
 npm install babel-cli -g
 npm install babel-preset-es2015 --save-dev
@@ -295,13 +287,15 @@ npm install babel-preset-es2015 --save-dev
 
 编译命令：
 
-```shell script
+```sh
 babel 被转换的文件/文件路径 -d 转换后的文件/文件路径
 babel src -d build
 ```
 
 虽然babel可以将ES6语法转换成ES5语法，但是ES5语法还包括CommonJS语法，所以需要browserify继续转换
 
-```shell script
+```sh
 browserify build/main.js -o dist/index.js
 ```
+
+## 语言级别的模块化规范 ES6 module

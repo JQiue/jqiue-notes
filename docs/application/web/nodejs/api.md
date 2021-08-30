@@ -1,14 +1,14 @@
 ---
 title: 核心 API
 category: 编程语言
-tag: [NodeJS, Runtime]
+tags: [NodeJS, Alpha]
 author: JQiue
 article: false
 ---
 
-NodeJS 提供了一些针对 URL 相关操作的模块
+## 处理 URL
 
-## url
+NodeJS 提供了一些针对 URL 相关操作的模块
 
 url 模块用于解析 URL 字符串
 
@@ -42,7 +42,7 @@ url.parse("https://wjqis.me");
 }
 ```
 
-+ format(obj)：将一个 URL 对象转换为 URL 字符串
+`format(obj)`将一个 URL 对象转换为 URL 字符串
 
 ```js
 const urlObj = {
@@ -62,7 +62,7 @@ const urlObj = {
 url.format(urlObj) // http://wjqis.me/
 ```
 
-+ resolve(from, to)：将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
+`resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
 
 ```js
 url.resolve("https://wjqis.me/foo/bar/qux", "/web") // https://wjqis.me/web
@@ -71,8 +71,6 @@ url.resolve("https://wjqis.me/foo/bar/qux", "./web") // https://wjqis.me/foo/bar
 url.resolve("https://wjqis.me/foo/bar/qux", "../web") // https://wjqis.me/foo/web
 url.resolve("https://wjqis.me/foo/bar/qux", "../../web") // https://wjqis.me/web
 ```
-
-## querystring
 
 querystring 针对 URL 中的 query 部分
 
@@ -102,7 +100,7 @@ qs.escape("https://wjqis.me/?name=zs&age=23") // https%3A%2F%2Fwjqis.me%2F%3Fnam
 qs.unescape("https%3A%2F%2Fwjqis.me%2F%3Fname%3Dzs%26age%3D23"); // https://wjqis.me/?name=zs&age=23
 ```
 
-## http
+## 创建 Web 服务
 
 NodeJS 原本的用途就是开发一款高性能的 Web 服务器，`http`就是用来创建服务器的模块，它有两种使用方式：
 
@@ -114,11 +112,13 @@ NodeJS 原本的用途就是开发一款高性能的 Web 服务器，`http`就�
 首先需要通过`createServer`方法创建一个服务器，然后调用`listen`方法监听端口，每当客户端请求一次，回调函数就会被调用一次
 
 ```js
-const http = require("http")
+const http = require("http");
 http.createServer((request, response) => {
   response.end("Hello，World");
-}).listen(3000)
+}).listen(3000);
 ```
+
+`request`保存着客户端的请求信息，`response`用来设置服务端给客户端的相应信息
 
 ### 客户端模式
 
@@ -128,4 +128,81 @@ http.createServer((request, response) => {
 const req = http.request("http://127.0.0.1:3000", res => {})
 req.write("")
 req.end();
+```
+
+### 路由实现
+
+根据不同的路径实现不同的功能
+
+```js
+const url = require('url');
+const http = require('http');
+
+function route(pathname, response) {
+  if (pathname === '/favicon.ico') {
+    return;
+  } else if (pathname === '/') {
+    console.log('/');
+  } else if (pathname === '/a') {
+    console.log('/a');
+  } else if (pathname === '/b') {
+    console.log('/b');
+  } else {
+    response.end('404');
+  }
+}
+
+function onRequest(request, response) {
+  const pathname = url.parse(request.url).pathname;
+  route(pathname, response);
+  response.end();
+}
+
+http.createServer(onRequest).listen(3000);
+
+console.log('Server start at http://localhost:3000');
+```
+
+## 文件操作
+
+异步的文件读取
+
+```js
+const fs = require('fs');
+fs.readFile('data.txt', (err, data) => {
+  if(err) return err;
+  console.log(data);
+});
+console.log(data);
+```
+
+同步的文件读取
+
+```js
+const fs = require('fs');
+let data = fs.readFileSync('data.txt');
+console.log(data);
+```
+
+## 事件触发器
+
+事件处理的流程
+
+```js
+// 引入事件模块
+const events = require('events');
+
+// 创建事件触发器
+const eventEmitter = new events.EventEmitter();
+
+// 创建事件处理函数
+const eventHandler = function () {
+  console.log('事件触发了');  
+};
+
+// 绑定事件
+eventEmitter.on('handler', eventHandler);
+
+// 触发事件
+eventEmitter.emit('handler');
 ```

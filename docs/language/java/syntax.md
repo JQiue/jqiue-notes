@@ -1,7 +1,7 @@
 ---
 title: 基本语法
 category: 编程语言
-tag: Java
+tags: [Java, Alpha]
 author: JQiue
 article: false
 ---

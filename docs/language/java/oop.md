@@ -1,7 +1,7 @@
 ---
 title: 面向对象编程
 category: 编程语言
-tag: Java
+tags: [Java, Alpha]
 author: JQiue
 article: false
 ---

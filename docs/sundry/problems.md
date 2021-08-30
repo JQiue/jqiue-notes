@@ -1,5 +1,6 @@
 ---
 title: 问题汇总
+tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -7,6 +8,11 @@ article: false
 ::: tip
 这里收集的是我遇到过的所有问题
 :::
+
+## Navicat 查看表中的中文是乱码的
+
+原因：没有什么太多原因，就是编码出了问题  
+解决：应该编辑以下连接属性，设置编码为自动
 
 ## Tomcat 输出信息时出现中文乱码
 
@@ -32,7 +38,7 @@ java.util.logging.ConsoleHandler.encoding = gbk
 原因：.gitignore 只能忽略那些原来没有被追踪 (track) 的文件，如果某些文件已经被纳入了版本管理中，则修改 .gitignore 是无效的  
 解决：本地 git 是有缓存的，清除缓存即可将文件变为未追踪状态
 
-```bash
+```sh
 git rm -r --cached .
 ```
 
@@ -43,7 +49,7 @@ git rm -r --cached .
 
 管理员权限运行 powershell，并键入：
 
-```bash
+```sh
 set-ExecutionPolicy RemoteSigned
 ```
 

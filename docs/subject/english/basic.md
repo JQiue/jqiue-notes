@@ -1,7 +1,7 @@
 ---
 title: 简介
 category: 学科
-tag: 英语
+tags: 英语
 author: JQiue
 article: false
 ---

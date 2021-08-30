@@ -1,8 +1,9 @@
 ---
 title: 介绍 && 运行环境
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 prev: false
 ---
 
@@ -12,7 +13,30 @@ JavaScript 在刚诞生时，它的名字叫做“LiveScript”，在当时 Java
 
 ECMAScript 通常被称为 JavaScript，但是后者为更多开发者所认知，但真正的标准是 ECMAScript，而 JavaScript 只是它其中的一个实现，大部分浏览器厂商都有自己的 ECMAScript 标准实现，比如谷歌的 V8，苹果的 JavaScriptCore，Mozilla 的 JavaScript，学习 JavaScript，实际上学习的是 ECMAScript
 
-ECMAScript 从发布标准至今已经迭代到了 ES6，很多新特性都是在这个版本中添加的，但事到如今还没有出现完全支持 ES6 的运行环境，导致开发者为了体验新特性需将 ES6 转换为 ES5
+Javascript 第一版设计的非常大杂烩：
+
+1. 基本语法：借鉴 C 和 Java
+2. 数据结构：借鉴 Java，将值分为原始值和对象两大类
+3. 函数：借鉴了 Scheme 和 Awk，将函数作为一等公民，且引入闭包
+4. 原型继承模型：借鉴 Self
+5. 正则表达式：借鉴 Perl
+6. 字符串和数组处理：借鉴 Python
+
+为了保持简单，它缺少一些关键的功能，比如块级作用域、模块、子类型等，在后面的版本中补充
+
+ECMAScript 从发布标准至今已经迭代到了 ES11，但是很多新特性都是在 ES6 这个版本中添加的，比如：
+
++ 类
++ 模块化
++ 箭头函数
++ 函数参数默认值
++ 模板字符串
++ 解构赋值
++ 延展操作符
++ Promise
++ Let 和 Const
+
+本系列并不会区分 ES 版本带来的新东西，只会尽量的讲到一些常用的东西，一切的不兼容语法都交给 babel
 
 ## 浏览器中的 JavaScript
 

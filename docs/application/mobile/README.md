@@ -1,6 +1,7 @@
 ---
 title: 移动
 author: JQiue
+tags: [Alpha]
 article: false
 ---
 

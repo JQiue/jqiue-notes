@@ -1,7 +1,7 @@
 ---
 title: 类
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
 article: false
 ---

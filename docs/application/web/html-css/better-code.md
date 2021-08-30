@@ -1,7 +1,7 @@
 ---
 title: 更好的编写习惯
 category: Web
-tag: HTML
+tags: [HTML, Alpha]
 author: JQiue
 article: false
 ---
@@ -146,7 +146,7 @@ div:nth-child(1){
 }
 ```
 
-```javascript
+```js
 window.onload = function() {
   document.getElementsByTagName('div')[1].onclick = function() {
     this.style.color='red';

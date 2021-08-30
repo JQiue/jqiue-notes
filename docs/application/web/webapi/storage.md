@@ -1,8 +1,9 @@
 ---
 title: 客户端存储
 category: Web
-tab: 前端
+tags: [WebAPI, Alpha]
 author: JQiue
+article: false
 ---
 
 存储方式|存储类型|访问限制|存储时长|适用场景
@@ -19,13 +20,13 @@ IndexedDB|文档型数据库|同域名|永久存储|大量的本地缓存
 
 Cookie 是服务器发送到用户浏览器并保存在本地的一种数据，它会在浏览器下次向同一服务器发送请求时被携带，这种操作使得无状态的 HTTP 拥有了一种记录稳定状态的可能
 
-```javascript
+```js
 document.cookie
 ```
 
-`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种格式，当需要添加一条 cookie 时，就直接赋值即可
+`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种格式，当需要添加一条 cookie 时，就直接赋值即可，它是不会被替换的，只会追加
 
-```javascript
+```js
 document.cookie = "name=foo"
 ```
 
@@ -37,7 +38,7 @@ document.cookie = "name=foo"
 
 `document.cookie`返回所有 cookie，得到指定 cookie 的值是非常麻烦的
 
-```javascript
+```js
 let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)keyName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 ```
 
@@ -45,7 +46,7 @@ let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)keyName\s*\=\s*([^;]*)
 
 ::: details cookies.js
 
-```javascript
+```js
 /*\
 |*|
 |*|  :: cookies.js ::
@@ -117,7 +118,7 @@ var docCookies = {
 
 这是一个限制有效期 cookie 的例子：
 
-```javascript
+```js
 document.cookie = "test=time; expires=" + new Date().toString();
 ```
 
@@ -125,18 +126,20 @@ document.cookie = "test=time; expires=" + new Date().toString();
 时间戳应该是一个 GMT 格式
 :::
 
+通常情况下 cookie 是不允许客户端修改的，只允许服务端进行设置，如果服务端设置了`HttpOnly`，则在客户端是无法通过`document.cookie`访问 cookie 的，也无法修改
+
 ## 本地存储和会话存储
 
 本地存储是一种将数据永久的存储在本地的技术，被浏览器当作 API 的方式提供，它是`window.localStorage`，只要为这个对象绑定一些自定义的属性就可以实现数据的存储，因为它是公共的，能被所有的网页程序进行读写，且关闭网页时数据也不会丢失
 
-```javascript
+```js
 localStorage.testData = '测试数据'
 console.log(localStorage.testData) // '测试数据'
 ```
 
 对话存储针对一个会话进行数据存储，当网页被关闭时数据就会删除，不应该用于长期存储的应用，同时只会对当前页面公开，通过`window.sessionStorage`进行数据操作
 
-```javascript
+```js
 sessionStorage.testData = '测试数据'
 console.log(sessionStorage.testData) // '测试数据'
 ```
@@ -158,7 +161,7 @@ console.log(sessionStorage.testData) // '测试数据'
 
 本地存储和会话存储虽然可以实现简单的对象存储，但是对于复杂的关系数据处理时，就力不从心了，在 HTML5 中新增了 Web SQL Database 关系型数据库，它是遵循 SQL 标准的，每一个遵循 Web SQL 的浏览器都会内嵌一个本地的 SQL 数据库
 
-```javascript
+```js
 /**
  * openDatabase(databaseName, version, desc, estimatedSize)
  * databaseName: 访问的数据库名称，如果没有就会创建
@@ -171,7 +174,7 @@ var db = window.openDatabase('mydb', '1.0', '测试的数据库', 1024 * 1024);
 
 基本的增删改查：
 
-```javascript
+```js
 // CREATE
 db.transaction(function (tx) {
   tx.executeSql('CREATE TABLE test_table(id, name, age)');
@@ -194,7 +197,7 @@ db.transaction(function (tx) {
 
 所有的操作都在`transaction(callback(tx))`事务方法中进行，`executeSql(SQL, [], callback(tx, result))`用来执行具体的 SQL 语句，`executeSql`也支持 SQL 的预处理，用`?`在语句中占位，并在第二个参数中传入一个预处理参数的数组：
 
-```javascript
+```js
 db.transaction(function (tx) {
   tx.executeSql('INSERT INTO test_table VALUES (?, ?, ?)', [10002, 'foo', '23']);
 })
@@ -206,7 +209,7 @@ IndexedDB 是浏览器中提供的另一种本地数据库，它和 WebSQL 不�
 
 对于 IndexedDB 来说，数据库是对象存储的容器，每一个数据库都有若干个对象存储，类似于关系型数据库的表格，对象存储中保存的是每一条数据记录，类似于关系型数据库的行
 
-```javascript
+```js
 const request = indexedDB.open('mydb', 1);
 let db;
 
@@ -229,7 +232,7 @@ request.onupgradeneeded = function (event) {
 
 浏览器提供了`indexedDB`来打开一个数据库，同时会返回一个请求对象，这个对象监听三种事件用于处理数据库打开时的回调函数，其中，`onupgradeneeded`事件特别重要，数据存储对象只能在这里定义
 
-```javascript
+```js
 request.onupgradeneeded = function (event) {
   db = event.target.result;
   db.createObjectStore("persons", {keyPath: "id"});
@@ -244,7 +247,7 @@ request.onupgradeneeded = function (event) {
 
 一旦创建了对象存储，就可以对数据进行增删改查了
 
-```javascript
+```js
 request.onsuccess = function (event) {
   db = event.target.result;
   const tx = db.transaction(['persons'], 'readwrite');
@@ -266,7 +269,7 @@ request.onsuccess = function (event) {
 
 IndexedDB 也支持建立索引，默认情况下只能搜索主键，一旦对字段建立索引就可以搜索被索引字段了
 
-```javascript
+```js
 const request = indexedDB.open('mydb', 1);
 let db;
 

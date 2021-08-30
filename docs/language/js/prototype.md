@@ -1,8 +1,9 @@
 ---
 title: 万物皆空之原型
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
 
 ## 原型
@@ -58,10 +59,10 @@ console.log(B.name); //'B'
 ```js
 let A = { 
   name: 'A',
-  get getName(){
+  get getName() {
     return this.name;
   },
-  set setName(value){
+  set setName(value) {
     this.name = value;
   }
 };
@@ -225,7 +226,7 @@ let B = {
   __proto__: A 
 };
 
-for (let key in B){
+for (let key in B) {
   if (B.hasOwnProperty(key)) {
     console.log(key); // ownProp
   }

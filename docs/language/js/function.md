@@ -1,7 +1,7 @@
 ---
 title: 函数
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
 article: false
 ---
@@ -51,10 +51,8 @@ console.log(a); // undefined;
 
 ```js
 let a = 'a';
-function foo() {
-  console.log(a);
-}
-console.log(a);
+function foo() { console.log(a); }
+console.log(a); // 'a'
 ```
 
 ::: tip
@@ -101,7 +99,7 @@ function foo(a = 'a') {
 foo();
 ```
 
-最新的 JavaScript 语法还支持指定参数传值，不过为了兼容性，应该少使用
+最新的语法还支持指定参数传值，不过为了兼容性，应该少使用
 
 ```js
 function foo(a, b = 'b') {
@@ -133,6 +131,13 @@ function foo() {
     1 + 2 + 3
 }
 console.log(foo()); // undefined
+
+/* 实际上它是这样的 */
+
+// function foo() {
+//   return;
+//     1 + 2 + 3
+// }
 ```
 
 ## arguments
@@ -141,7 +146,7 @@ console.log(foo()); // undefined
 
 ## 函数表达式
 
-函数在 JavaScript 中不是“语言结构”，而是一种特殊的值，还有另外一种创建函数的语法叫做**函数表达式**
+函数在 JavaScript 中不是“语言结构”，而是一种特殊的值，还有一种创建函数的语法叫做**函数表达式**
 
 ```js
 let foo = function() {};
@@ -153,15 +158,15 @@ foo();
 下面这种写法也是 OK 的，看起来就像变量存储了函数，函数可以被当作值一样传递
 
 ```js
-function foo () {}
+function foo() {}
 let fc = foo;
 fc();
 ```
 
-另外这种写法也没什么区别，任然是一个函数表达式，即使增加了`func`，但它也会成为表达式的一部分，但是它允许函数内部引用自己
+另外这种写法也没什么区别，仍然是一个函数表达式，即使增加了`func`。它也会成为表达式的一部分，但是它允许函数内部引用自己
 
 ```js
-let foo = func (){};
+let foo = func() {};
 ```
 
 ::: tip 声明函数和函数表达式的区别
@@ -178,19 +183,19 @@ let foo = func (){};
 
 ```js
 let foo = function () {}();
-(function (){})();
-(function (){}());
-+function (){}();
--function (){}();
-void function (){}();
-new function (){}();
+(function () {})();
+(function () {}());
++function () {}();
+-function () {}();
+void function () {}();
+new function () {}();
 
-function (){}() // 抛出语法错误
+function () {}() // 抛出语法错误
 ```
 
-为什么`function (){}()`抛出错误，因为解释器会将它视为一个缺标识的函数声明。而上面的匿名函数都会被看作一个表达式执行，仔细观察发现都是通过加一些额外的操作符让解释器将函数视为一个表达式，而不是函数声明，因此绕过了语法检查，这就是匿名自执行函数的本质，更准确的说法是“**立即调用的函数表达式**”
+为什么`function () {}()`抛出错误，是因为解释器会将它视为一个缺标识的函数声明。而上面的匿名函数都会被看作一个表达式执行，仔细观察发现都是加一些额外的操作符让解释器将函数视为一个表达式，而不是函数声明，因此绕过了语法检查，这就是匿名自执行函数的本质，更准确的说法是“**立即调用的函数表达式**”
 
-这种函数的定义方式有一个封闭的作用域范围，因此可以封装一些变量和函数，由于外部无法引用内部的变量，就能避免和全局对象的冲突。如果想要扩大作用域，可以为函数定义一个参数，将外部的定义的对象作为参数传入，并将内部的变量和函数绑定到对象上，即可实现全局变量和函数，jQuery 就是这么做的：
+这种函数有一个封闭的作用域范围，定义在其中的变量随着函数的调用创建，而它是立即执行的函数，调用完成后即销毁。因此可以封装一些变量和函数，由于外部无法引用内部的变量，就能避免和全局对象的冲突。如果想要扩大作用域，可以为函数定义一个参数，将外部的定义的对象作为参数传入，并将内部的变量和函数绑定到对象上，即可实现全局变量和函数，jQuery 就是这么做的：
 
 ```js
 (function (window, undefined) {
@@ -200,7 +205,7 @@ function (){}() // 抛出语法错误
 
 ## 箭头函数
 
-创建函数还有另一种非常简单的语法，且这种方式比函数表达式更好，它被称为**箭头函数**
+创建函数还有一种非常简单的语法，这种方式比函数表达式更好，它被称为**箭头函数**
 
 ```js
 let foo = () => {};
@@ -209,7 +214,7 @@ let foo = () => {};
 它是下面的简单版本
 
 ```js
-let foo = function (){};
+let foo = function () {};
 ```
 
 箭头函数可以更简洁，当参数只有一个时，`()`可以省略，但没有参数的时候必须保留
@@ -230,7 +235,7 @@ console.log(double(2)); // 4
 
 1. 没有`this`，访问到的`this`来自外部的普通函数
 2. 没有`arguments`，访问到的`arguments`来自外部的普通函数
-3. 不能作为构造器使用`new`调用，这是不具有`this`
+3. 不能作为构造器使用`new`调用，这是因为不具有`this`
 
 ## 回调函数
 
@@ -240,17 +245,17 @@ console.log(double(2)); // 4
 function foo(callback) {
   callback();
 }
-function bar(){}
+function bar() {}
 foo(bar);
 ```
 
-从这里看来，`bar`被当作参数传递给`foo`，然后在`foo`中调用，因此`bar`被称为**回调函数**
+从这里看来，`bar`被当作参数传递给`foo`，在`foo`中被调用，因此`bar`被称为**回调函数**
 
 回调函数的主要思想就是通过传递一个函数，且期望在稍后时将其进行回调
 
 ## 闭包函数
 
-将一个函数作为返回值的函数就是闭包函数，它的目的是变相的扩大了局部变量的作用域，这导致在任何地方调用该函数都可以访问该作用域中的变量，下面这个例子中`temp`本质是一个局部变量，而`bar`被`foo`当作返回值在外部调用，却仍能够访问`temp`，但实际上不应该再访问到`temp`，这就是闭包函数的作用。闭包的核心就是无论在何处调用该函数，仍然能够访问它所处于环境中的变量，而这个变量是无法被其他程序访问到的
+将一个函数作为返回值的函数就是闭包函数，它的目的是变相的扩大了局部变量的作用域，这导致在任何地方调用该函数都可以访问该作用域中的变量，下面这个例子中`str`本质是一个局部变量，而`bar`被`foo`当作返回值在外部调用，却仍能够访问`str`，但实际上不应该再访问到`str`，这就是闭包函数的作用
 
 ```js
 function foo() {
@@ -259,17 +264,32 @@ function foo() {
   return bar;
 }
 
-foo()();
+foo()(); // 'abc'
+
+console.log(str); // undefined
 ```
+
+闭包的核心就是无论在何处调用该函数，仍能访问声明它所处于环境中的变量，而这个变量是无法被其他程序访问到的
 
 ## 函数也是对象
 
-在 JavaScript 中函数本身也是一个对象，因为函数也可以作为一个值传递，必然属于某种类型，函数是一个可被调用的对象，不仅可以调用，也可以当作对象来处理，进行属性操作，以及引用传递等
+在 JavaScript 中函数本身也是一个对象，因为函数也可以作为一个值传递，必然属于某种类型。函数是一个可被调用的对象，不仅可以调用，也可以当作对象来处理，进行属性操作，以及引用传递等
 
-那么作为对象就应该有自己的一些属性：
+作为对象就应该有自己的一些属性：
 
 1. `name`：函数的名字，如果没有声明名字，则会根据上下文推测一个
 2. `length`：返回函数入参的个数，但是 rest 参数不参与计数
+
+```js
+function foo() {};
+let bar = function () {};
+let arr = [function () {}];
+
+console.log(foo.name); // 'foo'
+console.log(bar.name); // 'name'
+
+console.log(arr[0].name); // ''
+```
 
 ::: tip
 如果直接在一个数组中声明函数，那么该函数的`name`是无法推断的
@@ -289,6 +309,117 @@ console.log(func(1, 2)); // 3
 ::: tip 闭包
 通常闭包指向创建函数时自身所处于的环境，但是使用`new Function()`创建的函数却指向全局环境
 :::
+
+## 生成器函数
+
+通常情况下，函数只会返回一个单一的值，但是 Generator 函数可以按需返回一个接一个的值，要创建 Generator 需要一个特殊的语法结构：`function *`
+
+```js
+function* generateSeq() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+const generator = generateSeq();
+```
+
+此函数被调用时，不会运行函数中的代码，而是返回一个特殊的”Generator“对象，用来管理执行流程，这个对象的主要方法就是`next()`，当被调用时，就会执行最近的`yield value`语句，然后暂停执行，将生产出的值返回出去，产出的结果是具有两个属性的对象：
+
+1. `value`：产出值
+2. `done`：如果执行完成则返回`true`，否则为`false`
+
+```js
+function* generateSeq() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+const generator = generateSeq();
+
+console.log(generator.next()); // { value: 1, done: false }
+console.log(generator.next()); // { value: 2, done: false }
+console.log(generator.next()); // { value: 3, done: true }
+console.log(generator.next()); // { value: undefined, done: true } 
+```
+
+一旦产出完成，继续调用`next()`已经没有了意义
+
+另外生成器对象是可以被`for...of`迭代的，因为它具有`next()`方法
+
+```js
+function* generateSeq() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let generator = generateSequence();
+
+for(const value of generator) {
+  console.log(value); // 1，2，3
+}
+```
+
+注意，如果最后一个值使用的`return`返回，它将产出`done: true`，`for...of`会检查并忽略掉`value`，所以最好全部使用`yield`返回
+
+由于它是可迭代的，spread 语法对它同样适用
+
+```js
+function* generateSeq() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let arr = [0, ...generateSeq()];
+console.log(arr); [0, 1, 2, 3]
+```
+
+除此之外`yield`还可以加个`*`表示委托给另一个”generator“或可迭代对象（字符串、数组等）
+
+```js
+function* g1() {
+  yield 2;
+  yield 3;
+  yield 4;
+}
+
+function* g2() {
+  yield 1;
+  yield* g1();
+  yield 5;
+}
+
+let generator = g2();
+
+console.log(generator.next()); // { value: 1, done: false }
+console.log(generator.next()); // { value: 2, done: false }
+console.log(generator.next()); // { value: 3, done: false }
+console.log(generator.next()); // { value: 4, done: false }
+console.log(generator.next()); // { value: 5, done: false }
+```
+
+这种感觉就像将`g1`里的语句写在`g2`里面一样
+
+`yield`关键字会使生成器函数暂停执行，并将后面的表达式结果返回给调用者，直到生成器的`next()`方法被调用，如果将参数传递给生成器的`next()`方法，该值会成为当前`yield`操作的返回值
+
+```js
+function* g() {
+  let result = yield 2;
+  console.log(result); // 2
+}
+
+let generator = g();
+
+generator.next();
+generator.next(2);
+```
+
+第一次调用`next()`时应不带参数，即使带了也会被忽略，此时开始执行`yield`后面的表达式并返回结果，然后执行就暂停了，当第二次调用`next()`时，开始恢复执行
+
+与常规函数不同的是，生成器函数可以通过`yield/next`互相交换结果
 
 ## 内置函数
 

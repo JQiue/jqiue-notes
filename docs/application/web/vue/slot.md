@@ -1,7 +1,7 @@
 ---
 title: 插槽
 category: 框架
-tag: Vue
+tags: [Vue, Alpha]
 author: JQiue
 article: false
 ---

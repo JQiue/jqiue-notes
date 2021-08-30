@@ -1,7 +1,7 @@
 ---
 title: 代码质量
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 time: 2019-04-12
 author: JQiue
 article: false

@@ -1,7 +1,7 @@
 ---
 title: 介绍 && 起步
 category: 框架
-tag: Vue
+tags: [Vue, Alpha]
 author: JQiue
 article: false
 ---
@@ -36,7 +36,7 @@ Vue 有两种引用方式：
 
 使用 script 标签引入时，Vue 被注册了一个全局变量，通过这个变量就能创造实例对象
 
-```javascript
+```js
 const app = new Vue();
 ```
 

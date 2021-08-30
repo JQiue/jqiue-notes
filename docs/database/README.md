@@ -1,8 +1,8 @@
 ---
 title: 数据库
 author: JQiue
-next: false
 article: false
+next: false
 ---
 
 这里解释的是一些数据库中的概念，避免对一些事物造成混淆

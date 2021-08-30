@@ -1,23 +1,24 @@
 ---
 title: 包管理器：NPM
 category: Web
-tag: NPM
+tags: [NodeJS, NPM, Alpha]
 author: JQiue
+article: false
 ---
 
-在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“，简而言之，一个包中有一个或多个模块，在NodeJS中为了方便开发人员发布、安装和管理包, NodeJS 推出了一个包管理工具：**NPM（Node Package Manager）**
+在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“，简而言之，一个包中有一个或多个模块，在 NodeJS 中为了方便开发人员发布、安装和管理包, NodeJS 推出了一个包管理工具：**NPM（Node Package Manager）**
 
-在安装了 NodeJS 同时，NPM 也自动装好了，通过 NPM 就能够管理我们所需要的包
+在安装了 NodeJS 同时，NPM 也自动装好了，通过 NPM 相关操作就能够管理我们所需要的包
 
-npm由三个独立的部分组成：
+NPM 由三个独立的部分组成：
 
 + **网站**：是开发者查找包（package）、设置参数以及管理 npm 使用体验的主要途径
 + **注册表**：是一个巨大的数据库，保存了每个包（package）的信息
-+ **命令行工具**：CLI 通过终端运行，开发者通过 CLI 与 npm 打交道
++ **命令行工具**：CLI 通过终端运行，开发者通过 CLI 与 NPM 打交道
 
 ## 创建 package.json
 
-每一个通过 NodeJS 环境下创建的项目，都会有 package.json 文件，该文件描述了整个项目的模块关系，package.json 遵循 JSON 格式的规范
+每一个通过 NodeJS 环境下创建的项目，都会有一个 package.json 文件，该文件描述了整个项目的模块关系，package.json 遵循 JSON 格式的规范
 
 手动创建：将文件命名为`package.json`放入项目的根目录下，它可以是空的，比如：
 
@@ -25,7 +26,7 @@ npm由三个独立的部分组成：
 {}
 ```
 
-使用 npm 命令生成：
+使用 NPM 命令生成：
 
 ```sh
 npm init
@@ -57,19 +58,17 @@ npm init
 
 ## NPM 命令操作
 
-npm 是通过命令行来管理包的，因此就涉及到对包安装，卸载以及更新
+NPM 是通过命令行来管理包的，因此就涉及到对包安装，卸载以及更新
 
-安装 npm 包有两种方式：本地安装和全局安装，安装的包都会在规定的`node_modules`目录中
+安装包有两种方式：本地安装和全局安装，安装的包都会在规定的`node_modules`目录中
 
-### 本地安装
+### 本地安装和全局安装
 
 如果想从自己的模块中使用 Node.js 中的`require`方法来依赖某个包，则应该安装在本地，它会在运行命令的目录下创建`node_modules`目录并安装在其中，这是 npm 的默认安装方式
 
 ```sh
 npm install <package_name>
 ```
-
-### 全局安装
 
 如果某个包只是想当作命令行工具使用它，则推荐全局安装这个包，它会被安装在`C:\Users\用户\AppData\Roaming\npm`的`node_modules`目录中，这个目录中的包是可以在任何项目中使用的
 
@@ -121,6 +120,10 @@ npm uninstall <package> --save --save
 ```sh
 npm list -g --depth 0
 ```
+
+### 写入 package.json
+
+执行``
 
 ## 很棒的第三方包
 

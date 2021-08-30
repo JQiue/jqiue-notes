@@ -1,8 +1,9 @@
 ---
-title: 内存分配
+title: 内存管理
 category: 编程语言
-tag: C
+tags: [C, Alpha]
 author: JQiue
 article: false
 ---
+
 

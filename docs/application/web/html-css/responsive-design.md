@@ -1,7 +1,9 @@
 ---
 title: 响应式网站设计
 category: Web
+tags: [HTML, Alpha]
 author: JQiue
+article: false
 ---
 
 随着设备的丰富，网站已经不只是出现在电脑显示器上，而是出现在各种尺寸的设备上，比如智能手机、平板等，这导致网站需要让访问的人以各种不同的设备来访问，因此，响应式 Web 设计因此而生

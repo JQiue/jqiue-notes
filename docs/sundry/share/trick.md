@@ -1,12 +1,12 @@
 ---
-title: 学会一些终身受用的技能
+title: 一些花招
 category: 知识分享
-tag: 技巧
+tags: [技巧, Alpha]
 time: 2019-05-10
 author: JQiue
 ---
 
-当你保存你的ppt时，用后缀`.pps`或`.ppsx`，那样的话，打开时会直接进入幻灯片播放模式。不仅节省时间，还看起来十分专业
+当你保存你的 ppt 时，用后缀`.pps`或`.ppsx`，那样的话，打开时会直接进入幻灯片播放模式。不仅节省时间，还看起来十分专业
 
 为找不到资源的种子而担忧？不用怕。你可以通过 Google 直接找到下载地址
 
@@ -20,10 +20,10 @@ author: JQiue
 
 上 youtube 网站时，在地址栏：
 
-把“youtube”换成“listentoyoutube”，可以下载视频的音频；  
-把“youtube”换成“ssyoutube”，可以下载任意图像质量的视频；  
-把“youtube”换成“listenonrepeat”，可以自动重放视频；  
-把“youtube”换成“youtubeskip”，你将不会看到广告。
++ 把“youtube”换成“listentoyoutube”，可以下载视频的音频；  
++ 把“youtube”换成“ssyoutube”，可以下载任意图像质量的视频；  
++ 把“youtube”换成“listenonrepeat”，可以自动重放视频；  
++ 把“youtube”换成“youtubeskip”，你将不会看到广告。
 
 获取 Windows 上所有已安装目标程序的快捷方式
 

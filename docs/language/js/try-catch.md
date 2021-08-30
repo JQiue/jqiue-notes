@@ -1,7 +1,7 @@
 ---
 title: 错误处理
 category: 编程语言
-tag: Javascript
+tags: [Javascript, Alpha]
 author: JQiue
 article: false
 ---
@@ -108,7 +108,7 @@ try {
   aaa; // ReferenceError
   if(!foo.age) throw new SyntaxError('没有定义的 age 属性');
 } catch (error) {
-  if (error instanceof SyntaxError){
+  if (error instanceof SyntaxError) {
     console.log("SyntaxError: " + error.message); // SyntaxError: ReferenceError: aaa is not defined
   } else {
     throw error;

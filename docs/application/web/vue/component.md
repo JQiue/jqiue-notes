@@ -1,7 +1,7 @@
 ---
 title: 组件
 category: 框架
-tag: Vue
+tags: [Vue, Alpha]
 author: JQiue
 article: false
 ---
@@ -394,7 +394,7 @@ export default {
 </template>
 ```
 
-```javascript
+```js
 data(){
   return {
     name: "father"
@@ -413,7 +413,7 @@ data(){
 </template>
 ```
 
-```javascript
+```js
 props: ["fathername"]
 ```
 
@@ -616,7 +616,7 @@ export default {
 1. beforeDestroy：组件销毁之前触发，是最后能够访问到数据和方法的周期
 2. destroyed：组件销毁后触发，但是不要在这里操作组件的数据和方法
 
-```javascript
+```js
 const app = new Vue({
   el: "#app",
   data: {

@@ -1,7 +1,7 @@
 ---
 title: 面向对象编程
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
 article: false
 ---
@@ -21,7 +21,7 @@ var foo = new Person();
 
 ```js
 foo.age = 18;
-foo.say = functioin (){
+foo.say = functioin () {
   console.log('我是 foo');
 }
 ```
@@ -34,7 +34,7 @@ foo.say = functioin (){
 function Person() {
   this.name = 'foo';
   this.age = '18';
-  this.showInfo(){
+  this.showInfo() {
     console.log('我叫' + this.name，'我的年龄是' + this.age);
   }
 }
@@ -50,7 +50,7 @@ function Person() {
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.showInfo(){
+  this.showInfo() {
     console.log('我叫' + this.name，'我的年龄是' + this.age);
   }
 }
@@ -63,7 +63,7 @@ var foo = new Person('foo', 18);
 function Person(name, age) {
   this.name = name;
   this.age = age;
-  this.showInfo = function (){
+  this.showInfo = function () {
     console.log('我叫' + this.name + '我的年龄是' + this.age);
   }
 }
@@ -162,10 +162,10 @@ var foo = new Person();
 ```js
 function Person() { 
   var name = null;
-  this.getName = function(){
+  this.getName = function() {
     return name;
   }
-  this.setName = function(value){
+  this.setName = function(value) {
     name = value;
   }
 }
@@ -181,8 +181,8 @@ foo.name // Error
 
 ```js
 function Foo() { 
-  this.method = function(){
-    function test(){
+  this.method = function() {
+    function test() {
       console.log(this);  // window
     }
     test();
@@ -194,9 +194,9 @@ function Foo() {
 
 ```js
 function Foo() { 
-  this.method = function(){
+  this.method = function() {
     var that = this;
-    function test(){
+    function test() {
       console.log(that);  // Foo
     }
     test();
@@ -231,11 +231,11 @@ Foo.a();
 JavaScript 是通过`prototype`来实现继承的，要想继承一个类，可以使用`prototype`指向该类的实例：
 
 ```js
-function Person(name , age){
+function Person(name , age) {
   this.name = name;
   this.age = age;
 }
-function Child(){}
+function Child() {}
 Child.prototype = new Person();
 var zs = new Child();
 zs.name = 'zs'; // zs
@@ -244,11 +244,11 @@ zs.name = 'zs'; // zs
 如果想在创建子类实例的时候赋予初始值，则应该手动在子类中写调用父类的构造器方法来实现
 
 ```js
-function Person(name , age){
+function Person(name , age) {
   this.name = name;
   this.age = age;
 }
-function Child(name, age){
+function Child(name, age) {
   this.$super = Person;
   this.$super(name, age);
 }
@@ -271,11 +271,11 @@ Object.prototype.$super = function () {
     throw new Error("only can be used in constructor!");
   }
 }
-function Person(name , age){
+function Person(name , age) {
   this.name = name;
   this.age = age;
 }
-function Child(name, age){
+function Child(name, age) {
   // this.$super = Person;
   this.$super(name, age);
 }

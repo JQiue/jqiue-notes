@@ -1,10 +1,10 @@
 ---
 title: 数组
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
-
 
 虽然对象允许储存数据，但对象中的属性是没有顺序的，有很多时候需要一个有序集合的结构，里面的元素是按照顺序排列的，数组（Array）就是这样的结构
 
@@ -45,7 +45,7 @@ nams[3] = 'zq'; // ['zs', 'ls', 'zz', 'zq']
 且可以存储任何类型的元素
 
 ```js
-let arr = [1, 'zs', {name: 'foo'}, true , function(){} ];
+let arr = [1, 'zs', {name: 'foo'}, true , function() {} ];
 ```
 
 ## length

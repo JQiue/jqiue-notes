@@ -7,7 +7,8 @@ module.exports = [
       { text: '计算机基础', icon: 'jisuanji', link: '/computer-basic/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '编程语言', icon: 'kaifayuyan', link: '/language/' },
-      { text: '数据库', icon: 'SQL', link: '/database/' }
+      { text: '数据库', icon: 'SQL', link: '/database/' },
+      { text: '操作系统', icon: 'caozuoxitong', link: '/operating-system/' },
     ]
   },
   {
@@ -33,7 +34,7 @@ module.exports = [
       { text: 'Git', icon: 'git', link: '/sundry/git' },
       { text: '资源和工具', icon: 'gongju', link: '/sundry/tools' },
       { text: '问题汇总', icon: 'zhongzhengji', link: '/sundry/problems' },
-      { text: '知识分享', icon: 'jiqiao', link: '/sundry/share/1' }
+      { text: '知识分享', icon: 'jiqiao', link: '/sundry/share/three-filtering-principles' }
     ]
   }
 ];

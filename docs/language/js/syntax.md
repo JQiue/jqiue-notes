@@ -1,8 +1,9 @@
 ---
 title: 基本语法
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
 
 这里是 JavaScript 基本语法规则
@@ -386,7 +387,7 @@ JavaScript 有`while`，`do...while`，`for`三种循环结构
 
 这是`while`的循环结构，当`condition`为真时，就会执行循环体中的语句，循环体的每一次执行叫做**迭代**
 
-```javascript
+```js
 while (condition) {
   // 代码
 }
@@ -403,7 +404,7 @@ do {
 `for`循环是最为复杂的，但也是最常用的
 
 ```js
-for (begin; condition; step){
+for (begin; condition; step) {
   // code
 }
 ```

@@ -1,7 +1,7 @@
 ---
 title: 如何正确理解木桶原理
 category: 知识分享
-tag: 转载
+tags: [转载]
 time: 2019-06-22
 author: 曾加
 ---

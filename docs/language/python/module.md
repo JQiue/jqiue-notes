@@ -1,7 +1,7 @@
 ---
 title: 模块
 category: 编程语言
-tag: Python
+tags: [Python, Alpha]
 author: JQiue
 article: false
 ---

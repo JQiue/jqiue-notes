@@ -1,8 +1,9 @@
 ---
 title: 解构赋值
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
 
 解构赋值是一种特殊的语法，可以将数组或对象拆到单个一系列的变量中

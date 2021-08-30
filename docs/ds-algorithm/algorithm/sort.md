@@ -1,6 +1,7 @@
 ---
 title: 排序
-tag: 算法
+category: 算法
+tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -40,7 +41,7 @@ void bubbleSort(int *list, int size){
 </CodeGroupItem>
 
 <CodeGroupItem title="javascript">
-```javascript
+```js
 ```
 </CodeGroupItem>
 
@@ -86,7 +87,7 @@ void selectSort(int *list, int size){
 </CodeGroupItem>
 
 <CodeGroupItem title="javascript">
-```javascript
+```js
 ```
 </CodeGroupItem>
 
@@ -119,21 +120,6 @@ void insertSort(int *list, int size) {
     list[j + 1] = temp;
   }
 }
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```javascript
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
 ```
 </CodeGroupItem>
 

@@ -1,7 +1,7 @@
 ---
 title: 路由
 category: 框架
-tag: Vue
+tags: [Vue, Alpha]
 author: JQiue
 article: false
 ---
@@ -66,7 +66,7 @@ const app = new Vue({
 
 默认情况下`router-link`会被渲染成`a`标签，但是可以通过`tag`属性渲染成任意支持的标签，且在激活的标签中会应用`router-link-active`类名，可以通过重写类名的方式改变元素的样式。VueRouter 也提供了`linkActiveClass`项来自定义类名，只需要给路由对象传递该属性的键值对即可修改
 
-```javascript
+```js
 const router = new VueRouter({
   routes: routes,
   linkActiveClass: "custome-class"
@@ -77,7 +77,7 @@ const router = new VueRouter({
 
 默认情况下，一个网页打开是没有哈希值的，所以导致无法显示对应组件，如果想要显示默认的组件则应该使用重定向
 
-```javascript
+```js
 const routes = [
   { path: '/', redirect: "/one" },
   { path: '/one', component: one },
@@ -101,7 +101,7 @@ const routes = [
 
 可以在路由规则中预设`/:key`这种规则的方式来接收参数
 
-```javascript
+```js
 const routes = [
   { path: '/', redirect: "/one" },
   { path: '/one/:name/:age', component: one },
@@ -123,7 +123,7 @@ const routes = [
 
 嵌套路由指的是在一个路由的基础上再嵌套一个子路由，在不切换一级路由的情况下切换子路由，只需要在路由规则中增加`children`属性即可，其他的和一级路由相同，但是必须在一级路由中使用`router-view`显示子路由组件
 
-```javascript
+```js
 const routes = [
   { path: '/', redirect: "/one" },
   {
@@ -147,7 +147,7 @@ const routes = [
 
 和插槽一样，如果使用了多个`router-view`，那么对应的路由组件会显示多次，如果想要在同一个路径下，显示多个组件，就可以使用命名视图，其中`component`被替换为`components`，接收一个键值对对象，key 代表这个路由的 name，value 为对应的组件
 
-```javascript
+```js
 const routes = [
   { path: '/', redirect: "/one" },
   {
@@ -171,7 +171,7 @@ const routes = [
 
 watch 属性同样可以监听路由对象的变化
 
-```javascript
+```js
 watch: {
   $route (new, old){
 
@@ -181,7 +181,7 @@ watch: {
 
 也可以直接监听`path`
 
-```javascript
+```js
 watch: {
   "$route.path" (newValue, oldValue){
     console.log(newValue + oldValue);

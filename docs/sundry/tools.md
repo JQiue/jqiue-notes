@@ -1,5 +1,6 @@
 ---
 title: 资源和工具
+tags: [Alpha]
 article: false
 timeline: false
 ---
@@ -17,11 +18,11 @@ timeline: false
 [Snipaste](https://dl.snipaste.com/win-x64-beta-cn)（截图）  
 [Honeycam](http://www.bandisoft.com/honeycam/beta/)（动图录制和制作）  
 [Bandicam](https://www.bandicam.cn/downloads/ing/)（视频录制）  
-[Wiztree](https://antibody-software.com/files/wiztree_3_33_setup.exe)（磁盘空间分析）  
-[SpaceSniffer](https://590m.com/file/tempdir-UjRWYldjXTxRY1EwBzZVKlJjUWhXbw4_C2BVOwJhADlSMlF7V2QPYlNoBWIDM1I0Vm1UZlNjCjg)（磁盘空间可视化）  
+[Wiztree](https://www.diskanalyzer.com/)（磁盘空间分析）  
+[SpaceSniffer](http://www.uderzo.it/main_products/space_sniffer/download_alt.html)（磁盘空间可视化）  
 [Bandizip](http://www.bandisoft.com/bandizip/dl/)（压缩）  
 [7-Zip](https://www.7-zip.org/a/7z2000-x64.exe)（压缩）  
-[ShanaEncoder](https://www.jianguoyun.com/p/DYKVIdAQ3f74BxiE1ZwD)（视频转码）  
+[ShanaEncoder](https://shana.pe.kr/shanaencoder_download)（视频转码）  
 [AS SSD](https://www.alex-is.de/progs/AS%20SSD%20Benchmark.zip)（硬盘测试）  
 [FastCopy](https://dforest.watch.impress.co.jp/library/f/fastcopy/11574/FastCopy392_installer.exe)（复制）  
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads)（虚拟机）  

@@ -1,8 +1,9 @@
 ---
 title: 对象
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
 
 对象是一种复杂的类型，用于存储更复杂的实体，JavaScript 可以使用两种方式创建对象
@@ -146,9 +147,7 @@ console.log(user.name === undefined); // true
 JavaScript 提供了一个特别的检查属性是否存在的操作符`in`
 
 ```js
-let user = {
-  name: "zs"
-};
+let user = { name: "zs" };
 console.log("name" in user); // true
 console.log("age" in user); // false
 ```
@@ -162,7 +161,7 @@ console.log("age" in user); // false
 `for...in`可以遍历一个对象的所有键，这和`for`循环是不一样的东西
 
 ```js
-for (key in object){
+for (key in object) {
   // 每遍历一个键就执行的代码
 }
 ```
@@ -291,7 +290,7 @@ user.sayHello(); // hello
 let user = {
   name: 'zs',
   age: 23,
-  sayHello: function(){
+  sayHello: function() {
     console.log('hello');
   }
 };
@@ -303,7 +302,7 @@ let user = {
 let user = {
   name: 'zs',
   age: 23,
-  sayHello (){
+  sayHello() {
     console.log('hello');
   }
 };
@@ -392,7 +391,7 @@ admin.sayHi(); // 'admin'
 构造函数就是一个普通的函数，没什么区别，可以被当作普通函数调用，也可以当作构造器产生一个对象，一般构造函数的命名是以大写开头的
 
 ```js
-function User(name){
+function User(name) 
   this.name = name;
 }
 
@@ -519,9 +518,9 @@ user.sayHi?.(); // 调用不存在的方法
 
 ## Symbol
 
-对象的属性只能是字符串或 Symbol 类型，而 Symbol 类型使用来给对象创建隐藏属性的
+对象的属性只能是字符串或 Symbol 类型，而 Symbol 类型是用来给对象创建隐藏属性的
 
-可以使用`Symbol()`来创建一个唯一的标识符类型：
+使用`Symbol()`来创建一个唯一的标识符类型：
 
 ```js
 // id 是 symbol 实例化的对象
@@ -546,9 +545,7 @@ console.log(id1 == id2); // false
 
 ```js
 let id = Symbol('id');
-let user = {
-  name: 'foo'
-};
+let user = { name: 'foo' };
 
 // Symbol 对象作为对象的键并赋值
 user[id] = 1;
@@ -575,7 +572,9 @@ let user = {
 Symbol 并不是绝对的隐藏的，有一个内置方法`Object.getOwnPropertySymbols(obj)`允许获得该对象所有的 Symbol
 :::
 
-一般情况下，Symbol 是不相同的，虽然它们有相同的名字，但是如果要获得名字相同的 Symbol 具有相同的实体，就必须借助一个全局的 Symbol 注册表，可以保证每次访问相同名字的 Symbol 时返回的都是相同的 Symbol。使用`Symbol.for()`即可读取一个 Symbol（不存在时则创建），如果有则返回该 Symbol，没有则创建一个 Symbol
+一般情况下，Symbol 是不相同的，虽然它们有相同的名字，如果要获得名字相同的 Symbol 具有相同的实体，就必须借助一个全局的 Symbol 注册表，可以保证每次访问相同名字的 Symbol 都返回的是相同的 Symbol
+
+使用`Symbol.for()`即可读取一个 Symbol（不存在时则创建），如果有就返回该 Symbol，没有就创建一个 Symbol
 
 ```js
 let id = Symbol.for('id');
@@ -611,7 +610,7 @@ JavaScript 也有很多内置的 Symbol，可以用来微调对象的各个方�
 
 但是在最近，`globalThis`被作为全局对象的标准加入到了 JavaScript 中，所有的环境都应该支持该对象
 
-在浏览器中，使用`var`定义的全局变量以及函数才会成为对象的属性，而`let/const`则不行
+在浏览器中，使用`var`定义的全局变量以及函数才会成为全局对象的属性，而`let/const`不行
 
 ## 属性配置
 
@@ -621,11 +620,9 @@ JavaScript 也有很多内置的 Symbol，可以用来微调对象的各个方�
 
 + `writable`：为`true`时，可以被修改，否则只是可读的
 + `enumerable`：为`true`时，可以被迭代，否则不能
-+ `configurable`：为`true`时，可以被删除
++ `configurable`：为`true`时，可以被删除，标志可以被修改
   
-通常为对象创建属性时，它们都默认为`true`
-
-如果想要获得属性的标志，就要用到`Object.getOwnPropertyDescriptor(obj, propertyName)`，它会返回一个描述该属性标志的对象
+通常为对象创建属性时，它们都默认为`true`。如果想要获得属性的标志，就要用到`Object.getOwnPropertyDescriptor(obj, propertyName)`，它会返回一个描述该属性标志的对象
 
 ```js
 let foo = { name: 'foo' };
@@ -634,9 +631,9 @@ let descriptor = Object.getOwnPropertyDescriptor(foo, 'name');
 console.log(descriptor); // { value: 'foo', writable: true, enumerable: true, configurable: true }
 ```
 
-Javascript 提供了`Object.defineProperty(obj, propertyName, descriptor)`来为一个对象定义属性
+JavaScript 提供了`Object.defineProperty(obj, propertyName, descriptor)`来为一个对象定义属性
 
-如果属性存在，就会更新标志，否则就会用给的值和标志来创建属性，没错，这是另一个为对象创建属性的方法，但是如果没有提供标志，那么默认为`false`
+如果属性存在，就会更新标志，否则就会用所给的值和标志来创建属性。没错，这是另一个为对象创建属性的方法，如果没有提供标志，那么默认为`false`
 
 ```js
 let foo = {};
@@ -651,7 +648,7 @@ console.log(descriptor); // { value: 'foo', writable: false, enumerable: false, 
 
 现在看看当标志对属性的影响
 
-当`writable:false`时，属性值是一种只读状态，是无法修改的，没有人能够修改它，除非再次使用`defineProperty`覆盖
+当`writable:false`时，属性值是一种只读状态，是无法修改的，除非再次使用`defineProperty`覆盖
 
 ```js
 let foo = { name: 'foo' };
@@ -671,7 +668,7 @@ console.log(foo); // { name: 'foo' }
 另外，在非严格模式下是不会出现报错的，只是会默默的忽略掉
 :::
 
-这是`enumerable:false`的情况，通常内置的`toString`是不会被枚举出来的，但是如果自定义了`toString`，就会被枚举，如果不想被枚举，那么该标志就派上了用场
+这是`enumerable:false`的情况，通常内置的`toString`是不会被枚举出来的，如果自定义了`toString`，就会被枚举。如果不想被枚举，该标志就派上了用场
 
 ```js
 let foo = {
@@ -703,7 +700,7 @@ Object.defineProperty(foo, 'name', {
 }); // TypeError: Cannot redefine property: name
 ```
 
-一旦`configurable:false`时，这个属性标识就不能够再改变了，连覆盖都不行，可以用来创建一个“永不可变”的属性
+一旦`configurable:false`时，这个属性标志就不能够再改变了，连覆盖都不行，可以用来创建一个“永不可变”的属性
 
 ```js
 let foo = { name: 'foo' };
@@ -724,16 +721,16 @@ Object.defineProperty(foo, 'name', {
 
 对象属性有两种类型，一个是数据属性，还有一个是访问器属性
 
-访问器属性由“getter”和“setter”方法表示，通常用`get`和`set`声明
+访问器属性由“getter”和“setter”方法表示，使用`get`和`set`声明
 
 ```js
 let user = {
   firstName: 'f',
   lastName: 'oo',
-  get fullName(){
+  get fullName() {
     return this.firstName + this.lastName;
   },
-  set fullName(value){
+  set fullName(value) {
     [this.firstName, this.lastName] = value.split(' ');
   }
 };

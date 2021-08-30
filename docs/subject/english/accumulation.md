@@ -1,7 +1,7 @@
 ---
-title: 词汇和短语的积累
+title: 一些积累
 category: 学科
-tag: 英语
+tags: 英语
 author: JQiue
 article: false
 ---
@@ -25,7 +25,7 @@ be -> been
 see -> seen
 ```
 
-不规则复数变化：
+复数不规则变化：
 
 ```plain
 man -> men

@@ -1,8 +1,9 @@
 ---
 title: Map 和 Set
 category: 编程语言
-tag: JavaScript
+tags: [JavaScript, Alpha]
 author: JQiue
+article: false
 ---
 
 ## Map
@@ -69,7 +70,7 @@ set.add('foo');
 set.add('bar');
 set.add('qux');
 
-for (const i of set){
+for (const i of set) {
   console.log(i);
 }
 ```

@@ -1,6 +1,9 @@
 ---
 title: 后端数据模拟：Mock.js
+category: Web
+tags: [测试, Alpha]
 author: JQiue
+article: false
 ---
 
 Mock.js 是一种模拟 JSON 数据的前端技术，目的是为了解决后端 API 没有上线，而前端没有数据进行填充的问题，使用 Mock 可以生成大量的测试数据，让前端专注于自己

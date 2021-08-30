@@ -1,6 +1,7 @@
 ---
 title: 查找
-tag: 算法
+category: 算法
+tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -35,7 +36,7 @@ int linearSearch(int *list, int value, int size) {
 </CodeGroupItem>
 
 <CodeGroupItem title="javascript">
-```javascript
+```js
 ```
 </CodeGroupItem>
 
@@ -81,7 +82,7 @@ int binarySearch(int *list, int value, int size) {
 </CodeGroupItem>
 
 <CodeGroupItem title="javascript">
-```javascript
+```js
 ```
 </CodeGroupItem>
 

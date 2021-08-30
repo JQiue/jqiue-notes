@@ -1,7 +1,7 @@
-const computer_basic = module.exports = [
+const computer_basic = [
   '',
   {
-    title: '计算机组成',
+    title: '计算机组成原理',
     prefix: '/computer-basic/organization/',
     collapsable: false,
     children: [
@@ -10,7 +10,7 @@ const computer_basic = module.exports = [
     ]
   },
   // {
-  //   title: '操作系统',
+  //   title: '操作系统原理',
   //   prefix: '/computer-basic/os/',
   //   collapsable: false,
   //   children: [
@@ -26,14 +26,15 @@ const computer_basic = module.exports = [
       'regular-grammars-and-finite-automata',
     ]
   },
-  // {
-  //   title: '计算机网络',
-  //   prefix: '/computer-basic/network/',
-  //   collapsable: false,
-  //   children: [
-  //     'basic', 
-  //   ]
-  // }
+  {
+    title: '计算机网络原理',
+    prefix: '/computer-basic/network/',
+    collapsable: false,
+    children: [
+      'basic', 
+      'http', 
+    ]
+  }
 ];
 
 const language = [
@@ -50,6 +51,7 @@ const language = [
       'struct-union', 
       'preprocessing', 
       'memory-allocation',
+      'storage-classes',
       'file',
       'input-memory-buffer',
     ]
@@ -86,6 +88,7 @@ const language = [
       'promise-async-await',
       'proxy-reflect',
       'module',
+      'event-loop',
       'built-object',
       'regex',
       'code-quality',
@@ -119,11 +122,13 @@ const ds_algorithm = [
     prefix: '/ds-algorithm/ds/',
     collapsable: false,
     children: [
-      'ds',
-      'array', 
-      'linklist',
+      'basic',
+      'list',
       'stack',
       'queue',
+      'array-string',
+      'tree',
+      'graph',
     ]
   }, 
   {
@@ -132,7 +137,7 @@ const ds_algorithm = [
     collapsable: false,
     children: [
       'basic',
-      'search',
+      'find',
       'sort',
     ]
   }
@@ -155,8 +160,29 @@ const database = [
     collapsable: false,
     children: [
       'mongodb',
+      'redis',
     ]
   }
+];
+
+const operating_system = [
+  '',
+  {
+    title: 'Windows',
+    prefix: '/operating-system/windows/',
+    collapsable: false,
+    children: [
+      'basic',
+    ]
+  },
+  {
+    title: 'Linux',
+    prefix: '/operating-system/linux/',
+    collapsable: false,
+    children: [
+      'basic',
+    ]
+  },
 ];
 
 const application = {
@@ -167,13 +193,12 @@ const application = {
       prefix: 'html-css/',
       collapsable: false,
       children: [
-        'html-basic', 
-        'html-element', 
-        'css-basic', 
+        'basic', 
+        'elements', 
         'box-model', 
         'selectors', 
         'css-syntax', 
-        'css-layout', 
+        'layout', 
         'value', 
         'reset-css-style', 
         'responsive-design', 
@@ -232,6 +257,11 @@ const application = {
   ],
   backend: [
     '',
+    'interface-design',
+    'middleware',
+    'Persistence',
+    'function',
+    'deploy',
   ],
   desktop: [
     '',
@@ -263,10 +293,9 @@ const subject = [
     prefix: "math/",
     collapsable: false,
     children: [
-      'set',
-      'sufficient-and-necessary-condition',
-      'inequality',
-      'function',
+      'basic',
+      'elementary',
+      'higher',
     ]
   }
 ];
@@ -280,12 +309,15 @@ const sundry = [
     prefix: 'share/',
     collapsable: false,
     children: [
-      '1',
-      '2',
-      '3',
-      '4',
-      '5',
-      '6',
+      'three-filtering-principles',
+      'trick',
+      'cannikin-law',
+      'excel',
+      'internet-work',
+      'adb',
+      'design-pattern',
+      'markdown',
+      'latex',
     ]
   }
 ];
@@ -295,6 +327,7 @@ module.exports = {
   "/language/": language,
   "/ds-algorithm/": ds_algorithm,
   "/database/": database,
+  "/operating-system/": operating_system,
   "/application/web/": application.web,
   "/application/backend/": application.backend,
   "/application/desktop/": application.desktop,
