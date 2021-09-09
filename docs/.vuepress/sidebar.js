@@ -31,8 +31,8 @@ const computer_basic = [
     prefix: '/computer-basic/network/',
     collapsable: false,
     children: [
-      'basic', 
-      'http', 
+      'basic',
+      'http',
     ]
   }
 ];
@@ -44,12 +44,12 @@ const language = [
     prefix: '/language/c/',
     collapsable: false,
     children: [
-      'basic', 
-      'syntax', 
-      'array-string', 
-      'pointer', 
-      'struct-union', 
-      'preprocessing', 
+      'basic',
+      'syntax',
+      'array-string',
+      'pointer',
+      'struct-union',
+      'preprocessing',
       'memory-allocation',
       'storage-classes',
       'file',
@@ -61,11 +61,10 @@ const language = [
     prefix: '/language/java/',
     collapsable: false,
     children: [
-      'basic', 
-      'syntax', 
-      'oop', 
-      'interface', 
-      'javaweb', 
+      'basic',
+      'syntax',
+      'oop',
+      'interface',
     ]
   },
   {
@@ -193,16 +192,16 @@ const application = {
       prefix: 'html-css/',
       collapsable: false,
       children: [
-        'basic', 
-        'elements', 
-        'box-model', 
-        'selectors', 
-        'css-syntax', 
-        'layout', 
-        'value', 
-        'reset-css-style', 
-        'responsive-design', 
-        'better-code', 
+        'basic',
+        'elements',
+        'box-model',
+        'selectors',
+        'css-syntax',
+        'layout',
+        'value',
+        'reset-css-style',
+        'responsive-design',
+        'better-code',
         'emmet',
       ]
     },
@@ -230,9 +229,9 @@ const application = {
       prefix: 'vue/',
       collapsable: false,
       children: [
-        'start', 
-        'directive', 
-        'compute-listener-filter', 
+        'start',
+        'directive',
+        'compute-listener-filter',
         'component',
         'slot',
         'vuex',
@@ -248,8 +247,8 @@ const application = {
       prefix: 'nodejs/',
       collapsable: false,
       children: [
-        'basic', 
-        'api', 
+        'basic',
+        'api',
         'npm',
         'webpack',
       ]
@@ -318,6 +317,7 @@ const sundry = [
       'design-pattern',
       'markdown',
       'latex',
+      'tomcat',
     ]
   }
 ];
