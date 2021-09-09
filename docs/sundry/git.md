@@ -3,6 +3,7 @@ title: Git 指南
 category: 版本控制
 tags: [Git, Alpha]
 author: JQiue
+article: false
 ---
 
 Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具
@@ -57,6 +58,8 @@ git config --global user.email 'your_email@domian.com'
 + `local`：对某个仓库有效，当缺省的时候默认为`local`，优先级最高
 + `global`：对当前用户所有仓库有效，优先级次之
 + `system`：对系统所有登陆的用户有效，优先级最低
+
+使用`git config -e`会弹出一个编辑文本来编辑`config`文件
 
 ## 初始化 Git 库
 
@@ -206,7 +209,7 @@ Date:   Mon Sep 6 14:04:25 2021 +0800
 
 分支是 Git 最重要的功能，代码库应该有且只有一个主分支，所有的正式版本都会在这个分支下进行发布
 
-Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在这个分支下的，想要查看当前的分支可以使用`git branch`，它会列出所有的分支，并且用`*`表示当前处于的分支
+Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在这个分支下的，想要查看当前的分支可以使用`git branch`，它会列出所有的本地分支，并且用`*`表示当前处于的分支，增加额外的`-a`参数可以查看本地和远程的所有分支
 
 主分支只用来发布重大的版本，但是一般的日常开发都会在零一条分支上完成。使用`git branch <branch_name>`即可创建一个新的分支，使用`git checkout <branch_name>`即可切换到指定的分支下，当然也可以使用`git checkout -b <branch_name>`命令创建分支的同时进行切换
 
@@ -250,6 +253,8 @@ Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在
 
 如果想要删掉标签，可以使用`git tag -d <tagname>`
 
+当将本地仓库推送到远程仓库时，并不会携带标签一起推送，因此需要单独为标签进行推送操作，使用`git push origin --tags`会推送所有的标签
+
 ## 别名的用法
 
 Git 允许设置一些命令的别名以简化使用，它的命令大致是这样的`git config --global alias.[name] [command_name]`，是的，它具有作用域。这种别名的方式根据每个人的使用习惯而有所不同，可以在项目开始前作为统一的项目规则指定下来，提高沟通效率
@@ -287,6 +292,19 @@ Github 是用于存放使用 Git 版本控制的软件代码和内容项目的�
 8. ...
 
 Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面
+
+## 远程仓库的推送和拉取
+
+## 让 git 走 Clash 代理
+
+由于各种不为人知的原因，在国内使用 Git 推送以及拉取 Github 仓库时总是产生莫名其妙的网络原因导致失败，因此必须给 Git 安排一下代理。Git 有 HTTP 和 SSH 两种协议推送到远程仓库，这里介绍的是 Clash 代理的用法，首先需要确定 Clash 的访问端口，然后打开 Git 的`config`文件加上这样一行话：
+
+```
+[core]
+  gitproxy = socks5://127.0.0.1:10808
+```
+
+默认的 Clash 端口都是`10808`，所以这里要填写成一样的，这个时候进行推送或拉取操作都会走 Clash，实在是快乐，这里并不想解释 socks5 是啥玩意，就是这么任性
 
 ## 提交规范
 
@@ -476,21 +494,21 @@ The key's randomart image is:
 
 当问题选择完毕时，会在用户目录`(C:\Users\***\.ssh)`下生成公钥和私钥
 
-![1](http://qs0jixwj6.hn-bkt.clouddn.com/git-4-1.png)
+![ssh-1](./images/git-ssh-1.png)
 
 ### 配置远程仓库的公钥
 
 以 Github 为例，进入`Settings`，找到`SSH and GPG keys`选项
 
-![2](http://qs0jixwj6.hn-bkt.clouddn.com/git-4-2.png)
+![ssh-2](./images/git-ssh-2.png)
 
 点击`New SSH key`，打开公钥文件将字符串粘贴到到对应的输入框中，点击`Add SSH key`
 
-![3](http://qs0jixwj6.hn-bkt.clouddn.com/git-4-3.png)
+![ssh-3](./images/git-ssh-3.png)
 
 这时 Github 会要求输入密码确认一次，验证完成后即可看到公钥添加成功
 
-![4](http://qs0jixwj6.hn-bkt.clouddn.com/git-4-4.png)
+![ssh-4](./images/git-ssh-4.png)
 
 接下来只要使用 SSH 地址进行推送就行了，SSH 链接也是可以起别名的
 

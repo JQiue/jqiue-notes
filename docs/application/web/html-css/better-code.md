@@ -222,7 +222,7 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 
 在HTML5中元素的分类已经不是按照块级元素和行内元素来分了，而是按照如下分类来分：**Flow（流式元素）、Heading（标题元素）、Sectioning（章节元素）、Phrasing（段落元素）、Embedded（嵌入元素）、Interactive（交互元素）、Metadata（元数据元素）**
 
-![1](http://qs0jixwj6.hn-bkt.clouddn.com/web-html-5.jpg)
+![better-code-1](../../images/better-code-1.jpg)
 
 + Flow（流式元素）:在应用程序和文档的主体部分中使用的大部分元素都被分类为流式元素
 
