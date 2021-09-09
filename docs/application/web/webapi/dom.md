@@ -171,7 +171,6 @@ console.log( document.body instanceof EventTarget ); // true
   </script>
 </body>
 
-</html>
 <!-- 
 得到这样的文本内容：
 

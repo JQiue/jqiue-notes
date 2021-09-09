@@ -1,10 +1,9 @@
 ---
-title: JavaWeb
+title: Tomcat 
 category: 编程语言
-tags: [Java, Alpha]
+tags: [Java, Tomcat, Servlet, JSP, Alpha]
 author: JQiue
 article: false
-next: false
 ---
 
 ## Tomcat

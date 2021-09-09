@@ -56,21 +56,21 @@ HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发�
 ```js
 let elem = document.getElementById('event-example1');
 elem.onclick = function () {
-  alert('单击事件触发了')
-}
+  alert('单击事件触发了');
+};
 ```
 
 ::: demo DOM 元素的事件属性
 
 ```html
-<button id="event-example1">click</button>
+<button id="event-example1">click me</button>
 ```
 
 ```js
 let elem = document.getElementById('event-example1');
 elem.onclick = function () {
   alert('单击事件触发了');
-}
+};
 ```
 
 :::
@@ -102,7 +102,7 @@ elem.addEventListener('click', eventHandler, false);
 ::: demo addEventListener 方法
 
 ```html
-<button id="event-example2">click</button>
+<button id="event-example2">click me</button>
 ```
 
 ```js
@@ -120,19 +120,29 @@ elem.addEventListener('click', eventHandler, false);
 
 当 DOM 中某个事件被触发时，会同时产生一个描述事件相关信息的对象（触发事件的元素，鼠标的的位置，键盘的状态等等），这个对象就是 event，它通常被当作参数传递给事件处理函数
 
+```html
+<body>
+  <button id="btn">click</button>
+  <script>
+    btn.addEventListener('click', event => {
+      console.log(event);
+    });
+  </script>
+</body>
+```
+
 ::: demo event
 
 ```html
-<button id='event-example3'>单击事件</button>
+<button id='event-example3'>click me</button>
 ```
 
 ```js
-function eventHandler(event) {
-  alert('事件类型：' + event.type);
-}
 
 let elem = document.getElementById('event-example3');
-elem.addEventListener('click', eventHandler, false);
+elem.addEventListener('click', event => {
+  alert('事件类型：' + event.type);
+}, false);
 ```
 
 :::
@@ -174,15 +184,19 @@ elem.addEventListener('click', eventHandler, false);
 
 :::
 
-通过实验得知，鼠标无论点击到了哪一层元素，事件会从该层开始依次向上层触发，DOM 事件模型分为捕获和冒泡，一个事件发生后，会在元素之间进行传播，这种传播分为三个阶段：
+通过实验得知，鼠标无论点击到了哪一层元素，事件会从该层开始依次向上层触发。DOM 事件模型分为捕获和冒泡，一个事件发生后，会在元素之间进行传播，这种传播分为三个阶段：
 
-+ 捕获阶段：事件从最顶层开始向下传播的阶段
-+ 目标阶段：真正目标节点正在处理事件的阶段
-+ 冒泡阶段：事件从目标节点向上传播的阶段
++ 捕获阶段：从最顶层（window）开始向下传播到目标元素
++ 目标阶段：真正到达目标元素
++ 冒泡阶段：从目标元素向最顶层传播
 
 事件冒泡是 IE 的事件流，事件由具体的元素开始触发，然后逐级向上传播，而事件捕获是网景公司提出的，和 IE 的事件流正好相反。直到 W3C 发布标准后，浏览应该同时支持两种调用顺序，首先从捕获阶段开始到目标阶段，再由目标阶段到冒泡阶段结束，这就是所谓的**先捕获再冒泡**
 
-冒泡是默认的事件流，但是可以设置`addEventListener(eventType, handler, true)`第三个参数为`true`，来设置成捕获阶段
+::: tip
+几乎所有的事件都会冒泡，但有些例外，比如`focus`
+:::
+
+冒泡是默认的事件流，但是可以设置`addEventListener(eventType, handler, true)`第三个参数为`true`变为捕获阶段
 
 ::: demo 事件捕获
 
@@ -214,19 +228,19 @@ elem.addEventListener('click', eventHandler, false);
 ```
 
 ```js
-let foo = document.getElementById('foo-example');
-let bar = document.getElementById('bar-example');
-let qux = document.getElementById('qux-example');
+let foo = document.querySelector('#foo-example');
+let bar = document.querySelector('#bar-example');
+let qux = document.querySelector('#qux-example');
 
-foo.addEventListener('click', function () {
+foo.addEventListener('click', () => {
   alert('我是 foo');
 }, true);
 
-bar.addEventListener('click', function () {
+bar.addEventListener('click', () => {
   alert('我是 bar');
 }, true);
 
-qux.addEventListener('click', function () {
+qux.addEventListener('click', () => {
   alert('我是 qux');
 }, true);
 ```
@@ -268,7 +282,30 @@ qux.addEventListener('click', function () {
 
 ## 事件委托
 
-事件委托也叫事件代理，指的是目标元素并不处理事件，而是由父元素来处理，利用了事件冒泡机制和事件产生的事件对象来实现，这种方式减少了事件注册，节省了大量的内存，还可以为新增的子元素实现动态的事件绑定
+事件委托也叫事件代理，指的是目标元素并不处理事件，而是由父元素来处理，利用了事件冒泡机制和事件产生的事件对象来实现。这种方式减少了事件注册，节省了大量的内存，还可以为新增的子元素实现动态的事件绑定
+
+```html
+<body>
+  <div id="father">
+    <h1>子元素 1</h1>
+    <p>子元素 2</p>
+    <span>子元素 3</span>
+  </div>
+  <script>
+    father.addEventListener('click', event => {
+      if (event.target.nodeName === 'H1'){
+        console.log('子元素1');
+      } 
+      if (event.target.nodeName === 'P'){
+        console.log('子元素2');
+      }
+      if (event.target.nodeName === 'SPAN'){
+        console.log('子元素3');
+      }
+    });
+  </script>
+</body>
+```
 
 ::: demo 事件委托
 
@@ -281,7 +318,7 @@ qux.addEventListener('click', function () {
 ```
 
 ```js
-document.getElementById('father').addEventListener('click', function (event) {
+document.querySelector('#father').addEventListener('click', event => {
   if (event.target.nodeName === 'H1'){
     alert('子元素1');
   } 
@@ -302,9 +339,69 @@ document.getElementById('father').addEventListener('click', function (event) {
 事件委托应该看情况使用，不是所有的事件都应该委托，否则会产生事件误判的问题，本不应该触发的事件却被触发了
 :::
 
-## 自定义事件
+::: demo 树形菜单练习
 
-HTML 中不仅提供了很多内建事件，还提供了一个事件构造器`Event(type, otiions)`来自定义自己的事件类型，它有两个参数：
+```html
+<ul class="tree" id="tree">
+  <li><span>一</span>
+    <ul>
+      <li><span>1</span>
+        <ul>
+          <li>(1)</li>
+          <li>(2)</li>
+          <li>(3)</li>
+          <li>(4)</li>
+        </ul>
+      </li>
+      <li><span>2</span>
+        <ul>
+          <li>(1)</li>
+          <li>(2)</li>
+          <li>(3)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><span>二</span>
+    <ul>
+      <li><span>1</span>
+        <ul>
+          <li>(1)</li>
+          <li>(2)</li>
+        </ul>
+      </li>
+      <li><span>2</span>
+        <ul>
+          <li>(1)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+```
+
+```js
+let tree = document.querySelector('#tree');
+tree.addEventListener('click', event => {
+  if(event.target.nodeName === 'SPAN') {
+    event.target.nextElementSibling.hidden = !event.target.nextElementSibling.hidden;
+  }
+});
+```
+
+```css
+.tree span:hover {
+  color: red;
+  cursor: pointer;
+  font-weight: 600;
+}
+```
+
+:::
+
+## 事件构造器
+
+HTML 中不仅提供了很多内建事件，还提供了一个事件构造器`Event(type, otiions)`来生成用于自身目的而创建的全新事件，也可以生成`click`这种内置的事件，它有两个参数：
 
 + `type`：事件类型，可以是`click`这样的字符串，也可以是自己定义的`myclick`
 + `options`：有两个可选属性的对象，`bubbles: true/false`，为`true`时会冒泡，`cancelable: true/false`，为`true`时会阻止默认行为。默认情况下两者都为`false`
@@ -328,11 +425,29 @@ elem.addEventListener('hello', e => {
   console.log('hello');
 })
 
-// 定义自定义事件 hello
+// 构造自定义事件 hello
 let event = new Event('hello');
 
 // 触发自定义事件
 elem.dispatchEvent(event);
+```
+
+## 自定义事件
+
+对于全新的事件类型应该使用`CustomEvent`，它和`Event`没什么太多的不同，只有一点不一样，第二参数额外多了一个属性`detail`，这个属性可以传递任何自定义的信息
+
+```html
+<body>
+  <button id="btn">click me</button>
+  <script>
+    btn.addEventListener('foo', event => {
+      console.log(event.detail); // {name: "foo"}
+    });
+    btn.dispatchEvent(new CustomEvent('foo', {
+      detail: { name: 'foo' }
+    }));
+  </script>
+</body>
 ```
 
 ## 事件的同步处理
@@ -352,16 +467,39 @@ elem.dispatchEvent(event);
 </script>
 ```
 
-::: demo
+::: demo 同步处理的事件
 
 ```html
 <button id="btn">click me</button>
 ```
 
 ```js
+let btn = document.querySelector('#btn');
 btn.onclick = function() {
   alert(1);
   btn.dispatchEvent(new CustomEvent('btn-click'));
+  alert(2);
+};
+
+// 在 1 和 2 之间触发
+btn.addEventListener('btn-click', () => alert('btn-click handler'));
+```
+
+:::
+
+如果在某些情况下，这个事件是可以冒泡的，那么它将广播到`document`上，沿途触发的事件同样会被同步的方式处理，这可能不是想要的结果，最好优先处理自己的事件，只要将这个事件移动到优先处理的事件后面或者将它变成异步的事件来解决它
+
+::: demo 异步处理的事件
+
+```html
+<button id="btn">click me</button>
+```
+
+```js
+let btn = document.querySelector('#btn');
+btn.onclick = function() {
+  alert(1);
+  setTimeout(() => btn.dispatchEvent(new CustomEvent("btn-click", { bubbles: true })));
   alert(2);
 };
 

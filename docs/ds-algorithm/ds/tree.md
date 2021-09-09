@@ -37,32 +37,21 @@ article: false
 2. 二叉树：任意节点的度最多两个
 3. 森林：由 m（m ≥ 0）棵互不相交的树组成的集合
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
-```c
-```
-
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 二叉树
 
 二叉树的左子树和右子树是有顺序的，即使某个节点只有一个子树，也要区分左右，所以二叉树是一种有序树
 
 二叉树的性质：
 
-1. 非空二叉树的第 i 层，最多有 2^2-i^ 个节点
-2. 高度为 h 的二叉树上最多有 2^h^ - 1 个节点
-3. 任意一棵二叉树，若度为 2 的节点有 n2 个则叶子树必定为 n2 + 1
++ 非空二叉树的第 i 层，最多有 2^2-i^ 个节点
++ 高度为 h 的二叉树上最多有 2^h^ - 1 个节点
++ 任意一棵二叉树，若度为 2 的节点有 n2 个则叶子树必定为 n2 + 1
 
 二叉树的分类：
 
-1. 真二叉树：所有节点的度要么是 0，要么是 2，没有度为 1 的节点的树叫做真二叉树
-2. 满二叉树：所有节点的度要么是 0，要么是 2，但是所有的叶子节点都在最后一层的树叫满二叉树
-3. 完全二叉树：叶子节点只会出现最后 2 层，且最后 1 层的叶子节点都是向左靠齐的树叫完全二叉树
++ 真二叉树：所有节点的度要么是 0，要么是 2，没有度为 1 的节点
++ 满二叉树：所有节点的度要么是 0，要么是 2，但是所有的叶子节点都在最后一层
++ 完全二叉树：叶子节点只会出现最后 2 层，且最后 1 层的叶子节点都是向左靠齐
 
 在同样高度的树中，满二叉树的叶子节点数量最多，总节点数最多，满二叉树一定是真二叉树，但真二叉树不一定是满二叉树
 
@@ -70,11 +59,135 @@ article: false
 
 性质：
 
-1. 度为 1 的节点只有左子树
-2. 度为 1 的节点要么是 1 个，要么是 0 个
-3. 同样节点数量的二叉树，完全二叉树的高度最小
-4. 假如高度为 h，那么至少有 2^h-1^ 个节点，最多有 2^h^ - 1 个节点（满二叉树）
++ 度为 1 的节点只有左子树
++ 度为 1 的节点要么是 1 个，要么是 0 个
++ 同样节点数量的二叉树，完全二叉树的高度最小
++ 假如高度为 h，那么至少有 2^h-1^ 个节点，最多有 2^h^ - 1 个节点（满二叉树）
+
+### 二叉搜索树的实现
+
+二叉搜索树的定义如下：
+
++ 任意节点的值都大于其左子树所有节点的值
++ 任意节点的值都小于其右子树所有节点的值
++ 左右子树本身也是一颗二叉搜索树
+
+<CodeGroup>
+
+<CodeGroupItem title="C" active>
+
+```c
+#include "stdio.h"
+#include "stdlib.h"
+
+#define OK 1
+#define ERROR 0
+
+typedef int Status;
+typedef int DataType;
+
+typedef struct Node
+{
+  DataType data;
+  struct Node *left;
+  struct Node *right;
+} Node;
+
+Status initRoot(Node **, DataType);
+Status isEmpty(Node *);
+Status clear(Node **);
+Status insert(Node **, DataType);
+Status traverse(Node *);
+
+int main(void)
+{
+  Node *root = NULL;
+  return 0;
+}
+
+/* 初始化根节点 */
+Status initRoot(Node **node, DataType data)
+{
+  *node = (Node *)malloc(sizeof(Node));
+  if (*node == NULL)
+  {
+    return ERROR;
+  }
+  (*node)->data = data;
+  (*node)->left = NULL;
+  (*node)->right = NULL;
+  return OK;
+}
+
+/* 插入节点 */
+Status insert(Node **root, DataType data)
+{
+  /* 如果没有初始化根节点就进行初始化 */
+  if (*root == NULL)
+  {
+    initRoot(root, data);
+    return OK;
+  }
+  Node *node = *root;
+  Node *parent = NULL;
+  /* 寻找父节点 */
+  while (node != NULL)
+  {
+    // 保存父节点
+    parent = node;
+    // 和当前节点进行比较，小就往左，大就往右，相等就覆盖
+    if (data < node->data)
+    {
+      node = node->left;
+    }
+    else if (data > node->data)
+    {
+      node = node->right;
+    }
+    else
+    {
+      node->data = data;
+      return OK;
+    }
+  }
+  /* 判断插入到父节点的哪个位置 */
+  if (data < parent->data)
+  {
+    // 创建节点
+    parent->left = (Node *)malloc(sizeof(Node));
+    // 初始化节点
+    parent->left->data = data;
+    parent->left->left = NULL;
+    parent->left->right = NULL;
+  }
+  else
+  {
+    // 创建节点
+    parent->right = (Node *)malloc(sizeof(Node));
+    // 初始化节点
+    parent->right->data = data;
+    parent->right->left = NULL;
+    parent->right->right = NULL;
+  }
+}
+
+/* 前序遍历（DLR）的递归实现，只需要改变打印函数的位置就可以相应的实现中序、后序遍历 */
+Status traverse(Node *root){
+  if(root == NULL){
+    return ERROR;
+  }
+  printf("%d ", root->data);
+  traverse(root->left);
+  traverse(root->right);
+}
+```
+
+</CodeGroupItem>
+
+</CodeGroup>
 
 ## B 树
 
 ## 堆
+
+## 红黑树
