@@ -23,7 +23,7 @@ const computer_basic = [
     collapsable: false,
     children: [
       'basic',
-      'regular-grammars-and-finite-automata',
+      'grammars-and-automata',
     ]
   },
   {
@@ -202,7 +202,6 @@ const application = {
         'reset-css-style',
         'responsive-design',
         'better-code',
-        'emmet',
       ]
     },
     {
@@ -258,7 +257,7 @@ const application = {
     '',
     'interface-design',
     'middleware',
-    'Persistence',
+    'persistence',
     'function',
     'deploy',
   ],
@@ -318,6 +317,7 @@ const sundry = [
       'markdown',
       'latex',
       'tomcat',
+      'emmet',
     ]
   }
 ];

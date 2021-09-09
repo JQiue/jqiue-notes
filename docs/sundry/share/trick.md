@@ -1,7 +1,7 @@
 ---
 title: 一些花招
 category: 知识分享
-tags: [技巧, Alpha]
+tags: [技巧, Beta]
 time: 2019-05-10
 author: JQiue
 ---
@@ -35,12 +35,12 @@ author: JQiue
 
 比如：我在计算机上输入这些：
 
-![beforeCe](http://qs0jixwj6.hn-bkt.clouddn.com/beforeCe.png)
+![beforeCe](../images/beforeCe.png)
 
 CE 按钮会做这些：
 
-![afterCe](http://qs0jixwj6.hn-bkt.clouddn.com/afterCe.png)
+![afterCe](../images/afterCe.png)
 
 而 C 按钮会做这些：
 
-![afterC](http://qs0jixwj6.hn-bkt.clouddn.com/afterC.png)
+![afterC](../images/afterC.png)

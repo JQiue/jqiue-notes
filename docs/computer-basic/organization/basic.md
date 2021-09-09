@@ -19,7 +19,7 @@ article: false
 那么总结来说，计算机组成研究的是计算机中的部件之间的连接关系和相互关系，以及它们之间的工作原理
 
 ::: center
-![1](http://qs0jixwj6.hn-bkt.clouddn.com/basic-organization-1.png)
+![organization-1](../images/organization-basic-1.png)
 :::
 
 到底是学什么呢？其实有点像装电脑
@@ -61,7 +61,7 @@ CPU 是电脑中最核心的硬件，它的全名叫做中央处理器（Central
 ENIAC 是 1946 年在美国宾夕法尼亚大学制成的，但实际上真正意义上的第一台计算机是阿塔纳索夫-贝瑞计算机，ENIAC 发明者是从阿塔纳索夫继承了电子数字计算机的主要设计构想，因此阿塔纳索夫-贝瑞计算机是世界上第一台计算机，而 ENIAC 是通用的第一台电子数字计算机，因为 ENIAC 是可编程的计算机
 
 ::: center
-![2](http://qs0jixwj6.hn-bkt.clouddn.com/basic-organization-2.jpg)
+![organization-basic-2](../images/organization-basic-2.jpg)
 :::
 
 ## 计算机的分类
@@ -73,7 +73,7 @@ ENIAC 是 1946 年在美国宾夕法尼亚大学制成的，但实际上真正�
 专业计算机是最有效，最经济和最快速的计算机，但是他的适应性很差，通用计算机适应性很强，但是牺牲了效率，速度和经济型，通用计算机又可以分为超级计算机，大型机，服务器，PC 机，单片机和多核机，他们的区别在于体积，简易性，功耗，性能，数据存储容量，指令系统规模和机器价格
 
 ::: center
-![3](http://qs0jixwj6.hn-bkt.clouddn.com/basic-organization-3.png)
+![organization-basic-3](../images/organization-basic-3.png)
 :::
 
 + 个人计算机：通常对个人用户来讲提供良好的性能，且价格低廉
