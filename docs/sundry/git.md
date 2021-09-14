@@ -225,7 +225,7 @@ Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在
 
 > 来源自 [https://nvie.com/posts/a-successful-git-branching-model/](https://nvie.com/posts/a-successful-git-branching-model/)
 
-根据上图，我们知道每个开发人员都要熟悉`master`和`develop`这两个主要的分支，它们拥有无限的寿命。
+根据上图，我们知道每个开发人员都要熟悉`master`和`develop`这两个主要的分支，它们拥有无限的寿命
 
 且在主要的分支旁边还可以使用其他类型的辅助分支，这三种分支都是临时性的，用完后就应该删除：
 
@@ -247,13 +247,15 @@ Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在
 一个记录可以打多个标签
 :::
 
-如果想要对过去的历史记录打标签，可以使用`git tag <tagname> commitID`命令
+如果想要对过去的历史记录打标签，可以使用`git tag <tagname> <commitID>`命令
 
 `git tag <tagname>`只是单独打的一个轻量标签，它只是某个提交的引用，而增加额外的`-a`参数就会变成附注标签，也还需要一个`-m`参数描述一下该标签的信息，当使用`git show`访问这个标签时得到的信息会更加详细
 
 如果想要删掉标签，可以使用`git tag -d <tagname>`
 
-当将本地仓库推送到远程仓库时，并不会携带标签一起推送，因此需要单独为标签进行推送操作，使用`git push origin --tags`会推送所有的标签
+在默认情况下，`git push`命令不会将标签推送到远程仓库，因此需要单独为标签进行推送操作，使用`git push <remote> --tags`会推送所有的标签，如果单独推送某个标签就使用`git push <remote> <tagname>`
+
+同样的，删除本地标签的命令不会影响远程仓库，如果想要删除远程仓库上的标签，应该使用`git push <remote> --delete <tagname>`
 
 ## 别名的用法
 

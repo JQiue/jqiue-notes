@@ -12,7 +12,7 @@ sticky: true
 + QQ：861947542
 + 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：wjqis.me
++ 目前使用的站点域名：wjqis.me，jinqiu.wang
 
 ## 这个人会什么
 
@@ -135,7 +135,6 @@ sticky: true
     + Docker（正在学习）:star:
     + 代码质量（正在学习）:star:
     + 正则表达式（正在学习）:star::star:
-    + 源码分析（正在学习）:star:
     + 设计和交互（正在学习）:star:
     + 性能调优（正在学习）:star:
     + 分布式（正在学习）:star:

@@ -121,4 +121,27 @@ url = https://github.com/username/repo.git
 
 原因：这是因为某些东西挡住了 Git 与 Github 之间的连接  
 解决1：给 Git 配置代理  
-解决2：尝试 HTTPS 协议推送，而不是 SSH
+解决2：尝试 HTTPS 协议推送，而不是 SSH  
+解决3：尝试改变网络环境，比如使用移动热点尝试，或切换网络运营商
+
+## 某些程序在终端中输出的中文是乱码
+
+原因：输出程序和终端编码不一致  
+解决1：改变输出程序的编码方式  
+解决2：改变终端编码方式
+
+比如国内 Windows 的终端编码都是 GBK，只要在终端中输入`chcp`，就会显示：
+
+```sh
+活动代码页: 936
+```
+
+这个`936`就代表着中文编码，输出其它编码形式的中文时自然会出现乱码，比如要输出的中文是`utf-8`，在终端中改变使用`chcp 65001`就会变成`utf-8`形式：
+
+```sh
+Active code page: 65001
+```
+
+注意这只是临时的，只对本次终端程序有效，启动新的终端还是`936`
+
+> 更多受支持的[代码页](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/chcp)
