@@ -180,6 +180,8 @@ const operating_system = [
     collapsable: false,
     children: [
       'basic',
+      'vim',
+      'shell',
     ]
   },
 ];
@@ -318,6 +320,7 @@ const sundry = [
       'latex',
       'tomcat',
       'emmet',
+      'master',
     ]
   }
 ];
