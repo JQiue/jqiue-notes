@@ -121,4 +121,36 @@ url = https://github.com/username/repo.git
 
 原因：这是因为某些东西挡住了 Git 与 Github 之间的连接  
 解决1：给 Git 配置代理  
-解决2：尝试 HTTPS 协议推送，而不是 SSH
+解决2：尝试 HTTPS 协议推送，而不是 SSH  
+解决3：尝试改变网络环境，比如使用移动热点尝试，或切换网络运营商
+
+## 某些程序在终端中输出的中文是乱码
+
+原因：输出程序和终端编码不一致  
+解决1：改变输出程序的编码方式  
+解决2：改变终端编码方式
+
+比如国内 Windows 的终端编码都是 GBK，只要在终端中输入`chcp`，就会显示：
+
+```sh
+活动代码页: 936
+```
+
+这个`936`就代表着中文编码，输出其它编码形式的中文时自然会出现乱码，比如要输出的中文是`utf-8`，在终端中改变使用`chcp 65001`就会变成`utf-8`形式：
+
+```sh
+Active code page: 65001
+```
+
+注意这只是临时的，只对本次终端程序有效，启动新的终端还是`936`
+
+> 更多受支持的[代码页](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/chcp)
+
+## 使用 SSH 连接 Linux 时出现：Permission denied, please try again
+
+原因：Linux 远程不允许使用 SSH 连接 ROOT 用户  
+解决：修改配置文件允许即可
+
+首先通过别的方式进入 Linux，然后`su`提权
+
+使用`vi /etc/ssh/sshd_config`打开配置文件，查看是否有`PermitRootLogin no`项，如果有就改成`PermitRootLogin yes`，按`ESC`退出编辑模式，输入`:w!`保存，输入`:q!`退出到命令行，并输入`service sshd restart`，然后就可以尝试使用 SSH 进行连接了
