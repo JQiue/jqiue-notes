@@ -22,4 +22,5 @@ project:
   - name: 资源和工具
     type: article
     link: /sundry/tools/
+footer: '<a href="https://beian.miit.gov.cn/" target="_blank">备案号：鄂ICP备2021016538号</a>'
 ---

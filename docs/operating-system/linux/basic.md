@@ -45,3 +45,38 @@ Windows 存在盘符的概念，而 Linux 没有盘符概念，只有一个根�
 ::: tip
 windows 的`cmd`和`powershell`是没有`ssh-copy-id`命令的，最好使用比如 git bash 这样的终端来操作
 :::
+
+如果被禁止 SSH 登录 ROOT 账户，则进入远程机采用下面操作：
+
+```sh
+sudo vim /etc/ssh/sshd_config
+```
+
+找到`PermitRootLogin prohibit-password`行并用`#`注释掉，新添加`PermitRootLogin yes`行，保存编辑退出，使用`sudo service ssh restart`就行了
+
+## 换源
+
+一般情况下，默认的软件源就足够使用了，但有时候的软件源比较慢，甚至会连接失败，所以需要换一些或内的源
+
+首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源
+
+然后`vim /etc/apt/sources.list`打开配置源文件，将内容全部替换为阿里云的源：
+
+```
+deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+```
+
+保存并退出就可以了

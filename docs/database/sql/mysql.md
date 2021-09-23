@@ -8,6 +8,37 @@ article: false
 
 ## 介绍
 
+## 安装
+
+Linux 下的安装方式，如果发行版是 ubuntu，则使用`apt install mysql-server`安装即可
+
+通过`apt`安装的`mysql`是默认开启服务的，并且服务名叫`mysql`，而不是`mysqld`，所以不需要启动以及设置开机启动
+
+`mysql`进入数据库中，`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`重置默认密码，然后`FLUSH PRIVILEGES;`刷新权限。至此，密码已经修改完毕
+
+如果要远程登录就必须创建一个允许远程访问的账户，`create user 'root'@'%' identified by '账户密码';`，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录。接下来使用`GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`进行授权，然后`FLUSH PRIVILEGES;`刷新一下权限
+
+可以下面命令通过查看一下用户情况：
+
+```sh
+mysql> use mysql
+mysql> select host,user,authentication_string from user;
+mysql> select host,user,authentication_string from user;
++-----------+------------------+------------------------------------------------------------------------+
+| host      | user             | authentication_string                                                  |
++-----------+------------------+------------------------------------------------------------------------+
+| %         | root             | $A$005$m]QeCR{dSh|AZelCiG5j0JCQRPLB8kEnL/L3c8XbgfCUqOzrwvUnXT6ZWdw8 |
+| localhost | debian-sys-maint | $A$005$9A:JcO~LH{ 0j{oq.wFLCUBRmM9FUuOzSmqQHa1Pqw0JGw9l7HzqpaBNo3 |
+| localhost | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED |
+| localhost | root             | *1501FA4196482BD9AD6ACD6CC58E5C070C4D1DD5                              |
++-----------+------------------+------------------------------------------------------------------------+
+6 rows in set (0.00 sec)
+```
+
+一般情况下，MySQL 的配置文件是禁止了远程登录，所以需要去修改一下配置文件，编辑`sudo /etc/mysql/mysql.conf.d/mysqld.cnf`文件，将`bind-address = 127.0.0.1`使用`#`注释掉，然后`sudo service mysql restart`即可
+
 ## 创建第一个数据库
 
 当进入到 MySQL 数据库系统后，就可以使用下面的语句创建一个数据库了
