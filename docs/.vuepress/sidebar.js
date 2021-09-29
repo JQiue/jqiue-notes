@@ -172,6 +172,7 @@ const operating_system = [
     collapsable: false,
     children: [
       'basic',
+      'shell',
     ]
   },
   {
@@ -321,6 +322,7 @@ const sundry = [
       'tomcat',
       'emmet',
       'master',
+      'all-master',
     ]
   }
 ];
