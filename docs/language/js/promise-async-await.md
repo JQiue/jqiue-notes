@@ -314,7 +314,7 @@ const p = new Promise((resolve, reject) => {
 ```js
 const p = new Promise((resolve, reject) => {
    setTimeout(()=>{
-    console.log('wjqis.me');
+    console.log('jinqiu.wang');
   }, 1000)
 })
 ```

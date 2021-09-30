@@ -15,7 +15,7 @@ Vuex 是作为另一个库来使用的，但是 Vuex 依赖于 Vue，所以先�
 ```js
 const store = new Vuex.Store({
   state: {
-    msg: "wjqis.me"
+    msg: "jinqiu.wang"
   }
 })
 ```
@@ -35,7 +35,7 @@ const store = new Vuex.Store({
 <script>
 const store = new Vuex.Store({
   state: {
-    msg: "wjqis.me"
+    msg: "jinqiu.wang"
   }
 })
 

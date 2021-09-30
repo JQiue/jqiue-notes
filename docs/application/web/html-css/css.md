@@ -6,6 +6,12 @@ author: JQiue
 article: false
 ---
 
+::: info 前置知识
+
++ HTML
++ 矩阵
+:::
+
 ## 字体
 
 通过`font-*`属性来规定字体的样式
@@ -108,7 +114,7 @@ em 是一种相对尺寸的单位，1em 默认为父元素的字体大小
 + `word-spacing`控制英文单词之间的间距，对中文无效
 + `letter-spacing`控制字符之间的间距，中英文都有效
 
-::: demo
+::: demo 间距
 
 ```html
 <p>wjq is me</p>
@@ -153,12 +159,12 @@ p {
 
 `vertical-align`提供了内联元素的垂直对齐方式，只对内联元素和`table-cell`生效，一般情况下，内容都是基于父元素的基线对齐，而`vertical-align`提供了几个属性来改变对齐方式：
 
-1. `baseline`：默认值，与父元素的基线对齐
-2. `top`：对齐行中顶端最高的元素
-3. `middle`：居中对齐
-4. `bottom`：对齐行中低端最低的元素
-5. `text-top`：与文本的顶端对齐
-6. `text-bottom`：与文本的地段对齐
++ `baseline`：默认值，与父元素的基线对齐
++ `top`：对齐行中顶端最高的元素
++ `middle`：居中对齐
++ `bottom`：对齐行中低端最低的元素
++ `text-top`：与文本的顶端对齐
++ `text-bottom`：与文本的地段对齐
 
 ## 鼠标指针
 
@@ -213,11 +219,11 @@ ul li {
 ::: demo background-color
 
 ```html
-<div class="box"></div>
+<div class="foo"></div>
 ```
 
 ```css
-.box {
+.foo {
   width: 200px;
   height: 150px;
   background-color: #f40;
@@ -231,12 +237,12 @@ ul li {
 ::: demo background-image
 
 ```html
-<div class="box foo"></div>
-<div class="box bar"></div>
+<div class="foo"></div>
+<div class="bar"></div>
 ```
 
 ```css
-.box {
+div.foo,div.bar {
   height: 100px;
 }
 .foo {
@@ -258,13 +264,13 @@ ul li {
 ::: demo background-repeat
 
 ```html
-<div class="box foo"></div>
-<div class="box bar"></div>
-<div class="box quz"></div>
+<div class="foo"></div>
+<div class="bar"></div>
+<div class="baz"></div>
 ```
 
 ```css
-.box {
+div.foo,div.bar,.div.baz {
   height: 100px;
   background-image: url(/avatar.png);
 }
@@ -274,7 +280,7 @@ ul li {
 .bar {
   background-repeat: repeat-y;
 }
-.quz {
+.baz {
   background-repeat: no-repeat;
 }
 ```
@@ -288,13 +294,13 @@ ul li {
 ::: demo background-position
 
 ```html
-<div class="box foo"></div>
-<div class="box bar"></div>
-<div class="box qux"></div>
+<div class="foo"></div>
+<div class="bar"></div>
+<div class="baz"></div>
 ```
 
 ```css
-.box {
+div.foo,div.bar,.div.baz {
   margin: 0 auto;
   border: 1px solid black;
   width: 99px;
@@ -309,7 +315,7 @@ ul li {
 .bar {
   background-position: 20px 30px;
 }
-.qux {
+.baz {
   background-position: -20px -20px;
 }
 ```
@@ -343,13 +349,13 @@ ul li {
 
 + translate(x,y)：水平或垂直方向平移
 + rotate(angle)：顺时针或逆时针旋转
-+ scale(x,y)：水平或垂直方向缩放（取值是1默认不变，大于1代表放大，小于1代表缩小，水平和垂直参数一样可以简写一个参数）
-+ skew(x-angle,y-angle)：x轴或y轴倾斜
++ scale(x,y)：水平或垂直方向缩放，取值是 1 默认不变，大于 1 表示放大，小于 1 表示缩小，水平和垂直参数值一样可以简写一个参数
++ skew(x-angle,y-angle)：x 轴或 y 轴倾斜
 
-::: demo
+::: demo transform
 
 ```html
-<ul class="exam1">
+<ul>
   <li>默认</li>
   <li>平移</li>
   <li>旋转</li>
@@ -359,12 +365,12 @@ ul li {
 ```
 
 ```css
-.exam1 {
+ul {
   width: 400px;
   height: 300px;
   margin: 0 auto;
   }
-.exam1 li{
+ul li {
   list-style: none;
   width: 70px;
   height: 30px;
@@ -373,16 +379,16 @@ ul li {
   margin: 20px auto;
   text-align: center;
 }
-.exam1 li:nth-child(2){
+ul li:nth-child(2) {
   transform: translate(10px,10px);
 }
-.exam1 li:nth-child(3){
+ul li:nth-child(3) {
   transform: rotate(45deg);
 }
-.exam1 li:nth-child(4){
+ul li:nth-child(4) {
   transform: scale(1,1);
 } 
-.exam1 li:nth-child(5){
+ul li:nth-child(5) {
   transform: skew(10deg,20deg);
 }
 ```
@@ -391,29 +397,29 @@ ul li {
 
 ### 3D 转换
 
-通过在2d转换的方法后面添加一个大写的X或者Y或者Z来定义3D转换
+通过在 2d 转换的方法后面添加一个大写的 X 或者 Y 或者 Z 来定义 3D 转换
 
 ### 透视属性
 
-perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，只有子元素获得透视效果，本身不获得透视效果，具有近大远小的视觉效果，取值为像素，像素越小代表越近，反之越远
+`perspective`属性用来改变 3D 元素的视图，只影响 3D 转换元素，只有子元素获得透视效果，本身不获得透视效果，具有近大远小的视觉效果，取值为像素，像素越小代表越近，反之越远
 
-::: demo
+::: demo perspective
 
 ```html
-<div class="exam2">
+<div class="box">
   <div></div>
 </div>
 ```
 
 ```css
-.exam2 {
+.box {
   margin: 0 auto;
   width: 150px;
   height: 180px;
   border: 1px solid black;
   perspective: 500px;
 }
-.exam2 div {
+.box div {
   height: 180px;
   background: pink;
   transform: rotateX(20deg);
@@ -424,25 +430,25 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 
 ## 过渡
 
-在CSS3中，可以通过不适用Flash或JavaScript的情况下，当一个元素从一种样式变成另一种样式时添加效果，也就是让元素变化的更加平缓，它必须规定需要过渡的属性和过渡的时长
+在 CSS3 中，可以通过不使用 Flash 或 JavaScript 的情况下，当一个元素从一种样式变成另一种样式时添加效果，也就是让元素变化的更加平缓，它必须规定需要过渡的属性和过渡的时长
 
-通过 transition 来规定过渡效果，有四个属性值：过渡的属性，过渡的时间，过渡的时间曲线，过渡的时间延迟
+通过`transition`来规定过渡效果，有四个属性值：过渡的属性，过渡的时间，过渡的时间曲线，过渡的时间延迟
 
-::: demo
+::: demo transition
 
 ```html
-<div class="gd-exam1"></div>
+<div class="box"></div>
 ```
 
 ```css
-.gd-exam1 {
+.box {
   margin: 0 auto;
   width: 80px;
   height: 30px;
   background: pink;
   transition : width 2s;
 }
-.gd-exam1:hover { 
+.box:hover { 
   width: 200px;
 }
 ```
@@ -451,21 +457,21 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 
 当然可以同时过渡多个属性，只需要使用`,`隔开每个过渡的属性即可
 
-::: demo
+::: demo transition
 
 ```html
-<div class="gd-exam2"></div>
+<div class="box"></div>
 ```
 
 ```css
-.gd-exam2 {
+.box {
   margin: 0 auto;
   width: 80px;
   height: 30px;
   background: pink;
   transition : width 2s, background 2s;
 }
-.gd-exam2:hover {
+.box:hover {
   width: 200px;
   background: purple;
 }
@@ -473,23 +479,23 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 
 :::
 
-延时2S
+延时 2S
 
-::: demo
+::: demo transition
 
 ```html
-<div class="gd-exam3"></div>
+<div class="box"></div>
 ```
 
 ```css
-.gd-exam3{
+.box {
   margin: 0 auto;
   width: 80px;
   height: 30px;
   background: pink;
   transition : width 2s 2s, background 2s 2s;
 }
-.gd-exam3:hover{
+.box:hover {
   width: 200px;
   background: purple;
 }
@@ -499,15 +505,20 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 
 ## 动画
 
-动画和过渡有些类似，但是过渡必须通过其他条件来触发(比如hover)，而动画不需要触发手段，并且过渡的可控性较差，只能指定起始和结束的状态，而动画可以定义多个状态
+动画和过渡有些类似，但是过渡必须通过其他条件来触发（比如`hover`)，而动画不需要触发手段，并且过渡的可控性较差，只能指定起始和结束的状态，而动画可以定义多个状态
 
-在使用动画属性之前必须先了解CSS3中`@keyframes`规则，它的作用用于创建动画的规则，它有点像选择器一样使用，不过需要几个关键字来指定动画的行为：`from`,`to`，`from`中定义开始时的样式，`to`中定义结束后的样式，这可能和过渡效果一样了，但是CSS3还提供了百分比的形式来控制样式，这样就能更加精确的控制了，创建动画帧后，必须将name交给animation属性进行播放，name必须是合法的标识符
+在使用动画属性之前必须先了解 CSS3 中`@keyframes`规则，它的作用是用于创建动画的规则，它有点像选择器一样，不过需要几个关键字来指定动画的行为：`from`，`to`
+
+`from`中定义开始时的样式，`to`中定义结束后的样式，这可能和过渡差不多，但是 CSS3 还提供了百分比的形式来控制样式，这样就能更加精确的控制了，创建动画帧后，必须将`name`交给`animation`属性进行播放，`name`必须是合法的标识符
 
 ```css
+/* from...to... */
 @keyframes name{
   from{}
   to{}
 }
+
+/* 百分比控制 */
 @keyframes name{
   0%{}
   50%{}
@@ -515,27 +526,35 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 }
 ```
 
-::: demo
+::: demo animation
 
 ```html
-<div class="dh-exam1"></div>
+<div class="box"></div>
 ```
 
 ```css
-.dh-exam1 {
+.box {
   margin: 0 auto;
   width: 80px;
   height: 30px;
   background: pink;
-  animation: play1 2s infinite alternate;
+  animation: play 2s infinite alternate;
 }
-@keyframes play1 {
-  from{width: 80px;background: pink;}
-  to{width: 250px;background: purple;}
+@keyframes play {
+  from {
+    width: 80px;
+    background: pink;
+  }
+  to {
+    width: 250px;
+    background: purple;
+  }
 }
 ```
 
 :::
+
+这是关于`animation`的解释：
 
 | 属性                      | 描述                                                                                                                                               |
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -551,7 +570,7 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 
 ## Web 字体
 
-很遗憾的是，由于大部分设备预装的字体有限，这使得网页字体只能在有限的字体集中选择，但 CSS 规则`@font-face`为字体创造了很多可能，这使得开发者可以链接任意可用的字体给网页使用
+很遗憾的是，由于大部分设备预装的字体有限，这使得网页字体只能在有限的字体集中选择，但 CSS 规则`@font-face`为字体创造了很多可能，这使得开发者可以链接任意可用的字体在网页中使用
 
 ```css
 @font-face {
@@ -560,12 +579,12 @@ perspective 属性用来改变 3D 元素的视图，只影响 3D 转换元素，
 }
 ```
 
-这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用命名的字体了
+这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用`font-family`使用命名的字体了
 
 ::: demo @font-face
 
 ```html
-<p>随性而驰骋，淡然而笃定</p>
+<p>淡然而笃定，随性而赤诚</p>
 ```
 
 ```css
@@ -586,7 +605,7 @@ p {
 
 ### 圆角边框
 
-`border-radius`可为元素设置圆角
+`border-radius`可为元素设置圆角边框
 
 ### 盒子阴影
 
@@ -637,20 +656,20 @@ div.box1,div.box2 {
 
 :::
 
-### 不透明度
+### 透明度
 
-`opacity`可以设置元素的透明度，它的取值 0~1，不需要带单位
+`opacity`可以设置元素的透明度，它的取值在 0~1 之间，不需要带单位
 
-::: demo
+::: demo opacity
 
 ```html
-<div class="box box1"></div>
-<div class="box box2"></div>
-<div class="box box3"></div>
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
 ```
 
 ```css
-div.box {
+div.box1,div.box2,div.box3 {
   display: inline-block;
   width: 50px;
   height: 50px;
@@ -671,7 +690,7 @@ div.box {
 :::
 
 ::: tip
-opacity 和使用 RGBA 或 HSLA 设置的透明是不同的，opacity 影响的是整个元素,包括内容，RGBA 和 HSLA 只是影响背景的透明度
+`opacity`和使用 RGBA 或 HSLA 设置的透明是不同的，`opacity`影响的是整个元素，包括内容，RGBA 和 HSLA 只是影响背景的透明度`
 :::
 
 ### 轮廓
@@ -695,3 +714,32 @@ opacity 和使用 RGBA 或 HSLA 设置的透明是不同的，opacity 影响的�
 :::
 
 ## 渐变
+
+## 高亮
+
+CSS3 新增`::selection`伪元素用于内容被高亮时的样式，只有这些属性可以被使用：
+
++ color
++ background-color
++ caret-color
++ text-decoration
++ text-shadow
++ cursor
++ outline
+
+::: demo selection
+
+```html
+<p>
+当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢？我甚至可能改变这个世界。
+</p>
+```
+
+```css
+p::selection {
+  color: #fff;
+  background-color: red;
+}
+```
+
+:::

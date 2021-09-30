@@ -6,7 +6,7 @@ author: JQiue
 article: false
 ---
 
-::: info 需要知道的前置知识
+::: info 前置知识
 
 + HTML/CSS/JavaScript
 + Java
