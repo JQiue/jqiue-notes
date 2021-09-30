@@ -20,7 +20,7 @@ URL 是为了标识网络资源位置的一种编码，平常说的网页地址�
 
 ```js
 const url = require("url");
-url.parse("https://wjqis.me");
+url.parse("https://jinqiu.wang");
 ```
 
 `parse()`会返回这样的对象：
@@ -30,15 +30,15 @@ url.parse("https://wjqis.me");
   protocol: 'http:',
   slashes: true,
   auth: null,
-  host: 'wjqis.me',
+  host: 'jinqiu.wang',
   port: null,
-  hostname: 'wjqis.me',
+  hostname: 'jinqiu.wang',
   hash: null,
   search: null,
   query: null,
   pathname: '/',
   path: '/',
-  href: 'http://wjqis.me/'
+  href: 'http://jinqiu.wang/'
 }
 ```
 
@@ -49,27 +49,27 @@ const urlObj = {
   protocol: 'http:',
   slashes: true,
   auth: null,
-  host: 'wjqis.me',
+  host: 'jinqiu.wang',
   port: null,
-  hostname: 'wjqis.me',
+  hostname: 'jinqiu.wang',
   hash: null,
   search: null,
   query: null,
   pathname: '/',
   path: '/',
-  href: 'http://wjqis.me/'
+  href: 'http://jinqiu.wang/'
 }
-url.format(urlObj) // http://wjqis.me/
+url.format(urlObj) // http://jinqiu.wang/
 ```
 
 `resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
 
 ```js
-url.resolve("https://wjqis.me/foo/bar/qux", "/web") // https://wjqis.me/web
-url.resolve("https://wjqis.me/foo/bar/qux", "web") // https://wjqis.me/foo/bar/web
-url.resolve("https://wjqis.me/foo/bar/qux", "./web") // https://wjqis.me/foo/bar/web
-url.resolve("https://wjqis.me/foo/bar/qux", "../web") // https://wjqis.me/foo/web
-url.resolve("https://wjqis.me/foo/bar/qux", "../../web") // https://wjqis.me/web
+url.resolve("https://jinqiu.wang/foo/bar/qux", "/web") // https://jinqiu.wang/web
+url.resolve("https://jinqiu.wang/foo/bar/qux", "web") // https://jinqiu.wang/foo/bar/web
+url.resolve("https://jinqiu.wang/foo/bar/qux", "./web") // https://jinqiu.wang/foo/bar/web
+url.resolve("https://jinqiu.wang/foo/bar/qux", "../web") // https://jinqiu.wang/foo/web
+url.resolve("https://jinqiu.wang/foo/bar/qux", "../../web") // https://jinqiu.wang/web
 ```
 
 querystring 针对 URL 中的 query 部分
@@ -77,7 +77,7 @@ querystring 针对 URL 中的 query 部分
 + parse(str)：将一个 query 字符串解析成键值对对象
 
 ```js
-const str = "https://wjqis.me/?name=zs&age=23"
+const str = "https://jinqiu.wang/?name=zs&age=23"
 querystring.parse(url.parse(url).query) // {name: 'zs', age: '23'}
 ```
 
@@ -91,13 +91,13 @@ querystring.stringify(obj) // name=zs&age=23
 + escape(str)：将一个 URL 字符串进行百分比编码
 
 ```js
-qs.escape("https://wjqis.me/?name=zs&age=23") // https%3A%2F%2Fwjqis.me%2F%3Fname%3Dzs%26age%3D23
+qs.escape("https://jinqiu.wang/?name=zs&age=23") // https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23
 ```
 
 + unescape(str)：将一个 URL 百分比编码的字符串进行解码
 
 ```js
-qs.unescape("https%3A%2F%2Fwjqis.me%2F%3Fname%3Dzs%26age%3D23"); // https://wjqis.me/?name=zs&age=23
+qs.unescape("https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23"); // https://jinqiu.wang/?name=zs&age=23
 ```
 
 ## 创建 Web 服务

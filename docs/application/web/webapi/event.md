@@ -34,13 +34,13 @@ article: false
 直接使用 HTML 元素事件特性
 
 ```html
-<button onclick="alert('单击事件触发了')">click</button>
+<button onclick="alert('单击事件触发了')">click me</button>
 ```
 
 ::: demo 事件特性
 
 ```html
-<button onclick="alert('单击事件触发了')">click</button>
+<button onclick="alert('单击事件触发了')">click me</button>
 ```
 
 :::
@@ -50,12 +50,11 @@ HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发�
 在 DOM 模型中，HTML 事件特性被看作元素节点的属性，只要为这个事件属性定义一个处理函数就可以了
 
 ```html
-<button id="event-example1">click</button>
+<button>click</button>
 ```
 
 ```js
-let elem = document.getElementById('event-example1');
-elem.onclick = function () {
+document.querySelector('button').onclick = function () {
   alert('单击事件触发了');
 };
 ```
@@ -63,12 +62,11 @@ elem.onclick = function () {
 ::: demo DOM 元素的事件属性
 
 ```html
-<button id="event-example1">click me</button>
+<button>click me</button>
 ```
 
 ```js
-let elem = document.getElementById('event-example1');
-elem.onclick = function () {
+document.querySelector('button').onclick = function () {
   alert('单击事件触发了');
 };
 ```
@@ -87,7 +85,7 @@ elem.onclick = function () {
 与前两种方式相比，事件监听的优势在于对同一个事件，可以有多个不同的处理
 
 ```html
-<button id="event-example2">click</button>
+<button>click</button>
 ```
 
 ```js
@@ -95,14 +93,13 @@ function eventHandler() {
   alert('单击事件触发了');
 }
 
-let elem = document.getElementById('event-example2');
-elem.addEventListener('click', eventHandler, false);
+document.querySelector('button').addEventListener('click', eventHandler, false);
 ```
 
 ::: demo addEventListener 方法
 
 ```html
-<button id="event-example2">click me</button>
+<button>click me</button>
 ```
 
 ```js
@@ -110,8 +107,7 @@ function eventHandler() {
   alert('单击事件触发了');
 }
 
-let elem = document.getElementById('event-example2');
-elem.addEventListener('click', eventHandler, false);
+document.querySelector('button').addEventListener('click', eventHandler, false);
 ```
 
 :::
@@ -134,13 +130,11 @@ elem.addEventListener('click', eventHandler, false);
 ::: demo event
 
 ```html
-<button id='event-example3'>click me</button>
+<button >click me</button>
 ```
 
 ```js
-
-let elem = document.getElementById('event-example3');
-elem.addEventListener('click', event => {
+document.querySelector('button').addEventListener('click', event => {
   alert('事件类型：' + event.type);
 }, false);
 ```
@@ -166,7 +160,7 @@ elem.addEventListener('click', event => {
 ```
 
 ```css
-#foo div,#foo {
+div {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -201,36 +195,19 @@ elem.addEventListener('click', event => {
 ::: demo 事件捕获
 
 ```html
-<div id="foo-example">
+<div id="foo">
   foo
-  <div id="bar-example">
+  <div id="bar">
     bar
-    <div id="qux-example">qux</div>
+    <div id="qux">qux</div>
   </div>
 </div>
 ```
 
-```css
-#foo-example div,#foo-example {
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
-#foo-example {
-  background-color: red;
-}
-#bar-example {
-  background-color: green;
-}
-#qux-example {
-  background-color: pink;
-}
-```
-
 ```js
-let foo = document.querySelector('#foo-example');
-let bar = document.querySelector('#bar-example');
-let qux = document.querySelector('#qux-example');
+let foo = document.querySelector('#foo');
+let bar = document.querySelector('#bar');
+let qux = document.querySelector('#qux');
 
 foo.addEventListener('click', () => {
   alert('我是 foo');
@@ -245,6 +222,23 @@ qux.addEventListener('click', () => {
 }, true);
 ```
 
+```css
+div {
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+#foo {
+  background-color: red;
+}
+#bar {
+  background-color: green;
+}
+#qux {
+  background-color: pink;
+}
+```
+
 :::
 
 ## 阻止事件
@@ -254,19 +248,23 @@ qux.addEventListener('click', () => {
 ```html
 <!-- 方法一 -->
 <a href="javascript:;">链接</a>
+```
 
+```html
 <!-- 方法二 -->
-<a id="event-example4" href="https://wjqis.me">链接</a>
+<a href="https://jinqiu.wang">链接</a>
 <script>
-  document.getElementById('event-example4').onclick = function () {
+  document.querySelector('a').onclick = function () {
     return false;
   }
 </script>
+```
 
+```html
 <!-- 方法三 -->
-<a id="event-example5" href="https://wjqis.me">链接</a>
+<a href="https://jinqiu.wang">链接</a>
 <script>
-  document.getElementById('event-example5').onclick = function (e) {
+  document.querySelector('a').onclick = function (e) {
     e.preventDefault();
   }
 </script>
@@ -310,15 +308,15 @@ qux.addEventListener('click', () => {
 ::: demo 事件委托
 
 ```html
-<div id="father">
-  <h1 class="son1">子元素1</h1>
-  <p class="son2">子元素2</p>
-  <span class="son3">子元素3</span>
+<div>
+  <h1>子元素1</h1>
+  <p>子元素2</p>
+  <span>子元素3</span>
 </div>
 ```
 
 ```js
-document.querySelector('#father').addEventListener('click', event => {
+document.querySelector('div').addEventListener('click', event => {
   if (event.target.nodeName === 'H1'){
     alert('子元素1');
   } 
@@ -470,19 +468,19 @@ elem.dispatchEvent(event);
 ::: demo 同步处理的事件
 
 ```html
-<button id="btn">click me</button>
+<button>click me</button>
 ```
 
 ```js
-let btn = document.querySelector('#btn');
-btn.onclick = function() {
+let button = document.querySelector('button');
+button.onclick = function() {
   alert(1);
-  btn.dispatchEvent(new CustomEvent('btn-click'));
+  button.dispatchEvent(new CustomEvent('button-click'));
   alert(2);
 };
 
 // 在 1 和 2 之间触发
-btn.addEventListener('btn-click', () => alert('btn-click handler'));
+button.addEventListener('button-click', () => alert('button-click handler'));
 ```
 
 :::
@@ -492,18 +490,18 @@ btn.addEventListener('btn-click', () => alert('btn-click handler'));
 ::: demo 异步处理的事件
 
 ```html
-<button id="btn">click me</button>
+<button>click me</button>
 ```
 
 ```js
-let btn = document.querySelector('#btn');
-btn.onclick = function() {
+let button = document.querySelector('button');
+button.onclick = function() {
   alert(1);
-  setTimeout(() => btn.dispatchEvent(new CustomEvent("btn-click", { bubbles: true })));
+  setTimeout(() => button.dispatchEvent(new CustomEvent("button-click", { bubbles: true })));
   alert(2);
 };
 
-btn.addEventListener('btn-click', () => alert('btn-click handler'));
+button.addEventListener('button-click', () => alert('button-click handler'));
 ```
 
 :::
@@ -518,7 +516,7 @@ btn.addEventListener('btn-click', () => alert('btn-click handler'));
 
 要访问剪切板中的数据，可以通过 clipboard 对象，它由 navigator.clipboard 返回，所有的操作都通过这个对象进行
 
-由于用户可能会将敏感数据放在剪切板，所以这个 API 的安全限制比较多，调用的时候必须明确获得用户的许可，“写入权限”会自动授予，但是“读取权限”必须被明确授予，也就是说在进行读取操作的时候，浏览器会弹一个对话框询问用户是否同意
+由于用户可能会将敏感数据放在剪切板，涉及到浏览器外的操作系统，所以这个 API 的安全限制比较多，调用的时候必须明确获得用户的许可，“写入权限”会自动授予，但是“读取权限”必须被明确授予，也就是说在进行读取操作的时候，浏览器会弹一个对话框询问用户是否同意
 
 clipboard 提供了四个方法用于读写剪切板，他们都是异步方法，返回 promise 对象
 

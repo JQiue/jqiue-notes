@@ -172,6 +172,7 @@ const operating_system = [
     collapsable: false,
     children: [
       'basic',
+      'shell',
     ]
   },
   {
@@ -198,7 +199,7 @@ const application = {
         'elements',
         'box-model',
         'selectors',
-        'css-syntax',
+        'css',
         'layout',
         'value',
         'reset-css-style',
@@ -321,6 +322,7 @@ const sundry = [
       'tomcat',
       'emmet',
       'master',
+      'all-master',
     ]
   }
 ];

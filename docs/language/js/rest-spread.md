@@ -66,9 +66,9 @@ console.log(merge); // [1, 2, 3, 4, 5, 6]
 将字符串展开为字符数组
 
 ```js
-let str = 'wjqis.me';
+let str = 'jinqiu.wang';
 let strArr = [...str];
-console.log(strArr); // ['w', 'j', 'q', 'i', 's', '.', 'm', 'e']
+console.log(strArr); // ['j', 'i', 'n', 'q', 'i', 'u', '.', 'w', 'a', 'n', 'g']
 ```
 
 展开对象，看来像拷贝了对象，其实是一种浅拷贝

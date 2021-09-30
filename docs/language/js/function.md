@@ -460,7 +460,7 @@ document.querySelector('#eg2').innerText = eval(x3 + 3);
 ```
 
 ```js
-let str = 'https://wjqis.me/index?foo=张三&bar=33';
+let str = 'https://jinqiu.wang/index?foo=张三&bar=33';
 document.querySelector('#eg3').innerText = encodeURI(str);
 document.querySelector('#eg4').innerText = decodeURI(encodeURI(str));
 document.querySelector('#eg5').innerText = encodeURIComponent(str);

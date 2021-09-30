@@ -12,7 +12,7 @@ sticky: true
 + QQ：861947542
 + 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：[wjqis.me](wjqis.me)，[jinqiu.wang](jinqiu.wang)（推荐）
++ 目前使用的站点域名：~~[wjqis.me](wjqis.me)~~，[jinqiu.wang](jinqiu.wang)（推荐）
 
 ## 这个人会什么
 
@@ -47,7 +47,7 @@ sticky: true
 + <span title="就是 markdown 啦！">努力成为<code>md</code>（鼠标悬停查看解释）程序员</span>
 
 ::: info 感谢观看
-本站使用免费的静态网页服务器托管，首次访问时可能缓慢，但本站增加了 PWA 支持，拥有离线缓存的能力，这意味着下一次无需联网即可访问，也可以将本站作为 APP 安装在本地，拥有接近原生 APP 般的使用体验
+本站增加了 PWA 支持，拥有离线缓存的能力，这意味着下一次无需联网即可访问，也可以将本站作为 APP 安装在本地，拥有接近原生 APP 般的使用体验
 :::
 
 ## 排版
@@ -78,8 +78,8 @@ sticky: true
 所有的文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式显示标记
 
 + 处于`Alpha`阶段的文章，可能啥也没有，内容仅作参考，问题较多，随时会进行修改
-+ 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，但会出现在首页文章列表
-+ 处于`Gamma`阶段的文章，内容逻辑顺畅，可以阅读，会出现在首页文章列表中
++ 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，会出现在首页文章列表
++ 处于`Gamma`阶段的文章，内容逻辑顺畅，可以阅读，会出现在首页文章列表中，可能有少许并不影响阅读的 typo
 
 ## 适合什么样的人阅读
 
@@ -103,7 +103,7 @@ sticky: true
     + JavaScript（正在完成）:star::star::star::star:
       + TypeScript（正在完成）:star:
     + Python（正在完成）:star:
-3. [算法](/ds-algorithm/)
+3. [数据结构与算法](/ds-algorithm/)
     + 数据结构（正在完成）:star::star::star::star:
       + 排序算法（正在完成）:star::star::star:
       + 查找算法（正在完成）:star::star::star:
@@ -131,7 +131,7 @@ sticky: true
     + [Markdown](/sundry/markdown/)（正在完成）:star:
     + CI & CD（正在学习）:star:
     + [Git](/sundry/git/)（正在学习）:star::star:
-    + Linux（正在学习）:star::star:
+    + Windows & Linux（正在学习）:star::star:
     + [设计模式](/sundry/share/design-pattern/)（正在学习）:star::star::star:
     + Docker（正在学习）:star:
     + 代码质量（正在学习）:star:

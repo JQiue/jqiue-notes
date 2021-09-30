@@ -17,7 +17,7 @@ module.exports = config({
   ],
   themeConfig: {
     logo: "/logo.png",
-    hostname: "https://wjqis.me",
+    hostname: "https://jinqiu.wang",
     repo: "https://github.com/JQiue/jqiue_notes",
     repoLabel: "Github",
     repoDisplay: false,

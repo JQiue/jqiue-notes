@@ -139,18 +139,18 @@ id 是唯一的，一个 HTML 标签只能绑定一个 id 值，class 并不是�
   color: purple;
 }
 
-/* 存在 title 属性并且属性值是 "https://wjqis.me" 的元素 */
-[title="https://wjqis.me"] {
+/* 存在 title 属性并且属性值是 "https://jinqiu.wang" 的元素 */
+[title="https://jinqiu.wang"] {
   color: green;
 }
 
-/* 存在 id 属性并且属性值子串包含 "wjq" 的元素 */
-[id*="wjq"] {
+/* 存在 id 属性并且属性值子串包含 "jinqiu" 的元素 */
+[id*="jinqiu"] {
   color: blue;
 }
 
-/* 存在 id 属性并且属性值结尾是 ".me" 的元素 */
-[id$=".me"] {
+/* 存在 id 属性并且属性值结尾是 ".wang" 的元素 */
+[id$=".wang"] {
   color: red;
 }
 
@@ -164,9 +164,9 @@ id 是唯一的，一个 HTML 标签只能绑定一个 id 值，class 并不是�
 
 ```html
 <div title="foo">foo<div>
-<div title="https://wjqis.me">bar<div>
+<div title="https://jinqiu.wang">bar<div>
 <div id="wjq">quz<div>
-<div data-suffix="https://wjqis.me">qux<div>
+<div data-suffix="https://jinqiu.wang">qux<div>
 <div class="header logo">class<div>
 ```
 
@@ -174,7 +174,7 @@ id 是唯一的，一个 HTML 标签只能绑定一个 id 值，class 并不是�
 [title] {
   color: purple;
 }
-[title="https://wjqis.me"] {
+[title="https://jinqiu.wang"] {
   color: green;
 }
 [id*="wjq"] {
