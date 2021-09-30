@@ -198,7 +198,7 @@ const application = {
         'elements',
         'box-model',
         'selectors',
-        'css-syntax',
+        'css',
         'layout',
         'value',
         'reset-css-style',
