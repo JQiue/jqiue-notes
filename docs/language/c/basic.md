@@ -1,7 +1,7 @@
 ---
 title: 介绍 && 第一个 C 语言程序
 category: 编程语言
-tags: [C, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

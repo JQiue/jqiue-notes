@@ -1,7 +1,7 @@
 ---
 title: 介绍
 category: Web
-tags: [Canvas, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 盒模型
 category: Web
-tags: [CSS, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

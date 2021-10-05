@@ -1,7 +1,7 @@
 ---
 title: 错误处理
 category: 编程语言
-tags: [Javascript, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

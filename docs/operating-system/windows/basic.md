@@ -1,7 +1,7 @@
 ---
 title: 介绍
 category: 操作系统
-tags: [Windows, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 介绍 && 第一个 Java 程序
 category: 编程语言
-tags: [Java, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

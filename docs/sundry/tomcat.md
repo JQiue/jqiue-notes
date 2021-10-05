@@ -1,7 +1,7 @@
 ---
 title: Tomcat 
 category: 编程语言
-tags: [Java, Tomcat, Servlet, JSP, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -22,7 +22,7 @@ Tomcat 是 Apache 公司开发的一款免费的 Web 应用服务器，虽然它
 
 在`bin`目录下，找到`startup.bat`（如果是 Windows）双击它，会弹出一个终端窗口启动 Tomcat（如果没有问题）。这时不要关闭它，打开浏览器输入`localhost:8080`访问，出现下图就代表 Tomcat 以及相关配置没有问题
 
-![tomcat-1](../images/tomcat-1.jpeg)
+![tomcat-1](./images/tomcat-1.jpeg)
 
 不要直接关闭打开中的终端来停止 Tomcat，应该双击`bin`目录下的`shutdown.bat`来处理
 

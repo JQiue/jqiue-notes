@@ -241,7 +241,6 @@ const application = {
         'transition',
         'special-attribute',
         'render',
-        'mock',
       ]
     },
     {
@@ -251,8 +250,7 @@ const application = {
       children: [
         'basic',
         'api',
-        'npm',
-        'webpack',
+        'package-npm',
       ]
     },
   ],
@@ -302,29 +300,26 @@ const subject = [
 ];
 
 const sundry = [
+  '',
   'git',
   'tools',
   'problems',
-  {
-    title: '知识分享',
-    prefix: 'share/',
-    collapsable: false,
-    children: [
-      'three-filtering-principles',
-      'trick',
-      'cannikin-law',
-      'excel',
-      'internet-work',
-      'adb',
-      'design-pattern',
-      'markdown',
-      'latex',
-      'tomcat',
-      'emmet',
-      'master',
-      'all-master',
-    ]
-  }
+  'three-filtering-principles',
+  'trick',
+  'cannikin-law',
+  'excel',
+  'internet-work',
+  'adb',
+  'design-pattern',
+  'markdown',
+  'latex',
+  'tomcat',
+  'emmet',
+  'master',
+  'all-master',
+  'mock',
+  'nginx',
+  'webpack',
 ];
 
 module.exports = {

@@ -1,7 +1,7 @@
 ---
 title: Git 指南
 category: 版本控制
-tags: [Git, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

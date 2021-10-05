@@ -1,7 +1,7 @@
 ---
 title: 队列
 category: 数据结构
-tags: [顺序队列, 链式队列, 循环队列, 双端队列, 阻塞队列, 并发队列, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

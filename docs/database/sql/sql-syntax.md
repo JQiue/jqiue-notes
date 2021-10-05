@@ -1,7 +1,7 @@
 ---
 title: SQL 语法
 category: 数据库
-tags: [SQL, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

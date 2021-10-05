@@ -1,7 +1,7 @@
 ---
 title: 新概念：第一册课文
 category: 学科
-tags: 英语
+tags: [Alpha]
 author: JQiue
 article: false
 ---

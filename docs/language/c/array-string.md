@@ -1,7 +1,7 @@
 ---
 title: 数组和字符串
 category: 编程语言
-tags: [C, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

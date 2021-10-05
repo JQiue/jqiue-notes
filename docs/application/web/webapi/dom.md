@@ -1,7 +1,7 @@
 ---
 title: DOM
 category: Web
-tags: [WebAPI, DOM, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 推导式
 category: 编程语言
-tags: [Python, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 基本语法
 category: 编程语言
-tags: [JavaScript, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

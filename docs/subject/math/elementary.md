@@ -1,7 +1,7 @@
 ---
 title: 初级数学
 category: 学科
-tags: 数学
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 常用的内置对象
 category: 编程语言
-tags: [Javascript, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

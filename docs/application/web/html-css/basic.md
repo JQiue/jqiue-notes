@@ -1,7 +1,7 @@
 ---
 title: 介绍
 category: Web
-tags: [HTML, CSS, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

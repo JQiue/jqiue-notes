@@ -1,7 +1,7 @@
 ---
 title: 介绍 && 运行环境
 category: 编程语言
-tags: [JavaScript, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

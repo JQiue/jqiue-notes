@@ -1,6 +1,6 @@
 ---
 title: 实战：Python 爬虫
-tag: [Python, Alpha]
+tag: [Alpha]
 author: JQiue
 article: false
 ---

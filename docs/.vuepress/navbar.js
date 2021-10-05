@@ -30,11 +30,6 @@ module.exports = [
   {
     text: '杂七杂八',
     icon: 'baibaoxiang',
-    items: [
-      { text: 'Git', icon: 'git', link: '/sundry/git' },
-      { text: '资源和工具', icon: 'gongju', link: '/sundry/tools' },
-      { text: '问题汇总', icon: 'zhongzhengji', link: '/sundry/problems' },
-      { text: '知识分享', icon: 'jiqiao', link: '/sundry/share/three-filtering-principles' }
-    ]
+    link: '/sundry/'
   }
 ];

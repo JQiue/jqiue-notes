@@ -1,7 +1,7 @@
 ---
 title: 页面的布局
 category: Web
-tags: [CSS, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

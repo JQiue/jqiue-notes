@@ -1,7 +1,7 @@
 ---
 title: 树
 category: 数据结构
-tags: [二叉树, B 树, 堆, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

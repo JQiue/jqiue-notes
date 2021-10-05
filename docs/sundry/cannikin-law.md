@@ -17,7 +17,7 @@ author: 曾加
 小宏的五个素质比较平均，于是，他的木桶是这样的：
 
 ::: center
-![cannikin-1](../images/cannikin-1.jpg)
+![cannikin-1](./images/cannikin-1.jpg)
 :::
 
 每一个木板都不是特别高，但是高度都不低，且比较平均，所以他能装的水还是挺多的。
@@ -25,7 +25,7 @@ author: 曾加
 小云的五个素质不太平均，某几项比较突出，但有几项比较弱，根据木桶原理，他的木桶是这样的：
 
 ::: center
-![cannikin-2](../images/cannikin-2.jpg)
+![cannikin-2](./images/cannikin-2.jpg)
 :::
 
 貌似装不了多少水的样子。  
@@ -39,7 +39,7 @@ author: 曾加
 其实，可以这样——
 
 ::: center
-![cannikin-3](../images/cannikin-3.jpg)
+![cannikin-3](./images/cannikin-3.jpg)
 :::
 
 也能装很多水嘛！

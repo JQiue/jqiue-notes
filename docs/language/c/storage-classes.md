@@ -1,7 +1,7 @@
 ---
 title: 存储类型
 category: 编程语言
-tags: [C, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---
