@@ -1,7 +1,7 @@
 ---
 title: MySQL 
 category: 数据库
-tags: [MySQL, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

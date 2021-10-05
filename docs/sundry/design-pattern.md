@@ -1,7 +1,7 @@
 ---
 title: 设计模式
 category: 知识分享
-tags: [软件设计, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -93,7 +93,7 @@ class jQuery {
 
 UML（Unified Modeling Language）即统一建模语言，类图即包含很多类的图，关系主要将泛化和关联
 
-![uml](../images/uml.png)
+![uml](./images/uml.png)
 
 这张类图就是下面的代码表示：
 

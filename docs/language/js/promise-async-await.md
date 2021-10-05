@@ -1,7 +1,7 @@
 ---
 title: Promise，Async/Await
 category: 编程语言
-tags: [JavaScript, 异步编程, 回调地狱, Promise, Async/Await]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

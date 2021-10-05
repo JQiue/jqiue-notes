@@ -1,7 +1,7 @@
 ---
 title: 事件
 category: Web
-tags: [WebAPI, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 内置函数
 category: 编程语言
-tags: [Python, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 走进计算机
 category: 计算机基础
-tags: [计算机组成原理, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

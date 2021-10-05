@@ -1,7 +1,7 @@
 ---
 title: 一些元素
 category: Web
-tags: [HTML, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

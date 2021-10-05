@@ -1,7 +1,7 @@
 ---
 title: 输入缓冲区
 category: 编程语言
-tags: [C, Alpha]
+tags: [Alpha]
 time: 2019-03-19
 author: JQiue
 article: false

@@ -1,7 +1,7 @@
 ---
 title: 线性表
 category: 数据结构
-tags: [顺序表, 链表, 双向链表, 循环链表, 静态链表, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Webpack 快速上手
 category: Web
-tags: [Webpack, NodeJS, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

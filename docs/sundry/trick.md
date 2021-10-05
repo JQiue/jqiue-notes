@@ -35,12 +35,12 @@ author: JQiue
 
 比如：我在计算机上输入这些：
 
-![beforeCe](../images/beforeCe.png)
+![beforeCe](./images/beforeCe.png)
 
 CE 按钮会做这些：
 
-![afterCe](../images/afterCe.png)
+![afterCe](./images/afterCe.png)
 
 而 C 按钮会做这些：
 
-![afterC](../images/afterC.png)
+![afterC](./images/afterC.png)

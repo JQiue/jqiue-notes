@@ -1,7 +1,7 @@
 ---
 title: 使用 LaTeX 写作 
 category: 知识分享
-tags: [LaTex, 学术, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

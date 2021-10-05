@@ -1,7 +1,7 @@
 ---
 title: 介绍 && 环境搭建
 category: 编程语言
-tags: [Python, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

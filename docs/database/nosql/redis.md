@@ -1,7 +1,7 @@
 ---
 title: Redis
 category: 数据库
-tags: [Redis, NoSQL, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: Nginx
 category: 知识分享
-tags: [技巧, 服务器软件, 反向代理, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

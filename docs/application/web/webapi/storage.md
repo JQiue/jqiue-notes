@@ -1,7 +1,7 @@
 ---
 title: 客户端存储
 category: Web
-tags: [WebAPI, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

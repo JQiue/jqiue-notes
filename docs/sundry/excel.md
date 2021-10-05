@@ -1,7 +1,7 @@
 ---
 title: Excel 技巧总结
 category: 知识分享
-tags: [Office, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 计算属性、侦听器、过滤器
 category: 框架
-tags: [Vue, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: 路由
 category: 框架
-tags: [Vue, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

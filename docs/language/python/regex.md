@@ -1,6 +1,6 @@
 ---
 title: 正则表达式
-tags: [Python, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

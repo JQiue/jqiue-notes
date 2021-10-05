@@ -1,7 +1,7 @@
 ---
 title: 互联网是怎么工作的
 category: 知识分享
-tags: [知识, Alpha]
+tags: [Alpha]
 time: 2019-10-22
 author: JQiue
 article: false

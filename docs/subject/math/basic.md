@@ -1,7 +1,7 @@
 ---
 title: 介绍
 category: 学科
-tags: 数学
+tags: [Alpha]
 author: JQiue
 article: false
 ---

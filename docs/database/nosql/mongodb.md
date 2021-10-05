@@ -1,7 +1,7 @@
 ---
 title: MongoDB
 category: 数据库
-tags: [MongoDB, NoSQL, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 prev: false

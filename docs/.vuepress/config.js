@@ -7,10 +7,10 @@ module.exports = config({
     "/": { lang: "zh-CN" }
   },
   head: [
-    ['link', { rel: 'stylesheet', href: '/animate.min.css' }],
-    ['script', { src: '/vue.min.js' }],
-    ['script', { src: '/vuex.min.js' }],
-    ['script', { src: '/mock-min.js' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css' }],
+    ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js' }],
+    ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js' }],
+    ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.0/mock-min.js' }],
   ],
   plugins: [
     '@vuepress/nprogress'

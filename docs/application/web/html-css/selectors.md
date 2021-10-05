@@ -1,7 +1,7 @@
 ---
 title: 选择器
 category: Web
-tags: [CSS, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

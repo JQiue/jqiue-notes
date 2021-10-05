@@ -1,7 +1,7 @@
 ---
 title: Rest 和 Spread
 category: 编程语言
-tags: [JavaScript, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---

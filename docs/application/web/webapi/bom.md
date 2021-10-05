@@ -1,7 +1,7 @@
 ---
 title: BOM
 category: Web
-tags: [WebAPI, BOM, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---
