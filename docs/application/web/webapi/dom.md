@@ -8,7 +8,9 @@ article: false
 
 ::: info 前置知识
 
-+ HTML/CSS/JavaScript
++ HTML
++ CSS
++ JavaScript
 + 树结构（数据结构）
 :::
 
@@ -818,7 +820,7 @@ setTimeout(() => {
 
 不过还有一个通用的解决方案，就是使用`window.scrollBy(x, y)`和`window.scrollTo(x, y)`
 
-`window.scrollBy(x, y)`用于将页面滚动到相对于当前的位置的位置
+`window.scrollBy(x, y)`用于将页面滚动到相对于当前位置的位置
 
 ::: demo scrollBy
 

@@ -21,3 +21,5 @@ adb shell input text 文本             -- 输入文本（只能是英文）
 adb pull 截图路径及文件名 ./            -- 把截图拖到电脑上
 adb install -r apk 路径                -- 安装 apk 到手机
 ```
+
+<!-- more -->

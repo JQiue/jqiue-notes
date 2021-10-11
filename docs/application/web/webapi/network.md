@@ -242,3 +242,14 @@ const http = (function () {
 ## 长轮询
 
 ## WebSocket
+
+## 跨源策略
+
+一个源无法获取另一个源的内容，必须是同域名、同端口、同协议，这导致即使又有个子域，或另一个端口都导致内容不能够被访问
+
+要允许跨域访问，`<script>`要具有`crossorigin`特性，并且远程服务器必须提供特殊的请求头
+
+对于垮源来说有三个访问级别：
+
++ 无`<crossorigin>`特性，禁止访问
++ `crossorigin="anonymous"`如果服务器或源的`Access-Control-Allow-Origin`

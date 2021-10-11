@@ -122,3 +122,5 @@ Servlet 程序必须实现 Servlet 接口，JRE 核心库没有这个接口库�
 使用`jar -cvf <outnname.war> [file1, file2, ...]`命令，比如`jar -cvf test.war *`会将当前目录所有的文件打包成`test.war`文件，丢到`webapps`启动时，会在当前目录下解压出来部署
 
 + 指定虚拟目录
+
+<!-- more -->
