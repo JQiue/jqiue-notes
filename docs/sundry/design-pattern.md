@@ -445,3 +445,5 @@ public class Main {
 ### 中介者模式
 
 ### 解释器模式
+
+<!-- more -->

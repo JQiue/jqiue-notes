@@ -6,6 +6,15 @@ author: JQiue
 article: false
 ---
 
+::: info 前置知识
+
++ HTML
++ CSS
++ JavaScript
++ DOM
++ BOM
+:::
+
 事件是一种用于人机交互和响应程序内部的控制机制，在 JavaScript 中，对象可以响应一些事件，比如鼠标事件，包括使用鼠标的常见操作：单机和释放、鼠标指针是否在对象上。当这些事件产生后，就可以编写代码对这些事件做出响应的处理，指定为响应事件而应执行的动作叫做事件处理
 
 首先要认识事件发生和处理的三个基本要素，当事件发生时，必然会牵扯到这些要素
@@ -17,17 +26,18 @@ article: false
 由于不同的事件具有不同的逻辑，所以就产生了事件类型，比如鼠标产生的事件和键盘产生的事件等等，这里是一些常用的事件类型，更多详见[MDN](https://developer.mozilla.org/zh-CN/docs/Web/Events#%E6%9C%80%E5%B8%B8%E8%A7%81%E7%9A%84%E7%B1%BB%E5%88%AB)
 
 + 鼠标事件
-  1. `click`：单击并释放后
-  2. `dblclick`：双击
-  3. `mouseenter`：指针移入到元素内
-  4. `mouseleave`：指针移出到元素外
+  + `click`：单击并释放后
+  + `dblclick`：双击
+  + `mouseenter`：指针移入到元素内
+  + `mouseleave`：指针移出到元素外
 + 键盘事件
-  1. `keydown`：按下任意键
-  2. `keyup`：释放任意按键
-  3. `keypress`：长按任意键
+  + `keydown`：按下任意键
+  + `keyup`：释放任意按键
+  + `keypress`：长按任意键
 + 焦点事件
-  1. `focus`：获得焦点
-  2. `blur`：失去焦点
+  + `focus`：获得焦点
+  + `blur`：失去焦点
++ more...
 
 ## 事件处理的实现
 
@@ -51,12 +61,12 @@ HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发�
 
 ```html
 <button>click</button>
-```
 
-```js
-document.querySelector('button').onclick = function () {
-  alert('单击事件触发了');
-};
+<script>
+  document.querySelector('button').onclick = function () {
+    alert('单击事件触发了');
+  };
+</script>
 ```
 
 ::: demo DOM 元素的事件属性
@@ -85,15 +95,14 @@ document.querySelector('button').onclick = function () {
 与前两种方式相比，事件监听的优势在于对同一个事件，可以有多个不同的处理
 
 ```html
-<button>click</button>
-```
+<button>click me</button>
 
-```js
-function eventHandler() {
-  alert('单击事件触发了');
-}
-
-document.querySelector('button').addEventListener('click', eventHandler, false);
+<script>
+  function eventHandler() {
+    alert('单击事件触发了');
+  }
+  document.querySelector('button').addEventListener('click', eventHandler, false);
+</script>
 ```
 
 ::: demo addEventListener 方法
@@ -110,6 +119,10 @@ function eventHandler() {
 document.querySelector('button').addEventListener('click', eventHandler, false);
 ```
 
+:::
+
+::: tip
+如果一个元素注册了多个同类型的事件监听，执行顺序是按照代码书写顺序
 :::
 
 ## 事件对象 — Event
@@ -141,7 +154,7 @@ document.querySelector('button').addEventListener('click', event => {
 
 :::
 
-`event.type`获取的是当前事件的类型，更多 event 对象的属性和方法详见[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Event)
+`event.type`获取的是当前事件的类型，更多`event`对象的属性和方法详见[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Event)
 
 ## 事件流
 
@@ -270,12 +283,173 @@ div {
 </script>
 ```
 
-+ `preventDefault()`可以阻止默认事件行为不会被触发
-+ `stopPropagation()`可以阻止冒泡，阻止任何父元素事件处理
-+ `stopImmediatePropagation()`不仅可以阻止冒泡，也能阻止元素同类型事件的其他处理函数触发
++ `e.preventDefault()`可以阻止默认事件行为不会被触发
++ `e.stopPropagation()`可以阻止冒泡，阻止任何父元素事件处理
++ `e.stopImmediatePropagation()`不仅可以阻止冒泡，也能阻止元素同类型事件的其他处理函数触发
 
-::: tip
-如果一个元素注册了两个同类型的事件监听，执行顺序是谁写在前先执行谁
+对于`on<event>`这种的处理程序只需要返回一个`false`也能够阻止行为发生，对于一些其他的处理程序来说，返回`false`并没有什么意义，除了`on<event>`
+
+有一些时间是可以相互转换的，如果阻止了前一个事件就不会出发第二个时间，比如`<input>`的`mousedown`会导致其获得焦点从而触发`focus`事件，阻止了`mousedown`就不会触发焦点了
+
+```html
+<input type="text" value="jinqiu.wang" onfocus="this.value=''">
+<input type="text" value="jinqiu.wang" onmousedown="return false;" onfocus="this.value=''">
+```
+
+::: demo 后续事件的阻止
+
+```html
+<p>获得焦点</p>
+<input type="text" value="jinqiu.wang" onfocus="this.value=''">
+<p>无法获得焦点</p>
+<input type="text" value="jinqiu.wang" onmousedown="return false;" onfocus="this.value=''">
+```
+
+:::
+
+`addEventListener`的可选项`passive: true`可以表示事件处理永远都不会调用`preventDefault()`，因为它能明显的改善页面的滚动性能，这是因为用户在屏幕上移动会导致页面滚动，`preventDefault()`正好也能阻止滚动行为，因此一些事件监听在处理滚动时可能会阻止浏览器的主线程，导致 UI 变得卡顿或抖动，一旦设置`passive: true`就会告诉浏览器永远不会调用`preventDefault()`
+
+> [使用_passive_改善的滚屏性能](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener#%E4%BD%BF%E7%94%A8_passive_%E6%94%B9%E5%96%84%E7%9A%84%E6%BB%9A%E5%B1%8F%E6%80%A7%E8%83%BD)
+
+对于默认行为来说，有一个专门的`e.defaultPrevented`属性用来表示它，为`true`时表示已经被阻止，可以用来通知其它事件，表示该事件已经被处理
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+
+<script>
+  document.querySelector('button').oncontextmenu = function (e) {
+    e.preventDefault();
+    alert('按钮上下文菜单');
+  }
+  document.querySelector('div').oncontextmenu = function (e) {
+    e.preventDefault();
+    alert('容器级上下文菜单');
+  }
+</script>
+```
+
+::: demo 产生冒泡
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+```
+
+```js
+document.querySelector('button').oncontextmenu = function (e) {
+  e.preventDefault();
+  alert('按钮级上下文菜单');
+}
+
+document.querySelector('div').oncontextmenu = function (e) {
+  e.preventDefault();
+  alert('容器级上下文菜单');
+}
+```
+
+:::
+
+这个示例使用了`e.preventDefault()`阻止了鼠标右击时响应浏览器上下文菜单的默认事件，但是点击`button`时会冒泡到上一级，所以得到了两个菜单，临时解决方案是使用`e.stopstopPropagation()`阻止冒泡
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+
+<script>
+  document.querySelector('button').oncontextmenu = function (e) {
+    e.preventDefault();
+    // 阻止按钮事件冒泡
+    e.stopstopPropagation();
+    alert('按钮上下文菜单');
+  }
+  document.querySelector('div').oncontextmenu = function (e) {
+    e.preventDefault();
+    alert('容器级上下文菜单');
+  }
+</script>
+```
+
+::: demo 阻止冒泡
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+```
+
+```js
+document.querySelector('button').oncontextmenu = function (e) {
+  e.preventDefault();
+  e.stopstopPropagation();
+  alert('按钮级上下文菜单');
+}
+
+document.querySelector('div').oncontextmenu = function (e) {
+  e.preventDefault();
+  alert('容器级上下文菜单');
+}
+```
+
+:::
+
+这样便解决了对每个元素进行单独响应的逻辑，但是却有一个非常不好的地方，那就是永远的拒绝了使用右键单击的路，代价非常大，因此另一个方案是检查一下`document`处理程序是否阻止了浏览器的默认行为，如果这个事件得到了处理，无需再次对这个事件进行响应，因此`e.defaultPrevented`登场了
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+
+<script>
+  document.querySelector('button').oncontextmenu = function (e) {
+    e.preventDefault();
+    // 阻止按钮事件冒泡
+    // e.stopstopPropagation();
+    alert('按钮上下文菜单');
+  }
+  document.querySelector('div').oncontextmenu = function (e) {
+    // 根据默认行为状态来处理
+    if (e.defaultPrevented) {
+      return;
+    }
+    e.preventDefault();
+    alert('容器级上下文菜单');
+  }
+</script>
+```
+
+::: demo defaultPrevented
+
+```html
+<div>
+  <p>容器级上下文菜单</p>
+  <button>按钮级上下文菜单</button>
+</div>
+```
+
+```js
+document.querySelector('button').oncontextmenu = function (e) {
+  e.preventDefault();
+  alert('按钮级上下文菜单');
+}
+
+document.querySelector('div').oncontextmenu = function (e) {
+  if (e.defaultPrevented) {
+    return;
+  }
+  e.preventDefault();
+  alert('容器级上下文菜单');
+}
+```
+
 :::
 
 ## 事件委托
@@ -454,6 +628,7 @@ elem.dispatchEvent(event);
 
 ```html
 <button id="btn">click me</button>
+
 <script>
   btn.onclick = function() {
     alert(1);
@@ -487,6 +662,22 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 
 如果在某些情况下，这个事件是可以冒泡的，那么它将广播到`document`上，沿途触发的事件同样会被同步的方式处理，这可能不是想要的结果，最好优先处理自己的事件，只要将这个事件移动到优先处理的事件后面或者将它变成异步的事件来解决它
 
+```html
+<button>click me</button>
+
+<script>
+  let button = document.querySelector('button');
+  button.onclick = function() {
+    alert(1);
+    // 异步触发
+    setTimeout(() => button.dispatchEvent(new CustomEvent("button-click", { bubbles: true })));
+    alert(2);
+  };
+
+  button.addEventListener('button-click', () => alert('button-click handler'));
+</script>
+```
+
 ::: demo 异步处理的事件
 
 ```html
@@ -506,13 +697,443 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 
 :::
 
-## UI 事件
+## 鼠标事件
+
+鼠标左键被按下时，会首先触发`mosedown`，左键被释放后，会触发`mouseup`和`click`，在单个动作触发多个事件时，事件的顺序是固定的
+
+与点击相关的事件都会有`button`属性，这个属性允许获得确切的鼠标按钮，通常不在`click`和`contextmenu`事件中使用这个属性，因为它们分别只能被鼠标左键和右键所触发
+
+只有在`mousedown`和`mouseup`事件中才会用到这个属性，因为这两个事件会在任何按键上触发，对于`event.button`的值可能如下：
+
+按键状态|event.button
+---|---
+左键|0
+中键|1
+右键|2
+后退键|3
+前进键|4
+
+::: tip
+大多数鼠标只有左键和右键
+:::
+
+::: demo event.button
+
+```html
+<button>click me</button>
+```
+
+```js
+let button = document.querySelector('button');
+button.addEventListener('click', e => {
+  alert(e.button);
+});
+button.addEventListener('mousedown', e => {
+  alert(e.button);
+});
+button.addEventListener('mouseup', e => {
+  alert(e.button);
+});
+```
+
+:::
+
+甚至，所有的鼠标事件都包含按下的组合键的信息：
+
++ `shiftKey`：Shift
++ `altKey`：Alt
++ `ctrlKey`：Ctrl
++ `metaKey`：Win
+
+如果在鼠标事件期间按下了对应的键，则它的值为`true`，比如下面的示例中，按下三个键才会触发弹框
+
+::: demo 组合键
+
+```html
+<button>click me</button>
+```
+
+```js
+let button = document.querySelector('button');
+button.addEventListener('click', e => {
+  if(e.shiftKey & e.ctrlKey & e.altKey) {
+    alert('三键合璧，天下无敌');
+  }
+});
+```
+
+:::
+
+所有的鼠标事件都提供了两种形式的坐标：
+
++ 相对于窗口：`clienX`和`clienY`
++ 相对于文档：`pageX`和`pageY`
+
+::: demo 鼠标坐标
+
+```html
+<input onmousemove="this.value=event.clientX + ', ' + event.clientY" value="移动鼠标测试坐标">
+```
+
+:::
+
+有时候双击鼠标会有一些副作用，可能会出现选择文本的干扰
+
+::: demo 双击事件并选择文本
+
+```html
+<div ondblclick="alert('double click')">double click me</div>
+```
+
+:::
+
+有时候会出现按下不松开并移动鼠标的情况，这也会造成文本选择的干扰，为了避免这些情况，最合理的方法是在`mousedown`上进行处理
+
+::: demo 双击事件并不选择文本
+
+```html
+<div ondblclick="alert('double click')" onmousedown="return false">double click me</div>
+```
+
+:::
+
+这里虽然解决了问题，但是想要选择文本的时候发现无法选中了，其实并不是无法选中，而是要在文本本身以外的地方开始选中，从文本本身开始选中时自然会失效
+
+如果想要保护页面的内容不被复制，可以使用`copy`事件来处理
+
+::: demo copy 事件
+
+```html
+<div oncopy="alert('当然，你是不可能复制成功的');return false">这里的内容是被禁止复制的</div>
+```
+
+:::
+
+对于开发者来说，肯定是可以打开调试工具来访问源码进行复制，但是对于大多数人来说根本就不知道的
+
+当鼠标从元素身上移动时就会触发对应的移动事件，当移动到某个元素上时就会触发`mouseover`，而离开某个元素时就会触发`mouseout`
+
+这些事件都有一个特殊的`relatedTarget`属性，这是对`target`的补充，当从一个元素是上离开到另一个元素时，其中一个元素就是`target`，另一个就变成了`relatedTarget`，对于`mouseover`和`mouseout`来说，`target`和`relatedTarget`是互相相反的
+
+::: tip
+`relatedTarget`的取值是可能为`null`的，不一定总是页面上的某个元素的引用，鼠标如果来自窗口外，或者离开了窗口，就会产生这种现象，因此对于`relatedTarget`要记住这个特性，以免发生错误
+:::
+
+`mousemove`用来响应鼠标移动的事件，浏览器会一直检查鼠标的位置，如果发现了变化，就会触发`mousemove`，但是这并不意味着每一个像素变化都会触发，如果在非常快速地情况下移动鼠标，某些元素就很有可能被跳过，这对性能有很大的好处，并不需要在每个元素上处理进入和离开的过程
+
+还有一个特别重要的特性就是，快速移动鼠标的情况下，元素可能被忽略掉，如果正式的进入了一个元素产生了`mouseover`，那么必然会产生一个`mouseout`
+
+还有一个触发`mouseout`的地方就是出现在嵌套元素的身上，当鼠标从元素移动到后代时就会触发，其实指针并没有移出元素之外，但是在后代元素上触发了这个事件
+
+这是因为浏览器的逻辑是，指针随时都可以位于单个元素上，如果是嵌套元素就一定是`z-index`最大的那个，因此移动到另一个后代元素，代表着离开了当前元素
+
+此外，还有一个非常重要的细节，后代的`mouseover`会冒泡，因此父级元素如果有`mouseover`处理程序也会被触发，这可能不是一个好现象，因为指针仍然在父元素内，只不过更深入了而已
+
+`mouseenter/mouseleave`和`mouseover/mouseout`相同，但是它们有一些重要的区别：
+
++ 元素内部与后代之间的转换不会受到影响
++ 不会冒泡
+
+这非常好，只有进入一个元素时才会触发`mouseenter`，而鼠标在当前元素以及后代中的位置并不重要，只有当真正移出元素范围时才触发`mouseenter`，但是它们无法作用于事件委托，这也是一个不好的方面
+
+这是使用`mouseover/mouseout`进行事件委托的表格高亮示例
+
+::: demo 事件委托的应用
+
+```html
+<table>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table>
+```
+
+```js
+let table = document.querySelector('table');
+
+table.onmouseover = function (e) {
+  console.log(e.target);
+  e.target.style.background = 'pink';
+}
+
+table.onmouseout = function (e) {
+  e.target.style.background = '';
+}
+```
+
+```css
+table td{
+  border: 1px solid #000;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+```
+
+:::
+
+## 键盘事件
+
+需要处理键盘行为时，就应该使用键盘事件，对任意按键作出反应，当按下时会触发`keydown`事件，而当释放按键时触发`keyup`事件
+
+对于键盘事件对象来说，可以通过`key`来获取字符，而`code`属性允许获取物理上的按键代码
+
+::: demo 键盘事件上的信息
+
+```html
+<p>key：<br>code：</p>
+<input type="text">
+```
+
+```js
+document.querySelector('input').onkeydown = function (e) {
+  document.querySelector('p').textContent = 'key：' + e.key + '，code：' + e.code;
+}
+```
+
+:::
+
+如果使用不同的语言，只会导致`key`的值不一样，而`code`则始终是一样的，如果某些键没有产生字符，则`key`和`code`大致是一样的
+
+对于一个按键如果按下足够长的时间，会一直触发`keydown`，然后释放时才转到`keyup`，对于重复触发的事件来说，事件对象的`repeat`将被设置为`true`
+
+键盘可能会触发一些不可控的变数，比如`Ctrl+S`会保存网页，但是阻止`keydown`便能阻止它，因此可以阻止大多数键盘的行为，除了少数按键以外，比如`Alt+F4`，在 Windows 上用来关闭窗口
+
+## 滚动事件
+
+`scroll`事件能够对页面或元素的滚动作出反应，这是一个实例
+
+::: demo scroll
+
+```html
+<p>当前窗口已滚动的像素：<span>0 px</span></p>
+```
+
+```js
+window.onscroll = function(e) {
+  document.querySelector('span').textContent = window.pageYOffset + 'px';
+}
+```
+
+:::
+
+不能够在`scroll`事件中使用`e.preventDefault()`来阻止滚动，启动滚动的方法有很多种，但是使用 CSS 的`overflow`会更加可靠一些
+
+滚动有以下应用场景：
+
++ 无限的页面
++ “到顶部”以及“到底部”的按钮
++ 按需加载图像
 
 ## 表单事件
+
+表单和一些其它的控件元素有很多特殊的事件，对于文档中的表单来说，它们是`document.forms`的成员，因此可以使用这种方式来获取文档上的表单，且当有了表单后，其中的任何元素都可以使用`form.elements`来获取
+
+```html
+<form name="foo">
+  <input type="text" name="one">
+</form>
+<script>
+  let foo = document.forms.foo;
+  let input = foo.elements.one;
+</script>
+```
+
+值得一提的是，当为表单或其中的控件元素添加`name`特性后，便可以在`forms`和`elements`中直接使用`name`对应的值作为属性来引用，而不必使用一些其它的方法来定位元素
+
+当然也可能会出现名字相同的元素，比如在单选按钮中，在这种情况下，`elements.name`将是一个集合
+
+```html
+<form name="foo">
+  <input type="radio" name="gender">
+  <input type="radio" name="gender">
+</form>
+<script>
+  let foo = document.forms.foo;
+  let inputs = foo.elements.gender;
+  console.log(inputs); // RadioNodeList(2)
+</script>
+```
+
+甚至可以通过更短的方式来访问元素，直接将`form.elements.name`写成`form.name`是等效的
+
+```html
+<form name="foo">
+  <input type="text" name="one">
+</form>
+<script>
+  let foo = document.forms.foo;
+  console.log(foo.elements.one == foo.one); // true
+</script>
+```
+
+每一个对应的元素都可以反向的引用其对应的表单，使用`form`属性
+
+```html
+<form name="foo">
+  <input type="text" name="one">
+</form>
+<script>
+  let foo = document.forms.foo;
+  let one = foo.one;
+  // 反向引用
+  console.log(one.form == foo); // true
+</script>
+```
+
+对于`<input>`来说，访问不同的`type`的`value`有所不同：
+
++ type = `text`：`value`
++ type = `radio`：`checked`（布尔值）
+
+对于`<textarea>`也是使用`value`来访问
+
+对于`<select>`来说有三个重要的属性：
+
++ `options`：所有的`<option>`的集合
++ `value`：当前所选择的`<option>`的`value`
++ `selectedIndex`：当前所选择的`<option>`索引编号
+
+其中有三种方式来设置`value`：
+
++ 将对应`<opition>`元素的`selected`设为`true`
++ 将`<select>`的`value`设置为对应`<option>`的`value`
++ 将`<select>`的`selectedIndex`设置对应`<option>`的索引编号
+
+当点击某个元素或使用键盘上的`Tab`选中时，该元素会获得聚焦，在 HTML 中有一个`autofocus`特性会让网页在加载完成后默认的聚焦到元素上，聚焦意味着一个元素可以接受数据，当失去焦点的时候意味着数据已经输入完毕
+
+当元素聚焦时会触发`focus`事件，当失去焦点时会触发`blur`事件
+
+::: demo 焦点事件
+
+```html
+<p>没有任何元素获得焦点</p>
+<input type="text">
+```
+
+```js
+document.querySelector('input').onfocus = function (e) {
+  document.querySelector('p').textContent = '获得焦点'
+};
+
+document.querySelector('input').onblur = function (e) {
+  document.querySelector('p').textContent = '失去焦点'
+};
+```
+
+:::
+
+焦点也会有丢失现象发生，比如`alert`会将焦点移到自己身上，那么另一个已经获得焦点的元素将失去焦点并触发`blur`，或者一个元素从 DOM 中移除，也会导致焦点丢失
+
+大多数元素并不支持聚焦，因为它们本身并不需要接受数据，但是 HTML 特性`tabindex`可以适用到这些不支持`focus/blur`的元素身上，任何具有`tabindex`的元素都会变成可聚焦的：
+
++ `tabindex`接收一个负值，表示是可聚焦的，但不能通过键盘导航来访问该元素
++ `tabindex`接收`0`，表示是可聚焦的，可以通过键盘导航来访问该元素，但是顺序是与当前处于文档中的顺序来决定的
++ `tabindex`接收一个正值，表示是可聚焦的，可以通过键盘导航来访问该元素，但是它的访问顺序是按照`tabindex`的数值递增来决定获得焦点的顺序，如果拥有相同的数值，则按照在文档中的顺序来决定
+
+::: demo tabindex
+
+```html
+<div tabindex="1">1</div>
+<div tabindex="0">0</div>
+<div tabindex="2">2</div>
+<div tabindex="-1">-1</div>
+```
+
+```js
+```
+
+```css
+div {
+  cursor: pointer;
+}
+:focus {
+  outline: 1px dashed red;
+}
+```
+
+:::
+
+`focus/blur`不支持事件冒泡，但是支持事件捕获，如果一定需要冒泡的需求，可以使用`focusin/foucusout`事件，它们和`focus/blur`完全一样，但是只能使用`addaddEventListener`处理
+
+另外，可以使用`document.activeElement`来获取当前聚焦元素
+
+在进行表单提交时，会触发`submit`事件，提交表单有两种方式：
+
++ 在`<input>`中按下`Enter`
++ 点击`<input type="submit">`或`<input type="image">`
+
+::: demo submit 事件
+
+```html
+<form name="foo">
+  <input type="text">
+  <input type="image">
+  <input type="submit" value="提交">
+</form>
+```
+
+```js
+document.querySelector('form').onsubmit = function (e) {
+  alert('submit 触发了');
+  return false;
+};
+```
+
+:::
+
+在`submit`中使用`return false`会阻止表单发送，有趣的是使用`Enter`发送表单时，会触发`<input type="submit>`一次`click`事件，真很有趣
+
+如果要手动将表单提交到服务器，可以调用`form.submit`方法，它不会产生`submit`事件，会向`form.action`的值所指向的服务器进行`form.method`方式提交
+
+## 数据更新事件
+
+对于元素来说，产生的更改也会触发相应的事件
+
+`change`事件可以在`<input>`失去焦点后触发，但是数据状态必须已经发生改变
+
+::: demo 失去焦点
+
+```html
+<input type="text" onchange="alert(this.value)">
+```
+
+:::
+
+对于`<select>`，以及`<input>`的`type`为`checkbox/radio`时，会在选项更改后立即触发
+
+还有一个`input`事件只要监测到数据改变了就会触发，无论是键盘上的数据，还是鼠标粘贴等改变数据的操作，如果想要处理输入值的每次更改，这个事件是最好的选择，另外，该事件不会在不涉及值更改的输入上触发，比如方向键
 
 ## 剪切板事件
 
 剪切板是界面中最常用的操作之一，IE 是最早支持的，随着 HTML5 到来，剪切板事件已经纳入了标准
+
+剪切板事件是当发生复制/粘贴/剪切操作时触发的事件，分别是`copy`，`paste`，`cut`
+
+::: demo 剪切板事件
+
+```html
+<input type="text" oncopy="alert(event.type)" onpaste="alert(event.type)" oncut="alert(event.type)">
+```
+
+:::
+
+如果想要访问剪切板上的数据，可以使用`ClipboardEvent`类的方法，比如`event.clipboardData.getData('text/plain')`用于获取对应的数据
+
+::: demo 访问数据
+
+```html
+<input type="text" onpaste="alert(event.type + ':' + event.clipboardData.getData('text/plain'))">
+```
+
+:::
+
+`event.clipboardData`可以读写剪切板中的数据，但是在规范中有很多方法可以用于不同的数据类型，而不仅仅是文本
 
 要访问剪切板中的数据，可以通过 clipboard 对象，它由 navigator.clipboard 返回，所有的操作都通过这个对象进行
 
@@ -532,4 +1153,90 @@ navigator.clipboard.readText();
 navigator.clipboard.read();
 ```
 
-## 文档
+## 文档事件
+
+HTML 有三个非常重要的生命周期事件：
+
++ `DOMContentLoaded`：已经完全加载了 HTML，并构建了 DOM 树，但是图像、样式表之类的外部资源可能没有加载完成
++ `load`：不仅加载完了 HTML，还加载完了所有的外部资源
++ `beforeunload/unload`：当用户离开页面时
+
+`DOMContentLoaded`事件发生在`document`身上，必须使用`addEventListener`来处理它，`DOMContentLoaded`可以在文档加载完毕后触发，所以在这里可以访问任何元素，包括`<img>`，但是它不会等待图片加载，此时无法访问图片的大小
+
+如果文档在加载的时候遇到了`<script>`，就会等待这个脚本执行完成后继续加载，因为脚本可能需要修改 DOM，所以`DOMContentLoaded`会等待它执行结束，这说明脚本会堵塞文档的加载
+
+虽然`DOMContentLoaded`不会等待外部样式表，但是如果样式表后有一个脚本，那么脚本会等待样式表加载完成，同时 HTML 在等待脚本以及前面的样式表加载完成，因为脚本可能会访问一些样式相关的属性，这导致脚本必须等待
+
+当整个页面的资源被加载完成后，包括图片，外部样式等，才会触发`window`上的`load`事件，如果绑定到元素上会在元素加载完成后触发，`window.onload`始终是最后触发的
+
+当离开了这个页面就会触发`unload`，通常用来关闭页面的时候去做些什么事情，比如发送一些数据，但是由于页面已经被卸载，所有就无法接收响应，同时一些弹框方法也是失效的，但是如果在这里处理一些同步的的操作就会导致关闭会有延迟，而`beforeunload`则可以在页面离开前提示用户是否确定离开，相比`unload`多了一个确认的步骤，`beforeunload`会阻止`unload`事件的执行，并且优先执行
+
+如果想在页面关闭时发送数据，可以使用`navigator.sendBeacon(url, data)`方法，它会在后台发送数据，即使离开了页面也不会影响它的执行，请求方式是 POST，通常可以发送一些字符串化的对象
+
+对于文档的加载状态是有迹可循的，`document.readyState`反映了文档的加载状态：
+
++ `loading`：正在加载中
++ `interactive`：文档已经加载完成
++ `complete`：文档中的所有资源均加载完成
+
+还有一个`readystatechange`事件，会在状态改变时触发
+
+```js
+console.log(document.readyState); // 'loading'
+document.addEventListener('readystatechange', function (e) {
+  console.log(document.readyState); // 'interactive' ,,, 'complete'
+})
+```
+
+## 加载脚本
+
+现在的脚本往往比 HTML 本身更大，处理的时间更加久，上面说过脚本会堵塞页面的加载，对于外部的脚本来说也是如此，必须等待下载完，并执行结束后才能继续加载文档
+
+这会导致一些问题：
+
++ 脚本不能访问身后的文档元素
++ 如果有一个非常笨重的脚本，会严重的堵塞页面的加载，造成体验问题
+
+对于这种问题的解决办法是将脚本置于文档底部，这时就可以处理页面上的元素，而且不会堵塞页面
+
+```html
+<body>
+  <!-- 所有的文档内容 -->
+  <!-- ...... -->
+  <script></script>
+</body>
+```
+
+但这不是最完美的，如果文档非常长，脚本被延后到最后处理，会产生明显的延迟，对于网速较快的人来说感知不明显，但是对于慢网速的人来说就有点难受
+
+但是`script`有两个特性可以解决这个问题：
+
++ `defer`：告诉浏览器不需要等待脚本，继续处理文档，脚本会在旁边自动下载，等待文档处理完成后才会执行，并且保持相对顺序的依次执行，这对于需要依赖的脚本有用
++ `async`：告诉浏览器不需要等待脚本，继续处理文档，但是`async`脚本之间没有顺序可言，当下载完后就立即执行了，是一个完全独立运行的脚本
+
+`DOMContentLoaded`事件会在`defer`脚本全部执行完后，才会触发，对于`async`脚本来说，它可能先触发也可能后触发
+
+::: tip
+`defer`仅适用于具有`src`属性的外部脚本，否则就会忽略`defer`
+:::
+
+除此之外有一个动态添加脚本的方式，就是使用 JavaScript 动态的创建一个脚本，并追加到文档中，当被追加到文档后就会立即执行，此时这个脚本：
+
++ 是异步的，不会等待其它东西，也不会有东西等待它
++ 先加载完成的脚本先执行
+
+```js
+let script = document.createElement('script');
+script.src = 'jinqiu.wang/foo.js';
+document.body.append(script);
+```
+
+对于这种脚本的创建方式，必须等到加载完成后才能调用其中的函数，但是还好`load`事件能够帮助我们，它会在脚本加载完成后触发，因此可以使用脚本中的变量、函数等等
+
+如果一个脚本加载失败了，会触发一个`error`事件，对于失败信息无法获取更多，只能通过这种方式知道脚本加载失败了
+
+`load`和`eroor`事件也适用于其它具有`src`属性的外部资源
+
+::: tip
+对于`<img>`来说，必须获得`src`才能够被开始加载，而`<ifrma>`不管加载成功还是失败都会触发`load`事件
+:::
