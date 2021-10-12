@@ -6,6 +6,13 @@ author: JQiue
 article: false
 ---
 
+::: info 前置知识
+
++ HTML
++ CSS
++ JavaScript
+:::
+
 JavaScript 最初就是为 Web 浏览器创建的，虽然在此之后发展成了具有多种用途和平台的语言，平台可以是浏览器，一个 Web 服务器，或者其他的主机，它们每一个都提供了特定于平台的功能，JavaScript 将它称之为主机环境
 
 主机环境提供了自己的对象和语言核心以外的函数，比如浏览器提供了控制网页的方法，NodeJS 提供了服务器端功能

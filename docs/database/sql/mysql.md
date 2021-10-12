@@ -6,6 +6,11 @@ author: JQiue
 article: false
 ---
 
+::: info 前置知识
+
++ SQL
+:::
+
 ## 介绍
 
 ## 安装
