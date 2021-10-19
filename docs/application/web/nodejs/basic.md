@@ -9,9 +9,9 @@ article: false
 ::: info 前置知识
 
 + JavaScript
-+ Server
 + HTTP
-+ OS
++ TCP
++ 命令行
 :::
 
 NodeJS 内置 V8 引擎，是 JavaScript 的一个运行环境，提供了浏览器中没有的功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的。NodeJS 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上
@@ -43,19 +43,19 @@ NodeJS 适合解决下面这些应用场景中的问题：
 ## 运行 JavaScript
 
 + 交互式：终端输入`node`即可进入交互式编程
-+ 文件式：在命令行中输入`node 文件路径`
++ 文件式：在命令行中输入`node 文件名`
 
 ## 和浏览器中的一些区别
 
 NodeJS 和浏览器都是 JavaScript 的运行环境，但是由于宿主不同所以特点也有所不同
 
 + 内置对象不同
-  + 浏览器提供了 window 全局对象
-  + NodeJS 的全局对象不叫 window, 叫 global
+  + 浏览器提供了`window`全局对象
+  + NodeJS 的全局对象不叫`window`, 叫`global`
 
 + this 默认指向不同
-  + 浏览器中全局 this 指向 window
-  + NodeJS 中全局 this 默认指向空对象
+  + 浏览器中全局`this`指向`window`
+  + NodeJS 中全局`this`默认指向空对象`{}`
   
 + API 不同
   + 浏览器提供了操作 BOM/DOM 的相关 API
@@ -67,9 +67,9 @@ NodeJS 和浏览器都是 JavaScript 的运行环境，但是由于宿主不同�
 
 ## 模块
 
-随着前端的发展，JavaScript 不在局限于表单验证和特效制作上了，经过漫长的过程，JavaScript 终于暴露了自己先天就缺乏的一个功能：模块。对比其他语言来说，Java 有 import，Python 也有 import，Ruby 有 require 用来解决引入代码的机制。JavaScript 通过`<script>`引入代码的方式自然就显的混乱无比，自身根本就没有组织和约束能力，因此必须用命名空间等人为方式来约束代码
+随着前端的发展，JavaScript 不在局限于表单验证和特效制作上了，经过漫长的过程，JavaScript 终于暴露了自己先天就缺乏的一个功能：模块。对比其他语言来说，Java 有 import，Python 也有 import，Ruby 有 require 用来解决引入代码的机制。JavaScript 通过`<script>`引入代码的方式自然就显得混乱无比，自身根本就没有组织和约束能力，因此必须用命名空间等人为方式来约束代码
 
-虽然前端的 JavaScript 有着更多标准 API，但是对于后端的 JavaScript 来说，规范已经远远落后，有着一下很严重的缺陷：
+虽然前端的 JavaScript 有着更多标准 API，但是对于后端的 JavaScript 来说，规范已经远远落后，有着以下很严重的缺陷：
 
 + 没有模块系统
 + 标准库少，相对于前端来说
@@ -96,7 +96,7 @@ const math = require('math');
 模块定义：
 
 ```js
-exports.foo = function() {}
+exports.foo = function() {};
 ```
 
 `require()`方法提供了引入模块的功能，而导出模块的功能则交给`exports`对象，它是唯一的导出接口，在这里还存在一个`module`对象，表示当前模块自身，而`exports`是`module`的属性，在 NodeJS 中一个文件就是一个模块，将其中变量或方法等挂载到`exports`对象上作为属性，即可在其它地方使用`require()`来导入这个模块使用其中的功能
@@ -123,16 +123,53 @@ NodeJS 中引入模块，需要经历 3 个步骤：
 
 ## 全局变量
 
+在 NodeJS 中存在一个全局作用域，可以定义一些不需要使用任何模块加载即可使用的变量、函数或类，同时也预先定义了一些全局方法及全局类，它们都是`global`的属性
+
 命名|说明
 ---|---
-__dirname|提供当前模块的目录名（绝对路径）
-__filename|提供当前模块的文件名（绝对路径）
-module|当前模块的引用
-exports|导出模块，是`module.exports`的简写方式
-require()|引入模块、JSON、本地文件
-URL|处理 URL 地址的类
-Buffer|处理二进制数据的类
-console|打印信息的类
-process|进程类
-setInterval()|定时器
-setTimeout()|定时器
+`global`|全局对象
+`__dirname`|提供当前模块的目录名（绝对路径）
+`__filename`|提供当前模块的文件名（绝对路径）
+`module`|当前模块的引用
+`exports`|导出模块，是`module.exports`的简写方式
+`require()`|引入模块、JSON、本地文件
+`URL`|处理 URL 地址的类
+`Buffer`|处理二进制数据的类
+`console`|打印信息的类
+`process`|进程类
+`setInterval()`|定时器
+`setTimeout()`|定时器
+
+这里简单说明几个比较重要的全局变量的用法：
+
++ `require.resolve()`：查询某个模块文件带有绝对路径的文件名
++ `require.cache`：所有已加载模块的缓存区，通过键名来访问已缓存的模块
++ `new URL()`：创建一个 URL 对象
++ `process.env`：查看当前环境变量
++ `process.cwd()`：查看当前运行 NodeJS 的终端路径
+
+::: tip 卸载模块
+`delete require.cache(require.resolve('module'))`
+:::
+
+使用`process`实现标准的 I/O 流读写：
+
+```js
+// 执行到这里时等待
+process.stdin.resume();
+// 设置输入流的编码
+process.stdin.setEncoding('utf8');
+// 监听输入流的数据
+process.stdin.on('data', function (text) {
+  // 将数据输出到输出流
+  process.stdout.write(text);
+  
+})
+```
+
+Node 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，``
+
+```js
+
+
+```

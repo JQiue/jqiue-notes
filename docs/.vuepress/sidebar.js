@@ -33,6 +33,7 @@ const computer_basic = [
     children: [
       'basic',
       'http',
+      'tcp-ip',
     ]
   }
 ];
