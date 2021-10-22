@@ -167,6 +167,7 @@ aptitude versions <pkgname> 显示指定包的版本
 + `ps ax`：打印所有正在运行的进程
 + `ps axue --forest`：以树的形式打印所有正在运行的进程
 + `kill 45569`：终结 PID 为`45569`的程序运行
++ `top`：实时查看进程变化，监控 Linux 系统状况
 
 ```sh
 root@VM-4-14-ubuntu:~# ps x
@@ -227,4 +228,15 @@ L | 是多线程的（使用 CLONE_THREAD，例如 NPTL pthreads）
 
 ## 网络
 
++ `netstat`：
++ `netstat -a`：列出所有端口
++ `netstat -at`：列出所有 TCP 端口
++ `netstat -au`：列出所有 UDP 端口
+
 ## 性能信息
+
+## 系统信息
+
++ `df -h`：查看磁盘容量
++ `cat /proc/cpuinfo`：查看硬件配置
++ `lsb_release -a`：查看发行版本

@@ -296,7 +296,8 @@ div {
 ```html
 <html>
   <head>
-    <link href="index.css"/>
+    <title></title>
+    <link href="style.css"/>
   </head>
   <body>
     <div>内部样式</div>
@@ -305,6 +306,10 @@ div {
 ```
 
 更推荐外部样式表，一个外部 CSS 文件可以被很多网页共用，并且可以提高网页的加载速度，如果一个网页引用了一个 CSS 文件，这个文件多半在缓存区
+
+::: danger css 会堵塞网页吗？
+CSS 加载不会堵塞 DOM 解析，但是会堵塞 DOM 渲染，这是因为会等待 CSS 加载完成后，按照最终的样式去渲染 DOM，并且 CSS 还会堵塞后面的 JavaScript 脚本执行
+:::
 
 ### 语法
 
@@ -462,4 +467,4 @@ BFC（Block Formatting Context）直译为”块级格式化上下文“，它�
 
 ## JavaScript
 
-至于怎么在 HTML 中使用，详见 [运行 - JavaScript](/language/js/basic/#运行-javascript)
+至于怎么在 HTML 中使用，详见 [在浏览器中使用 JavaScript](/language/js/basic/#运行-javascript)

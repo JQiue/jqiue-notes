@@ -109,7 +109,7 @@ NodeJS 原本的用途就是开发一款高性能的 Web 服务器，`http`就�
 
 ### 服务端模式
 
-首先需要通过`http.createServer(callbaci(request, response))`方法创建一个服务器，然后调用`listen()`方法监听端口，每当客户端请求一次，回调函数就会被调用一次
+首先需要通过`http.createServer(callback(request, response))`方法创建一个服务器，然后调用`listen()`方法监听端口，每当客户端请求一次，回调函数就会被调用一次
 
 ```js
 const http = require("http");
@@ -145,7 +145,7 @@ NodeJS 提供了几个修改响应头的方法，`response.setHeader(field, valu
 
 对于响应头来说，一定要在`response.write()`以及`response.end`前使用
 
-默认的 HTTP 响应码是`200`，有时需要设置一些别的状态码可以使用`response.statusCode`，也应该在一些结束响应的逻辑前是使用
+默认的 HTTP 响应码是`200`，有时需要设置一些别的状态码可以使用`response.statusCode`，也应该在一些结束响应的逻辑前使用
 
 ### 数据传输
 
@@ -199,23 +199,67 @@ console.log('Server start at http://localhost:3000');
 
 ## 文件操作
 
-异步的文件读取
+文件读取：
 
 ```js
 const fs = require('fs');
+
+// 异步
 fs.readFile('data.txt', (err, data) => {
   if(err) return err;
   console.log(data);
 });
-console.log(data);
+
+// 同步
+let data = fs.readFileSync('data.txt');
 ```
 
-同步的文件读取
+文件写入：
 
 ```js
 const fs = require('fs');
-let data = fs.readFileSync('data.txt');
-console.log(data);
+
+// 异步
+fs.writeFile('./text.txt', 'hello, world', err => {
+  if (err) {
+    console.log(err);
+  }
+});
+
+// 同步
+fs.writeFileSync('./data.txt', 'hello, world');
+```
+
+::: tip
+如果没有该文件，则会尝试创建
+:::
+
+`writeFile`是一种覆盖写入，如果想要追加内容，则使用`appendFile`：
+
+```js
+const fs = require('fs');
+
+fs.appendFile('data.txt', '追加内容', err => {
+  if(err) {
+    console.log(err);
+  }
+})
+
+fs
+```
+
+获取目录：
+
+```js
+const fs = require('fs');
+
+// 异步
+fs.readdir('./', (err, files) => {
+  console.log(files);
+})
+
+// 同步
+const files = fs.readdirSync('./');
 ```
 
 ## 事件触发器
@@ -253,3 +297,50 @@ eventEmitter.on('handler', eventHandler);
 // 触发事件
 eventEmitter.emit('handler');
 ```
+
+## 缓冲
+
+如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回
+
+## 流
+
+流是用于在 NodeJS 中处理流数据的抽象接口，`stream`模块提供了用于实现流接口的 API，在 NodeJS 中提供了很多流对象，比如，HTTP 服务的请求，进程的输出流，流是可读可写的，或者两者兼之，且所有的流都是`EventEmitter`的实例
+
+NodeJS 中有四种基本的流类型：
+
++ `Writable`：可写入数据的流
++ `Readable`：可读取数据的流
++ `Duplex`：可读可写的双工流
++ `Transform`：可以在写入或读取数据时修改后转换数据的双工流
+
+```js
+const fs = require('fs');
+const http = require('http');
+http.createServer((req, res) => {
+  const data = fs.createReadStream('./data.txt');
+  data.pipe(res);d
+});
+```
+
+## 路径
+
+`path`模块提供了用于处理文件和目录的路径的使用工具 API
+
+```js
+const path = require('path');
+
+// 拼接路径，sep 在 Windows 下是 \，类 unix 下是 /
+console.log(path.join('foo', 'bar', 'baz'));
+
+// 获取文件路径
+console.log(path.dirname('./foo/bar.js')); ./foo
+
+// 获取文件名
+console.log(path.basename('./foo/bar.js')); bar.js
+```
+
+## 工具
+
+`util`模块提供了大量的工具类型的 API
+
++ `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的版本

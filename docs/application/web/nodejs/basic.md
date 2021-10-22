@@ -167,9 +167,55 @@ process.stdin.on('data', function (text) {
 })
 ```
 
-Node 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，``
+查看系统情况：
 
 ```js
+// 系统架构
+console.log(process.arch);
+// 内存使用情况
+console.log(process.memoryUsage());
+// 命令行参数
+console.log(process.argv);
+```
 
+退出 NodeJS 程序：
 
+```js
+process.exit();
+```
+
+Node 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，`console.timeEnd()`打印执行到这里的持续时间
+
+```js
+var label;
+console.time(label);
+
+/* 
+  运行期间的代码
+*/
+
+console.timeEnd(label);
+```
+
+当事件循环进行一次完整的过程后，可以称之为一个滴答，而`process.nextTick(callback)`会将一个函数在下一个滴答之前执行，而不是排入任务队列，比`setTimeout`更加有效率：
+
+```js
+/* 加入任务队列 */
+setTimeout(()=>console.log('timeout'), 0);
+
+/* 不加入任务队列，等待下一个任务循环前执行 */
+process.nextTick(() => {
+  console.log('hello, world');
+});
+
+/* 正常执行 */
++function foo() {
+  console.log('foo');
+}()
+
+/* 执行结果
+foo
+hello, world
+timeout
+*/
 ```
