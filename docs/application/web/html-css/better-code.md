@@ -8,20 +8,19 @@ article: false
 
 ## 教条式的规则
 
+基最具有现代标准的 HTML 结构：
+
 ```html
 <!DOCTYPE html>
-```
-
-```html
 <html lang="en-US">
-```
-
-```html
-<meta charset="utf-8">
-```
-
-```html
-<meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title></title>
+  </head>
+  <body>
+  </body>
+<html>
 ```
 
 元素名字和属性名/值全部使用小写
@@ -29,30 +28,30 @@ article: false
 抛弃尾随的斜杠
 
 ```html
+<!-- 不好 -->
+<input type="text"/>
+
+<!-- 好 -->
 <input type="text">
 ```
 
-有些标签是可闭合也可以不闭合，比如`<body>`或者`<li>`等元素，但是这些最好还是闭合，虽然代码简化了，但是可读性会变的很差
+有些标签是可闭合也可以不闭合，比如`<body>`或者`<li>`等元素，但是这些最好还是闭合，虽然代码简化了，但是可读性会变的很差，不然感觉很奇怪，尤其是在复杂的代码中更是如此，其实可以在后期的压缩环节实现删除可选闭合的部分，写代码的时候还是要保留，提高阅读性
 
 ```html
+<!-- 不好 -->
 <ul>
   <li>item1
   <li>item2
 </ul>
-```
 
-上面的确实变的简单，但感觉很奇怪，尤其是在复杂的代码中更是如此。修改如下：
-
-```html
+<!-- 好 -->
 <ul>
   <li>item1</li>
   <li>item2</li>
 </ul>
 ```
 
-其实可以在后期的压缩环节实现删除可选闭合的部分，写代码的时候还是要保留，提高阅读性
-
-有不少标签属性，无需设置属性值，比如 disabled、checked 与 selected
+有不少标签属性，无需设置属性值，比如`disabled`、`checked` 与 `selected`
 
 ```html
 <input type="checkbox" checked>

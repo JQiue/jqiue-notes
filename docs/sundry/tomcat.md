@@ -8,7 +8,9 @@ article: false
 
 ::: info 前置知识
 
-+ HTML/CSS/JavaScript
++ HTML
++ CSS
++ JavaScript
 + Java
 + HTTP
 + Server

@@ -33,6 +33,7 @@ const computer_basic = [
     children: [
       'basic',
       'http',
+      'tcp-ip',
     ]
   }
 ];
@@ -231,16 +232,10 @@ const application = {
       prefix: 'vue/',
       collapsable: false,
       children: [
-        'start',
-        'directive',
-        'compute-listener-filter',
+        'basic',
         'component',
-        'slot',
         'vuex',
         'vue-router',
-        'transition',
-        'special-attribute',
-        'render',
       ]
     },
     {

@@ -57,7 +57,7 @@ NPM 由三个独立的部分组成：
 
 在此之前，为了确认 NPM 没有随着 NodeJS 安装出现问题，应该先执行一下`npm -v`，这会打印 NPM 的版本信息。在并不熟悉 NPM 命令之前，可以直接执行`npm`以获得帮助信息，而`npm help <command>`会详细查看具体命令说明
 
-在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动生成，也可以通过`npm init`交互生成。此为初始化命令，会在运行此命令的目录下创建 package.json，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
+在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动创建，也可以通过`npm init`命令生成。此为初始化命令，会在运行此命令的目录下创建 package.json，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
 
 ```json
 {
@@ -71,7 +71,7 @@ NPM 由三个独立的部分组成：
 }
 ```
 
-接下来开始为项目安装一些所需要的依赖包了，这是 NPM 中最常用的命令，它的命令是`npm install <package_name>`，也可缩写成`npm i <package_name>`，它会在当前目录下创建一个 node_modules 目录，并将所下载的包解压到该目录中，于此同时，它会将依赖的包名写入到 package.json 中的`dependencies`字段里，当安装好依赖包后，就可以在代码中使用`require()`来引入它
+接下来开始为项目安装一些所需要的依赖包了，这是 NPM 中最常用的命令，它的命令是`npm install <package>`，也可缩写成`npm i <package>`，它会在当前目录下创建一个 node_modules 目录，并将所下载的包解压到该目录中，于此同时，它会将依赖的包名写入到 package.json 中的`dependencies`字段里，当安装好依赖包后，就可以在代码中使用`require()`来引入它
 
 ::: tip
 这个包会从远程的 NPM 官方仓库中下载，由于官方仓库可能较慢，推荐使用以下命令更换淘宝镜像源
@@ -84,17 +84,9 @@ npm config set registry https://registry.npm.taobao.org
 
 如果包中有命令行工具，那么需要添加额外的`-g`参数进行全局模式安装，通过全局模式安装的包都被安装到了一个统一的 node_modules 目录中。这并不意味着全局模式的包可以在任意地方被`require()`引用，只是为了将包作为一个全局可用的可执行命令
 
-卸载包使用`npm uninstall <package_name>`，会删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除掉，这个命令是默认是卸载项目本地的包，卸载全局的包则需要加上`-g`
+卸载包使用`npm uninstall <package> (--save/-S)`，会删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除掉，这个命令是默认是卸载项目本地的包，卸载全局的包则需要加上`-g`
 
-```sh
-npm uninstall <package> --save
-```
-
-如果是以 devDependency 方式安装的包，必须使用`--save --dev`
-
-```sh
-npm uninstall <package> --save --save
-```
+如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
 
 ::: warning
 如果卸载了 NodeJS，则应该手动移除掉`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`，给下一次安装 NodeJS 时带来干净的 npm 包环境
@@ -102,15 +94,23 @@ npm uninstall <package> --save --save
 
 更新包同样也有本地和全局之分，在 package.json 所在路径，运行`npm update`命令，即可实现包的更新，更新全局的包则使用`npm update -g`，这可能很慢，因为依赖太多了
 
-查看全局的包，查看本地的包去掉`-g`
+`npm list -g --depth 0`用于查看全局的包，查看本地的包去掉`-g`
 
-```sh
-npm list -g --depth 0
-```
+## package-lock.json
 
-写入 package.json
+## 版本规则
 
-执行``
+## 发布
+
+我们可以将自己写的包上传到官方仓库，共给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的
+
+然后使用`npm adduser`输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包即可
+
+::: tip
+在发布前，最好检查一下源地址，必须是官方源地址
+:::
+
+如果想要撤销发布的包，可以使用`npm unpublish <package> --force`
 
 ## 很棒的第三方包
 
@@ -121,3 +121,12 @@ npm list -g --depth 0
 5. [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
 6. [nodemon](https://github.com/remy/nodemon)：监听 NodeJS 应用程序的更改，并自动重启服务器
 7. [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
+
+## NPM 的替代 Yarn
+
++ `yarn init` = `npm init`
++ `yarn` = `yarn install`
++ `yarn global add <package>` = `npm install <package> -g`
++ `yarn add <package> --dev` = `npm install <package> --save --dev`
++ `yarn remove <package>` = `npm uninstall <package> --save --dev`
++ `yarn run <script>` = `npm run <script>`

@@ -213,7 +213,7 @@ Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在
 
 现在可以使用`git merge <branch_name>`进行分支合并了，注意，如果要合并其他分支到当前分支，一定要查看以下当前处于的分支，否则就合并错了。另外，`git merge <branch_name>`是一种“快进式合并”（Fast-forward），会直接将当前分支指向合并的分支，这可能不是特别好，因为主分支可能看起来像指向了其他分支一样。为了让版本迭代更加清晰，更推荐增加一个额外的参数`--no-ff`，它会在当前分支产生一个新的节点，然后正常的合并其他分支，而不是直接修改分支的指向
 
-如果想要删除某个分支，使用`git branch -d <branch_name>`命令即可，删除远程分支则使用`git push --delete <remote> <branch_name>`
+如果想要删除某个分支，使用`git branch -d <branch_name>`命令即可，删除远程仓库的分支则使用`git push --delete <remote> <branch_name>`，删除追踪的远程分支使用`git branch --delete --remotes <remote>/<branch_name>`
 
 在日常开发中，合理的参照下面的图进行分支开发即可：
 
@@ -304,10 +304,12 @@ Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面
 从指定的服务器地址克隆代码到本地：
 
 ```sh
-git clone <url>
+git clone <remote>
 ```
 
 这样便可以修改本地的代码了，当完成了一定量的修改后，可以做个阶段的提交
+
+`clone`默认会把远程仓库都复制到本地，但是只会创建一个默认的`master`分支，对于远程的其他分支只会建立关联，如果想要克隆其他分支，就要使用`checkout`命令签出，比如克隆远程`dev`分支的命令是`git checkout -b dev <remote>/dev`，`-b`参数的意思是克隆后立即切换到这个分支下，如果为了省事，也可以使用`-t`参数进行替代，`git checkout -t <remote>/dev`不但会克隆远程分支，还会自动创建同名的本地分支，也会切换到该分支下
 
 ## 让 git 走 Clash 代理
 
