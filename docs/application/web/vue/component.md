@@ -131,13 +131,6 @@ export default {
   }
 }
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -186,13 +179,6 @@ export default {
 }
 
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -236,13 +222,6 @@ export default {
 }
 
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -290,13 +269,6 @@ export default {
 }
 
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -344,10 +316,6 @@ export default {
 </script>
 
 <style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
   .v-enter {
     opacity: 0;
   }
@@ -498,13 +466,6 @@ export default {
   }
 }
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -548,13 +509,6 @@ export default {
   }
 }
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -953,10 +907,6 @@ export default {
 </script>
 
 <style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
   .box {
     width: 200px;
     height: 200px;
@@ -1059,10 +1009,6 @@ export default {
 </script>
 
 <style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
   .box {
     width: 200px;
     height: 200px;
@@ -1135,10 +1081,6 @@ export default {
 </script>
 
 <style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
   .v-enter {
     opacity: 0;
   }

@@ -35,7 +35,7 @@ const store = new Vuex.Store({
 <script>
 const store = new Vuex.Store({
   state: {
-    msg: "jinqiu.wang"
+    msg: "好的，这里是 Vuex 中的数据"
   }
 })
 
@@ -94,12 +94,6 @@ export default {
 }
 </script>
 
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -177,13 +171,6 @@ export default {
   }
 }
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::
@@ -250,13 +237,6 @@ export default {
   }
 }
 </script>
-
-<style>
-  button {
-    background: #EFEFEF;
-    border-width: 1px;
-  }
-</style>
 ```
 
 :::

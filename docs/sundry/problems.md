@@ -5,14 +5,14 @@ author: JQiue
 article: false
 ---
 
-::: tip
-这里收集的是我遇到过的所有问题
+::: info
+这里收集的是我遇到过的问题
 :::
 
 ## Navicat 查看表中的中文是乱码的
 
 原因：没有什么太多原因，就是编码出了问题  
-解决：应该编辑以下连接属性，设置编码为自动
+解决：从源头开始排查编码问题，应该编辑一下连接属性，设置编码为自动
 
 ## Tomcat 输出信息时出现中文乱码
 
@@ -31,7 +31,7 @@ java.util.logging.ConsoleHandler.encoding = gbk
 ## NPM 发布包时提示远程仓库中有相似名的包
 
 原因：远程仓库中有相似包名的发布包  
-解决：修改 package.json 中的包名
+解决：修改 package.json 中的包名重新发布
 
 ## .gitignore 忽略规则对某些文件失效了
 
@@ -110,7 +110,7 @@ url = https://github.com/username/repo.git
 ## windows 10 无法登陆商店或账户
 
 原因：可能当前运营商网络访问的 DNS 有问题（对此原因暂时存疑）  
-解决：设置 DNS 为 4.2.2.2，并`cmd ipconfig /flushdns`刷新一下，登陆后最好还原 DNS，否则影响会影响其他的网络访问
+解决：设置 DNS 为 4.2.2.2，并`cmd ipconfig /flushdns`刷新一下，登陆后最好还原 DNS，否则会影响其他的网络访问
 
 ## windows 10 20H1 后续版本使用`Alt + Tab`切换窗口时会将 Edge 中的标签看做成独立的窗口进行切换
 
@@ -136,7 +136,7 @@ url = https://github.com/username/repo.git
 活动代码页: 936
 ```
 
-这个`936`就代表着中文编码，输出其它编码形式的中文时自然会出现乱码，比如要输出的中文是`utf-8`，在终端中改变使用`chcp 65001`就会变成`utf-8`形式：
+这个`936`就代表着中文编码，输出其它编码形式的中文时自然会出现乱码，比如要输出的中文是`utf-8`，在终端中使用`chcp 65001`命令就会改变成`utf-8`：
 
 ```sh
 Active code page: 65001
@@ -151,6 +151,4 @@ Active code page: 65001
 原因：Linux 远程不允许使用 SSH 连接 ROOT 用户  
 解决：修改配置文件允许即可
 
-首先通过别的方式进入 Linux，然后`su`提权
-
-使用`vi /etc/ssh/sshd_config`打开配置文件，查看是否有`PermitRootLogin no`项，如果有就改成`PermitRootLogin yes`，按`ESC`退出编辑模式，输入`:w!`保存，输入`:q!`退出到命令行，并输入`service sshd restart`，然后就可以尝试使用 SSH 进行连接了
+首先通过别的方式进入 Linux，然后`su`提权，使用`vi /etc/ssh/sshd_config`打开配置文件，查看是否有`PermitRootLogin no`项，如果有就改成`PermitRootLogin yes`，按`ESC`退出编辑模式，输入`:w!`保存，输入`:q!`退出到命令行，并输入`service sshd restart`，然后就可以尝试使用 SSH 进行连接了

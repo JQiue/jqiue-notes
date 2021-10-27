@@ -432,7 +432,7 @@ public class Main {
 + Aggregate：该角色负责创建 Iterator 角色的接口，这是一个方法，会创建一个能够迭代内部元素东西
 + ConcreteAggregate：该角色负责实现 Aggregate 所定义的接口
 
-### 职责连模式
+### 职责链模式
 
 ### 命令模式
 

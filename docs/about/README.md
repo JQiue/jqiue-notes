@@ -12,27 +12,27 @@ sticky: true
 + QQ：861947542
 + 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：~~[wjqis.me](wjqis.me)~~，[jinqiu.wang](jinqiu.wang)（推荐）
++ 目前使用的站点域名：[jinqiu.wang](jinqiu.wang)，~~[wjqis.me](wjqis.me)~~
 
-## 这个人会什么
+## 这个人会些什么
 
-会两个静态类型语言（C，Java），也会两个动态类型语言（JavaScript，Python），~~只能用它们写写 HelloWorld~~，可能继续来点 C艹 或 C艹艹 之类的，~~其实根本学不动了~~
+只会用 C，Java，JavaScript，Python 写写 HelloWorld 的水平
 
-会点 Web 前端开发，我 f*** 这该死的 CSS，刚开始是一个切图仔，感谢前端的发展，让我不再关注 UI，只注重数据展示
+会点 Web 前端开发，我 f*** 这该死的 CSS
 
-也会用 Java，NodeJS，Python 做点后端服务，用了框架其实没什么太大难度，增删改查（~~CRUD~~）而已
+只会一点点后端开发，使用 NodeJS，或者 Java
 
-数据库也能搞一搞，比如：MongoDB，MySQL，Redis
+对于 MySQL，MongoDB 的使用仅限于增删改查的水平
 
-熟悉各种操作系统的安装与卸载，比如 Windows 和 Linux，以及黑苹果
+基本熟练操作系统的安装与卸载，比如 Windows 和 Linux，以及黑苹果，会用那是另说
 
-玩转各种搜素引擎（~~特喜欢copy>_<~~）
+玩转各种搜素引擎，嗯，很喜欢 COPY，我真的不想用自己的话总结一遍，圣经就是圣经
 
-熟悉各种代理工具的玩法（~~反而更加爱国了~~），本来有一个小鸡做代理，发现没啥太多需求就关了，平时蹭一蹭别人的机场上上 Google 就行
+熟悉几种代理工具的玩法，也就上上 Google，浏览 Youtube 的水平，不会英语，即使翻出去也是摸瞎
 
-多亏了白嫖的斐讯 k2p，玩耍 k2p 的过程中，对嵌入式设备有了更深的认知
+多亏了白嫖的斐讯 k2p，玩耍 k2p 的过程中，对嵌入式设备有了一丢丢认知，k2p 已经扔到家里做路由，早就忘完了是什么鬼
 
-也就这样子了，看起来花里胡哨的，~~其实一个也不会>-<~~
+也就这样子了，看起来花里胡哨的，其实真的很菜很菜
 
 ## 他的日常
 
@@ -47,12 +47,12 @@ sticky: true
 + <span title="就是 markdown 啦！">努力成为<code>md</code>（鼠标悬停查看解释）程序员</span>
 
 ::: info 感谢观看
-本站增加了 PWA 支持，拥有离线缓存的能力，这意味着下一次无需联网即可访问，也可以将本站作为 APP 安装在本地，拥有接近原生 APP 般的使用体验
+增加了 PWA 支持，拥有离线缓存的能力，这意味着下一次无需联网即可访问，也可以将本站作为 APP 安装在本地，拥有接近原生 APP 般的使用体验
 :::
 
 ## 排版
 
-本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
+统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
 
 + 空格
   + 中英文之间添加空格
@@ -75,7 +75,7 @@ sticky: true
 当本站已经更新且没有清除本站的缓存时，再次访问将从右下角看到更新内容的按钮
 :::
 
-所有的文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式显示标记
+所有的文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式标记
 
 + 处于`Alpha`阶段的文章，可能啥也没有，内容仅作参考，问题较多，随时会进行修改
 + 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，会出现在首页文章列表
@@ -86,61 +86,59 @@ sticky: true
 + `具有悟性的初学者`：系统性的知识体系能够快速理解内容
 + `所见即所得`：部分知识在本站上有效果演示
 + `想上进的`：对自身有意义就够了
++ `我这样的人`：给我自己看，防止忘记
 
 ## 全站知识体系总览
 
 > 星星表示需要完成或学习的优先级、重要程度
 
-1. [计算机基础](/computer-basic/)
-    + 计算机组成原理（正在学习）:star::star:
-    + 操作系统（正在学习）:star::star:
-    + 编译原理（正在学习）:star:
-    + 计算机网络（正在学习）:star::star::star:
-    + 数据库原理（正在学习）:star:
-2. [编程语言](/language/)
-    + C/C++（正在完成）:star::star:
-    + Java（正在完成）:star::star:
-    + JavaScript（正在完成）:star::star::star::star:
-      + TypeScript（正在完成）:star:
-    + Python（正在完成）:star:
-3. [数据结构与算法](/ds-algorithm/)
-    + 数据结构（正在完成）:star::star::star::star:
-      + 排序算法（正在完成）:star::star::star:
-      + 查找算法（正在完成）:star::star::star:
-    + 算法思想（正在学习）:star::star:
-    + 领域算法（正在学习）:star:
-4. [数据库](/database/)
-    + SQL 语言（正在完成）:star::star:
-    + MySQL（正在完成）:star::star:
-    + MongoDB（正在学习）:star::star:
-    + Redis（正在学习）:star:
-5. 应用开发
-    + [WEB](/application/web/):star::star::star:
-    + [移动应用](/application/mobile/):star:
-    + [后端](/application/backend/):star::star:
-    + [桌面端](/application/desktop/):star:
-6. Java 应用框架
-    + Spring（正在学习）:star::star:
-    + Spring Boot（正在学习）:star::star:
-7. 服务器 && 容器
-    + Tomcat（正在学习）:star:
-    + Apache（正在完成）:star:
-    + Nginx（正在学习）:star::star:
-8. 其他杂项
-    + 编辑器/IDE（正在完成）:star:
-    + [Markdown](/sundry/markdown/)（正在完成）:star:
-    + CI & CD（正在学习）:star:
-    + [Git](/sundry/git/)（正在学习）:star::star:
-    + Windows & Linux（正在学习）:star::star:
-    + [设计模式](/sundry/share/design-pattern/)（正在学习）:star::star::star:
-    + Docker（正在学习）:star:
-    + 代码质量（正在学习）:star:
-    + 正则表达式（正在学习）:star::star:
-    + 设计和交互（正在学习）:star:
-    + 性能调优（正在学习）:star:
-    + 分布式（正在学习）:star:
-    + 高并发（正在学习）:star:
-    + 方法论（正在学习）:star:
++ [计算机基础](/computer-basic/)
+  + 计算机组成原理（正在学习）:star::star:
+  + 操作系统原理（正在学习）:star::star:
+  + 编译原理（正在学习）:star:
+  + 计算机网络（正在学习）:star::star::star:
+  + 数据库原理（正在学习）:star:
++ [编程语言](/language/)
+  + C/C++（正在完成）:star::star:
+  + Java（正在完成）:star::star:
+  + JavaScript（正在完成）:star::star::star::star:
+    + TypeScript（正在完成）:star:
+  + Python（正在完成）:star:
++ [数据结构与算法](/ds-algorithm/)
+  + 数据结构（正在完成）:star::star::star::star:
+  + 排序和查找（正在完成）:star::star::star:
+  + 算法思想（正在学习）:star::star:
+  + 领域算法（正在学习）:star:
++ [数据库](/database/)
+  + SQL 语言（正在完成）:star::star:
+  + MySQL（正在完成）:star::star:
+  + MongoDB（正在学习）:star::star:
+  + Redis（正在学习）:star:
++ 应用开发
+  + [WEB](/application/web/):star::star::star:
+  + [移动应用](/application/mobile/):star:
+  + [后端](/application/backend/):star::star:
+  + [桌面端](/application/desktop/):star:
++ Java 应用框架
+  + Spring（正在学习）:star::star:
+  + Spring Boot（正在学习）:star::star:
++ 服务器 && 容器
+  + Tomcat（正在学习）:star:
+  + Apache（正在学习）:star:
+  + Nginx（正在学习）:star::star:
++ 其他杂项
+  + 编辑器/IDE（正在完成）:star:
+  + [Markdown](/sundry/markdown/)（正在完成）:star:
+  + CI/CD（正在学习）:star:
+  + [Git](/sundry/git/)（正在学习）:star::star:
+  + Windows & Linux（正在学习）:star::star:
+  + [设计模式](/sundry/design-pattern/)（正在学习）:star::star::star:
+  + Docker（正在学习）:star:
+  + 代码质量（正在学习）:star::star:
+  + 正则表达式（正在学习）:star::star:
+  + 设计和交互（正在学习）:star:
+  + 性能调优（正在学习）:star:
+  + 方法论（正在学习）:star:
 
 > 全站预估为 202500 字，可花 396 分钟浏览完成，本人日产 1000 字左右
 

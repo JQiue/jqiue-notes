@@ -315,6 +315,7 @@ const sundry = [
   'mock',
   'nginx',
   'webpack',
+  'interview',
 ];
 
 module.exports = {
