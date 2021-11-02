@@ -3,7 +3,8 @@
     "name": "JQiue",
     "email": "jqiue@foxmail.com"
   },
-  "version": "1.4.0",
+  "version": "1.5.0",
+  "private": true,
   "license": "ISC",
   "scripts": {
     "dev": "vuepress dev docs",

@@ -4,7 +4,7 @@ author: JQiue
 article: false
 ---
 
-::: info
+::: info 前置知识
 
 + 编程语言
 + 数学

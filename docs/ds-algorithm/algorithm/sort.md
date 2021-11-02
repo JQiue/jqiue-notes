@@ -6,7 +6,7 @@ author: JQiue
 article: false
 ---
 
-排序即是将一组“无序”的变成有序的
+排序即是将一组“无序”的变成有序的过程
 
 ## 冒泡排序
 
@@ -32,21 +32,6 @@ void bubbleSort(int *list, int size){
     }
   }
 }
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
 ```
 </CodeGroupItem>
 
@@ -78,21 +63,6 @@ void selectSort(int *list, int size){
     list[minIndex] = temp;
   }
 }
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
 ```
 </CodeGroupItem>
 
@@ -132,6 +102,8 @@ void insertSort(int *list, int size) {
 ## 归并排序
 
 ## 希尔排序
+
+## 计数排序
 
 ## 桶排序
 

@@ -20,7 +20,7 @@ article: false
 
 <CodeGroupItem title="C" active>
 ```c
-int linearSearch(int *list, int value, int size) {
+int linearFind(int *list, int value, int size) {
   for (int i = 0; i < size; i++)
   {
     if (list[i] == value) return i;
@@ -30,26 +30,11 @@ int linearSearch(int *list, int value, int size) {
 ```
 </CodeGroupItem>
 
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
-```
-</CodeGroupItem>
-
 </CodeGroup>
 
 ### 二分查找
 
-也叫折半查找，将列表划分为一个候选区，通过与候选区的中间值比较，如果正好相等就代表找到了，如果大于中间值，则扔掉中间值左边的候选区，如果小于中间值则扔掉中间值右边的候选区，以此往复直到找到或者没有为止
+也叫折半查找，将列表划分为一个候选区，通过与候选区的中间值比较，如果正好相等就代表找到了，如果大于中间值，则扔掉中间值左边的候选区，如果小于中间值则扔掉中间值右边的候选区，以此往复直到找到或者没有为止，只适用于具有顺序排列的情况
 
 时间复杂度：`O(logn)`
 
@@ -73,21 +58,6 @@ int binarySearch(int *list, int value, int size) {
   }
   return -1;
 }
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
 ```
 </CodeGroupItem>
 

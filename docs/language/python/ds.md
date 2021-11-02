@@ -1,12 +1,20 @@
 ---
-title: 迭代类型
+title: 数据结构
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
 ---
 
-迭代是一种数学概念，指的是重复反馈过程的活动，对于计算机程序来讲，就是执行重复的循环，而 for 循环需要一个迭代类型的数据才能够进行循环操作，同时迭代又可分为有序和无序
+Python 提供了一些基本的数据结构：
+
++ 字符串
++ 列表
++ 元组
++ 字典
++ 集合
+
+他们都是可迭代的类型，迭代是一种数学概念，指的是重复反馈过程的活动，对于计算机程序来讲，就是执行重复的循环，而 for 循环需要一个迭代类型的数据才能够进行循环操作，同时迭代又可分为有序和无序
 
 有序的序列指的是字符串，列表，元组，指它们的成员都是有序排列，并且可以通过下标偏移量访问它们的每一个成员，无序的序列指的是字典、集合，它们的成员排列是无序的，不能通过下标访问成员
 
@@ -92,17 +100,17 @@ name_list[1] # 23
 
 ### 列表常用方法
 
-1. list.index(value)：获取元素在列表中的索引，如果有则返回索引值，没有则报错
-2. list.append(value)：追加一个元素到列表末尾
-3. list.insert(index, value)：指定位置添加一个元素
-4. list.extend(iterable)：该方法接收一个迭代器类型，会将该迭代器中的元素添加到列表
-5. list.remove(value)：移除第一次出现的指定值
-6. list.pop()：默认移除列表中最后一个元素，并返回该元素，也可以指定索引，移除并返回该元素
-7. list.clear()：移除所有的元素
-8. list.sort(<reverse=True>)：对列表中的元素进行升序/降序排序
-9. list.reverse()：反转列表中所有的元素
-10. list.count(value)：返回列表中元素出现的次数
-11. del list[index]：通过`del`关键字移除指定元素
++ list.index(value)：获取元素在列表中的索引，如果有则返回索引值，没有则报错
++ list.append(value)：追加一个元素到列表末尾
++ list.insert(index, value)：指定位置添加一个元素
++ list.extend(iterable)：该方法接收一个迭代器类型，会将该迭代器中的元素添加到列表
++ list.remove(value)：移除第一次出现的指定值
++ list.pop()：默认移除列表中最后一个元素，并返回该元素，也可以指定索引，移除并返回该元素
++ list.clear()：移除所有的元素
++ list.sort(<reverse=True>)：对列表中的元素进行升序/降序排序
++ list.reverse()：反转列表中所有的元素
++ list.count(value)：返回列表中元素出现的次数
++ del list[index]：通过`del`关键字移除指定元素
 
 ## 元组
 
@@ -115,8 +123,8 @@ id[0] # 101
 
 ### 元组常用方法
 
-1. tuple.count(value)：返回一个数据在元组中出现的次数
-2. tuple.index(value)：返回元素在元素中的索引
++ tuple.count(value)：返回一个数据在元组中出现的次数
++ tuple.index(value)：返回元素在元素中的索引
 
 ## 字典
 
@@ -127,7 +135,7 @@ foo = {
   "name": "foo",
   "age": 21
 }
-foo["name"]  取出键对应的值，如果指定键不存在则报错
+foo["name"]  # 取出键对应的值，如果指定键不存在则报错
 ```
 
 ::: tip

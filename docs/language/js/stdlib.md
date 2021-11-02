@@ -1,5 +1,5 @@
 ---
-title: 常用的内置对象
+title: 标准库
 category: 编程语言
 tags: [Alpha]
 author: JQiue
@@ -7,6 +7,8 @@ article: false
 ---
 
 这里是 JavaScript 中提供的一些工具对象
+
+## 包装对象
 
 ## 日期和时间
 
@@ -62,7 +64,6 @@ console.log(new Date(2021, 0, 33)); // 2021-02-01
 
 ```js
 let start = new Date(); // 开始测量时间
-
 
 for (let i = 0; i < 100000; i++) {
   let doSomething = i * i * i;
@@ -188,3 +189,84 @@ console.lot(foo.date.getFullYear()) // 2021
 ```
 
 ## RegExp
+
+在 JavaScript中，正则表达式也是对象，可以使用两种方式来创建一个正则表达式
+
+```js
+// 字面量
+const re1 = /abc/;
+// 构造函数
+const re2 = new RegExp('abc');
+```
+
+两种方式都是等价的，在实际应用中，通常使用字面量表达式，构建时还可以添加第二个参数，表示修饰符
+
+```js
+const re1 = /abc/i;
+const re2 = new RegExp('abc', 'i');
+```
+
+有修饰符相关属性
+
++ `ignoreCase`：是否设置了`i`
++ `global`：是否设置了`g`
++ `multiline`：是否设置了`m`
++ `flags`：返回包含已设置的修饰符，按字母排序
+
+```js
+const reg = /abc/igm;
+console.log(reg.ignoreCase); // true
+console.log(reg.global); // true
+console.log(reg.multiline); // true
+console.log(reg.flags);  // gim
+```
+
+与修饰符无关的属性
+
++ `lastIndex`：表示下一次搜索的位置
++ `source`：返回正则表达式的字符串形式，不包括反斜杠
+
+实例方法
+
++ `test(str)`：是否能匹配当前字符串
++ `exec(str)`：返回匹配结果
+
+```js
+let reg = /a/;
+reg.test('abcabc'); // true
+```
+
+如果带有`g`修饰符，每一次`test`方法都会从上一次结束位置开始向后匹配
+
+```js
+let reg = /a/g;
+reg.test(reg.lastIndex, 'abcabc'); // 0, true
+reg.test(reg.lastIndex, 'abcabc'); // 1, true 
+reg.test(reg.lastIndex, 'abcabc'); // 4, false
+```
+
+带有`g`修饰符时，正则对象的`lastIndex`可以指定开始搜索的位置
+
+`exec`方法会返回一个数组，成员是匹配成功的字符串，否则返回`null`
+
+```js
+let reg = /a/;
+reg.exec('abcabc'); // [ 'a', index: 0, input: 'abcabc', groups: undefined ]
+reg.exec('bcd'); // null
+```
+
+成功时还包含两个属性
+
++ `input`：匹配到的字符串
++ `index`：匹配成功的开始位置
+
+如果正则表达式加上了`g`修饰符，就可以使用多次`exec`方法，下一次搜索的位置从上一次匹配成功结束的位置开始
+
+```js
+let reg = /a/g;
+reg.exec('abcabc');
+```
+
+所以利用`g`修饰符允许匹配多次的情况下，可以利用循环完成全部匹配
+
+<!-- more -->

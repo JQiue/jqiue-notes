@@ -104,9 +104,11 @@ function foo() {
 
 ## 列表
 
-如果想表示数据的集合就应该使用列表元素，`<li>`是列表中的每一项
+如果想表示数据的集合就应该使用列表元素，`<li>`是列表中的每一项，在 HTML 中可以定义 3 种列表：
 
-### 有序列表
++ 有序列表
++ 无序列表
++ 自定义列表
 
 通过`<ol>`定义有序列表，每个`<li>`都会有标明顺序的标识，可以改变`type`属性值来改变标识
 
@@ -132,8 +134,6 @@ function foo() {
 
 :::
 
-### 无序列表
-
 无序列表通过`ul`创建，每个`li`不具有顺序一样的标识，通过改变`type`属性改变标识样式
 
 ::: demo 无序列表
@@ -157,8 +157,6 @@ function foo() {
 ```
 
 :::
-
-### 自定义列表
 
 自定义列表和其他列表不同的是，它是一个键值对形式的列表，通过`<dl>`（定义整个列表）、`<dt>`（定义标题）、`dd`（定义描述）这一套标签来定义
 
@@ -214,7 +212,7 @@ function foo() {
 :::
 
 ::: tip
-HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 markdown 编写，在转换成对应的 HTML 时增加的
+HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 markdown 编写，在转换成对应的 HTML 时增加的（注：已经升级博客插件解决该问题，所以现在看不到了，是原汁原味的 HTML 表格）
 :::
 
 上面只是基本的表格结构，`<caption>`用来定义表格的标题，放在表格之内
@@ -310,6 +308,7 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 + `method`：HTTP 请求方法，默认发送 GET 请求
 + `name`：标记表单，提供 JavaScript 获取`<form>`元素的手段
 + `target`：规定在何处打开`action`属性规定的 URI 地址
++ `multiple`：允许上传多个文件
 
 而其他与之关联表单元素则是给用户提供输入内容的，其中`<input>`是最重要的表单元素，用于给表单创建交互控件从用户中接收数据，`<input>`的工作很大程度上取决于其`type`的值，改变`type`的值就可以转换为不同的表单元素，无论以何种形式展现，它的功能是输入数据
 
@@ -325,6 +324,10 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 提交按钮：<input type="submit" value="提交"><br>
 范围：<input type="range"><br>
 重置：<input type="reset" name="reset"><br>
+邮件：<input type="email"><br>
+链接：<input type="url"><br>
+数字：<input type="number"><br>
+颜色：<input type="color"><br>
 时间：<input type="time"><br>
 日期：<input type="month"><br>
 日期：<input type="date"><br>
@@ -341,7 +344,6 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
   + maxlength：规定文本域可以输入的最大字符数
   + placeholder：提供一些提示，描述所期待的值
   + pattern：规定用于验证文本域内容的正则表达式
-  + autofocus：页面加载时，域自动获得焦点
   + autocomplete：规定文本域具有自动完成功能
   + list：指定一个数据列表
 
@@ -349,13 +351,11 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
   + value：规定单选框的 value 属性值，它会被发送到服务器
   + checked：规定单选单选框处于选中状态
   + required：规定对应单选框是必选
-  + autofocus：规定在页面加载时，对应单选框自动地获得焦点
 
 + 当`type="checkbox"`时，复选框则可以选中任意多项
   + value：规定复选框的 value 属性值，它会被发送到服务器
   + checked：规定复选框处于选中状态
   + required：规定指定的复选框必须被选中
-  + autofocus：规定在页面加载时，指定复选框自动地获得焦点
 
 ### 其他表单元素
 
@@ -363,18 +363,24 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 + `<select>`和`<option>`提供了下拉列表
 + `<label>`提供了内容绑定元素的能力，默认情况下点击内容是不会聚焦到元素的，只要将`for`属性和表单元素的`id`值关联起来就可以实现绑定，也可以将表单元素放入`<label>`中实现，这样无需编写属性
 + `<datalist>`定义一个数据列表，描述`<input>`可能输入的值，将`id`值赋值给`<input>`的`list`属性即可实现绑定
+
 ::: demo 其他表单元素
 
 ```html
 <textarea></textarea><br/>
+
 <select>
   <option>选项一</option>
   <option>选项二</option>
   <option>选项三</option>
 </select><br/>
+
 <label for="account">账号：</label>
 <input type="text" id="account"><br/>
-<label>密码：<input type="password"></label><br/>
+
+<label>密码：<input type="password">
+</label><br/>
+
 <input type="text" list="fruits"><br/>
 <datalist id="fruits">
   <option value="车厘子">
@@ -385,21 +391,20 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 
 :::
 
-### textarea 的属性
+其中`<textarea>`具有以下重要的属性
 
 + rows：规定多行文本框的行数
 + cols：规定多行文本框的列数
 + maxlength：规定文本域可以输入的最大字符数
-+ placeholder（HTML5）：提供一种提示，描述所期待的值
++ placeholder：提供一种提示，描述所期待的值
 + required：规定文本域内容是必填的
-+ autofocus：规定文本域在页面加载后自动获取焦点
 + wrap：规定当在表单中提交时，文本区域中的文本如何换行
 
 ::: tip
 不能使用`value`属性规定它的初始值
 :::
 
-### select 的属性
+其中`<select>`具有以下重要的的属性
 
 + `multiple`：规定下拉列表可以选择多项，默认只能选择其中一项
 + `size`：规定下拉列表展开之后可见列表项的数目
@@ -415,6 +420,8 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 + `form`：规定元素所属的一个或多个表单
 + `disabled`：禁用元素，该元素不会获得焦点，不会被提交
 + `readonly`：只读元素，该元素的值不能够改变，但是可以被提交
++ `autofocus`：页面加载时，域自动获得焦点
++ `required`：必须在这个元素中输入内容
 
 ## 超链接
 
@@ -423,7 +430,7 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 ::: demo 文本链接
 
 ```html
-<a href="/web/html/1/">点击回到第一篇文章</a>
+<a href="/application/web/html-css/elements/#">点击回到顶部</a>
 ```
 
 :::
@@ -433,7 +440,7 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 ::: demo 图片链接
 
 ```html
-<a href="/application/web/html/1/" target="_blank"><img src="/bgImage.jpg"></a>
+<a href="/application/web/html-css/elements/#" target="_blank"><img src="/bgImage.jpg"></a>
 ```
 
 :::
@@ -487,11 +494,7 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 
 + 通过 JavaScript 实现
 
-### base
-
 `<base>`标签中的`target`属性用于控制页面上所有的超链接跳转方式，必须写在`<head>`标签内，如果`<a>`标签有自己的`target`属性，则优先自己的`target`
-
-### 假链接
 
 假链接指的是点击后不会跳转的链接，通常用于开发中还未完成的页面中，当项目完成时则会替换为真链接，给`href`属性赋值`#`或者`javascrpt:`即可实现假链接
 
@@ -513,11 +516,37 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 
 支持 JPEG、PNG、GIF、WebP、SVG 格式
 
+## 内联框架
+
+内联框架可以实现在同一个页面中显示另一个页面上的内容，使用`<iframe>`创建
+
+```html
+<iframe src=""></iframe>
+```
+
+::: demo 嵌入网易云音乐
+
+```html
+<iframe width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1332153723&auto=1&height=66"></iframe>
+```
+
+:::
+
+这是一些重要的属性：
+
++ `width`
++ `height`
++ `name`
+
+其中`name`可以实现`<a>`和`<form>`的交互作用，在本页中打开外部的链接，前提是`target`必须指向`name`的值
+
+## 画布
+
+详见[Canvas](/application/web/canvas/basic/)
+
 ## 多媒体
 
 音频和视频都可以在 HTML 中播放，HTML5 新增了定义音频和视频的标签
-
-### audio
 
 `<audio>`是一个 HTML5 元素，通过`src`指定资源路径
 
@@ -535,8 +564,6 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 + controls：会向用户显示播放控件（默认隐藏）
 + loop：会一直循环播放
 + muted：静音
-
-### video
 
 `<video>`是一个 HTML5 元素，通过`src`指定资源路径
 

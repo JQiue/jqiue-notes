@@ -14,7 +14,7 @@ article: false
 + DOM
 :::
 
-Canvas API 提供了一个通过 JavaScript 和 HTML 的`<canvas>`元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面
+Canvas API 提供了一个通过 JavaScript 和 HTML 的`<canvas>`元素来绘制图形的方式，它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面，注意它是非插件形式的，并不需要额外安装一些其它的东西
 
 Canvas API 主要聚焦于 2D 图形，而同样使用`<canvas>`元素的 WebGL API 则用于绘制硬件加速的 2D 和 3D 图形
 
@@ -127,15 +127,29 @@ ctx.closePath();
 
 `arc(x, y, radius, startAngle, endAngle, anticlockwise)`用于绘制一条弧线
 
-```js
-```
-
 ## 绘制多边形
 
-canvas 支持矩形和路径这两种图形绘制的方式
-
-canvas 提供了三种方法绘制矩形：
+canvas 支持矩形和路径这两种图形绘制的方式，提供了三种方法绘制矩形：
 
 + fillRect(x, y, width, height)：绘制一个填充的矩形
 + strokeRect(x, y, width, height)：绘制一个矩形的边框
 + clearRect(x, y, width, height)：清除指定矩形区域，让清除部分完全透明
+
+## 渐变
+
+`createLinearGradient(startX, startY, endX, endY)`用于创建线性渐变
+
+`addColorStop(stop, color)`方法规定渐变对象中的颜色和停止位置
+
++ stop：渐变中开始与结束的位置，是`0.0`到`1.0`之间的值
++ color：颜色
+
+`createRadialGradient()`用于创建放射性/环形的渐变
+
+## 文字绘制
+
+`fillText(text, x, y, maxWidth)`用于创建实心文本
+
+`ctx.strokeText(text, x, y, maxWidth)`用于创建空心文本
+
+## 图片绘制

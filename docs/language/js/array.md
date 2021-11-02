@@ -10,10 +10,12 @@ article: false
 
 ## 声明
 
-创建数组有两种语法：
+创建数组有两种方式：
 
 ```js
+// 使用构造函数
 let arr = new Array();
+// 字面量
 let arr = [];
 ```
 
@@ -45,7 +47,7 @@ nams[3] = 'zq'; // ['zs', 'ls', 'zz', 'zq']
 且可以存储任何类型的元素
 
 ```js
-let arr = [1, 'zs', {name: 'foo'}, true , function() {} ];
+let arr = [1, 'zs', {name: 'foo'}, true, [], function() {} ];
 ```
 
 ## length
@@ -71,6 +73,40 @@ console.log(arr[2]); // undefined
 
 所以清空数组最好的方式就是`arr.length = 0;`
 
+## 空位
+
+允许数组的某个位置是空元素，即两个逗号之间没有任何值
+
+```js
+[1, ,2]
+```
+
+如果对空位进行访问，将会得到`undefined`
+
+空位而且不会影响`length`属性的计算，因为 JavaScript 认为该空位虽然没有值，但仍然是有效的
+
+```js
+let arr = [1, ,2];
+console.log(arr.length); //3
+```
+
+需要注意的是，最后一个元素后面有逗号时，并不能产生空位
+
+```js
+let arr = [1, ,2,];
+console.log(arr.length); //3
+```
+
+使用`delete`删除一个元素，也会形成空位
+
+```js
+let arr = [1, 2, 3];
+delete arr[1];
+console.log(arr.length); //3
+```
+
+空位和`undefined`是不一样的，空位会被`forEach`方法，`for...in`、以及`Object.keys`方法跳过
+
 ## 数组是一种特殊的对象
 
 使用方括号访问元素实际上是来自对象的语法，数组扩展了对象，提供了特殊的方法来处理有序的数据集合以及`lenght`属性，从本质上来讲，数组就是一个对象
@@ -78,6 +114,28 @@ console.log(arr[2]); // undefined
 数组真正特殊的就是内部实现，JavaScript 尝试将元素一个接一个的存储在连续的内存区域，还有一些其他的优化，使得数组运行的很快
 
 一定要将数组当作“有序集合”来使用，而不是当作常规对象一样使用，否则针对数组的优化将不会存在
+
+## 类似于数组一样的对象
+
+如果一个对象的所有键都是正整数或`0`，且拥有`length`属性，那么这个对象就很像数组，在语法上被称为类数组
+
+```js
+let obj = {
+  0: 'a',
+  1: 'b',
+  2: 'c',
+  length: 3
+};
+
+obj[0];  // a
+obj[1];  // b
+obj[2];  // c
+obj.length;  3
+
+obj.push('d'); // error，报错
+```
+
+但是，仅仅只是像而已，因为它并不会拥有数组特有的方法，同时类数组的`length`不会随着成员变化而变化
 
 ## 遍历
 
