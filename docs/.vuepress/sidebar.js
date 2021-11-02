@@ -83,14 +83,12 @@ const language = [
       'rest-spread',
       'prototype',
       'class',
-      'oop',
       'try-catch',
       'promise-async-await',
       'proxy-reflect',
       'module',
       'event-loop',
-      'built-object',
-      'regex',
+      'stdlib',
       'code-quality',
     ]
   },
@@ -101,15 +99,14 @@ const language = [
     children: [
       'basic',
       'syntax',
-      'iterator',
-      'oop',
+      'ds',
+      'class',
       'built-in-function',
       'module',
       'comprehensions',
-      'file',
       'exception',
       'special-function-usage',
-      'regex',
+      'stdlib',
       'spider',
     ]
   }
@@ -250,12 +247,18 @@ const application = {
     },
   ],
   backend: [
-    '',
-    'interface-design',
-    'middleware',
-    'persistence',
-    'function',
-    'deploy',
+    {
+      title: '后端',
+      collapsable: false,
+      children: [
+        '',
+        'interface-design',
+        'middleware',
+        'persistence',
+        'function',
+        'deploy',
+      ]
+    }
   ],
   desktop: [
     '',
@@ -295,27 +298,33 @@ const subject = [
 ];
 
 const sundry = [
-  '',
-  'git',
-  'tools',
-  'problems',
-  'three-filtering-principles',
-  'trick',
-  'cannikin-law',
-  'excel',
-  'internet-work',
-  'adb',
-  'design-pattern',
-  'markdown',
-  'latex',
-  'tomcat',
-  'emmet',
-  'master',
-  'all-master',
-  'mock',
-  'nginx',
-  'webpack',
-  'interview',
+  {
+    title: '杂七杂八',
+    collapsable: false,
+    children: [
+      'git',
+      'tools',
+      'problems',
+      'three-filtering-principles',
+      'trick',
+      'cannikin-law',
+      'excel',
+      'internet-work',
+      'adb',
+      'design-pattern',
+      'markdown',
+      'latex',
+      'tomcat',
+      'emmet',
+      'master',
+      'all-master',
+      'mock',
+      'nginx',
+      'webpack',
+      'regex',
+      'interview',
+    ]
+  }
 ];
 
 module.exports = {

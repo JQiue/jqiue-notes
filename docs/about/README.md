@@ -1,5 +1,6 @@
 ---
 title: 关于 - 本站
+tags: [必读]
 author: JQiue
 sticky: true
 ---
@@ -12,7 +13,7 @@ sticky: true
 + QQ：861947542
 + 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：[jinqiu.wang](jinqiu.wang)，~~[wjqis.me](wjqis.me)~~
++ 目前使用的站点域名：[jinqiu.wang](https://jinqiu.wang)，~~[wjqis.me](https://wjqis.me)~~
 
 ## 这个人会些什么
 
@@ -32,7 +33,7 @@ sticky: true
 
 多亏了白嫖的斐讯 k2p，玩耍 k2p 的过程中，对嵌入式设备有了一丢丢认知，k2p 已经扔到家里做路由，早就忘完了是什么鬼
 
-也就这样子了，看起来花里胡哨的，其实真的很菜很菜
+也就这样子了，看起来花里胡哨的，其实是真的很菜很菜
 
 ## 他的日常
 
@@ -86,59 +87,60 @@ sticky: true
 + `具有悟性的初学者`：系统性的知识体系能够快速理解内容
 + `所见即所得`：部分知识在本站上有效果演示
 + `想上进的`：对自身有意义就够了
-+ `我这样的人`：给我自己看，防止忘记
++ `我这样的人`：给我自己看的，防止忘记
+
+::: danger 重要
+如果你有幸访问到这里，应该做好没有收获的准备
+:::
 
 ## 全站知识体系总览
 
 > 星星表示需要完成或学习的优先级、重要程度
 
 + [计算机基础](/computer-basic/)
-  + 计算机组成原理（正在学习）:star::star:
-  + 操作系统原理（正在学习）:star::star:
-  + 编译原理（正在学习）:star:
-  + 计算机网络（正在学习）:star::star::star:
-  + 数据库原理（正在学习）:star:
+  + 计算机组成原理:star::star:
+  + 操作系统原理:star::star:
+  + 编译原理:star:
+  + 计算机网络:star::star::star:
+  + 数据库原理:star:
 + [编程语言](/language/)
-  + C/C++（正在完成）:star::star:
-  + Java（正在完成）:star::star:
-  + JavaScript（正在完成）:star::star::star::star:
-    + TypeScript（正在完成）:star:
-  + Python（正在完成）:star:
+  + C:star::star:
+  + Java:star::star:
+  + JavaScript:star::star::star::star:
+    + TypeScript:star:
+  + Python:star:
 + [数据结构与算法](/ds-algorithm/)
-  + 数据结构（正在完成）:star::star::star::star:
-  + 排序和查找（正在完成）:star::star::star:
-  + 算法思想（正在学习）:star::star:
-  + 领域算法（正在学习）:star:
+  + 数据结构:star::star::star::star:
+  + 排序和查找:star::star::star:
+  + 算法思想:star::star:
+  + 领域算法:star:
 + [数据库](/database/)
-  + SQL 语言（正在完成）:star::star:
-  + MySQL（正在完成）:star::star:
-  + MongoDB（正在学习）:star::star:
-  + Redis（正在学习）:star:
+  + SQL 语言:star::star:
+  + MySQL:star::star:
+  + MongoDB:star::star:
+  + Redis:star:
 + 应用开发
   + [WEB](/application/web/):star::star::star:
   + [移动应用](/application/mobile/):star:
   + [后端](/application/backend/):star::star:
   + [桌面端](/application/desktop/):star:
 + Java 应用框架
-  + Spring（正在学习）:star::star:
-  + Spring Boot（正在学习）:star::star:
+  + Spring:star::star:
+  + Spring Boot:star::star:
 + 服务器 && 容器
-  + Tomcat（正在学习）:star:
-  + Apache（正在学习）:star:
-  + Nginx（正在学习）:star::star:
+  + Tomcat:star:
+  + Apache:star:
+  + Nginx:star::star:
 + 其他杂项
-  + 编辑器/IDE（正在完成）:star:
-  + [Markdown](/sundry/markdown/)（正在完成）:star:
-  + CI/CD（正在学习）:star:
-  + [Git](/sundry/git/)（正在学习）:star::star:
-  + Windows & Linux（正在学习）:star::star:
-  + [设计模式](/sundry/design-pattern/)（正在学习）:star::star::star:
-  + Docker（正在学习）:star:
-  + 代码质量（正在学习）:star::star:
-  + 正则表达式（正在学习）:star::star:
-  + 设计和交互（正在学习）:star:
-  + 性能调优（正在学习）:star:
-  + 方法论（正在学习）:star:
+  + 编辑器/IDE:star:
+  + [Markdown](/sundry/markdown/):star:
+  + CI/CD:star:
+  + [Git](/sundry/git/):star::star:
+  + Windows & Linux:star::star:
+  + [设计模式](/sundry/design-pattern/):star::star::star:
+  + Docker:star:
+  + 代码质量:star::star:
+  + [正则表达式](/sundry/regex/):star::star:
 
 > 全站预估为 202500 字，可花 396 分钟浏览完成，本人日产 1000 字左右
 

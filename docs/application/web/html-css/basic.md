@@ -278,8 +278,11 @@ CSS 是一门样式表语言，不是标记语言，也不是编程语言，仅�
 在`<head>`标签中定义`<style>`，将样式代码写入`<style>`中，需要选择器，维护性较高
 
 ```html
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <title></title>
     <style>
       div {
         color: red;
@@ -302,20 +305,46 @@ div {
 ```
 
 ```html
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title></title>
     <link href="style.css"/>
   </head>
   <body>
-    <div>内部样式</div>
+    <div>外部样式</div>
+  </body>
+</html>
+```
+
+还一种通过`@import`语法引入 CSS 的方式，它是 CSS 提供的语法规则，只能引用 CSS，从兼容性上来看不如`<link>`，且`<link>`不仅仅能够引入 CSS，`@import`引入的 CSS 只会在页面加载完后进行加载，如果网速够慢可以看到样式未应用的问题，且`@import`不能够被 JavaScript 所操作，所以慎用
+
+```css
+div {
+  color: red;
+}
+```
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      @import('./style.css');
+    </style>
+  </head>
+  <body>
+    <div>@import 引入</div>
   </body>
 </html>
 ```
 
 更推荐外部样式表，一个外部 CSS 文件可以被很多网页共用，并且可以提高网页的加载速度，如果一个网页引用了一个 CSS 文件，这个文件多半在缓存区
 
-::: danger css 会堵塞网页吗？
+::: danger CSS 加载会堵塞网页吗？
 CSS 加载不会堵塞 DOM 解析，但是会堵塞 DOM 渲染，这是因为会等待 CSS 加载完成后，然后按照最终的样式去渲染 DOM，并且 CSS 还会堵塞后面的 JavaScript 脚本执行
 :::
 

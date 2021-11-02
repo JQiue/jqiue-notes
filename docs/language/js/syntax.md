@@ -102,8 +102,10 @@ JavaScript 有八种基本的数据类型（七种原始类型，一种复杂类
 + typeof：返回该一个说明数据类型的字符串，支持`typeof x`和`typeof(x)`两种形式
 + instanceof：检测一个对象是否为另一个对象的实例
 
+`typeof 1 + 2 + 3`的最终结果是`number34`，这是因为`typeof`本身算一个表达式参与计算，也会考虑优先级
+
 ::: tip
-如果用 typeof 检测 `null`会得到`object`，这是一个设计上的错误，实际上它并不是`object`
+如果用 typeof 检测`null`会得到`object`，这是一个设计上的错误，实际上它并不是`object`
 :::
 
 ### 类型转换
@@ -181,6 +183,14 @@ foo *= 2; // 等同于 foo = foo * 2
 ```
 
 也支持自增自减，优先级比大多数运算符高
+
+```js
+let foo = 1;
+foo++;
+foo--;
+++foo;
+--foo;
+```
 
 ### 比较
 

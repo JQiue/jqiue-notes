@@ -1,5 +1,5 @@
 ---
-title: Tomcat 
+title: Tomcat 是咋玩的
 category: 编程语言
 tags: [Alpha]
 author: JQiue
@@ -42,7 +42,7 @@ Tomcat 是 Apache 公司开发的一款免费的 Web 应用服务器，虽然它
 最重要的是`webapps`，通过网址访问的路径都是这个目录下的应用，如果打开这个目录，会发现 Tomcat 自带几个 Web 应用，通过`localhost:8080`会默认指向`ROOT`目录中的应用。
 
 ::: danger
-`host-manager`、`manager`、`ROOT`这三个项目最好不要删，其它的都可以删掉以增加部署速度
+`host-manager`、`manager`、`ROOT`这三个项目最好不要删，其它的都可以删掉以增加启动速度
 :::
 
 ## 核心配置
