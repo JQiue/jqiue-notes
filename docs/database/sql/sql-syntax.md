@@ -188,8 +188,8 @@ NOT|非|SELECT 、* FROM student WHERE stu_gender IS NOT NULL|查询 stu_gender 
 
 通过一种相对条件比较模糊的方式来查询数据，使用`LIKE`关键字来构成条件，其中又在条件中提供了几个通配符来配合：
 
-+ _：任意一个字符
-+ %：0 ~ n 个字符
++ `_`：任意一个字符
++ `%`：0 ~ n 个字符
 
 ```sql
 -- 查询任意 2 个字符
@@ -223,7 +223,7 @@ SELECT stu_age, stu_score, IFNULL(stu_score, 0) + IFNULL(stu_age, 0) FROM studen
 
 ```sql
 -- 根据 stu_score 进行升序，默认关键字`ASC`可以省略不写
-SELECT * FROM student ORDER BY stu_score;
+SELECT * FROM student ORDER BY stu_score ASC;
 -- 根据 stu_score 进行降序，添加关键字`DESC`
 SELECT * FROM student ORDER BY stu_score DESC;
 ```

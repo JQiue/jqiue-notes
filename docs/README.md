@@ -10,15 +10,15 @@ tagline: Welcome to here
 actionText: 了解更多 →
 actionLink: /about/
 project:
-  - name: 计算机基础
+  - name: 计算机原理
     type: article
-    link: /computer-basic/
+    link: /theory/
   - name: 编程语言
     type: article
     link: /language/
   - name: Web 前端
     type: article
-    link: /application/web/
+    link: /web/
   - name: 资源和工具
     type: article
     link: /sundry/tools/

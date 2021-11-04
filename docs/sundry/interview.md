@@ -267,23 +267,21 @@ margin 重叠问题
 
 单行文本溢出
 
-overflow: hidden;            // 溢出隐藏
-text-overflow: ellipsis;      // 溢出用省略号显示
-white-space: nowrap;         // 规定段落中的文本不进行换行
+```css
+overflow: hidden; 
+text-overflow: ellipsis;     
+white-space: nowrap;
+```
 
 ### 定位
 
 详见[这里](/application/web/html-css/layout/#清除浮动)
 
-### 元素堆叠：z-index
-
-通常 z-index 的使用是在有两个重叠的标签，在一定的情况下控制其中一个在另一个的上方或者下方出现。z-index值越大就越是在上层。z-index元素的position属性需要是relative，absolute或是fixed
-
 z-index属性在下列情况下会失效：
 
-父元素position为relative时，子元素的z-index失效。解决：父元素position改为absolute或static；
-元素没有设置position属性为非static属性。解决：设置该元素的position属性为relative，absolute或是fixed中的一种；
-元素在设置z-index的同时还设置了float浮动。解决：float去除，改为display：inline-block；
++ 父元素position为relative时，子元素的z-index失效。解决：父元素position改为absolute或static；
++ 元素没有设置position属性为非static属性。解决：设置该元素的position属性为relative，absolute或+ 是fixed中的一种；
++ 元素在设置z-index的同时还设置了float浮动。解决：float去除，改为display：inline-block；
 
 ### 行高
 
@@ -295,70 +293,11 @@ line-height 和 height 都能撑开一个高度；
 
 line-height 的赋值方式：
 
-带单位：px 是固定值，而 em 会参考父元素 font-size 值计算自身的行高
-纯数字：会把比例传递给后代。例如，父级行高为 1.5，子元素字体为 18px，则子元素行高为 1.5 * 18 = 27px
-百分比：将计算后的值传递给后代
++ 带单位：px 是固定值，而 em 会参考父元素 font-size 值计算自身的行高
++ 纯数字：会把比例传递给后代。例如，父级行高为 1.5，子元素字体为 18px，则子元素行高为 1.5 * 18 = 27px
++ 百分比：将计算后的值传递给后代
 
 ### 居中（垂直或水平）
-
-水平垂直居中的实现：
-
-利用绝对定位，先将元素的左上角通过top:50%和left:50%定位到页面的中心，然后再通过translate来调整元素的中心点到页面的中心。该方法需要考虑浏览器兼容问题。
-
-```css
-.parent {
-  position: relative;
-} 
-.child {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-```
-
-利用绝对定位，设置四个方向的值都为0，并将margin设置为auto，由于宽高固定，因此对应方向实现平分，可以实现水平和垂直方向上的居中。该方法适用于盒子有宽高的情况：
-
-```css
-.parent {
-  position: relative;
-}
-
-.child {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-```
-
-利用绝对定位，先将元素的左上角通过top:50%和left:50%定位到页面的中心，然后再通过margin负值来调整元素的中心点到页面的中心。该方法适用于盒子宽高已知的情况
-
-```css
-.parent {
-  position: relative;
-}
- 
-.child {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -50px;     /* 自身 height 的一半 */
-  margin-left: -50px;    /* 自身 width 的一半 */
-}
-```
-
-使用flex布局，通过align-items:center和justify-content:center设置容器的垂直和水平方向上为居中对齐，然后它的子元素也可以实现垂直和水平的居中。该方法要考虑兼容的问题，该方法在移动端用的较多：
-
-```css
-.parent {
-  display: flex;
-  justify-content:center;
-  align-items:center;
-}
-```
 
 ### 浮动
 
@@ -475,31 +414,9 @@ BFC的作用：
 
 ### Flex
 
-对Flex布局的理解及其使用场景
+flex布局是CSS3新增的一种布局方式，可以通过将一个元素的display属性值设置为flex从而使它成为一个flex容器，它的所有子元素都会成为它的项目。一个容器默认有两条轴：一个是水平的主轴，一个是与主轴垂直的交叉轴。可以使用flex-direction来指定主轴的方向。
 
-Flex是FlexibleBox的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局。行内元素也可以使用Flex布局。注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。采用Flex布局的元素，称为Flex容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称"项目"。容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis），项目默认沿水平主轴排列
-
-以下6个属性设置在容器上：
-
-+ flex-direction属性决定主轴的方向（即项目的排列方向）。
-+ flex-wrap属性定义，如果一条轴线排不下，如何换行。
-+ flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
-+ justify-content属性定义了项目在主轴上的对齐方式。
-+ align-items属性定义项目在交叉轴上如何对齐。
-+ align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
-
-以下6个属性设置在项目上：
-
-+ order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
-+ flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
-+ flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
-+ flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间。浏览器根据这个属性，计算主轴+ 是否有多余空间。它的默认值为auto，即项目的本来大小。
-+ flex属性是flex-grow，flex-shrink和flex-basis的简写，默认值为0 1 auto。
-+ align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值+ 为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。+
-
-简单来说：
-
-flex布局是CSS3新增的一种布局方式，可以通过将一个元素的display属性值设置为flex从而使它成为一个flex容器，它的所有子元素都会成为它的项目。一个容器默认有两条轴：一个是水平的主轴，一个是与主轴垂直的交叉轴。可以使用flex-direction来指定主轴的方向。可以使用justify-content来指定元素在主轴上的排列方式，使用align-items来指定元素在交叉轴上的排列方式。还可以使用flex-wrap来规定当一行排列不下时的换行方式。对于容器中的项目，可以使用order属性来指定项目的排列顺序，还可以使用flex-grow来指定当排列空间有剩余的时候，项目的放大比例，还可以使用flex-shrink来指定当排列空间不足时，项目的缩小比例。
+可以使用justify-content来指定元素在主轴上的排列方式，使用align-items来指定元素在交叉轴上的排列方式。还可以使用flex-wrap来规定当一行排列不下时的换行方式。对于容器中的项目，可以使用order属性来指定项目的排列顺序，还可以使用flex-grow来指定当排列空间有剩余的时候，项目的放大比例，还可以使用flex-shrink来指定当排列空间不足时，项目的缩小比例。
 
 ### RGBA 和 Opacity
 

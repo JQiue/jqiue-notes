@@ -421,6 +421,71 @@ generator.next(2);
 
 与常规函数不同的是，生成器函数可以通过`yield/next`互相交换结果
 
+## 装饰器
+
+装饰器是一种特殊的函数，用于接受一个函数并改变它的行为，简而言之，可以为任何函数进行一些功能上的装饰
+
+这是一个缓存函数结果的装饰器实现：
+
+```js
+function foo(x) {
+    console.log('Called with ', x);
+    return x;
+}
+
+function Decorator(func) {
+    let cache = new Map();
+    return function (x) {
+        if(cache.has(x)){
+            return cache.get(x); // 直接返回缓存中的结果
+        }
+        let result = func(x); // 调用被装饰的函数
+        cache.set(x, result); // 缓存结果
+        return result;
+    }
+}
+
+foo = Decorator(foo);
+
+foo(1); // 第一次会调用被装饰的函数
+foo(1); // 因为结果被缓存，所以这一次被装饰的函数不会被调用
+foo(2); // 是一个新的结果，被装饰的函数将会被调用
+foo(2); // 结果被缓存，并不会调用被装饰的函数
+```
+
+## 重新指定 this
+
+函数本质上是由某个对象执行的，如果脱离的执行上下文，就会产生丢失问题，即可能产生没有定义该方法的调用错误
+
+```js
+let user = {
+    something(){
+        return 1;
+    },
+    foo(x) {
+        console.log('Called with ', x);
+        return x * this.something(); // TypeError: this.something is not a function
+    }
+}
+
+function Decorator(func) {
+    let cache = new Map();
+    return function (x) {
+        if(cache.has(x)){
+            return cache.get(x);
+        }
+        let result = func(x);
+        cache.set(x, result);
+        return result;
+    }
+}
+
+user.foo = Decorator(user.foo);
+user.foo(1);
+```
+
+<!-- more -->
+
 ## 内置函数
 
 JavaScript 也内置了一些与定义的函数，用于处理一些常见的操作，预定义函数可以看作为全局对象的方法，而且常量`NaN`和`Infinity`看作它的属性，该类无需使用`new`创建，而是会在引擎初始化时被创建，方法和属性可以立即使用，且无需引用对象
