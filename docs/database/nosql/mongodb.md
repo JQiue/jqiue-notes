@@ -219,6 +219,8 @@ db.users.update(
 
 ## 建立索引
 
+<!-- more -->
+
 ```js
 db.mobiles.insert({
   brand: '',

@@ -1,8 +1,8 @@
-const computer_basic = [
+const theory = [
   '',
   {
     title: '计算机组成原理',
-    prefix: '/computer-basic/organization/',
+    prefix: 'organization/',
     collapsable: false,
     children: [
       'basic',
@@ -19,7 +19,7 @@ const computer_basic = [
   // },
   {
     title: '编译原理',
-    prefix: '/computer-basic/compile/',
+    prefix: 'compile/',
     collapsable: false,
     children: [
       'basic',
@@ -28,7 +28,7 @@ const computer_basic = [
   },
   {
     title: '计算机网络原理',
-    prefix: '/computer-basic/network/',
+    prefix: 'network/',
     collapsable: false,
     children: [
       'basic',
@@ -162,11 +162,11 @@ const database = [
   }
 ];
 
-const operating_system = [
+const os = [
   '',
   {
     title: 'Windows',
-    prefix: '/operating-system/windows/',
+    prefix: '/windows/',
     collapsable: false,
     children: [
       'basic',
@@ -175,7 +175,7 @@ const operating_system = [
   },
   {
     title: 'Linux',
-    prefix: '/operating-system/linux/',
+    prefix: '/linux/',
     collapsable: false,
     children: [
       'basic',
@@ -186,66 +186,6 @@ const operating_system = [
 ];
 
 const application = {
-  web: [
-    '',
-    {
-      title: 'HTML-CSS',
-      prefix: 'html-css/',
-      collapsable: false,
-      children: [
-        'basic',
-        'elements',
-        'box-model',
-        'selectors',
-        'css',
-        'layout',
-        'value',
-        'reset-css-style',
-        'responsive-design',
-        'better-code',
-      ]
-    },
-    {
-      title: 'Canvas',
-      prefix: 'canvas/',
-      collapsable: false,
-      children: ['basic']
-    },
-    {
-      title: 'WebAPI',
-      prefix: 'webapi/',
-      collapsable: false,
-      children: [
-        'basic',
-        'bom',
-        'dom',
-        'event',
-        'network',
-        'storage',
-      ]
-    },
-    {
-      title: 'Vue',
-      prefix: 'vue/',
-      collapsable: false,
-      children: [
-        'basic',
-        'component',
-        'vuex',
-        'vue-router',
-      ]
-    },
-    {
-      title: 'NodeJS',
-      prefix: 'nodejs/',
-      collapsable: false,
-      children: [
-        'basic',
-        'api',
-        'package-npm',
-      ]
-    },
-  ],
   backend: [
     {
       title: '后端',
@@ -267,6 +207,71 @@ const application = {
     '',
   ]
 };
+
+const web = [
+  '',
+  {
+    title: 'HTML-CSS',
+    prefix: 'html-css/',
+    collapsable: false,
+    children: [
+      'basic',
+      'elements',
+      'box-model',
+      'selectors',
+      'css',
+      'layout',
+      'value',
+      'reset-css-style',
+      'responsive-design',
+      'better-code',
+    ]
+  },
+  {
+    title: 'Canvas',
+    prefix: 'canvas/',
+    collapsable: false,
+    children: ['basic']
+  },
+  {
+    title: 'WebAPI',
+    prefix: 'webapi/',
+    collapsable: false,
+    children: [
+      'basic',
+      'bom',
+      'dom',
+      'event',
+      'network',
+      'storage',
+    ]
+  },
+  {
+    title: 'NodeJS',
+    prefix: 'nodejs/',
+    collapsable: false,
+    children: [
+      'basic',
+      'api',
+      'package-npm',
+    ]
+  },
+];
+
+const framework = [
+  '',
+  {
+    title: 'Vue',
+    prefix: 'vue/',
+    collapsable: false,
+    children: [
+      'basic',
+      'component',
+      'vuex',
+      'vue-router',
+    ]
+  },
+]
 
 const subject = [
   '',
@@ -328,12 +333,13 @@ const sundry = [
 ];
 
 module.exports = {
-  "/computer-basic/": computer_basic,
+  "/theory/": theory,
   "/language/": language,
   "/ds-algorithm/": ds_algorithm,
   "/database/": database,
-  "/operating-system/": operating_system,
-  "/application/web/": application.web,
+  "/os/": os,
+  "/framework/": framework,
+  "/web/": web,
   "/application/backend/": application.backend,
   "/application/desktop/": application.desktop,
   "/application/mobile/": application.mobile,

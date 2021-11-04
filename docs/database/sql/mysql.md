@@ -13,7 +13,7 @@ article: false
 
 ## 介绍
 
-## 安装
+## 安装和启动
 
 Linux 下的安装方式，如果发行版是 ubuntu，则使用`apt install mysql-server`安装即可
 
@@ -139,7 +139,7 @@ CREATE TABLE db_test.t_student (
 + 唯一约束：`UNIQUE`，数据不能重复
 + 默认值：`DEFAULT`，指定默认数据
 + 自动增长：`AUTO_INCREMENT`，只能用于主键
-+ 注释：`COMMENT`，
++ 注释：`COMMENT`
 + 插入时间戳：
 + 更新时间戳：
 
@@ -164,3 +164,9 @@ CREATE TABLE db_test.t_student (
 3. 索引
 
 ## 事务
+
+## 在各种语言平台上使用
+
++ Java
++ Node.js
++ Python

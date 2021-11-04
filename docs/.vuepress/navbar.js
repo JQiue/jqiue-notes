@@ -4,11 +4,11 @@ module.exports = [
     text: '技能',
     icon: 'jishuzhan',
     items: [
-      { text: '计算机基础', icon: 'jisuanji', link: '/computer-basic/' },
+      { text: '计算机原理', icon: 'yuanli', link: '/theory/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '编程语言', icon: 'kaifayuyan', link: '/language/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
-      { text: '操作系统', icon: 'caozuoxitong', link: '/operating-system/' },
+      { text: '操作系统', icon: 'caozuoxitong', link: '/os/' },
     ]
   },
   {
@@ -16,11 +16,20 @@ module.exports = [
     icon: 'youtian',
     prefix: '/application/',
     items: [
-      { text: 'Web', icon: 'liulanqi', link: 'web/' },
       { text: '后端', icon: 'shujuchuli', link: 'backend/' },
       { text: '移动', icon: 'shoujiyingyong', link: 'mobile/' },
       { text: '桌面', icon: 'zuixing-86', link: 'desktop/' }
     ]
+  },
+  {
+    text: 'web',
+    icon: 'liulanqi',
+    link: '/web/'
+  },
+  {
+    text: '框架',
+    icon: 'framework',
+    link: '/framework/',
   },
   {
     text: '学科',
