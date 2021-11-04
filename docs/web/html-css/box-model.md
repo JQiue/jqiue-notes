@@ -8,7 +8,7 @@ article: false
 
 盒模型是 CSS 中非常重要的的概念，关乎元素的尺寸和显示，任何元素都可以看作一个盒子，盒模型仅仅只是一个比喻，一般指那些可以设置宽高/内外边距的元素
 
-![box-model-1](../../images/box-model-1.png)
+![box-model-1](../images/box-model-1.png)
 
 + 内容（content）：显示内容的地方
 + 边框（border）：环绕在内容和内边距外面一层
