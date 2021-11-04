@@ -30,7 +30,6 @@ events {
     worker_connections  1024;
 }
 
-
 http {
     include       mime.types;
     default_type  application/octet-stream;
@@ -133,5 +132,21 @@ http {
 
 }
 ```
+
+## 启动 Nginx
+
+在 Ubuntu 中安装后的文件结构大致如下：
+
++ 程序执行在`/usr/sbin/nginx`
++ 所有的配置文件在`/etc/nginx`
++ 日志文件在`/var/log/nginx`
++ 默认的虚拟主机目录在`/var/www`或`/var/www/html`
+
+在 Windows 中文件结构大致如下：
+
++ 程序文件在安装的根目录
++ 配置文件在`conf`
++ 日志文件在`logs`
++ 默认的虚拟主机目录在`html`
 
 <!-- more -->
