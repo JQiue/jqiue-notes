@@ -155,6 +155,62 @@ p {
 
 :::
 
+### 大小写
+
+`text-transform`允许对英语文本的大小写进行控制，可具有一下属性值：
+
++ `capitalize`：每个单词的首字母大写
++ `uppercase`：全部大写
++ `lowercase`：全部小写
+
+::: demo text-transform
+
+```html
+<p>hello, world</p>
+<p>hello, world</p>
+<p>Hello, World</p>
+```
+
+```css
+p:nth-child(1) {
+  text-transform: capitalize;
+}
+p:nth-child(2) {
+  text-transform: uppercase;
+}
+p:nth-child(3) {
+  text-transform: lowercase;
+}
+```
+
+:::
+
+### 文本溢出
+
+`text-overflow`用来控制文本溢出时如何显示文本，前提是容器必须设置了`overflow: hidden`，有以下取值：
+
++ `clip`：在内容区域的极限处截断文本，默认值
++ `ellipsis`：用一个`...`来表示被截断的文本
+
+::: demo text-overflow
+
+```html
+<div>
+abcdefghijklmnopqrstuvwxyz
+</div>
+```
+
+```css
+div {
+  border: 1px solid #000;
+  width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+:::
+
 ## 垂直对齐
 
 `vertical-align`提供了内联元素的垂直对齐方式，只对内联元素和`table-cell`生效，一般情况下，内容都是基于父元素的基线对齐，而`vertical-align`提供了几个属性来改变对齐方式：
