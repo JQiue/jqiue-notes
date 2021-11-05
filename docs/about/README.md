@@ -97,7 +97,7 @@ sticky: true
 
 > 星星表示需要完成或学习的优先级、重要程度
 
-+ [计算机基础](/computer-basic/)
++ [计算机基础](/theory/)
   + 计算机组成原理:star::star:
   + 操作系统原理:star::star:
   + 编译原理:star:
@@ -119,12 +119,16 @@ sticky: true
   + MySQL:star::star:
   + MongoDB:star::star:
   + Redis:star:
++ [WEB](/web/)
+  + HTML:star::star::star::star:
+  + CSS:star::star:
+  + WebAPI:star::star::star::star:
 + 应用开发
-  + [WEB](/application/web/):star::star::star:
   + [移动应用](/application/mobile/):star:
   + [后端](/application/backend/):star::star:
   + [桌面端](/application/desktop/):star:
-+ Java 应用框架
++ 应用框架
+  + Vue:star::star::star:
   + Spring:star::star:
   + Spring Boot:star::star:
 + 服务器 && 容器
