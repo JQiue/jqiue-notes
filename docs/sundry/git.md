@@ -324,6 +324,10 @@ git clone <remote>
 
 ## 提交规范
 
+为什么要对提交信息进行规范，则是因为每个人的风格不同，不利于事后的追溯，因此统一的格式化提交信息是有必要的，会很方便的浏览提交信息
+
+Angular 规范是使用的最广泛的规范，是一种非常合理的设计
+
 ```
 <type>(<scope>): <subject>
 <BLANK LINE>
@@ -334,11 +338,11 @@ git clone <remote>
 
 大致分为三个部分(使用空行分割):
 
-1. 标题行: 必填, 描述主要修改类型和内容
-2. 主题内容: 描述为什么修改, 做了什么样的修改, 以及开发的思路等等
-3. 页脚注释: 放 Breaking Changes 或 Closed Issues
++ 标题行: 必填, 描述主要修改类型和内容
++ 主题内容: 描述为什么修改, 做了什么样的修改, 以及开发的思路等等
++ 页脚注释: 放 Breaking Changes 或 Closed Issues
 
-### type: commit 的类型
+type: commit 的类型
 
 + init: 初始化
 + feat: 新特性
@@ -352,11 +356,11 @@ git clone <remote>
 + scope: commit 影响的范围, 比如: route, component, utils, build...
 + subject: commit 的概述
 
-### body: commit 具体修改内容, 可以分为多行
+body 是对本次 commit 的详细描述
 
-footer: 一些备注, 通常是 BREAKING CHANGE 或修复的 bug 的链接.
+footer: 一些备注, 通常是 BREAKING CHANGE 或修复的 bug 的链接
 
-### 示例
+下面是一些提交示例：
 
 + fix（修复BUG）
 
@@ -402,6 +406,8 @@ git commit -m "fix：:bug: 修复一个缺陷"
 ```
 
 这是别人看到的 commit 信息 => fix：:bug:修复一个缺陷
+
+::: details 展开查看更多
 
 🎨 - `:art:` - 改进代码的结构/格式.  
 ⚡️ - `:zap:` - 提高性能.  
@@ -470,6 +476,8 @@ git commit -m "fix：:bug: 修复一个缺陷"
 🥅 - `:goal_net:` - 捕获错误.  
 💫 - `:dizzy:` - 添加或更新动画和过渡.  
 🗑 - `:wastebasket:` - 需要清理的弃用代码.
+
+:::
 
 ## SSH 免登录推送
 

@@ -166,7 +166,7 @@ const os = [
   '',
   {
     title: 'Windows',
-    prefix: '/windows/',
+    prefix: 'windows/',
     collapsable: false,
     children: [
       'basic',
@@ -175,7 +175,7 @@ const os = [
   },
   {
     title: 'Linux',
-    prefix: '/linux/',
+    prefix: 'linux/',
     collapsable: false,
     children: [
       'basic',
