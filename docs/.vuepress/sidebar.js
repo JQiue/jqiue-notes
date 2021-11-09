@@ -101,7 +101,6 @@ const language = [
       'syntax',
       'ds',
       'class',
-      'built-in-function',
       'module',
       'comprehensions',
       'exception',
