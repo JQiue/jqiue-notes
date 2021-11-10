@@ -93,7 +93,59 @@ const moduleName = (function () {
 })(window, module1);
 ```
 
-## 模块化的库
+## 语言级别的模块化规范 ES6 module
+
+模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能
+
+一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量
+
+```js
+export const foo;
+export const bar;
+```
+
+此外还有这种写法，和上面是等价的：
+
+```js
+const foo;
+const bar;
+
+export {foo, bar};
+```
+
+不能是这样的：
+
+```js
+const foo;
+const bar;
+
+// 报错
+export foo;
+exprot bar;
+```
+
+export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系，上面的写法只是输入一个值，而不是对外的接口
+
+另外，export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值
+
+```js
+export let foo = 'bar';
+setTimeout(() => foo = 'baz', 500);
+```
+
+`bar`500ms后会变成`baz`，这和 CommonJS 不一样，CommonJS 会有缓存，不存在动态的值
+
+使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块
+
+```js
+import { firstName, lastName, year } from './xxx.js';
+```
+
+必须与被导入模块对外接口的名称相同
+
+import命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口，但是如果是个对象，改写属性是允许的
+
+## 其他模块规范
 
 ### CommonJS
 
@@ -176,9 +228,10 @@ require([m1,m2],function(m1,m2) {})
 <script data-main="module/main.js" src="require.js"></script>
 ```
 
-**暴露模块：**  
-  + 没有依赖的模块，define()传入回调函数并返回暴露的模块
-  + 有依赖的模块，define()第一个参数传入一个数组导入依赖的模块，传入回调函数使用形参接受模块，并返回暴露的模块
+**暴露模块：**
+
++ 没有依赖的模块，define()传入回调函数并返回暴露的模块
++ 有依赖的模块，define()第一个参数传入一个数组导入依赖的模块，传入回调函数使用形参接受模块，并返回暴露的模块
 **引入模块：**require([m1,m2,...], function(m1,m2,...) {})
 
 **使用：** 因为浏览器不认识AMD语法，所以需要下载[require.js](https://requirejs.org/docs/release/2.3.6/comments/require.js)库来编译打包
@@ -264,8 +317,9 @@ import xxx from 'xxx.js'
 ```
 
 **暴露模块：** exports
-  + 分别暴露：只能以对象的形式暴露出去，可以暴露多个，引入模块也需要以对象的形式引入
-  + 默认暴露：能够暴露任意数据类型，但是只能暴露一个，暴露什么收据，引入的就是什么数据类型  
+
++ 分别暴露：只能以对象的形式暴露出去，可以暴露多个，引入模块也需要以对象的形式引入
++ 默认暴露：能够暴露任意数据类型，但是只能暴露一个，暴露什么收据，引入的就是什么数据类型  
 
 **引入模块：** import
 
@@ -297,5 +351,3 @@ babel src -d build
 ```sh
 browserify build/main.js -o dist/index.js
 ```
-
-## 语言级别的模块化规范 ES6 module

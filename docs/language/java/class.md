@@ -1,5 +1,5 @@
 ---
-title: 面向对象编程
+title: 类与对象
 category: 编程语言
 tags: [Alpha]
 author: JQiue

@@ -226,15 +226,15 @@ HTTP 状态码负责表示客户端的请求返回结果，标记服务端的处
 只要遵守状态码类别的定义，便可以改变所定义的状态码，或者服务端自行创建状态码都可以，仅仅记录的已知状态码就有很多种，实际上正常使用的大致只有 14 种
 
 + 200：OK
-+ 204：Not Content
-+ 206：Partial Content
-+ 301：Moved Permanently
-+ 302：Found
-+ 303：See Other
-+ 304：No Modified
-+ 307：Temporary Redirect
-+ 400：Bad Request
-+ 401：Unauthorized
++ 204：Not Content，没有返回内容
++ 206：Partial Content，进行了范围请求
++ 301：Moved Permanently，永久重定向
++ 302：Found，临时重定向
++ 303：See Other，表示由于请求对应的资源存在着另一个 URI，应使用 GET 方法定向获取请求的资源
++ 304：No Modified，浏览器缓存相关，允许访问资源，但是服务不会响应内容
++ 307：Temporary Redirect，临时重定向，不会从 POST 变为 GET
++ 400：Bad Request，
++ 401：Unauthorized，
 + 403：Forbidden
 + 404：Not Found
 + 500：Internal Server Error
@@ -249,3 +249,19 @@ HTTP 状态码负责表示客户端的请求返回结果，标记服务端的处
 ## 首部
 
 ## HTTPS
+
+超文本传输安全协议（Hypertext Transfer Protocol Secure，简称：HTTPS）是一种通过计算机网络进行安全通信的传输协议。HTTPS经由HTTP进行通信，利用SSL/TLS来加密数据包。HTTPS的主要目的是提供对网站服务器的身份认证，保护交换数据的隐私与完整性
+
+HTTPS的优点如下：
+
++ 使用HTTPS协议可以认证用户和服务器，确保数据发送到正确的客户端和服务器；
++ 使用HTTPS协议可以进行加密传输、身份认证，通信更加安全，防止数据在传输过程+ 中被窃取、修改，确保数据安全性；
++ HTTPS是现行架构下最安全的解决方案，虽然不是绝对的安全，但是大幅增加了中间+ 人攻击的成本；
+
+HTTPS的缺点如下：
+
++ HTTPS需要做服务器和客户端双方的加密个解密处理，耗费更多服务器资源，过程复杂；
++ HTTPS协议握手阶段比较费时，增加页面的加载时间；
++ SSL证书是收费的，功能越强大的证书费用越高；
++ HTTPS连接服务器端资源占用高很多，支持访客稍多的网站需要投入更大的成本；
++ SSL证书需要绑定IP，不能再同一个IP上绑定多个域名。
