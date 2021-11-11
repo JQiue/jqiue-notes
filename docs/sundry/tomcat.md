@@ -1,6 +1,6 @@
 ---
 title: Tomcat 是咋玩的
-category: 编程语言
+category: 服务器
 tags: [Alpha]
 author: JQiue
 article: false

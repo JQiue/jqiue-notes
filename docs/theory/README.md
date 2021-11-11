@@ -1,5 +1,5 @@
 ---
-title: 计算机基础
+title: 计算机原理
 author: JQiue
 article: false
 ---

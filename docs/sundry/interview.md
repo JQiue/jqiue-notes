@@ -1,9 +1,8 @@
 ---
 title: 面试经历
-category: Web
+category: 知识分享
 tags: [Beta]
 author: JQiue
-article: false
 ---
 
 这里记录的是我面试的一些题目，进行了技术复盘，按照公司划分
