@@ -1,6 +1,6 @@
 ---
 title: 正则文法和有限自动机
-category: 计算机基础
+category: 计算机原理
 tags: [Alpha]
 author: JQiue
 article: false
@@ -9,7 +9,7 @@ article: false
 词法分析的工作是将字符串提取出一个个 Token，并且是一边读取一边提取，打造手工词法分析器的过程，就是写出正则表达式，画出有限自动机，然后根据图形更加直观的写出解析代码的过程，比如解析`age >= 45`，需要根据一些规则来绘制有限自动机：
 
 ::: center
-![grammars-and-automata-1](../images/compile-grammars-and-automata-1.png)
+![grammars-automata-1](../images/grammars-automata-1.png)
 :::
 
 上图是一个严格意义上的有限自动机，它有五种状态：

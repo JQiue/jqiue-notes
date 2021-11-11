@@ -1,6 +1,6 @@
 ---
 title: 走进计算机
-category: 计算机基础
+category: 计算机原理
 tags: [Alpha]
 author: JQiue
 article: false

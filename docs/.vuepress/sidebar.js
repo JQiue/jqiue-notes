@@ -23,7 +23,7 @@ const theory = [
     collapsable: false,
     children: [
       'basic',
-      'grammars-and-automata',
+      'grammars-automata',
     ]
   },
   {
