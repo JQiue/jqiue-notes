@@ -15,10 +15,10 @@ SQL 有非常重要的两个标准，分别是 SQL92 和 SQL99，分别代表了
 
 SQL 并不像其他语言那样，学习需要大量的程序基础，它更像是一门英语，就好像用英语单词向数据库进行对话一样，所以 SQL 语言被分为四个部分：
 
-1. DDL（Data Definition Language）数据定义语言，用来定义数据库对象，包括数据库、数据表和列，可以创建、删除和修改数据库和表的结构
-2. DML（Data Manipulation Language）数据操作语言，用来操作和数据相关的记录，比如增加、删除、修改数据表中的记录
-3. DCL（Data Control Language）数据控制语言，用来定义访问权限和安全级别
-4. DQL（Data Query Language）数据查询语言，用来查询想要的记录，它是最重要的一部分，大多数情况下都是在和查询打交道
++ DDL（Data Definition Language）数据定义语言，用来定义数据库对象，包括数据库、数据表和列，可以创建、删除和修改数据库和表的结构
++ DML（Data Manipulation Language）数据操作语言，用来操作和数据相关的记录，比如增加、删除、修改数据表中的记录
++ DCL（Data Control Language）数据控制语言，用来定义访问权限和安全级别
++ DQL（Data Query Language）数据查询语言，用来查询想要的记录，它是最重要的一部分，大多数情况下都是在和查询打交道
 
 ## DDL
 
@@ -157,6 +157,10 @@ DQL 语句不会对数据进行改变，这个数据会从数据库中读到内�
 ```sql
 SELECT column1, column2, ... FROM table_name; 
 ```
+
+::: tip
+不要纠结`SELECT`到底属于 DML 还是 DQL，了解即可
+:::
 
 ### 条件查询（WHERE）
 

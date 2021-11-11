@@ -125,6 +125,26 @@ document.querySelector('button').addEventListener('click', eventHandler, false);
 如果一个元素注册了多个同类型的事件监听，执行顺序是按照代码书写顺序
 :::
 
+## 删除事件
+
+对于`on<event>`这种处理方式，可以直接赋值为`null`来实现事件的删除
+
+```js
+target.onclick = null;
+```
+
+如果是`addEventListener`方式，则调用`removeEventListener(type, handle)`方法即可删除对应的事件监听：
+
+```js
+let mouseClick = function (){};
+target.addEventListener('click', mouseClick);
+target.removeEventListener('click', mouseClick);
+```
+
+::: tip
+必须是同一个函数引用，否则无法删除
+:::
+
 ## 事件对象 — Event
 
 当 DOM 中某个事件被触发时，会同时产生一个描述事件相关信息的对象（触发事件的元素，鼠标的的位置，键盘的状态等等），这个对象就是 event，它通常被当作参数传递给事件处理函数
@@ -1256,4 +1276,3 @@ document.body.append(script);
 :::
 
 所有拖拽事件都有一个名为`dataTransfer`的属性，它持有拖拽数据，当拖拽文本时，数据就是文本本身，拖拽链接时，数据就是链接的 URL
-

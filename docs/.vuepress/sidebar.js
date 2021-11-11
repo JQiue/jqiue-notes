@@ -64,7 +64,7 @@ const language = [
     children: [
       'basic',
       'syntax',
-      'oop',
+      'class',
       'interface',
     ]
   },
