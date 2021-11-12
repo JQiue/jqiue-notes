@@ -97,14 +97,14 @@ Vue 通过指定的模板语法来渲染 DOM，先了解一下前端渲染页面
 
 插值表达式用于填充数据，在 Vue 中使用“Mustache”语法，即`{{}}`，该语法会自动将 data 对象中对应的 property 值绑定到插值处，如果数据发生改变，页面数据也会发生改变，因为 Vue 是响应式的
 
-由于 Vue 对模板语法提供了 JavaScript 表达式支持，插值表达式中的 JavaScript 代码都会被解析，仅限于单个表达式
+由于 Vue 对模板语法提供了 JavaScript 表达式支持，插值表达式中的 JavaScript 代码都会被解析，仅限于单个表达式，比如`{{1 + 1}}`会得到`{{2}}`
 
 ## 双向绑定
 
 Vue 中通过 v-model 指令来实现双向绑定，但只适用于`input`，`textarea`，`select`表单元素
 
 ```html v-model
-<input type="text" v-model="">
+<input type="text" v-model="msg">
 ```
 
 假设将上述页面绑定到 msg 中
@@ -140,6 +140,39 @@ export default {
 ```
 
 :::
+
+双向绑定的原理十分简单，使用`v-bind`绑定元素的`value`，利用`v-on`监听元素的`input`事件
+
+::: demo [vue] 双向绑定实现
+
+```vue
+<template>
+  <div>
+    <p>{{msg}}</p>
+    <input type="text" v-bind:value="msg" v-on:input="updateMsg($event.target)">
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      msg: "JQiue"
+    }
+  },
+  methods: {
+    updateMsg(target){
+      this.msg = target.value;
+      console.log(target.value);
+    }
+  }
+}
+</script>
+```
+
+:::
+
+## 特殊属性
 
 特殊属性指的是 Vue 会对元素上的一些属性进行特殊的解析，比如`key`会和`v-for`搭配使用，`is`和`component`控制组件的切换，`slot`和`slot-scope`用于插槽中，这里着重讲`ref`属性
 

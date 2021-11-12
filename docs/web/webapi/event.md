@@ -44,13 +44,13 @@ article: false
 直接使用 HTML 元素事件特性
 
 ```html
-<button onclick="alert('单击事件触发了')">click me</button>
+<button onclick="alert('单击事件触发了')">点击我</button>
 ```
 
 ::: demo 事件特性
 
 ```html
-<button onclick="alert('单击事件触发了')">click me</button>
+<button onclick="alert('单击事件触发了')">点击我</button>
 ```
 
 :::
@@ -72,7 +72,7 @@ HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发�
 ::: demo DOM 元素的事件属性
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
@@ -95,7 +95,7 @@ document.querySelector('button').onclick = function () {
 与前两种方式相比，事件监听的优势在于对同一个事件，可以有多个不同的处理
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 
 <script>
   function eventHandler() {
@@ -108,7 +108,7 @@ document.querySelector('button').onclick = function () {
 ::: demo addEventListener 方法
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
@@ -163,7 +163,7 @@ target.removeEventListener('click', mouseClick);
 ::: demo event
 
 ```html
-<button >click me</button>
+<button >点击我</button>
 ```
 
 ```js
@@ -613,7 +613,7 @@ elem.dispatchEvent(event);
 
 ```js
 // 监听 hello 事件
-elem.addEventListener('hello', e => {
+elem.addEventListener('hello', event => {
   console.log('hello');
 })
 
@@ -630,7 +630,7 @@ elem.dispatchEvent(event);
 
 ```html
 <body>
-  <button id="btn">click me</button>
+  <button id="btn">点击我</button>
   <script>
     btn.addEventListener('foo', event => {
       console.log(event.detail); // {name: "foo"}
@@ -647,7 +647,7 @@ elem.dispatchEvent(event);
 事件是在队列中进行处理的，如果在一个事件处理过程中又触发了一个事件，那么它的处理程序会被排入队列中等待前一个事件处理完成
 
 ```html
-<button id="btn">click me</button>
+<button id="btn">点击我</button>
 
 <script>
   btn.onclick = function() {
@@ -663,7 +663,7 @@ elem.dispatchEvent(event);
 ::: demo 同步处理的事件
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
@@ -683,7 +683,7 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 如果在某些情况下，这个事件是可以冒泡的，那么它将广播到`document`上，沿途触发的事件同样会被同步的方式处理，这可能不是想要的结果，最好优先处理自己的事件，只要将这个事件移动到优先处理的事件后面或者将它变成异步的事件来解决它
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 
 <script>
   let button = document.querySelector('button');
@@ -701,7 +701,7 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 ::: demo 异步处理的事件
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
@@ -716,6 +716,118 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 ```
 
 :::
+
+## 防抖和节流
+
+由于用户和界面交互的太平凡，如果每一次发生的事件都要执行，就会造成性能下降，比如点了两下按钮，实际上这是误触，对应的处理函数不应该触发两次，防抖和节流就是应运而生的两种方案
+
++ 防抖指的是事件发生的一定时间段只触发一次处理函数，一旦在一定的时间段内触发，则会重新计算时间在触发处理函数
++ 节流指的是连续触发事件但是在 n 秒中只执行一次函数
+
+下面是使用`mousemove`的例子，当鼠标在上面移动时数字会增加，第一个没有进行处理，第二个使用防抖处理，第三个使用节流处理
+
+::: demo 防抖和节流
+
+```html
+<div class="box">0</div>
+<div class="box">0</div>
+<div class="box">0</div>
+```
+
+```css
+.box {
+  display: inline-block;
+  width: 200px;
+  height: 150px;
+  background-color: #666;
+  text-align: center;
+  line-height: 150px;
+  color: #fff;
+  font-size: 20px;
+}
+```
+
+```js
+let divs = document.querySelectorAll('.box');
+
+divs[0].addEventListener('mousemove', event => {
+  divs[0].textContent = Number(divs[0].textContent) + 1;
+});
+
+// 防抖
+function debounce(func, delay) {
+  let timeout;
+  return function (args) {
+    if (timeout) clearTimeout(timeout);
+    let flag = !timeout;
+    timeout = setTimeout(() => timeout = null, delay);
+    if (flag) func.apply(this, args);
+  }
+}
+
+// 节流
+function throttle(func, delay) {
+  let timeout;
+  return function (args) {
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        timeout = null;
+        func.apply(this, args);
+      }, delay);
+    }
+  }
+}
+
+let debounceHandle = debounce(() => divs[1].textContent = Number(divs[1].textContent) + 1, 500);
+divs[1].addEventListener('mousemove', event => {
+  debounceHandle();
+});
+
+let throttleHandle = throttle(() => divs[2].textContent = Number(divs[2].textContent) + 1, 500);
+divs[2].addEventListener('mousemove', event => {
+  throttleHandle();
+});
+```
+
+:::
+
+防抖和节流都是通过减少实际处理函数的执行来提高性能的手段，但并没有实质的减少事件的触发次数
+
+先来看防抖函数的实现思路，将一个需要进行防抖的操作放到函数中执行，使用防抖函数进行装饰并返回装饰后的函数，在内部定义一个变量记录定时器的返回值，此时已经产生了闭包，该变量永远存在，通过对定时器的返回值进行判断，标记一个可用来执行实际操作函数的变量，便是基本的实现思路，该函数是一个立即执行的防抖函数
+
+```js
+function debounce(func, delay) {
+  let timeout;
+  return function (args) {
+    // 如果有返回值就清除该定时器，重新计时，让 timeout 不为 null
+    if (timeout) clearTimeout(timeout);
+    // 标记，关系着实际操作的运行
+    let flag = !timeout;
+    // 在一定 delay 时间后，将 timeout 赋值为 null
+    timeout = setTimeout(() => timeout = null, delay);
+    // 一旦 timeout 判断为 false 时，flag 一定为 true，此时开始执行实际操作
+    if (flag) func.apply(this, args);
+  }
+}
+```
+
+再来看节流函数的实现思路，依然是装饰器加闭包的定时器原理来实现
+
+```js
+function throttle(func, delay) {
+  let timeout;
+  return function (args) {
+    // 如果 timeout 取反判断为 true，则执行一次实际操作
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        // 在一定 delay 时间设置 timeout 为 null，让下一次事件触发实际操作
+        timeout = null;
+        func.apply(this, args);
+      }, delay);
+    }
+  }
+}
+```
 
 ## 鼠标事件
 
@@ -740,19 +852,19 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 ::: demo event.button
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
 let button = document.querySelector('button');
-button.addEventListener('click', e => {
-  alert(e.button);
+button.addEventListener('click', event => {
+  alert(event.button);
 });
-button.addEventListener('mousedown', e => {
-  alert(e.button);
+button.addEventListener('mousedown', event => {
+  alert(event.button);
 });
-button.addEventListener('mouseup', e => {
-  alert(e.button);
+button.addEventListener('mouseup', event => {
+  alert(event.button);
 });
 ```
 
@@ -760,23 +872,23 @@ button.addEventListener('mouseup', e => {
 
 甚至，所有的鼠标事件都包含按下的组合键的信息：
 
-+ `shiftKey`：Shift
-+ `altKey`：Alt
-+ `ctrlKey`：Ctrl
-+ `metaKey`：Win
++ `shiftKey`：Shift 键
++ `altKey`：Alt 键
++ `ctrlKey`：Ctrl 键
++ `metaKey`：Win 键
 
 如果在鼠标事件期间按下了对应的键，则它的值为`true`，比如下面的示例中，按下三个键才会触发弹框
 
 ::: demo 组合键
 
 ```html
-<button>click me</button>
+<button>点击我</button>
 ```
 
 ```js
 let button = document.querySelector('button');
-button.addEventListener('click', e => {
-  if(e.shiftKey & e.ctrlKey & e.altKey) {
+button.addEventListener('click', event => {
+  if(event.shiftKey & event.ctrlKey & event.altKey) {
     alert('三键合璧，天下无敌');
   }
 });
@@ -802,24 +914,24 @@ button.addEventListener('click', e => {
 ::: demo 双击事件并选择文本
 
 ```html
-<div ondblclick="alert('double click')">double click me</div>
+<div ondblclick="alert('double click')">双击我</div>
 ```
 
 :::
 
-有时候会出现按下不松开并移动鼠标的情况，这也会造成文本选择的干扰，为了避免这些情况，最合理的方法是在`mousedown`上进行处理
+甚至有时按下不松开并移动鼠标也会造成文本选择的干扰，为了避免这些情况，最合理的方法是在`mousedown`上进行处理
 
 ::: demo 双击事件并不选择文本
 
 ```html
-<div ondblclick="alert('double click')" onmousedown="return false">double click me</div>
+<div ondblclick="alert('double click')" onmousedown="return false">双击我</div>
 ```
 
 :::
 
-这里虽然解决了问题，但是想要选择文本的时候发现无法选中了，其实并不是无法选中，而是要在文本本身以外的地方开始选中，从文本本身开始选中时自然会失效
+这里虽然解决了问题，但是文本却无法被选中了，其实并不是无法选中，而是要在文本本身以外的地方开始选中，从文本本身开始选中时自然会失效
 
-如果想要保护页面的内容不被复制，可以使用`copy`事件来处理
+如果想要保护页面的内容不被复制，可以使用`copy`事件来处理，对于开发者来说，肯定是可以打开调试工具来访问源码进行复制，但是大多数人是不知道的
 
 ::: demo copy 事件
 
@@ -829,11 +941,9 @@ button.addEventListener('click', e => {
 
 :::
 
-对于开发者来说，肯定是可以打开调试工具来访问源码进行复制，但是对于大多数人来说根本就不知道的
+当鼠标从元素身上移动时就会触发对应的移动事件，移动到某个元素上时就会触发`mouseover`，而离开某个元素时就会触发`mouseout`
 
-当鼠标从元素身上移动时就会触发对应的移动事件，当移动到某个元素上时就会触发`mouseover`，而离开某个元素时就会触发`mouseout`
-
-这些事件都有一个特殊的`relatedTarget`属性，这是对`target`的补充，当从一个元素是上离开到另一个元素时，其中一个元素就是`target`，另一个就变成了`relatedTarget`，对于`mouseover`和`mouseout`来说，`target`和`relatedTarget`是互相相反的
+这些事件都有一个特殊的`relatedTarget`属性，这是对`target`的补充。当从一个元素是上离开到另一个元素时，其中一个元素就是`target`，另一个就变成了`relatedTarget`，对于`mouseover`和`mouseout`来说，`target`和`relatedTarget`是互相相反的
 
 ::: tip
 `relatedTarget`的取值是可能为`null`的，不一定总是页面上的某个元素的引用，鼠标如果来自窗口外，或者离开了窗口，就会产生这种现象，因此对于`relatedTarget`要记住这个特性，以免发生错误
@@ -926,7 +1036,7 @@ document.querySelector('input').onkeydown = function (e) {
 
 ## 滚动事件
 
-`scroll`事件能够对页面或元素的滚动作出反应，这是一个实例
+`scroll`事件能够对页面或元素的滚动作出反应，这是一个示例：
 
 ::: demo scroll
 
@@ -942,7 +1052,7 @@ window.onscroll = function(e) {
 
 :::
 
-不能够在`scroll`事件中使用`e.preventDefault()`来阻止滚动，启动滚动的方法有很多种，但是使用 CSS 的`overflow`会更加可靠一些
+不能在`scroll`事件中使用`e.preventDefault()`来阻止滚动，启动滚动的方法有很多种，但是使用 CSS 的`overflow`会更加可靠一些
 
 滚动有以下应用场景：
 
@@ -1115,6 +1225,9 @@ document.querySelector('form').onsubmit = function (e) {
 
 对于元素来说，产生的更改也会触发相应的事件
 
++ `change`
++ `input`
+
 `change`事件可以在`<input>`失去焦点后触发，但是数据状态必须已经发生改变
 
 ::: demo 失去焦点
@@ -1210,9 +1323,7 @@ document.addEventListener('readystatechange', function (e) {
 
 ## 加载脚本
 
-现在的脚本往往比 HTML 本身更大，处理的时间更加久，上面说过脚本会堵塞页面的加载，对于外部的脚本来说也是如此，必须等待下载完，并执行结束后才能继续加载文档
-
-这会导致一些问题：
+现在的脚本往往比 HTML 本身更大，处理的时间更加久，上面说过脚本会堵塞页面的加载，对于外部的脚本来说也是如此，必须等待下载完，并执行结束后才能继续加载文档，这会导致一些问题：
 
 + 脚本不能访问身后的文档元素
 + 如果有一个非常笨重的脚本，会严重的堵塞页面的加载，造成体验问题
@@ -1276,3 +1387,6 @@ document.body.append(script);
 :::
 
 所有拖拽事件都有一个名为`dataTransfer`的属性，它持有拖拽数据，当拖拽文本时，数据就是文本本身，拖拽链接时，数据就是链接的 URL
+
+<!-- more -->
+<!-- to b e updated -->
