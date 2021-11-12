@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "dev-temp": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "yarn-install": "yarn",
+    "remove_modules": "node ./node_modules_RMRF.js"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
