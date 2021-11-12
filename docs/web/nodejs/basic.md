@@ -163,7 +163,6 @@ process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (text) {
   // 将数据输出到输出流
   process.stdout.write(text);
-  
 })
 ```
 

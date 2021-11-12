@@ -112,6 +112,10 @@ npm config set registry https://registry.npm.taobao.org
 
 如果想要撤销发布的包，可以使用`npm unpublish <package> --force`
 
+## npx
+
+<!-- to be updated -->
+
 ## 很棒的第三方包
 
 1. [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
