@@ -12,8 +12,7 @@
     "build": "vuepress build docs",
     "yarn-install": "yarn",
     "remove-modules": "node ./node_modules_RMRF.js",
-    "git-log": "git log --oneline",
-    "git-push": "./push.sh"
+    "git-log": "git log --oneline"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
