@@ -37,7 +37,6 @@ module.exports = config({
       sidebarDisplay: "mobile",
       links: {
         QQ: "http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes",
-        Wechat: "https://mp.weixin.qq.com/s/MiOS60rgwWDOdb_-KKs7kw",
         Email: "mailto:jqiue@foxmail.com",
         Zhihu: "https://www.zhihu.com/people/JQiue",
         Github: "https://github.com/JQiue",
