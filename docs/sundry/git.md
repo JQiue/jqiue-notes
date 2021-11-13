@@ -1,9 +1,8 @@
 ---
 title: Git 指南
 category: 版本控制
-tags: [Alpha]
+tags: [Beta]
 author: JQiue
-article: false
 ---
 
 Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具
@@ -175,7 +174,7 @@ Date:   Mon Sep 6 14:04:25 2021 +0800
 
 `git diff`只会比较工作空间和暂存区中的文件差异，如果提交了所有的改动执行这个命令会什么也得不到，但是增加一个额外的`--cached`参数会比较暂存区中和上一次提交的文件差异
 
-`git diff <branch> <branch>`会比较两个分支中的所有差异，如果加上`--stat`则只会告诉有差异的文件里表，`git diff <branch> <branch> <file>`，则显示指定文件的差异
+`git diff <branch> <branch>`会比较两个分支中的所有差异，如果加上`--stat`则只会告诉有差异的文件列表，`git diff <branch> <branch> <file>`则显示指定文件的差异
 
 ## 跳过暂存区进行提交
 
@@ -322,7 +321,7 @@ git clone <remote>
   gitproxy = socks5://127.0.0.1:10808
 ```
 
-默认的 Clash 端口都是`10808`，所以这里要填写成一样的，这个时候进行推送或拉取操作都会走 Clash，实在是快乐，这里并不想解释 socks5 是啥玩意，就是这么任性
+默认的 Clash 端口都是`10808`，所以要填写成一样的，这个时候进行推送或拉取操作都会走 Clash，实在是快乐，这里并不想解释 socks5 是啥玩意，就是这么任性
 
 ## 提交规范
 
