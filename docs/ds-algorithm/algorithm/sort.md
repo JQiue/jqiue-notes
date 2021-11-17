@@ -10,16 +10,22 @@ article: false
 
 ## 冒泡排序
 
-比较相邻的两个元素，如果前面比后面大，则交换这两个元素，每一趟都会产生一个最大的数被排好序
+比较相邻的两个元素，如果前面比后面大，则交换这它们，每一趟都会产生一个最大的数被排好序
 
 时间复杂度：O(n^2^)
 
 <CodeGroup>
 
 <CodeGroupItem title="C" active>
-```c
+
+```cpp
 // 升序
-void bubbleSort(int *list, int size){
+
+void swap(int *list, a, b){
+
+}
+
+void bubble(int *list, int size){
   for (int i = 0; i < size; i++)
   {
     for (int j = 0; j < size - i - 1; j++) {
@@ -33,20 +39,22 @@ void bubbleSort(int *list, int size){
   }
 }
 ```
+
 </CodeGroupItem>
 
 </CodeGroup>
 
 ## 选择排序
 
-每一趟记录最大或最小的数，然后放到最前面
+找到元素中最小的值并放在最前面，接着找到第二小的值并放到第二位，以此类推
 
 时间复杂度：O(n^2^)
 
 <CodeGroup>
 
 <CodeGroupItem title="C" active>
-```c
+
+```cpp
 void selectSort(int *list, int size){
   for (int i = 0; i < size; i++)
   {
@@ -64,23 +72,27 @@ void selectSort(int *list, int size){
   }
 }
 ```
+
 </CodeGroupItem>
 
 </CodeGroup>
 
 ## 插入排序
 
+每次都会排好一个元素，如果第一个元素已经排好序，它会和第二个元素进行比较，第二个元素将会决定待在原位还是插入到第一个元素之前，这样两个元素已经排好序，接着和第三个元素比较，以此类推
+
 时间复杂度：O(n^2^)
 
 <CodeGroup>
 
 <CodeGroupItem title="C" active>
-```c
-void insertSort(int *list, int size) {
+
+```cpp
+void insert(int *list, int size) {
   for (int i = 1; i < size; i++)
   {
-    int j = i - 1; // 当前已排序的位置
     int temp = list[i];
+    int j = i - 1; // 当前已排序的位置
     // 寻找插入位置
     while (list[j] > temp && j >= 0)
     {
@@ -91,15 +103,37 @@ void insertSort(int *list, int size) {
   }
 }
 ```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="JavaScript">
+
+```js
+function insert(array) {
+  let temp;
+  for (let i = 1; i < array.length; i++) {
+    temp = array[i];
+    let j = i - 1; 
+    while(array[j] > temp && j >= 0){
+      array[j + 1] = array[j];
+      j--;
+    }
+    console.log(array);
+    array[j + 1] = temp;
+  }
+  return array;
+}
+```
+
 </CodeGroupItem>
 
 </CodeGroup>
 
+## 归并排序
+
 ## 快速排序
 
 ## 堆排序
-
-## 归并排序
 
 ## 希尔排序
 

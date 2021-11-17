@@ -78,12 +78,12 @@ ECMA-262 规范 包含了大部分深入的、详细的、规范化的关于 Jav
 根据爱好选择它们
 
 + IDE：集成开发环境，具有强大的编辑功能，具备完整的开发功能
-  1. Visual Studio Code：免费，通过插件获得和 IDE 一样的功能
-  2. WebStorm：收费，开箱即用的开发环境
+  + Visual Studio Code：免费，通过插件获得和 IDE 一样的功能
+  + WebStorm：收费，开箱即用的开发环境
 
 + 轻量编辑器：不具备完整的开发环境，具有一些比普通记事本更强的编辑能力
-  1. Visual Studio Code：没错，还是一个优秀的编辑器
-  2. Sublime Text：免费
+  + Visual Studio Code：没错，还是一个优秀的编辑器
+  + Sublime Text：免费
 
 ## 浏览器的选择与使用
 

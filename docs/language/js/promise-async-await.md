@@ -730,3 +730,15 @@ async function bar() {
 就像一个`throw`语句一样，使用`try...catch`处理它，如果没有使用`try...catch`处理，那么`bar`生成的 Promise 将会变成 rejected，所以在这之后可以使用`catch`处理它
 
 如果都没有处理，将会得到一个未处理的 promise error，但是这样的话，程序就死掉了
+
+## 总结
+
++ JavaScript 是一种单线程执行机制
++ Promise 会让一个异步方法不会立即返回最终的值，而是返回一个 Promise 对象，在未来的某个时候交给使用者，有三种状态`pending/fulfilled/rejected`，调用`resolve`时转为`fulfilled`，而调用`reject`时转为`rejected`
++ `then`有两个参数，分别是`resolve`和`reject`的回调
++ `new Promise`是同步的，而`then`则不是
++ `catch`也可以捕捉`reject`的回调
++ `finally`不管`resolve/reject`都会被执行，并且不会阻止结果传递
++ `then`本身也会返回 Promise，`return`结果将会作为 Promise 的结果，所以可以产生链式调用，该 Promise 的状态，取决于返回值的规则
++ Promise 提供了 5 个静态方法，在不需要进行 new 操作的时候使用
++ 用`async`修饰的函数一定会返回一个 Promise 对象，在函数中使用`await`时，会让函数等待修饰的代码完成，然后继续执行下去，如果是一个 Promise 会直接将结果作为返回值，如果结果是正常的话

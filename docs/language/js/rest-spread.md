@@ -79,5 +79,7 @@ let fooCopy = { ...foo };
 console.log(fooCopy); // { name: 'foo', age: 23 }
 ```
 
+## 总结
+
 + 当`...`出现在定义函数参数的列表时，它就是 rest 参数
 + 当`...`出现在表达式中，它就是 spread 语法
