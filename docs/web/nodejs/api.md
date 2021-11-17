@@ -266,7 +266,7 @@ const files = fs.readdirSync('./');
 
 在 NodeJS 中很多对象也会触发各种事件，比如对于代表 Web 服务器的`http.Server`来说，可能会触发”接收到请求“，”产生连接错误“等各种事件，针对于不同的事件，都需要不同的事件处理
 
-所有可能触发时间的对象都是一个继承了`EventEmitter`类的子类对象，`EventEmitter`类定义了很多方法，用来处理和事件相关的事情：
+所有可能触发事件的对象都是一个继承了`EventEmitter`类的子类对象，`EventEmitter`类定义了很多方法，用来处理和事件相关的事情：
 
 + `addListener(event, listener)`：监听事件并处理
 + `on(event, listener)`：监听事件并处理
@@ -300,7 +300,14 @@ eventEmitter.emit('handler');
 
 ## 缓冲
 
-如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回
+在内存中临时存储数据的区域，如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回
+
+创建 Buffer：
+
+```js
+let buf = Buffer.alloc(11,'jinqiu.wang');
+console.log(buf.toString()); // jinqiu.wang
+```
 
 ## 流
 
@@ -344,3 +351,7 @@ console.log(path.basename('./foo/bar.js')); bar.js
 `util`模块提供了大量的工具类型的 API
 
 + `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的版本
+
+## 子线程
+
+<!-- to be updated -->

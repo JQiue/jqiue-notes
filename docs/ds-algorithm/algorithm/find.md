@@ -34,14 +34,15 @@ int linearFind(int *list, int value, int size) {
 
 ### 二分查找
 
-也叫折半查找，将列表划分为一个候选区，通过与候选区的中间值比较，如果正好相等就代表找到了，如果大于中间值，则扔掉中间值左边的候选区，如果小于中间值则扔掉中间值右边的候选区，以此往复直到找到或者没有为止，只适用于具有顺序排列的情况
+也叫折半查找，将列表划分为一个候选区，通过与候选区的中间值比较，如果正好相等就代表找到了，如果大于中间值，则扔掉中间值左边的候选区，如果小于中间值则扔掉中间值右边的候选区，以此往复直到找到或者没有为止，但只适用于具有顺序排列的结构
 
 时间复杂度：`O(logn)`
 
 <CodeGroup>
 
 <CodeGroupItem title="C" active>
-```c
+
+```cpp
 int binarySearch(int *list, int value, int size) {
   int left = 0;
   int right = size - 1;
@@ -59,9 +60,34 @@ int binarySearch(int *list, int value, int size) {
   return -1;
 }
 ```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="JavaScript">
+
+```js
+function binarySearch(list, value) {
+  let left = 0;
+  let right = list.length - 1;
+  let middle;
+  while (left <= right) {
+    middle = Math.floor((left + right) / 2);
+    if(value > arr[middle]) {
+      left = middle + 1;
+    } else if (value < arr[middle]) {
+      right = middle - 1;
+    } else {
+      return middle;
+    }
+  }
+}
+```
+
 </CodeGroupItem>
 
 </CodeGroup>
+
+### 内插搜索
 
 ### 分块查找
 

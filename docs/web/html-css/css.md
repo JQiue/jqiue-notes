@@ -771,6 +771,31 @@ div.box1,div.box2,div.box3 {
 
 ## 渐变
 
+渐变是一种由两种颜色或多种颜色之间的渐进过渡组成，CSS 中有 3 中类型的渐变：线性渐变，径向渐变，圆锥渐变
+
+```css
+.simple-linear {
+  background: linear-gradient(blue, pink);
+}
+```
+
+默认情况下，线性渐变的方向是从上到下，可以指定一个值来改变渐变的方向
+`linear-gradient(direction, color1, color2, ...)`
+
+对角线渐变`linear-gradient(to bottom right, color1, color2, ...)`
+
+渐变角度`linear-gradient(70deg, blue, pink)`
+
+并不局限于两种颜色，如论使用多少种，都会被均匀的分布在渐变路径
+
+::: demo 渐变
+
+```html
+
+```
+
+:::
+
 ## 高亮
 
 CSS3 新增`::selection`伪元素用于内容被高亮时的样式，只有这些属性可以被使用：
@@ -816,6 +841,61 @@ p::selection {
 ```css
 p {
   direction: rtl;
+}
+```
+
+:::
+
+## 滚动条
+
+`::scrollbar`提供了对元素的滚动条样式的控制，不仅如此，还有以下属性可以控制控制条：
+
++ ::-webkit-scrollbar — 整个滚动条
++ ::-webkit-scrollbar-button — 滚动条上的按钮 (上下箭头)
++ ::-webkit-scrollbar-thumb — 滚动条上的滚动滑块
++ ::-webkit-scrollbar-track — 滚动条轨道
++ ::-webkit-scrollbar-track-piece — 滚动条没有滑块的轨道部分
++ ::-webkit-scrollbar-corner — 当同时有垂直滚动条和水平滚动条时交汇的部分
++ ::-webkit-resizer — 某些元素的corner部分的部分样式(例:textarea的可拖动按钮)
+
+::: demo 滚动条
+
+```html
+<div class="box">
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+</div>
+```
+
+```css
+.box {
+  overflow: auto;
+  width: 200px;
+  height: 60px;
+}
+
+.box::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2em;
+}
+
+.box::-webkit-scrollbar-track {
+  width: 6px;
+  background: rgba(#101f1c, 0.1);
+  border-radius: 2em;
+}
+
+.box::-webkit-scrollbar-thumb {
+  background-color: rgba(144, 147, 153, 1);
+  border-radius: 2em;
+  transition: all, 0.3;
+}
+.box::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(144, 147, 153, 0.8);
 }
 ```
 
