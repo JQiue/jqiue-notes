@@ -77,6 +77,7 @@ const language = [
       'syntax',
       'function',
       'object',
+      'string',
       'array',
       'map-set',
       'destructuring-assignment',
@@ -125,6 +126,7 @@ const ds_algorithm = [
       'array-string',
       'tree',
       'graph',
+      'other',
     ]
   }, 
   {
@@ -135,6 +137,8 @@ const ds_algorithm = [
       'basic',
       'find',
       'sort',
+      'random',
+      'core',
     ]
   }
 ];
@@ -327,6 +331,9 @@ const sundry = [
       'webpack',
       'regex',
       'interview',
+      'jquery',
+      'eslint',
+      'babel',
     ]
   }
 ];
