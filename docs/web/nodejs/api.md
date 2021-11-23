@@ -147,15 +147,13 @@ NodeJS 提供了几个修改响应头的方法，`response.setHeader(field, valu
 
 默认的 HTTP 响应码是`200`，有时需要设置一些别的状态码可以使用`response.statusCode`，也应该在一些结束响应的逻辑前使用
 
-### 数据传输
-
-NodeJS 的 HTTP 读取数据时，会将数据处理成`data`事件的形式，并将数据块放到其中，等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
+NodeJS 的 HTTP 读取数据时，会触发`data`事件，并将数据块放到其中等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
 
 ```js
 http.createServer((req, res) => {
   req.on('data', chunk => {
     console.log(chunk);
-  })
+  });
   req.on('end', () => {
     res.end();
   })
@@ -199,11 +197,11 @@ console.log('Server start at http://localhost:3000');
 
 ## 文件操作
 
-文件读取：
+`fs`模块提供了操作系统文件的能力，需要引入
+
+读取文件数据：
 
 ```js
-const fs = require('fs');
-
 // 异步
 fs.readFile('data.txt', (err, data) => {
   if(err) return err;
@@ -214,52 +212,70 @@ fs.readFile('data.txt', (err, data) => {
 let data = fs.readFileSync('data.txt');
 ```
 
-文件写入：
+写入数据，如果没有该文件，则会尝试创建：
 
 ```js
-const fs = require('fs');
-
 // 异步
-fs.writeFile('./text.txt', 'hello, world', err => {
-  if (err) {
-    console.log(err);
-  }
-});
+fs.writeFile('./text.txt', 'hello, world', err => {});
 
 // 同步
 fs.writeFileSync('./data.txt', 'hello, world');
 ```
 
-::: tip
-如果没有该文件，则会尝试创建
-:::
-
 `writeFile`是一种覆盖写入，如果想要追加内容，则使用`appendFile`：
 
 ```js
-const fs = require('fs');
-
-fs.appendFile('data.txt', '追加内容', err => {
-  if(err) {
-    console.log(err);
-  }
-})
-
-fs
-```
-
-获取目录：
-
-```js
-const fs = require('fs');
+// 同步
+fs.appendFile('data.txt', '追加内容', err => {})
 
 // 异步
-fs.readdir('./', (err, files) => {
-  console.log(files);
-})
+fs.appendFileSync('data.txt', '追加内容');
+```
+
+获取目录项：
+
+```js
+// 异步
+fs.readdir('./', (err, files) => {})
 
 // 同步
 const files = fs.readdirSync('./');
+```
+
+获取文件的信息：
+
+```js
+// 异步
+fs.stat('./data.txt', (err, stats) => {
+  // 判断是否为目录
+  console.log(stats.isDirectory());
+  // 判断是否为文件
+  console.log(stats.isFile());
+  // 文件的大小
+  console.log(stats.size);
+  // 最后一次被访问的时间
+  console.log(stats.atime);
+});
+
+// 同步
+const stats = fs.statSync('./data.txt');
+```
+
+创建目录：
+
+```js
+fs.mkdir('./temp/', err => {});
+fs.mkdirSync('./temp/');
+```
+
+判断路径是否存在：
+
+```js
+// 同步
+fs.existsSync('./data.txt');
+
+// 异步（已废弃，不推荐使用）
+fs.exists('./data.txt', res => {})
 ```
 
 ## 事件触发器
@@ -346,12 +362,37 @@ console.log(path.dirname('./foo/bar.js')); ./foo
 console.log(path.basename('./foo/bar.js')); bar.js
 ```
 
+## 子线程
+
+<!-- to be updated -->
+
 ## 工具
 
 `util`模块提供了大量的工具类型的 API
 
 + `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的版本
 
-## 子线程
+## 逐行读取
 
-<!-- to be updated -->
+`readline`模块提供了读取可读流的接口，使用该程序时 NodeJS 进程不会关闭，因为在等待输入流中的数据，必须在某个时机手动关闭
+
+```js
+const readline = require('readline')
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
+
+// 监听到行尾输入`\n、\r或\n\r`时触发
+rl.on('line', input => {
+  console.log(fb(i));
+  // 关闭
+  rl.close();
+});
+
+function fb(i) {
+  if (i == 1 || i == 2) return 1;
+  return fb(i - 1) + fb(i - 2);
+}
+```

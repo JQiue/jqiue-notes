@@ -102,9 +102,9 @@ npm config set registry https://registry.npm.taobao.org
 
 ## 发布
 
-我们可以将自己写的包上传到官方仓库，共给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的
+我们可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户
 
-然后使用`npm adduser`输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包即可
+输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包即可
 
 ::: tip
 在发布前，最好检查一下源地址，必须是官方源地址
@@ -112,19 +112,33 @@ npm config set registry https://registry.npm.taobao.org
 
 如果想要撤销发布的包，可以使用`npm unpublish <package> --force`
 
+有时候发布包时，无法避免重名（占着茅坑不拉屎），这会导致发布失败，此时可以使用作用域的方式来解决，每个账户都是以名字为作用域的，只要将包名改为`@username/package`就视为作用域包
+
+作用域包是默认私有发布的，此时需要向官方打钱，所以发布成一个公共的包即可解决该问题，只需使用`npm publish --access=public`
+
+对于作用域包的安装时，也需要加上相应的作用域，比如`npm i @username/package`，在代码中引入时也是如此
+
 ## npx
+
+npx 是自带的包命令执行工具，常用来执行可执行命令，使用`npx command`会自动在`node_modules`中正确的找到命令
 
 <!-- to be updated -->
 
+## 脚本钩子
+
+在执行了`npm install`之后，如果在`scripts`中定义了`preinstall`、`install`、`postinstall`等，就会依次执行`scripts`中定义的钩子
+
 ## 很棒的第三方包
 
-1. [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
-2. [nrm](https://github.com/Pana/nrm)：是一个注册表管理器，用于快速切换下载源
-3. [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
-4. [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
-5. [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
-6. [nodemon](https://github.com/remy/nodemon)：监听 NodeJS 应用程序的更改，并自动重启服务器
-7. [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
++ [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
++ [nrm](https://github.com/Pana/nrm)：是一个注册表管理器，用于快速切换下载源
++ [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
++ [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
++ [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
++ [nodemon](https://github.com/remy/nodemon)：监听 NodeJS 应用程序的更改，并自动重启服务器
++ [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
++ [Progress](https://github.com/visionmedia/node-progress)：终端进度条
++ [chalk](https://github.com/chalk/chalk)：为终端进行着色
 
 ## NPM 的替代 Yarn
 

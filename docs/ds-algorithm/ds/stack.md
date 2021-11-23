@@ -1,23 +1,21 @@
 ---
 title: 栈
 category: 数据结构
-s: [顺序栈, 链栈, Alpha]
+tags: [Alpha]
 author: JQiue
 article: false
 ---
 
-## 顺序存储的栈
+栈只是一种特殊的线性表，它是线性表的一种具体形式，也就是必须通过顺序表或链表来实现它，但是它在操作上有一些特殊的要求和限制，只能在一端进行操作。对于栈来说，表尾称之为栈顶，而表头称之为栈底。新的元素总是靠近栈顶，旧的元素总是靠近栈底，栈就像弹夹一样，最先压进去的子弹一定是最后出来的，所以它遵循先进后出或后进先出的原则，即 LIFO（Last In First Out）。栈被用于编译器和内存中保存变量、方法调用等，也在浏览器中用于历史记录
 
-栈只是一种特殊的线性表，它是线性表的一种具体形式，也就是必须通过顺序表或链表来实现它，但是它在操作上有一些特殊的要求和限制，只能在一端进行操作，对于栈来说，表尾称之为栈顶，而表头称之为栈底。栈就像弹夹一样，最先压进去的子弹一定是最后出来的，所以它遵守先进后出或后进先出的原则，即 LIFO（Last In First Out）
-
-1. 往栈中添加元素的操作，叫做入栈
-2. 从栈中移除元素的操作，叫做出栈
++ 往栈中添加元素的操作，叫做入栈
++ 从栈中移除元素的操作，叫做出栈
 
 ::: tip 栈和内存栈
 数据结构中的栈和内存中的栈空间是有区别的，虽然它们有点联系
 :::
 
-### 顺序栈的实现
+## 顺序存储的栈
 
 使用数组实现，不需要额外的指针空间，但是它的容量无法增长
 
@@ -143,19 +141,39 @@ Status peek(SqStack s)
 
 </CodeGroupItem>
 
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
 <CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
 
-<CodeGroupItem title="python">
-```python
+```js
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+  push(element) {
+    this.items[this.items.length] = element;
+  }
+  pop() {
+    if (this.isEmpty()) {
+      return -1;
+    }
+    const element = this.items[this.items.length - 1];
+    this.items.length--;
+    return element;
+  }
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+  isEmpty() {
+    return this.items.length === 0;
+  }
+  size() {
+    return this.items.length;
+  }
+  clear() {
+    this.items.length = 0;
+  }
+}
 ```
+
 </CodeGroupItem>
 
 </CodeGroup>
@@ -163,8 +181,6 @@ Status peek(SqStack s)
 ## 链式存储的栈
 
 和顺序存储的栈相比，它有无限的大小，但是需要额外的内存
-
-### 链栈的实现
 
 <CodeGroup>
 
@@ -263,19 +279,98 @@ Status peek(LinkedStack s)
 
 </CodeGroupItem>
 
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
+<CodeGroupItem title="JavaScript">
 
-<CodeGroupItem title="javascript">
 ```js
+class Stack {
+  constructor() {
+    this.count = 0;
+    this.items = {};
+  }
+  push(element) {
+    this.items[this.count++] = element;
+  }
+  pop() {
+    if (this.isEmpty()) {
+      return -1;
+    }
+    return this.items[this.count-- - 1];
+  }
+  peek() {
+    return this.items[this.count - 1];
+  }
+  isEmpty() {
+    return this.count === 0;
+  }
+  size() {
+    return this.count;
+  }
+  clear() {
+    this.items = {};
+  }
+  toString() {
+    if (this.isEmpty()) {
+      return '';
+    }
+    let str = `${this.items[0]}`;
+    for (let i = 1; i < this.count; i++) {
+      str = `${str}, ${this.items[i]}`;
+    }
+    return str;
+  }
+}
 ```
-</CodeGroupItem>
 
-<CodeGroupItem title="python">
-```python
-```
 </CodeGroupItem>
 
 </CodeGroup>
+
+## 应用
+
+栈应用很广，在回溯问题中，可以存储访问过的任务和路径、撤销的操作，可以用来处理计算机科学问题
+
+在现实中十进制是最主要的方式，然而在计算机中二进制是最重要的，因为计算机中所有的内容都是用二进制表示，没有十进制和二进制互相转换的能力，和计算机交流就很困难
+
+这是一个十进制转二进制的算法
+
+```js
+function decimalToBinary(decNumber) {
+  const remStack = new Stack();
+  let number = decNumber;
+  let rem;
+  let binaryString = '';
+  while (number > 0) { 
+    rem = Math.floor(number % 2);    // 求余
+    remStack.push(rem);              // 放入栈中
+    number = Math.floor(number / 2); // 获得下一次被除数
+  }
+  while (!remStack.isEmpty()) {
+    binaryString += remStack.pop().toString(); // 从栈中取出
+  }
+  return binaryString;
+}
+```
+
+这是改进后的算法，十进制可以转换为 2~16 之间的任意进制
+
+```js
+function baseConverter(decNumber, base) {
+  const remStack = new Stack();
+  const digits = '0123456789ABCDEF';
+  let number = decNumber;
+  let rem;
+  let baseString = '';
+  if (!(base >= 2 && base <= 16)) { // 判断是否能够在基数内进行转换
+    return ''
+  }
+  while (number > 0) {
+    rem = Math.floor(number % base); // 求余
+    remStack.push(rem); // 放入栈中
+    number = Math.floor(number / base); // 获得下一次被除数
+  }
+  while (!remStack.isEmpty()) {
+    baseString += digits[remStack.pop()]; // 从栈中取出并转换
+  }
+  return baseString;
+}
+```

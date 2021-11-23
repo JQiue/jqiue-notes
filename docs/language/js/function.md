@@ -376,7 +376,7 @@ function* generateSeq() {
 }
 
 let arr = [0, ...generateSeq()];
-console.log(arr); [0, 1, 2, 3]
+console.log(arr); // [0, 1, 2, 3]
 ```
 
 除此之外`yield`还可以加个`*`表示委托给另一个”generator“或可迭代对象（字符串、数组等）
@@ -405,7 +405,7 @@ console.log(generator.next()); // { value: 5, done: false }
 
 这种感觉就像将`g1`里的语句写在`g2`里面一样
 
-`yield`关键字会使生成器函数暂停执行，并将后面的表达式结果返回给调用者，直到生成器的`next()`方法被调用，如果将参数传递给生成器的`next()`方法，该值会成为当前`yield`操作的返回值
+`yield`会使生成器函数暂停执行，并将后面的表达式结果返回，直到`next()`方法被再次调用，如果将参数传递给`next()`，该值会成为当前`yield`操作的返回值
 
 ```js
 function* g() {

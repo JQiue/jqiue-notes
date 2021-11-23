@@ -99,3 +99,64 @@ Nginx 无法分辨请求方的 IP 是否真实，也可能是伪造的
 :::
 
 <!-- more -->
+
+## 设置响应头
+
+比如跨域请求可使用`add_header`进行添加跨域头来允许
+
+```text
+server {
+  listen 80;
+  server_name httptest.jinqiu.wang;
+  location / {
+    proxy_pass http://127.0.0.1:8888;
+    add_header Access-Control-Allow-Origin *;
+  }
+}
+```
+
+## 请求体
+
+如果上传的文件过大，会返回 413 错误，Nginx 默认是 1m 大小的限制，但是可以添加`client_max_body_size`进行修改
+
+```text
+server {
+  listen 80;
+  server_name space.jinqiu.wang;
+  location / {
+    client_max_body_size 50m;
+    proxy_pass http://127.0.0.1:8889;
+  }
+}
+```
+
+## 限制控制
+
+默认情况下，有多少带宽，Nginx 就能消耗掉多少，Nginx 允许限制来自 HTTP 连接所使用的最大速率，比如使用`limit_rate`就可以限制下载速度：
+
+```text
+server {
+  listen 80;
+  server_name space.jinqiu.wang;
+  location / {
+    limit_rate 100k;
+    client_max_body_size 50m;
+    proxy_pass http://127.0.0.1:8889;
+  }
+}
+```
+
+甚至可以优化一下，比如前 10m 不限速，超过后开始限速：
+
+```text
+server {
+  listen 80;
+  server_name space.jinqiu.wang;
+  location / {
+    limit_rate_after 10m;
+    limit_rate 100k;
+    client_max_body_size 50m;
+    proxy_pass http://127.0.0.1:8889;
+  }
+}
+```

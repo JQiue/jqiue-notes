@@ -241,3 +241,28 @@ Comment | 显示评注
 + Java
 + Node.js
 + Python
+
+在 Node.js 中使用则需要先安装 MySQL 依赖
+
+```js
+npm i mysql
+```
+
+```js
+const mysql = require('mysql');
+
+const options = {
+  host: 'localhost',
+  user: 'root', 
+  password: '123456',
+  database: 'mydb'
+}
+
+// 创建连接对象
+const connection = mysql.createConnection(options);
+
+// 发送 SQL 语句并在回调中处理结果
+connection.query(`insert into foo (name) value ('zs')`, (error, result) => {
+  console.log(result);
+});
+```
