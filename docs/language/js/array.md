@@ -188,6 +188,36 @@ let matrix = [
 ];
 ```
 
+## 使用迭代器进行访问
+
+ES6 为 Array 增加了一个“iterator”属性，通过`Symbol.iterator`访问，因此可以调用迭代器的方法来进行访问
+
+```js
+let arr = [1, 2, 3, 4];
+
+const iterator = arr[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+```
+
+## 类型数组
+
+由于 JavaScript 数组不是强类型的，这导致它可以存储任意类型的元素，而类型数组则用于单一类型的数据，类型数组是一种新的补充，建立在 ArrayBuffer 的基础上，作用是分配一款连续的内存空间，常常用来处理一些二进制数据
+
+```js
+let int16 = new Int16Array(5);
+int16[0] = 1;
+int16[1] = 2;
+int16[2] = 3;
+int16[3] = 4;
+int16[4] = 5;
+console.log(int16);
+```
+<!-- to be updated -->
+
 ## 方法
 
 JavaScript 中的数组既可以是队列，也可以是栈

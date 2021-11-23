@@ -98,13 +98,13 @@ console.log(g); // 'male
 解构赋值可以通过更复杂的匹配模式来解构更深层次的对象和数组
 
 ```js
-let persons = {
+let person = {
   foo: { name: 'foo', age: 15 },
   num: 1,
   extra: true
 }
 
-let {foo: {name, age}, num, extra} = persons;
+let {foo: {name, age}, num, extra} = person;
 
 console.log(name);  // 'foo'
 console.log(age);  // 15
@@ -114,12 +114,23 @@ console.log(extra); // true
 
 这似乎看起来就像套娃一样，但是只要左边的匹配规则遵循右边的对象就可以完全解构出来数据
 
+## 交换值
+
+甚至可以不需要额外的临时变量进行值的互换
+
+```js
+let a = 1, b = 2;
+console.log(a, b); // 1 2
+[b, a] = [a, b];
+console.log(a, b); // 2 1
+```
+
 ## 智能函数参数
 
 函数在传参的时候也可以借助解构赋值
 
 ```js
-let names = ['foo', 'bar']
+let names = ['foo', 'bar'];
 
 function show([foo, bar]) {
   console.log(foo);

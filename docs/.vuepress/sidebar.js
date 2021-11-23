@@ -315,7 +315,7 @@ const sundry = [
       'problems',
       'three-filtering-principles',
       'trick',
-      'cannikin-law',
+      'zhihu',
       'excel',
       'internet-work',
       'adb',
@@ -334,6 +334,7 @@ const sundry = [
       'jquery',
       'eslint',
       'babel',
+      'typescript',
     ]
   }
 ];

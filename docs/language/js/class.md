@@ -40,17 +40,11 @@ foo.sayName();
 
 ## class 是什么
 
-其实，它只是一个函数
+其实，它只是一个函数，它实际上就是创建一个`Foo`的函数，函数中的内容来自`constructor`，并且将类中的方法存储到`prototype`
 
 ```js
 class Foo {}
 console.log(typeof Foo); // function
-```
-
-它实际上就是创建一个`Foo`的函数，函数中的内容来自`constructor`，并且将类中的方法存储到`prototype`
-
-```js
-class Foo {}
 console.log(Foo === Foo.prototype.constructor); // true
 ```
 
@@ -69,8 +63,6 @@ console.log(Foo); // [class Foo]
 ```
 
 而且类的方法是不可枚举的，类方法中的`enumerable`都被设置了`false`，并且类中的代码都是`use strict`模式
-
-## 类表达式
 
 和函数一样，类也可以在表达式中定义，被传递，赋值，返回等
 
@@ -194,6 +186,27 @@ setTimeout(foo.sayName, 1000); // foo
 `sayName`字段是基于对象创建的，每一个对象都有一个独立的方法，`this`总是指向该对象，所以就不必担心`this`丢失了
 
 ## 继承
+
+用 class 定义的类可以使用`extend`关键字被其它类继承
+
+```js
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  eat() {}
+  speack() {}
+}
+
+class Foo extends Person {
+  constructor(name, age) {
+    super(name, age);
+  }
+}
+
+const foo = new Person();
+```
 
 ## 静态的属性和方法
 
