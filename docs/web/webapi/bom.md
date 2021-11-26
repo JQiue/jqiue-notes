@@ -33,8 +33,23 @@ for (var i = 1; i < 1000; i++){
 
 ## 窗口交互
 
-+ `window.open()`：打开一个新窗口，返回新窗口的实例
++ `window.open(url, name, params)`：打开一个新窗口，返回新窗口的实例
 + `window.close()`：关闭一个窗口，默认关闭当前的窗口，可以传入其他窗口的引用并关闭
+
+::: demo 窗口
+
+```html
+<button id="btn">弹窗</button>
+```
+
+```js
+document.querySelector('#btn').addEventListener('click', () => {
+  let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=nomenubar=no,width=0,height=0,left=-1000,top=-1000`;
+  const newWindow = window.open('/', 'newWindow', params);
+});
+```
+
+:::
 
 ## 历史管理
 
@@ -73,3 +88,7 @@ for (var i = 1; i < 1000; i++){
 + `screen.height`：返回屏幕的真实高度
 + `screen.availWidth`：返回屏幕的可用宽度
 + `screen.availHeight`：返回屏幕的可用高度（不会计算操作系统任务栏所占的高度）
+
+## 跨窗口通信
+
+<!-- to be updated -->

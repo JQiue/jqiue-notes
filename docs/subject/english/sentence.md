@@ -6,7 +6,6 @@ author: JQiue
 article: false
 ---
 
-
 + 陈述句：肯定/否定
 + 疑问句
 + 祈使句
@@ -16,16 +15,16 @@ article: false
 
 陈述句有五种基本句式：
 
-1. S V（主谓）
-2. S V O（主谓宾）
-3. S V O O（主谓宾宾）
-4. S V O C（主谓宾宾补）
-5. S V P（主系表）
++ S V（主谓）
++ S V O（主谓宾）
++ S V O O（主谓宾宾）
++ S V O C（主谓宾宾补）
++ S V P（主系表）
 
 首先要知道英语的语序和中文不一定是一样的，比如下面的句子：
 
 ```
-He learns English every day.（他学英语每一天）
+He learns English every day.（按照语序翻译：他学英语每一天）
 他每天学习英语
 ```
 
@@ -40,7 +39,7 @@ The universe remians.
 
 ### S V P
 
-主系表结构是较为特殊的结构，系动词是用来连接主语和表语的，没有实在意义，而表语是用来修饰主语的状态，比如性质、特点、位置
+主系表结构是较为特殊的结构，系动词是用来连接主语和表语的，没有实际意义，而表语是用来修饰主语的状态，比如性质、特点、位置
 
 ```
 The food is delicions.
@@ -83,6 +82,13 @@ We made him our monitor.
 ## 疑问句
 
 ### 一般疑问句
+
+通过主谓倒装可将带有 be 的陈述句变为一般疑问句，比如：
+
+```
+陈述：This is your handbag. 这是你的手提包.
+疑问：Is this your handBag? 这是你的手提包吗？
+```
 
 ### 特殊疑问句
 

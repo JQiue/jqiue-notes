@@ -284,10 +284,9 @@ const subject = [
     collapsable: false,
     children: [
       'basic',
-      'parts-of-speech',
+      'part-of-speech',
       'sentence',
       'tense-voice',
-      'non-predicate-verbs',
       'accumulation',
       'nce1',
       'nce2',

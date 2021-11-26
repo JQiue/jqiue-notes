@@ -64,8 +64,6 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 ## 文本
 
-### 装饰
-
 `text-decoration`可以设置文本的一些装饰样式
 
 ::: demo text-decoration
@@ -79,8 +77,6 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 :::
 
-### 水平对齐
-
 `text-align`可以规定文本的水平对齐方式
 
 ::: demo text-align
@@ -92,8 +88,6 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 ```
 
 :::
-
-### 缩进
 
 `text-indent`可以控制文本的首行缩进距离
 
@@ -108,8 +102,6 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 ::: tip em
 em 是一种相对尺寸的单位，1em 默认为父元素的字体大小
 :::
-
-### 间距
 
 + `word-spacing`控制英文单词之间的间距，对中文无效
 + `letter-spacing`控制字符之间的间距，中英文都有效
@@ -635,7 +627,7 @@ ul li:nth-child(5) {
 }
 ```
 
-这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用`font-family`使用命名的字体了
+这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用命名的字体了
 
 ::: demo @font-face
 
@@ -646,7 +638,7 @@ ul li:nth-child(5) {
 ```css
 @font-face {
   font-family: 'wjq';
-  src: url(/ZCOOLKuaiLe-Regular.ttf);
+  src: url('https://qn.jinqiu.wang/ZCOOLKuaiLe-Regular.ttf');
 }
 p {
   font-family: 'wjq';
@@ -782,16 +774,38 @@ div.box1,div.box2,div.box3 {
 默认情况下，线性渐变的方向是从上到下，可以指定一个值来改变渐变的方向
 `linear-gradient(direction, color1, color2, ...)`
 
-对角线渐变`linear-gradient(to bottom right, color1, color2, ...)`
-
-渐变角度`linear-gradient(70deg, blue, pink)`
++ 对角线渐变`linear-gradient(to bottom right, color1, color2, ...)`
++ 可以使用角度更精确的控制渐变`linear-gradient(70deg, color1, color2)`
 
 并不局限于两种颜色，如论使用多少种，都会被均匀的分布在渐变路径
 
-::: demo 渐变
+::: demo 线性渐变
 
 ```html
+<div class="box a"></div>
+<div class="box b"></div>
+<div class="box c"></div>
+```
 
+```css
+.box {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  border: 1px solid #000;
+}
+
+.a {
+  background: linear-gradient(red, green);
+}
+
+.b {
+  background: linear-gradient(to bottom right, red, green);
+}
+
+.c {
+  background: linear-gradient(40deg, red, green);
+}
 ```
 
 :::
@@ -900,3 +914,10 @@ p {
 ```
 
 :::
+
+## 平滑滚动
+
+在默认情况下，通过锚点导致的滚动是不够平滑的，这导致页面瞬间闪烁到滚动位置，`scroll-behavior`很好的解决了这个问题，以前甚至需要一些 JavaScript 来进行实现
+
++ `auto`：立即滚动
++ `smooth`：平滑滚动

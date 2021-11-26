@@ -42,7 +42,7 @@ int linearFind(int *list, int value, int size) {
 
 <CodeGroupItem title="C" active>
 
-```cpp
+```
 int binarySearch(int *list, int value, int size) {
   int left = 0;
   int right = size - 1;

@@ -11,7 +11,6 @@ article: false
 + HTML
 + CSS
 + JavaScript
-+ 树结构（数据结构）
 :::
 
 ## DOM 树
@@ -30,7 +29,7 @@ article: false
 </html>
 ```
 
-DOM 会将 HTML 描述为标签的树结构，所以上面的 HTML 文档看起来是这样的：
+DOM 会将 HTML 描述为标签的树结构，所以上面的文档看起来是这样的：
 
 ```
 html
@@ -133,7 +132,7 @@ DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点
 + `matches()`：检查元素是否与给的 CSS 选择器匹配，返回`true`或`false`，不会查找任何内容
 + `closest()`：根据 CSS 选择器匹配最近的祖先元素，并返回它，然后停止搜索
 
-一个具有`id`属性的元素，会被作为一个全局变量，除非声明一个具有相同名称的变量
+一个具有`id`属性的元素，会被作为一个全局变量，除非声明一个具有相同名称的变量。这种办法可行的，但是不要使用它来访问元素，因为阅读代码的时候看不到变量的来源
 
 ```html
 <div id="elem">Element</div>
@@ -141,8 +140,6 @@ DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点
   elem.style.background = 'pink';
 </script>
 ```
-
-虽然这种办法可行，但是不要使用它来访问元素，因为阅读代码的时候看不到变量的来源
 
 `getElementsBy*`会返回一个动态的集合，在文档发生状态的时候会自动更新
 
@@ -477,9 +474,7 @@ DOM 还提供了一个通用的方法`elem.insertAdjacentHTML(where, htmlstring)
 </body>
 ```
 
-还有一个特殊的 DOM 节点`DocumentFragment`，用来创建一个文档片段，它就像一个轻量版的 document，存储由节点组成的文档结构，但是它不是真实 DOM 的一部分，它的变化不会触发 DOM 树的重新渲染，所以没有性能问题。
-
-当需要插入一个文档片段时就可以使用它，它必须通过构造方式调用，来创建一个空的文档片段对象，这个对象继承 Node 的所有方法
+还有一个特殊的 DOM 节点`DocumentFragment`，用来创建一个文档片段，它就像一个轻量版的 document，存储由节点组成的文档结构，但是它不是真实 DOM 的一部分，它的变化不会触发 DOM 树的重新渲染，所以没有性能问题。当需要插入一个文档片段时就可以使用它，它必须通过构造方式调用，来创建一个空的文档片段对象，这个对象继承 Node 的所有方法
 
 ```html
 <body>
@@ -509,7 +504,7 @@ parent.removeChild()|移除子节点
 parent.replaceChild()|替换子节点
 parent.hasChildNodes()|检查是否有子节点
 
-`document.write()`可以为 HTML 文档添加一些内容，接受一个字符串，并能够解析字符串中的标签，但它是一个非常古老的方法，一旦调用就会立即写入页面，它只会在页面加载时工作，所以如果进行延迟调用，它会擦除现有的所有文档内容，由于不涉及 DOM 修改，运行非常快
+`document.write()`可以为 HTML 文档添加一些内容，接受一个字符串，并能够解析字符串中的标签，但它是一个非常古老的方法，一旦调用就会立即写入页面。它只会在页面加载时工作，所以如果进行延迟调用，它会擦除现有的所有文档内容，由于不涉及 DOM 修改，运行非常快
 
 ```html
 <body>
@@ -520,13 +515,18 @@ parent.hasChildNodes()|检查是否有子节点
 </body>
 ```
 
-## DOM 属性和 HTML 特性
+## HTML 特性 和 DOM 属性
 
-浏览器渲染时，会从 HTML 中生成 DOM 对象，当元素节点有标准的 HTML 特性时会变成 DOM 对象的属性
+浏览器渲染时，会从 HTML 中生成 DOM 对象，当元素节点有标准的 HTML 特性时会变成 DOM 对象的属性。DOM 对象的属性就像 JavaScript 对象一样可以任意修改，但是一些内建属性和方法是遵循大小写敏感的。在 HTML 中一个标签有很多特性，标准的特性会生成对应的 DOM 属性，但是非标准的特性并不会
 
-DOM 对象的属性就像 JavaScript 对象一样可以任意修改，但是一些内建属性和方法是遵循大小写敏感的
+总结先写在前面：
 
-在 HTML 中一个标签有很多特性，标准的特性会生成对应的 DOM 属性，但是非标准的特性并不会
+HTML attribute| DOM property
+---|---
+大小写不敏感|大小写敏感
+值是字符串或`null`|是任意合法的 JavaScript 类型
+不存在则返回`null`|不存在则返回`undefined`
+更新`value`，属性也会更新|更新`value`，特性也会更新（除了`input.value`）
 
 ```html
 <body id="standard" custom="no standard">
@@ -537,9 +537,7 @@ DOM 对象的属性就像 JavaScript 对象一样可以任意修改，但是一�
 </body>
 ```
 
-另外有的元素的标准特性可能对另一个元素是未知的，比如`type`是`<input>`特有的标准属性，但是对`<body>`来说不是
-
-如果一个属性不是标准的，可以通过以下方法进行访问：
+另外有的元素的标准特性可能对另一个元素是未知的，比如`type`是`<input>`特有的标准属性，但是对`<body>`来说不是。如果一个特性不是标准的，可以通过以下方法进行访问：
 
 + `elem.hasAttribute(name)` — 检查特性是否存在
 + `elem.getAttribute(name)` — 获取这个特性值
@@ -559,7 +557,7 @@ DOM 对象的属性就像 JavaScript 对象一样可以任意修改，但是一�
 </body>
 ```
 
-HTML 特性是对大小写不敏感的，所以这种也是可行的
+HTML 特性是对大小写不敏感的，所以这种也是可行的。但是自动生成的 DOM 对象属性是大小写敏感的，比如`elem.id`不能写成`elem.ID`
 
 ```html
 <body id="standard" custom="no standard">
@@ -568,8 +566,6 @@ HTML 特性是对大小写不敏感的，所以这种也是可行的
   </script>
 </body>
 ```
-
-但是自动生成的 DOM 对象属性是大小写敏感的，比如`elem.id`不能写成`elem.ID`
 
 当一个标准的特性被改变时，对应的 DOM 属性也会更新，反过来也是
 
@@ -589,8 +585,8 @@ HTML 特性是对大小写不敏感的，所以这种也是可行的
 </body>
 ```
 
-::: tip
-有一个例外，它是`input.value`，只能从特性同步到属性，反过来不行
+::: danger
+有一个例外，它是`input.value`，只能从特性同步到属性，反之不行
 :::
 
 大部分 DOM 属性都是字符串类型，但也有少部分不是，比如`input.checked`是布尔型。还有一个特别的情况，`a.href`在 DOM 中永远都是一个完整的 URL 字符串，即使在特性中只有一个相对路径或`#hash`
@@ -765,7 +761,7 @@ HTML、CSS、JavaScript 是三个独立的技术，但每种技术都为对方�
 
 ## 元素的大小和滚动
 
-JavaScript 提供了很多属性可以获得宽高，和其他几何特征的信息，在进行移动或定位元素时，需要用到它们
+DOM 提供了很多属性可以获得元素的宽高，和其他几何特征的信息，在进行移动或定位元素时，需要用到它们
 
 `elem.offsetParent`用于获取最接近的祖先元素包含该元素的定位元素或最近的`body`、`table`、`th`、`td`
 
@@ -802,8 +798,6 @@ So，当需要获取元素的几何属性时，不要从 CSS 中获取
 
 `scrollWidth/scrollHeight`用来获取整个文档的完整宽高
 
-`clientWidth/clientHeight`用来获取文档可见内容部分的宽高
-
 `scrollTop/ScrollLeft`自然也能获取文档的滚动位置，但是对于大部分浏览器来说可以使用`document.documentElement`获取，对于少数浏览器应该使用`document.body`，这里不得不提到令人讨厌的兼容性问题。但是根本没必要记住这些东西，因为滚动可以在`window.pageXOffset/pageYOffset`两个属性中获得
 
 在记录到这里的时候，我发现了一个在 chrome 中的 bug，`document.documentElement.scrollTop`设置滚动会失效，这可能和文档的渲染有关，好在已经找到了解决方案，只要异步赋值就可以解决
@@ -838,7 +832,7 @@ document.querySelector('#clickScroll').addEventListener('click', ()=>{
 
 而`window.scrollTo(x, y)`用于将页面滚动到绝对坐标，是基于左上角的坐标
 
-还有一个`window.scrollIntoView()`用于将滚动页面且使这个元素可见，当取值为`true`时，页面会向下滚动，并且贴靠该元素的上边缘，那么为`false`，就是正好相反
+还有一个`window.scrollIntoView()`用于将滚动页面且使这个元素可见，当取值为`true`时，页面会向下滚动，并且贴靠该元素的上边缘，那么为`false`，就是正好相反。如果滚动距离不够，它只会尝试滚动到最大值
 
 ::: demo scrollIntoView
 
@@ -860,29 +854,23 @@ document.querySelector('#topFalse').addEventListener('click', target => {
 
 :::
 
-如果滚动距离不够，它只会尝试滚动到最大值
+有时候还需要文档禁止滚动，很简单，只要将`document.body.style.overflow = "hidden"`即可，如果要恢复，则将值设置为空字符串即可
 
-有时候还需要稳定禁止滚动，很简单，只要将`document.body.style.overflow = "hidden"`即可，如果要恢复，则将值设置为空字符串即可
-
-::: demo 禁止滚动
-
-```html
-<input type="button" value="禁止滚动" id="stopScroll">
-<input type="button" value="恢复滚动" id="allowScroll">
-```
-
-```js
-document.querySelector('#stopScroll').addEventListener('click', () => {
-  console.log(document);
-});
-
-document.querySelector('#allowScroll').addEventListener('click', () => {
-  document.body.style.overflow = '';
-});
-```
-
-:::
-
-不仅可以冻结文档，还能以同样的防止禁止其他元素，但是它会导致滚动条消失，然后内容会跳进去填充它。为了不受影响，应该对滚动条消失的地方使用`padding`来替代
+不仅可以冻结文档，还能以同样的方式禁止元素。但是它会导致滚动条消失，然后内容去填充它。为了不受影响，应该对滚动条消失的地方使用`padding`来替代
 
 ## 元素的坐标
+
+<!-- to be updated -->
+
+## 总结
+
++ 标签和内容都会成为 DOM 对象，对于 DOM 来说所有的操作都是从`document`开始，从这里访问节点并操作
++ 访问节点时要注意是否为元素节点，用一些比较干净的 API，比如`children`、`parentElement`等
++ 也有一些方法允许搜索节点，比如`getElementById`、`getElementsByClass`、`querySelector`、`querySelectorAll`等。但是`getElementsBy*`是动态的，`querySelectorAll`并不是
++ DOM 中每个节点都属于某种类型，包括注释，DOM 有 12 中节点类型，但是用得到的只有 4 种
++ 节点就是常规的对象，通过原型继承，知道一个节点就可以使用`nodeName`读取类型
++ `innerHTML`和`outerHTML`允许读写元素内容，只对元素节点有效，都会解析字符串中的标签，但是`outerHTML`会将自身也给替换掉
++ 文本节点可以使用`nodeValue`或`data`访问内容，几乎是相同的。文本节点的`textContent`会裁掉其中所有的标签，只留下文本内容
++ 元素的`hidden`属性也可以用来隐藏元素
++ `document`提供了大量方法用来修改文档，包括元素的增删改查，`document.write()`是一个很老的写入内容的方法，只在加载时执行，当加载完成后调用就会重写页面上所有的内容
++ 标准的 HTML 特性会映射成 DOM 属性，修改特性会导致属性更新，反之亦然，除了`input.value`

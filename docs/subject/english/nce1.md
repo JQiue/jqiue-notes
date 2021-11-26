@@ -942,6 +942,7 @@ Women always have the last word.
 
 ## Lesson 91 Poor Ian
 
+```
 Has Ian sold his house yet?  
 Yes, he has.
 He sold it last week.  
@@ -963,12 +964,11 @@ Please give him my regards.
 Poor Ian!  
 He didn't want to leave this house.  
 No, he didn't want to leave, but his wife did!
-
 ```
+
 ## Lesson 93 Our new neighbour
 
 ```
-
 Nigel is our new next-door neighbour.
 He's a pilot.  
 He was in the R.A.F.  
@@ -980,11 +980,11 @@ He'll return to London the week after next.
 He's only forty-one years old, and he has already been to nearly every country in the world.  
 Nigel is a very lucky man. But his wife isn't very lucky.
 She usually stays at home!
-
 ```
 
 ## Lesson 95 Tickets, please
 
+```
 Two return tickets to London, please.  
 What time will the next train leave?  
 At nineteen minutes past eight.
