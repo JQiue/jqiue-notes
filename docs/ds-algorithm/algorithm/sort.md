@@ -18,7 +18,7 @@ article: false
 
 <CodeGroupItem title="C" active>
 
-```cpp
+```c
 // 升序
 
 void swap(int *list, a, b){
@@ -54,8 +54,8 @@ void bubble(int *list, int size){
 
 <CodeGroupItem title="C" active>
 
-```cpp
-void selectSort(int *list, int size){
+```c
+void select(int *list, int size){
   for (int i = 0; i < size; i++)
   {
     int minIndex = i;
@@ -87,7 +87,7 @@ void selectSort(int *list, int size){
 
 <CodeGroupItem title="C" active>
 
-```cpp
+```c
 void insert(int *list, int size) {
   for (int i = 1; i < size; i++)
   {

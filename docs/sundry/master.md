@@ -1,5 +1,5 @@
 ---
-title: 学习高手是如何养成的
+title: 学习学习
 category: 知识分享
 tags: [Beta]
 author: JQiue

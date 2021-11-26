@@ -140,7 +140,7 @@ Status peek(SqStack s)
 
 </CodeGroupItem>
 
-<CodeGroupItem title="javascript">
+<CodeGroupItem title="JavaScript">
 
 ```js
 class Stack {
