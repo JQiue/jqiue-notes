@@ -16,7 +16,7 @@ url 模块用于解析 URL 字符串
 URL 是为了标识网络资源位置的一种编码，平常说的网页地址就是 URL 地址，它由**协议、主机、端口、路径**四部分组成
 :::
 
-+ parse(str, bool)：解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
++ `parse(str, bool)`：解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
 
 ```js
 const url = require("url");
@@ -58,8 +58,8 @@ const urlObj = {
   pathname: '/',
   path: '/',
   href: 'http://jinqiu.wang/'
-}
-url.format(urlObj) // http://jinqiu.wang/
+};
+url.format(urlObj); // http://jinqiu.wang/
 ```
 
 `resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串

@@ -139,6 +139,7 @@ npx 是自带的包命令执行工具，常用来执行可执行命令，使用`
 + [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
 + [Progress](https://github.com/visionmedia/node-progress)：终端进度条
 + [chalk](https://github.com/chalk/chalk)：为终端进行着色
++ [nodemailer](https://github.com/nodemailer/nodemailer)：发送邮件
 
 ## NPM 的替代 Yarn
 

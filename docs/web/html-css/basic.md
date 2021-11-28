@@ -73,6 +73,7 @@ HTML 中的属性为元素提供附加的信息，不会被展示。在 HTML5 �
 + `tabindex`：指示元素是否可以聚焦
 + `draggable`：允许拖拽元素
 + `hidden`：隐藏元素
++ `contenteditable`：元素的内容是否可以被编辑
 
 ## 文本内容
 

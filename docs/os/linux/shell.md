@@ -232,6 +232,7 @@ L | 是多线程的（使用 CLONE_THREAD，例如 NPTL pthreads）
 + `netstat -a`：列出所有端口
 + `netstat -at`：列出所有 TCP 端口
 + `netstat -au`：列出所有 UDP 端口
++ `netstat -ap`：列出所有端口并显示与程序相关的程序名和 PID
 
 ## 性能信息
 

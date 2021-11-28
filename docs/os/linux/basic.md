@@ -6,16 +6,7 @@ author: JQiue
 article: false
 ---
 
-::: 前置知识
-
-+ 计算机组成原理
-+ 计算机网络原理
-+ 操作系统原理
-:::
-
-巴拉巴拉，阿巴阿巴，省略一大堆
-
-Linux 是一种多用户操作系统
+巴拉巴拉，阿巴阿巴，省略一大堆，Linux 是一种多用户操作系统
 
 ## 不同的发行版
 
@@ -63,11 +54,9 @@ sudo vim /etc/ssh/sshd_config
 
 ## 换源
 
-一般情况下，默认的软件源就足够使用了，但有时候的软件源比较慢，甚至会连接失败，所以需要换一些或内的源
+一般情况下，默认的软件源就足够使用了，但有的软件源比较慢，甚至会连接失败，所以需要换一些国内的源，比如阿里云
 
-首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源
-
-然后`vim /etc/apt/sources.list`打开配置源文件，将内容全部替换为阿里云的源：
+首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源，然后`vim /etc/apt/sources.list`打开配置源文件，将内容全部替换为阿里云的源：
 
 ```
 deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
@@ -90,6 +79,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted univer
 
 ## 端口管理
 
-请不要在远程机中通过防火墙程序来控制端口，因为控制台会有专门预设好的防火墙设置，在这里指定规则即可
+不要在远程机中通过防火墙程序来控制端口，因为控制台会有专门预设好的防火墙设置，在这里指定规则即可
 
-如果通过远程机防火墙程序控制了规则，可能会导致 SSH 连接工具无法连接的现象发生，这时的防火墙规则以远程机优先，而不是控制台，控制台的规则只控制流量的进入
+如果通过远程机防火墙程序控制了规则，可能会导致 SSH 连接工具无法连接的现象发生，这时的防火墙规以远程机优先，而不是控制台，控制台的规则只控制流量的进入
