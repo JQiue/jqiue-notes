@@ -224,6 +224,10 @@ const http = (function () {
 
 ## Fecth
 
+Fetch 是一种现代请求技术，提供了一个全局的方法`fetch(url, [options])`，它会返回一个 promise 对象
+
+Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，promise 就会 reject
+
 ## 长轮询
 
 ## WebSocket

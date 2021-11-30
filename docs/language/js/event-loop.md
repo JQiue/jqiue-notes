@@ -1,7 +1,7 @@
 ---
 title: 事件循环
 category: 编程语言
-tags: [Beta]
+tags: [JavaScript, Beta]
 author: JQiue
 ---
 

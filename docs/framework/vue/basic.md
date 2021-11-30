@@ -344,8 +344,16 @@ export default {
 :::
 
 ::: danger
-千万不要将类似于数组的长度作为`key`的值
+千万不要将类似于数组的索引为`key`的值
 :::
+
+v-if 和 v-for 最好不要在同一个元素上使用，非常浪费性能，如果遇到必须使用的场景，可以在外层嵌套`<template>`使用，因为它不会生成 DOM 节点，是否渲染取决于里面的元素
+
+```html
+<template v-for="item in items" :key="item.id">
+  <div v-if="item == 'isShow'">{{item.content}}</div>
+</template>  
+```
 
 + v-bind
 
