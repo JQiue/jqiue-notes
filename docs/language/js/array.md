@@ -1,14 +1,13 @@
 ---
 title: 数组
 category: 编程语言
-tags: [Alpha]
+tags: [JavaScript, Alpha]
 author: JQiue
-article: false
 ---
 
 虽然对象允许储存数据，但对象中的属性是没有顺序的，有很多时候需要一个有序集合的结构，里面的元素是按照顺序排列的，数组（Array）就是这样的结构
 
-## 声明
+## 声明和访问
 
 创建数组有两种方式：
 
@@ -75,15 +74,13 @@ console.log(arr[2]); // undefined
 
 ## 空位
 
-允许数组的某个位置是空元素，即两个逗号之间没有任何值
+允许数组的某个位置是空元素，即两个逗号之间没有任何值，如果对空位进行访问，将会得到`undefined`
 
 ```js
 [1, ,2]
 ```
 
-如果对空位进行访问，将会得到`undefined`
-
-空位而且不会影响`length`属性的计算，因为 JavaScript 认为该空位虽然没有值，但仍然是有效的
+空位不会影响`length`属性的计算，因为 JavaScript 认为该空位虽然没有值，但仍然是有效的
 
 ```js
 let arr = [1, ,2];
@@ -258,9 +255,6 @@ splice 和 slice 还支持反向索引，从 -1 开始
 + `indexOf(item, from)`：从 from 处从左向右搜索元素，找不到返回 -1
 + `lastIndexOf(item, from)`：和上面一样，只不过是从右到左
 + `includes(item, from)`：从 from 处开始搜索 item，找到就返回 true
-+ `find(callback(item, index, array))`：执行一个函数，如果该元素满足条件，则返回该元素，否则返回`undefined`
-+ `findIndex(callback(value, index, array))`：返回测试通过的第一个元素的索引，否则返回 -1
-+ `filter(callback(item, index, array))`：执行一个函数，如果返回 true，就将 item 添加到一个数组中并继续迭代，迭代完成后返回数组
 
 排序方法
 
@@ -273,13 +267,26 @@ sort 方法实现了通用的排序算法
 
 其他方法
 
-+ `reduce(callback(previousValue, item, index, array), initial)`：和`forEach/map`不同的是，函数会将返回的结果传给下一个函数的第一个参数 previousValue，如果传入了 initial，则 previousValue 的值会从 initial 开始，返回累计处理的结果
-+ `some(callback(item, index, array))`：当至少有一个元素通过了函数的测试就会返回 true
-+ `every(callback(item, index, array))`：当全部元素通过了函数的测试就会返回 true
-+ `fill(value, start, end)`：从 start 到 end 用重复的 value 填充
-+ `flat(depath)`：按照一个指定的深度递归遍历数组，并将所有的元素合并为一个新的数组
++ `arr.forEach(callback(item, index, array))`：为每个元素运行一个函数
++ `arr.map(callback(item, index, array))`：将返回值得结果添加到新的数组，并将整个数组返回
++ `arr.find(callback(item, index, array))`：执行一个函数，如果该元素满足条件，则返回该元素，否则返回`undefined`
++ `arr.findIndex(callback(value, index, array))`：返回测试通过的第一个元素的索引，否则返回 -1
++ `arr.filter(callback(item, index, array))`：执行一个函数，如果返回 true，就将 item 添加到一个数组中并继续迭代，迭代完成后返回数组
++ `arr.reduce(callback(previousValue, item, index, array), initial)`：和`forEach/map`不同的是，函数会将返回的结果传给下一个函数的第一个参数 previousValue，如果传入了 initial，则 previousValue 的值会从 initial 开始，返回累计处理的结果
++ `arr.some(callback(item, index, array))`：当至少有一个元素通过了函数的测试就会返回 true
++ `arr.every(callback(item, index, array))`：当全部元素通过了函数的测试就会返回 true
++ `arr.fill(value, start, end)`：从 start 到 end 用重复的 value 填充
++ `arr.flat(depath)`：按照一个指定的深度递归遍历数组，并将所有的元素合并为一个新的数组
 + `Array.isArray(arr)`：检查 arr 是否为一个数组
 
 ## 总结
+
++ JavaScript 数组是可变长度的，并且能够存储不同类型的元素
++ `length`是数组的一个属性，返回`索引 + 1`的数，会随着数组的变换而变化，并且是可写的，一旦写入小于当前`length`就会发生截断，并且不可逆
++ 数组允许空位存在，即在两个值之间可以有一个不存在的位置，没有任何东西，不会影响`length`计算，`delete`删除一个元素就会产生空位，空位会被各种遍历方法跳过
++ 类数组只是看起来像数组的对象，没有数组的方法
++ 数组的元素可以是数组
++ 最好不要使用`for...in`遍历数组，而是使用`for...of`，因为它能够区分数组和类数组
++ 数组可以被转换为一个迭代器对象进行遍历
 
 <!-- to be updated -->

@@ -16,7 +16,7 @@ url 模块用于解析 URL 字符串
 URL 是为了标识网络资源位置的一种编码，平常说的网页地址就是 URL 地址，它由**协议、主机、端口、路径**四部分组成
 :::
 
-+ parse(str, bool)：解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
++ `parse(str, bool)`：解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
 
 ```js
 const url = require("url");
@@ -58,8 +58,8 @@ const urlObj = {
   pathname: '/',
   path: '/',
   href: 'http://jinqiu.wang/'
-}
-url.format(urlObj) // http://jinqiu.wang/
+};
+url.format(urlObj); // http://jinqiu.wang/
 ```
 
 `resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
@@ -199,6 +199,10 @@ console.log('Server start at http://localhost:3000');
 
 `fs`模块提供了操作系统文件的能力，需要引入
 
+::: tip
+如果不指定编码，则返回 Buffer，异步方法大部分都是错误优先的回调方式
+:::
+
 读取文件数据：
 
 ```js
@@ -321,8 +325,21 @@ eventEmitter.emit('handler');
 创建 Buffer：
 
 ```js
-let buf = Buffer.alloc(11,'jinqiu.wang');
+// 分配 11 字节的内存空间，每个字节由两个十六进制组成
+let buf = Buffer.alloc(11, 'jinqiu.wang');
 console.log(buf.toString()); // jinqiu.wang
+```
+
+```js
+// 用于创建包含指定字符串、数组或缓冲区的新缓冲区，如果指定了 encoding 参数，则使用该字符编码，否则默认是 utf8
+const buf = Buffer.from('a');
+```
+
+```js
+// 合并缓冲区，用于处理图片的分包上传
+const buf1 = Buffer.concat('jinqiu');
+const buf2 = Buffer.concat('.wang');
+const buf3 = Buffer.concat([buf1, buf2]);
 ```
 
 ## 流
@@ -337,17 +354,27 @@ NodeJS 中有四种基本的流类型：
 + `Transform`：可以在写入或读取数据时修改后转换数据的双工流
 
 ```js
+// 创建可读流
+const rs = fs.createReadStream('data.txt');
+// 创建可写流
+const ws = fs.createWriteStream('data-copy.txt');
+
+// 流向可写流
+rs.pipe(ws);
+```
+
+```js
 const fs = require('fs');
 const http = require('http');
 http.createServer((req, res) => {
   const data = fs.createReadStream('./data.txt');
-  data.pipe(res);d
+  data.pipe(res);
 });
 ```
 
 ## 路径
 
-`path`模块提供了用于处理文件和目录的路径的使用工具 API
+`path`模块提供了用于处理文件和目录的路径工具 API
 
 ```js
 const path = require('path');
@@ -356,10 +383,13 @@ const path = require('path');
 console.log(path.join('foo', 'bar', 'baz'));
 
 // 获取文件路径
-console.log(path.dirname('./foo/bar.js')); ./foo
+console.log(path.dirname('./foo/bar.js')); // ./foo
 
 // 获取文件名
-console.log(path.basename('./foo/bar.js')); bar.js
+console.log(path.basename('./foo/bar.js')); // bar.js
+
+// 获取文件扩展名
+console.log(path.extname('bar.js')); // .html
 ```
 
 ## 子线程
@@ -370,7 +400,19 @@ console.log(path.basename('./foo/bar.js')); bar.js
 
 `util`模块提供了大量的工具类型的 API
 
-+ `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的版本
++ `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的形式
+
+```js
+(async () => {
+  const fs = require('fs');
+  const {
+    promisify
+  } = require('util');
+  const readFile = promisify(fs.readFile);
+  const data = await readFile('c:/Users/JQiue/Desktop/code-like-shit/nodejs/demo/data.txt');
+  console.log(data, data.toString());
+})();
+```
 
 ## 逐行读取
 

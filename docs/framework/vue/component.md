@@ -10,19 +10,19 @@ article: false
 
 ## 组件制作
 
-使用`Vue.extend()`方法即可创建组件，这个方法接收一个对象，`template`属性用来决定组件的结构，这个方法最后会返回一个组件对象
+使用`Vue.extend()`即可创建组件，这个方法接收一个对象，`template`属性用来决定组件的 HTML 内容，这个方法会返回一个组件对象
 
 ```js
 const foo = Vue.extend({
   template: `<div>component</div>`
-})
+});
 ```
 
 ::: danger
 组件只能有一个根元素
 :::
 
-然后使用`Vue.component(component-name, component)`注册，第一个参数为组件名，第二个参数为构造的组件对象
+然后使用`Vue.component(name, component)`注册，第一个参数为组件名，第二个参数为构造的组件对象
 
 ```js
 const foo = Vue.extend({
@@ -40,7 +40,7 @@ Vue.component("foo", foo);
 如果注册时使用的是驼峰命名，使用时必须是短横线命名
 :::
 
-经过上述步骤之后，就可以在任意 Vue 控制的 DOM 中将组件名作为一个自定义 HTML 标签使用，Vue 会将对应的组件替换为`template`属性中定义的元素
+经过上述步骤之后，就可以在任意 Vue 控制的 DOM 中将组件名作为一个自定义 HTML 标签使用，Vue 会将对应的组件替换为`template`属性中定义的内容
 
 ```js
 <div id="app">
@@ -48,7 +48,7 @@ Vue.component("foo", foo);
 </app>
 ```
 
-上面的方式未免太麻烦，可以使用下面的方式简化组件创建的过程
+上面的方式未免太麻烦，可以用以下方式简化组件创建的过程
 
 + 方式一：不使用`Vue.extend()`方法来构造组件，直接将组件对象传递给`Vue.component()`方法注册
 
@@ -60,11 +60,11 @@ Vue.component("foo", {
 });
 ```
 
-+ 方式二：抽离`template`属性中的内容到`script`标签中定义，template 属性接收一个 id 选择器即可
++ 方式二：抽出`template`属性中的内容到`script`标签中定义，`template`属性接收一个`id`选择器即可
 
 ```html
 <script id="foo" type="text/html">
-  <div>global component</div>
+  <div>foo component</div>
 </script>
 ```
 
@@ -78,7 +78,7 @@ Vue.component("foo", {
 
 ## 局部组件
 
-和全局指令、全局过滤器是一样的，都只能在那个唯一的实例中使用，在实例对象中使用`components`属性注册组件，`key`为组件名，对应的`value`则是组件对象
+和全局指令、全局过滤器是一样的，都只能在那个唯一的实例中使用，使用`components`属性注册组件，`key`为组件名，对应的`value`则是组件对象
 
 ```js
 const app = new Vue({
@@ -89,13 +89,13 @@ const app = new Vue({
       template: "<div>bar component<div>"
     }
   }
-})
+});
 ```
 
-组件是一种可复用的 Vue 实例，所以组件也会和通过 new Vue() 创建的实例一样接收相同的选项，每个组件的选项都只能在当前实例中使用
+组件是一种可复用的 Vue 实例，所以组件也会和`new Vue()`创建的实例一样接收相同的选项，每个组件的选项都只能在当前实例中使用
 
 ::: danger
-组件中的 data 必须是一个函数，返回值为该组件维护的数据对象，创建新组件时就会调用 data 函数，保证了组件都会有相互独立的数据对象
+组件中的 data 必须是一个函数，返回值为该组件维护的数据对象，创建新组件时就会调用 data 函数，保证了组件中的数据是独立的
 :::
 
 ::: demo [vue] 复用组件的 data 演示
@@ -137,7 +137,7 @@ export default {
 
 ## 动态组件
 
-动态组件用于解决一些界面中切换不同的组件但状态不能够保存的问题，下面的示例中，通过 v-if 来实现组件的切换，但是不能够保存单选框的勾选状态
+动态组件用于解决一些界面中切换不同的组件但状态不能够保存的问题，下面的示例中，通过`v-if`来实现组件的切换，但是不能够保存单选框的勾选状态
 
 ```html
 <button @click="toggle">切换</button>
@@ -158,7 +158,7 @@ export default {
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       isShow: true
     }
@@ -226,7 +226,7 @@ export default {
 
 :::
 
-虽然`component`可以替代 v-if，但是仍然不能保存状态，这时候就需要另一个组件`keep-alive`来包裹动态组件实现状态保存
+`component`只是更好的替代`v-if`，但是仍然不能保存状态，这时候就需要另一个内置组件`keep-alive`来包裹动态组件实现状态保存
 
 ```html
 <keep-alive>
@@ -267,7 +267,6 @@ export default {
     }
   }
 }
-
 </script>
 ```
 
@@ -275,7 +274,7 @@ export default {
 
 ## 组件动画
 
-将需要过渡组件放在`transition`中同样能够实现过渡效果
+将需要被过渡组件放在内置`transition`中同样能够实现过渡效果
 
 ::: demo [vue] 组件切换的过渡
 
@@ -343,7 +342,7 @@ export default {
 
 ### Prop 数据传递
 
-父子组件之间的 data 是不能够直接访问的，但是可以通过传递的方式访问
+父子组件之间的数据是不能够直接访问的，但是可以通过传递的方式访问
 
 ```html
 <template id="father">
@@ -358,9 +357,6 @@ export default {
     <p>子组件</p>
   </div>
 </template>
-<script>
-  
-</script>
 ```
 
 ```js
@@ -371,7 +367,7 @@ data(){
 }
 ```
 
-假设 father 和 son 为父子组件，上面是 father 的数据，如果 son 想要访问 father 的 name 属性，应在 father 模板中为 name 绑定一个自定义名称的属性，子组件实例通过 props 来接收该属性，props 必须是一个数组，每一个元素为自定义属性的名称
+假设 father 和 son 为父子组件，如果 son 想要访问 father 的数据，应在 father 模板中为数据绑定一个自定义名称的属性，然后子组件实例通过`props`选项来接收属性，`props`必须是一个数组，每一个元素为自定义属性的名称
 
 ```html
 <template id="father">
@@ -386,7 +382,7 @@ data(){
 props: ["fathername"]
 ```
 
-这样在子组件中就可以使用父组件中的 name 了，实现了父传子
+这样在子组件中就可以使用父组件中的数据了，实现了父传子
 
 ```html
 <template id="son">
@@ -400,7 +396,7 @@ props: ["fathername"]
 如果在传递的时候使用了驼峰命名，在接收的时候要转换为小写，如果想要在使用的过程中使用驼峰命名，则应该在传递的时候使用短横线命名，接收的时候使用驼峰命名
 :::
 
-::: demo [vue] 数据父传子
+::: demo [vue] 父传子
 
 ```vue
 <template>
@@ -431,47 +427,9 @@ export default {
 
 :::
 
-### EventBus
+### `$emit`
 
-和传递 data 不同的是，父组件的方法并不需要子组件定义 props 接收，而是在子组件实例中通过`this.$emit()`方法来间接触发
-
-::: demo [vue] 方法父传子
-
-```vue
-<template>
-  <div>
-    父组件：<button @click="fatherFn">click</button>
-    <son @parent-fn="fatherFn"></son>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {}
-  },
-  methods: {
-    fatherFn(){
-      alert("father function!!!")
-    }
-  },
-  components: {
-    "son": {
-      template: "<div>子组件：<button @click='sonFn'>click</button></div>",
-      methods: {
-        sonFn(){
-          this.$emit("parent-fn")
-        }
-      }
-    }
-  }
-}
-</script>
-```
-
-:::
-
-也可以在调用父组件方法的同时给父组件传递参数，`this.$emit(父组件方法, 参数1, 参数2, ...)`的第一个参数是被调用的父组件方法，后面的参数都是传入方法中的参数列表，当然也要在父组件方法中定义参数接收
+`$emit(fn, param1, ...)`可以触发父组件中的自定义的事件，并且传入参数，这意味着子组件可以通过这种方式传值给父组件
 
 ::: demo [vue] 子传父
 
@@ -490,7 +448,7 @@ export default {
   },
   methods: {
     fatherFn(value){
-      alert(value)
+      alert(value);
     }
   },
   components: {
@@ -503,7 +461,7 @@ export default {
       },
       methods: {
         sonFn(){
-          this.$emit("parent-fn", this.value)
+          this.$emit("parent-fn", this.value);
         }
       }
     }
@@ -522,9 +480,9 @@ export default {
 数据和方法也是能够多级传递的，但是必须一层一层的往下传
 :::
 
-### 使用 Vuex
+### EventBus
 
-### 自定义事件
+如果两个
 
 ## 插槽
 

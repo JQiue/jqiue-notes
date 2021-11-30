@@ -262,7 +262,10 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 ## 元素的可见性
 
-`visibility`属性的目的是控制元素的可见性，和`display`不同的是，`visibility`隐藏元素时，元素不会被移除，仍然会在文档流中占据位置，取值为`hidden`时不可见，为`visible`时可见
+`visibility`属性的目的是控制元素的可见性，和`display`不同的是，`visibility`隐藏元素时，元素不会被移除，仍然会在文档流中占据位置。`visibility`具有继承性，只要修改子元素的`visibility`为`visible`子元素就会显示。并且`visibility`不会触发事件
+
++ `visible`：可见（默认值）
++ `hidden`：不可见
 
 ::: demo visibility
 

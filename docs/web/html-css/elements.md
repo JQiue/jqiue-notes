@@ -396,8 +396,6 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 + rows：规定多行文本框的行数
 + cols：规定多行文本框的列数
 + maxlength：规定文本域可以输入的最大字符数
-+ placeholder：提供一种提示，描述所期待的值
-+ required：规定文本域内容是必填的
 + wrap：规定当在表单中提交时，文本区域中的文本如何换行
 
 ::: tip
@@ -422,6 +420,7 @@ HTML 表格是没有边框和斑马纹的，这里是因为本站的内容是 ma
 + `readonly`：只读元素，该元素的值不能够改变，但是可以被提交
 + `autofocus`：页面加载时，域自动获得焦点
 + `required`：必须在这个元素中输入内容
++ `placeholder`：提供一种提示，描述所期待的值
 
 ## 超链接
 
@@ -440,7 +439,7 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 ::: demo 图片链接
 
 ```html
-<a href="/application/web/html-css/elements/#" target="_blank"><img src="/bgImage.jpg"></a>
+<a href="/application/web/html-css/elements/#" target="_blank"><img src="https://qn.jinqiu.wang/bgImage.jpg"></a>
 ```
 
 :::
@@ -509,7 +508,7 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 ::: demo img
 
 ```html
-<img src="/bgImage.jpg">
+<img src="https://qn.jinqiu.wang/bgImage.jpg">
 ```
 
 :::
