@@ -20,11 +20,10 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "vuepress-vite": "^2.0.0-beta.27"
   },
   "dependencies": {
-    "@vuepress/plugin-nprogress": "^1.8.2",
-    "vuepress": "^1.8.2",
-    "vuepress-theme-hope": "^1.19.2"
+    "@vuepress/plugin-nprogress": "^1.8.2"
   }
 }

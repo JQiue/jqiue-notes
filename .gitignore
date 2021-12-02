@@ -1,6 +1,7 @@
 .idea
 .vscode
 .temp
+.cache
 jqiue_notes.iml
 dest
 node_modules

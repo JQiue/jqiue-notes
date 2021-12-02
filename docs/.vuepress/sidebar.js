@@ -1,14 +1,14 @@
 const theory = [
   '',
-  {
-    title: '计算机组成原理',
-    prefix: 'organization/',
-    collapsable: false,
-    children: [
-      'basic',
-      'instruction',
-    ]
-  },
+  // {
+  //   title: '计算机组成原理',
+  //   prefix: 'organization/',
+  //   collapsable: false,
+  //   children: [
+  //     'basic',
+  //     'instruction',
+  //   ]
+  // },
   // {
   //   title: '操作系统原理',
   //   prefix: '/computer-basic/os/',
