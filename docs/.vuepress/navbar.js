@@ -9,6 +9,7 @@ module.exports = [
       { text: '编程语言', icon: 'kaifayuyan', link: '/language/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: '操作系统', icon: 'caozuoxitong', link: '/os/' },
+      { text: 'Node.js', icon: 'Nodejs', link: '/nodejs/' },
     ]
   },
   {

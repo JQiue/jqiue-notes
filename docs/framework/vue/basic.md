@@ -1,5 +1,5 @@
 ---
-title: 简单上手
+title: 上手
 category: 框架
 tags: [Alpha]
 author: JQiue
@@ -141,7 +141,10 @@ export default {
 
 :::
 
-双向绑定的原理十分简单，使用`v-bind`绑定元素的`value`，利用`v-on`监听元素的`input`事件
+双向绑定的原理十分简单，分为二个步骤：
+
+1. 使用`v-bind`绑定元素的`value`，data 中的数据变化时，同步输入框的内容
+2. 利用`v-on`监听元素的`input`或`change`事件，输入框的内容变化时，同步 data 中的数据
 
 ::: demo [vue] 双向绑定实现
 

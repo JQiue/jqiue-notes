@@ -128,7 +128,7 @@ const ds_algorithm = [
       'graph',
       'other',
     ]
-  }, 
+  },
   {
     title: '算法',
     prefix: '/ds-algorithm/algorithm/',
@@ -211,6 +211,13 @@ const application = {
   ]
 };
 
+const nodejs = [
+  '',
+  'global',
+  'api',
+  'package-npm',
+]
+
 const web = [
   '',
   {
@@ -247,16 +254,7 @@ const web = [
       'event',
       'network',
       'storage',
-    ]
-  },
-  {
-    title: 'NodeJS',
-    prefix: 'nodejs/',
-    collapsable: false,
-    children: [
-      'basic',
-      'api',
-      'package-npm',
+      'drag',
     ]
   },
 ];
@@ -345,6 +343,7 @@ module.exports = {
   "/database/": database,
   "/os/": os,
   "/framework/": framework,
+  "/nodejs/": nodejs,
   "/web/": web,
   "/application/backend/": application.backend,
   "/application/desktop/": application.desktop,

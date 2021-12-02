@@ -8,15 +8,17 @@ article: false
 
 ## 定时器
 
-+ 间隔调用：`window.setInterval()`可以指定一定时长的间隔事件来循环调用一个函数，只到使用了`window.clearInterval()`方法取消
-+ 延时调用：`window.setTimeout()`在一定的延迟后调用函数，仅仅只调用一次，可以在时间段内使用`window.clearTimeout()`方法取消
++ 间隔调用：`setInterval(callback, delay)`指定一定时长的间隔时间来调用一个函数
++ 延时调用：`setTimeout(callback, delay)`在一定的延迟后调用函数，仅仅只调用一次
+
+时间单位都是毫秒，两个定时器都会返回一个值被用于取消，比如`clearTimeout(timer)/clearInterval(timer)`
 
 ```js
-setInterval(function () {}, 5000);
-setTimeout(function () {}, 5000);
+let timer1 = setInterval(function () {}, 5000);
+let timer2 = setTimeout(function () {}, 5000);
 ```
 
-时间单位都是毫秒，定时器函数调用后会返回一个值，将这个值传入对应的取消函数中就可以取消定时器，虽然没有一个内建的方法能够清除所有的定时器函数，但是可以自己实现一个强制清除的逻辑
+虽然没有内建的方法能够清除所有的定时器函数，但是可以实现一个强制清除的逻辑
 
 ```js
 for (var i = 1; i < 1000; i++){
@@ -27,14 +29,14 @@ for (var i = 1; i < 1000; i++){
 
 ## 对话框
 
-+ `window.alert()`：警告对话框
-+ `window.confirm()`：确认对话框，选择“确定”返回`true`
-+ `window.prompt()`：提示输入对话框，会将输入的内容作为字符串返回
++ `alert()`：警告对话框
++ `confirm()`：确认对话框，选择“确定”返回`true`
++ `prompt()`：提示输入对话框，会将输入的内容作为字符串返回
 
 ## 窗口交互
 
-+ `window.open(url, name, params)`：打开一个新窗口，返回新窗口的实例
-+ `window.close()`：关闭一个窗口，默认关闭当前的窗口，可以传入其他窗口的引用并关闭
++ `open(url, name, params)`：打开一个新窗口，返回新窗口的实例
++ `close()`：关闭一个窗口，默认关闭当前的窗口，可以传入其他窗口的引用并关闭
 
 ::: demo 窗口
 
@@ -53,7 +55,7 @@ document.querySelector('#btn').addEventListener('click', () => {
 
 ## 历史管理
 
-一般浏览器会记住用户打开过的网址历史，并使用“前进”和“后退”两个按钮进行导航，这些都被`history`所记录
+一般浏览器会记住用户打开过的网址历史，并使用“前进”和“后退”两个按钮进行导航，这些都可以使用`history`进行操作
 
 + `history.length`：返回历史记录的长度
 + `history.back()`：和后退按钮是等效的，默认后退一步，可以传入整数表示后退的步数
