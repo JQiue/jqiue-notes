@@ -1,0 +1,208 @@
+---
+title: 标准库
+category: 编程语言
+tags: [Alpha]
+author: JQiue
+article: false
+---
+
+Python 有很多内置函数供调用
+
+## input
+
+通过 input() 函数来输入数据，这样就可以手动来输入数据了，而不是写死数据，当运行到该函数时，会等待用户输入数据完毕才会执行其他的语句，同时也可提供字符串来作为输入的提示信息，该函数的返回值即用户输入的数据
+
+```python
+input()
+input("请输入密码：")
+```
+
+::: danger
+input() 函数只能得到字符串
+:::
+
+## print
+
+通过 print() 函数来输出数据
+
+### 输出函数的格式化
+
+有时候我们可能需要输出文字信息的同时，也将数据一起输出，这就需要**格式化控制符**，包含`%`的字符串，被称为格式化字符串，不同的类型要使用不同的格式化控制符
+
+格式化字符|含义
+---|---
+%s|字符串
+%d|整型，%06d 表示输出的整数位数，不足则用 0 补充
+%f|浮点型，%.2f 表示小数点只留两位
+%%|输出%
+
+```python
+name = "wjq"
+age = 22
+height = 17.3
+print("%s" % name)
+print("%d" % age)
+print("%f" % height)
+print("%s%d%f" % (name, age, height)) # 可以同时输出多个变量
+```
+
+::: tip
+这里的(name, age, height)本质上是元组类型
+:::
+
+## 类型检测
+
+### type
+
+type 函数用于返回对象的类型
+
+```python
+print(type(1))    # <class 'int'>
+print(type(1.1))  # <class 'float'>
+print(type("1"))  # <class 'str'>
+print(type(True)) # <class 'bool'>
+print(type([]))  # <class 'list'>
+print(type(()))  # <class 'tuple'>
+print(type({}))  # <class 'dict'>
+print(type({1,})) # <class 'set'>
+```
+
+### isinstance
+
+isinstance 函数用于判断一个对象是否为另一个已知的类型，可以是 Python 定义的，也可是通过 class 定义的类
+
+```python
+print(isinstance(1, int)) # true
+print(isinstance(1.1, float)) # true
+print(isinstance("1", str)) # true
+print(isinstance(True, bool)) # true
+print(isinstance([], list)) # true
+```
+
+### type 和 isinstance 的不同
+
+```python
+class Person:
+  def say(slef):
+    print("I am a human")
+
+class Student(Person):
+  pass
+
+print(type(Student()) == Student) # true
+print(type(Student()) == Person) # false
+print(isinstance(Student(), Student)) # true
+print(isinstance(Student(), Person)) # true
+```
+
+结论可知，type 不会考虑该类型的继承关系，而 isinstance 则会将子类认为父类的类型，会考虑继承关系
+
+## 类型转换
+
+1. int：转换为整型
+2. float：转换为浮点型
+3. str：转换为字符串类型
+4. list：将元组转换为列表
+5. turple：将列表转换为元组
+6. dict：创建一个字典，可以将可迭代对象转换为字典
+7. set：将一个序列转换为集合
+8. eval：接受一个字符串表达式，并返回表达式的值
+
+## 算术类
+
+1. max：返回参数的最大值，可以是序列
+2. min：返回参数的最小值，可以是序列
+3. sum：对序列进行求和
+4. divmod：返回一个包含商（整除）和余数的元组
+5. pow：返回 x 的 y 次方
+
+## 其他
+
+1. sorted：对可迭代对象进行排序，并返回一个列表
+2. id：返回对象的地址
+3. range：生成一个整数列表
+4. len：返回对象的长度
+
+## filter
+
+filter 用于过滤不符合条件的元素，并返回符合条件的元素组成的列表，filter 第一个参数为函数，第二个参数为迭代类型，每一个元素都会传入函数中进行判断，返回 True 或 False，将返回 True 的元素放入新列表中
+
+```python
+f = filter(lambda x: x > 10, [6, 5, 23, 43, 15])
+print([i for i in f]) # [23, 43, 15]
+```
+
+::: warning
+在 Python 2 中 filter 返回的是列表，而 Python 3 中返回的是 filter 类，可以被迭代
+:::
+
+## 文件操作
+
+Python 通过一些内置函数就可以进行一些系统文件的操作
+
+模式|文件类型|操作方式|文件不存在时|是否覆盖写
+---|---|---|---|---
+r|文本文件|只读|报错|-
+r+|文本文件|可读可写|报错|是
+w|文本文件|只写|新建文件|是
+w+|文本文件|可读可写|新建文件|是
+a|文本文件|可写|新建文件|否
+a+|文本文件|可读可写|新建文件|否
+rb|二进制文件|只读|报错|-
+rb+|二进制文件|可读可写|报错|是
+wb|二进制文件|只写|新建文件|是
+wb+|二进制文件|可读可写|新建文件|是
+ab|文本二进制文件文件|可写|新建文件|否
+ab+|二进制文件|可读可写|新建文件|否
+
+总结：r 和 w 都是覆盖写，a 是追加，r 找不到文件时报错，w 找不到文件则创建文件
+
+在打开文件之前须提供文件的路径，以及操作模式，Python 通过 open 函数来指定操作的文件以及操作模式，open 函数会返回该文件的对象，以供调用该对象的各种方法来实现文件的操作
+
+```python
+file = open(文件路径, 操作模式)
+```
+
++ read()：读取文件中所有的数据并返回字符串，可以指定参数来决定读取的长度
++ readline()：方法单行读取并将指针向下移动，并返回字符串
++ readlines()：方法读取全部行的内容，将每一行作为一个元素的列表返回
++ write()：写入字符串并返回字符串长度
++ writelines()：方法写入可迭代类型（元素必须是字符串类型）
+
+::: tip
+在 Windows 中，写入操作一定要注意编码问题，否则会出现写入乱码的情况，尽量在打开文件的时候指定文件编码
+:::
+
+不管是读还是写，都应该在最后调用该文件对象的 close 方法来关闭流，否则数据不会保留
+
+```python
+file.close()
+```
+
+每次都需要调用 close 方法来关闭文件未免繁琐，Python 提供了 with 关键字来解决文件的自动关闭操作
+
+文件的读写操作都是依靠指针定位的，随着文件的不断操作，指针位置会不断的改变
+
++ tell()：来获取当前指针在文件中的位置
++ seek(offset, whence)：重新定位指针，offset 定义偏移量，whence 定义偏移的位置，为 0 表示从头开始，为 1 表示从当前位置开始，为 2 表示从结尾开始
+
+::: tip whence 取值
+如果取值不为 0，则应该使用二进制文件打开，否则会报错
+:::
+
+## 正则表达式
+
+查找匹配项
+
+1. search：查找任意位置的匹配项
+2. match：必须从字符串开头匹配
+3. fullmatch：整个字符串与正则完全匹配
+
+普通匹配
+
+普通匹配就是以字面量来进行匹配，比如`ab`，会匹配字符串中包含`ab`的所有文本
+
+边界符匹配
+
++ `^`：匹配以某文本开始的文本
++ `$`：匹配以某文本结尾的文本
