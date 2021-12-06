@@ -7,11 +7,10 @@ sticky: true
 
 ::: info 感谢观看
 本站增加了 PWA 支持，拥有离线缓存的能力，这意味着下一次无需联网即可访问，也可以将本站作为 APP 安装在本地，拥有接近原生 APP 般的使用体验。当本站已经更新且你没有清除本站的缓存时，再次访问将从右下角看到更新内容的按钮
+
+如果你有幸访问到这里，应该做好没有收获的准备！
 :::
 
-::: danger 重要
-如果你有幸访问到这里，应该做好没有收获的准备
-:::
 
 ## 这个人的信息
 
@@ -56,7 +55,7 @@ sticky: true
 
 ## 排版
 
-统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
+本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
 
 + 空格
   + 中英文之间添加空格
@@ -82,6 +81,8 @@ sticky: true
 + 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，会出现在首页文章列表
 + 处于`Gamma`阶段的文章，内容逻辑顺畅，可以阅读，会出现在首页文章列表中，可能有少许并不影响阅读的 typo
 
+如果没有必要，不建议阅读`Alpha`阶段的文章
+
 ## 适合什么样的人阅读
 
 + `具有悟性的初学者`：系统性的知识体系能够快速理解内容
@@ -99,12 +100,12 @@ sticky: true
   + 编译原理:star:
   + 计算机网络:star::star::star:
   + 数据库原理:star:
-+ [编程语言](/language/)
-  + C:star::star:
-  + Java:star::star:
-  + JavaScript:star::star::star::star:
-    + TypeScript:star:
-  + Python:star:
++ 编程语言
+  + [C](/c/):star::star:
+  + [Java](/java/):star::star:
+  + [JavaScript](/js/):star::star::star::star:
+    + [TypeScript](/sundry/typescript/):star:
+  + [Python](/python/):star:
 + [数据结构与算法](/ds-algorithm/)
   + 数据结构:star::star::star::star:
   + 排序和查找:star::star::star:
@@ -115,28 +116,27 @@ sticky: true
   + MySQL:star::star:
   + MongoDB:star::star:
   + Redis:star:
-+ [WEB](/web/)
-  + HTML:star::star::star::star:
-  + CSS:star::star:
-  + WebAPI:star::star::star::star:
++ Web
+  + [HTML-CSS](/html-css/):star::star::star::star:
+  + [WebAPI](/webapi/):star::star::star::star:
 + 应用开发
-  + [移动应用](/application/mobile/):star:
-  + [后端](/application/backend/):star::star:
-  + [桌面端](/application/desktop/):star:
+  + [移动应用](/mobile/):star:
+  + [后端](/backend/):star::star:
+  + [桌面端](/desktop/):star:
 + 应用框架
-  + Vue:star::star::star:
+  + [Vue](/vue/):star::star::star:
   + Spring:star::star:
   + Spring Boot:star::star:
 + 服务器 && 容器
-  + Tomcat:star:
+  + [Tomcat](/sundry/tomcat/):star:
   + Apache:star:
-  + Nginx:star::star:
+  + [Nginx](/sundry/nginx/):star::star:
 + 其他杂项
   + 编辑器/IDE:star:
   + [Markdown](/sundry/markdown/):star:
   + CI/CD:star:
   + [Git](/sundry/git/):star::star:
-  + Windows & Linux:star::star:
+  + [Window](/os/windows/) & [Linux](/os/linux/):star::star:
   + [设计模式](/sundry/design-pattern/):star::star::star:
   + Docker:star:
   + 代码质量:star::star:

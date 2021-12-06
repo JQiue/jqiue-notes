@@ -6,31 +6,45 @@ module.exports = [
     items: [
       { text: '计算机原理', icon: 'yuanli', link: '/theory/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
-      { text: '编程语言', icon: 'kaifayuyan', link: '/language/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: '操作系统', icon: 'caozuoxitong', link: '/os/' },
       { text: 'Node.js', icon: 'Nodejs', link: '/nodejs/' },
     ]
   },
   {
+    text: '编程语言',
+    icon: 'kaifayuyan',
+    items: [
+      { text: 'C', icon: 'c', link: '/c/' },
+      { text: 'Java', icon: 'java', link: '/java/' },
+      { text: 'JavaScript', icon: 'javascript', link: '/js/' },
+      { text: 'Python', icon: 'python', link: '/python/' }
+    ]
+  },
+  {
     text: '应用开发',
     icon: 'youtian',
-    prefix: '/application/',
     items: [
-      { text: '后端', icon: 'shujuchuli', link: 'backend/' },
-      { text: '移动', icon: 'shoujiyingyong', link: 'mobile/' },
-      { text: '桌面', icon: 'zuixing-86', link: 'desktop/' }
+      { text: '后端', icon: 'shujuchuli', link: '/backend/' },
+      { text: '移动', icon: 'shoujiyingyong', link: '/mobile/' },
+      { text: '桌面', icon: 'zuixing-86', link: '/desktop/' }
     ]
   },
   {
     text: 'web',
     icon: 'liulanqi',
-    link: '/web/'
+    items: [
+      { text: 'HTML/CSS', icon: 'html', link: '/html-css/'},
+      { text: 'WebAPI', icon: 'wangluo', link: '/webapi/'},
+      { text: 'Canvas', icon: 'canvas', link: '/canvas/'},
+    ]
   },
   {
     text: '框架',
     icon: 'framework',
-    link: '/framework/',
+    items: [
+      { text: 'Vue.js', icon: 'vue', link: '/vue/' },
+    ]
   },
   {
     text: '学科',

@@ -6,24 +6,36 @@ author: JQiue
 article: false
 ---
 
+英语是由词、句、篇构成，单词的词性是打开英语大门的钥匙，词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
+
 英语有十大词类：
 
 词类|作用|充当成分
 ---|----|---|---
-动词|表具体动作|谓，非谓
 名词|表动作的对象|主，宾
+动词|表具体动作|谓，非谓
+冠词|限定名词|不能充当
 代词|代替名词|主，宾
 形容词|修饰名词|定，表
-冠词|限定名词|不能充当
 副词|时间、地点、程度、方式|定，状，补，表
 介词|名词与其他成分之间的关系|定，状，补，表
 数词|数量或顺序|主，宾，表，定
 连词|连接句子成分|不能充当
-叹词|感叹|不能充当
+叹词|表示说话感情|不能充当
+
+有实在意义，能独立承担句子成分的是实词。没有实在意义，不能独立承担句子成分的是虚词
 
 ## 名词（Nouns）
 
-名词分为专有名词和普通名词，专有名词是某个人，地方，机构等专有的名称，比如 Beijing，China 等。普通名词是一类人或东西或抽象概念得名词，比如 book，sadness
++ 作主语：The book is on the desk.
++ 作表语：The tall man is a singer.
++ 作宾语：I found a cat on the grass.
++ 作宾语补足语：We call him a hero.
++ 作定语：I found a stone wall in the village.
++ 作同位语：Mr. Liu, our English teacher, is very handsome.
++ 作状语：The desk weighs 20 kilometers.
+
+名词分为专有名词和普通名词，专有名词是某个人，地方，机构等专有的名称，比如 Beijing，China 等。普通名词是一类人或东西或抽象概念的名词，比如 book，sadness
 
 普通名词又可以分为下面四类：
 
@@ -31,6 +43,8 @@ article: false
 + 集体名词：表示若干个个体组成的集合，如 family
 + 物质名词：表示无法分为个体的实物：如 air
 + 抽象名词：表示动作、状态、品质、感情等抽象概念，如 work
+
+甚至还有种名词是有若干个单词组合而构成的复合名词，比如：girlfriend
 
 个体名词和集体名词可用数目来计算，称为**可数名词**，物质名词和抽象名词一般无法用数目来计算，称为**不可数名词**
 
@@ -42,23 +56,6 @@ article: false
 + 以 f、fe，结尾的将`f`变为`v`，再加`es`，如 knife -> knives
 + 以`o`结尾加`es`（非外来词或缩写形式），如 potato -> potatoes
 + 不规则变化
-
-::: tip
-不可数名词没有复数变化，只用单数表示
-:::
-
-一些名词可以加`'s`表示所有关系，这种词尾形式的名词称为该名词的所有格，如 a teacher's book
-
-变化规律如下：
-
-+ 单数或复数名词词尾加`'s`
-+ 若名词已有复数词尾`s`，只加`'`，如 the workers' struggle
-+ 表示店铺或教堂或某人的家时，常常不出现所修饰的名词，如 the bucher's
-+ 两个名词并列，分别有`'s`,表示“分别有”，如果只有一个名词有，则表示“共有”
-
-还一种表示所有关系的形式：of 所有格，常用来表示无生命的名词，如 the windows of the room
-
-### 名词的修饰
 
 可数名词前可以加`a/an`或量词进行修饰，看情况变复数
 
@@ -72,23 +69,31 @@ an apple, a box of apples, a tomato, a bag of tomatoes
 a cup of coffee
 ```
 
-句子示例：
+一些名词可以加`'s`表示所有关系，这种词尾形式的名词称为该名词的所有格，如 a teacher's book
 
-```
-He bought me a box of chocolate.
-He bought me a bike.
-```
+变化规律如下：
+
++ 单数或复数名词词尾加`'s`
++ 若名词已有复数词尾`s`，只加`'`，如 the workers' struggle
++ 表示店铺或教堂或某人的家时，常常不出现所修饰的名词，如 the bucher's
++ 两个名词并列，分别有`'s`,表示“分别有”，如果只有一个名词有，则表示“共有”
+
+还一种表示所有关系的形式：of 所有格，常用来表示无生命的名词，如 the windows of the room
 
 ## 冠词（Articles）
 
-冠词是虚词，不能单独使用，也没有词义，用在名词的前面，帮助说明名词的含义。有三种冠词：不定冠词、定冠词、零冠词
+冠词是虚词，不能单独使用，也没有词义，用在名词的前面帮助说明名词的含义，有三种冠词：
 
-### 不定冠词
++ 不定冠词
++ 定冠词
++ 零冠词
 
-不定冠词 a/an 都是用来限定名词的数量，在意义上没有区别，a 用于辅音音素，an 用于元音音素
+不定冠词 a/an 都是用来限定名词的数量，在意义上没有区别。a 用于辅音音素，an 用于元音音素
 
-1. 表示“一个”，如 a Mr. Wang waiting for you
-2. 表示“一类人或物”，如 Mr. Smith is an engineer
++ 具有不确定的意义
++ 只能用于单数可数名词
++ 表示一个，如 a Mr. Wang waiting for you
++ 表示一类人或物，如 Mr. Smith is an engineer
 
 ::: tip
 不定冠词 a/an 和数词 one 同源，都表示“一个”的意思
@@ -99,48 +104,83 @@ This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z.
 This is an A/E/F/H/I/L/M/N/O/S/X.
 :::
 
-### 定冠词
+定冠词 the 用来表示特定的人或事物，可用于单数、复数以及不可数名词连用
 
-定冠词 the 用来表示特定的人或事物
-
-1. 表示双方都明白的人或事物，如 Take the medicine
-2. 上文中提到的人或事
-3. 世上独一无二的事物，如 the sun
-4. 与单数名词连用表示一类事物，如 the dollar
-5. 与复数名词连用表示整个群体，如 They are the teachers of this school
-6. 与形容词或分词连用表示一类人，如 the rich
-7. 用在序数词和形容词最高级前，如 I live on the second floor
-8. 用在专有名词前，如 the People's Republic of China
-9. 用在乐器名词前，如 the piano
-10. 用在姓氏前表示一家人，如 the Greens
-11. 表示所有关系，相当于物主代词，用在身体部位的名词前，如 She caught me by the arm （她抓住了我的手臂）
-
-### 零冠词
++ 上文中提到的人或事
++ 表示双方都明白的人或事物，如 Take the medicine
++ 世上独一无二的事物，如 the sun
++ 与单数名词连用表示一类事物，如 the dollar
++ 与复数名词连用表示整个群体，如 They are the teachers of this school
++ 与形容词或分词连用表示一类人，如 the rich
++ 用在序数词和形容词最高级前，如 I live on the second floor
++ 用在专有名词前，如 the People's Republic of China
++ 用在乐器名词前，如 the piano
++ 用在姓氏前表示一家人，如 the Greens
++ 表示所有关系，相当于物主代词，用在身体部位的名词前，如 She caught me by the arm （她抓住了我的手臂）
 
 有些名词不需要加冠词，这些不加冠词的名词就是零冠词
 
-1. 国家，洲，人名
-2. 泛指的复数名词
-3. 抽象名词和物质名词表示一般概念
-4. 季节、月份、节日、假日、日期、星期等表示时间的名词
-5. 称呼、官衔、职位
-6. 三餐、球类运动、娱乐运动
-7. 两个名词并列
-8. by 与交通工具连用，表示一种方式
-9. 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
++ 国家，洲，人名
++ 泛指的复数名词
++ 抽象名词和物质名词表示一般概念
++ 季节、月份、节日、假日、日期、星期等表示时间的名词
++ 称呼、官衔、职位
++ 三餐、球类运动、娱乐运动
++ 两个名词并列
++ by 与交通工具连用，表示一种方式
++ 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
 
 ## 动词（verbs）
 
-### 实义动词
+系动词是用来辅助主语的动词。它本身有词义，但不能单独用作谓语
 
-+ 不及物（vi.）
-+ 及物（vt.）
++ 状态
++ 感官
++ 变化
++ 保持
++ 表像
+
+表示状态的只有 be 动词，就是对主语补充说明，没有意义，be 动词后面接名词、形容词、地点副词或短语作补足语
+
+形式：be，is，am，are，was，were，being，been
+
++ be：将来时或虚拟语气
++ is/are：单数/复数
++ was/were：单数/复数
++ being/been：现在分词/过去分词
+
+```
+The man is back.
+They are back.
+He was back.
+They were back.
+They have been back.
+Mary's new dresses are colorful.
+My mother was in the kitchen.
+```
+
+在 am，is，are，was，were 后加 not 表示否定意义，也产生了缩写形式，比如 isn't，aren't 等
+
+be 动词一般现在时在不同的人称下只有 is，am，are 变化
+
+表示人体感官的系动词有 sound，taste，look，feel，smell等，后面接形容词
+
+用来表示"看起来像"这一概念，主要有seem, appear, look
+
+用来表示主语继续或保持一种状况或态度，主要有keep, remain, stay, lie, stand
+
+这些系动词表示主语变成什么样，变化系动词主要有become, grow, turn, fall, get, go, come, run
+
+表示主语已终止动作，主要有prove, turn out, 表达"证实"，"变成"之意
+
+实义动词在句中具有实在意义，而不是像 be 动词一样无意义，比如：come，read，go，watch，play，fly
+
++ 不及物（vi.）：不需要宾语
++ 及物（vt.）：需要宾语
 
 ::: tip
 动词 + 介词，通常是不及物
 :::
-
-实义动词在句中具有实在意义，而不是像 be 动词一样无意义，比如：come，read，go，watch，play，fly
 
 ```
 He comes from Huibei.
@@ -161,17 +201,23 @@ She doesn't watch TV every day.
 They didn't swim last night.
 ```
 
-### 系动词
+完全动词 have 的意思相当于“拥有”、“具有”，当 have 作为“拥有”讲时，可用于一般时态，但不能用于进行时态
 
-没有实在意义，联系主语，补充说明
+```
+Do you/we/they have any ...?
+Yes, I/we/they have some ...?
+No, I/we/they do not/don't have any ...?
+```
 
-### 助动词
+have 常与表示疼痛和疾病的名词连用，有一下用法：
 
-没有实在意义，帮助构成时态和语态，疑问句，否定句
++ 必须用不定冠词，a cold、a heaache
++ 不定冠词可用可不用，catch (a) cold、have (a) backache
++ 复数形式的疾病前不用冠词
 
-### 情态动词
+助动词没有实在意义，帮助构成时态和语态，疑问句，否定句，比如 be，do，have，will，shall
 
-can/could/may/might
+情态动词
 
 + can/could 表示能力，用 be able to 代替 can/could 现在过去的能力，客观可能性表示请求和允许
 
@@ -241,185 +287,28 @@ He had better not eat more.
 You would rather not deal with it now.
 ```
 
-### 构成疑问
+构成疑问
 
 如果是实义动词，要借用助动词来提问，不能提前，且谓语动词要用原型，无实义的动词直接将动词提前
 
-### 否定形式
+否定形式
 
 如果是实义动词，要借助`助动词 + not`来构成否定，无实义的动词直接加`not`
-
-### 时态
-
-1. 动词有数量和时态上的变化，时态通常由三大时态：过去，现在和将来
-2. 根据动作进行的状态：一般，进行和完成
-3. 使用动词时一般将前两者结合，比如：一般现在时，过去进行时
-
-```
-He goes to shchool every day.
-He went to hospital last night.
-```
-
-动词的用法非常丰富，可以体现主语的单复数，也可以体现主语动作的时间和状态
-
-一般现在时：表通常、规律、习惯性的状态或动作，动词有单三变化，非第三人称单数时为动词原形
-
-变化规律：
-
-1. 动词结尾加`s`
-2. 以字母 s、x、ch 或 o 结尾的加`es`
-3. 以辅音字母结尾的变 y 为 i 在加`es`
-
-> 有点像名词的复数变化，要做一些词性上的区分
-
-```
-They often get up at 7:00. 他们经常在 7:00 起床（习惯性动作）
-He often gets up at 7:00. 他经常在 7:00 起床（习惯性动作）
-```
-
-一般现在时的否定和疑问句用 do、does 帮助构成
-
-现在进行时：表示现在进行或发生的动作，剧中通常有 now 等时间副词，基本构成形式为：`be + doing`，`doing`表示动词的现在分词形式
-
-```
-They are watching TV. 他们正在看电视
-He is watching TV. 他正在看电视
-I am watching TV. 我正在看电视
-```
-
-变化规律：
-
-1. 一般在动词后加`ing`
-2. 以不发音的`e`结尾，要去掉`e`再加`ing`
-3. 重读闭音节的动词，要双写词尾字母再加`ing`
-4. 以`ie`结尾的，变`y`为`i`再加`ing`
-
-否定句和疑问句，将 be 动词提前即可，不需要助动词
-
-```
-They are watching TV. => Are they watching TV?
-He is watching TV. => Is he watching TV?
-```
-
-一般过去时：表示过去的某一个时间里发生的习惯性或经常性的动作和状态，基本结构：`主语 + 过去分词 + 其他`
-
-变化规律：
-
-1. 一般加`ed`
-2. 以字母`e`结尾的只加`d`
-3. 以“辅音字母 + y” 结尾的，变 y 为 i 再加`ed`
-4. 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
-5. 不规则变化，需要记忆
-
-```
-He worked very hard last night. 他昨天晚上工作的非常努力
-They came here by car. 他们开车来到了这里
-```
-
-过去进行时：在过去的某一时刻或某一段时间内持续进行或发生的动作，基本结构：`was/were + doing`
-
-```
-They were waiting for you. 他们在等你
-He was talking with his friends just now. 就在刚才他和他的朋友正在谈话
-```
-
-将来时：表示将来某一个时刻的动作和状态，或某一段时间发生的动作和状态，常与表示将来的时间状语连用：tomorrow，next week，in the future，
-
-帮助构成将来时：
-
-+ will 和 shall 这两个助动词可以构成将来时态，基本结构：`will/shall + 动词原形`
-
-```
-They will go to Shanghai by ship tomorrow.
-We shall leave for Shanghai next month.
-```
-
-+ “be going to + 动词原形”用来表示近期或事先考虑过的将要发生的动作，意为：“打算、将要”
-  
-```
-They are going to play football this afternoon.
-She is going to leave French next year.
-```
-
-+ “be + doing”表示位置转移的动词，比如：go，come，leave，start，arrive，可用现在进行时表将来
-
-```
-They are leaving for Japan.
-She is arriving tomorrow.
-```
-
-现在完成时：动作已经发生，已经完成，对现在造成影响或后果，有可能还会持续，基本结构：`have/has + 过去分词`，通常和一些时间状语连用：already（已经），yet（还）
-
-```
-They have already arrived in Shanghai. 他们已经到了上海
-She has played soccer for 3 hours. 他已经踢了三个小时的足球（已经发生，还在持续）
-She hasn't finished the homework yet. 她还没有完成家庭作业
-```
-
-过去完成时：动作发生在过去，已经完成，且对过去造成了一定的影响，基本结构：`had + 过去分词`
-
-```
-They had already arrived in Shanghai. 他们已经到了上海
-She had played soccer for 3 hours. 她已经踢了三个小时的足球
-She hadn't finished the homework yet.  她还没有完成家庭作业
-```
-
-### 语态
-
-一般情况下，都是主语发生的动作，这叫做主动语态，只要句子不是被动的，那么就是主动的，只需要学习被动语态即可
-
-被动语态就是表示客观事实，比如`我吃了那个蛋糕`就是主观事实，如果想表示“谁吃了那个蛋糕”，就无法用主观来表达了，但是从意思上来讲已经知道“蛋糕被吃了”，但不知道谁是动作的发出者，这就是客观事实，只要将宾语提前就变成了“蛋糕被狗吃了”，但是被动语态不一定有表面上的“被”，比如“教师每天都打扫”，这说明被动语态跟“被”字是没关系的，得根据句子中的意思来判断
-
-+ 及物动词
-+ 不及物动词 + 介词
-
-形式：be + done
-
-done 表示被动的动作，be 表示被动的时间（变成对应的各种时态），不仅如此 be 还要表示单复数
-
-### Be 动词
-
-be 动词的作用就是对主语补充说明
-
-形式：be，is，am，are，was，were，being，been
-
-+ be：将来时或虚拟语气
-+ is/are：单数/复数
-+ was/were：单数/复数
-+ being/been：现在分词/过去分词
-
-```
-The man is back.
-They ar back.
-He was back.
-They were back.
-They have been back.
-```
-
-be 动词后面接名词、形容词、地点副词或短语作补足语
-
-```
-The man is a teacher.
-Mary's new dresses are colorful.
-My mother was in the kitchen.
-```
 
 ## 代词（Pronouns）
 
 是一种代替名词的词类，大多数代词具有名词和形容词的功能，根据意义、特征以及在句中的作用分为：
 
-1. 人称代词
-2. 物主代词
-3. 指示代词
-4. 反身代词
-5. 相互代词
-6. 疑问代词
-7. 关系代词
-8. 不定代词
++ 人称代词
++ 物主代词
++ 指示代词
++ 反身代词
++ 相互代词
++ 疑问代词|连接代词
++ 关系代词
++ 不定代词
 
-### 人称代词
-
-人称代词是表示“我”，“你”，“他她它”，“我们”，“你们”，“它们”的词，具有人称、数和格的变化
+人称代词是表示“我”，“你”，“他她它”，“我们”，“你们”，“它们”的词，具有人称、数和格的变化，在已知的情况下使用，避免重复
 
 + 主格代词：I，he，she，it，you，we，they
 
@@ -439,14 +328,12 @@ We like her.
 They know him.
 ```
 
-### 物主代词
-
-物主代词表示所有关系的代词，物主代词分为形容词性和名词性
+物主代词表示所有关系的代词，分为形容词性和名词性
 
 形容词性可修饰名词：
 
-1. 单：my，your，his/her/its/，one's
-2. 复：our，yours，their
++ 单：my，your，his/her/its/，one's
++ 复：our，yours，their
 
 ```
 This is my book.
@@ -454,10 +341,10 @@ We love our motherland.
 Those are your socks.
 ```
 
-名词性可独立作为一个名词的成分
+名词性可独立作为一个名词的成分:
 
-1. mine，yours，his/hers/its，one's
-2. ours，yours，theirs
++ 单：mine，yours，his/hers/its，one's
++ 复：ours，yours，theirs
 
 ```
 The book is ours.
@@ -475,31 +362,27 @@ It|it|its|its
 we|us|our|ours
 They|them|their|theirs
 
-### 反身代词
-
-反身代词通常作宾语或同位语
+当宾语和主语是同一个人时，一般需要用反身代词
 
 + 单：myself，yourself，herself，himself，itself
 + 复：yourselves，ourselves，themselves
 
 ```
+The old lady is talking to herself.  
+The old lady is talking to herself.
 Please help yourself to some fish. 随便吃一些鱼吧（作宾语）
 We enjoyed ourselves last night.
 The thing itself is not important. 这件事它本身不重要（作同位语）
 ```
 
-### 指示代词
-
-标记人或事物的代词，通常用来替代上文中出现过的名词：this（these），that（those）
+指示代词用于标记人或事物的代词，通常用来替代上文中出现过的名词：this（these），that（those）
 
 ```
 This is his book.
 Those apples were his.
 ```
 
-### 不定代词
-
-替代不确定的人或事物：one，the other，some，any，something，nothing ...，不仅如此还包含 some-，any-，no- 等合成代词
+不定代词用于替代不确定的人或事物：one，the other，some，any，something，nothing ...，不仅如此还包含 some-，any-，no- 等合成代词
 
 ```
 No one knows where he is. 没有人知道他在哪
@@ -507,13 +390,9 @@ I know nothing about this person. 我对这个人一无所知
 I have something to tell you. 我有一些事告诉你
 ```
 
-### 相互代词
+相互代词表示相互关系，有 each other 和 one another 两组，在实际应用中没有什么区别，如 They love each other
 
-表示相互关系，有 each other 和 one another 两组，在实际应用中没有什么区别，如 They love each other
-
-### 疑问代词
-
-在句子中用来构成特殊疑问句，且疑问代词可用作连接代词，引导名词性从句
+疑问代词在句子中用来构成特殊疑问句，且疑问代词可用作连接代词，引导名词性从句
 
 ## 形容词（Adjectives）
 
@@ -521,6 +400,7 @@ I have something to tell you. 我有一些事告诉你
 
 ```
 the beautiful girl
+a thin woman
 ```
 
 the + 形容词 = 名词复数，表示一类人或事物，后面动词用复数
@@ -529,16 +409,23 @@ the + 形容词 = 名词复数，表示一类人或事物，后面动词用复�
 The old need more care than the young. 老年人比年轻人需要更多的关心
 ```
 
-### 形容词和副词的转换
+很多形容词可以回答使用 What ... like ? 这样的疑问句，比如：
 
-规则
+```
+What's Tom like?
+He's very fat.
+```
 
-1. 一般加`ly`
-2. 以`y`结尾的，变`y`为`i`再加`ly`
+形容词的比较级和最高级
+
+形容词和副词的转换的规则
+
++ 一般加`ly`
++ 以`y`结尾的，变`y`为`i`再加`ly`
 
 ## 副词（Adverbs）
 
-+ 副词可以修饰动词、形容词、其他副词以及其他结构
+副词可以修饰动词、形容词、其他副词以及其他结构
 
 ```
 He runs fast. 修饰动词
@@ -546,10 +433,11 @@ She is very beautiful. 修饰形容词
 They work very hard.
 ```
 
-+ 副词的位置：
-  1. 根据情况放在助动词之后，实义动词之前或之后
-  2. 形容词之前，其他副词之 前或之后
-  3. 多个助动词时，副词一般放在第一个助动词后
+副词的位置：
+
++ 根据情况放在助动词之后，实义动词之前或之后
++ 形容词之前，其他副词之 前或之后
++ 多个助动词时，副词一般放在第一个助动词后
 
 ```
 He speaks very fast.
@@ -557,7 +445,7 @@ They have already left.
 They have already been repaired.
 ```
 
-+ 常用的频度副词（akways，usually，often，sometimes，never）的位置通常放在一般动词前面，be 动词后面，助动词和实意动词之间
+常用的频度副词（akways，usually，often，sometimes，never）的位置通常放在一般动词前面，be 动词后面，助动词和实意动词之间
 
 ```
 They always come early.
@@ -568,43 +456,81 @@ Sam often writes homework at 7:00.
 
 数词分为基数词和序数词，基数词用来表示数目的多少，序数词用来表示顺序
 
-### 基数词
-
 基数词一般是单数形式，在下面情况中用复数：
 
-1. 与 of 短语连用
-2. 表示“一排”或“一组”的词组，如 They arrived in twos and threes.
-3. 表示“几十岁”
-4. 表示“年代”，用 in + the + 数词复数
++ 与 of 短语连用
++ 表示“一排”或“一组”的词组，如 They arrived in twos and threes.
++ 表示“几十岁”
++ 表示“年代”，用 in + the + 数词复数
 
-### 序数词
+序数词可以用来表示顺序，倍数，分数等，必须和 the 进行连用
 
-### 其他用法
+表示数字：
+
+```
+101 one handred and one.
+1,010 one thousand and ten.
+1,117 one thousand one hundred and seventeen.
+10,000 ten thousand
+200,000 two hundred thousand
+1,000,000 one milion
+```
+
+年月日表达：
+
++ 基本顺序是月，日，年
++ 具体时刻用 at
++ 具体某一天用 on
++ 大于一天用 in
+
+终点表达：
+
++ 某个钟点的 1 到 30 分钟内，用 past 表示，比如 twenty past eight(8 点 20)
++ 过了 31，用 to 表示，比如 6 点 47 分通常会转换为 7 点差 13 分，thirteen to seven
+
+表示分数，构成：基数词作分子，序数词作分母。当分子大于 1 时，分子用单数形式，分母用复数形式
+
+```
+1/3 one-third
+3/37 three and three-sevenths
+```
+
+表示百分数，构成：基数词 + percent
 
 表示倍数
 
-1. 主 + 谓 + 倍数 + as + 形容词 + as ...
-2. 主 + 谓 + 倍数 + the size of ...
-3. 主 + 谓 + 倍数 + 形容词/副词比较级 + than + ...
-4. by + 倍数
-
-表示分数
-
-构成：基数词作分子，序数词作分母。当分子大于 1 时，分子用单数形式，分母用复数形式
-
-```
-1/3 one-third; 3/37 three and three-sevenths;
-```
++ 主 + 谓 + 倍数 + as + 形容词 + as ...
++ 主 + 谓 + 倍数 + the size of ...
++ 主 + 谓 + 倍数 + 形容词/副词比较级 + than + ...
++ by + 倍数
 
 ## 介词（Prepositions）
 
-### 表示时间
+没有实在意义，按形式分类：
+
++ 简单介词
++ 复合介词
++ 短语介词
++ 双重介词
++ 分词介词
+
+按意义分类：
+
++ 时间
++ 地点
++ 原因，目的
++ 所属，伴随
++ 除了
++ 方法，手段
++ 关于
+
+表示时间
 
 + in：表示世纪、时代、年月、季节、一天中的上午中午晚上
 + on：表示星期，具体的某一天
 + at：表示时刻
 
-### 表示交互
+表示交互
 
 + across：穿过平面
 + over：上面（未接触）
@@ -616,6 +542,14 @@ Sam often writes homework at 7:00.
 + under：在...下面
 + into：从外入内
 + out of：从内到外
+
+at 可表示地点：
+
+```
+at the butcher's
+at home
+at school
+```
 
 ## 叹词（Interjections）
 
@@ -701,32 +635,15 @@ No one knows the answer. 没有人知道答案
 None of us have arrived. 我们都没有到
 ```
 
-## There/Here + be 句型
+## 成分
 
-There/Here + be 根据上下文，有多种翻译方法，可以翻译成“有”，“是”，be 动词根据后面的名词进行单复数变化
+句子由不同的成分组成，而不同的词性充当不同的成分，主要有以下成分
 
-```
-There is a book on the bookshelf.
-There are some book on the bookshelf.
-
-Here is the bus stop.
-Here are your books.
-```
-
-## 句子成分（Parts of Speech）
-
-### 简单句（Simple Sentence）
-
-1. 主语
-2. 谓语
-3. 宾语
-4. 宾语补语
-5. 主语补语（表语）
-6. 定语
-7. 状语
-8. 同位语
-
-### 复杂句（Compound Sentence）
-
-1. 主句（main clause）
-2. 从句（subordinate clause）
++ 主语：句子中的主体对象
++ 谓语：主体对象发生的动作
++ 宾语：主体发生的动作作用的对象
++ 宾语补语：对句子进行补充说明
++ 主语补语（表语）：可以成为主语的补语，表示主语的状态
++ 定语：修饰主体对象
++ 状语：修饰动词，形容词以及全句，表示句中的背景
++ 同位语：和句子前面的名词可互换
