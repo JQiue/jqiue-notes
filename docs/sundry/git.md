@@ -56,7 +56,7 @@ git config --global user.email 'your_email@domian.com'
 + `global`：对当前用户所有仓库有效，优先级次之
 + `system`：对系统所有登陆的用户有效，优先级最低
 
-使用`git config -e`会弹出一个编辑文本来编辑`config`文件
+使用`git config -e`会弹出一个配置文件来编辑，也具有作用域
 
 ## 初始化 Git 库
 

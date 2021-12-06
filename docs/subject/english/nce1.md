@@ -515,8 +515,8 @@ It's our favourite subject of conversation.
 ## Lesson 55 The Sawyer family
 
 ```
-The Sawyers live at 87 King Street.  
-In the morning, Mr. Sawyer goes to work and the children go to school.  
+The Sawyers live at 87 King Street.
+In the morning, Mr. Sawyer goes to work and the children go to school.
 Mrs. Sawyer stays at home every day. She does the housework.  
 In the afternoon, she usually sees her friends. They often drink tea together.  
 In the evening, the children come home from school. They arrive home early.  
@@ -528,11 +528,27 @@ Mr. Sawyer usually reads his newspaper, but sometimes he and his wife watch tele
 ## Lesson 57 An unusual day
 
 ```
-It is eight o'clock. The children go to school by car every day, but today, they are going to school on foot.  
-It is ten o'clock. Mrs. Sawyer usually stays at home in the morning, but this morning, she is going to the shops.  
-It is four o'clock. In the afternoon, Mrs. Sawyer usually drinks tea in the living room. But this afternoon, she is drinking tea in the garden.  
-It is six o'clock. In the evening, the children usually do their homework, but this evening, they are not doing their homework. At the moment, they are playing in the garden.  
-It is nine o'clock. Mr. Sawyer usually reads his newspaper at night. But he's not reading his newspaper tonight. At the moment, he's reading an interesting book.  
+It is eight o'clock.
+The children go to school by car every day,
+but today, they are going to school on foot.
+
+It is ten o'clock.
+Mrs. Sawyer usually stays at home in the morning,
+but this morning, she is going to the shops.
+
+It is four o'clock.
+In the afternoon, Mrs. Sawyer usually drinks tea in the living room.
+But this afternoon, she is drinking tea in the garden.
+
+It is six o'clock.
+In the evening, the children usually do their homework,
+but this evening, they are not doing their homework.
+At the moment, they are playing in the garden.
+
+It is nine o'clock. 
+Mr. Sawyer usually reads his newspaper at night.
+But he's not reading his newspaper tonight.
+At the moment, he's reading an interesting book.  
 ```
 
 ## Lesson 59 Is that all
@@ -674,7 +690,7 @@ You can see us in the crowd.
 We are standing on the left.
 
 There were twenty cars in the race.
-There were English cars, French cares, German cars, Italian cars, American cars and Japanese cars.  
+There were English cars, French cares, German cars, Italian cars, American cars and Japanese cars.
 
 It was an exciting finish.
 The winner was Billy Stewart.

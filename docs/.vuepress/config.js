@@ -27,7 +27,15 @@ module.exports = config({
     sidebar: require("./sidebar"),
     encrypt: {
       config: {
-        "/subject/": "123456"
+        "/theory/network/": "123456",
+        "/theory/organization/": "123456",
+        "/backend/": "123456",
+        "/nodejs/": "123456",
+        "/canvas/": "123456",
+        "/desktop/": "123456",
+        "/ds-algorithm/": "123456",
+        "/subject/": "123456",
+        "/vue/": "123456",
       }
     },
     blog: {

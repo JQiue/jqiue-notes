@@ -6,9 +6,7 @@ author: JQiue
 article: false
 ---
 
-## 词汇
-
-过去式不规则变化：
+## 过去式不规则变化
 
 ```plain
 buy -> bought
@@ -18,14 +16,14 @@ meet -> met
 get -> got
 ```
 
-过去分词不规则变化：
+## 过去分词不规则变化
 
 ```plain
 be -> been
 see -> seen
 ```
 
-复数不规则变化：
+## 名词复数不规则变化
 
 ```plain
 man -> men
@@ -37,7 +35,9 @@ mouse -> mice
 goose -> geese
 ```
 
-## 短语
+## 介词短语
+
+很多介词短语是由介词 + 名词构成的
 
 ```plain
 put on 穿上
@@ -56,6 +56,16 @@ on the way 在...途中
 take out 取出
 a lot of 许多
 all the time 一直，始终
+```
+
+## 动词短语
+
+动词短语通常是指动词后面跟着一个介词或副词短语的动词，英语中存在用动词短语代替与其同义的单个动词的强烈趋势，比如听到敲门声，会说 Come in，而不是 Enter。这些动词常与表示位置或方向的词组合，比如 along，down，in，off，on，out，over，under 等
+
+```
+The cats are running along the wall.
+The children are jumping off the branch.
+He is going into a shop.
 ```
 
 ## 辨析
@@ -103,4 +113,28 @@ table 通常指若干条腿支撑着的评判，没有抽屉，比如“餐桌�
 
 ```plain
 I've booked a table for two at 7.00.
+```
+
+### too 和 either
+
+too 和 either 都表示“也”，但是 too 仅用于肯定句中，而 either 用于否定句。一般都放在句末，且用逗号隔开
+
+### Here you are，Here it is，Here there are
+
+是给对方东西的习惯用语，Here it is 用于单数的物，Here there are 用于复数的物
+
+### some 和 any
+
+some 和 any 是最常用的数量词，some 用于肯定句，或期望是肯定回答的疑问句
+
+```
+There is some water in the glass.
+Have you got some paper-clips in that box?
+```
+
+any 用于否定句，或不能确定是肯定还是否定以及期望是否定回答的疑问句
+
+```
+There are not any spoons in the cupboard.
+Are there any cigarettes on the floor?
 ```
