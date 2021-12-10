@@ -46,7 +46,7 @@ timeline: false
 [SVN](https://osdn.net/projects/tortoisesvn/storage/1.13.1/Application/TortoiseSVN-1.13.1.28686-x64-svn-1.13.0.msi/)（版本控制）  
 [Fiddler](https://telerik-fiddler.s3.amazonaws.com/fiddler/FiddlerSetup.exe)（抓包）  
 [Fiddler Everywhere](https://downloads.getfiddler.com/win/Fiddler%20Everywhere%201.4.1.exe)（抓包）  
-[nvm-windows](https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip)（NodeJS 版本管理）  
+[nvm-windows](https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip)（Node.js 版本管理）  
 [VS Code](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user)（编辑器）  
 [.NET](https://dotnet.microsoft.com/download)（CSharp 运行时）
 
@@ -112,7 +112,7 @@ Tomcat：
 [Tomcat 9](https://downloads.apache.org/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39-windows-x64.zip)
 [Tomcat 10](https://downloads.apache.org/tomcat/tomcat-10/v10.0.0-M9/bin/apache-tomcat-10.0.0-M9-windows-x64.zip)
 
-NodeJS：
+Node.js：
 [10.23.0](http://npm.taobao.org/mirrors/node/latest-v10.x/node-v10.23.0-x64.msi)
 [12.20.0](http://npm.taobao.org/mirrors/node/latest-v12.x/node-v12.20.0-x64.msi)
 [14.15.3](http://npm.taobao.org/mirrors/node/latest-v14.x/node-v14.15.3-x64.msi)

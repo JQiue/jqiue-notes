@@ -1,5 +1,5 @@
 ---
-title: 介绍
+title: WebAPI
 category: Web
 tags: [Alpha]
 author: JQiue
@@ -15,7 +15,7 @@ article: false
 
 JavaScript 最初就是为 Web 浏览器创建的，虽然在此之后发展成了具有多种用途和平台的语言，平台可以是浏览器，一个 Web 服务器，或者其他的主机，它们每一个都提供了特定于平台的功能，JavaScript 将它称之为主机环境
 
-主机环境提供了自己的对象和语言核心以外的函数，比如浏览器提供了控制网页的方法，NodeJS 提供了服务器端功能
+主机环境提供了自己的对象和语言核心以外的函数，比如浏览器提供了控制网页的方法，Node.js 提供了服务器端功能
 
 那么 WebAPI 是为 JavaScript 提供的一套操作浏览器和页面元素功能的 api，就是一堆写好的函数和一些内置的对象，由 BOM 和 DOM 两部分组成。用 JavaScript 访问这些 api 来操作 BOM 和 DOM 就可以实现一些交互功能，所以需要一定的 JavaScript 语法基础
 

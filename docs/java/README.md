@@ -1,10 +1,9 @@
 ---
-title: 介绍 && 第一个 Java 程序
+title: Java
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
 由詹姆斯高斯林在90年代初开发的一种编程语言，Java 介于编译型和解释性语言之间，因为 Java 是将代码编译成一种“字节码”，然后针对不同的平台编写虚拟机，不同的虚拟机负责解释字节码并执行，这样就实现了“一次编写，到处运行”的结果

@@ -1,5 +1,5 @@
 ---
-title: 上手
+title: Vue.js
 category: 框架
 tags: [Alpha]
 author: JQiue

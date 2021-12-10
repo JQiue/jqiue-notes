@@ -1,10 +1,9 @@
 ---
-title: 介绍 && 环境搭建
+title: Python
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
 Python 是一门开源的，免费的，通用型脚本语言，上手简单，功能强大，坚持“极简主义”。

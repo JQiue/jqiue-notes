@@ -38,99 +38,76 @@ const theory = [
   }
 ];
 
-const c = [{
-  title: 'C',
-  collapsable: false,
-  children: [
-    '',
-    'syntax',
-    'array-string',
-    'pointer',
-    'struct-union',
-    'preprocessing',
-    'memory-allocation',
-    'storage-classes',
-    'file',
-    'input-memory-buffer',
-  ]
-}];
+const c = [
+  '',
+  'syntax',
+  'array-string',
+  'pointer',
+  'struct-union',
+  'preprocessing',
+  'storage-classes',
+  'input-memory-buffer',
+];
 
-const java = [{
-  title: 'Java',
-  collapsable: false,
-  children: [
-    '',
-    'syntax',
-    'string',
-    'method',
-    'class',
-    'interface',
-    'collection',
-    'exception',
-  ]
-}];
+const java = [
+  '',
+  'syntax',
+  'string',
+  'method',
+  'class',
+  'interface',
+  'collection',
+  'exception',
 
-const javascript = [{
-  title: 'JavaScript',
-  collapsable: false,
-  children: [
-    '',
-    'syntax',
-    'function',
-    'object',
-    'string',
-    'array',
-    'map-set',
-    'destructuring-assignment',
-    'rest-spread',
-    'prototype',
-    'class',
-    'try-catch',
-    'promise-async-await',
-    'proxy-reflect',
-    'module',
-    'event-loop',
-    'stdlib',
-    'code-quality',
-  ]
-}];
+];
 
-const python = [{
-  title: 'Python',
-  collapsable: false,
-  children: [
-    '',
-    'syntax',
-    'ds',
-    'class',
-    'module',
-    'comprehensions',
-    'exception',
-    'special-function-usage',
-    'stdlib',
-    'spider',
-  ]
-}];
+const javascript = [
+  '',
+  'syntax',
+  'function',
+  'object',
+  'string',
+  'array',
+  'map-set',
+  'destructuring-assignment',
+  'rest-spread',
+  'prototype',
+  'class',
+  'try-catch',
+  'promise-async-await',
+  'proxy-reflect',
+  'module',
+  'event-loop',
+  'stdlib',
+  'code-quality',
+];
+
+const python = [
+  '',
+  'syntax',
+  'ds',
+  'class',
+  'module',
+  'comprehensions',
+  'exception',
+  'special-function-usage',
+  'stdlib',
+  'spider',
+];
 
 const ds_algorithm = [
-  {
-    title: '数据结构与算法',
-    collapsable: false,
-    children: [
-      '',
-      'list',
-      'stack',
-      'queue',
-      'array-string',
-      'tree',
-      'graph',
-      'other',
-      'find',
-      'sort',
-      'random',
-      'core',
-    ]
-  }
+  '',
+  'list',
+  'stack',
+  'queue',
+  'array-string',
+  'tree',
+  'graph',
+  'other',
+  'find',
+  'sort',
+  'random',
+  'core',
 ];
 
 const database = [
@@ -178,70 +155,54 @@ const os = [
   },
 ];
 
-const backend = [{
-  title: '后端',
-  collapsable: false,
-  children: ['']
-}]
-const desktop = [{
-  title: '桌面',
-  collapsable: false,
-  children: ['']
-}];
+const backend = [
+  ''
+]
 
-const mobile = [{
-  title: '移动',
-  collapsable: false,
-  children: ['']
-}];
+const desktop = [
+  ''
+]
+const mobile = [
+  ''
+]
 
-const nodejs = [{
-  title: 'Node.js',
-  collapsable: false,
-  children: [
-    '',
-    'global',
-    'api',
-    'package-npm',
-  ]
-}];
+const nodejs = [
+  '',
+  'global',
+  'api',
+  'package-npm',
+];
 
-const webapi = [{
-  title: 'WebAPI',
-  collapsable: false,
-  children: [
-    '',
-    'bom',
-    'dom',
-    'event',
-    'network',
-    'storage',
-    'drag',
-  ]
-}];
+const wasm = [
+  '',
+]
 
-const canvas = [{
-  title: 'Canvas',
-  collapsable: false,
-  children: ['']
-}];
+const webapi = [
+  '',
+  'bom',
+  'dom',
+  'event',
+  'network',
+  'storage',
+  'drag',
+];
 
-const htmlcss = [{
-  title: 'HTML-CSS',
-  collapsable: false,
-  children: [
-    '',
-    'elements',
-    'box-model',
-    'selectors',
-    'css',
-    'layout',
-    'value',
-    'reset-css-style',
-    'responsive-design',
-    'better-code',
-  ]
-}];
+const canvas = [
+  ''
+];
+
+const htmlcss = [
+  '',
+  'elements',
+  'box-model',
+  'selectors',
+  'css',
+  'layout',
+  'value',
+  'reset-css-style',
+  'responsive-design',
+  'better-code',
+];
 
 const subject = [
   '',
@@ -301,19 +262,17 @@ const sundry = [{
     'babel',
     'typescript',
     'programlang',
+    'css-preprocessor',
+    'csslint',
   ]
 }];
 
-const vue = [{
-  title: 'Vue',
-  collapsable: false,
-  children: [
-    '',
-    'component',
-    'vuex',
-    'vue-router',
-  ]
-}]
+const vue = [
+  '',
+  'component',
+  'vuex',
+  'vue-router',
+]
 
 module.exports = {
   "/theory/": theory,
@@ -327,6 +286,7 @@ module.exports = {
   "/html-css/": htmlcss,
   "/canvas/": canvas,
   "/webapi/": webapi,
+  "/wasm/": wasm,
   "/vue/": vue,
   "/nodejs/": nodejs,
   "/backend/": backend,

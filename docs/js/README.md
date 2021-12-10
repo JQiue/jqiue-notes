@@ -1,30 +1,29 @@
 ---
-title: 介绍 && 运行环境
+title: JavaScript
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
-作为万维网前端最重要的编程语言，JavaScript 的出现使网页和用户之间实现了实时和动态的交互关系，所有的浏览器都嵌入了 JavaScript 解释引擎
+作为万维网 Web 前端最重要的编程语言，JavaScript 的出现使网页和用户之间实现了实时和动态的交互关系，所有的浏览器都嵌入了 JavaScript 解释引擎
 
-JavaScript 在刚诞生时，它的名字叫做“LiveScript”，在当时 Java 很流行，所以决定将它命名为 Java 的“弟弟”会有助于它流行，现在 JavaScript 完全成为了一门独立的语言，也拥有了自己的语言规范 ECMAScript
+JavaScript 在刚诞生时，它的名字叫做“LiveScript”，在当时 Java 很流行，所以碰瓷一下 Java 会有助于它流行。现在 JavaScript 完全成为了一门独立的语言，也拥有了自己的语言规范 ECMAScript
 
-ECMAScript 通常被称为 JavaScript，但是后者为更多开发者所认知，但真正的标准是 ECMAScript，而 JavaScript 只是它其中的一个实现，大部分浏览器厂商都有自己的 ECMAScript 标准实现，比如谷歌的 V8，苹果的 JavaScriptCore，Mozilla 的 JavaScript，学习 JavaScript，实际上学习的是 ECMAScript
+ECMAScript 通常被称为 JavaScript，但后者为更多人所认知。真正的标准其实是 ECMAScript，而 JavaScript 只是其中的一个实现，大部分浏览器厂商都有自己的 ECMAScript 标准实现，比如谷歌的 V8，苹果的 JavaScriptCore，Mozilla 的 JavaScript。学习 JavaScript，实际上学习的是 ECMAScript，对于开发者来说基本不会感知到不同实现的区别
 
-Javascript 第一版设计的非常大杂烩：
+JavaScript 第一版设计的非常大杂烩：
 
-1. 基本语法：借鉴 C 和 Java
-2. 数据结构：借鉴 Java，将值分为原始值和对象两大类
-3. 函数：借鉴了 Scheme 和 Awk，将函数作为一等公民，且引入闭包
-4. 原型继承模型：借鉴 Self
-5. 正则表达式：借鉴 Perl
-6. 字符串和数组处理：借鉴 Python
++ 基本语法：借鉴 C 和 Java
++ 数据结构：借鉴 Java，将值分为原始值和对象两大类
++ 函数：借鉴了 Scheme 和 Awk，将函数作为一等公民，且引入闭包
++ 字符串和数组处理：借鉴 Python
++ 原型继承模型：借鉴 Self
++ 正则表达式：借鉴 Perl
 
-为了保持简单，它缺少一些关键的功能，比如块级作用域、模块、子类型等，在后面的版本中补充
+为了保持简单，它缺少一些关键的功能，比如块级作用域、模块、子类型等，这些都在后面的版本中补充
 
-ECMAScript 从发布标准至今已经迭代到了 ES11，但是很多新特性都是在 ES6 这个版本中添加的，比如：
+ECMAScript 从发布标准至今已经迭代到了 ES11，但很多新特性都是在 ES6 这个版本中添加的，比如：
 
 + 类
 + 模块化
@@ -36,15 +35,15 @@ ECMAScript 从发布标准至今已经迭代到了 ES11，但是很多新特性�
 + Promise
 + Let 和 Const
 
-本系列并不会区分 ES 版本带来的新东西，只会尽量的讲到一些常用的东西，一切的不兼容语法都交给 babel
+本系列并不会区分 ES 版本带来的新东西，只会尽量的讲到一些常用的东西，一切不兼容的语法都交给 babel
 
 ## 浏览器中的 JavaScript
 
-JavaScript 有局限性，不能够编写独立运行的程序，因此 JavaScript 只能在某个解释引擎或宿主上运行，浏览器就是 JavaScript 的宿主，但是浏览器中的 JavaScript 不具备对内存和 CPU 的底层访问，因为浏览器不需要这些功能，但是 JavaScript 的能力很大程度上取决于它运行的环境，比如 NodeJS 支持 JavaScript 读取/写入任意文件，执行网络请求等的函数，提供了一些浏览器中没有的功能
+JavaScript 有局限性，不能够编写独立运行的程序，因此只能在某个解释引擎或宿主上运行，浏览器就是 JavaScript 的宿主。但是浏览器中的 JavaScript 不具备对内存和 CPU 的底层访问，因为浏览器不需要这些功能，JavaScript 的能力很大程度上取决于它运行的环境，比如 Node.js 支持 JavaScript 读取/写入任意文件，执行网络请求等的函数，提供了一些浏览器中没有的功能
 
 浏览器中的 JavaScript 可以做和网页交互、用户交互和 Web 服务器相关的所有事情，比如：
 
-+ 在网页中添加新的 HTML，修改网页已有内容和网页的样式
++ 修改网页中的内容，以及更改样式
 + 响应用户的行为，响应鼠标的点击，指针的移动，按键的按动
 + 向远程服务器发送网络请求，下载和上传文件（所谓的 AJAX 和 COMET 技术）
 + 获取或设置 cookie，向访问者提出问题或发送消息
@@ -56,7 +55,7 @@ JavaScript 有局限性，不能够编写独立运行的程序，因此 JavaScri
 + 允许做一些受到限制的文件操作，仅当用户做出特定的行为，JavaScript 才能操作这个文件。例如，用户把文件“拖放”到浏览器中，或者通过`<input>`标签选择了文件
 + 有很多与相机/麦克风和其它设备进行交互的方式，但是这些都需要获得用户的明确许可，因此不存在偷偷摸摸的行为
 + 不同的标签页/窗口之间通常互不了解。有时候，也会有一些联系，例如一个标签页通过 JavaScript 打开的另外一个标签页。但即使在这种情况下，如果两个标签页打开的不是同一个网站（域名、协议或者端口任一不相同的网站），它们都不能相互通信。这就是所谓的“同源策略”，为了解决“同源策略”问题，两个标签页必须都包含一些处理这个问题的特定的 JavaScript 代码，并均允许数据交换。这个限制也是为了用户的信息安全，例如，用户打开的`http://foo.com`网页必须不能访问`http://bar.com`（另外一个标签页打开的网页）也不能从那里窃取信息
-+ JavaScript 可以轻松地通过互联网与当前页面所在的服务器进行通信。但是从其他网站/域的服务器中接收数据的能力被削弱了。尽管可以，但是需要来自远程服务器的明确协议（在 HTTP header 中）
++ JavaScript 可以轻松地通过互联网与当前页面所在的服务器进行通信，但是从其他网站/域的服务器中接收数据的能力被削弱了。尽管可以，但是需要来自远程服务器的明确协议（在 HTTP header 中）
 
 ## JavaScript “上层语言”
 

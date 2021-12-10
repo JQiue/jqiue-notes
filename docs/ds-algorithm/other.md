@@ -1,6 +1,6 @@
 ---
 title: 其它结构
-category: 数据结构
+category: 数据结构与算法
 tags: [集合, 字典, Alpha]
 author: JQiue
 article: false

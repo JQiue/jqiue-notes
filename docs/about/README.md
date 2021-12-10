@@ -28,7 +28,7 @@ sticky: true
 
 会点 Web 前端开发，我 f*** 这该死的 CSS
 
-只会一点点后端开发，使用 NodeJS，或者 Java
+只会一点点后端开发，使用 Node.js，或者 Java
 
 对于 MySQL，MongoDB 的使用仅限于增删改查的水平
 

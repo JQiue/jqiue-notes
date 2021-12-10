@@ -12,8 +12,8 @@ Mock.js 是一种模拟 JSON 数据的前端技术，目的是为了解决后端
 
 两种安装方式：
 
-1. 浏览器环境：引入`mock.js`库
-2. NodeJS环境：`npm i mockjs`
++ 浏览器环境：引入`mock.js`库
++ Node.js 环境：`npm i mockjs`
 
 ## 生成数据
 
