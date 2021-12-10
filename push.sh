@@ -1,19 +1,19 @@
 set -e
 
 # github
-git push github_origin --all
-git push github_origin --tags
+git push github --all
+git push github --tags
 
 # gitlab
-git push gitlab_origin --all
-git push gitlab_origin --tags
+git push gitlab --all
+git push gitlab --tags
 
 # gitee
-git push gitee_origin --all
-git push gitee_origin --tags
+git push gitee --all
+git push gitee --tags
 
 # coding
-git push coding_origin --all
-git push coding_origin --tags
+git push coding --all
+git push coding --tags
 
 cd -

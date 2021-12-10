@@ -6,7 +6,7 @@ author: JQiue
 article: false
 ---
 
-在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“。简而言之，一个包中有一个或多个模块，在 NodeJS 中为了方便开发人员发布、安装和管理包, NodeJS 推出了一个包管理工具：**NPM（Node Package Manager）**
+在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“。简而言之，一个包中有一个或多个模块，在 Node.js 中为了方便开发人员发布、安装和管理包, Node.js 推出了一个包管理工具：**NPM（Node Package Manager）**
 
 ## 包结构
 
@@ -47,7 +47,7 @@ article: false
 
 但对于 NPM 实际需要的字段只有：name、version、description、keywords、repositories、author、bin、main、scripts、engines、dependencies、devDependencies
 
-在安装了 NodeJS 同时，NPM 也自动装好了，NPM 帮助完成了第三方模块的发布、安装和依赖等，通过 NPM，NodeJS 与第三方模块形成了一个良好的生态系统
+在安装了 Node.js 同时，NPM 也自动装好了，NPM 帮助完成了第三方模块的发布、安装和依赖等，通过 Node.js 与第三方模块形成了一个良好的生态系统
 
 NPM 由三个独立的部分组成：
 
@@ -55,7 +55,7 @@ NPM 由三个独立的部分组成：
 + **注册表**：是一个巨大的数据库，保存了每个包（package）的信息
 + **命令行工具**：CLI 通过终端运行，开发者通过 CLI 与 NPM 打交道
 
-在此之前，为了确认 NPM 没有随着 NodeJS 安装出现问题，应该先执行一下`npm -v`，这会打印 NPM 的版本信息。在并不熟悉 NPM 命令之前，可以直接执行`npm`以获得帮助信息，而`npm help <command>`会详细查看具体命令说明
+在此之前，为了确认 NPM 没有随着 Node.js 安装出现问题，应该先执行一下`npm -v`，这会打印 NPM 的版本信息。在并不熟悉 NPM 命令之前，可以直接执行`npm`以获得帮助信息，而`npm help <command>`会详细查看具体命令说明
 
 在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动创建，也可以通过`npm init`命令生成。此为初始化命令，会在运行此命令的目录下创建 package.json，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
 
@@ -89,7 +89,7 @@ npm config set registry https://registry.npm.taobao.org
 如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
 
 ::: warning
-如果卸载了 NodeJS，则应该手动移除掉`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`，给下一次安装 NodeJS 时带来干净的 npm 包环境
+如果卸载了 Node.js`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`，给下一次安装 Node.js 时带来干净的 npm 包环境
 :::
 
 更新包同样也有本地和全局之分，在 package.json 所在路径，运行`npm update`命令，即可实现包的更新，更新全局的包则使用`npm update -g`，这可能很慢，因为依赖太多了
@@ -135,7 +135,7 @@ npx 是自带的包命令执行工具，常用来执行可执行命令，使用`
 + [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
 + [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
 + [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
-+ [nodemon](https://github.com/remy/nodemon)：监听 NodeJS 应用程序的更改，并自动重启服务器
++ [nodemon](https://github.com/remy/nodemon)：监听 Node.js 应用程序的更改，并自动重启服务器
 + [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
 + [Progress](https://github.com/visionmedia/node-progress)：终端进度条
 + [chalk](https://github.com/chalk/chalk)：为终端进行着色

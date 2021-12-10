@@ -12,7 +12,7 @@ article: false
 + 矩阵
 :::
 
-## 字体
+## 字体样式
 
 通过`font-*`属性来规定字体的样式
 
@@ -624,30 +624,16 @@ ul li:nth-child(5) {
 
 ```css
 @font-face {
-  font-family: '';
-  src: url();
+  font-family: 'wjq';
+  src: url(/jinqiu.wang/xxx.ttf);
+}
+
+p {
+  font-family: 'wjq'
 }
 ```
 
 这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用命名的字体了
-
-::: demo @font-face
-
-```html
-<p>淡然而笃定，随性而赤诚</p>
-```
-
-```css
-@font-face {
-  font-family: 'wjq';
-  src: url('https://qn.jinqiu.wang/ZCOOLKuaiLe-Regular.ttf');
-}
-p {
-  font-family: 'wjq';
-}
-```
-
-:::
 
 除此之外还有一种特殊的图标字体，并不像传统的字母、数字、标点符号一样，这种字体可以像对待文字那样改变样式
 

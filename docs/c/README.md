@@ -1,10 +1,9 @@
 ---
-title: 介绍 && 第一个 C 语言程序
+title: C 语言
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
 C 是 1972 年贝尔实验室的丹尼斯·里奇在开发 UNIX 操作系统中设计的，C 其实是在 B 语言（Ken Thompson 发明）的基础上进行了设计，初衷只是为了将其作为程序员的编程工具

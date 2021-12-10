@@ -37,6 +37,7 @@ module.exports = [
       { text: 'HTML/CSS', icon: 'html', link: '/html-css/'},
       { text: 'WebAPI', icon: 'wangluo', link: '/webapi/'},
       { text: 'Canvas', icon: 'canvas', link: '/canvas/'},
+      { text: 'WebAssembly', icon: 'wasm', link: '/wasm/'},
     ]
   },
   {

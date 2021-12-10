@@ -8,7 +8,7 @@ article: false
 
 ## 处理 URL
 
-NodeJS 提供了一些针对 URL 相关操作的模块
+Node.js 提供了一些针对 URL 相关操作的模块
 
 url 模块用于解析 URL 字符串
 
@@ -102,7 +102,7 @@ qs.unescape("https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23"); // https://j
 
 ## 创建 HTTP 服务
 
-NodeJS 原本的用途就是开发一款高性能的 Web 服务器，`http`就是用来创建服务器的模块，它有两种使用方式：
+Node.js 原本的用途就是开发一款高性能的 Web 服务器，`http`就是用来创建服务器的模块，它有两种使用方式：
 
 + 作为客户端时，发起一个 HTTP 请求，获取服务端响应
 + 作为服务端时，创建一个 HTTP 服务器，监听客户端请求并响应
@@ -120,7 +120,7 @@ http.createServer((request, response) => {
 
 `request`保存着客户端的 HTTP 请求头信息，`response`用来设置服务端给客户端的相应信息
 
-NodeJS 不会自动响应客户端，必须负责任的使用`response.end()`方法去响应客户端并结束，因此可以在结束响应之前，在请求的生命周期内运行任何逻辑，如果没有响应，客户端就会挂起，直到超时并结束响应
+Node.js 不会自动响应客户端，必须负责任的使用`response.end()`方法去响应客户端并结束，因此可以在结束响应之前，在请求的生命周期内运行任何逻辑，如果没有响应，客户端就会挂起，直到超时并结束响应
 
 ### 客户端模式
 
@@ -141,13 +141,13 @@ req.end();
 + `request.headers`：请求头信息
 + `request.httpVersion`：协议版本
 
-NodeJS 提供了几个修改响应头的方法，`response.setHeader(field, value)`，`response.getHeader(field)`和`response.removeHeader(field)`
+Node.js 提供了几个修改响应头的方法，`response.setHeader(field, value)`，`response.getHeader(field)`和`response.removeHeader(field)`
 
 对于响应头来说，一定要在`response.write()`以及`response.end`前使用
 
 默认的 HTTP 响应码是`200`，有时需要设置一些别的状态码可以使用`response.statusCode`，也应该在一些结束响应的逻辑前使用
 
-NodeJS 的 HTTP 读取数据时，会触发`data`事件，并将数据块放到其中等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
+Node.js 的 HTTP 读取数据时，会触发`data`事件，并将数据块放到其中等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
 
 ```js
 http.createServer((req, res) => {
@@ -284,7 +284,7 @@ fs.exists('./data.txt', res => {})
 
 ## 事件触发器
 
-在 NodeJS 中很多对象也会触发各种事件，比如对于代表 Web 服务器的`http.Server`来说，可能会触发”接收到请求“，”产生连接错误“等各种事件，针对于不同的事件，都需要不同的事件处理
+在 Node.js 中很多对象也会触发各种事件，比如对于代表 Web 服务器的`http.Server`来说，可能会触发”接收到请求“，”产生连接错误“等各种事件，针对于不同的事件，都需要不同的事件处理
 
 所有可能触发事件的对象都是一个继承了`EventEmitter`类的子类对象，`EventEmitter`类定义了很多方法，用来处理和事件相关的事情：
 
@@ -344,9 +344,9 @@ const buf3 = Buffer.concat([buf1, buf2]);
 
 ## 流
 
-流是用于在 NodeJS 中处理流数据的抽象接口，`stream`模块提供了用于实现流接口的 API，在 NodeJS 中提供了很多流对象，比如，HTTP 服务的请求，进程的输出流，流是可读可写的，或者两者兼之，且所有的流都是`EventEmitter`的实例
+流是用于在 Node.js 中处理流数据的抽象接口，`stream`模块提供了用于实现流接口的 API，在 Node.js 中提供了很多流对象，比如，HTTP 服务的请求，进程的输出流，流是可读可写的，或者两者兼之，且所有的流都是`EventEmitter`的实例
 
-NodeJS 中有四种基本的流类型：
+Node.js 中有四种基本的流类型：
 
 + `Writable`：可写入数据的流
 + `Readable`：可读取数据的流
@@ -416,7 +416,7 @@ console.log(path.extname('bar.js')); // .html
 
 ## 逐行读取
 
-`readline`模块提供了读取可读流的接口，使用该程序时 NodeJS 进程不会关闭，因为在等待输入流中的数据，必须在某个时机手动关闭
+`readline`模块提供了读取可读流的接口，使用该程序时 Node.js 进程不会关闭，因为在等待输入流中的数据，必须在某个时机手动关闭
 
 ```js
 const readline = require('readline')

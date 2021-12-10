@@ -27,7 +27,7 @@ Lint 工具的优势：
 
 ## 在项目中搞起
 
-ESlint 基于 NodeJS，所以必须拥有 package.json 文件
+ESlint 基于 Node.js package.json 文件
 
 ```js
 npm install -g eslint
