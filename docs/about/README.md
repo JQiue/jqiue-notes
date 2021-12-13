@@ -121,10 +121,6 @@ sticky: true
   + [WebAPI](/webapi/):star::star::star::star:
   + [Canvas](/canvas/):star::star:
   + [WebAssembly](/docs/wasm/):star:
-+ 应用开发
-  + [移动应用](/mobile/):star:
-  + [后端](/backend/):star::star:
-  + [桌面端](/desktop/):star:
 + 应用框架
   + [Vue](/vue/):star::star::star:
   + Spring:star::star:

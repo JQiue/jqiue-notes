@@ -21,15 +21,15 @@ module.exports = [
       { text: 'Python', icon: 'python', link: '/python/' }
     ]
   },
-  {
-    text: '应用开发',
-    icon: 'youtian',
-    items: [
-      { text: '后端', icon: 'shujuchuli', link: '/backend/' },
-      { text: '移动', icon: 'shoujiyingyong', link: '/mobile/' },
-      { text: '桌面', icon: 'zuixing-86', link: '/desktop/' }
-    ]
-  },
+  // {
+  //   text: '应用开发',
+  //   icon: 'youtian',
+  //   items: [
+  //     { text: '后端', icon: 'shujuchuli', link: '/backend/' },
+  //     { text: '移动', icon: 'shoujiyingyong', link: '/mobile/' },
+  //     { text: '桌面', icon: 'zuixing-86', link: '/desktop/' }
+  //   ]
+  // },
   {
     text: 'Web',
     icon: 'liulanqi',
