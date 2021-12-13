@@ -100,7 +100,7 @@ qs.escape("https://jinqiu.wang/?name=zs&age=23") // https%3A%2F%2Fjinqiu.wang%2F
 qs.unescape("https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23"); // https://jinqiu.wang/?name=zs&age=23
 ```
 
-## 创建 HTTP 服务
+## HTTP 服务
 
 Node.js 原本的用途就是开发一款高性能的 Web 服务器，`http`就是用来创建服务器的模块，它有两种使用方式：
 
@@ -120,19 +120,19 @@ http.createServer((request, response) => {
 
 `request`保存着客户端的 HTTP 请求头信息，`response`用来设置服务端给客户端的相应信息
 
-Node.js 不会自动响应客户端，必须负责任的使用`response.end()`方法去响应客户端并结束，因此可以在结束响应之前，在请求的生命周期内运行任何逻辑，如果没有响应，客户端就会挂起，直到超时并结束响应
+Node.js 不会自动响应客户端，必须负责任的使用`response.end()`去响应客户端并结束，因此可以在结束响应之前，在请求的生命周期内运行任何逻辑，如果没有响应，客户端就会挂起，直到超时并结束响应
 
 ### 客户端模式
 
-`request(url, callback(response))`方法可以创建一个客户端，指定请求对象和请求头数据，然后就会返回一个`request`对象，之后就可以将`request`对象作为一个只写数据流来写入数据和结束请求，结束请求之后就调用回调函数
+`request(url, callback(response))`可以创建一个客户端，指定请求对象和请求头数据，然后就会返回一个`request`对象，之后就可以将`request`对象作为一个只写数据流来写入数据和结束请求，结束请求之后就调用回调函数
 
 ```js
 const req = http.request("http://127.0.0.1:3000", res => {})
-req.write("")
+req.write("");
 req.end();
 ```
 
-### 读取请求头和设置响应头
+### 读取请求
 
 请求信息可以在`request`中获取：
 
@@ -141,11 +141,16 @@ req.end();
 + `request.headers`：请求头信息
 + `request.httpVersion`：协议版本
 
-Node.js 提供了几个修改响应头的方法，`response.setHeader(field, value)`，`response.getHeader(field)`和`response.removeHeader(field)`
+### 处理响应
 
-对于响应头来说，一定要在`response.write()`以及`response.end`前使用
+通过`response`处理响应：
 
-默认的 HTTP 响应码是`200`，有时需要设置一些别的状态码可以使用`response.statusCode`，也应该在一些结束响应的逻辑前使用
++ `response.statusCode`：响应码，默认 200
++ `response.setHeader(field, value)`
++ `response.getHeader(field)`
++ `response.removeHeader(field)`
+
+对于响应处理操作，一定要在`response.write()`以及`response.end()`前使用
 
 Node.js 的 HTTP 读取数据时，会触发`data`事件，并将数据块放到其中等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
 
@@ -156,7 +161,7 @@ http.createServer((req, res) => {
   });
   req.on('end', () => {
     res.end();
-  })
+  });
 });
 ```
 
@@ -164,7 +169,7 @@ http.createServer((req, res) => {
 
 ### 路由实现
 
-根据不同的路径实现不同的功能
+根据不同的路径进行不同的响应
 
 ```js
 const url = require('url');
@@ -200,7 +205,7 @@ console.log('Server start at http://localhost:3000');
 `fs`模块提供了操作系统文件的能力，需要引入
 
 ::: tip
-如果不指定编码，则返回 Buffer，异步方法大部分都是错误优先的回调方式
+如果不指定编码，则返回 Buffer，大部分异步方法都是错误优先的回调方式
 :::
 
 读取文件数据：
@@ -229,10 +234,10 @@ fs.writeFileSync('./data.txt', 'hello, world');
 `writeFile`是一种覆盖写入，如果想要追加内容，则使用`appendFile`：
 
 ```js
-// 同步
+// 异步
 fs.appendFile('data.txt', '追加内容', err => {})
 
-// 异步
+// 同步
 fs.appendFileSync('data.txt', '追加内容');
 ```
 
@@ -400,18 +405,15 @@ console.log(path.extname('bar.js')); // .html
 
 `util`模块提供了大量的工具类型的 API
 
-+ `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，转换为一个返回 promise 的形式
++ `util.promisify(original)`：会将`original`这种错误优先回调风格的函数，进行 Promise 化
 
 ```js
-(async () => {
-  const fs = require('fs');
-  const {
-    promisify
-  } = require('util');
-  const readFile = promisify(fs.readFile);
-  const data = await readFile('c:/Users/JQiue/Desktop/code-like-shit/nodejs/demo/data.txt');
+const fs = require('fs');
+const { promisify } = require('util');
+const readFile = promisify(fs.readFile);
+readFile('data.txt').then(res => {
   console.log(data, data.toString());
-})();
+});
 ```
 
 ## 逐行读取

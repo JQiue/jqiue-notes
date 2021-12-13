@@ -729,6 +729,15 @@ Did he telephone again?
 No, he didn't!
 ```
 
+time 在英语中作不可数名词表示“时间”，作可数名词表示“次数”。3 次及以上通常用”基数词 + times“表示：
+
+```
+once 1 次
+twice 2 次
+three times 3 次
+five times 5 次
+```
+
 ## Lesson 73 The way to king Street
 
 ```

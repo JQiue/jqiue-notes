@@ -461,38 +461,93 @@ foo(2); // 结果被缓存，并不会调用被装饰的函数
 
 ```js
 let user = {
-    something(){
-        return 1;
-    },
-    foo(x) {
-        console.log('Called with ', x);
-        return x * this.something(); // TypeError: this.something is not a function
-    }
+  something() {
+    return 1;
+  },
+  foo(x) {
+    console.log('Called with', x);
+    return x * this.something(); // TypeError: this.something is not a function
+  }
 }
 
-function Decorator(func) {
-    let cache = new Map();
-    return function (x) {
-        if(cache.has(x)){
-            return cache.get(x);
-        }
-        let result = func(x);
-        cache.set(x, result);
-        return result;
-    }
-}
+const func = user.foo;
 
-user.foo = Decorator(user.foo);
-user.foo(1);
+func(); // 实际上是由全局对象 window 调用，this 指向 window
 ```
 
-`call()`方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数，该方法的语法和作用与`apply()`方法类似，只有一个区别，就是`call()`方法接受的是一个参数列表，而 apply() 方法接受的是一个包含多个参数的数组，在转发`this`时会立即调用
+对象的方法在传递的过程中就会发生`this`指向丢失问题，为了解决这个问题，可以使用属于函数上的原型方法来绑定`this`：
 
-`bind(context)`用于返回原函数的拷贝，并拥有指定的`this`值和参数，但是不会被调用
++ `Function.prototype.call(ctx, arg1, arg2, ...)`
++ `Function.prototype.apply(ctx, [arg1, arg2, ...])`
++ `Function.prototype.bind(ctx, arg1, arg2, ...)`
 
-<!-- more -->
+
+`call()`方法使用一个指定的 this 值和单独给出的一个或多个参数来调用一个函数，该方法的语法和作用与`apply()`方法类似，只有一个区别，就是`call()`方法接受的是一个参数列表，而`apply()`接受的是一个包含多个参数的数组，在转发`this`时会立即调用
+
+```js
+let user = {
+  something() {
+    return 1;
+  },
+  foo(x) {
+    console.log('Called with', x); Called with  1
+    return x * this.something(); 
+  }
+}
+
+const func = user.foo;
+
+/* 三种解决方案 */
+func.call(user, 1);
+func.apply(user, [1]);
+func.bind(user, 1)();
+```
+
+`bind()`用于返回原方法的拷贝，并拥有指定的`this`值和参数，但是不会被调用
+
+在调用返回后的函数，仍然为其可以传入参数，将会排在被指定的参数后面
+
+```js
+function foo(x, ...args) {
+  console.log(x, args);  // 1 [ 2, 3, 4 ]
+}
+
+foo.bind(this, 1)(2, 3, 4);
+```
+
+`bind()`可以有很多用处：
+
++ 偏函数
++ 柯里化
 
 ## 函数的柯里化
+
+柯里化就是将接收多个参数的函数变成接受单一参数的函数，并且返回接受剩下的参数而且返回结果的新函数的技术
+
+```js
+// 普通函数
+function add(a, b) {
+  return a + b;
+}
+
+// 柯里化
+function curryingAdd(a) {
+  return function (b) {
+    return a + b;
+  }
+}
+
+add(1, 2); // 3
+curryingAdd(1)(2); // 3
+```
+
+费这么大一圈干什么呢？当然有如下的好处：
+
++ 参数复用
++ 提前确认
++ 延迟运行
+
+<!-- to be updated -->
 
 ## 总结
 

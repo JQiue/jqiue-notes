@@ -1,12 +1,12 @@
 ---
-title: 标准库
+title: 标准功能
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
 ---
 
-Python 有很多内置函数供调用
+这里是 JavaScript 中提供的一些标准功能
 
 ## input
 
@@ -23,7 +23,7 @@ input() 函数只能得到字符串
 
 ## print
 
-通过 print() 函数来输出数据
+通过`print()`函数来向控制台输出数据
 
 ### 输出函数的格式化
 

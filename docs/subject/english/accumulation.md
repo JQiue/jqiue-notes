@@ -9,11 +9,31 @@ article: false
 ## 过去式不规则变化
 
 ```plain
-buy -> bought
-lose -> lost
-see -> saw
-meet -> met
-get -> got
+buy - bought
+lose - lost
+see - saw
+meet - met
+get - got
+go - went
+see - saw
+understand - understood
+take - took
+read - read
+drink - drank
+run - ran
+know - knew
+put - put
+cut - cut
+eat - ate
+meet - met
+come - came
+lose - lost
+tell - told
+speak - spoke
+find - found
+give - gave
+swim - swam
+have - had
 ```
 
 ## 过去分词不规则变化

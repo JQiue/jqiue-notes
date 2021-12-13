@@ -229,7 +229,7 @@ JavaScript 中的数组既可以是队列，也可以是栈
 + `arr.pop()`：数组末端删除一个元素
 + `arr.push(value)`：数组末端添加一个元素，返回新的长度
 
-分割方法
+分割
 
 + `arr.splice(start, num, element1, ...)`：从 start 开始，删除 num 个元素，并用 element1 以及更多元素替换，返回由删除元素组成的数组，会改变原有数组
 + `arr.slice(start, end)`，返回从 start 开始到 end（不包含）索引之间的元素数组，不会更改，只是一种浅拷贝
@@ -239,24 +239,24 @@ JavaScript 中的数组既可以是队列，也可以是栈
 splice 和 slice 还支持反向索引，从 -1 开始
 :::
 
-合并方法
+合并
 
 + `arr.concat(arg1, ...)`：用于合并来自其他数组和其他的值，并返回一个新的数组，只复制数组中的元素，如果看起来像数组则会被当作整体添加
 + `arr.join(glue)`：将数组通过`glue`连接成一个字符串，`glue`是可选的
 
-转换方法
+转换
 
 + `arr.keys()`：返回一个由索引组成的可迭代对象
 + `arr.values()`：返回一个由元素组成的可迭代对象
 + `Array.from(arrayLike)`：从一个类数组或可迭代对象中创建一个新的浅拷贝数组
 
-查找方法
+查找
 
-+ `indexOf(item, from)`：从 from 处从左向右搜索元素，找不到返回 -1
-+ `lastIndexOf(item, from)`：和上面一样，只不过是从右到左
-+ `includes(item, from)`：从 from 处开始搜索 item，找到就返回 true
++ `arr.indexOf(item, from)`：从 from 处从左向右搜索元素，找不到返回 -1
++ `arr.lastIndexOf(item, from)`：和上面一样，只不过是从右到左
++ `arr.includes(item, from)`：从 from 处开始搜索 item，找到就返回 true
 
-排序方法
+排序
 
 + `arr.sort(callback())`：对数组进行原位排序，并不返回新的数组，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
 + `arr.reverse()`：反转数组元素的索引顺序，会改变原数组
@@ -278,6 +278,8 @@ sort 方法实现了通用的排序算法
 + `arr.fill(value, start, end)`：从 start 到 end 用重复的 value 填充
 + `arr.flat(depath)`：按照一个指定的深度递归遍历数组，并将所有的元素合并为一个新的数组
 + `Array.isArray(arr)`：检查 arr 是否为一个数组
+
+会修改原数组的方法有：splice、sort、reverse、push、pop、shift、unshift
 
 ## 总结
 

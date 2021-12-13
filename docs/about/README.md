@@ -75,7 +75,7 @@ sticky: true
 - [x] 20%（2021.10.28）
 - [ ] 30%
 
-所有的文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式标记
+所有文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式标记
 
 + 处于`Alpha`阶段的文章，可能啥也没有，内容仅作参考，问题较多，随时会进行修改
 + 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，会出现在首页文章列表
@@ -119,10 +119,8 @@ sticky: true
 + Web
   + [HTML-CSS](/html-css/):star::star::star::star:
   + [WebAPI](/webapi/):star::star::star::star:
-+ 应用开发
-  + [移动应用](/mobile/):star:
-  + [后端](/backend/):star::star:
-  + [桌面端](/desktop/):star:
+  + [Canvas](/canvas/):star::star:
+  + [WebAssembly](/docs/wasm/):star:
 + 应用框架
   + [Vue](/vue/):star::star::star:
   + Spring:star::star:
