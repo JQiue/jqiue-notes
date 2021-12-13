@@ -41,11 +41,13 @@ const theory = [
 const c = [
   '',
   'syntax',
+  'function',
   'array-string',
   'pointer',
   'struct-union',
   'preprocessing',
   'storage-classes',
+  'standard',
   'input-memory-buffer',
 ];
 
@@ -78,7 +80,7 @@ const javascript = [
   'proxy-reflect',
   'module',
   'event-loop',
-  'stdlib',
+  'standard',
   'code-quality',
 ];
 
@@ -91,7 +93,7 @@ const python = [
   'comprehensions',
   'exception',
   'special-function-usage',
-  'stdlib',
+  'standard',
   'spider',
 ];
 
@@ -218,6 +220,7 @@ const subject = [
       'accumulation',
       'nce1',
       'nce2',
+      'nce3',
     ]
   },
   {

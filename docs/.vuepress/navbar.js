@@ -31,7 +31,7 @@ module.exports = [
     ]
   },
   {
-    text: 'web',
+    text: 'Web',
     icon: 'liulanqi',
     items: [
       { text: 'HTML/CSS', icon: 'html', link: '/html-css/'},

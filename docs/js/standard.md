@@ -1,12 +1,12 @@
 ---
-title: 标准库
+title: 标准功能
 category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
 ---
 
-这里是 JavaScript 中提供的一些工具
+这里是 JavaScript 中提供的一些标准功能
 
 ## 包装对象
 
@@ -18,7 +18,7 @@ article: false
 console.log(new Date()); // 显示当前的日期和时间
 ```
 
-如果传入了一个整数，则表示 1970 年 1 月 1 日 UTC+0 之后经过的毫秒数
+如果传入了一个整数`n`，则表示 1970 年 1 月 1 日 UTC + `n` 之后经过的毫秒数
 
 ```js
 console.log(new Date(0)) // 1970-01-01T00:00:00.000Z
