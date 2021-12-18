@@ -1,6 +1,6 @@
 ---
 title: 设计模式
-category: 知识分享
+category: 设计模式
 tags: [Alpha]
 author: JQiue
 article: false
@@ -30,7 +30,7 @@ article: false
 
 面向对象的意义并不是为了模拟世间万物，这只是为了好学习好理解而已，而是为了数据结构化，将一些混乱的数据集中管理，对于计算机来说，结构化才是最简单的，编程应该简单和抽象
 
-### 继承
+## 继承
 
 在编程中通常需要一些这样的类，这些类能够与其他的类拥有相同的属性和方法，为了使这一点变得更加容易，类的功能可以从其他的类扩展出来，而扩展出来的类都用于和基类一样的属性和方法，并且自身有更多定义的部分，因此就可以避免写一些重复的代码，在继承的关系中，两个类应该是一种“属于”的关系，通过继承创建的类叫做子类或派生类，被继承的类称为基类、父类或超类
 
@@ -60,15 +60,15 @@ class Student extends Person {
 
 父类是公共的，不仅仅服务一个子类，继承可以将公共方法抽离出来，提高复用，减少冗余
 
-### 封装
+## 封装
 
 对象中数据的权限和保密，减少耦合，不该外露的不外露，利于数据、接口的权限管理
 
-### 多态
+## 多态
 
 同一个接口不同实现
 
-### jQuery 面型对象编程实现
+## jQuery 面型对象编程实现
 
 ```js
 class jQuery {
@@ -93,7 +93,7 @@ class jQuery {
 
 UML（Unified Modeling Language）即统一建模语言，类图即包含很多类的图，关系主要将泛化和关联
 
-![uml](./images/uml.png)
+![uml](../images/uml.png)
 
 这张类图就是下面的代码表示：
 
@@ -179,271 +179,5 @@ class Bar extends Person {
 ### 从设计到模式
 
 设计是设计，模式是模式，它们是独立的
-
-## 创建型
-
-### 工厂模式
-
-工厂模式是将`new`操作单独封装，遇到`new`的时候就需要考虑是否该适用工厂模式了
-
-```js
-class Product {
-  constructor(name) {
-    this.name = name;
-  }
-  init() {}
-  func1() {}
-  func2() {}
-}
-
-class Creator {
-  create(name){
-    return new Product(name);
-  }
-}
-
-const creator = new Creator();
-const product1 = creator.create('product1');
-product1.init();
-```
-
-意义：
-
-+ 构造函数和创建者分离
-+ 符合开放封闭原则
-
-使用场景：
-
-+ jQuery
-+ React.createElement
-+ Vue 异步组件
-
-### 单例模式
-
-单例模式就是保证一个类只有一个实例，实现方法就是先判断实例是否存在，如果存在直接返回，不存在就创建了再返回，确保一个类只有一个实例对象
-
-<CodeGroup>
-
-<CodeGroupItem title="Java" active>
-
-```java
-public class SingleObject {
-  private SingleObject instance = null;
-  // 私有化构造方法
-  private SingleObject (){}
-  // 获取实例的唯一方法
-  public SingleObject getInstance() {
-  // 判断实例是否存在，否则只 new 一次
-    if(instance == null) {
-      return new SingleObject();
-    }
-    return instance;
-  }
-}
-
-public class Main {
-  public static void main(String args[]) {
-    // 报错，构造方法私有化了
-    // SingleObject instance = new SingleObject();
-    SingleObject instance = SingleObject.getInstance();
-  }
-}
-```
-
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
-```js
-class SingleObject {}
-
-SingleObject.getInstance = (function() {
-  let instance;
-  return function(){
-    if(!instance) {
-      instance = new SingleObject();
-    }
-    return instance;
-  }
-})();
-
-let single1 = SingleObject.getInstance();
-let single2 = SingleObject.getInstance();
-console.log(single1 === single2); // true
-```
-
-</CodeGroupItem>
-
-</CodeGroup>
-
-意义：
-
-+ 符合单一职责原则
-+ 没法开放封闭原则，但是绝对不违反开放封闭原则
-
-使用场景：
-
-+ 模拟登录框
-+ jQuery 只有一个`$`
-+ 购物车
-+ Vuex 和 Redux 中的 store
-
-### 原型模式
-
-## 结构型
-
-### 适配器模式
-
-适配器模式是将一个类的接口转换成客户希望的另一个接口，使原本由于接口不兼容而不能一起工作的类可以一起工作
-
-```js
-class Adaptee {
-  foo(){
-    return 'foo';
-  }
-}
-
-class Target {
-  constructor(){
-    this.adaptee = new Adaptee();
-  }
-  bar() {
-    return `bar -> ${this.adaptee.foo()}`;
-  }
-}
-
-let target = new Target();
-console.log(target.bar());  // 'foo'
-```
-
-设计原则：
-
-+ 旧接口和使用者相分离
-+ 符合开放封闭原则
-
-使用场景：
-
-+ 使用一个已经存在的对象，但其方法或接口不符合要求，封装旧接口
-+ 创建一个可复用的对象，该对象可以与其他不相关或不可见的对象协同工作
-+ 适用已经存在一个或多个对象，但是不能进行继承以匹配它的接口
-+ Vue computed 转换 data
-
-### 装饰器模式
-
-### 代理模式
-
-### 外观模式
-
-### 桥接模式
-
-### 组合模式
-
-### 享元模式
-
-## 行为型
-
-### 策略模式
-
-### 模板方法模式
-
-### 观察者模式
-
-### 迭代器模式
-
-Iterator 模式用于在数据集合中按照顺序遍历集合，iterate 在英文中有反复做某件事的意思，在中文中被称为“迭代”
-
-```java
-interface Iterator {
-    public abstract boolean hasNext();
-    public abstract Object next();
-}
-
-class Book {
-    private String name;
-    public Book(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return this.name;
-    }
-}
-
-class BookShelf {
-    private Book[] books;
-    private int last = 0;
-    public BookShelf(int maxsize) {
-        this.books = new Book[maxsize];
-    }
-    public Book getBookAt(int index) {
-        return this.books[index];
-    }
-    public void appendBook(Book book) {
-        this.books[last] = book;
-        this.last++;
-    }
-    public int getLength() {
-        return last;
-    }
-    public Iterator iterator() {
-        return new BookShelfIterator(this);
-    }
-}
-
-class BookShelfIterator implements Iterator {
-    private BookShelf bookShelf;
-    private int index;
-    public BookShelfIterator (BookShelf bookShelf) {
-        this.bookShelf = bookShelf;
-        this.index = 0;
-    }
-    public boolean hasNext() {
-        if (index < bookShelf.getLength()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    public Object next() {
-        Book book = bookShelf.getBookAt(index);
-        index++;
-        return book;
-    }
-}
-
-public class Main {
-    public static void main(String args[]) {
-        BookShelf bookShelf = new BookShelf(4);
-        bookShelf.appendBook(new Book("编程珠玑"));
-        bookShelf.appendBook(new Book("人月神话"));
-        bookShelf.appendBook(new Book("没有银弹"));
-        bookShelf.appendBook(new Book("整洁之道"));
-        System.out.println(bookShelf.getLength());
-        Iterator it = bookShelf.iterator();
-        while (it.hasNext()) {
-            Book book = (Book)it.next();
-            System.out.println(book.getName());
-        }
-    }
-}
-```
-
-+ Iterator：该角色负责定义按照顺序遍历每个元素的接口，定义了 hasNext() 和 next() 两个方法
-+ ConcreteIterator：该角色负责实现 Iterator 所定义的接口，存储了遍历集合的必要信息
-+ Aggregate：该角色负责创建 Iterator 角色的接口，这是一个方法，会创建一个能够迭代内部元素东西
-+ ConcreteAggregate：该角色负责实现 Aggregate 所定义的接口
-
-### 职责链模式
-
-### 命令模式
-
-### 备忘录模式
-
-### 状态模式
-
-### 访问者模式
-
-### 中介者模式
-
-### 解释器模式
 
 <!-- more -->

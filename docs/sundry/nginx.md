@@ -16,30 +16,27 @@ Nginx 采用了简单的文件格式的配置文件，下面是指令的一些�
 + 包含指令：include
 
 ```
-#user  nobody;
-worker_processes  1;
-
-events {
-    worker_connections  1024;
+events 
+{
+  # ... 
 }
-
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-    sendfile        on;
-    keepalive_timeout  65;
-    server {
-        listen       80;
-        server_name  localhost;
-        location / {
-            root   html;
-            index  index.html index.htm;
-        }
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+http  
+{
+  server
+  { 
+    location path
+    {
+      # ...
     }
+    location path
+    {
+     # ...
+    }
+     }
+  server
+  {
+    # ...
+  }
 }
 ```
 
@@ -59,11 +56,31 @@ http {
 + 日志文件在`logs`
 + 默认的虚拟主机目录在`html`
 
+## 内置变量
+
+变量名 | 功能
+---|---
+`$host` | 请求信息中的 Host，如果请求中没有 Host 行，则等于设置的服务器名
+`$request_method` | 客户端请求类型，如 GET、POST
+`$remote_addr` | 客户端的 IP 地址
+`$args` | 请求中的参数
+`$content_length` | 请求头中的 Content-length 字段
+`$http_user_agent` | 客户端 agent 信息
+`$http_cookie` | 客户端 cookie 信息
+`$remote_addr` | 客户端的 IP 地址
+`$remote_port` | 客户端的端口
+`$server_protocol` | 请求使用的协议，如 HTTP/1.0、HTTP/1.1
+`$server_addr` | 服务器地址
+`$server_name` | 服务器名称
+`$server_port` | 服务器的端口号
+
 ## 代理静态资源
 
-## 反向代理
+## 正向代理和反向代理
 
-反向代理隐藏了真实的服务端，对于客户端来说是没有感知的，就像拨打`10086`一样，每次接电话的客服并不是同一个人，而是由`10086`分配一个客服，`10086`就承担着反向代理的角色
+正向代理是为客户端服务的，客户端可以通过正向代理访问它本身无法访问到的服务器。对于服务端来说，服务端无法区分是否来自代理访问还是真实客户端访问
+
+反向代理是为服务端服务的，反向代理可以帮助服务端接受请求，进行请求转发，负载均衡等。反向代理隐藏了真实的服务端，对于客户端来说是没有感知的，就像拨打`10086`一样，每次接电话的客服并不是同一个人，而是由`10086`分配一个客服，`10086`就承担着反向代理的角色
 
 nginx 反向代理靠`proxy_pass`项来完成，比如：
 
@@ -98,7 +115,7 @@ server {
 Nginx 无法分辨请求方的 IP 是否真实，也可能是伪造的
 :::
 
-<!-- more -->
+## 配置 gzip 压缩传输
 
 ## 设置响应头
 
@@ -160,3 +177,7 @@ server {
   }
 }
 ```
+
+## 负载均衡
+
+## HTTPS

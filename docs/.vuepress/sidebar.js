@@ -106,11 +106,20 @@ const ds_algorithm = [
   'tree',
   'graph',
   'other',
+  'recursion',
   'find',
   'sort',
   'random',
   'core',
 ];
+
+const design_pattern = [
+  '',
+  'creational',
+  'structural',
+  'behavioral'
+]
+
 
 const database = [
   '',
@@ -157,17 +166,6 @@ const os = [
   },
 ];
 
-const backend = [
-  ''
-]
-
-const desktop = [
-  ''
-]
-const mobile = [
-  ''
-]
-
 const nodejs = [
   '',
   'global',
@@ -187,6 +185,7 @@ const webapi = [
   'network',
   'storage',
   'drag',
+  'worker',
 ];
 
 const canvas = [
@@ -248,8 +247,6 @@ const sundry = [{
     'excel',
     'internet-work',
     'adb',
-    'design-pattern',
-    'markdown',
     'latex',
     'tomcat',
     'emmet',
@@ -261,12 +258,16 @@ const sundry = [{
     'regex',
     'interview',
     'jquery',
-    'eslint',
+    'lint',
     'babel',
     'typescript',
     'programlang',
     'css-preprocessor',
-    'csslint',
+    'scaffolding',
+    'restful-graphql',
+    'editor',
+    'performance',
+    'openssl',
   ]
 }];
 
@@ -277,6 +278,10 @@ const vue = [
   'vue-router',
 ]
 
+const react = [
+  '',
+]
+
 module.exports = {
   "/theory/": theory,
   "/c/": c,
@@ -284,6 +289,7 @@ module.exports = {
   "/js/": javascript,
   "/python/": python,
   "/ds-algorithm/": ds_algorithm,
+  "/design-pattern/":design_pattern,
   "/database/": database,
   "/os/": os,
   "/html-css/": htmlcss,
@@ -291,10 +297,8 @@ module.exports = {
   "/webapi/": webapi,
   "/wasm/": wasm,
   "/vue/": vue,
+  "/react/": react,
   "/nodejs/": nodejs,
-  "/backend/": backend,
-  "/desktop/": desktop,
-  "/mobile/": mobile,
   "/subject/": subject,
   "/sundry/": sundry,
   "/about/": ['']

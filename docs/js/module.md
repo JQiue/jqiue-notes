@@ -6,29 +6,9 @@ author: JQiue
 article: false
 ---
 
-随着前端的发展，JavaScript 不在局限于表单验证和特效制作上了，经过漫长的过程，JavaScript 终于暴露了自己先天就缺乏的一个功能：模块。对比其他语言来说，Java 有 import，Python 也有 import，Ruby 有 require 用来解决引入代码的机制。JavaScript 通过`<script>`引入代码的方式自然就显得混乱无比，自身根本就没有组织和约束能力，因此必须用命名空间等人为方式来约束代码
+早期的网站将所有代码全部写到一个文件，容易产生污染，JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些代码很多在一个文件中就可以完成了
 
-虽然前端的 JavaScript 有着更多标准 API，但是对于后端的 JavaScript 来说，规范已经远远落后，有着以下很严重的缺陷：
-
-+ 没有模块系统
-+ 标准库少，相对于前端来说
-+ 没有标准接口，没有 Web 服务器以及数据库之类的统一接口
-+ 缺乏包管理的能力，不能自动加载以及安装依赖
-
-随着时间的发展，JavaScript 社区终于为其制定了响应的规范，其中 CommonJS 规范的提出是一个非常重要的里程碑，它为 JavaScript 提供了一个非常美好的前景，即在任何地方都能运行 JavaScript。JavaScript 不再停留在小脚本的阶段，而可以开发很多富客户端应用：
-
-+ 服务端
-+ 命令行
-+ 桌面图形
-+ 混合应用
-
-称职的作家会把他的书分章节和段落；好的程序员会把他的代码分成模块，就好像书籍的一章，模块仅仅是一坨代码而已，好的代码模块分割的内容一定是很合理的，便于你增加减少或者修改功能，同时又不会影响整个系统。将一个复杂的程序依据一定的规则（规范）封装成几个块（文件），并组合在一起，块的内部数据/实现是私有的，只是向外暴露一些接口与其他模块通信
-
-## Why
-
-早期的网站将所有的代码全部写到一个文件，容易产生污染，JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些代码很多在一个文件中就可以完成了，所以，只需要在 HTML 文件中添加一个`<script>`引入这些代码
-
-随着前端复杂度提高，为了能够提高项目代码的可读性、可扩展性等，`.js`文件逐渐多了起来，不再是一个文件就可以解决的了，而是把每一个文件当做一个模块，于是出现了这样的引入方式：
+随着前端复杂度提高，为了能够提高项目代码的可读性、可扩展性等。`.js`文件逐渐多了起来，不再是一个文件就可以解决的了，而是把每一个文件当做一个模块，于是出现了这样的引入方式：
 
 ```html
 <script src="jquery.js"></script>
@@ -38,15 +18,31 @@ article: false
 <script src="main.js"></script>
 ```
 
-即简单的将所有的文件放在一起，但是这些文件的引入顺序不能出错，比如 jQuery 需要先引入，才能引入 jQuery 有关的插件。优点是相比于使用一个文件，这种多个文件实现最简单的模块化的思想是进步的
+即简单的将所有的文件放在一起，优点是相比于使用一个文件，这种多个文件实现最简单的模块化的思想是进步的
 
-缺点是因为每个模块都是暴露在全局的，简单的使用，会导致全局变量命名冲突，当然，也可以使用命名空间的方式来解决。对于大型项目，各种`.js`文件很多，必须手动解决模块和代码库的依赖关系，后期维护成本较高。还会导致依赖关系不明显，难以维护
+缺点是因为每个模块都是暴露在全局的，简单的使用，会导致全局变量命名冲突，当然，也可以使用命名空间的方式来解决。对于大型项目，各种`.js`文件很多，必须手动解决模块和代码库的依赖关系，比如 jQuery 需要先引入，才能引入 jQuery 有关的插件。后期维护成本较高。还会导致依赖关系不明显，难以维护
+
+随着前端的发展，JavaScript 不在局限于表单验证和特效制作上了，经过漫长的过程，JavaScript 终于暴露了自己先天就缺乏的一个功能：模块
+
+虽然前端的 JavaScript 有着更多标准 API，但是对于后端的 JavaScript 来说，规范已经远远落后，有着以下很严重的缺陷：
+
++ 没有模块系统
++ 标准库少，相对于前端来说
++ 没有标准接口，没有 Web 服务器以及数据库之类的统一接口
++ 缺乏包管理的能力，不能自动加载以及安装依赖
+
+对比其他语言来说，Java 有 import，Python 也有 import，Ruby 有 require 用来解决引入代码的机制。而 JavaScript 通过`<script>`引入代码的方式自然就显得混乱无比，自身根本就没有组织和约束能力，因此必须用命名空间等人为方式来约束代码
 
 模块化能降低代码耦合度，功能模块直接不相互影响，根据定义，每个模块都是独立的，良好设计的模块会尽量与外部的代码撇清关系，以便于独立对其进行改进和维护。维护一个独立的模块比起一团凌乱的代码来说要轻松很多
 
 ## 非语言级别的模块化解决方案
 
-全局 Function 模式：把功能封装成不同的全局函数
++ 全局函数模式
++ 命名空间（NameSpace）
++ IIFE 模式
++ 增强的 IIFE 模式
+
+全局函数模式就是把功能封装成不同的全局函数，缺点是随着功能的增加，全局变量也多了起来
 
 ```js
 function foo() {
@@ -57,21 +53,19 @@ function bar() {
 }
 ```
 
-+ 简单封装：(Namespace)模式：减少了全局变量，但本质是对象，外部可以直接修改，不安全
+Namespace 模式减少了全局变量，但本质是对象，外部可以直接修改，不安全
 
 ```js
-const moduleName = {
+const MODULE = {
   foo: function() {},
   bar: function() {},
 };
-module.foo();
-module.bar();
 ```
 
-+ 匿名闭包：IIFE 模式：将数据进行了私有化，外部只能通过暴露的方法操作，提高了安全性，缺点是不能和其他模块产生依赖关系
+IIFE 模式将数据进行了私有化，外部只能通过暴露的方法操作，提高了安全性，缺点是不能和其他模块产生依赖关系
 
 ```js
-const moduleName = (function () {
+const MODULE = (function () {
   let value = '';
   // 封装私有化
   const setValue = function (value) {
@@ -83,220 +77,94 @@ const moduleName = (function () {
   };
   // 向外暴露
   return {
-    setValue: setValue,
-    getValue: getValue
+    setValue,
+    getValue
   }
 })();
 ```
 
-+ IIFE 模式增强：实现了依赖关系，但是引入`.js`文件，模块等必须要有一定的先后顺序
+增强的 IIFE 模式解决了依赖关系，但是引入模块时必须有一定的先后顺序
 
 ```js
-(function(window, module1) {
-  const data = '';
-  function foo() {
-    module1.xxx();
+// 模块一
+const module1 = {
+  show: function () {
+    console.log('module1');
   }
-  function bar() {
-    // ...
+};
+
+// 模块二
+(function (globalThis, module1) {
+  function foo() {
+    module1.show();
   }
   // 给全局对象添加属性来实现暴露
-  window.module2 = {foo, bar};
-})(window, module1);
+  globalThis.module2 = { foo };
+})(globalThis, module1);
 ```
 
-## 语言级别的模块化规范 ES6 module
+## 社区遵循的模块化规范
 
-模块功能主要由两个命令构成：export和import。export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能
+随着时间的发展，JavaScript 社区终于为其制定了相应的规范，其中 CommonJS 规范的提出是一个非常重要的里程碑，它为 JavaScript 提供了一个非常美好的前景，即在任何地方都能运行 JavaScript。JavaScript 不再停留在小脚本的阶段，而可以开发很多富客户端应用：
 
-一个模块就是一个独立的文件。该文件内部的所有变量，外部无法获取。如果你希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量
++ 服务端
++ 命令行
++ 桌面图形
++ 混合应用
 
-```js
-export const foo;
-export const bar;
-```
+当然不止 CommonJS，还有着其他的规范：
 
-此外还有这种写法，和上面是等价的：
++ AMD - 即 Asynchronous Module Definition，随着`require.js`的推广而产出
++ CMD - 即 Common Module Definition，由阿里玉伯提出，随着`sea.js`的推广而产出
 
-```js
-const foo;
-const bar;
-
-export {foo, bar};
-```
-
-不能是这样的：
-
-```js
-const foo;
-const bar;
-
-// 报错
-export foo;
-exprot bar;
-```
-
-export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系，上面的写法只是输入一个值，而不是对外的接口
-
-另外，export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值
-
-```js
-export let foo = 'bar';
-setTimeout(() => foo = 'baz', 500);
-```
-
-`bar`500ms后会变成`baz`，这和 CommonJS 不一样，CommonJS 会有缓存，不存在动态的值
-
-使用export命令定义了模块的对外接口以后，其他 JS 文件就可以通过import命令加载这个模块
-
-```js
-import { firstName, lastName, year } from './xxx.js';
-```
-
-必须与被导入模块对外接口的名称相同
-
-import命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面，改写接口，但是如果是个对象，改写属性是允许的
-
-## 其他模块规范
+由于 Web 标准的推进直接导致 AMD 和 CMD 的过时，本篇并不会记录这两种规范的用法
 
 ### CommonJS
 
-CommonJS 规范规定，每个模块内部，module 变量代表当前模块。这个变量是一个对象，它的exports 属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports 属性
+CommonJS 是用在服务器端的 Node.js 模块规范，Node.js 主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，比较适用 Node.js
 
-require 方法用于加载模块，本质是读取并执行一个 JavaScript 文件，返回该模块的 exports 对象，如果模块输出的是一个函数，则要将函数定义在 module.exports 变量上
+特点：
 
-require 命令用于加载文件，后缀名默认为`.js`
++ 方法，变量，属性，函数都是私有的，每个文件就是一个模块，有自己的作用域  
++ 同步加载，模块加载的顺序，按照其在代码中出现的顺序，浏览器端需要先对模块进行编译
++ 只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载时就直接读取缓存结果
++ 模块输出的是值的拷贝
 
-1. 如果require参数以"/"开头，则代表加载的是一个绝对路径的模块文件
-2. 如果require参数以"./"开头，则代表加载的是一个相对路径的模块文件
-3. 如果参数字符串不带以"./"和"/"开头，则代表加载的是个默认提供的核心模块，比如位于各级的 node_modules 目录的已安装模块
+CommonJS 规范规定，每个模块内部都有两个 API：`module`和`require`
+
+`module`变量代表当前模块，这个变量是一个对象，它的`exports`属性（即`module.exports`）是对外的接口。加载某个模块，其实是加载该模块的`module.exports`
+
+```js
+let a, b;
+
+// 写法一
+module.exports = {
+  a,
+  b
+}
+
+// 写法二
+module.exports.a = b;
+module.exports.b = b;
+
+// 写法三
+exports.a = b;
+exports.b = b;
+
+// 错误的写法：exports 是对 module.exports 的引用，不能直接给 exports 赋值
+exports = {
+  a,
+  b
+}
+```
+
+`require`是一个方法，用于加载模块，本质是读取并执行一个 JavaScript 文件，返回该模块的 `exports`对象，如果模块输出的是一个函数，则要将函数定义在`module.exports`变量上，后缀名默认为`.js`
+
++ 如果参数以"/"开头，则代表加载的是一个绝对路径的模块文件
++ 如果参数以"./"开头，则代表加载的是一个相对路径的模块文件
++ 如果参数字符串不带以"./"和"/"开头，则代表加载的是个默认提供的核心模块，比如位于各级的 node_modules 目录的已安装模块
 
 需要注意的是模块总是先从本地开始寻找的
-
-暴露模块：
-
-```js
-let foo = 5;
-module.exports.foo = foo;
-```
-
-引入第三方模块：
-
-```js
-let foo = require('notes/module/AMD/module/foo.js');
-```
-
-引入核心模块：
-
-```js
-const path = require('path');
-```
-
-**暴露模块：**`module.exports = value`或`exports.xxx = value`  
-**引入模块：**`require('xxx')`，第三方模块，xxx为模块名；自定义模块，xxx为模块文件路径  
-
-**特点：**  
-方法，变量，属性，函数都是私有的，每个文件就是一个模块，有自己的作用域  
-
-**加载：**  
-服务器端运行时同步加载，浏览器端需要先对模块进行编译；  
-模块加载的顺序，按照其在代码中出现的顺序；  
-只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载时就直接读取缓存结果；  
-
-**对外接口：**  
-exports属性，加载某个模块，其实是加载该模块的`module.exports`属性
-
-::: tip
-CommonJS规范规定，每个模块内部，module变量代表当前模块，这个变量是一个对象  
-Node.js主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，所以 CommonJS 规范比较适用
-:::
-
-### AMD
-
-定义模块：
-
-```js
-// 没有依赖其他模块
-define(function() {
-  return m
-});
-
-// 依赖其他模块
-define(['依赖的模块1','依赖的模块2'],function(m1,m2) {  
-  return m
-});
-```
-
-引入模块：
-
-```js
-require([m1,m2],function(m1,m2) {})
-```
-
-页面使用：
-
-```html
-<!-- 需要使用data-main来指定主模块的路径 -->
-<script data-main="module/main.js" src="require.js"></script>
-```
-
-**暴露模块：**
-
-+ 没有依赖的模块，define()传入回调函数并返回暴露的模块
-+ 有依赖的模块，define()第一个参数传入一个数组导入依赖的模块，传入回调函数使用形参接受模块，并返回暴露的模块
-**引入模块：**require([m1,m2,...], function(m1,m2,...) {})
-
-**使用：** 因为浏览器不认识AMD语法，所以需要下载[require.js](https://requirejs.org/docs/release/2.3.6/comments/require.js)库来编译打包
-
-**说明：** 专门用于浏览器端，模块的加载是异步的  
-
-### CMD
-
-暴露模块：
-
-```js
-define(function(require,exports,module) {
-// 定义没有依赖的暴露模块
-  exports.xxx = value;
-  // 暴露模块
-  module.exports = value;
-});
-
-// 定义有依赖的暴露模块
-define(function(require,exports,module) {
-  // 同步引入模块
-  const foobaz = require('./foobaz');
-  // 异步引入模块
-  require.async('./bar', function(bar) {
-    // ...
-  });
-  // 暴露模块
-  exports.xxx = value;
-});
-```
-
-引入模块：
-
-```js
-// 使用引入模块
-define(function(require) {
-  const foobaz = require('./foobaz');
-  const bar = require('./bar');
-});
-```
-
-页面使用：
-
-```html
-<script src="lib/sea.js"></script>
-<!-- 加载主模块 -->
-<script type="text/javascript">
-  seajs.use('./module/main.js');
-</script>
-```
-
-**使用：** CMD 同样需要[sea.js](https://github.com/seajs/seajs/zipball/master)库来加载模块  
-**说明：** 实现了浏览器端的模块化加载，可以按需加载，依赖就近
 
 ### ES6
 
@@ -363,3 +231,100 @@ babel src -d build
 ```sh
 browserify build/main.js -o dist/index.js
 ```
+
+## 语言级别的模块化规范
+
+ES6 的到来，在语法层面上实现了模块功能，成了浏览器和服务器端的通用模块解决方案，这直接导致 CommonJS、AMD、CMD 逐渐成为历史
+
+特点：
+
++ 自动使用严格模式
++ 静态加载
++ 输出的是值的引用
+
+模块功能主要由两个命令构成：
+
++ `export` - 用于规定模块的对外接口
++ `import` - 用于导入其他模块
+
+```js
+export let foo;
+export let bar;
+```
+
+此外还有这种写法，和上面是等价的：
+
+```js
+let foo;
+let bar;
+
+export { foo, bar };
+```
+
+不能是这样的：
+
+```js
+let foo;
+let bar;
+
+// 报错
+export foo;
+exprot bar;
+```
+
+`export`命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系，上面的写法只是将一个值导出，而不是对外的接口
+
+使用`export`命令定义了模块的接口后，就可以使用`import`加载这个模块了
+
+```js
+import { foo, bar } from './xxx.js';
+```
+
+`import`命令输入的变量都是只读的，因为它的本质是输入接口。也就是说，不允许在加载模块的脚本里面改写接口，但是如果是个对象，改写属性是允许的
+
+另外，`export`语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值
+
+```js
+export let foo = 'bar';
+setTimeout(() => foo = 'baz', 500);
+```
+
+变量`foo`的值在 500ms 后会变成`baz`，这和 CommonJS 不一样，CommonJS 会有缓存，不存在动态的值
+
+如果想要导出的模块可以定义名字，可以使用`exports default`，这样不在需要`import`中使用花括号来映射对应的接口
+
+```js
+// a.js
+export default function () {}
+```
+
+```js
+// b.js
+import foo from 'b.js'
+foo();
+```
+
+一个模块中只允许有一个`export default`，但是它可以和`export`混用
+
+```js
+// a.js
+export let x = 1;
+export let y = 1;
+
+export default function () {
+  console.log(x, y);
+}
+```
+
+```js
+// b.js
+import foo, {x, y} from 'a.js'
+```
+
+导出时也可以同时接受默认的接口以及映射的接口
+
+## 循环引用
+
+模块之间互相导入就会产生循环引用问题
+
+<!-- to be updated -->

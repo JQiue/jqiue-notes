@@ -1,9 +1,9 @@
 ---
-title: 有手就行的 Markdown
+title: RESTful 还是 GraphQL
 category: 知识分享
 tags: [Alpha]
 author: JQiue
 article: false
 ---
 
-<!-- more -->
+<!-- to be updated -->

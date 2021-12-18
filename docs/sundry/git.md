@@ -1,6 +1,6 @@
 ---
 title: Git 指南
-category: 版本控制
+category: 知识分享
 tags: [Beta]
 author: JQiue
 ---

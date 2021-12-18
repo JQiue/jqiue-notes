@@ -87,7 +87,7 @@ module.exports = {
 
 ## 使用 loader
 
-## 使用 plugins
+## html-webpack-plugin
 
 ## 热更新
 
