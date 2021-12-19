@@ -1,6 +1,5 @@
 ---
 title: 全局变量
-category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false
@@ -61,7 +60,7 @@ console.log(process.arch);
 console.log(process.memoryUsage());
 // 命令行参数
 console.log(process.argv);
-// 查看 Node 版本
+// 查看 Node.js 版本
 console.log(process.version);
 // 查看环境变量
 console.log(process.env);
@@ -69,7 +68,7 @@ console.log(process.env);
 console.log(process.pid);
 // 杀死某个进程
 process.kill(pid);
-// 查看当前运行 Node 的终端路径
+// 查看当前运行 Node.js 的终端路径
 console.log(process.cwd());
 ```
 
@@ -81,7 +80,7 @@ process.exit();
 
 ## 定时器
 
-Node 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，`console.timeEnd()`打印执行到这里的持续时间
+Node.js 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，`console.timeEnd()`打印执行到这里的持续时间
 
 ```js
 let label;

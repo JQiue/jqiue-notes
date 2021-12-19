@@ -164,77 +164,9 @@ exports = {
 + 如果参数以"./"开头，则代表加载的是一个相对路径的模块文件
 + 如果参数字符串不带以"./"和"/"开头，则代表加载的是个默认提供的核心模块，比如位于各级的 node_modules 目录的已安装模块
 
-需要注意的是模块总是先从本地开始寻找的
-
-### ES6
-
-暴露模块：分别暴露
-
-```js
-export function foo() {
-  // ...
-}
-
-export function bar() {
-  // ...
-}
-```
-
-暴露模块：默认暴露
-
-```js
-export default function() {
-  // ...
-}
-```
-
-引入模块：
-
-```js
-import {foo,bar} from 'xxx.js'
-
-import xxx from 'xxx.js'
-```
-
-**暴露模块：** exports
-
-+ 分别暴露：只能以对象的形式暴露出去，可以暴露多个，引入模块也需要以对象的形式引入
-+ 默认暴露：能够暴露任意数据类型，但是只能暴露一个，暴露什么收据，引入的就是什么数据类型  
-
-**引入模块：** import
-
-**使用：** 因为大部分浏览器目前不认识 ES6 语法，所以需要 babel 和 browserify 来帮助编译
-
-```sh
-npm install browserify -g
-npm install babel-cli -g
-npm install babel-preset-es2015 --save-dev
-```
-
-使用 babel 时要在项目根目录创建一个`.babelrc`文件，用于 babel 运行时的控制
-
-```JSON
-{
-  "presets": ["es2015"]
-}
-```
-
-编译命令：
-
-```sh
-babel 被转换的文件/文件路径 -d 转换后的文件/文件路径
-babel src -d build
-```
-
-虽然 babel 可以将 ES6 语法转换成 ES5 语法，但是 ES5 语法还包括 CommonJS 语法，所以需要 browserify 继续转换
-
-```sh
-browserify build/main.js -o dist/index.js
-```
-
 ## 语言级别的模块化规范
 
-ES6 的到来，在语法层面上实现了模块功能，成了浏览器和服务器端的通用模块解决方案，这直接导致 CommonJS、AMD、CMD 逐渐成为历史
+随着 ES6 的到来，终于在语法层面上定义了模块化规范，成了浏览器和服务器端的通用模块解决方案，这直接导致 CommonJS、AMD、CMD 逐渐成为历史
 
 特点：
 
@@ -272,7 +204,7 @@ export foo;
 exprot bar;
 ```
 
-`export`命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系，上面的写法只是将一个值导出，而不是对外的接口
+`export`命令规定的是对外的接口，必须与模块内部的变量建立对应关系，上面的写法只是将一个值导出，而不是对外的接口
 
 使用`export`命令定义了模块的接口后，就可以使用`import`加载这个模块了
 
@@ -289,9 +221,9 @@ export let foo = 'bar';
 setTimeout(() => foo = 'baz', 500);
 ```
 
-变量`foo`的值在 500ms 后会变成`baz`，这和 CommonJS 不一样，CommonJS 会有缓存，不存在动态的值
+变量`foo`的值在 500ms 后会变成`baz`，这和 CommonJS 不一样，CommonJS 导出的是一个完全新的拷贝
 
-如果想要导出的模块可以定义名字，可以使用`exports default`，这样不在需要`import`中使用花括号来映射对应的接口
+如果想要为导出的模块可以定义新名字，可以使用`exports default`，这样不再需要`import`中使用花括号来映射对应的接口
 
 ```js
 // a.js
@@ -304,7 +236,7 @@ import foo from 'b.js'
 foo();
 ```
 
-一个模块中只允许有一个`export default`，但是它可以和`export`混用
+一个模块中只允许有一个`export default`，但是它可以和`export`混用，导入可以同时接受默认的接口以及映射的接口
 
 ```js
 // a.js
@@ -321,10 +253,39 @@ export default function () {
 import foo, {x, y} from 'a.js'
 ```
 
-导出时也可以同时接受默认的接口以及映射的接口
-
 ## 循环引用
 
 模块之间互相导入就会产生循环引用问题
 
 <!-- to be updated -->
+
+## 兼容处理
+
+因为大部分浏览器目前不支持 ES6 语法，所以需要 babel 和 browserify 来帮助编译
+
+```sh
+npm install browserify -g
+npm install babel-cli -g
+npm install babel-preset-es2015 --save-dev
+```
+
+使用 babel 时要在项目根目录创建一个`.babelrc`文件，用于 babel 运行时的控制
+
+```JSON
+{
+  "presets": ["es2015"]
+}
+```
+
+编译命令：
+
+```sh
+babel 被转换的文件/文件路径 -d 转换后的文件/文件路径
+babel src -d build
+```
+
+虽然 babel 可以将 ES6 语法转换成 ES5 语法，但是 ES5 语法还包括 CommonJS 语法，所以需要 browserify 继续转换
+
+```sh
+browserify build/main.js -o dist/index.js
+```

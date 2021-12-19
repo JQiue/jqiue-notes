@@ -727,9 +727,9 @@ async function bar() {
 }
 ```
 
-就像一个`throw`语句一样，使用`try...catch`处理它，如果没有使用`try...catch`处理，那么`bar`生成的 Promise 将会变成 rejected，所以在这之后可以使用`catch`处理它
+就像一个`throw`语句一样，使用`try...catch`处理它。如果没有使用`try...catch`处理，那么`bar`生成的 Promise 将会变成 rejected，所以在这之后可以使用`catch`处理它。如果都没有处理，将会得到一个未处理的 promise error，但是这样的话，程序就死掉了
 
-如果都没有处理，将会得到一个未处理的 promise error，但是这样的话，程序就死掉了
+## 顶层 await
 
 ## 总结
 
