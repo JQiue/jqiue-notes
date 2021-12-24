@@ -1,6 +1,6 @@
 ---
-title: CSSLint 如何教你做事
-category: Web
+title: React
+category: 框架
 tags: [Alpha]
 author: JQiue
 article: false

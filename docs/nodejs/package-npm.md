@@ -1,6 +1,5 @@
 ---
 title: 包和 NPM
-category: Web
 tags: [Alpha]
 author: JQiue
 article: false

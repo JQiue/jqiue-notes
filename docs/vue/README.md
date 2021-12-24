@@ -85,13 +85,29 @@ const app = new Vue({
 
 至此，一个简单 Vue 应用就已经完成了！！！
 
-## 模板语法
+## 模板语法和渲染函数
 
 Vue 通过指定的模板语法来渲染 DOM，先了解一下前端渲染页面的的三种方式：
 
 + 原生 JavaScript 字符串拼接，将数据以字符串的方式拼接到 html 标签中，缺点是不同的开发人员风格差异较大，后期难以维护
 + 使用前端模板引擎，它拥有自己的一套模板语法规则，优点是开发人员都遵循同样的规则编写代码，方便了后期的维护，但是没有事件机制
 + 使用 Vue 特有的模板语法，包含插值表达式，指令，属性绑定，样式绑定，事件绑定，分支循环结构
+
+在底层上，Vue 会将模板编译成虚拟 DOM 渲染函数，结合响应系统，Vue 能够计算出最少需要重新渲染多少组件，以减少 DOM 操作
+
+```html
+<div id="app"></div>
+```
+
+```js
+const app = new Vue({
+  el: '#app'
+});
+
+console.log(app.$options.render);
+```
+
+在 HTML 中编写的模板语法都会编译成`app.$options.render`，因此可以查看究竟。换句话来说，只要改变`render`函数，就能改变视图
 
 ## 插值表达式
 
@@ -586,6 +602,68 @@ Vue.filter("formatStr", function(value){
 在插值语法或`v-bind`中的数据和过滤器使用管道符号`|`分隔即可
 
 使用 Vue 对象中的 filter 函数是全局的，在所有的实例对象中都可以使用，而组件也支持使用 `filters`属性来定义局部的过滤器，方法名即为过滤器的名称
+
+## 生命周期
+
+生命周期是一个 Vue 实例在被创建的时候经过一系列的初始化过程（组件在被创建时也是一个实例），在这个过程中每个阶段都会调用一个特定的方法，这给用户在不同阶段添加自己代码的机会。`new Vue()`本质上创建的是一个大组件，而其他自定义组件都具有生命周期
+
++ 创建期间
+
+1. `beforeCreate`：实例未创建，不能访问实例数据，通常用于初始化插件开发中的一些初始化任务
+2. `created`：实例已创建，能够访问数据，常用于异步数据的获取
+3. `beforeMount`：编译好了页面模板，但还没有渲染到界面上，不能够获取渲染后的内容
+4. `mounted`：已经完成模板的渲染，可以获取渲染后的内容
+
++ 运行期间
+
+1. `beforeUpdate`：只有数据被修改时才会触发，但是界面上的数据还未更新
+2. `updated`：界面已经完成重新渲染，此时可以访问更新后的内容
+
++ 销毁期间
+
+1. `beforeDestroy`：组件销毁之前触发，是最后能够访问到数据和方法的周期
+2. `destroyed`：组件销毁后触发，但是不要在这里操作组件的数据和方法
+
++ `<keep-alive>`
+
+1. `activated`：被缓存的组件激活时调用
+2. `deactivated`：被缓存的组件去活化后调用
+
+```js
+new Vue({
+  el: '#app',
+  beforeCreate() {
+    console.log('beforeCreate called');
+  },
+  created() {
+    console.log('created called');
+  },
+  beforeMount() {
+    console.log('beforeMount called');
+  },
+  mounted() {
+    console.log('mounted called');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate called');
+  },
+  updated() {
+    console.log('mounted called');
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy called');
+  },
+  destroyed() {
+    console.log('destroyed called');
+  },
+})
+```
+
+## Vue.set 和 Vue.delete
+
+Vue 无法探测响应式对象的新增属性，这导致这个属性不是响应式的，无法触发视图更新，而 Vue 提供了`Vue.set( target, propertyName/index, value )`来确保这个属性是响应式的
+
+突然使用`delete`删除响应式对象的某个属性，也不会触发视图更新，`Vue.delete( target, propertyName/index )`便是解决方案
 
 ## 总结
 

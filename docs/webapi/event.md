@@ -1372,5 +1372,17 @@ document.body.append(script);
 对于`<img>`来说，必须获得`src`才能够被开始加载，而`<ifrma>`不管加载成功还是失败都会触发`load`事件
 :::
 
+## 全屏
+
+如果想要以全屏的方式展示一个元素，可以调用`elem.requestFullscreen()`方法，同样使用`document.exitFullscreen()`来退出全屏，对于用户来说也可以使用自己的方式来退出（F11 或 ESC）
+
+全屏和退出全屏都会触发一次`fullscreenchange`事件
+
+`document.fullscreenElement`可以获取全屏元素，以此来判断是否为全屏状态
+
+::: tip
+无法在网页加载后立即进入全屏状态，必须在事件处理中调用
+:::
+
 <!-- more -->
 <!-- to b e updated -->

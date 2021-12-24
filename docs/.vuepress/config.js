@@ -7,7 +7,7 @@ module.exports = config({
     "/": { lang: "zh-CN" }
   },
   head: [
-    ['link', { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css', async: ''}],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css', async: 'true'}],
     ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js', async: 'true' }],
     ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js', async: 'true'}],
     ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.0/mock-min.js', async: 'true'}],
@@ -27,8 +27,7 @@ module.exports = config({
     sidebar: require("./sidebar"),
     encrypt: {
       config: {
-        "/theory/network/": "123456",
-        "/theory/organization/": "123456",
+        "/theory/": "123456",
         "/database/": "123456",
         "/backend/": "123456",
         "/nodejs/": "123456",
@@ -37,6 +36,15 @@ module.exports = config({
         "/ds-algorithm/": "123456",
         "/subject/": "123456",
         "/vue/": "123456",
+        "/react/": "123456",
+        "/design-pattern/": "123456",
+        "/java/": "123456",
+        "/os/": "123456",
+        "/spring/": "123456",
+        "/express/": "123456",
+        "/python/": "123456",
+        "/wasm/": "123456",
+        "/c/": "123456",
       }
     },
     blog: {

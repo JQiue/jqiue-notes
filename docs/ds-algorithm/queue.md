@@ -6,9 +6,9 @@ author: JQiue
 article: false
 ---
 
-## 顺序存储的队列
+队列和栈类似，但是采用的是先进先出原则，只能从尾部添加新元素，并从顶部移除元素
 
-### 顺序队列的实现
+## 顺序存储的队列
 
 <CodeGroup>
 
@@ -127,26 +127,52 @@ Status deQueue(Queue *q, ElementType *e)
 
 </CodeGroupItem>
 
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
+<CodeGroupItem>
 
-<CodeGroupItem title="javascript">
 ```js
+class Queue {
+  constructor () {
+    this.count = 0;
+    this.lowestCount = 0;
+    this.items = [];
+  }
+  enQueue(element){
+    this.items[this.count++] = element;
+  }
+  deQueue(){
+    if(this.isEmpty()){
+      return undefined;
+    }
+    const result = this.items[this.lowestCount];
+    delete this.items[this.lowestCount];
+    this.lowestCount++;
+    return result;
+  }
+  peek(){
+    return this.items[this.count];
+  }
+  isEmpty(){
+    if(this.count - this.lowestCount == 0){
+      return true;
+    }
+    return false;
+  }
+  size(){
+    return this.count - this.lowestCount; // 相减即可得到元素数量
+  }
+  clear(){
+    this.items = [];
+    this.count = 0;
+    this.lowestCount = 0;
+  }
+}
 ```
-</CodeGroupItem>
 
-<CodeGroupItem title="python">
-```python
-```
 </CodeGroupItem>
 
 </CodeGroup>
 
 ## 链式存储的队列
-
-### 链式队列的实现
 
 <CodeGroup>
 
@@ -252,25 +278,83 @@ Status deQueue(LinkedQueue q, DataType *data) {
 
 </CodeGroupItem>
 
-<CodeGroupItem title="java">
-```java
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="javascript">
-```js
-```
-</CodeGroupItem>
-
-<CodeGroupItem title="python">
-```python
-```
-</CodeGroupItem>
-
 </CodeGroup>
 
 ## 双端队列
 
+双端队列是一种允许从队头和队尾同时添加或移除元素的特殊队列
+
+```js
+class Deque {
+  constructor() {
+    this.front = 0;
+    this.rear = 0;
+    this.items = [];
+  }
+  addFront(element) {
+    if (this.isEmpty()) {
+      this.addBack(element);
+    } else if (this.front > 0) {
+      this.items[--this.front];
+    } else {
+      for (let i = this.rear; i > 0; i--) {
+        this.items[i] = this.items[i - 1];
+      }
+      this.rear++;
+      this.front = 0;
+      this.items[0] = element;
+    }
+  }
+  addBack(element) {
+    this.items[this.rear++] = element;
+  }
+  removeFront() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    const result = this.items[this.front];
+    delete this.items[this.front];
+    this.front++;
+    return result;
+  }
+  removeBack() {
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    const result = this.items[this.rear - 1];
+    delete this.items[--this.rear];
+    return result;
+  }
+  peek() {
+    return this.items[this.front];
+  }
+  size() {
+    return this.rear - this.front;
+  }
+  isEmpty() {
+    if (this.rear - this.front == 0) {
+      return true;
+    }
+    return false;
+  }
+  clear() {
+    this.items = [];
+    this.front = 0;
+    this.rear = 0;
+  }
+}
+```
+
+## 循环队列
+
+当队列的长度是固定的时候，会出现队尾追队头的现象，因为只能在有限的空间上进行入队操作
+
 ## 阻塞队列
 
 ## 并发队列
+
+## 应用
+
++ 循环队列
++ 回文检查器
++ JavaScript 任务队列

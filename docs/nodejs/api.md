@@ -1,6 +1,5 @@
 ---
 title: 核心 API
-category: 编程语言
 tags: [Alpha]
 author: JQiue
 article: false

@@ -1,5 +1,5 @@
 ---
-title: ESlint 如何教你做事
+title: lint 如何教你做事
 category: Web
 tags: [Alpha]
 author: JQiue
@@ -46,3 +46,5 @@ eslint --init
 ## 规则配置
 
 <!-- more -->
+
+## CSSLint

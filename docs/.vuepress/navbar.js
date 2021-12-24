@@ -6,6 +6,7 @@ module.exports = [
     items: [
       { text: '计算机原理', icon: 'yuanli', link: '/theory/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
+      { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: '操作系统', icon: 'caozuoxitong', link: '/os/' },
       { text: 'Node.js', icon: 'Nodejs', link: '/nodejs/' },
@@ -45,6 +46,9 @@ module.exports = [
     icon: 'framework',
     items: [
       { text: 'Vue.js', icon: 'vue', link: '/vue/' },
+      { text: 'React', icon: 'react', link: '/react/' },
+      { text: 'Express', icon: 'express', link: '/express/' },
+      { text: 'Spring', icon: 'spring', link: '/spring/' },
     ]
   },
   {

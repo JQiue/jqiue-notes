@@ -10,7 +10,7 @@ article: false
 
 ## 使用 Vuex
 
-Vuex 是作为另一个库来使用的，但是 Vuex 依赖于 Vue，所以先导入 Vue，再导入 Vuex，详见[官方](https://vuex.vuejs.org/zh/installation.html)
+Vuex 是作为另一个库来使用的，但是 Vuex 依赖于 Vue，详见[官方](https://vuex.vuejs.org/zh/installation.html)
 
 ```js
 const store = new Vuex.Store({
@@ -20,7 +20,7 @@ const store = new Vuex.Store({
 })
 ```
 
-在组件中使用 Vuex 中的数据之前，必须通过`new Vuex.Store()`来创建一个共享的数据对象，该构造函数也接收一些键值对来配置实例，`state`是其中一个配置项，用于保存共享的数据。在组件中通过`this.$store`访问这个实例对象，这样所有的组件都可以通过`this.$store.state`访问共享数据
+在组件中使用 Vuex 中的数据之前，必须通过`new Vuex.Store()`创建一个共享的数据对象，该构造函数也接收一些键值对来配置实例，`state`是其中一个配置项，用于保存共享的数据。在组件中通过`this.$store`访问这个实例对象，所有的组件都可以通过`this.$store.state`访问共享数据
 
 ::: demo [vue] Vuex
 
