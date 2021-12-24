@@ -276,9 +276,18 @@ const vue = [
   'component',
   'vuex',
   'vue-router',
+  'transition',
 ]
 
 const react = [
+  '',
+]
+
+const express = [
+  '',
+]
+
+const spring = [
   '',
 ]
 
@@ -298,6 +307,8 @@ module.exports = {
   "/wasm/": wasm,
   "/vue/": vue,
   "/react/": react,
+  "/express/": express,
+  "/spring/": spring,
   "/nodejs/": nodejs,
   "/subject/": subject,
   "/sundry/": sundry,

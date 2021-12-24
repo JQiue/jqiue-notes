@@ -66,7 +66,7 @@ sticky: true
 
 ## 内容
 
-本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情，无法避免错误。目前大饼画完了 20% 不到，目标是 2022 年 6 月份完成整张饼的 40%。暂时缺乏大量图片，无法避免阅读疲劳，这些将在完成度达到 50% 时补充
+本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情，无法避免错误。目前大饼画完了 20% 不到，目标是 2022 年 6 月份完成整张饼的 30%。暂时缺乏大量图片，无法避免阅读疲劳，这些将在完成度达到 50% 时补充
 
 - [x] 10%（2021.3.21）
 - [x] 20%（2021.10.28）
@@ -80,8 +80,6 @@ sticky: true
 
 ::: danger
 如果没有必要，不建议阅读`Alpha`阶段的文章  
-如果没有必要，不建议阅读`Alpha`阶段的文章  
-如果没有必要，不建议阅读`Alpha`阶段的文章
 :::
 
 ## 适合什么样的人阅读
@@ -93,52 +91,48 @@ sticky: true
 
 ## 全站知识体系总览
 
-> 星星表示需要完成或学习的优先级、重要程度
+> 星星表示需要完成或学习的优先级、重要程度，并注有完成进度
 
-+ [计算机基础](/theory/)
-  + 计算机组成原理:star::star:
-  + 操作系统原理:star::star:
-  + 编译原理:star:
-  + 计算机网络:star::star::star:
-  + 数据库原理:star:
++ [计算机原理](/theory/)
+  + 计算机组成原理:star: - 31%
+  + 操作系统原理:star: - 0%
+  + 编译原理:star: - 13%
+  + 计算机网络:star::star::star: - 28%
+  + 数据库原理:star: - 0%
 + 编程语言
-  + [C](/c/):star::star:
-  + [Java](/java/):star::star:
-  + [JavaScript](/js/):star::star::star::star:
-    + [TypeScript](/sundry/typescript/):star:
-  + [Python](/python/):star:
-+ [数据结构与算法](/ds-algorithm/)
-  + 数据结构:star::star::star::star:
-  + 排序和查找:star::star::star:
-  + 算法思想:star::star:
-  + 领域算法:star:
+  + [C](/c/):star: - 21%
+  + [Java](/java/):star: - 12%
+  + [JavaScript](/js/):star::star::star::star::star: - 73%
+    + [TypeScript](/sundry/typescript/):star::star: - 1%
+  + [Python](/python/):star: - 21%
++ [数据结构与算法](/ds-algorithm/):star::star::star::star: - 22%
++ [设计模式](/design-pattern/):star::star::star: - 6%
 + [数据库](/database/)
-  + SQL 语言:star::star:
-  + MySQL:star::star:
-  + MongoDB:star::star:
-  + Redis:star:
+  + SQL 语言:star: - 20%
+  + MySQL:star::star: - 26%
+  + MongoDB:star::star: - 20%
+  + Redis:star: - 0%
 + Web
-  + [HTML-CSS](/html-css/):star::star::star::star:
-  + [WebAPI](/webapi/):star::star::star::star:
-  + [Canvas](/canvas/):star::star:
-  + [WebAssembly](/docs/wasm/):star:
+  + [HTML-CSS](/html-css/):star::star::star::star::star: - 80%  
+  + [WebAPI](/webapi/):star::star::star::star::star: - 70%
+  + [Canvas](/canvas/):star: 13%
+  + [WebAssembly](/wasm/):star: - 0%
 + 应用框架
-  + [Vue](/vue/):star::star::star:
-  + Spring:star::star:
-  + Spring Boot:star::star:
+  + [Vue](/vue/):star::star::star: - 58%
+  + [React](/react/):star: - 0%
+  + [Express](/express/):star: - 0%
+  + [Spring](/spring/):star: - 0%
 + 服务器 && 容器
-  + [Tomcat](/sundry/tomcat/):star:
-  + Apache:star:
-  + [Nginx](/sundry/nginx/):star::star:
+  + [Tomcat](/sundry/tomcat/):star: - 13%
+  + [Nginx](/sundry/nginx/):star::star: - 3%
 + 其他杂项
-  + 编辑器/IDE:star:
-  + CI/CD:star:
-  + [Git](/sundry/git/):star::star:
-  + [Window](/os/windows/) & [Linux](/os/linux/):star::star:
-  + [设计模式](/sundry/design-pattern/):star::star::star:
-  + Docker:star:
-  + 代码质量:star::star:
-  + [正则表达式](/sundry/regex/):star::star:
+  + [编辑器/IDE](/sundry/editor/):star: - 0%
+  + CI/CD:star: - 0%
+  + [Git](/sundry/git/):star::star: - 40%
+  + [Window](/os/windows/) & [Linux](/os/linux/):star::star: - 10%
+  + Docker:star: - 0%
+  + 代码质量:star::star: - 0%
+  + [正则表达式](/sundry/regex/):star::star: - 0%
 
 > 全站预估为 202500 字，可花 396 分钟浏览完成，本人日产 1000 字左右
 
