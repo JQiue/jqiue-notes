@@ -37,7 +37,7 @@ const store = new Vuex.Store({
   state: {
     msg: "好的，这里是 Vuex 中的数据"
   }
-})
+});
 
 export default {
   store: store,
@@ -54,51 +54,7 @@ export default {
 
 ## 修改共享数据
 
-state 中的数据也是响应式的，但是 Vue 并不推荐直接修改，如果每个组件都在修改数据，一旦出现错误就很难追踪到具体的组件，不利于维护
-
-::: demo [vue] 修改数据
-
-```vue
-<template>
-  <div>
-    <foo></foo>
-    <bar></bar>
-  </div>
-</template>
-
-<script>
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  }
-})
-
-export default {
-  store: store,
-  components: {
-    "foo": {
-      template: "<div><button @click='add'>增加</button><button @click='sub'>减少</button><input type='text' :value='this.$store.state.count'></div>",
-      methods: {
-        add(){
-          this.$store.state.count++
-        },
-        sub(){
-          this.$store.state.count--
-        }
-      }
-    },
-    "bar": {
-      template: "<div>bar：{{this.$store.state.count}}</div>",
-    },
-  }
-}
-</script>
-
-```
-
-:::
-
-Vuex 提供了额外的配置项`mutations`来解决这个问题，这个选项用于保存修改共享数据的方法
+`state`也是响应式的，但是 Vue 并不推荐直接修改，如果每个组件中都修改数据，一旦出现错误就很难追踪到具体的组件，不利于维护。Vuex 提供了额外的配置项`mutations`来解决这个问题，这个选项用于保存修改共享数据的方法，每个方法的第一个参数必然是`state`，后面的参数才是访问外界传入的数据
 
 ```js
 const store = new Vuex.Store({
@@ -107,16 +63,20 @@ const store = new Vuex.Store({
   },
   mutations: {
     add(state) {
-      state.count += 1
+      state.count += 1;
     },
     sub(state) {
-      state.count -= 1
+      state.count -= 1;
     }
   }
-})
+});
 ```
 
-可以在组件中通过`this.$store.commit("方法名", args)`间接调用保存的方法，如果出现了错误只需要排查`mutations`中的方法即可，大大提高维护性
+```js
+this.$store.commit("add");
+```
+
+因此在组件中通过`this.$store.commit("方法名", args)`间接调用方法，如果出现了错误只需要排查`mutations`中的方法即可，大大提高维护性
 
 ::: demo [vue] mutations 方法调用
 
@@ -135,36 +95,36 @@ const store = new Vuex.Store({
   },
   mutations: {
     add(state) {
-      state.count += 1
+      state.count += 1;
     },
     sub(state) {
-      state.count -= 1
+      state.count -= 1;
     }
   }
 })
 
 export default {
-  store: store,
+  store,
   components: {
     "foo": {
       template: "<div><button @click='add'>增加</button><button @click='sub'>减少</button><input type='text' :value='this.$store.state.count'></div>",
       methods: {
-        add(){
-          this.$store.commit("add")
+        add() {
+          this.$store.commit("add");
         },
-        sub(){
-          this.$store.commit("sub")
+        sub() {
+          this.$store.commit("sub");
         }
       }
     },
     "bar": {
       template: "<div><button @click='add'>增加</button><button @click='sub'>减少</button><input type='text' :value='this.$store.state.count'></div>",
       methods: {
-        add(){
-          this.$store.commit("add")
+        add() {
+          this.$store.commit("add");
         },
-        sub(){
-          this.$store.commit("sub")
+        sub() {
+          this.$store.commit("sub");
         }
       }
     },
@@ -175,9 +135,65 @@ export default {
 
 :::
 
+Vue 更推荐使用对象风格的`commit`，这样可以包含多个字段且更容易阅读
+
+```js
+this.$store.commit({
+  type: 'add'
+});
+```
+
+另外不要在`mutations`中定义异步的函数
+
+## Action
+
+`actions`和`mutations`都是用来定义方法的，只不过它是用来提交`mutations`，而不是直接去变更`state`，但是它允许定义异步操作
+
+```js
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    add(state) {
+      state.count += 1;
+    },
+    sub(state) {
+      state.count -= 1;
+    }
+  },
+  actions: {
+    add (context) {
+      context.commit('add');
+    }
+  }
+});
+```
+
 ## Getters
 
 `getters`是除了`state`和`mutations`另外一个配置项，它的作用和计算属性一样，数据会被缓存起来，当数据改变时才重新计算，组件通过`this.$store.getters.属性名`使用
+
+```js
+const store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    add(state) {
+      state.count += 1;
+    },
+    sub(state) {
+      state.count -= 1;
+    }
+  },
+  getters: {
+    getCount(state){
+      return state.count;
+    }
+  }
+});
+```
 
 ::: demo [vue] Getters
 
@@ -196,41 +212,41 @@ const store = new Vuex.Store({
   },
   mutations: {
     add(state) {
-      state.count += 1
+      state.count += 1;
     },
     sub(state) {
-      state.count -= 1
+      state.count -= 1;
     }
   },
   getters: {
     getCount(state){
-      return state.count
+      return state.count;
     }
   }
-})
+});
 
 export default {
-  store: store,
+  store,
   components: {
     "foo": {
       template: "<div><button @click='add'>增加</button><button @click='sub'>减少</button><input type='text' :value='this.$store.getters.getCount'></div>",
       methods: {
-        add(){
-          this.$store.commit("add")
+        add() {
+          this.$store.commit("add");
         },
-        sub(){
-          this.$store.commit("sub")
+        sub() {
+          this.$store.commit("sub");
         }
       }
     },
     "bar": {
       template: "<div><button @click='add'>增加</button><button @click='sub'>减少</button><input type='text' :value='this.$store.getters.getCount'></div>",
       methods: {
-        add(){
-          this.$store.commit("add")
+        add() {
+          this.$store.commit("add");
         },
-        sub(){
-          this.$store.commit("sub")
+        sub() {
+          this.$store.commit("sub");
         }
       }
     },
