@@ -19,7 +19,50 @@ TypeScript（以下简称 TS）是一种开源的渐进式包含类型的 JavaSc
 
 ## 来做体操吧
 
-## 类型推断
+先安装编译器，自带的`tsc`编译命令无法允许程序，所以需要额外的安装`ts-node`以便于运行
+
+```sh
+npm install -g typescript
+npm install -g ts-node
+```
+
+编译`.ts`文件：
+
+```sh
+tsc Test.ts
+```
+
+## 类型系统
+
+ts 使用`:TypeAnnotation`语法来为变量，函数参数以及函数返回值添加类型注解
+
+```ts
+const num: number = 123;
+function foo(num:number):number {
+  return num;
+}
+```
+
+::: tip
+ts 的类型是可选的
+:::
+
+编译时会检查值是否符合，否则就会报错错误
+
+像一些 JavaScript 原始类型正好适用于 ts 的类型系统：`string`、`number`、`boolean`
+
+而数组则是由 ts 提供了专门的类型语法，使用后缀`:type[]`
+
+```ts
+let names: string[] = [];
+
+names.push('foo');
+names.push('bar');
+
+console.log(names); 
+
+names.push(123); // Error
+```
 
 ## 接口
 

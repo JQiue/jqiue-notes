@@ -191,6 +191,86 @@ Status traverse(Node *root){
 
 </CodeGroupItem>
 
+<CodeGroupItem title="JavaScript">
+
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+  insert(data) {
+    if (!this.root) {
+      this.root = new Node(data);
+    } else {
+      this.insertNode(this.root, data);
+    }
+  }
+  search(data) {
+    return this.searchNode(this.root, data);
+  }
+  insertNode(node, data) {
+    if (this.compare(node.data, data) === 1) {
+      if (node.left == null) {
+        node.left = new Node(data);
+      } else {
+        this.insertNode(node.left, data);
+      }
+    } else {
+      if (node.right == null) {
+        node.right = new Node(data);
+      } else {
+        this.insertNode(node.right, data);
+      }
+    }
+  }
+  /* to be updated */
+  remove() {}
+  min() {
+    let current = this.root;
+    while (current != null && current.left != null) {
+      current = current.left;
+    }
+    return current;
+  }
+  max() {
+    let current = this.root;
+    while (current != null && current.right != null) {
+      current = current.right;
+    }
+    return current;
+  }
+  compare(a, b) {
+    if (a === b) {
+      return 0;
+    }
+    return a > b ? 1 : -1;
+  }
+  searchNode(node, data) {
+    if (node == null) {
+      return undefined;
+    }
+    console.log(node.data, data);
+    if (this.compare(node.data, data) === 1) {
+      return this.searchNode(node.left, data);
+    } else if (this.compare(node.data, data) === -1) {
+      return this.searchNode(node.right, data);
+    } else {
+      return true;
+    }
+  }
+}
+```
+
+</CodeGroupItem>
+
 </CodeGroup>
 
 ## 树的遍历

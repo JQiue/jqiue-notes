@@ -665,6 +665,60 @@ Vue 无法探测响应式对象的新增属性，这导致这个属性不是响�
 
 突然使用`delete`删除响应式对象的某个属性，也不会触发视图更新，`Vue.delete( target, propertyName/index )`便是解决方案
 
+## 混入
+
+混入提供了一个非常灵活的方式用来分发实例中可以复用的功能，一个混入对象可以包含任意实例选项，当实例使用混入对象时，混入对象的选项会被合并到实例本身的选项
+
+```js
+const mixin = {
+  created() {
+    this.hello();
+  },
+  methods: {
+    hello() {
+      console.log('hello from mixin!');
+    }
+  }
+};
+const app = new Vue({
+  el: '#app',
+  components: {
+    "foo": {
+      mixins: [mixin],
+      template: `<div></div>`
+    },
+    "bar": {
+      mixins: [mixin],
+      template: `<div></div>`
+    }
+  }
+});
+```
+
+当混入对象和实例有同名选项时，会以不同的策略进行合并
+
++ `data`：实例优先
++ `钩子函数`：都会被调用，混入对象的优先调用
++ 值为对象的选项：`methods`、`components`、`directives`会被合并为同一个对象，键名以实例优先
+
+`Vue.mixin`提供了全局混入的方式，这将对每个实例生效，应该谨慎使用
+
+## 插件
+
+插件通常用来给 Vue 添加全局功能，插件对象必须具有`install`方法，第一个参数为构造器，第二个参数为可选项
+
+```js
+const myPlugin = {
+  install(Vue, options) {
+    Vue.myPluginMethod = function () {
+      console.log('myPluginMethod from myPlugin');
+    }
+  }
+}
+Vue.use(myPlugin);
+Vue.myPluginMethod();
+```
+
 ## 总结
 
 + Vue 是一个基于 MVVM 设计模式的 JavaScript 渐进式框架
