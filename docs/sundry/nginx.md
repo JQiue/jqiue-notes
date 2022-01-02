@@ -117,6 +117,22 @@ Nginx 无法分辨请求方的 IP 是否真实，也可能是伪造的
 
 ## 配置 gzip 压缩传输
 
+gzip 压缩能够提高网站速度节约网站流量，开启 gzip 之后的网站加载速度几乎是未开启的两倍，所以非常推荐开启，将下面的内容添加到配置文件，重启 nginx
+
+```plain
+gzip on;
+gzip_disable "msie6";
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 6;
+gzip_buffers 16 8k;
+gzip_http_version 1.1;
+gzip_min_length 256;
+gzip_types application/atom+xml application/geo+json application/javascript application/x-javascript application/json application/ld+json application/manifest+json application/rdf+xml application/rss+xml application/xhtml+xml application/xml font/eot font/otf font/ttf image/svg+xml text/css text/javascript text/plain text/xml;
+```
+
+只需要检查响应头是否包含`content-encoding: gzip`即可
+
 ## 设置响应头
 
 比如跨域请求可使用`add_header`进行添加跨域头来允许
