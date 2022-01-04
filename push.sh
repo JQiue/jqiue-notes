@@ -1,19 +1,9 @@
-set -e
+git add .
+
+git commit -m "$(date "+%Y-%m-%d %H:%M:%S")"
 
 # github
-git push github --all
-git push github --tags
-
-# gitlab
-git push gitlab --all
-git push gitlab --tags
+git push github master
 
 # gitee
-git push gitee --all
-git push gitee --tags
-
-# coding
-git push coding --all
-git push coding --tags
-
-cd -
+git push gitee master

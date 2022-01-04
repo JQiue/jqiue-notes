@@ -39,10 +39,6 @@ sticky: true
 
 也就这样子了，看起来花里胡哨的，其实是真的很菜很菜
 
-## 他的日常
-
-骑车、跑步、跳绳、听音乐、以及折腾各种东西
-
 ## 正在做却没做完的事
 
 + 整理站点笔记
@@ -60,12 +56,12 @@ sticky: true
 
 所有文章都遵循三个阶段：`Alpha`、`Beta`、`Gamma`，它们都会以标签的形式标记
 
-+ 处于`Alpha`阶段的文章，可能啥也没有，内容仅作参考，问题较多，随时会进行修改
-+ 处于`Beta`阶段的文章，内容逐渐完善，问题较少，可能退回 `Alpha`，会出现在首页文章列表
-+ 处于`Gamma`阶段的文章，内容逻辑顺畅，可以阅读，会出现在首页文章列表中，可能有少许并不影响阅读的 typo
++ `Alpha` - 不建议阅读
++ `Beta` - 参考性阅读
++ `Gamma` - 完全可以阅读
 
 ::: danger
-如果没有必要，不建议阅读`Alpha`阶段的文章  
+如果没有必要，不建议查看`Alpha`阶段的文章  
 :::
 
 本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
@@ -125,7 +121,6 @@ sticky: true
   + [Nginx](/sundry/nginx/):star::star: - 3%
 + 其他杂项
   + [编辑器/IDE](/sundry/editor/):star: - 0%
-  + CI/CD:star: - 0%
   + [Git](/sundry/git/):star::star: - 40%
   + [Window](/os/windows/) & [Linux](/os/linux/):star::star: - 10%
   + Docker:star: - 0%
