@@ -245,13 +245,11 @@ const sundry = [{
     'trick',
     'zhihu',
     'excel',
-    'internet-work',
     'adb',
     'latex',
     'tomcat',
     'emmet',
-    'master',
-    'all-master',
+    'learntolearn',
     'mock',
     'nginx',
     'webpack',
@@ -268,6 +266,7 @@ const sundry = [{
     'editor',
     'performance',
     'openssl',
+    'sport',
   ]
 }];
 
