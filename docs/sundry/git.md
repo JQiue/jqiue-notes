@@ -1,8 +1,9 @@
 ---
 title: Git 指南
 category: 知识分享
-tags: [Beta]
+tags: [Alpha]
 author: JQiue
+article: false
 ---
 
 Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具
