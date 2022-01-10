@@ -13,12 +13,12 @@ project:
   - name: 计算机原理
     type: article
     link: /theory/
-  - name: 编程语言
+  - name: 数据结构与算法
     type: article
-    link: /language/
-  - name: Web 前端
+    link: /ds-algorithm/
+  - name: 设计模式
     type: article
-    link: /web/
+    link: /design-pattern/
   - name: 资源和工具
     type: article
     link: /sundry/tools/

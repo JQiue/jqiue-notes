@@ -202,7 +202,18 @@ console.log(iterator.next()); // { value: 4, done: false }
 
 ## 类型数组
 
-由于 JavaScript 数组不是强类型的，这导致它可以存储任意类型的元素，而类型数组则用于单一类型的数据，类型数组是一种新的补充，建立在 ArrayBuffer 的基础上，作用是分配一款连续的内存空间，常常用来处理一些二进制数据
+由于 JavaScript 数组不是强类型的，这导致它可以存储任意类型的元素，而类型数组则用于单一类型的数据，类型数组是一种新的补充，建立在 ArrayBuffer 的基础上，作用是分配一款连续的内存空间，语法是`let arr = new TypeArray(length)`，`TypeArray`可以替换下表中的之一
+
+类型数组 | 数据类型
+Int8Array | 8 位二进制补码整数
+Uint8Array | 8 位无符号整数
+Uint8ClampedArray | 8 位无符号整数
+Int16Array | 16 位二进制补码整数
+Uint16Array | 16 位无符号整数
+Int32Array | 32 位二进制补码整数
+Uint32Array | 32 位无符号整数
+Float32Array | 32 位 IEEE 浮点数
+Float64Array | 64 位 IEEE 浮点
 
 ```js
 let int16 = new Int16Array(5);
@@ -213,6 +224,9 @@ int16[3] = 4;
 int16[4] = 5;
 console.log(int16);
 ```
+
+常常用来处理一些二进制数据，使用起来和普通数组是一致的
+
 <!-- to be updated -->
 
 ## 方法
@@ -258,7 +272,7 @@ splice 和 slice 还支持反向索引，从 -1 开始
 
 排序
 
-+ `arr.sort(callback())`：对数组进行原位排序，并不返回新的数组，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
++ `arr.sort(callback())`：对数组进行原位排序，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
 + `arr.reverse()`：反转数组元素的索引顺序，会改变原数组
 
 ::: tip

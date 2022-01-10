@@ -28,39 +28,35 @@ article: false
 从第 1 层开始数比较符合人类习惯，从第 0 层开始也没什么毛病，原理都是一样的
 :::
 
-1. 节点的度：子树的个数（有几个直接后续就是几度）
-2. 树的度：所有节点的度中最大的
-3. 节点的深度：从根节点到当前节点的唯一路径上的节点总数
-4. 节点的高度：从当前节点到最远叶子节点的路径上的节点总数
-5. 树的深度：所有节点深度的最大值
-6. 树的高度：所有节点高度的最大值
-7. 有序树：树中任意节点的子节点之间有顺序关系
-8. 无序树：树中任意节点的子节点之间没有顺序关系
+根据子节点的排列，还分为**有序树**和**无序树**
+
++ 节点的度：子树的个数（有几个子节点就是几度）
++ 树的度：所有节点的度中最大的
++ 节点的深度：从根节点到当前节点的唯一路径上的节点总数
++ 节点的高度：从当前节点到最远叶子节点的路径上的节点总数
++ 树的深度：所有节点深度的最大值
 
 树的分类：
 
-1. 一般树：任意节点的度不受限制
-2. 二叉树：任意节点的度最多两个
-3. 森林：由 m（m ≥ 0）棵互不相交的树组成的集合
++ 一般树：任意节点的度不受限制
++ 二叉树：任意节点的度最多两个
++ 森林：由 m（m ≥ 0）棵互不相交的树组成的集合
 
 ## 二叉树和二叉搜索树
 
 二叉树的节点最多有两个子节点，一个是左节点，一个是右节点。二叉树的左子树和右子树是有顺序的，即使某个节点只有一个子树，也要区分左右，所以二叉树是一种有序树
 
-二叉搜索树是二叉树的一种，但是只允许在左节点存储（比父节点）小的值，
-在右侧节点存储（比父节点）大的值
+二叉树又根据节点的排列和分布有所不同定义：
+
++ 真二叉树 - 没有度为 1 的节点
++ 满二叉树 - 没有度为 1 的节点，但是所有的叶子节点都在最后一层
++ 完全二叉树 - 叶子节点只会出现最后 2 层，且最后 1 层的叶子节点都是向左靠齐
 
 二叉树的性质：
 
 + 非空二叉树的第 i 层，最多有 2^2-i^ 个节点
 + 高度为 h 的二叉树上最多有 2^h^ - 1 个节点
 + 任意一棵二叉树，若度为 2 的节点有 n2 个则叶子树必定为 n2 + 1
-
-二叉树的分类：
-
-+ 真二叉树：所有节点的度要么是 0，要么是 2，没有度为 1 的节点
-+ 满二叉树：所有节点的度要么是 0，要么是 2，但是所有的叶子节点都在最后一层
-+ 完全二叉树：叶子节点只会出现最后 2 层，且最后 1 层的叶子节点都是向左靠齐
 
 在同样高度的树中，满二叉树的叶子节点数量最多，总节点数最多，满二叉树一定是真二叉树，但真二叉树不一定是满二叉树
 
@@ -73,7 +69,7 @@ article: false
 + 同样节点数量的二叉树，完全二叉树的高度最小
 + 假如高度为 h，那么至少有 2^h-1^ 个节点，最多有 2^h^ - 1 个节点（满二叉树）
 
-二叉搜索树的定义如下：
+二叉搜索树是二叉树的一种，但是只允许在左节点存储（比父节点）小的值，在右节点存储（比父节点）大的值，定义如下：
 
 + 任意节点的值都大于其左子树所有节点的值
 + 任意节点的值都小于其右子树所有节点的值
@@ -105,12 +101,6 @@ Status isEmpty(Node *);
 Status clear(Node **);
 Status insert(Node **, DataType);
 Status traverse(Node *);
-
-int main(void)
-{
-  Node *root = NULL;
-  return 0;
-}
 
 /* 初始化根节点 */
 Status initRoot(Node **node, DataType data)
@@ -206,18 +196,8 @@ class BinarySearchTree {
   constructor() {
     this.root = null;
   }
-  insert(data) {
-    if (!this.root) {
-      this.root = new Node(data);
-    } else {
-      this.insertNode(this.root, data);
-    }
-  }
-  search(data) {
-    return this.searchNode(this.root, data);
-  }
   insertNode(node, data) {
-    if (this.compare(node.data, data) === 1) {
+    if (node.data > data) {
       if (node.left == null) {
         node.left = new Node(data);
       } else {
@@ -231,36 +211,79 @@ class BinarySearchTree {
       }
     }
   }
-  /* to be updated */
-  remove() {}
-  min() {
-    let current = this.root;
+  minNode(node) {
+    let current = node;
     while (current != null && current.left != null) {
       current = current.left;
     }
     return current;
   }
-  max() {
-    let current = this.root;
+  maxNode(node) {
+    let current = node;
     while (current != null && current.right != null) {
       current = current.right;
     }
     return current;
   }
-  compare(a, b) {
-    if (a === b) {
-      return 0;
+  removeNode (node, data) {
+    if (node == null) {
+      return null;
     }
-    return a > b ? 1 : -1;
+    if (node.data > data) {
+      this.removeNode(node.left, data);
+      return node;
+    } else if (node.data < data) {
+      this.removeNode(node.right, data);
+      return node;
+    } else {
+      /* 找到了 */
+      // 处理叶子节点的情况
+      if (node.left == null && node.right == null) {
+        node = null;
+        return node;
+      }
+      // 处理只有一侧子节点的情况
+      if (node.left == null) {
+        node = node.right;
+        return node;
+      } else if(node.right == null) {
+        node = node.left;
+        return node;
+      }
+      // 有两侧子节点的情况
+      const aux = this.minNode(node.right);
+      node.data = aux.data;
+      node.right = this.removeNode(node.right, aux.data);
+      return node;
+    }
+  }
+  insert(data) {
+    if (!this.root) {
+      this.root = new Node(data);
+    } else {
+      this.insertNode(this.root, data);
+    }
+  }
+  search(data) {
+    return this.searchNode(this.root, data);
+  }
+  remove(data) {
+    this.root = this.removeNode(this.root, data);
+  }
+  min() {
+    return this.minNode(this.root);
+  }
+  max() {
+    return this.maxNode(this.root);
   }
   searchNode(node, data) {
     if (node == null) {
-      return undefined;
+      return null;
     }
     console.log(node.data, data);
-    if (this.compare(node.data, data) === 1) {
+    if (node.data > data) {
       return this.searchNode(node.left, data);
-    } else if (this.compare(node.data, data) === -1) {
+    } else if (node.data < data) {
       return this.searchNode(node.right, data);
     } else {
       return true;

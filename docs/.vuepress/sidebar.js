@@ -99,10 +99,11 @@ const python = [
 
 const ds_algorithm = [
   '',
-  'list',
+  'array',
+  'linkedlist',
   'stack',
   'queue',
-  'array-string',
+  'string',
   'tree',
   'graph',
   'other',

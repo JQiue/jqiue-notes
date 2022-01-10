@@ -14,9 +14,9 @@ author: JQiue
 数据结构中的栈和内存中的栈空间是有区别的，虽然它们有点联系
 :::
 
-## 顺序存储的栈
+## 数组实现
 
-使用数组实现，不需要额外的指针空间，但是它的容量无法增长
+不需要额外的内存空间
 
 <CodeGroup>
 
@@ -47,13 +47,6 @@ Status isEmpty(SqStack);
 Status push(SqStack, ElementType);
 Status pop(SqStack, ElementType *);
 Status peek(SqStack);
-
-int main(void)
-{
-  SqStack s = NULL;
-  initStack(&s);
-  return 0;
-}
 
 /* 初始化栈 */
 Status initStack(SqStack *s)
@@ -177,9 +170,9 @@ class Stack {
 
 </CodeGroup>
 
-## 链式存储的栈
+## 链表实现
 
-和顺序存储的栈相比，它有无限的大小，但是需要额外的内存
+和使用数组实现的栈相比，它有无限的大小，但是需要额外的内存
 
 <CodeGroup>
 
@@ -211,13 +204,6 @@ Status isEmpty(LinkedStack);
 Status push(LinkedStack, DataType);
 Status pop(LinkedStack, Node **);
 Status peek(LinkedStack);
-
-int main(void)
-{
-  LinkedStack s = NULL;
-  initStack(&s);
-  return 0;
-}
 
 /* 初始化栈 */
 Status initStack(LinkedStack *s)
@@ -325,6 +311,9 @@ class Stack {
 </CodeGroup>
 
 ## 应用
+
++ 优先处理最新的邮件
++ 函数调用栈
 
 栈应用很广，在回溯问题中，可以存储访问过的任务和路径、撤销的操作，可以用来处理计算机科学问题
 

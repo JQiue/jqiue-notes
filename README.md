@@ -1,6 +1,6 @@
 # jqiue-note
 
-[![wakatime](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23.svg)](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23)
+<!-- [![wakatime](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23.svg)](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23) -->
 
 欢迎!:blush:
 

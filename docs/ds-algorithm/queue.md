@@ -38,13 +38,6 @@ Status isFull(Queue *);
 Status enQueue(Queue *, ElementType);
 Status deQueue(Queue *, ElementType *);
 
-int main(void)
-{
-  Queue *q = NULL;
-  initQueue(&q);
-  return 0;
-}
-
 /* 初始化队列 */
 Status initQueue(Queue **q)
 {
@@ -61,7 +54,6 @@ Status initQueue(Queue **q)
   (*q)->front = (*q)->size = 0;
   // 非常关键的一个赋值，影响入队的操作
   (*q)->rear = (*q)->capacity - 1;
-  printf("queue = %p, capacity = %d, size = %d, front = %d, rear = %d, array = %p\n", (*q), (*q)->capacity, (*q)->size, (*q)->front, (*q)->rear, (*q)->array);
   return OK;
 }
 
@@ -127,7 +119,7 @@ Status deQueue(Queue *q, ElementType *e)
 
 </CodeGroupItem>
 
-<CodeGroupItem>
+<CodeGroupItem title=“JavaScript”>
 
 ```js
 class Queue {
@@ -136,10 +128,10 @@ class Queue {
     this.lowestCount = 0;
     this.items = [];
   }
-  enQueue(element){
+  enQueue(element) {
     this.items[this.count++] = element;
   }
-  deQueue(){
+  deQueue() {
     if(this.isEmpty()){
       return undefined;
     }
@@ -148,19 +140,19 @@ class Queue {
     this.lowestCount++;
     return result;
   }
-  peek(){
+  peek() {
     return this.items[this.count];
   }
-  isEmpty(){
+  isEmpty() {
     if(this.count - this.lowestCount == 0){
       return true;
     }
     return false;
   }
-  size(){
+  size() {
     return this.count - this.lowestCount; // 相减即可得到元素数量
   }
-  clear(){
+  clear() {
     this.items = [];
     this.count = 0;
     this.lowestCount = 0;
@@ -203,13 +195,6 @@ Status initQueue(LinkedQueue *);
 Status isEmpty(LinkedQueue);
 Status enQueue(LinkedQueue, DataType data);
 Status deQueue(LinkedQueue, DataType *data);
-
-int main(void)
-{
-  LinkedQueue q = NULL;
-  initQueue(&q);
-  return 0;
-}
 
 /* 初始化队列 */
 Status initQueue(LinkedQueue *q)
@@ -284,6 +269,10 @@ Status deQueue(LinkedQueue q, DataType *data) {
 
 双端队列是一种允许从队头和队尾同时添加或移除元素的特殊队列
 
+<CodeGroup>
+
+<CodeGroupItem titl="JavaScript">
+
 ```js
 class Deque {
   constructor() {
@@ -344,10 +333,87 @@ class Deque {
   }
 }
 ```
+</CodeGroupItem>
+
+</CodeGroup>
 
 ## 循环队列
 
 当队列的长度是固定的时候，会出现队尾追队头的现象，因为只能在有限的空间上进行入队操作
+
+## 优先级队列
+
+普通队列的元素都会被插入到队尾，优先级队列的元素再插入的同时会考虑该元素的优先级来决定它的位置
+
+<CodeGroupItem>
+
+<CodeGroup title="JavaScript">
+
+```js
+class Element {
+  constructor (data, priority) {
+    this.data = data;
+    this.priority = priority;
+  }
+}
+
+class PriorityQueue {
+  constructor () {
+    this.count = 0;
+    this.lowestCount = 0;
+    this.items = [];
+  }
+  enQueue(data, priority) {
+    let element = new Element(data, priority);
+    if (this.isEmpty()) {
+      this.items[this.count++] = element;
+    } else {
+      let added = false;
+      for (let i = this.lowestCount; i < this.items.length; i++) {
+        if (element.priority < this.items[i].priority) {
+          this.items.splice(i, 0, element);
+          this.count++;
+          added = true;
+          break;
+        }
+      }
+      if(!added) {
+        this.items[this.count++] = element;
+      }
+    }
+  }
+  deQueue() {
+    if(this.isEmpty()) {
+      return undefined;
+    }
+    const result = this.items[this.lowestCount];
+    delete this.items[this.lowestCount];
+    this.lowestCount++;
+    return result;
+  }
+  peek() {
+    return this.items[this.count];
+  }
+  isEmpty() {
+    if(this.count - this.lowestCount == 0){
+      return true;
+    }
+    return false;
+  }
+  size() {
+    return this.count - this.lowestCount; // 相减即可得到元素数量
+  }
+  clear() {
+    this.items = [];
+    this.count = 0;
+    this.lowestCount = 0;
+  }
+}
+```
+
+</CodeGroupItem>
+
+</CodeGroup>
 
 ## 阻塞队列
 
