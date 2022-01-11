@@ -1,11 +1,10 @@
 ---
 title: 输入缓冲区
 category: 编程语言
-tags: [Alpha]
+tags: [C]
 time: 2019-03-19
 author: JQiue
 article: false
-next: false
 ---
 
 ## 缓冲区

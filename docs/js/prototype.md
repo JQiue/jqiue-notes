@@ -1,7 +1,7 @@
 ---
 title: 万物皆空之原型
 category: 编程语言
-tags: [Alpha]
+tags: [JavaScript]
 author: JQiue
 article: false
 ---

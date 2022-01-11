@@ -1,7 +1,6 @@
 ---
 title: 更好的编写习惯
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

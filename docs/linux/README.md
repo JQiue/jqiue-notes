@@ -1,7 +1,7 @@
 ---
 title: 介绍
 category: 操作系统
-tags: [Alpha]
+tags: [Linux]
 author: JQiue
 article: false
 ---
@@ -82,3 +82,11 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted univer
 不要在远程机中通过防火墙程序来控制端口，因为控制台会有专门预设好的防火墙设置，在这里指定规则即可
 
 如果通过远程机防火墙程序控制了规则，可能会导致 SSH 连接工具无法连接的现象发生，这时的防火墙规以远程机优先，而不是控制台，控制台的规则只控制流量的进入
+
+## 文件上传
+
+一般终端都会提供`scp`命令用于机器之间的复制，但这个工具是基于 ssh 的，所以较为安全
+
+```sh
+scp 本地文件路径 目标机器:目标机器的文件路径
+```

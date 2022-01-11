@@ -1,7 +1,6 @@
 ---
 title: 客户端存储
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

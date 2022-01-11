@@ -1,7 +1,7 @@
 ---
 title: 一些花招
 category: 知识分享
-tags: [技巧, Beta]
+tags: [技巧]
 time: 2019-05-10
 author: JQiue
 ---

@@ -1,7 +1,7 @@
 ---
 title: 重置元素的默认样式
 category: Web
-tags: [Alpha]
+tags: [CSS]
 author: JQiue
 article: false
 ---

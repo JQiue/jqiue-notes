@@ -1,7 +1,6 @@
 ---
 title: 游戏的基础：运动
 category: 知识分享
-tags: [Alpha]
 author: JQiue
 article: false
 ---

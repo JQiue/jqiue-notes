@@ -1,7 +1,7 @@
 ---
 title: 字符串
 category: Web
-tags: [Alpha]
+tags: [JavaScript]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,7 @@
 ---
 title: C
 category: 编程语言
-tags: [Alpha]
+tags: [C]
 author: JQiue
 article: false
 ---

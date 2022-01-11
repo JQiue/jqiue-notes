@@ -1,7 +1,7 @@
 ---
 title: CSS 属性的取值
 category: Web
-tags: [Alpha]
+tags: [CSS]
 author: JQiue
 article: false
 ---

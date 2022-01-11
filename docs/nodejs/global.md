@@ -1,6 +1,6 @@
 ---
 title: 全局变量
-tags: [Alpha]
+tags: [Node.js]
 author: JQiue
 article: false
 ---

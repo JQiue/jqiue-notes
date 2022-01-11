@@ -1,7 +1,7 @@
 ---
 title: React
 category: 框架
-tags: [Alpha]
+tags: [React]
 author: JQiue
 article: false
 ---

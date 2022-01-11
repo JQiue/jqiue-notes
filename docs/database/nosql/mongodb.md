@@ -1,10 +1,8 @@
 ---
 title: MongoDB
 category: 数据库
-tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
 MongoDB 是面向文档的非关系型数据库管理系统，并不是传统的关系数据库，基本的思路就是将“行”（row）的概念换成更加灵活的“文档”（document）模型。而面向文档的方式可以将文档或数组内嵌进来，所以一条记录可以表示非常复杂的关系。学习 MongoDB 需要具备一定的 JavaScript 基础

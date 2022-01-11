@@ -8,7 +8,7 @@ module.exports = [
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
-      { text: '操作系统', icon: 'caozuoxitong', link: '/os/' },
+      { text: 'Linux', icon: 'linux', link: '/linux/' },
       { text: 'Node.js', icon: 'Nodejs', link: '/nodejs/' },
     ]
   },
@@ -22,15 +22,6 @@ module.exports = [
       { text: 'Python', icon: 'python', link: '/python/' }
     ]
   },
-  // {
-  //   text: '应用开发',
-  //   icon: 'youtian',
-  //   items: [
-  //     { text: '后端', icon: 'shujuchuli', link: '/backend/' },
-  //     { text: '移动', icon: 'shoujiyingyong', link: '/mobile/' },
-  //     { text: '桌面', icon: 'zuixing-86', link: '/desktop/' }
-  //   ]
-  // },
   {
     text: 'Web',
     icon: 'liulanqi',

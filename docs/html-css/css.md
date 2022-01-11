@@ -1,7 +1,7 @@
 ---
 title: 一些 CSS 属性
 category: Web
-tags: [Alpha]
+tags: [CSS]
 author: JQiue
 article: false
 ---

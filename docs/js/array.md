@@ -1,7 +1,7 @@
 ---
 title: 数组
 category: 编程语言
-tags: [JavaScript, Alpha]
+tags: [JavaScript]
 author: JQiue
 ---
 

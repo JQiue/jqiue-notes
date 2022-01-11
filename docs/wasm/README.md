@@ -1,7 +1,6 @@
 ---
 title: WebAssembly
 author: JQiue
-tags: [Alpha]
 article: false
 ---
 

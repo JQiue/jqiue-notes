@@ -1,7 +1,7 @@
 ---
 title: 类
 category: 编程语言
-tags: [Alpha]
+tags: [Python]
 author: JQiue
 article: false
 ---

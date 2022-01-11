@@ -1,7 +1,7 @@
 ---
 title: shell
 category: 操作系统
-tags: [Alpha]
+tags: [Linux]
 author: JQiue
 article: false
 ---

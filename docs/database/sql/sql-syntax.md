@@ -1,10 +1,8 @@
 ---
 title: SQL 语法
 category: 数据库
-tags: [Alpha]
 author: JQiue
 article: false
-prev: false
 ---
 
 SQL 是一种结构化查询语言，SQL 是专门和数据库进行沟通的语言，它和其它语言（C，Java，JavaScript）不同的是，没有很多单词，因为 SQL 的目的仅仅是提供一种从数据库读写数据的方法

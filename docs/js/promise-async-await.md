@@ -1,7 +1,7 @@
 ---
 title: Promise，Async/Await
 category: 编程语言
-tags: [Alpha]
+tags: [JavaScript]
 author: JQiue
 article: false
 ---

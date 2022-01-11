@@ -1,7 +1,6 @@
 ---
 title: 你的知乎和我的不一样
 category: 知识分享
-tags: [Beta]
 time: 2019-06-22
 author: 曾加
 ---

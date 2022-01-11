@@ -1,7 +1,6 @@
 ---
 title: DOM
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

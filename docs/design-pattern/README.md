@@ -1,7 +1,6 @@
 ---
 title: 设计模式
 category: 设计模式
-tags: [Alpha]
 author: JQiue
 article: false
 ---

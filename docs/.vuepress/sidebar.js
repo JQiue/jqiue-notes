@@ -144,27 +144,10 @@ const database = [
   }
 ];
 
-const os = [
+const linux = [
   '',
-  {
-    title: 'Windows',
-    prefix: 'windows/',
-    collapsable: false,
-    children: [
-      '',
-      'shell',
-    ]
-  },
-  {
-    title: 'Linux',
-    prefix: 'linux/',
-    collapsable: false,
-    children: [
-      '',
-      'vim',
-      'shell',
-    ]
-  },
+  'vim',
+  'shell',
 ];
 
 const nodejs = [
@@ -230,7 +213,6 @@ const subject = [
     children: [
       'basic',
       'elementary',
-      'higher',
     ]
   }
 ];
@@ -263,11 +245,9 @@ const sundry = [{
     'programlang',
     'css-preprocessor',
     'scaffolding',
-    'restful-graphql',
-    'editor',
-    'performance',
     'openssl',
     'sport',
+    'windows',
   ]
 }];
 
@@ -300,7 +280,7 @@ module.exports = {
   "/ds-algorithm/": ds_algorithm,
   "/design-pattern/":design_pattern,
   "/database/": database,
-  "/os/": os,
+  "/linux/": linux,
   "/html-css/": htmlcss,
   "/canvas/": canvas,
   "/webapi/": webapi,

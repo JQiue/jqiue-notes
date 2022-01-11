@@ -1,7 +1,7 @@
 ---
 title: 文本编辑器：vim
 category: 操作系统
-tags: [Alpha]
+tags: [Linux]
 author: JQiue
 article: false
 ---

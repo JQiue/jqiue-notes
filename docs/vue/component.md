@@ -1,7 +1,7 @@
 ---
 title: 组件
 category: 框架
-tags: [Alpha]
+tags: [Vue]
 author: JQiue
 article: false
 ---

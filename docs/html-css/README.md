@@ -1,7 +1,7 @@
 ---
 title: HTML-CSS
 category: Web
-tags: [Alpha]
+tags: [HTML, CSS]
 author: JQiue
 article: false
 ---

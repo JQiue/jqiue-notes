@@ -1,7 +1,6 @@
 ---
 title: 计算机的语言：指令
 category: 计算机原理
-tags: [Alpha]
 author: JQiue
 article: false
 ---

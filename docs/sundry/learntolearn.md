@@ -1,7 +1,6 @@
 ---
 title: 学习学习
 category: 知识分享
-tags: [Beta]
 author: JQiue
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 基本语法
 category: 编程语言
-tags: [Alpha]
+tags: [JavaScript]
 author: JQiue
 article: false
 ---
@@ -25,11 +25,9 @@ article: false
 
 ## 代码块和语句
 
-JavaScript 采用`{}`来区分代码之间的层次，当存在换行符时，大多数情况下可以省略语句的分号
+JavaScript 采用`{}`来区分代码之间的层次以及作用域范围，当存在换行符时，大多数情况下可以省略语句的分号
 
-::: tip
 JavaScript 会将换行符理解成“分号”，但有部分例外，比如在`[]`前不会被添加一个隐式的分号，运行时可能造成错误，所以最好不要省略
-:::
 
 ## 标识符
 

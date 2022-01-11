@@ -1,7 +1,6 @@
 ---
 title: Nginx 怎么用啊
 category: 服务器
-tags: [Alpha]
 author: JQiue
 article: false
 ---

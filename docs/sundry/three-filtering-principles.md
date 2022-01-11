@@ -1,7 +1,7 @@
 ---
 title: 三过滤原则
 category: 知识分享
-tags: [转载, Beta]
+tags: [转载]
 time: 2019-04-23
 ---
 

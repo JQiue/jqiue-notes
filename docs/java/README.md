@@ -1,7 +1,7 @@
 ---
 title: Java
 category: 编程语言
-tags: [Alpha]
+tags: [Java]
 author: JQiue
 article: false
 ---

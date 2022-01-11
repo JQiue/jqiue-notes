@@ -1,7 +1,7 @@
 ---
 title: 走进编译原理 && 前端技术
 category: 计算机原理
-tags: [编译原理, Beta]
+tags: [编译原理]
 author: JQiue
 prev: false
 ---

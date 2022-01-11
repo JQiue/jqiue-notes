@@ -1,7 +1,7 @@
 ---
 title: 其它结构
 category: 数据结构与算法
-tags: [集合, 字典, Alpha]
+tags: [集合, 字典, 哈希表]
 author: JQiue
 article: false
 ---

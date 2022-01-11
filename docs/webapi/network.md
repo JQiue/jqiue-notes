@@ -1,7 +1,6 @@
 ---
 title: 网络请求
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---
@@ -48,7 +47,7 @@ http.send();
 const xhr = new XMLHttpRequest();
 console.log(xhr.readyState); // 0
 
-xhr.open('GET', 'https://www.httpbin.org/get', true);
+xhr.open('GET', 'https://httptest.jinqiu.wang/get', true);
 xhr.send();
 console.log(xhr.readyState); // 1
 ```
@@ -78,7 +77,7 @@ xhr.onreadystatechange = function (){
 ```js
 document.getElementById('btn').addEventListener('click', function () {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://httptest.jinqiu.wang/get', true);
+  xhr.open('GET', 'https://httptest.jinqiu.wang/get', true);
   xhr.send();
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
@@ -102,7 +101,7 @@ document.getElementById('btn').addEventListener('click', function () {
 
 ```js
 document.querySelector('#btn').addEventListener('click', function () {
-  http.get('http://httptest.jinqiu.wang/get', function (res) {
+  http.get('https://httptest.jinqiu.wang/get', function (res) {
     alert(res.address);
   });
 });

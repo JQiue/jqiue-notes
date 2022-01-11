@@ -1,7 +1,7 @@
 ---
 title: 模块化
 category: 编程语言
-tags: [Alpha]
+tags: [JavaScript]
 author: JQiue
 article: false
 ---

@@ -1,7 +1,6 @@
 ---
 title: 面试经历
 category: 知识分享
-tags: [Beta]
 author: JQiue
 ---
 

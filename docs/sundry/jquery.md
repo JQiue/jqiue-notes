@@ -1,7 +1,6 @@
 ---
 title: 这年头还要学 jQuery ？
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

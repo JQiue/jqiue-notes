@@ -1,7 +1,6 @@
 ---
 title: BOM
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

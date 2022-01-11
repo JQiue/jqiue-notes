@@ -1,7 +1,6 @@
 ---
 title: 后端数据模拟：Mock.js
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

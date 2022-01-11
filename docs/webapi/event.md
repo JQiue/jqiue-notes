@@ -1,7 +1,6 @@
 ---
 title: 事件
 category: Web
-tags: [Alpha]
 author: JQiue
 article: false
 ---

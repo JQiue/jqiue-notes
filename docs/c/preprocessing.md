@@ -1,7 +1,7 @@
 ---
 title: 编译预处理
 category: 编程语言
-tags: [Alpha]
+tags: [C]
 author: JQiue
 article: false
 ---

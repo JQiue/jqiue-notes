@@ -1,7 +1,6 @@
 ---
 title: TypeScript 是怎么做类型体操的
 category: 编程语言
-tags: [Alpha]
 author: JQiue
 article: false
 ---

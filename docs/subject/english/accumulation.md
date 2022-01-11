@@ -1,7 +1,7 @@
 ---
 title: 一些积累
 category: 学科
-tags: [Alpha]
+tags: [英语]
 author: JQiue
 article: false
 ---

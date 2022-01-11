@@ -1,7 +1,7 @@
 ---
 title: 指针
 category: 编程语言
-tags: [Alpha]
+tags: [C]
 author: JQiue
 article: false
 ---

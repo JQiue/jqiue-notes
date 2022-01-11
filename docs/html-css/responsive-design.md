@@ -1,7 +1,7 @@
 ---
 title: 响应式网站设计
 category: Web
-tags: [Alpha]
+tags: [HTML, CSS]
 author: JQiue
 article: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: 包和 NPM
-tags: [Alpha]
+tags: [Node.js]
 author: JQiue
 article: false
 ---

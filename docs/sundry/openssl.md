@@ -1,7 +1,6 @@
 ---
 title: 使用 openssl 生成证书
 category: 知识分享
-tags: [Alpha]
 author: JQiue
 article: false
 ---

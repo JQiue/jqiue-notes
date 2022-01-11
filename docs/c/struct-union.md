@@ -1,7 +1,7 @@
 ---
 title: 结构体与联合体
 category: 编程语言
-tags: [Alpha]
+tags: [C]
 author: JQiue
 article: false
 ---
