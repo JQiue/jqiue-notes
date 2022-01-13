@@ -60,7 +60,6 @@ const java = [
   'interface',
   'collection',
   'exception',
-
 ];
 
 const javascript = [
@@ -72,7 +71,6 @@ const javascript = [
   'array',
   'map-set',
   'destructuring-assignment',
-  'rest-spread',
   'prototype',
   'class',
   'try-catch',
@@ -88,11 +86,11 @@ const python = [
   '',
   'syntax',
   'ds',
+  'function',
   'class',
   'module',
   'comprehensions',
   'exception',
-  'special-function-usage',
   'standard',
   'spider',
 ];
@@ -120,7 +118,6 @@ const design_pattern = [
   'structural',
   'behavioral'
 ]
-
 
 const database = [
   '',
@@ -243,7 +240,6 @@ const sundry = [{
     'babel',
     'typescript',
     'programlang',
-    'css-preprocessor',
     'scaffolding',
     'openssl',
     'sport',

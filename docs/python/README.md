@@ -44,10 +44,6 @@ Python 不仅在说语言本身，也包括具体的实现，Python 实际上是
 
 安装包地址：[Download](https://www.python.org/downloads/)
 
-选择一个版本，点击Download，然后下拉到最下面，即可看到下图：
-
-![download](https://gitee.com/jqiue/img_upload/raw/master/images/Snipaste_2020-09-12_22-13-34.png)
-
 前缀说明：
 
 + 以`windows x86-64`开头的是64位的 Python 安装程序

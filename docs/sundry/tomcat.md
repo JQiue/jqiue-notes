@@ -1,6 +1,5 @@
 ---
 title: Tomcat 是咋玩的
-category: 服务器
 author: JQiue
 article: false
 ---

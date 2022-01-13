@@ -476,6 +476,81 @@ switch (a) {
 }
 ```
 
+## Rest 和 Spread
+
+在 JavaScript 中，无论函数定义了多少个参数，都可以传入任意数量的参数，且不会报错，但是只有部分参数被当作值传递，为了解决这个问题，JavaScript 支持`...`语法来将剩余的参数收集到数组中
+
+```js
+function sum (...args) {
+  let result = 0;
+  for (let value of args) result += value;
+  return result;
+}
+
+console.log(sum(1, 2, 3)); // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
+```
+
+::: danger
+`...`的参数必须位于函数参数列表最末尾处
+:::
+
+`...`语法还可以在调用的时候拆包一个可迭代对象用来传值
+
+```js
+function sum (...args) {
+  let result = 0;
+  for (let value of args) result += value;
+  return result;
+}
+
+let args1 = [1, 2, 3];
+let args2 = [1, 2, 3, 4, 5];
+
+console.log(sum(...args1)); // 6
+console.log(sum(...args2)); // 15
+```
+
+不仅如此，`...`也可以跟普通值混用
+
+```js
+let args = [3, 5];
+console.log(sum(1, 2, ...args, 4)); // 15
+```
+
+同时展开多个可迭代对象
+
+```js
+let args1 = [1, 2, 3];
+let args2 = [1, 2, 3, 4, 5];
+console.log(sum(...args1, ...args2)); // 21
+```
+
+在数组中展开
+
+```js
+let arr = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let merge = [...arr, ...arr2];
+console.log(merge); // [1, 2, 3, 4, 5, 6]
+```
+
+将字符串展开为字符数组
+
+```js
+let str = 'jinqiu.wang';
+let strArr = [...str];
+console.log(strArr); // ['j', 'i', 'n', 'q', 'i', 'u', '.', 'w', 'a', 'n', 'g']
+```
+
+展开对象，看来像拷贝了对象，其实是一种浅拷贝
+
+```js
+let foo = { name: 'foo', age: 23 };
+let fooCopy = { ...foo };
+console.log(fooCopy); // { name: 'foo', age: 23 }
+```
+
 ## 严格模式
 
 JavaScript 是不断发展的，但没有带来任何兼容性的问题，即使新的特性被加入，旧的特性也不会改变，这么做有利于兼容旧代码，但 JavaScript 中设计的不合理的地方也被保留了下来，这种情况一直持续到 ES5 出现
@@ -503,3 +578,5 @@ JavaScript 是不断发展的，但没有带来任何兼容性的问题，即使
 + 严格模式是一种对老旧的语法兼容性进行修正的模式
 + `for...in`语句以任意顺序遍历一个对象的除`Symbol`以外的可枚举属性，包括继承的可枚举属性
 + `for...of`语句在可迭代对象（包括 Array，Map，Set，String，TypedArray，arguments 对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句
++ 当`...`出现在定义函数参数的列表时，它就是 rest
++ 当`...`出现在表达式中，它就是 spread
