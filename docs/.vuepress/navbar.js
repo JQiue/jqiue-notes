@@ -9,7 +9,6 @@ module.exports = [
       { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: 'Linux', icon: 'linux', link: '/linux/' },
-      { text: 'Node.js', icon: 'Nodejs', link: '/nodejs/' },
     ]
   },
   {

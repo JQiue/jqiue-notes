@@ -22,7 +22,7 @@ function rectilinear_motion(el) {
       clearInterval(timer);
     }
     el.style.left = parseInt(window.getComputedStyle(el).left) + 1 + 'px'
-  }, 40);
+  }, 30);
 }
 
 rectilinear_motion(document.querySelector('#box'));

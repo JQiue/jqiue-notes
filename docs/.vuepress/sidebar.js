@@ -60,6 +60,7 @@ const java = [
   'interface',
   'collection',
   'exception',
+  'standard',
 ];
 
 const javascript = [
@@ -147,13 +148,6 @@ const linux = [
   'shell',
 ];
 
-const nodejs = [
-  '',
-  'global',
-  'api',
-  'package-npm',
-];
-
 const wasm = [
   '',
 ]
@@ -230,6 +224,7 @@ const sundry = [{
     'tomcat',
     'emmet',
     'learntolearn',
+    'nodejs',
     'mock',
     'nginx',
     'webpack',
@@ -239,11 +234,11 @@ const sundry = [{
     'lint',
     'babel',
     'typescript',
-    'programlang',
     'scaffolding',
     'openssl',
     'sport',
     'windows',
+    ' ',
   ]
 }];
 
@@ -285,7 +280,6 @@ module.exports = {
   "/react/": react,
   "/express/": express,
   "/spring/": spring,
-  "/nodejs/": nodejs,
   "/subject/": subject,
   "/sundry/": sundry,
   "/about/": ['']

@@ -8,11 +8,13 @@ article: false
 
 由詹姆斯高斯林在90年代初开发的一种编程语言，Java 介于编译型和解释性语言之间，因为 Java 是将代码编译成一种“字节码”，然后针对不同的平台编写虚拟机，不同的虚拟机负责解释字节码并执行，这样就实现了“一次编写，到处运行”的结果
 
+其他七七八八的特点就不说了，最大的特点就是 Java 编写的程序是跨平台的。只要在需要运行 Java 程序的操作系统上安装一个 Java 虚拟机(JVM Java Virtual Machine)即可，由 JVM 来负责 Java 程序在该系统中的运行，因此实现了**write once ,run anywhere!(一次编写，到处运行)**
+
 随着 Java 的发展，Java 又分出了三个不同的平台版本：
 
-+ Java SE：Standard Edition
-+ Java EE：Enterprise Edition
-+ Java ME：Micro Edition
++ Java SE - Standard Edition
++ Java EE - Enterprise Edition
++ Java ME - Micro Edition
 
 简单来说 Java SE 就是标准版，而 Java EE 是企业版，只是在 SE 的基础上增加了大量的 API 和库，以便于开发 Web 应用，数据库，消息服务等。而 ME 相当于 SE 的瘦身版，一些 SE 的标准库无法在 ME 上使用，它是一个针对于嵌入式设备的版本，因此没有特别需求，不建议学习 Java ME
 
@@ -48,26 +50,18 @@ article: false
 
 ## 名词解释
 
-初学者学习 Java，经常听到 JDK、JRE 这些名词，
+初学者学习 Java，经常听到 JDK、JRE 这些名词
 
-+ JDK：Java Development
-+ JRE：Java Runtime Environment
++ JDK - Java Development
++ JRE - Java Runtime Environment
 
 JRE 是运行 Java 字节码的虚拟机，但是需要 JDK 将 Java 源码编译成 Java 字节码，因此 JDK 除了包含 JRE、还提供了编译器，调试器等开发工具
 
 ## 安装 JDK
 
-推荐的 [Liberica](https://bell-sw.com/pages/downloads/#/java-11-lts) 实现的 JDK，无脑下一步就完事了，这个实现是自动配置环境变量的，无需再找一些七七八八的教程配置
+推荐 [Liberica](https://bell-sw.com/pages/downloads/#/java-11-lts) 实现，无脑下一步就完事了，这个实现是自动配置环境变量的，无需再找一些七七八八的教程配置
 
 ## 第一个 Java 程序
-
-```java
-public class HelloWorld {
-    public static void main(String args[]) {
-        System.out.println("hello, world!!!");
-    }
-}
-```
 
 无论如何，在一个 Java 源代码中总是能找到一个类似这样的定义：
 
@@ -85,7 +79,7 @@ public static void main(String[] args){
 }
 ```
 
-这是类中的方法，`main`是方法名，`{}`用来编写语句，Java 规定，某个类定义的`public static void main(String[], args)`是 Java 程序的固定入口，所以 Java 程序总是从 main 方法开始执行
+这是类中的方法，`main`是方法名，`{}`用来编写语句，Java 规定，某个类定义的`public static void main(String[], args)`是 Java 程序的固定入口，所以 Java 程序总是从`main`方法开始执行
 
 ::: tip
 从 1.4 及以后的版本中强制了`main`方法必须声明为`public`
@@ -93,12 +87,19 @@ public static void main(String[] args){
 
 Java 中所有的函数都属于某个类的方法，在标准术语中称为成员方法，而不是成员函数
 
-Java 源码本质上是一个文本文件，需要先用`javac`将保存好的 Java 文件编译成字节码文件，字节码会被自动生成，后缀名是`.class`，然后使用`java`命令执行这个字节码文件
+Java 强制每个文件都必须有一个类，且其他东西都定义在类中，所以这就是 Java 看起来非常啰嗦的原因：
+
+```java
+public class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("hello, world");
+  }
+}
+
+```
+
+Java 源码本质上是一个文本文件，需要先用`javac`将保存好的 Java 文件编译成字节码文件，会自动生成后缀名为`.class`字节码文件，然后使用`java`命令执行这个字节码文件
 
 ::: tip
 在 Java 11 版本以后可以直接使用`java`命令执行源码文件，但在实际中的项目中不建议使用
 :::
-
-## 最大特点
-
-其他七七八八的特点就不说了，最大的特点就是 Java 编写的程序是跨平台的。只要在需要运行 Java 应用程序的操作系统上，先安装一个 Java 虚拟机(JVM Java Virtual Machine)即可，由 JVM 来负责 Java 程序在该系统中的运行。因此实现了**write once ,run anywhere!(一处编译,到处运行)**

@@ -118,7 +118,7 @@ Status deQueue(Queue *q, ElementType *e)
 
 </CodeGroupItem>
 
-<CodeGroupItem title=“JavaScript”>
+<CodeGroupItem title="JavaScript">
 
 ```js
 class Queue {
@@ -270,7 +270,7 @@ Status deQueue(LinkedQueue q, DataType *data) {
 
 <CodeGroup>
 
-<CodeGroupItem titl="JavaScript">
+<CodeGroupItem title="JavaScript">
 
 ```js
 class Deque {

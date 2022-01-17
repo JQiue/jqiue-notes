@@ -175,7 +175,7 @@ for (let item in arr) {
 
 ## 多维数组
 
-数组中的元素当然也可以是数组，因此可以用于多维数组种，比如矩阵：
+数组中的元素当然也可以是数组，因此可以实现矩阵：
 
 ```js
 let matrix = [
@@ -204,7 +204,8 @@ console.log(iterator.next()); // { value: 4, done: false }
 
 由于 JavaScript 数组不是强类型的，这导致它可以存储任意类型的元素，而类型数组则用于单一类型的数据，类型数组是一种新的补充，建立在 ArrayBuffer 的基础上，作用是分配一款连续的内存空间，语法是`let arr = new TypeArray(length)`，`TypeArray`可以替换下表中的之一
 
-类型数组 | 数据类型
+可用的类型数组 | 数据类型
+---|---
 Int8Array | 8 位二进制补码整数
 Uint8Array | 8 位无符号整数
 Uint8ClampedArray | 8 位无符号整数
