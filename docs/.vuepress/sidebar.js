@@ -167,7 +167,7 @@ const canvas = [
   ''
 ];
 
-const htmlcss = [
+const html_css = [
   '',
   'elements',
   'box-model',
@@ -180,67 +180,47 @@ const htmlcss = [
   'better-code',
 ];
 
-const subject = [
+const math_english = [
   '',
-  {
-    title: "英语",
-    prefix: "english/",
-    collapsable: false,
-    children: [
-      'basic',
-      'part-of-speech',
-      'sentence',
-      'tense-voice',
-      'accumulation',
-      'nce1',
-      'nce2',
-      'nce3',
-    ]
-  },
-  {
-    title: "数学",
-    prefix: "math/",
-    collapsable: false,
-    children: [
-      'basic',
-      'elementary',
-    ]
-  }
+  'part-of-speech',
+  'sentence',
+  'tense-voice',
+  'accumulation',
+  'nce1',
+  'nce2',
+  'nce3',
+  'elementary',
 ];
 
-const sundry = [{
-  title: '杂七杂八',
-  collapsable: false,
-  children: [
-    'git',
-    'tools',
-    'problems',
-    'three-filtering-principles',
-    'trick',
-    'zhihu',
-    'excel',
-    'adb',
-    'latex',
-    'tomcat',
-    'emmet',
-    'learntolearn',
-    'nodejs',
-    'mock',
-    'nginx',
-    'webpack',
-    'regex',
-    'interview',
-    'jquery',
-    'lint',
-    'babel',
-    'typescript',
-    'scaffolding',
-    'openssl',
-    'sport',
-    'windows',
-    ' ',
-  ]
-}];
+const sundry = [
+  '',
+  'git',
+  'tools',
+  'problems',
+  'three-filtering-principles',
+  'trick',
+  'zhihu',
+  'excel',
+  'adb',
+  'latex',
+  'tomcat',
+  'emmet',
+  'learntolearn',
+  'nodejs',
+  'mock',
+  'nginx',
+  'webpack',
+  'regex',
+  'interview',
+  'jquery',
+  'lint',
+  'babel',
+  'typescript',
+  'scaffolding',
+  'openssl',
+  'sport',
+  'windows',
+];
 
 const vue = [
   '',
@@ -269,10 +249,10 @@ module.exports = {
   "/js/": javascript,
   "/python/": python,
   "/ds-algorithm/": ds_algorithm,
-  "/design-pattern/":design_pattern,
+  "/design-pattern/": design_pattern,
   "/database/": database,
   "/linux/": linux,
-  "/html-css/": htmlcss,
+  "/html-css/": html_css,
   "/canvas/": canvas,
   "/webapi/": webapi,
   "/wasm/": wasm,
@@ -280,7 +260,7 @@ module.exports = {
   "/react/": react,
   "/express/": express,
   "/spring/": spring,
-  "/subject/": subject,
+  "/math-english/": math_english,
   "/sundry/": sundry,
   "/about/": ['']
 };

@@ -9,6 +9,7 @@ module.exports = [
       { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: 'Linux', icon: 'linux', link: '/linux/' },
+      { text: '数学&&英语', icon: 'kemu', link: '/math-english/' },
     ]
   },
   {
@@ -40,11 +41,6 @@ module.exports = [
       { text: 'Express', icon: 'express', link: '/express/' },
       { text: 'Spring', icon: 'spring', link: '/spring/' },
     ]
-  },
-  {
-    text: '学科',
-    icon: 'kemu',
-    link: '/subject/',
   },
   {
     text: '杂七杂八',

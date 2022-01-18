@@ -119,19 +119,8 @@ console.log(app.$options.render);
 
 Vue 中通过 v-model 指令来实现双向绑定，但只适用于`input`，`textarea`，`select`表单元素
 
-```html v-model
+```html
 <input type="text" v-model="msg">
-```
-
-假设将上述页面绑定到 msg 中
-
-```js
-const app = new Vue({
-  el: "#app",
-  data: {
-    msg: "JQiue"
-  }
-})
 ```
 
 ::: demo [vue] 双向绑定
@@ -146,7 +135,7 @@ const app = new Vue({
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       msg: "JQiue"
     }
