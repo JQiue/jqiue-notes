@@ -122,7 +122,7 @@ sticky: true
 + 其他杂项
   + [编辑器/IDE](/sundry/editor/):star: - 0%
   + [Git](/sundry/git/):star::star: - 40%
-  + [Window](/os/windows/) & [Linux](/os/linux/):star::star: - 10%
+  + [Linux](/linux/):star::star: - 10%
   + Docker:star: - 0%
   + 代码质量:star::star: - 0%
   + [正则表达式](/sundry/regex/):star::star: - 0%

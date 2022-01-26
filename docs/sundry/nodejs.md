@@ -9,17 +9,19 @@ article: false
 + JavaScript
 :::
 
-Node.js 内置 V8 引擎，是 JavaScript 的一个运行环境，提供了浏览器中没有的功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的。Node 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript（以下简称 js） 运行环境，提供了浏览器中没有的功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的。Node.js 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上
 
-Node.js 的目的就是为了实现高性能的 Web 服务器，作者看中的是事件驱动和非堵塞 I/O 模型的优势。C、Lua、Ruby 等语言都曾经作为备选的实现，最终选择 JavaScript 是因为开发门槛低，历史包袱较少，并且 JavaScript 在浏览器中有非常广泛的事件驱动方面的应用，正好符合作者需求，其次，浏览器大战已经分出高下，Chrome 的 JavaScript 引擎 V8 得到性能第一的称号，因此 JavaScript 成为了 Node.js 的实现语言
+Node.js 的目的就是为了实现高性能的 Web 服务器，作者看中的是事件驱动和非堵塞 I/O 模型的优势。C、Lua、Ruby 等语言都曾经作为备选的实现，最终选择 js 是因为开发门槛低，历史包袱较少，并且 js 在浏览器中有非常广泛的事件驱动方面的应用，正好符合作者需求，其次，浏览器大战已经分出高下，Chrome 的 js 引擎 V8 得到性能第一的称号，因此 js 成为了 Node.js 的实现语言
 
-Node.js 打破了 JavaScript 只能运行在浏览器上的局面，统一了前后端编程环境，大大的降低了前后端转换后带来的代价，对于 Web 开发者来说，学习 JavaScript 不仅仅可以在浏览器上和 UI 打交道，也可以在 Node.js 上随性所欲的访问本地资源
+Node.js 打破了 js 只能运行在浏览器上的局面，统一了前后端编程环境，大大的降低了前后端转换后带来的代价，对于 Web 开发者来说，学习 js 不仅仅可以在浏览器上和 UI 打交道，也可以在 Node.js 上随性所欲的访问本地资源
 
-与其他 Web 后端语言相比，Node.js 除了异步和事件以外，回调函数是最大的一个特色，这种方式对于很多习惯同步编程的人来说，也许很不习惯，因为代码的编写顺序与执行顺序没有关系，可能造成阅读上的障碍，因此与常规的同步编程相比，变得不是那么一目了然，但转变了异步思想后，对业务的处理实际上都是一致的
+在 Node.js 中，自然保留了 js 单线程的特点，最大的好处是不用担心有多线程那样到处都是状态同步的问题，没有死锁的存在，也没有线程切换时带来的性能开销。但是单线程也有它自己的弱点，这导致无法利用多核 CPU，错误会引起整个应用崩溃，大量占用 CPU 导致无法继续调用异步 I/O。就像浏览器中一样，长时间的执行 JavaScript 会导致 UI 的渲染和响应被中断，但是这个问题最后被解决了，采取 Web Workers 一样的思路，Node.js 使用子进程来解决单线程的健壮性和无法利用多核 CPU 的问题
 
-在 Node.js 中，自然保留了 JavaScript 单线程的特点，最大的好处是不用担心有多线程那样到处都是状态同步的问题，没有死锁的存在，也没有线程切换时带来的性能开销。但是单线程也有它自己的弱点，这导致无法利用多核 CPU，错误会引起整个应用崩溃，大量占用 CPU 导致无法继续调用异步 I/O。就像浏览器中一样，长时间的执行 JavaScript 会导致 UI 的渲染和响应被中断，但是这个问题最后被解决了，采取 Web Workers 一样的思路，Node 使用子进程来解决单线程的健壮性和无法利用多核 CPU 的问题
+异步 I/O 对于 Node.js 而言非常重要，异步的概念主要是 js 在浏览器中是单线程执行的，而且与 UI 渲染共用一个线程，这导致 js 在执行的时候，UI 渲染和响应处于停滞状态，对于用户来说就会感到页面卡顿，因此用户体验是很差的。但是如果采用异步的方式，JavaScript 和 UI 渲染都不会处于等待，这对用户来说没有感受到卡断，这样的体验无疑是非常美好的
 
-异步 I/O 对于 Node.js 而言非常重要，异步的概念主要是 JavaScript 在浏览器中是单线程执行的，而且与 UI 渲染共用一个线程，这导致 JavaScript 在执行的时候，UI 渲染和响应处于停滞状态，对于用户来说就会感到页面卡顿，因此用户体验是很差的。但是如果采用异步的方式，JavaScript 和 UI 渲染都不会处于等待，这对用户来说没有感受到卡断，这样的体验无疑是非常美好的
+::: tip 非堵塞 I/O
+I/O 即系统的输入和输出，阻塞 I/O 和非堵塞 I/O 的区别在于系统接收输入再到输出的时间内，能不能接受其他输入
+:::
 
 对于前端来说，使用异步可以消除掉 UI 堵塞，但是前端获取资源的速度也取决与后端的响应速度，假如有两个资源需要返回，第一个资源需要耗时 M，第二个资源需要耗时 N，如果采用同步的方式，总共耗时为 M + N。但是如果采用异步的方式，第一个资源的获取并不会堵塞第二个资源的获取，因此总耗时为 max(M, N)。随着复杂性的增加，这种同步和异步的优劣会逐渐的凸显出来，会放大异步和同步在性能上的差距。因此异步 I/O 对于 Node.js 的重要性毋庸置疑，当只有后端更快速的响应资源，前端的体验才能更加美好
 
@@ -32,19 +34,9 @@ Node.js 适合解决下面这些应用场景中的问题：
 + 分布式应用
 + 工具类应用
 
-## 安装 Node.js
-
-+ 用于所有主流平台的官方软件包，可访问[Node.js 官网](http://nodejs.cn/download/)
-+ 使用[NVM（Node 版本管理器）](https://github.com/coreybutler/nvm-windows/releases) 安装 Node.js
-
-## 运行 JavaScript
-
-+ 交互式：终端输入`node`即可进入交互式编程
-+ 脚本式：将代码写到文件中，在命令行中输入`node 文件名`
-
 ## 和浏览器中的一些区别
 
-Node.js 和浏览器都是 JavaScript 的运行环境，但是由于宿主不同所以特点也有所不同
+Node.js 和浏览器都是 js 的运行环境，但是由于宿主不同所以特点也有所不同
 
 + 内置对象不同
   + 浏览器提供了`window`全局对象
@@ -59,6 +51,40 @@ Node.js 和浏览器都是 JavaScript 的运行环境，但是由于宿主不同
   + Node.js 中没有 HTML 节点也没有浏览器, 所以 Node.js 没有 DOM/BOM 相关操作
 
 Node.js 运行在服务器时，作为 Web Server，运行在本地时作为打包、构建工具
+
+## 错误优先的回调函数风格
+
+与其他 Web 后端语言相比，Node.js 除了异步和事件以外，回调函数是最大的一个特色，这种方式对于习惯同步编程的人来说，也许很不习惯。因为代码的编写顺序与执行顺序没有关系，可能造成阅读上的障碍，变得不是那么一目了然
+
+对于 Node.js 中的回调函数来说，大多数都是错误优先的回调函数风格，也就是第一个参数是 Error，后面的参数才是结果
+
+```js
+function foo(callback) {
+  setTimeout(() => {
+    if(Math.random() > 0.5) {
+      callback(null, 'success');
+    } else {
+      callback(new Error('fail'));
+    }
+  }, 0);
+}
+
+foo((err, result) => {
+  if(err) {
+    console.log(err);
+  }
+});
+```
+
+## 安装 Node.js
+
++ 用于所有主流平台的官方软件包，可访问[Node.js 官网](http://nodejs.cn/download/)
++ 使用[NVM（Node 版本管理器）](https://github.com/coreybutler/nvm-windows/releases) 安装 Node.js
+
+## 运行 JavaScript
+
++ 交互式：终端输入`node`即可进入交互式编程
++ 脚本式：将代码写到文件中，在命令行中输入`node 文件名`
 
 ## 模块
 
@@ -154,21 +180,21 @@ process.stdin.on('data', function (text) {
 
 ```js
 // 系统架构
-console.log(process.arch);
+process.arch
 // 内存使用情况
-console.log(process.memoryUsage());
+process.memoryUsage()
 // 命令行参数
-console.log(process.argv);
+process.argv
 // 查看 Node.js 版本
-console.log(process.version);
+process.version
 // 查看环境变量
-console.log(process.env);
+process.env
 // 查看 node 程序的 pid
-console.log(process.pid);
+process.pid
 // 杀死某个进程
 process.kill(pid);
 // 查看当前运行 Node.js 的终端路径
-console.log(process.cwd());
+process.cwd()
 ```
 
 退出 Node.js 程序：
@@ -349,6 +375,7 @@ npx 是自带的包命令执行工具，常用来执行可执行命令，使用`
 + [Progress](https://github.com/visionmedia/node-progress)：终端进度条
 + [chalk](https://github.com/chalk/chalk)：为终端进行着色
 + [nodemailer](https://github.com/nodemailer/nodemailer)：发送邮件
++ [glob](https://github.com/isaacs/node-glob)：模式匹配目录文件
 
 ## NPM 的替代 Yarn
 
@@ -541,6 +568,42 @@ function onRequest(request, response) {
 http.createServer(onRequest).listen(3000);
 
 console.log('Server start at http://localhost:3000');
+```
+
+## 网络
+
+`net`模块提供了基于流的 TCP/IPC 服务端和客户端
+
+建立服务端：
+
+```js
+const net = require('net');
+
+net.createServer(socket => {
+  console.log('客户端已连接');
+  socket.on('data', buffer => {
+    console.log(buffer, buffer.toString());
+  });
+  socket.on('end', () => {
+    console.log('客户端已断开');
+  });
+}).listen(8124, () => {
+  console.log('server bound');
+});
+```
+
+建立客户端：
+
+```js
+const net = require('net');
+
+const socket = net.connect({
+  host: '127.0.0.1',
+  port: 8124
+});
+
+// 向服务端写入数据
+socket.write();
 ```
 
 ## 文件操作

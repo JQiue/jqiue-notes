@@ -6,9 +6,9 @@ author: JQiue
 article: false
 ---
 
-通常如果程序发生了错误，就会立即停止运行，并在控制台打印错误信息，但是使用`try...catch`结构，可以让我们捕获错误，而不是导致程序立即死掉
+通常如果程序发生了错误，就会立即停止运行，并在控制台打印错误信息，但是使用`try...catch`结构，可以捕获程序错误，而不是导致程序立即死掉
 
-## try...catch 语法
+## try...catch
 
 ```js
 try {
@@ -55,8 +55,8 @@ try {
 
 一般来说，所有的内建 error，主要有两个属性：
 
-+ `name`：Error 名称
-+ `message`：Error 的详细信息描述
++ `name`：错误名称
++ `message`：错误的详细信息描述
 
 ```js
 try {
@@ -185,6 +185,20 @@ try {
 ## 全局 catch
 
 ## 扩展 Error
+
+## 无法捕获的错误
+
+异步调用的错误是无法被捕获的，这和调用栈有关系
+
+```js
+try {
+  setTimeout(() => {
+    throw new Error('fail');
+  }, 1000);
+} catch (error) {
+  console.log(error);
+}
+```
 
 ## 总结
 

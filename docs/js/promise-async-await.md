@@ -615,25 +615,20 @@ function foo() {
   return 1;
 }
 
-console.log(foo()); // 1
-```
-
-这很简单，如果使用`async`关键字标记该函数
-
-```js
-async function foo() {
+async function bar() {
   return 1; // 等价于 Promise.resolve(1);
 }
 
-console.log(foo()); // Promise { 1 }
+console.log(foo()); // 1
+console.log(bar()); // Promise { 1 }
 ```
 
-这个函数的返回值是一个 Promise 对象，`async`关键字只做了这样的一件事：这个函数总是返回一个 Promise 对象，并将返回值包装成一个“resolved”的 Promise 中
+这很简单，如果使用`async`关键字标记该函数，这个函数的返回值是一个 Promise 对象，`async`关键字只做了这样的一件事：这个函数总是返回一个 Promise 对象，并将返回值包装成一个“resolved”的 Promise 对象中
 
 那么`await`能用来做什么呢？先看一个例子
 
 ```js
-function foo(){
+function foo() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log('foo');
@@ -682,11 +677,11 @@ console.log(bar());
 */
 ```
 
-在函数执行到`await`时会让函数等待后面的代码执行完成，然后再继续执行下去，`await`只是让函数暂停一下而已，并不影响什么其他的东西，比如`foo`本身会返回一个 Promise，可以在`await`的左边用变量接收
+在函数执行到`await`时会让函数等待后面的代码执行完成，然后再继续执行下去，`await`只是让函数暂停一下而已，并不影响什么其他的东西，比如`foo`本身会返回一个 Promise，可以在`await`的左边用变量直接接收结果
 
 ```js
 /* 稍微改造一下，使用 resolve 传值 */
-function foo(){
+function foo() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('foo');
@@ -735,10 +730,10 @@ async function bar() {
 
 + JavaScript 是一种单线程执行机制
 + Promise 会让一个异步方法不会立即返回最终的值，而是返回一个 Promise 对象，在未来的某个时候交给使用者，有三种状态`pending/fulfilled/rejected`，调用`resolve`时转为`fulfilled`，而调用`reject`时转为`rejected`
-+ `then`有两个参数，分别是`resolve`和`reject`的回调
++ Promise 对象的`then`方法有两个参数，分别是`resolve`和`reject`的回调
 + `new Promise`是同步的，而`then`则不是
 + `catch`也可以捕捉`reject`的回调
 + `finally`不管`resolve/reject`都会被执行，并且不会阻止结果传递
-+ `then`本身也会返回 Promise，`return`结果将会作为 Promise 的结果，所以可以产生链式调用，该 Promise 的状态，取决于返回值的规则
-+ Promise 提供了 5 个静态方法，在不需要进行 new 操作的时候使用
++ `then`本身也会返回 Promise，`return`结果将会作为 Promise 对象的结果，所以可以产生链式调用，该 Promise 的状态，取决于返回值
++ Promise 提供了 5 个静态方法，在不需要进行`new`操作的时候使用
 + 用`async`修饰的函数一定会返回一个 Promise 对象，在函数中使用`await`时，会让函数等待修饰的代码完成，然后继续执行下去，如果是一个 Promise 会直接将结果作为返回值，如果结果是正常的话
