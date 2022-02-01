@@ -7,7 +7,7 @@ article: false
 
 队列和栈类似，但是采用的是先进先出原则，只能从尾部添加新元素，并从顶部移除元素
 
-## 顺序存储的队列
+## 数组实现
 
 <CodeGroup>
 
@@ -163,7 +163,7 @@ class Queue {
 
 </CodeGroup>
 
-## 链式存储的队列
+## 链式实现
 
 <CodeGroup>
 
@@ -344,9 +344,10 @@ class Deque {
 
 普通队列的元素都会被插入到队尾，优先级队列的元素再插入的同时会考虑该元素的优先级来决定它的位置
 
-<CodeGroupItem>
 
-<CodeGroup title="JavaScript">
+<CodeGroup>
+
+<CodeGroupItem title="JavaScript" active>
 
 ```js
 class Element {

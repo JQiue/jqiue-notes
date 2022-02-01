@@ -9,7 +9,7 @@ article: false
 
 ## 冒泡排序
 
-比较相邻的两个元素，如果前面比后面大，则交换这它们，每一趟都会产生一个最大的数被排好序
+比较相邻的两个元素，如果前面比后面大，则交换它们，每一趟都会产生一个最大或最小的数被排好序
 
 时间复杂度：O(n^2^)
 
@@ -18,8 +18,6 @@ article: false
 <CodeGroupItem title="C" active>
 
 ```c
-// 升序
-
 void swap(int *list, a, b){
 
 }
@@ -78,7 +76,7 @@ void select(int *list, int size){
 
 ## 插入排序
 
-每次都会排好一个元素，如果第一个元素已经排好序，它会和第二个元素进行比较，第二个元素将会决定待在原位还是插入到第一个元素之前，这样两个元素已经排好序，接着和第三个元素比较，以此类推
+每次都会排好一个元素，如果第一个元素已经排好序，它会和第二个元素进行比较，第二个元素将会决定待在原位置还是插入到第一个元素之前，这样两个元素已经排好序，接着和第三个元素比较，以此类推
 
 时间复杂度：O(n^2^)
 
@@ -96,7 +94,7 @@ void insert(int *list, int size) {
     while (list[j] > temp && j >= 0)
     {
       list[j + 1] = list[j];
-      j -= 1;
+      j--;
     }
     list[j + 1] = temp;
   }
@@ -117,7 +115,6 @@ function insert(array) {
       array[j + 1] = array[j];
       j--;
     }
-    console.log(array);
     array[j + 1] = temp;
   }
   return array;

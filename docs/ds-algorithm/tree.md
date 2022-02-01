@@ -13,9 +13,11 @@ article: false
 
 一个节点可以有祖先和后代，祖先包括**父节点**、**祖父节点**、**曾祖父节点**等，后代包括**子节点**，**孙子节点**、**曾孙节点**等
 
-树还存在**子树**的概念，就是以子节点为根的树，由节点和它的后代节点组成
+树还存在**子树**的概念，就是以子节点为根的树，由子节点和它的后代节点组成
 
-节点具有**深度**属性，节点深度取决于它祖先节点的数量或经过的路径
+一个节点的子树的个数被称为度，那么树的度就指的是所有节点的度中最大的那个
+
+节点具有**深度**属性，节点深度取决于它祖先节点的数量或经过的路径，树的深度取决于所有节点深度的最大的那个
 
 ::: tip 深度是数节点数还是数路径？
 看情况决定
@@ -27,29 +29,29 @@ article: false
 从第 1 层开始数比较符合人类习惯，从第 0 层开始也没什么毛病，原理都是一样的
 :::
 
-根据子节点的排列，还分为**有序树**和**无序树**
+由 m（m ≥ 0）棵互不相交的树组成的集合称为森林
 
-+ 节点的度：子树的个数（有几个子节点就是几度）
-+ 树的度：所有节点的度中最大的
-+ 节点的深度：从根节点到当前节点的唯一路径上的节点总数
-+ 节点的高度：从当前节点到最远叶子节点的路径上的节点总数
-+ 树的深度：所有节点深度的最大值
+根据子节点的排列顺序，还分为**有序树**和**无序树**
 
 树的分类：
 
-+ 一般树：任意节点的度不受限制
-+ 二叉树：任意节点的度最多两个
-+ 森林：由 m（m ≥ 0）棵互不相交的树组成的集合
++ 一般树 - 任意节点的度不受限制
++ 二叉树 - 任意节点的度最多两个
 
-## 二叉树和二叉搜索树
+## 二叉树
 
 二叉树的节点最多有两个子节点，一个是左节点，一个是右节点。二叉树的左子树和右子树是有顺序的，即使某个节点只有一个子树，也要区分左右，所以二叉树是一种有序树
 
 二叉树又根据节点的排列和分布有所不同定义：
 
 + 真二叉树 - 没有度为 1 的节点
-+ 满二叉树 - 没有度为 1 的节点，但是所有的叶子节点都在最后一层
-+ 完全二叉树 - 叶子节点只会出现最后 2 层，且最后 1 层的叶子节点都是向左靠齐
++ 完满二叉树 - 所有的非叶子节点的度为 2
++ 完全二叉树 - 叶子节点都是向左靠齐，且只会出现最后 2 层
++ 满二叉树（完美二叉树） - 没有度为 1 的节点，但是所有的叶子节点都在最后一层
+
+::: tip 
+满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树
+:::
 
 二叉树的性质：
 
@@ -68,11 +70,25 @@ article: false
 + 同样节点数量的二叉树，完全二叉树的高度最小
 + 假如高度为 h，那么至少有 2^h-1^ 个节点，最多有 2^h^ - 1 个节点（满二叉树）
 
+```js
+class Node {
+  constructor () {
+    this.data = null;
+    this.left = null;
+    this.right = null;
+  }
+}
+```
+
+## 二叉搜索树
+
 二叉搜索树是二叉树的一种，但是只允许在左节点存储（比父节点）小的值，在右节点存储（比父节点）大的值，定义如下：
 
 + 任意节点的值都大于其左子树所有节点的值
 + 任意节点的值都小于其右子树所有节点的值
 + 左右子树本身也是一颗二叉搜索树
+
+二叉树的搜索、插入、删除的时间复杂度都是 log(n)
 
 <CodeGroup>
 
@@ -183,6 +199,7 @@ Status traverse(Node *root){
 <CodeGroupItem title="JavaScript">
 
 ```js
+/* 节点 */
 class Node {
   constructor(data) {
     this.data = data;
@@ -192,11 +209,15 @@ class Node {
 }
 
 class BinarySearchTree {
+  /* 构造一个引用指向根节点 */
   constructor() {
     this.root = null;
   }
+  /* 插入节点的算法 */
   insertNode(node, data) {
+    // 节点大于左节点就往右，否则往左，找一个位置插入
     if (node.data > data) {
+      // 如果当前节点不为空，则继续遍历，否则插入到该位置
       if (node.left == null) {
         node.left = new Node(data);
       } else {
@@ -210,20 +231,22 @@ class BinarySearchTree {
       }
     }
   }
-  minNode(node) {
-    let current = node;
-    while (current != null && current.left != null) {
-      current = current.left;
+  // 搜索节点的算法
+  searchNode(node, data) {
+    if (node == null) {
+      return false;
     }
-    return current;
-  }
-  maxNode(node) {
-    let current = node;
-    while (current != null && current.right != null) {
-      current = current.right;
+    if (node.data > data) {
+      return this.searchNode(node.left, data);
+    } else if (node.data < data) {
+      return this.searchNode(node.right, data);
+    } else if (node.data == data) {
+      return true;
+    } else {
+      return false;
     }
-    return current;
   }
+  // 删除节点的算法
   removeNode (node, data) {
     if (node == null) {
       return null;
@@ -249,12 +272,28 @@ class BinarySearchTree {
         node = node.left;
         return node;
       }
-      // 有两侧子节点的情况
+      // 处理有两侧子节点的情况
       const aux = this.minNode(node.right);
       node.data = aux.data;
       node.right = this.removeNode(node.right, aux.data);
       return node;
     }
+  }
+  /* 根据二叉树特性，最小的节点一定在整棵树的最左边 */
+  minNode(node) {
+    let current = node;
+    while (current != null && current.left != null) {
+      current = current.left;
+    }
+    return current;
+  }
+  /* 根据二叉树特性，最大的节点一定在整棵树的最右边 */
+  maxNode(node) {
+    let current = node;
+    while (current != null && current.right != null) {
+      current = current.right;
+    }
+    return current;
   }
   insert(data) {
     if (!this.root) {
@@ -274,19 +313,6 @@ class BinarySearchTree {
   }
   max() {
     return this.maxNode(this.root);
-  }
-  searchNode(node, data) {
-    if (node == null) {
-      return null;
-    }
-    console.log(node.data, data);
-    if (node.data > data) {
-      return this.searchNode(node.left, data);
-    } else if (node.data < data) {
-      return this.searchNode(node.right, data);
-    } else {
-      return true;
-    }
   }
 }
 ```
@@ -309,7 +335,61 @@ AVL（Adelson-Velskii-Landi）树是一种自平衡树，用来解决二叉搜�
 
 ## 堆
 
-堆是一种特殊的二叉树，能够高效、快速的找出最大值和最小值，常用于优先队列，也用于堆排序算法中
+堆是一种特殊的二叉树，能够高效、快速的找出最大值和最小值，常用于优先队列，也用于堆排序算法中，也被用于非常出名的堆排序算法中
+
+堆具有两个特性：
+
++ 是一颗完全二叉树
++ 不是最小堆就是最大堆，即所有的节点都大于等于或着小于等于它的每个子节点
+
+```js
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+  compare(a, b) {
+    return a > b ? true : false;
+  }
+  swap(array, a, b) {
+    let t = array[a];
+    array[a] = array[b];
+    array[b] = t;
+  }
+  siftUp(index) {
+    let parent = this.getParentIndex(index); 
+    while (index > 0 && this.compare(this.heap[parent], this.heap[index]) > Compare.BIGGER_THAN) { 
+      swap(this.heap, parent, index);
+      index = parent;
+      parent = this.getParentIndex(index);
+    }
+  }
+  getLeftIndex(index) {
+    return 2 * index + 1;
+  }
+  getRightIndex(index) {
+    return 2 * index + 2;
+  }
+  getParentIndex(index) {
+    return Math.floor(index / 2);
+  }
+  insert(data) {
+    if (data != null) {
+      this.heap.push(value);
+      this.siftUp(this.heap.length - 1);
+      return true;
+    }
+    return false;
+  }
+  extract() {}
+  findMinimum() {}
+  size() {
+    return this.heap.length;
+  }
+  isEmpty () {
+    return this.size() == 0;
+  }
+}
+```
 
 ## B 树
 
