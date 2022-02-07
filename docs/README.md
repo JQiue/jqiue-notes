@@ -4,7 +4,7 @@ home: true
 title: true
 heroFullScreen: true
 heroText: 嗨，欢迎来到这里！
-bgImage:  http://qn.jinqiu.wang/bgImage.jpg
+bgImage:  bgImage.jpg
 bgImageStyle: Record<opacity = 0>
 tagline: Welcome to here
 actionText: 了解更多 →

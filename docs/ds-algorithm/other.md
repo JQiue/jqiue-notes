@@ -88,9 +88,9 @@ class Set {
 }
 ```
 
-</CodeGroup>
-
 </CodeGroupItem>
+
+</CodeGroup>
 
 ### 多重集
 
@@ -191,9 +191,10 @@ class Dictionary {
 }
 ```
 
+</CodeGroupItem>
+
 </CodeGroup>
 
-</CodeGroupItem>
 
 ## 散列表
 
@@ -278,16 +279,15 @@ class HashTable {
 }
 ```
 
+</CodeGroupItem>
+
 </CodeGroup>
 
-</CodeGroupItem>
 
 有时候，一些建会产生相同的哈希值，当不同的值在哈希表中对应相同位置时，就被称为冲突。使用一个数据结构来保存数据的目的显然不是丢失掉这些数据，而是通过某种方法来将它们保存起来，因此发生这种情况时必须要去解决
 
 + 分离链接 - 为每一个位置创建一个链表存储元素，需要额外的空间
 + 线性探查 - 如果该位置有值，则看下一个位置，直到发现空位置
 + 双散列法 - 一个哈希函数解决不了冲突就是用第二个哈希函数继续计算，只到解决为止
-
-
 
 <!-- to be updated -->
