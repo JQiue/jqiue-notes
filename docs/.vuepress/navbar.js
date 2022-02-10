@@ -8,7 +8,7 @@ module.exports = [
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
-      { text: 'Linux', icon: 'linux', link: '/linux/' },
+      { text: 'Linux', icon: 'linux', link: '/sundry/linux' },
       { text: '数学&&英语', icon: 'kemu', link: '/math-english/' },
     ]
   },

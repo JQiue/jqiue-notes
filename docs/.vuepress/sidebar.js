@@ -142,12 +142,6 @@ const database = [
   }
 ];
 
-const linux = [
-  '',
-  'vim',
-  'shell',
-];
-
 const wasm = [
   '',
 ]
@@ -220,6 +214,7 @@ const sundry = [
   'openssl',
   'sport',
   'windows',
+  'linux',
 ];
 
 const vue = [
@@ -251,7 +246,6 @@ module.exports = {
   "/ds-algorithm/": ds_algorithm,
   "/design-pattern/": design_pattern,
   "/database/": database,
-  "/linux/": linux,
   "/html-css/": html_css,
   "/canvas/": canvas,
   "/webapi/": webapi,

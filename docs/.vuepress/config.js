@@ -36,7 +36,6 @@ module.exports = config({
         "/react/": "123456",
         "/design-pattern/": "123456",
         "/java/": "123456",
-        "/linux/": "123456",
         "/spring/": "123456",
         "/express/": "123456",
         "/python/": "123456",
