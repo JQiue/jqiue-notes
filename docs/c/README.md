@@ -20,7 +20,7 @@ C 在发展初期并没有形成通用的标准，随着时间的发展，在 19
 
 ## 安装编译器
 
-由于 C 编译器并不是 Windows 软件包中的一部分，需要从别处获取 C 编译器，一般在该操作系统上安装 [MinGW](http://www.mingw.org) 获取编译器，当然也可以使用集成开发环境，比如：Microsoft Visual C++ 6.0，Microsoft Visual Studio 等，大部分编译器都是 C 和 C++ 编译器的结合
+从 [MinGW](https://www.mingw-w64.org/) 获取编译器，当然也可以使用集成开发环境，比如：Microsoft Visual C++ 6.0，Microsoft Visual Studio 等，大部分编译器都是 C 和 C++ 编译器的结合
 
 ## 第一个 C 程序
 

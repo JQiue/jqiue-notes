@@ -42,7 +42,7 @@ const c = [
   '',
   'syntax',
   'function',
-  'array-string',
+  'array',
   'pointer',
   'struct-union',
   'preprocessing',
