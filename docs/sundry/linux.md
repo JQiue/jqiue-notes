@@ -3,9 +3,10 @@ title: Linux 就随便学学啦
 category: 操作系统
 tags: [Linux]
 author: JQiue
+article: false
 ---
 
-巴拉巴拉，阿巴阿巴，省略一大堆，Linux 是一种多用户操作系统
+巴拉巴拉，阿巴阿巴，省略一大堆
 
 ## 不同的发行版
 
@@ -77,6 +78,8 @@ shell 是运行在终端上的文本互动程序，bash 是最常用的一种 sh
 
 ## vim
 
+在 Linux 中，一切数据皆文件，而文件必须是人类可读可编辑的。所以在大多数情况下，它们都是纯文本文件，因此有必要学会如何编辑文件
+
 vim 是 Linux 自带的一款处理文本的工具，输入`vim`命令，会进入这样的界面
 
 ![还没有图片](/)
@@ -104,13 +107,13 @@ vim 总是令新手头疼，它不像 Windows 记事本那样是可视化的，v
 + `:wq`：保存并退出
 + `:q!`：不对文件进行修改并退出
 
-如果想要查看某个文件而不是想修改它，使用 Vim 是有点过度的，这时候就使用另一个文本浏览器 less，输入`less <file>`即可查看，使用熟悉的`j`、`k`命令来浏览文件，退出浏览使用`q`，使用`--ch<enter><enter>`水平滚动（对于放不下的行来说）
+如果想要查看某个文件而不是想修改它，使用 vim 是有点过度的，这时候就使用另一个文本浏览器 less，输入`less <file>`即可查看，使用熟悉的`j`、`k`命令来浏览文件，退出浏览使用`q`，使用`--ch<enter><enter>`水平滚动（对于放不下的行来说）
 
 ## 换源
 
 一般情况下，默认的软件源就足够使用了，但有的软件源比较慢，甚至会连接失败，所以需要换一些国内的源，比如阿里云
 
-首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源，然后`vim /etc/apt/sources.list`打开配置源文件，将内容全部替换为阿里云的源：
+首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源，然后`vim /etc/apt/sources.list`打开配置源文件，将内容全部替换为阿里云的源，保存并退出就可以了：
 
 ```
 deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
@@ -129,8 +132,6 @@ deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe m
 deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
 ```
 
-保存并退出就可以了
-
 ## 端口管理
 
 不要在远程机中通过防火墙程序来控制端口，因为控制台会有专门预设好的防火墙设置，在这里指定规则即可
@@ -144,8 +145,6 @@ deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted univer
 ```sh
 scp 本地文件路径 目标机器:目标机器的文件路径
 ```
-
-在 Linux 中，一切数据皆文件，而文件必须是人类可读可编辑的，所有在大多数情况下，它们都是纯文本文件，因此有必要学会如何编辑文件
 
 ## 文件处理
 
@@ -163,7 +162,7 @@ scp 本地文件路径 目标机器:目标机器的文件路径
 + `touch <file>`：更新目标文件的时间戳
 
 ::: tip
-对应`rm`来说，一定要加上 verbose 选项，通常是`-v`，不要让自己陷入危险的命令当中
+对应`rm`来说，一定要加上`verbose`选项，通常是`-v`，不要让自己陷入危险的命令当中
 :::
 
 ## 环境变量
@@ -236,7 +235,7 @@ Linux 是一个多任务操作系统，意味着可以有很多程序同时运�
 + `jobs`：列出所有的后台程序
 + `fg`：指定程序带到前台运行，需要一个数字参数，可以从`jobs`中获取，如果没有则将最后一个挂起的程序带到前台
 + `bg`：指定后台程序在后台恢复运行，需要一个数字参数，从`jobs`获取，没有则将最后一个挂起的程序恢复
-+ `Ctrl + c`：可以停止当前执行的运行的程序
++ `Ctrl + c`：可以停止当前正在执行的程序
 + `&`：在执行命令后面增加`&`会让这个程序直接在后台挂起并运行
 + `nohup`：在执行命令前面加上使用`nohup`命令，挂起一个程序，在终端断开后不会被杀死
 

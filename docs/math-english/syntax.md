@@ -1,10 +1,12 @@
 ---
-title: 词性
+title: 语法
 category: 学科
 tags: [英语]
 author: JQiue
 article: false
 ---
+
+## 词性
 
 英语是由词、句、篇构成，单词的词性是打开英语大门的钥匙，词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
 
@@ -25,7 +27,7 @@ article: false
 
 有实在意义，能独立承担句子成分的是实词。没有实在意义，不能独立承担句子成分的是虚词
 
-## 名词（Nouns）
+### 名词（Nouns）
 
 + 作主语：The book is on the desk.
 + 作表语：The tall man is a singer.
@@ -80,7 +82,7 @@ a cup of coffee
 
 还一种表示所有关系的形式：of 所有格，常用来表示无生命的名词，如 the windows of the room
 
-## 冠词（Articles）
+### 冠词（Articles）
 
 冠词是虚词，不能单独使用，也没有词义，用在名词的前面帮助说明名词的含义，有三种冠词：
 
@@ -130,7 +132,7 @@ This is an A/E/F/H/I/L/M/N/O/S/X.
 + by 与交通工具连用，表示一种方式
 + 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
 
-## 动词（verbs）
+### 动词（verbs）
 
 系动词是用来辅助主语的动词。它本身有词义，但不能单独用作谓语
 
@@ -295,7 +297,7 @@ You would rather not deal with it now.
 
 如果是实义动词，要借助`助动词 + not`来构成否定，无实义的动词直接加`not`
 
-## 代词（Pronouns）
+### 代词（Pronouns）
 
 是一种代替名词的词类，大多数代词具有名词和形容词的功能，根据意义、特征以及在句中的作用分为：
 
@@ -394,7 +396,7 @@ I have something to tell you. 我有一些事告诉你
 
 疑问代词在句子中用来构成特殊疑问句，且疑问代词可用作连接代词，引导名词性从句
 
-## 形容词（Adjectives）
+### 形容词（Adjectives）
 
 是一种修饰名词的词，说明人、物等是什么样或看上去是怎么样的，形容词作定语时一般放在名词前：
 
@@ -424,7 +426,7 @@ He's very fat.
 + 以`y`结尾的，变`y`为`i`再加`ly` happy happily
 + 形容词和副词形式相同
 
-## 副词（Adverbs）
+### 副词（Adverbs）
 
 副词可以修饰动词、形容词、其他副词以及其他结构，可以是单个的词或词组
 
@@ -453,7 +455,7 @@ They always come early.
 Sam often writes homework at 7:00.
 ```
 
-## 数词（Numerals）
+### 数词（Numerals）
 
 数词分为基数词和序数词，基数词用来表示数目的多少，序数词用来表示顺序
 
@@ -505,7 +507,7 @@ Sam often writes homework at 7:00.
 + 主 + 谓 + 倍数 + 形容词/副词比较级 + than + ...
 + by + 倍数
 
-## 介词（Prepositions）
+### 介词（Prepositions）
 
 没有实在意义，按形式分类：
 
@@ -552,9 +554,9 @@ at home
 at school
 ```
 
-## 叹词（Interjections）
+### 叹词（Interjections）
 
-## 连词（Conjunctions）
+### 连词（Conjunctions）
 
 ## 不定量表达
 
@@ -640,11 +642,232 @@ None of us have arrived. 我们都没有到
 
 句子由不同的成分组成，而不同的词性充当不同的成分，主要有以下成分
 
-+ 主语：句子中的主体对象
-+ 谓语：主体对象发生的动作
-+ 宾语：主体发生的动作作用的对象
-+ 宾语补语：对句子进行补充说明
-+ 主语补语（表语）：可以成为主语的补语，表示主语的状态
-+ 定语：修饰主体对象
-+ 状语：修饰动词，形容词以及全句，表示句中的背景
-+ 同位语：和句子前面的名词可互换
++ 主语 - 句子中的主体对象
++ 谓语 - 主体对象发生的动作
++ 宾语 - 主体发生的动作作用的对象
++ 宾语补语 - 对句子进行补充说明
++ 主语补语（表语） - 可以成为主语的补语，表示主语的状态
++ 定语 - 修饰主体对象
++ 状语 - 修饰动词，形容词以及全句，表示句中的背景
++ 同位语 - 和句子前面的名词可互换
+
+可以毫不夸张的说，句法通，英语通，它在英语中的作用相当于一幢大楼的骨架。会分析了句子成分才能理解简单句，掌握了六大句型，才会在写作中游刃有余，避免写出中国式英语，而英语句子的理解难点就在主从复合句。养成分析句子成分的习惯，当遇到难句，长句时，注意从句子成分的角度去解决问题，不要把时间放在对知识点的死记硬背上，要注意分析语言实践
+
+## 四种句子类型
+
++ 陈述句 - 陈述一件事情，具有肯定/否定形式
++ 疑问句 - 对一些事情提出疑问
++ 祈使句 - 表示命令、请求、劝告、警告等
++ 感叹句 - 表示喜怒哀乐等强烈的情感
+
+## 简单句
+
+简单句用于说明一件事，最基本的就是“名词+动词”结构，也就是“主谓”结构。分为 6 大句型：
+
++ S V：主 + 谓
++ S V O：主 + 谓 + 宾
++ S V O O：主 + 谓 + 间宾 + 直宾
++ S V O C：主 + 谓 + 宾 + 宾补
++ S V P： 主 + 系 + 表
++ There be 句型
+
+主谓结构是整个句子最基本的结构，其他的句式都是由主谓结构发展而来，主谓句式由表示陈述和被陈述关系的 2 个成分组成
+
+```
+The universe remians.
+宇宙长存
+```
+
+主系表结构是较为特殊的结构，系动词是用来连接主语和表语的，没有实际意义，而表语是用来修饰主语的状态，比如性质、特点、位置
+
+```
+The food is delicions.
+这个食物很美味
+```
+
+主谓宾结构是最常用的结构，表示一个对象对另一个对象所做的动作
+
+```
+He took his bag and left.
+他拿着他的包离开了
+```
+
+主谓宾宾结构通常作用于两个物体身上
+
+```
+Her father bought her a dictionary.
+她的爸爸给她买了一本字典
+```
+
+主谓宾宾补通常用于补充说明宾语的情况
+
+```
+We made him our monitor.
+我们选他当我们的班长
+```
+
+在说明或询问人、物等的存在时即可使用 There + be 结构，There + be 结构可将重要的新信息放在句末，以示强调，此结构中的主语实际上是 be 后面的名词
+
+```
+There is a book on the bookshelf.
+There are some book on the bookshelf.
+```
+
+Here + be 不是固定结构，只是一个倒装句型，不一定是 Be，还可以是其他的动词
+
+```
+Here is the bus stop.
+Here comes the bus!
+```
+
+## 陈述句
+
+首先要知道英语的语序和中文不一定是一样的，比如下面的句子：
+
+```
+He learns English every day.（按照语序翻译：他学英语每一天）
+他每天学习英语
+```
+
+不带否定含义的陈述句都是肯定句，否定句与之相反，含有一个如 not 之类的否定词，比如：
+
+```
+This is my umbrella.
+This is not my umbrella.
+```
+
+## 疑问句
+
+疑问句也具有几种特殊举行：
+
++ 一般疑问
++ 选择疑问
++ 特殊疑问
++ 反意疑问
+
+通过主谓倒装可将带有 be 的陈述句变为一般疑问句，比如：
+
+```
+This is your handbag. 这是你的手提包.
+Is this your handBag? 这是你的手提包吗？
+```
+
+针对一般疑问句的否定的简略答语是：No, it's not / it isn't.
+
+当对某些具体的部分进行提问时，就要用到特殊疑问句，特殊疑问句由`特殊疑问词 + 一般疑问句`组成
+
+特殊疑问词有：
+
++ what：询问是什么
++ when：询问时间
++ who：询问主语
++ how：询问方式
++ where：询问地点
++ why：询问原因
++ which：询问哪一个，哪一些
++ whose：询问所属
+
+对`He bought three books yesterday`不同的部分进行提问
+
+```
+询问主语：Who bought three books yesterday?
+询问宾语：What did he buy three books yesterday?
+询问时间：When did he buy three books?
+```
+
+当对非主语部分提问时，要用 Be 动词或助动词
+
+补充：How long，How far，How often
+
+```
+They have been in China for three years. 对时间提问
+How long have they been in China?
+
+It is about 4 kilometers from Beijing to Xi'an. 对距离提问
+How far is it from Beijing to Xi'an.
+
+They come to visit me once a week. 对频率提问
+How often do they come to visit. 原句中没有助动词，要借助一下
+
+She came late. because she missed the bus. 对原因提问
+Why did she came late?
+```
+
+::: tip
+How 和一些形容词结合，可以形成更丰富的提问
+:::
+
+what ... like? 通常用于询问事物的情况，比如天气或气候等，或者人物和事物的外观或特征，用形容词进行回答
+
+```
+What's the weather like today?
+What's your brother like?
+```
+
+whose 用来询问所有关系，回答时总是一个名字加`'s`形式，或者是名词所有格代词
+
+```
+Whose is that car?
+That is mine.
+```
+
+which 用来询问物体或物质，which 总是一种限定的，特指的选择：
+
+```
+Which book?
+```
+
+where 用来询问地点，回答可以是整句、短语或单个单词
+
+```
+Where is the book?
+On the table.
+```
+
+含有 or 的疑问句称为选择疑问句，或者将选择的余地缩小在数目有限的事物内，可以有无限性的选择，这种疑问句不能简单的用 Yes 或 no 进行回答
+
+```
+Beef or lamb?
+What would you like to drink?
+```
+
+## 祈使句
+
+祈使句的主语通常省略，其谓语动词用原型
+
+```
+Follow me.
+Shut the door, please.
+Look out!
+```
+
+有些祈使句可以跟 and 和另一个动词，而不是带 to 的动词不定式
+
+```
+Come and meet our employees.
+Wait and see.
+```
+
+否定缩写形式：Don't + 动词原形
+
+```
+Don't wait!
+Don't speak to me like that!
+```
+
+## 感叹句
+
++ what 引导
++ how 引导
+
+## 并列
+
+## 从句
+
+## 特殊句型
+
+### 强调
+
+### 倒装
+
+### 虚拟

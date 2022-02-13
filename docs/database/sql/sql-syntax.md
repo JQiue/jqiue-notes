@@ -28,12 +28,12 @@ SQL 并不像其他语言那样，学习需要大量的程序基础，它更像�
 -- 创建数据库
 CREATE DATABASE database_name;
 -- 创建数据库同时指定编码
-CREATE DATABASE database_name CHARACTER SET 字符集
+CREATE DATABASE database_name CHARACTER SET 字符集;
 -- 创建表
 CREATE TABLE table_name (
   column_name1 类型 约束,
   column_name2 类型 约束
-)
+);
 ```
 
 示例：
@@ -43,7 +43,7 @@ CREATE TABLE student (
   id bigint,
   stu_name varchar(50),
   stu_age int
-)
+);
 ```
 
 ### ALTER

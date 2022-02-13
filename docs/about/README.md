@@ -94,7 +94,7 @@ sticky: true
   + 计算机网络:star::star::star: - 28%
   + 数据库原理:star: - 0%
 + 编程语言
-  + [C](/c/):star: - 21%
+  + [C](/c/):star: - 28%
   + [Java](/java/):star: - 12%
   + [JavaScript](/js/):star::star::star::star::star: - 73%
     + [TypeScript](/sundry/typescript/):star::star: - 1%
@@ -120,9 +120,8 @@ sticky: true
   + [Tomcat](/sundry/tomcat/):star: - 13%
   + [Nginx](/sundry/nginx/):star::star: - 3%
 + 其他杂项
-  + [编辑器/IDE](/sundry/editor/):star: - 0%
   + [Git](/sundry/git/):star::star: - 40%
-  + [Linux](/linux/):star::star: - 10%
+  + [Linux](/linux/):star::star: - 14%
   + Docker:star: - 0%
   + 代码质量:star::star: - 0%
   + [正则表达式](/sundry/regex/):star::star: - 0%

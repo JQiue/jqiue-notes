@@ -18,7 +18,7 @@ Linux 下的安装方式，如果发行版是 ubuntu，则使用`apt install mys
 
 通过`apt`安装的`mysql`是默认开启服务的，并且服务名叫`mysql`，而不是`mysqld`，所以不需要启动以及设置开机启动
 
-`mysql`进入数据库中，`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`重置默认密码，然后`FLUSH PRIVILEGES;`刷新权限。至此，密码已经修改完毕
+使用`mysql`进入数据库中，`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`重置默认密码，然后`FLUSH PRIVILEGES;`刷新权限。至此，密码已经修改完毕
 
 如果要远程登录就必须创建一个允许远程访问的账户，`create user 'root'@'%' identified by '账户密码';`，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录。接下来使用`GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`进行授权，然后`FLUSH PRIVILEGES;`刷新一下权限
 
@@ -45,27 +45,22 @@ mysql> select host,user,authentication_string from user;
 
 ## 创建第一个数据库
 
-当进入到 MySQL 数据库系统后，就可以使用下面的语句创建一个数据库了
+当进入数据库系统后，就可以使用 SQL 语句来操作数据库了
 
 ```sql
 CREATE DATABASE db_test;
 ```
 
-如果没有例外，MySQL 会将`db_test`列出到数据库列表中，可以使用`show databases;`列出当前系统中所有的数据库，不要奇怪为什么还有除`db_test`以外的数据库，这些都是自带的，只需要关心`db_test`就好
+如果没有例外，MySQL 会将`db_test`列出到数据库列表中，可以使用`show databases;`列出当前系统中所有的数据库，不要奇怪为什么还有除`db_test`以外的数据库，这些都是自带的，只需要关心自己创建的`db_test`就好
 
-其实这个数据库是有问题的，因为它没有指定编码，会影响到后续的使用，为了指定他的编码，就应该先删除掉，然后再创建
+其实这个数据库是有问题的，因为它没有指定编码，可能会影响到后续的使用，为了指定编码，就应该先删除掉，然后再重新创建，结合`CHARACTER SET`语句重新创建一个指定编码的数据库
 
 ```sql
 DROP DATABASE db_test;
-```
-
-这样就会从系统中删掉它，然后结合`CHARACTER SET`语句重新创建一个指定编码的数据库
-
-```sql
 CREATE DATABASE db_test CHARACTER SET utf8;
 ```
 
-接下来的操作就是如何选择一个数据库使用，进行后续的操作，使用`use`语句，它将进入到指定的数据库中
+接下来的操作就是如何选择一个数据库使用，进行后续的操作，使用`use`语句，它将进入到指定的数据库中，然后就可以进行表相关的操作
 
 ```sql
 use db_test;
@@ -73,14 +68,14 @@ use db_test;
 
 ## 数据类型
 
-+ double：浮点型
-+ char：定长字符串（空间固定）
-+ varchar：可变字符串
-+ text：长文本字符串
-+ blob：二进制
-+ date：日期
-+ time：时间
-+ datetime：日期时间
++ double - 浮点型
++ char - 定长字符串（空间固定）
++ varchar - 可变字符串
++ text - 长文本字符串
++ blob - 二进制
++ date - 日期
++ time - 时间
++ datetime - 日期时间
 
 ::: tip
 在 MySQL 中，字符和日期都需要用单引号表示
@@ -112,7 +107,7 @@ CREATE TABLE db_test.t_student(
 );
 ```
 
-表中的每一个字段都要用`,`分隔，且每个字段必须指定一个数据类型，显然这张表做得很好，看起来没什么问题，对吗？但实际上这张表非常不完整，因为它缺少约束，非常不利于规范化，首先再次移除掉这张表，使用`drop`语句
+表中的每一个字段都要用`,`分隔，且每个字段必须指定一个数据类型，显然这张表做得很好，看起来没什么问题，但实际上这张表非常不完整，因为它缺少约束，非常不利于规范化，首先再次移除掉这张表，使用`drop`
 
 ```sql
 DROP TABLE s_student;
@@ -122,7 +117,7 @@ DROP TABLE s_student;
 
 ```sql
 CREATE TABLE db_test.t_student (
-  id int(11) NOT NULL PRIMARY KEY,
+  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name varchar(40) NOT NULL,
   birthdate date NOT NULL,
   gender char(1) NOT NULL,
@@ -142,25 +137,25 @@ CREATE TABLE db_test.t_student (
 + 插入时间戳：
 + 更新时间戳：
 
-## 数据的插入、删除、修改、查找
+## 插入、删除、修改、查找
 
-## 函数
+## 内置函数
 
-+ `count()`：求次数
-+ `min()`：求最小值
-+ `max()`：求最大值
-+ `sum()`：求和
-+ `sqrt()`：求平方根
-+ `rand()`：生成随机数
-+ `concat()`：拼接字符串
++ `count()` - 求次数
++ `min()` - 求最小值
++ `max()` - 求最大值
++ `sum()` - 求和
++ `sqrt()` - 求平方根
++ `rand()` - 生成随机数
++ `concat()` - 拼接字符串
 
 ### 自定义函数
 
 ## 关系模型
 
-1. 主键
-2. 外键
-3. 索引
++ 主键
++ 外键
++ 索引
 
 ## 事务
 
@@ -212,7 +207,7 @@ DROP INDEX key_name ON table_name;
 
 ### 查看索引
 
-该语句会显示出表中所有的索引
+该语句会显示表中所有的索引
 
 ```sql
 show index from table_name;
@@ -241,15 +236,16 @@ Comment | 显示评注
 + Node.js
 + Python
 
-在 Node.js 中使用则需要先安装 MySQL 依赖
+在 Node.js 中使用需要先安装 MySQL 模块
 
-```js
+```sh
 npm i mysql
 ```
 
 ```js
 const mysql = require('mysql');
 
+// 数据库配置
 const options = {
   host: 'localhost',
   user: 'root', 

@@ -46,7 +46,8 @@ const c = [
   'pointer',
   'struct-union',
   'preprocessing',
-  'storage-classes',
+  'storage',
+  'malloc',
   'standard',
   'input-memory-buffer',
 ];
@@ -176,14 +177,14 @@ const html_css = [
 
 const math_english = [
   '',
-  'part-of-speech',
-  'sentence',
+  'syntax',
   'tense-voice',
   'accumulation',
   'nce1',
   'nce2',
   'nce3',
   'elementary',
+  'higher',
 ];
 
 const sundry = [
@@ -215,6 +216,7 @@ const sundry = [
   'sport',
   'windows',
   'linux',
+  'cicd',
 ];
 
 const vue = [
