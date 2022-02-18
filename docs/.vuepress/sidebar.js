@@ -81,7 +81,7 @@ const javascript = [
   'module',
   'event-loop',
   'standard',
-  'code-quality',
+  'quality',
 ];
 
 const python = [
@@ -217,13 +217,14 @@ const sundry = [
   'windows',
   'linux',
   'cicd',
+  'security',
 ];
 
 const vue = [
   '',
   'component',
   'vuex',
-  'vue-router',
+  'router',
   'transition',
 ]
 

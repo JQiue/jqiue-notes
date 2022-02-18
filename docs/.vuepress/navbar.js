@@ -36,7 +36,7 @@ module.exports = [
     text: '框架',
     icon: 'framework',
     items: [
-      { text: 'Vue.js', icon: 'vue', link: '/vue/' },
+      { text: 'Vue', icon: 'vue', link: '/vue/' },
       { text: 'React', icon: 'react', link: '/react/' },
       { text: 'Express', icon: 'express', link: '/express/' },
       { text: 'Spring', icon: 'spring', link: '/spring/' },

@@ -6,14 +6,45 @@ article: false
 
 是一款开源免费，高性能的 Web 服务器，一般用于静态服务和负载均衡以及反向代理
 
-Nginx 采用了简单的文件格式的配置文件，下面是指令的一些特性
+在 Ubuntu 中安装后的目录结构大致如下：
 
-+ 注释：以`#`开头
-+ 简单指令：以分号结尾
-+ 块指令：以`{}`包围
-+ 包含指令：include
++ 程序执行在`/usr/sbin/nginx`
++ 所有的配置文件在`/etc/nginx`
++ 日志文件在`/var/log/nginx`
++ 默认的虚拟主机目录在`/var/www`或`/var/www/html`
 
+在 Windows 中目录结构大致如下：
+
++ 程序文件在安装的根目录
++ 配置文件在`conf`
++ 日志文件在`logs`
++ 默认的虚拟主机目录在`html`
+
+这是一些常用到的命令：
+
+```sh
+# 启动
+nginx
+# 查看版本号
+nginx -v
+# 检查配置文件语法错误
+nginx -t
+# 重新应用配置文件
+nginx -s reload
+# 快速关闭
+nginx -s stop
+# 等待工作进程处理完成后关闭
+nginx -s quit
 ```
+
+Nginx 采用的是简单文件格式的配置文件，下面是指令的一些特性
+
++ 注释 - 以`#`开头
++ 简单指令 - 以分号结尾
++ 块指令 - 以`{}`包围
++ 包含指令 - `include`
+
+```text
 events 
 {
   # ... 
@@ -38,21 +69,7 @@ http
 }
 ```
 
-## 启动 Nginx
-
-在 Ubuntu 中安装后的文件结构大致如下：
-
-+ 程序执行在`/usr/sbin/nginx`
-+ 所有的配置文件在`/etc/nginx`
-+ 日志文件在`/var/log/nginx`
-+ 默认的虚拟主机目录在`/var/www`或`/var/www/html`
-
-在 Windows 中文件结构大致如下：
-
-+ 程序文件在安装的根目录
-+ 配置文件在`conf`
-+ 日志文件在`logs`
-+ 默认的虚拟主机目录在`html`
+## 代理静态资源
 
 ## 内置变量
 
@@ -71,8 +88,6 @@ http
 `$server_addr` | 服务器地址
 `$server_name` | 服务器名称
 `$server_port` | 服务器的端口号
-
-## 代理静态资源
 
 ## 正向代理和反向代理
 

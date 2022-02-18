@@ -171,7 +171,7 @@ process.stdin.setEncoding('utf8');
 process.stdin.on('data', function (text) {
   // 将数据输出到输出流
   process.stdout.write(text);
-})
+});
 ```
 
 查看系统情况：
@@ -203,7 +203,7 @@ process.exit();
 
 ## 定时器
 
-Node.js 可以在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，`console.timeEnd()`打印执行到这里的持续时间
+Node.js 能在不依赖其它工具的情况下使用`console.time()`和`console.timeEnd()`完成基准测试，`console.time()`记录当前时间，`console.timeEnd()`打印执行到这里的持续时间
 
 ```js
 let label;
@@ -230,7 +230,7 @@ process.nextTick(() => {
 /* 正常执行 */
 +function foo() {
   console.log('foo');
-}()
+}();
 
 /* 执行结果
 foo
@@ -245,13 +245,11 @@ timeout
 
 一个完整符合 CommonJS 的包目录应该包含这些文件：
 
-+ bin：存放二进制执行文件的目录
-+ lib：存放 JavaScript 代码的目录
-+ doc：存放文档的目录
-+ test：存放进行单元测试的代码
-+ package.json：包描述文件
-
-## 包描述文件和 NPM
++ bin - 存放二进制执行文件的目录
++ lib - 存放 JavaScript 代码的目录
++ doc - 存放文档的目录
++ test - 存放进行单元测试的代码
++ package.json - 包描述文件
 
 包描述文件（package.json）用于表达非代码相关的信息，是一个 JSON 格式的文件，位于包的根目录下，是包的重要组成部分，NPM 的所有行为都与包描述的文件息息相关，package.json 可以有以下字段：
 
@@ -280,7 +278,7 @@ timeout
 
 但对于 NPM 实际需要的字段只有：name、version、description、keywords、repositories、author、bin、main、scripts、engines、dependencies、devDependencies
 
-在安装了 Node.js 同时，NPM 也自动装好了，NPM 帮助完成了第三方模块的发布、安装和依赖等，通过 Node.js 与第三方模块形成了一个良好的生态系统
+在安装了 Node.js 同时，NPM 也自动装好了，NPM 帮助完成了第三方模块的发布、安装和卸载等，与第三方模块形成了一个良好的生态系统
 
 NPM 由三个独立的部分组成：
 
@@ -290,7 +288,7 @@ NPM 由三个独立的部分组成：
 
 在此之前，为了确认 NPM 没有随着 Node.js 安装出现问题，应该先执行一下`npm -v`，这会打印 NPM 的版本信息。在并不熟悉 NPM 命令之前，可以直接执行`npm`以获得帮助信息，而`npm help <command>`会详细查看具体命令说明
 
-在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动创建，也可以通过`npm init`命令生成。此为初始化命令，会在运行此命令的目录下创建 package.json，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
+在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动创建，也可以通过`npm init`命令生成。此为初始化命令，会在运行此命令的目录下创建，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
 
 ```json
 {
@@ -317,12 +315,10 @@ npm config set registry https://registry.npm.taobao.org
 
 如果包中有命令行工具，那么需要添加额外的`-g`参数进行全局模式安装，通过全局模式安装的包都被安装到了一个统一的 node_modules 目录中。这并不意味着全局模式的包可以在任意地方被`require()`引用，只是为了将包作为一个全局可用的可执行命令
 
-卸载包使用`npm uninstall <package> (--save/-S)`，会删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除掉，这个命令是默认是卸载项目本地的包，卸载全局的包则需要加上`-g`
-
-如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
+卸载包使用`npm uninstall <package> (--save/-S)`，删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除掉，默认是卸载当前命令执行目录的包（可以省略`-s`），卸载全局的包则需要加上`-g`。如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
 
 ::: warning
-如果卸载了 Node.js`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`，给下一次安装 Node.js 时带来干净的 npm 包环境
+如果卸载了 Node.js，最好手动清理`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`（Windows），给下一次的安装带来干净的环境
 :::
 
 更新包同样也有本地和全局之分，在 package.json 所在路径，运行`npm update`命令，即可实现包的更新，更新全局的包则使用`npm update -g`，这可能很慢，因为依赖太多了
@@ -331,7 +327,11 @@ npm config set registry https://registry.npm.taobao.org
 
 ## package-lock.json
 
+package-lock.json 是在使用`npm install`时生成的文件，记录包的来源以及更加确切的版本号，以确保别人复制项目时的依赖版本保持一致，这是 package.json 无法做到的
+
 ## 版本规则
+
+NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 
 ## 发布
 
@@ -351,15 +351,21 @@ npm config set registry https://registry.npm.taobao.org
 
 对于作用域包的安装时，也需要加上相应的作用域，比如`npm i @username/package`，在代码中引入时也是如此
 
-## npx
+通常更新一个包版本，需要手动修改版本号，然后再进行发布，但是 NPM 提供了几个命令用来更好的遵从 Semver 规范：
 
-npx 是自带的包命令执行工具，常用来执行可执行命令，使用`npx command`会自动在`node_modules`中正确的找到命令
++ `npm version patch` - 升级补丁版本号
++ `npm version minor` - 升级小版本号
++ `npm version major` - 升级大版本号
+
+## NPX
+
+NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`npx command`会自动在`node_modules`中正确的找到命令并执行
 
 <!-- to be updated -->
 
 ## 脚本钩子
 
-在执行了`npm install`之后，如果在`scripts`中定义了`preinstall`、`install`、`postinstall`等，就会依次执行`scripts`中定义的钩子
+在执行了`npm install`之后，如果`scripts`中定义了`preinstall`、`install`、`postinstall`等，就会依次执行`scripts`中定义的钩子
 
 ## 很棒的第三方包
 
@@ -386,24 +392,20 @@ npx 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 ## 处理 URL
 
-Node.js 提供了一些针对 URL 相关操作的模块
-
-`url`模块用于解析 URL 字符串
+`url` 是针对 URL 字符串相关操作的模块
 
 ::: tip
 URL 是为了标识网络资源位置的一种编码，平常说的网页地址就是 URL 地址，它由**协议、主机、端口、路径**四部分组成
 :::
 
-+ `parse(str, bool)`：解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
+`parse(str, bool)`解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
 
 ```js
 const url = require("url");
 url.parse("https://jinqiu.wang");
-```
 
-`parse()`会返回这样的对象：
+// `parse()`会返回这样的对象：
 
-```js
 {
   protocol: 'http:',
   slashes: true,
@@ -450,29 +452,29 @@ url.resolve("https://jinqiu.wang/foo/bar/qux", "../web") // https://jinqiu.wang/
 url.resolve("https://jinqiu.wang/foo/bar/qux", "../../web") // https://jinqiu.wang/web
 ```
 
-`querystring`针对 URL 中的 query 部分
+`querystring`模块则针对 URL 中的 query 部分
 
-+ parse(str)：将一个 query 字符串解析成键值对对象
+`parse(str)`将一个 query 字符串解析成键值对对象
 
 ```js
 const str = "https://jinqiu.wang/?name=zs&age=23"
 querystring.parse(url.parse(url).query) // {name: 'zs', age: '23'}
 ```
 
-+ stringify(obj)：将一个键值对对象解析成 query 字符串
+`stringify(obj)`将一个键值对对象解析成 query 字符串
 
 ```js
 const obj = { name: 'zs', age: '23' }
 querystring.stringify(obj) // name=zs&age=23
 ```
 
-+ escape(str)：将一个 URL 字符串进行百分比编码
+`escape(str)`将一个 URL 字符串进行百分比编码
 
 ```js
 qs.escape("https://jinqiu.wang/?name=zs&age=23") // https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23
 ```
 
-+ unescape(str)：将一个 URL 百分比编码的字符串进行解码
+`unescape(str)`将一个 URL 百分比编码的字符串进行解码
 
 ```js
 qs.unescape("https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23"); // https://jinqiu.wang/?name=zs&age=23
@@ -606,10 +608,10 @@ socket.write();
 
 ## 文件操作
 
-`fs`模块提供了操作系统文件的能力，需要引入
+`fs`模块提供了操作系统文件的能力
 
 ::: tip
-如果不指定编码，则返回 Buffer，大部分异步方法都是错误优先的回调方式
+读取文件时，如果不指定编码，则返回 Buffer，大部分异步方法都是错误优先的回调方式
 :::
 
 读取文件数据：
@@ -740,7 +742,7 @@ console.log(buf.toString()); // jinqiu.wang
 ```
 
 ```js
-// 用于创建包含指定字符串、数组或缓冲区的新缓冲区，如果指定了 encoding 参数，则使用该字符编码，否则默认是 utf8
+// 创建包含指定字符串、数组或缓冲区的新缓冲区，默认编码是 utf8，如果指定了 encoding 参数，则使用该编码
 const buf = Buffer.from('a');
 ```
 
@@ -793,7 +795,7 @@ http.createServer((req, res) => {
 
 ## 路径
 
-`path`模块提供了用于处理文件和目录的路径工具 API
+`path`模块用于处理文件和目录的路径
 
 ```js
 const path = require('path');
@@ -840,7 +842,7 @@ const readline = require('readline')
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-})
+});
 
 // 监听到行尾输入`\n、\r或\n\r`时触发
 rl.on('line', input => {

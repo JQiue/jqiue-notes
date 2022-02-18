@@ -17,17 +17,15 @@ sticky: true
 + QQ：861947542
 + 邮箱：jqiue@foxmail.com
 + Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：[jinqiu.wang](https://jinqiu.wang)，~~[wjqis.me](https://wjqis.me)~~
++ 目前使用的站点域名：[jinqiu.wang](https://jinqiu.wang)（完美），~~[wjqis.me](https://wjqis.me)（已过期，不想续费）~~
 
 ## 他会点儿什么
 
 只会用 C，Java，JavaScript，Python 写写 HelloWorld 的水平
 
-会点 Web 前端开发，我 f*** 这该死的 CSS
+会点 Web 前端开发，我 f*** 这该死的 CSS。也会一点点基于 Web 的后端开发，使用 Node.js 或 Java
 
-只会一点点后端开发，使用 Node.js 或 Java
-
-略懂爬虫，使用 Python 或 Node.js
+略懂一点爬虫，使用 Python 或 Node.js
 
 对于 MySQL，MongoDB 的使用仅限于增删改查的水平
 
@@ -54,14 +52,14 @@ sticky: true
 
 ## 内容和排版
 
-本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情，无法避免错误。目前大饼画完了 20% 不到，目标是 2022 年 6 月份完成整张饼的 30%。暂时缺乏大量图片，无法避免阅读疲劳，这些将在完成度达到 50% 时补充
+本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情，无法避免错误。目前大饼画完了 20% 不到，目标是 2022 年 6 月份完成整张饼的 30%（总进度由我说了算）
 
 - [x] 10%（2021.3.21）
 - [x] 20%（2021.10.28）
 - [ ] 30%
 
 ::: danger
-如果没有必要，不建议查看没有推送到首页列表的文章  
+如果没有必要，不建议查看未推送到首页列表的文章  
 :::
 
 本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
@@ -80,12 +78,13 @@ sticky: true
 
 + `具有悟性的初学者` - 系统性的知识体系能够快速理解内容
 + `所见即所得` - 部分知识在本站上有效果演示
-+ `想上进的` - 对自身有意义就够了
 + `我这样的人` - 给我自己看的，防止忘记
 
 ## 全站知识体系总览
 
-> 星星表示需要完成或学习的优先级、重要程度，并注有完成进度
+::: tip
+星星表示需要完成或学习的优先级、重要程度，并注有完成进度，整体遵守“二八定律”
+:::
 
 + [计算机原理](/theory/)
   + 计算机组成原理:star: - 31%
@@ -94,7 +93,7 @@ sticky: true
   + 计算机网络:star::star::star: - 28%
   + 数据库原理:star: - 0%
 + 编程语言
-  + [C](/c/):star: - 28%
+  + [C](/c/):star: - 32%
   + [Java](/java/):star: - 12%
   + [JavaScript](/js/):star::star::star::star::star: - 73%
     + [TypeScript](/sundry/typescript/):star::star: - 1%

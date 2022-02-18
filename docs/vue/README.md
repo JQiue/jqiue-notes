@@ -1,5 +1,5 @@
 ---
-title: Vue.js
+title: Vue
 category: 框架
 tags: [Vue]
 author: JQiue
