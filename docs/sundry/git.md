@@ -302,13 +302,13 @@ Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面
 
 远程仓库是指类似于 Github 这样的云服务提供的服务，一个项目可以有很多个远程仓库，运行`git remote`就会列出所有远程仓库，当然，刚初始化后的仓库自然是没有的
 
-`git remote add <name> <url>`用于添加一个远程仓库，使用`<name>`可以代替整个 URL，也可以使用`git remote rename <old> <new>`修改新的名字，`git remote remove <name>`用于移除远程仓库
+`git remote add <name> <url>`（url 为远程仓库地址，name 是这个地址别名）用于添加一个远程仓库，使用`<name>`可以代替整个 URL，也可以使用`git remote rename <old> <new>`修改新的名字，`git remote remove <name>`用于移除远程仓库
 
-如果已经在托管服务器创建了一个远程仓库，就可以使用`git push <url/name> <branch>`将某个分支推送到指定 URL 的服务器上，注意，这种做法仅仅只是推送本地的某一个分支到远程仓库中，`git push <url/name> --all`命令才会将本地所有分支推送上去
+如果已经在托管服务器创建了一个远程仓库，就可以使用`git push <remote> <branch>`（remote 为远程地址或别名）将某个分支推送到指定 URL 的服务器上，注意，这种做法仅仅只是推送本地的某一个分支到远程仓库中，`git push <remote> --all`命令才会将本地所有分支推送上去
 
-众所周知，Git 是分布式管理系统，这意味着远程仓库的代码可能比本地还要新，如果想要更新本地的代码就要用到`git pull <url/name> <branch>`命令，它会直接暴力的将本地仓库的代码更新至远程仓库里的最新版本
+众所周知，Git 是分布式管理系统，这意味着远程仓库的代码可能比本地还要新，如果想要更新本地的代码就要用到`git pull <remote> <branch>`命令，它会直接暴力的将本地仓库的代码更新至远程仓库里的最新版本。如果想拉取所有的分支，则使用`git pull --all`，这并不需要参数
 
-另一种更新办法是使用`git fetch <url/name> <branch>`，它不会像`git pull`那样暴力的更新代码，它只会跟踪远程分支的最新状态，此时本地分支并没有发生变化，这个时候可以使用`git merge`命令来将远程分支和本地分支进行合并，此时才发生变化
+另一种更新办法是使用`git fetch <remote> <branch>`，它不会像`git pull`那样暴力的更新代码，它只会跟踪远程分支的最新状态，此时本地分支并没有发生变化，这个时候可以使用`git merge`命令来将远程分支和本地分支进行合并，此时才发生变化
 
 虽然看起来`git pull = git fetch + git merge`一样，但是推荐使用`git fetch`，因为`git pull`的会将一些过程的细节隐藏起来，一旦代码出现问题，就很难找到出错的地方
 

@@ -2,10 +2,9 @@
 title: 使用 openssl 生成证书
 category: 知识分享
 author: JQiue
-article: false
 ---
 
-使用 openssl 可以快速的生成用于本地测试的证书，最常见的情况是自签名证书，openssl 提供了快速的命令
+使用 [openssl](https://www.openssl.org/) 可以快速的生成用于本地测试的证书，最常见的情况是自签名证书，openssl 提供了快速的命令
 
 ```sh
 openssl req -newkey rsa:2048 -keyout key.pem -nodes -out cert.pem -x509 -days 365
