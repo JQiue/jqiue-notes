@@ -4,7 +4,7 @@ module.exports = [
     text: '技能',
     icon: 'jishuzhan',
     items: [
-      { text: '计算机原理', icon: 'yuanli', link: '/theory/' },
+      { text: '计算机原理', icon: 'yuanli', link: '/computer/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '设计模式', icon: 'shejimoshi', link: '/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },

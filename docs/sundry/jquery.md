@@ -6,12 +6,7 @@ article: false
 ---
 
 ::: info 前置知识
-
-+ HTML
-+ CSS
-+ JavaScript
-+ DOM
-+ BOM
+HTML/CSS/JavaScript/WebAPI
 :::
 
 根据名字就知道，jQuery 就是一款查询的库，简化了原生 JS 操作，毕竟口号是：写得少，做的多
@@ -24,19 +19,19 @@ jQuery 在被引入后，就像这样用：
 jQuery();
 ```
 
-当然这大小写的方式也太反人类了，所以 jQuery 提供了`$()`来代替`jQuery()`，这样更加省事了，它们是等价的
+这大小写的方式也太反人类了，jQuery 提供了`$()`来代替`jQuery()`，这样更加省事，它们是等价的
 
 ```js
 $();
 ```
 
-是的，`$()`的值可以是很多东西，jQuery 会做不同的处理
+`$()`的值可以是很多东西，jQuery 会做不同的处理
 
 ## 加载
 
 通常情况下，`window.onload`只会在文档加载完成后被执行一次，即使多次编写，这是因为被后面的覆盖了
 
-而`$(callback)`同样会在文档加载完成后执行其中的回调，可以使用任意多个
+但`$(callback)`同样会在文档加载完成后执行其中的回调，可以使用任意多个
 
 ```js
 $(document).ready(function () {});

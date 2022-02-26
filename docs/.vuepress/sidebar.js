@@ -1,4 +1,4 @@
-const theory = [
+const computer = [
   '',
   {
     title: '计算机组成原理',
@@ -218,6 +218,7 @@ const sundry = [
   'linux',
   'cicd',
   'security',
+  'bootstrap',
 ];
 
 const vue = [
@@ -241,7 +242,7 @@ const spring = [
 ]
 
 module.exports = {
-  "/theory/": theory,
+  "/computer/": computer,
   "/c/": c,
   "/java/": java,
   "/js/": javascript,

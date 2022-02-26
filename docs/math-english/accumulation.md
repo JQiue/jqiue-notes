@@ -53,6 +53,7 @@ foot -> feet
 tooth -> teeth
 mouse -> mice
 goose -> geese
+person -> people
 ```
 
 ## 介词短语
