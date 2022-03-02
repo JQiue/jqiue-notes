@@ -1,41 +1,11 @@
 const computer = [
   '',
-  {
-    title: '计算机组成原理',
-    prefix: 'organization/',
-    collapsable: false,
-    children: [
-      'basic',
-      'instruction',
-    ]
-  },
-  // {
-  //   title: '操作系统原理',
-  //   prefix: '/computer-basic/os/',
-  //   collapsable: false,
-  //   children: [
-  //     'basic',
-  //   ]
-  // },
-  {
-    title: '编译原理',
-    prefix: 'compile/',
-    collapsable: false,
-    children: [
-      'basic',
-      'grammars-automata',
-    ]
-  },
-  {
-    title: '计算机网络原理',
-    prefix: 'network/',
-    collapsable: false,
-    children: [
-      'basic',
-      'http',
-      'tcp-ip',
-    ]
-  }
+  'composition',
+  'instruction',
+  'compile',
+  'network',
+  'tcp-ip',
+  'http',
 ];
 
 const c = [

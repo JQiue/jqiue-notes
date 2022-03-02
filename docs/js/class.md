@@ -121,17 +121,19 @@ foo.name = 'foooo';
 console.log(foo.name); // foooo
 ```
 
-## 字段属性
+## 类字段
 
-也允许定义一些类的字段
+也允许定义一些属于类的字段，而不是对象的字段，类的字段对所有的对象可见
 
 ```js
 class Foo {
   name = 'foo';
 }
 
-let foo = new Foo();
-console.log(foo.name); // foo
+let foo1 = new Foo();
+let foo2 = new Foo();
+console.log(foo1.name); // foo
+console.log(foo2.name); // foo
 ```
 
 但是字段只会在类被构造成对象的时候预设好，使用原型是得不到的
@@ -153,7 +155,7 @@ console.log(Foo.prototype.name); // undefined
 
 ## 字段绑定
 
-JavaScript 中函数中的`this`是根据调用上下文决定的，这可能会导致在某些情况下丢失掉
+JavaScript 函数中的`this`是根据调用上下文决定的，这可能会导致在某些情况下丢失掉
 
 ```js
 class Foo {
@@ -168,7 +170,7 @@ let foo = new Foo();
 setTimeout(foo.sayName, 1000); // undefined
 ```
 
-这里的对象方法被当作值传递，当用方法时，`this`已经不是`Foo`了，这里类字段提供了一个解决方案
+上面的方法被当作值传递，当调用方法时，其中的`this`已经不指向`foo`了，但是类字段提供了一个解决方案
 
 ```js
 class Foo {
@@ -187,7 +189,7 @@ setTimeout(foo.sayName, 1000); // foo
 
 ## 继承
 
-用 class 定义的类可以使用`extend`关键字被其它类继承
+其它的类可以使用`extend`关键字继承一个用`class`定义的类
 
 ```js
 class Person {

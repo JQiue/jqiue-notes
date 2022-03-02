@@ -24,26 +24,25 @@ const data = Mock.mock({
     'id|+1': 1
   }]
 });
+
+console.log(data);
+
+/* 
+生成的数据如下：
+
+{
+  "list": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}
+
+*/
 ```
-
-::: demo
-
-```html
-<button id="btn">生成数据</button>
-```
-
-```js
-const data = Mock.mock({
-  'list|1-10': [{
-    'id|+1': 1
-  }]
-});
-document.querySelector('#btn').addEventListener('click', function(){
-  alert(JSON.stringify(data, null, 2));
-});
-```
-
-:::
 
 这看起来很简单，`Mock.mock()`会根据传入的模板对象来生成数据对象，模板对象中的每一个属性都由 3 个部分组成：属性名、生成规则、属性值，`'name|rule': value`
 

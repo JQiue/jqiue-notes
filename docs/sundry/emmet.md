@@ -67,4 +67,10 @@ Emmet 不但能够生成标签，还能生成 CSS 属性，Emmet 定义了所有
 
 Emmet 不仅能生成属性名，还能带着一起生成属性值，比如`fz14`会生成`font-size: 14px;`，`dib`生成`display: inline-block;`
 
+还可以生成用于测试的“Lorem Ipsum”假文本内容用于填充，比如`lorem`会生成：
+
+```html
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem fuga expedita odio porro excepturi vero eligendi, animi tempore. Id rem tenetur iusto. Cupiditate cum totam nemo qui dolorum in delectus!
+```
+
 更多详见[Emmet](https://docs.emmet.io/)

@@ -16,8 +16,9 @@ article: false
 <CodeGroup>
 
 <CodeGroupItem title="C" active>
+
 ```c
-int linearFind(int *list, int value, int size) {
+int linearSearch(int *list, int value, int size) {
   for (int i = 0; i < size; i++)
   {
     if (list[i] == value) return i;
@@ -25,6 +26,21 @@ int linearFind(int *list, int value, int size) {
   return -1;
 }
 ```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="JavaScript" active>
+
+```js
+function linearSearch(list) {
+  for (let i = 0; i < list.length; i++)
+  {
+    if (list[i] == value) return i;
+  }
+  return -1;
+}
+```
+
 </CodeGroupItem>
 
 </CodeGroup>

@@ -6,6 +6,10 @@ author: JQiue
 article: false
 ---
 
+::: danger
+基于 Vue 2 编写
+:::
+
 ::: info 前置知识
 
 + HTML
@@ -14,9 +18,9 @@ article: false
 + DOM
 :::
 
-Vue，Angular，React 一起被称为前端三大框架，Vue 是尤雨溪编写的一套前端框架解决方案，所有的资料都有中文支持，并且 Vue 整合了其他框架中的优点，大大降低了学习难度
+Vue，Angular，React 一起被称为前端三大框架，Vue 是国人尤雨溪编写的一套前端框架解决方案，所有的资料都有中文支持，并且整合了其他框架中的优点，大大降低了学习难度
 
-Vue 是通过数据驱动来更新页面的，而无需手动操作 DOM 来更新，意味着只要将数据交给 Vue，Vue 就会自动将数据渲染到页面上，这也说明 Vue 是响应式的
+Vue 是通过数据驱动来更新页面的，而无需手动操作 DOM 来更新，只要将数据交给 Vue，Vue 就会自动将数据渲染到页面上，这也说明 Vue 是响应式的
 
 Vue 支持组件化开发，可以将网页上的内容拆分成一个独立的组件，通过拼装组件来构成一个完整的页面
 
@@ -28,7 +32,7 @@ Vue 是基于 MVVM 设计模式来设计的，MVVM 由三部分组成：
 + View：视图层，展示数据，与用户交互
 + ModelView：数据模型视图适配器，每一个 View 都会与 Model 中的属性一一对应
 
-MVVM 模式最大的特点就是支持数据的双向传递，在 Vue 中 View 就是页面，Model 就是 Vue 实例对象中的 data，而 View Model 就是 Vue 实例对象。Vue 默认是单向绑定的，只要将数据交给实例对象，实例对象就能够在视图中渲染数据
+MVVM 模式最大的特点就是支持数据的双向传递，在 Vue 中 View 就是页面，Model 就是 Vue 实例对象中的 data，而 View Model 就是 Vue 实例对象
 
 有两种使用方式：
 
@@ -117,7 +121,7 @@ console.log(app.$options.render);
 
 ## 双向绑定
 
-Vue 中通过 v-model 指令来实现双向绑定，但只适用于`input`，`textarea`，`select`表单元素
+Vue 默认是单向绑定的，只要将数据交给实例对象，实例对象就能够在视图中渲染数据。而双向绑定由`v-model`指令来实现，只适用于`input`，`textarea`，`select`表单元素
 
 ```html
 <input type="text" v-model="msg">
@@ -148,8 +152,8 @@ export default {
 
 双向绑定的原理十分简单，分为二个步骤：
 
-1. 使用`v-bind`绑定元素的`value`，data 中的数据变化时，同步输入框的内容
-2. 利用`v-on`监听元素的`input`或`change`事件，输入框的内容变化时，同步 data 中的数据
+1. 使用`v-bind`绑定元素的`value`，当 data 中的数据变化时，同步输入框的内容
+2. 利用`v-on`监听元素的`input`或`change`事件，当输入框的内容变化时，同步 data 中的数据
 
 ::: demo [vue] 双向绑定实现
 
@@ -187,13 +191,11 @@ Vue 是一个数据驱动界面更新框架，无需使用原生语法操作 DOM
 
 而 Vue 提供了特殊属性`ref`来标记元素，如果这个元素是原生的，那么就会返回原生元素，如果是一个组件，将会返回这个组件的实例对象，通过`this.$refs`访问
 
-::: demo [vue] 特殊属性 ref
-
 ```vue
 <template>
   <div>
-    <p ref="msg">{{msg}}</p>
-    <foo ref="f"></foo>
+    <p ref="p">{{msg}}</p>
+    <foo ref="foo"></foo>
   </div>
 </template>
 
@@ -201,7 +203,7 @@ Vue 是一个数据驱动界面更新框架，无需使用原生语法操作 DOM
 export default {
   data() {
     return {
-      msg: "特殊属性 refs"
+      msg: "p 的数据"
     }
   },
   components: {
@@ -209,22 +211,18 @@ export default {
       template: "<div>foo 组件</div>"
     }
   },
-  mounted(){
-    console.log(this.$refs);
-    console.log(this.$refs.msg);
-    console.log(this.$refs.f);
+  mounted() {
+    console.log(this.$refs); // {p: p, foo: a}
+    console.log(this.$refs.p); // 
+    console.log(this.$refs.foo); // {}
   }
 }
 </script>
 ```
 
-:::
-
-在浏览器按下`F12`可查看打印信息
-
 ## 指令
 
-Vue 的指令本质就是自定义属性，由于 Mustache 语法不能作用在 HTML 特性（attribute） 上，无法控制 DOM 的行为，而指令封装了 Vue 实现的功能，以`v-`开头的属性都是 Vue 提供的指令，通过指令，就可以影响 DOM 的某些行为
+Vue 指令的本质就是自定义属性，由于 Mustache 语法不能作用在 HTML 特性（attribute） 上，无法控制 DOM 的行为，而指令封装了 Vue 实现的功能，以`v-`开头的属性都是 Vue 提供的指令，通过指令，就可以影响 DOM 的某些行为
 
 + v-once
 
@@ -708,6 +706,16 @@ Vue.use(myPlugin);
 Vue.myPluginMethod();
 ```
 
+## 组件库
+
+有很多基于 Vue 打造的 UI 库：
+
++ [Element UI](https://element.eleme.cn)
++ [Element Plus](https://element-plus.org/zh-CN/)
++ [Ant Design of Vue](https://antdv.com/docs/vue/introduce-cn/)
++ [Vuestic UI](https://vuestic.dev/)
++ [Naive UI](https://www.naiveui.com/zh-CN/os-theme)
+
 ## 总结
 
 + Vue 是一个基于 MVVM 设计模式的 JavaScript 渐进式框架
@@ -719,3 +727,7 @@ Vue.myPluginMethod();
 + 计算属性用于数据不经常发生变化的时候使用，因为它会缓存数据
 + 侦听器可以在数据发生变化的时候触发回调
 + 过滤器可以对插值语法或`v-bind`中的数据进行格式化处理
+
+## 参考资料
+
++ Vue 官方文档

@@ -12,7 +12,7 @@ actionLink: /about/
 project:
   - name: 计算机原理
     type: article
-    link: /theory/
+    link: /computer/
   - name: 数据结构与算法
     type: article
     link: /ds-algorithm/

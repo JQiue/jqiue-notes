@@ -88,4 +88,60 @@ Extra extra large| `xxl` | ≥1400px
 
 `g-*`用于控制水平和垂直方向的间隙，`gx-*`可以控制列之间的水平间隙，而`gy-*`则控制垂直方向的间隙，它们都由`padding`实现，当`g-0`则会清除网格内的列间隙
 
-到这里，基本的网格系统就差不多了
+## 通用类
+
+通用类是指对大部分元素可用的通用 CSS 类名
+
+外边距和内边距的前缀分别是`m-*`和`p-*`，然后：
+
+sides设定：
+
++ t - 设定margin-top或是padding-top
++ b - 设定margin-bottom或是padding-bottom
++ s - 在LTR设定margin-left或是padding-left，RTL设定margin-right或是padding-right
++ e - 在LTR设定margin-right or padding-right，RTL设定margin-left或是padding-left
++ x - 同时设定*-left和*-right
++ y - 同时设定*-top和*-bottom
++ blank - 空白-同时设定margin或padding在元素的四个边缘
+
+size设定：
+
++ 0 - 设定margin或是padding为0
++ 1 - （预设）设定margin或是padding为$spacer * .25
++ 2 - （预设）设定margin或是padding为$spacer * .5
++ 3 -（预设）设定margin或是padding为$spacer
++ 4 - （预设）设定margin或是padding为$spacer * 1.5
++ 5 - （预设）设定margin或是padding为$spacer * 3
++ auto - 设定margin为auto
+
+背景类使用`bg-*`前缀，可以有以下取值：
+
++ .bg-primary
++ .bg-secondary
++ .bg-success
++ .bg-danger
++ .bg-warning
++ .bg-info
++ .bg-light
++ .bg-dark
++ .bg-body
++ .bg-white
++ .bg-transparent
+
+## 导航
+
+必须使用一个`navbar`来包装导航
+
+```html
+<div class="navbar"></div>
+```
+
+如果想要在响应式视图中折叠某个元素，可以增加`navbar-expand-{breakpoint}`，然后在要折叠的元素上增加`navbar-collapse`，注意，折叠的元素最好使用`collapse`包装一下
+
+```html
+<div class="navbar navbar-expand-lg">
+  <div class="collapse navbar-collapse" id="navmenu">
+    
+  </div>
+</div>
+```

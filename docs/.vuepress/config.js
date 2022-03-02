@@ -9,8 +9,6 @@ module.exports = config({
   head: [
     ['link', { rel: 'stylesheet', href: 'https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css', async: 'true'}],
     ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.min.js', async: 'true' }],
-    ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/vuex/3.6.2/vuex.min.js', async: 'true'}],
-    ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/Mock.js/1.0.0/mock-min.js', async: 'true'}],
   ],
   plugins: [
     '@vuepress/nprogress'
@@ -27,10 +25,8 @@ module.exports = config({
     sidebar: require("./sidebar"),
     encrypt: {
       config: {
-        "/theory/": "123456",
         "/database/": "123456",
         "/canvas/": "123456",
-        "/ds-algorithm/": "123456",
         "/math-english/": "123456",
         "/vue/": "123456",
         "/react/": "123456",
@@ -40,7 +36,6 @@ module.exports = config({
         "/express/": "123456",
         "/python/": "123456",
         "/wasm/": "123456",
-        "/c/": "123456",
       }
     },
     blog: {
@@ -69,6 +64,7 @@ module.exports = config({
       sup: true,
       sub: true,
       tasklist: true,
+      codegroup: true
     },
     comment: {
       type: "valine",

@@ -1,5 +1,5 @@
 ---
-title: 走进计算机
+title: 计算机组成
 category: 计算机原理
 author: JQiue
 article: false

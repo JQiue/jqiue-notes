@@ -22,9 +22,31 @@ function understandRecursion() {
 }
 ```
 
+::: demo 理解递归
+
+```html
+<button id="btn">开始理解递归</button>
+```
+
+```js
+function understandRecursion() {
+  const answer = confirm('你理解递归了吗?');
+  if(answer == true) {
+    return true;
+  }
+  understandRecursion(answer);
+}
+
+document.querySelector('#btn').onclick = function () {
+  understandRecursion();
+}
+```
+
+:::
+
 `understandRecursion()`函数会不断的调用自身，直到`answer`为真，`answer`就是基线条件
 
-来实现一个数字 5 的阶乘：
+递归实现一个数字 5 的阶乘：
 
 1. `factorial(5)` = `5 * factorial(4)`
 2. `factorial(5)` = `5 * 4 * factorial(3)`
