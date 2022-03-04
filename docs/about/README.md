@@ -86,17 +86,12 @@ sticky: true
 星星表示需要完成或学习的优先级、重要程度，并注有完成进度，整体遵守“二八定律”
 :::
 
-+ [计算机原理](/theory/)
-  + 计算机组成原理:star: - 31%
-  + 操作系统原理:star: - 0%
-  + 编译原理:star: - 13%
-  + 计算机网络:star::star::star: - 28%
-  + 数据库原理:star: - 0%
++ [计算机原理](/computer/) - 8%
 + 编程语言
   + [C](/c/):star: - 32%
   + [Java](/java/):star: - 12%
   + [JavaScript](/js/):star::star::star::star::star: - 73%
-    + [TypeScript](/sundry/typescript/):star::star: - 1%
+    + [TypeScript](/sundry/typescript/):star::star: - 7%
   + [Python](/python/):star: - 21%
 + [数据结构与算法](/ds-algorithm/):star::star::star::star: - 22%
 + [设计模式](/design-pattern/):star::star::star: - 6%
@@ -123,12 +118,13 @@ sticky: true
   + [Linux](/linux/):star::star: - 14%
   + Docker:star: - 0%
   + 代码质量:star::star: - 0%
-  + [正则表达式](/sundry/regex/):star::star: - 0%
+  + [正则表达式](/sundry/regex/):star::star: - 4%
 
-> 全站预估为 202500 字，可花 396 分钟浏览完成，本人日产 1000 字左右
+> 全站预估为 24 万字，可花 800（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 30 万字时开始减少产出垃圾，浓缩整文质量
 
 ## 错误更正
 
 如果发现文章有误，可以通过本人联系方式通知我纠正，或者点击错误页最下方的`编辑此页`前往 Github 提交一个更正后的 PR，我将审核通过后合并
 
 > 来都来了，留个言再走？
+  

@@ -150,9 +150,6 @@ const math_english = [
   'syntax',
   'tense-voice',
   'accumulation',
-  'nce1',
-  'nce2',
-  'nce3',
   'elementary',
   'higher',
 ];
@@ -189,6 +186,7 @@ const sundry = [
   'cicd',
   'security',
   'bootstrap',
+  'learnpath',
 ];
 
 const vue = [

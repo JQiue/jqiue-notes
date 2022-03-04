@@ -87,6 +87,6 @@ module.exports = config({
       maxSize: 10240,
       maxPicSize: 5000,
     },
-    feed: false,
+    feed: false
   }
 });

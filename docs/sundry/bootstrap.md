@@ -136,12 +136,19 @@ size设定：
 <div class="navbar"></div>
 ```
 
-如果想要在响应式视图中折叠某个元素，可以增加`navbar-expand-{breakpoint}`，然后在要折叠的元素上增加`navbar-collapse`，注意，折叠的元素最好使用`collapse`包装一下
+如果想要在响应式视图中折叠某个元素，可以增加`navbar-expand-{breakpoint}`，然后在要折叠的元素上增加`navbar-collapse`。注意，折叠的元素最好使用`collapse`包装一下
 
 ```html
 <div class="navbar navbar-expand-lg">
-  <div class="collapse navbar-collapse" id="navmenu">
-    
-  </div>
+  <div class="collapse navbar-collapse" id="navmenu"></div>
+</div>
+```
+
+要想控制折叠的元素可以添加一个带`navbar-toggler`的按钮，然后添加`data-bs-toggle="collapse"`属性指定为折叠控制器，使用`data-bs-target="{Selector}"`指定要被控制的折叠元素，属性值是该元素的选择器
+
+```html
+<div class="navbar navbar-expand-lg">
+  <button class="navbar-toogler" data-bs-toggle="collapse" data-bs-target="#navmenu"></button>
+  <div class="collapse navbar-collapse" id="navmenu"></div>
 </div>
 ```

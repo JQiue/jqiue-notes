@@ -54,6 +54,7 @@ tooth -> teeth
 mouse -> mice
 goose -> geese
 person -> people
+fish -> fish/fishes
 ```
 
 ## 介词短语
