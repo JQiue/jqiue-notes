@@ -1,5 +1,5 @@
 ---
-title: 高等数学
+title: 数学进阶
 category: 学科
 tags: [数学]
 author: JQiue

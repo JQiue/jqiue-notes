@@ -1,10 +1,12 @@
 ---
-title: 时态和语态
+title: 英语进阶
 category: 学科
 tags: [英语]
 author: JQiue
 article: false
 ---
+
+## 时态和语态
 
 动词的用法非常丰富，可以体现主语的单复数，也可以体现主语动作的时间和状态
 

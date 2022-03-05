@@ -147,11 +147,10 @@ const html_css = [
 
 const math_english = [
   '',
-  'syntax',
-  'tense-voice',
-  'accumulation',
-  'elementary',
-  'higher',
+  'primary-english',
+  'primary-math',
+  'advanced-english',
+  'advanced-math',
 ];
 
 const sundry = [
