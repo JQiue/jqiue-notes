@@ -1,8 +1,6 @@
 ---
 title: 后端数据模拟：Mock.js
 category: Web
-tags: [Alpha]
-author: JQiue
 article: false
 ---
 
@@ -12,8 +10,8 @@ Mock.js 是一种模拟 JSON 数据的前端技术，目的是为了解决后端
 
 两种安装方式：
 
-1. 浏览器环境：引入`mock.js`库
-2. NodeJS环境：`npm i mockjs`
++ 浏览器环境：引入`mock.js`库
++ Node.js 环境：`npm i mockjs`
 
 ## 生成数据
 
@@ -25,26 +23,25 @@ const data = Mock.mock({
     'id|+1': 1
   }]
 });
+
+console.log(data);
+
+/* 
+生成的数据如下：
+
+{
+  "list": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    }
+  ]
+}
+
+*/
 ```
-
-::: demo
-
-```html
-<button id="btn">生成数据</button>
-```
-
-```js
-const data = Mock.mock({
-  'list|1-10': [{
-    'id|+1': 1
-  }]
-});
-document.querySelector('#btn').addEventListener('click', function(){
-  alert(JSON.stringify(data, null, 2));
-});
-```
-
-:::
 
 这看起来很简单，`Mock.mock()`会根据传入的模板对象来生成数据对象，模板对象中的每一个属性都由 3 个部分组成：属性名、生成规则、属性值，`'name|rule': value`
 

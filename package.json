@@ -1,6 +1,6 @@
 {
   "name": "jqiue-notes",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "private": true,
   "author": {
     "name": "JQiue",
@@ -14,16 +14,11 @@
   },
   "scripts": {
     "dev": "vuepress dev docs",
-    "dev-temp": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs",
-    "remove-modules": "node ./node_modules_RMRF.js"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "rimraf": "^3.0.2",
-    "vuepress-vite": "^2.0.0-beta.27"
+    "build": "vuepress build docs"
   },
   "dependencies": {
-    "@vuepress/plugin-nprogress": "^1.8.2"
+    "@vuepress/plugin-nprogress": "^1.9.7",
+    "vuepress": "^2.0.0-beta.36",
+    "vuepress-theme-hope": "2.0.0-beta.0"
   }
 }

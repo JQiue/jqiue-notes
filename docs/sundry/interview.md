@@ -1,13 +1,29 @@
 ---
 title: 面试经历
 category: 知识分享
-tags: [Beta]
-author: JQiue
 ---
 
 这里记录的是我面试的一些题目，进行了技术复盘，按照公司划分
 
-## 武汉风行在线技术有限公司（校招 - Web 前端
+## 面试技巧
+
+一个好的面试题，一定是具有区分度、深度、以及覆盖面的，从此可以看出面试官的水平
+
+在面试过程中一定会发生以下情况：
+
++ 打断 - 意味着不感兴趣，也可能是一种提示
++ 争论 - 争论的技巧
++ 难题 - 展现分析过程
+
+题目总结为以下类型：
+
++ 项目型
++ 知识型
++ 开发型
++ 案例型
++ 有趣的
+
+## 武汉风行在线技术有限公司（校招 - Web 前端）
 
 人生第一面很慌说实话，对，就是那个风行视频，我在初中使用过他们家的视频软件，还算是有些印象。笔试轻松通过，隔了一个星期让我去第二面，面了一个多小时，回来后等消息，过了几天人事打电话询问我的在校日期和成绩排名，之后没有二面结果反馈，心已凉，面试流程效率太低，已经决定即使后续有消息也不考虑入职
 
@@ -62,7 +78,7 @@ function select(arr) {
 ```
 
 + 给一个数 x，判断 x 是否为回文整数，是就输出`true`，否则`false`，比如 121 就输出`true`，-121 就输出`false`
-+ 思路：转换为字符串，然后调用`split('')`返回一个字符数组，从首尾开始向中间递增比较，注意要给给`split()`加上`''`，否则返回的是整个字符串的数组
++ 思路：转换为字符串，然后调用`split('')`返回一个字符数组，从首尾开始向中间递增比较，注意要给`split()`加上`''`，否则返回的是整个字符串的数组
 
 ```js
 function foo(x) {
@@ -178,7 +194,7 @@ arr.forEach((e, index) => {
 
 ## 小鱼易连（校招 - Web 前端）
 
-第一面是用它们家的会议软件在线进行笔试，大概有三十多个人吧，笔试皆为选择题，其实据我做题的体验来看，选题非常不用心，有很多错误，敷衍的笔试筛选，做完估计错了两道三题，随后等了两个星期的结果，主动询问人事是否通过，然后发了邮件说没有通过，总体上来说，这公司爱好做题家，刷题就行了，反正我是无缘了
+第一面是用它们家的会议软件在线进行笔试，大概有三十多个人吧。笔试皆为选择题，据我做题的体验来看，选题非常不用心，有很多错误，敷衍的笔试筛选，做完估计错了两道三题。随后等了两个星期的结果，主动询问人事是否通过，然后发了邮件说没有通过。总体上来说，这公司爱好做题家，刷题就行了，反正我是无缘了
 
 + 哪些操作会触发 GPU 硬件加速
 + 哪些事件不会触发冒泡
@@ -199,18 +215,18 @@ arr.forEach((e, index) => {
 + 程序输出结果题
 
 ```js
+// i 是什么？
 for (let i = 0; i < 5; i++) {
   setTimeout(() => console.log(i), 0);
 }
-```
 
-```js
 for (var i = 0; i < 5; i++) {
   setTimeout(() => console.log(i), 0);
 }
 ```
 
 ```js
+// 打印结果是什么？
 var name = 'jack';
 (function () {
   if(typeof name === 'undefined'){
@@ -222,18 +238,33 @@ var name = 'jack';
 })();
 ```
 
-+ 手写一个压缩字符串的方法，比如`abbcccdddd`会被压缩成`a1b2c3d4`
++ 题目：手写一个压缩字符串的算法，比如`abbcccdddd`会被压缩成`a1b2c3d4`，只考虑字符都是字母的情况
++ 思路：先`split('')`拆一下字符串，
 
 ```js
 function resolve(str) {
-  let tempArr = str.split('');
-  let count = 0, chat = tempArr[0];
-  let zipArr = tempArr.map((element, index) => {
-    if(chat !== element){
-      zipChat = chat + count;
-      chat = element;
+  // 拆分
+  let charArr = str.split('');
+  // 记录出现次数，和当前比较的字符
+  let count = 0, char = charArr[0];
+  // 遍历字符数组
+  let zipArr = charArr.map((element, index) => {
+    // 当前遍历的字符和被比较的字符不一样，输出压缩后的字符
+    if(element !== char) {
+      // 处理最后一个字符的问题，当 element 为最后一个不同的字符时，map 已经停止遍历了
+      if(charArr.length - 1 == index){
+        return char + count + element + 1;
+      }
+      // 拼接返回
+      let zipChar = char + count;
+      // 重新计算次数和下一次被比较的字符
       count = 1;
-      return zipChat;
+      char = element;
+      return zipChar;
+    }
+    // 当 element 不是最后一个不同的字符时且可以被压缩时，进行特殊处理
+    if(element == char && charArr.length - 1 == index){
+      return char + (count + 1);
     }
     count++;
   });

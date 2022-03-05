@@ -1,6 +1,5 @@
 ---
 title: 杂七杂八
-author: JQiue
 article: false
 ---
 

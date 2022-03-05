@@ -1,9 +1,8 @@
 ---
 title: 起飞吧，HTML
 category: Web
-tags: [emmet, Beta]
-time: 2019-05-12
-author: JQiue
+tag: [Emmet]
+date: 2019-05-12
 ---
 
 有没有在写 HTML 大量的标签、属性、引号等写法所恶心到？以及同样在编写 CSS 时，要写很多的属性、属性值、大括号和分号等。当然，大多数的文本编辑器都或多或少带有代码自动提示功能，在开发之时，帮了很大的忙，但仍然需要手动输入很多代码。而 Emmet 插件，集成了很多代码片段的缩写，在开发时只需要输入简单的缩写，按`tab`键或`Ctrl+E`键就能扩展出所需的代码片段，令人高兴的是，大部分编辑器都集成了该插件，因此没必要去手动安装
@@ -66,5 +65,11 @@ Emmet 语法的核心与 CSS 选择器非常相似，也就是说像 CSS 选择�
 Emmet 不但能够生成标签，还能生成 CSS 属性，Emmet 定义了所有已知 CSS 属性的缩写。比如`font-size`缩写是`fz`，`border` 缩写是`bd`
 
 Emmet 不仅能生成属性名，还能带着一起生成属性值，比如`fz14`会生成`font-size: 14px;`，`dib`生成`display: inline-block;`
+
+还可以生成用于测试的“Lorem Ipsum”假文本内容用于填充，比如`lorem`会生成：
+
+```html
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem fuga expedita odio porro excepturi vero eligendi, animi tempore. Id rem tenetur iusto. Cupiditate cum totam nemo qui dolorum in delectus!
+```
 
 更多详见[Emmet](https://docs.emmet.io/)

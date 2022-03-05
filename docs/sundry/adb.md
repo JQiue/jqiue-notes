@@ -1,9 +1,7 @@
 ---
 title: Android 调试桥（adb）的用法
 category: 知识分享
-tags: [Alpha]
-time: 2021-7-7
-author: JQiue
+date: 2021-07-07
 article: false
 ---
 

@@ -1,7 +1,5 @@
 ---
 title: 问题汇总
-tags: [Alpha]
-author: JQiue
 article: false
 ---
 

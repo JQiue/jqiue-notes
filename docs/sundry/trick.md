@@ -1,9 +1,8 @@
 ---
 title: 一些花招
 category: 知识分享
-tags: [技巧, Beta]
-time: 2019-05-10
-author: JQiue
+tag: [技巧]
+date: 2019-05-10
 ---
 
 当你保存你的 ppt 时，用后缀`.pps`或`.ppsx`，那样的话，打开时会直接进入幻灯片播放模式。不仅节省时间，还看起来十分专业

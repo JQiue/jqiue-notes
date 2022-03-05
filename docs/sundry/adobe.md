@@ -1,8 +1,6 @@
 ---
 title: Adobe 全家桶的用法
 category: 知识分享
-tags: [Alpha]
-author: JQiue
 article: false
 ---
 
