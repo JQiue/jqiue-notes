@@ -3,11 +3,9 @@ import { defineSidebarConfig } from "vuepress-theme-hope";
 const computer = [
   '',
   'composition',
-  'instruction',
+  'operating-system',
   'compile',
   'network',
-  'tcp-ip',
-  'http',
 ];
 
 const c = [
@@ -139,6 +137,7 @@ const math_english = [
   'primary-math',
   'advanced-english',
   'advanced-math',
+  'nce',
 ];
 
 const sundry = [
@@ -151,6 +150,7 @@ const sundry = [
   'zhihu',
   'excel',
   'adb',
+  'http',
   'latex',
   'tomcat',
   'emmet',

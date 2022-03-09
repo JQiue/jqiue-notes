@@ -1,5 +1,5 @@
 ---
-title: 初级数学
+title: 数学初步
 category: 学科
 tag: [数学]
 article: false

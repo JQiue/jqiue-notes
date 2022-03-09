@@ -9,7 +9,7 @@ export default defineHopeConfig({
   base: '/',
   dest: './dist',
   head: [
-    ["link", {rel: "stylesheet", href: "//at.alicdn.com/t/font_1939991_g29apyyacbb.css"}]
+    ["link", { rel: "stylesheet", href: "//at.alicdn.com/t/font_1939991_g29apyyacbb.css" }]
   ],
   locales: {
     '/': {
@@ -64,6 +64,15 @@ export default defineHopeConfig({
       }
     },
     plugins: {
+      search: {
+        locales: {
+          "/": { placeholder: '搜索' }
+        },
+        hotKeys: ['s'],
+        maxSuggestions: 5,
+        isSearchable: page => page.path != '/',
+        getExtraFields: page => page.frontmatter.tags ?? []
+      },
       blog: {
         autoExcerpt: true,
       },
@@ -99,5 +108,6 @@ export default defineHopeConfig({
       },
       feed: false
     }
-  }
+  },
+  plugins: []
 })

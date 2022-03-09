@@ -1,7 +1,6 @@
 ---
-title: TypeScript 是怎么做类型体操的
+title: 怎么用 TypeScript 做类型体操
 category: 编程语言
-article: false
 ---
 
 ::: info 前置知识

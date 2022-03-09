@@ -5,6 +5,136 @@ tag: [英语]
 article: false
 ---
 
+## 简单陈述句
+
+简单陈述句是从两个角度来评价一个句子，句子是用来表达不同的用处的，比如疑问、感叹、命令。如果即不疑问、也不感叹或命令，就是陈述一件事，把它说出来这就是陈述句，陈述句是使用频率最高的，疑问句、感叹句、祈使句都是从陈述句中演变而来
+
+而简单陈述句即用最简单的话来描述一件事，相应的，描述多件事就不是简单陈述句，而是复杂句
+
+只要说清楚“什么”在“做什么”就把一件事说通了，所以简单句的核心构成是：名词 + 动词，即构成最基本的句式：主语 + 谓语
+
+语序也是非常重要的，一个单词并不能随便摆放，比如”警察抓小偷“、”小偷抓警察“、”警察小偷抓“
+
+虽然语序很重要，但只是最核心的部分不能变，其它的修饰部分是可以变的，比如：
+
+```plain
+The children played games quietly in their room yesterday.
+The children played games in their room quietly yesterday.
+```
+
+一个简单句可以增加一些修饰变得更加复杂，比如：
+
+```plain
+Boys talk.
+男孩说话
+Boys were talking.
+男孩过去正在说话（过去进行时）
+Lovely Boys were talking loudly.
+可爱的男孩过去在大声说话（形容词修饰名词、副词修饰动词）
+Yesterday after class lovely boys were talking loudly about the exam in the classroom.
+昨天下课后可爱的男孩在教室里大声谈论考试（介词短语表示时间、地点等）
+```
+
+所以，同样一件事陈述可以变化为更加丰富的陈述，终归结底，再复杂的句子都可以缩减到最核心的部分
+
+## 基本句式 - 主谓
+
+主谓结构是整个句子最基本的结构，其他的句式都是由主谓结构发展而来，主谓句式由表示陈述和被陈述关系的 2 个成分组成
+
+```
+The universe remians. 宇宙长存
+```
+
++ 主谓 - They meet
++ 主谓宾 - I love you
++ 主谓双宾 - I tell you secret
++ 主谓宾补 - I find you interesting
++ 主系表 - You are beautiful
+
+一个动词可以作用到一个对象即为及物动词，否则就是不及物动词，一个动词有时及物有时不及物
+
+## 特殊句式 - 主系表
+
+主系表结构是较为特殊的结构，是一种对主语进行补充说明的句式，这里的动词在这个句式中叫做连系动词，用来连接主语和表语，没有实际意义，表语即对主语的说明部分，用来修饰主语的状态，比如性质、特点、位置
+
+```plain
+The food is delicions.
+这个食物很美味
+```
+
+一般主系表结构的系动词有三类：
+
++ be 动词，注意是一定是单独出现的才是系动词
++ get，become，turn，go，grow，一定是表示“变得”含义才是系动词
++ look，sound，smell，taste，fell，表示“看起来/听起来/闻起来/品尝起来/感觉起来”的含义才是系动词
+
+例子：
+
+```plain
+The play was very interesting.  Be 动词单独出现，是主系表
+They were talking loudly. Be 动词和其他动词结合出现，不是主系表
+I got very angry. got 表示“变得”含义，是主系表
+```
+
+## 谓语动词的变化
+
+谓语动词有四种变化：
+
++ 时态
++ 语态
++ 情态
++ 否定
+
+在简单句中谓语动词并不是由一个单词组成的，只要在“三态一否”中变化，无论怎么变，都会将它们看做成一个整体的谓语动词
+
+## 动词不规则变化
+
+原型|过去式|过去分词|现在分词
+---|---|---|---
+be|was/were|been|
+have|had|had|having
+do|did|done|
+get|got|got/gotten|getting
+sit|sat|sat|sitting
+say|said|said|
+pay|paid|paid|
+bear|bore|borne|
+go|went|gone|
+take|took||
+find|found||
+give|gave||
+tell|told||
+see|saw|seen|
+buy|bought||
+meet|met||
+lose|lost||
+understand|understood||
+read|read||
+run|ran||
+know|knew||
+put|put||
+cut|cut||
+eat|ate||
+come|came||
+lose|lost||
+speak|spoke||
+ring|rang|rung|
+sing|sang|sung|
+drink|drank|drunk|
+swim|swam|swum|
+begin|began|begun|
+
+## time 的表达
+
+time 在英语中作不可数名词表示“时间”，作可数名词表示“次数”。3 次及以上通常用”基数词 + times“表示：
+
+```
+once 1 次
+twice 2 次
+three times 3 次
+five times 5 次
+```
+
 ## 词性
 
 英语是由词、句、篇构成，单词的词性是打开英语大门的钥匙，词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
@@ -679,20 +809,6 @@ None of us have arrived. 我们都没有到
 + S V P： 主 + 系 + 表
 + There be 句型
 
-主谓结构是整个句子最基本的结构，其他的句式都是由主谓结构发展而来，主谓句式由表示陈述和被陈述关系的 2 个成分组成
-
-```
-The universe remians.
-宇宙长存
-```
-
-主系表结构是较为特殊的结构，系动词是用来连接主语和表语的，没有实际意义，而表语是用来修饰主语的状态，比如性质、特点、位置
-
-```
-The food is delicions.
-这个食物很美味
-```
-
 主谓宾结构是最常用的结构，表示一个对象对另一个对象所做的动作
 
 ```
@@ -879,43 +995,6 @@ Don't speak to me like that!
 ### 倒装
 
 ### 虚拟
-
-## 过去式不规则变化
-
-```plain
-buy - bought
-lose - lost
-see - saw
-meet - met
-get - got
-go - went
-see - saw
-understand - understood
-take - took
-read - read
-drink - drank
-run - ran
-know - knew
-put - put
-cut - cut
-eat - ate
-meet - met
-come - came
-lose - lost
-tell - told
-speak - spoke
-find - found
-give - gave
-swim - swam
-have - had
-```
-
-## 过去分词不规则变化
-
-```plain
-be -> been
-see -> seen
-```
 
 ## 名词复数不规则变化
 

@@ -4,12 +4,11 @@ category: 数据结构与算法
 article: false
 ---
 
-
-递归是一种解决问题的方法，它从解决问题的各个小部分开始，直到解决最初的大问题。递归通常涉及函数调用自身，如果没有基线条件，会不断地递归下去，所有每个递归都有一个不在递归调用的条件，防止无限递归
+递归是一种解决问题的方法，它从解决问题的各个小部分开始，直到解决最初的大问题。递归通常涉及函数调用自身，如果没有基线条件，会不断地递归下去，所以每个递归都有一个不再递归调用的条件，防止无限递归
 
 > 要理解递归，就要先理解递归
 
-用 JavaScript 来实现这句话：
+用 JavaScript 来实现这句话，`understandRecursion()`函数会不断的调用自身，直到`answer`为真，`answer`就是基线条件：
 
 ```js
 function understandRecursion() {
@@ -42,8 +41,6 @@ document.querySelector('#btn').onclick = function () {
 ```
 
 :::
-
-`understandRecursion()`函数会不断的调用自身，直到`answer`为真，`answer`就是基线条件
 
 递归实现一个数字 5 的阶乘：
 
