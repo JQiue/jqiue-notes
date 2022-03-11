@@ -1,0 +1,32 @@
+body {
+  font-family: auto;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.navbar .site-name {
+  font-weight: 600;
+}
+
+i.iconfont {
+  vertical-align: bottom;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+::selection {
+  color: #414c41;
+  background: #b5eecd;
+}
+
+html[data-theme=dark] .token.comment, html[data-theme=dark] .token.italic {
+  font-style: normal!important;
+}
+
+html[data-theme=light] .token.comment, html[data-theme=light] .token.italic {
+  font-style: normal!important;
+}

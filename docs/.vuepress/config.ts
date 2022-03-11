@@ -47,6 +47,7 @@ export default defineHopeConfig({
         Zhihu: "https://www.zhihu.com/people/JQiue",
         Github: "https://github.com/JQiue",
       },
+      
     },
     encrypt: {
       config: {

@@ -3,10 +3,14 @@ title: 栈
 category: 数据结构与算法
 ---
 
-栈只是一种特殊的线性表，它是线性表的一种具体形式，也就是必须通过顺序表或链表来实现它，但是它在操作上有一些特殊的要求和限制，只能在一端进行操作。对于栈来说，表尾称之为栈顶，而表头称之为栈底。新的元素总是靠近栈顶，旧的元素总是靠近栈底，栈就像弹夹一样，最先压进去的子弹一定是最后出来的，所以它遵循先进后出或后进先出的原则，即 LIFO（Last In First Out）。栈被用于编译器和内存中保存变量、方法调用等，也在浏览器中用于历史记录
+栈只是一种特殊的线性表，它是线性表的一种具体形式，也就是必须通过顺序表或链表来实现它，但是它在操作上有一些特殊的要求和限制，只能在一端进行操作。对于栈来说，表尾称之为栈顶，而表头称之为栈底。新的元素总是靠近栈顶，旧的元素总是靠近栈底，栈就像弹夹一样，最先压进去的子弹一定是最后出来的，所以它遵循先进后出或后进先出的原则，即 LIFO（Last In First Out）。往栈中添加元素的操作，叫做入栈，从栈中移除元素的操作，叫做出栈
 
-+ 往栈中添加元素的操作，叫做入栈
-+ 从栈中移除元素的操作，叫做出栈
+栈应用很广，在回溯问题中，可以存储访问过的任务和路径、撤销的操作，可以用来处理计算机科学问题
+
++ 优先处理最新的邮件
++ 函数调用栈
++ 浏览器历史记录
++ 编译器
 
 ::: tip 栈和内存栈
 数据结构中的栈和内存中的栈空间是有区别的，虽然它们有点联系
@@ -308,12 +312,39 @@ class Stack {
 
 </CodeGroup>
 
-## 应用
+## 反转
 
-+ 优先处理最新的邮件
-+ 函数调用栈
+利用栈的结构特点可以很方便的反转链表，字符串等
 
-栈应用很广，在回溯问题中，可以存储访问过的任务和路径、撤销的操作，可以用来处理计算机科学问题
+```js
+class Stack {}
+
+class Node {}
+
+class LinkedList {
+  constructor() {
+    this.count
+    this.head = null;
+  }
+  reversseByStack() {
+    const stack = new Stack();
+    // 入栈
+    for (let i = 0; i < list.size(); i++) {
+      stack.push(list.getElementAt(i));
+    }
+    list.head = stack.pop();
+    let node = list.head;
+    // 反转
+    while (stack.size() != 0) {
+      node.next = stack.pop();
+      node = node.next;
+    }
+    node.next = null;
+  }
+}
+```
+
+## 十进制转二进制
 
 在现实中十进制是最主要的方式，然而在计算机中二进制是最重要的，因为计算机中所有的内容都是用二进制表示，没有十进制和二进制互相转换的能力，和计算机交流就很困难
 
@@ -358,5 +389,40 @@ function baseConverter(decNumber, base) {
     baseString += digits[remStack.pop()]; // 从栈中取出并转换
   }
   return baseString;
+}
+```
+
+## 检查括号的匹配性
+
+对于一个表达式，每一个左括号都有一个唯一对应的右括号，并且是正确的嵌套位置，那么这个表达式就是平衡的，否则这个表达式是不平衡的，比如：
+
++ `()` - 平衡
++ `)(` - 不平衡
++ `[()]` - 平衡
++ `[()()]` - 平衡
+
+对于一个表达式的括号匹配算法，就是扫描表达式将遇到的左括号压入栈，遇到匹配到的右括号就弹栈，最后看栈是否为空，如果为空则代表表达式是平衡的
+
+```js
+function checkExpression(str) {
+  const leftBrackets = ['(', '[', '{'];
+  const rightBrackets = [')', ']', '}'];
+  const stack = new Stack();
+  // 只有一个符号的情况
+  if (str.length == 1) return false;
+  for (let i = 0; i < str.length; i++) {
+    // 如果遇到左括号就入栈
+    if (str[i] == '(' || str[i] == '[' || str[i] == '{') {
+      stack.push(str[i]);
+    } else if (str[i] == ')' || str[i] == ']' || str[i] == '}') {
+      // 如果栈为空或者与栈顶括号不匹配就返回 false，否则就是匹配成功并出栈
+      if (stack.isEmpty() || leftBrackets.indexOf(stack.peek()) != rightBrackets.indexOf(str[i])) {
+        return false;
+      } else {
+        stack.pop();
+      }
+    }
+  }
+  return stack.isEmpty();
 }
 ```

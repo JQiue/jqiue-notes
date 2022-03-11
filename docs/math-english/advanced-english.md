@@ -76,7 +76,7 @@ compound sentences 其实就是简单的句子叠加，是并列关系，直接�
 + 根据动作进行的状态：一般，进行和完成
 + 使用动词时一般将前两者结合，比如：一般现在时，过去进行时
 
-```
+```plain
 He goes to shchool every day.
 He went to hospital last night.
 ```
@@ -133,38 +133,15 @@ She hadn't finished the homework yet.  她还没有完成家庭作业
 
 因为动词可以表达动作的时间以及状态，所以理论上有 16 种可能的时态
 
-### 一般过去时态
-
-用于描述过去发生的事，跟现在没有关系，比如`He was a student.`表示过去是一个学生，现在不是了。经常与时间状语连用：yesterday、the day bofore yesterday、last night、last + 时间名词、一段时间 + ago、in + 某一年、
-
-be 动词的过去式，第一人称和第三人称单数用`was`，其他情况用`were`
-
-+ 动词变化：过去式（did/was/were）
-
-变化规律：
-
-+ 一般加`ed`
-+ 以字母`e`结尾的只加`d`
-+ 以“辅音字母 + y” 结尾的，变 y 为 i 再加`ed`
-+ 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
-+ 不规则变化，需要记忆
-
-```
-He worked very hard last night. 他昨天晚上工作的非常努力
-They came here by car. 他们开车来到了这里
-```
-
-::: danger
-动词过去式和过去分词的用法是有区别的，过去式可以构成过去时态，过去分词可以构成完成时态，还能构成被动语态以及非谓语动词
-:::
-
 ### 一般现在时态
 
-一般现在时态主要表示经常性习惯性的动作以及现在的状态，经常与副词连用，比如 every day、week、month、year、in the morning、afternoon、evening、at noon、at night、usually、always、often、sometimes、never
+一般现在时态主要表示经常性习惯性的动作、现在的状态、永恒的状态，经常与频率副词连用，比如 every day、week、month、year、in the morning、afternoon、evening、at noon、at night、usually、always、often、sometimes、never、frequently、seldom、rarely
 
 ```
 He often gets up late. 经常性
 I am a student. 现在的状态
+The earth is round. 永恒（科学事实）
+Practice makes perfect. 真理
 ```
 
 除此之外还可以表示“永恒”：客观事实、科学真理、名言警句
@@ -196,6 +173,32 @@ He often gets up at 7:00. 他经常在 7:00 起床（习惯性动作）
 + 动词结尾加`s`
 + 以字母 s、x、ch 或 o 结尾的加`es`
 + 以辅音字母结尾的变 y 为 i 在加`es`
+:::
+
+### 一般过去时态
+
+用于描述过去发生的事，跟现在没有关系，比如`He was a student.`表示过去是一个学生，现在不是了。经常与时间状语连用：yesterday、the day bofore yesterday、last night、last + 时间名词、一段时间 + ago、in + 某一年。也可以和频率副词连用
+
+动词变化：
+
++ was/were：be 动词的过去式，第一人称和第三人称单数用`was`，其他情况用`were`
++ did
+
+变化规律：
+
++ 一般加`ed`
++ 以字母`e`结尾的只加`d`
++ 以“辅音字母 + y” 结尾的，变 y 为 i 再加`ed`
++ 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
++ 不规则变化，需要记忆
+
+```
+He worked very hard last night. 他昨天晚上工作的非常努力
+They came here by car. 他们开车来到了这里
+```
+
+::: danger
+动词过去式和过去分词的用法是有区别的，过去式可以构成过去时态，过去分词可以构成完成时态，还能构成被动语态以及非谓语动词
 :::
 
 ### 一般将来时态

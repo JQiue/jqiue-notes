@@ -83,7 +83,7 @@ DOM 中的节点是有层次关系的，这个关系是构成 DOM 运算的关�
 + `document.head`代表`<head>`对应的元素节点
 + `document.body`代表`<body>`对应的元素节点
 
-### 访问节点
+## 访问节点
 
 `<html>`是整个文档的根元素，使用`document.documentElement`获取根元素对象
 
@@ -93,15 +93,17 @@ DOM 集合只是可读的，不能够通过赋值来更改一个子节点，需�
 
 DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点更改会实时的反映到集合中
 
-`firstNode`和`lastNode`属性是访问第一个和最后一个子节点的最方便的形式
+获取一个节点后可以通过一些方法来获得它身边的节点：
 
-下一兄弟节点在`nextSibling`属性中，而上一个节点在`previousSibling`属性中，可以通过`parentNode`访问父节点
++ `elem.firstNode`和`elem.lastNode`属性是访问第一个和最后一个子节点的最方便的形式
++ 下一兄弟节点在`elem.nextSibling`属性中，而上一个节点在`elem.previousSibling`属性中
++ `elem.parentNode`可以访问父节点
 
 ::: danger
 由于子节点可能包含文本节点，做相关操作时要注意是否为元素节点
 :::
 
-对于绝大数情况下来说，我们不需要文本节点或注释节点，而希望操作的是形成页面结构的元素节点，上面的节点访问方式都是不干净的，而下面的属性是干净的元素节点访问方式，只是加了一个词`Element`表示它访问的是元素类型的节点
+对于绝大数情况下来说不需要文本节点或注释节点，而希望操作的是形成页面结构的元素节点，上面的节点访问方式都是不干净的，而下面的属性是干净的元素节点访问方式，只是加了一个词`Element`表示它访问的是元素类型的节点
 
 + `children`：返回只包含元素类型的子节点类数组
 + `firstElementChild`，`lastElementChild`：返回元素类型的第一个子节点，最后一个子节点
@@ -118,7 +120,24 @@ DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点
 + `caption/tHead/tFoot`
 + `tBodies`：返回`<tbody>`元素的集合
 
-### 搜索元素
+## 节点类型
+
+DOM 中的每个节点都属于某种类型，甚至连 HTML 中的注释都会成为 DOM 中的一部分，当然包括`<!DOCTYPE HTML>`，DOM 定义了 12 种节点类型，一般用到的只有 4 种：
+
++ 文档节点
++ 元素节点
++ 文本节点
++ 注释节点
++ ...
+
+`elem.nodeType`会返回该节点类型对应的数值
+
++ 对于元素节点`elem.nodeType == 1`
++ 对于文本节点`elem.nodeType == 3`
++ 对于文档节点`elem.nodeType == 9`
++ 对于注释节点`elem.nodeType == 8`
+
+## 搜索元素
 
 如果一个节点的层次太深，使用关系访问时会显得非常繁琐，下面的方法可以精确地搜索对应的元素节点，注意只是元素节点
 
@@ -167,17 +186,7 @@ DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点
 </script>
 ```
 
-### 节点类型
-
-DOM 中的每个节点都属于某种类型，甚至连 HTML 中的注释都会成为 DOM 中的一部分，当然包括`<!DOCTYPE HTML>`，DOM 定义了 12 种节点类型，一般用到的只有 4 种：
-
-+ 文档节点
-+ 元素节点
-+ 文本节点
-+ 注释节点
-+ ...
-
-### 节点属性
+## 节点属性
 
 不同的 DOM 节点可能有不同的属性，`<a>`具有对应的连接相关的属性，`<input>`也对应具有输入相关的属性。文本节点和元素节点虽然不同，但是它们之间有着共同的属性和方法
 
@@ -191,12 +200,6 @@ console.log( document.body instanceof Element );         // true
 console.log( document.body instanceof Node );            // true
 console.log( document.body instanceof EventTarget );     // true
 ```
-
-`nodeType`会返回该节点类型对应的数值，别忘了有 12 种节点类型：
-
-+ 对于元素节点`elem.nodeType == 1`
-+ 对于文本节点`elem.nodeType == 3`
-+ 对于文档节点`elem.nodeType == 9`
 
 如果知道一个节点，就可以通过`nodeName`或`tagName`属性读取它的标签名，但是`tagName`仅适用于元素节点，在一个文本节点上使用会返回`undefined`。而`nodeName`适用于任何节点类型，比如文本类型或注释，会返回一个对应节点类型的字符串
 

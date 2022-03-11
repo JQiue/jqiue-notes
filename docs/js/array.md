@@ -111,6 +111,8 @@ console.log(arr.length); //3
 
 一定要将数组当作“有序集合”来使用，而不是当作常规对象一样使用，否则针对数组的优化将不会存在
 
+使用`typeof []`判断数组会返回一个`object`字符串，为了区分对象和数组应该使用`Array.isArray()`来进行判断
+
 ## 类似于数组一样的对象
 
 如果一个对象的所有键都是正整数或`0`，且拥有`length`属性，那么这个对象就很像数组，在语法上被称为**类数组**
@@ -272,7 +274,7 @@ splice 和 slice 还支持反向索引，从 -1 开始
 
 排序
 
-+ `arr.sort(callback())`：对数组进行原位排序，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
++ `arr.sort(callback(a, b))`：对数组进行原位排序，在默认情况下，是将每一个元素看作字符串排序的，如果要按照自己的规则排序，应该提供一个执行比较的排序函数，规则是 a 代表前一项元素，b 代表后一项元素，如果需要交换位置，则返回任意的正数，否则返回负数，比如`arr.sort((a, b) => a - b)`则是从小到大排序
 + `arr.reverse()`：反转数组元素的索引顺序，会改变原数组
 
 ::: tip
@@ -294,6 +296,26 @@ sort 方法实现了通用的排序算法
 + `Array.isArray(arr)`：检查 arr 是否为一个数组
 
 会修改原数组的方法有：splice、sort、reverse、push、pop、shift、unshift
+
+## 手写一个数组的深克隆拷贝算法
+
+由于 JavaScript 数组的项可能是基本类型也可能是引用类型，所以要判断一下项的类型
+
+```js
+function clone(array) {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    // 如果数据项是数组，则递归
+    if(Array.is(array[i])) {
+      clone(array[i]);
+    } else {
+      // 数据项不是数组则拷贝
+      resutl.push(array[i]);
+    }
+  }
+  return result;
+}
+```
 
 ## 总结
 

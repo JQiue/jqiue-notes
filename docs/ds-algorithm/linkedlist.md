@@ -298,11 +298,39 @@ class LinkedList {
     const index = this.indexOf(data);
     return this.removeAt(index);
   }
+  reverse() {
+    let current, prev, next;
+    current = this.head;
+    prev = null;
+    while (current != null) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+    this.head = prev;
+  }
+  reverseRecursion(node) {
+    if(node.next == null) {
+      this.head = node;
+      return;
+    }
+    this.reverseRecursion(node.next);
+    node.next.next = node;
+    node.next = null;
+  }
   isEmpty() {
     return this.count == 0;
   }
   size() {
     return this.count;
+  }
+  print() {
+    let node = this.head;
+    while(node != null) {
+      console.log(node.data);
+      node = node.next;
+    }
   }
 }
 ```

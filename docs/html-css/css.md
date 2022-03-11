@@ -8,7 +8,6 @@ article: false
 ::: info 前置知识
 
 + HTML
-+ 矩阵
 :::
 
 ## 字体样式
@@ -257,228 +256,9 @@ ul li {
 
 :::
 
-## 背景
-
-在 CSS 中通常使用`background`来设置元素的可见区域的背景属性（边框到内容才是元素的可见区域）
-
-+ `background-color`：设置背景颜色
-
-::: demo background-color
-
-```html
-<div class="foo"></div>
-```
-
-```css
-.foo {
-  width: 200px;
-  height: 150px;
-  background-color: #f40;
-}
-```
-
-:::
-
-+ `background-image`：设置背景图片，必须提供图片地址并放在`url()`中，如果图片大小没有元素大，则会自动在水平和垂直方向平铺和填充背景
-
-::: demo background-image
-
-```html
-<div class="foo"></div>
-<div class="bar"></div>
-```
-
-```css
-div.foo,div.bar {
-  height: 100px;
-}
-.foo {
-  background-image: url(/avatar.png);
-}
-.bar {
-  background-image: url(/bgImage.jpg);
-}
-```
-
-:::
-
-+ `background-repeat`：设置背景图片是否以及如何重复
-  + repeat（默认值）：水平和垂直方向都平铺和填充
-  + repeat-x：水平方向平铺和填充
-  + repeat-y：垂直方向平铺和填充
-  + no-repeat：不平铺图片
-
-::: demo background-repeat
-
-```html
-<div class="foo"></div>
-<div class="bar"></div>
-<div class="baz"></div>
-```
-
-```css
-div.foo,div.bar,.div.baz {
-  height: 100px;
-  background-image: url(/avatar.png);
-}
-.foo {
-  background-repeat: repeat-x;
-}
-.bar {
-  background-repeat: repeat-y;
-}
-.baz {
-  background-repeat: no-repeat;
-}
-```
-
-:::
-
-+ `background-position`：设置背景图片的在元素中的位置，默认情况下总是显示在元素的左上角，属性有两个取值，前面控制水平方向，后面控制垂直方向。也可以通过像素精准的控制图片的位置，它的取值可以是负的
-  + 水平方向：`left`，`center`，`right`|像素
-  + 垂直方向：`top`，`center`，`bottom`|像素
-
-::: demo background-position
-
-```html
-<div class="foo"></div>
-<div class="bar"></div>
-<div class="baz"></div>
-```
-
-```css
-div.foo,div.bar,.div.baz {
-  margin: 0 auto;
-  border: 1px solid black;
-  width: 99px;
-  height: 99px;
-  background-color: pink;
-  background-image: url(/avatar.png);
-  background-repeat: no-repeat;
-}
-.foo {
-  background-position: right bottom;
-}
-.bar {
-  background-position: 20px 30px;
-}
-.baz {
-  background-position: -20px -20px;
-}
-```
-
-:::
-
-::: tip
-可以同时设置背景颜色和图片，图片会在颜色的上面
-:::
-
-+ `background-size`：设置背景图片的大小，可以通过像素取值，也可以通过`cover`或`contain`来自动计算图片大小覆盖背景
-+ `background-attachment`：设置背景图片是否固定或者随着页面的其余部分滚动，`scroll`是默认属性随着页面的滚动而滚动，`fixed`则不会随着页面而滚动
-
-上面都是一些单独的属性，CSS 也提供了`background`属性进行缩写：`background: 背景颜色 背景图片 平铺方式 固定方式 定位方式`，在缩写方式中，任何属性都可以省略
-
-::: tip 背景图片和插入图片的区别
-插入图片的语义比背景图片的要强，利于搜索引擎收录
-:::
-
-::: tip 精灵图技术
-精灵图也叫雪碧图，是一种图片的合成技术，目的是将很多图片拼接到一张图片中，利用 CSS 背景定位来显示所需要的图片，大大的减少了网页中的请求次数
-:::
-
-## 转换
-
-在 CSS3 中，转换属性能够对元素进行移动，缩放，旋转，拉长或拉伸，通过`transform`属性来控制元素的转换行为，它的取值是对应的转换方法
-
-### 2D 转换
-
-属性|说明
----|---
-translate(x, y)|水平或垂直方向平移当前位置的元素
-rotate(angle)|顺时针或逆时针旋转
-scale(x,y)|水平或垂直方向缩放，取值是 1 默认不变，大于 1 表示放大，小于 1 表示缩小，水平和垂直参数值一样可以简写一个参数
-skew(x-angle,y-angle)|x 轴或 y 轴倾斜
-matrix()|方法有六个参数，包含旋转，缩放，移动（平移）和倾斜功能
-
-::: demo transform
-
-```html
-<ul>
-  <li>默认</li>
-  <li>平移</li>
-  <li>旋转</li>
-  <li>缩放</li>
-  <li>倾斜</li>
-</ul>
-```
-
-```css
-ul {
-  width: 400px;
-  height: 300px;
-  margin: 0 auto;
-  }
-ul li {
-  list-style: none;
-  width: 70px;
-  height: 30px;
-  line-height: 30px;
-  background: pink;
-  margin: 20px auto;
-  text-align: center;
-}
-ul li:nth-child(2) {
-  transform: translate(10px,10px);
-}
-ul li:nth-child(3) {
-  transform: rotate(45deg);
-}
-ul li:nth-child(4) {
-  transform: scale(1,1);
-} 
-ul li:nth-child(5) {
-  transform: skew(10deg,20deg);
-}
-```
-
-:::
-
-### 3D 转换
-
-通过在 2d 转换的方法后面添加一个大写的 X 或者 Y 或者 Z 来定义 3D 转换
-
-### 透视属性
-
-`perspective`属性用来改变 3D 元素的视图，只影响 3D 转换元素，只有子元素获得透视效果，本身不获得透视效果，具有近大远小的视觉效果，取值为像素，像素越小代表越近，反之越远
-
-::: demo perspective
-
-```html
-<div class="box">
-  <div></div>
-</div>
-```
-
-```css
-.box {
-  margin: 0 auto;
-  width: 150px;
-  height: 180px;
-  border: 1px solid black;
-  perspective: 500px;
-}
-.box div {
-  height: 180px;
-  background: pink;
-  transform: rotateX(20deg);
-}
-```
-
-:::
-
 ## 过渡
 
-在 CSS3 中，可以在不使用 Flash 或 JavaScript 的情况下，当一个元素从一种样式变成另一种样式时为其添加过渡效果，也就是让元素变化的更加平缓，它必须规定需要过渡的属性和过渡的时长。通过`transition`来规定过渡效果，有四个属性值：过渡的属性，过渡的时间，过渡的时间曲线，过渡的时间延迟
+在 CSS3 中，可以在不使用 Flash 或 JavaScript 的情况下，当一个元素从一种样式变成另一种样式时为其添加过渡效果，也就是让元素变化的更加平缓。它必须规定需要过渡的属性和过渡的时长，通过`transition: 过渡的属性，过渡的时间，过渡的时间曲线，过渡的时间延迟`
 
 ::: demo transition
 
@@ -501,7 +281,7 @@ ul li:nth-child(5) {
 
 :::
 
-当然可以同时过渡多个属性，只需要使用`,`隔开每个过渡的属性即可
+可以同时过渡多个属性，只需要使用`,`隔开每个过渡的属性
 
 ::: demo transition
 
@@ -559,20 +339,20 @@ ul li:nth-child(5) {
 
 在使用动画属性之前必须先了解 CSS3 中`@keyframes`规则，它的作用是用于创建动画的规则，它有点像选择器一样，不过需要几个关键字来指定动画的行为：`from`，`to`
 
-`from`中定义开始时的样式，`to`中定义结束后的样式，这可能和过渡差不多，但是 CSS3 还提供了百分比的形式来控制样式，这样就能更加精确的控制了，创建动画帧后，必须将`name`交给`animation`属性进行播放，`name`必须是合法的标识符
+`from`中定义开始时的样式，`to`中定义结束后的样式，只能定义两个关键帧。但是 CSS3 还提供了百分比的形式来创建更多的关键帧，这样就能更加精确的控制了，创建动画帧后，必须将`name`交给`animation`属性进行播放，`name`必须是合法的标识符
 
 ```css
 /* from...to... */
-@keyframes name{
+@keyframes name {
   from{}
   to{}
 }
 
 /* 百分比控制 */
-@keyframes name{
-  0%{}
-  50%{}
-  100%{}
+@keyframes name {
+  0% {}
+  50% {}
+  100% {}
 }
 ```
 
@@ -636,167 +416,6 @@ p {
 这一语法定义了一个字体，使用`src`链接一个可用的字体文件，并用`font-family`命名，这样就可以在任意元素中使用命名的字体了
 
 除此之外还有一种特殊的图标字体，并不像传统的字母、数字、标点符号一样，这种字体可以像对待文字那样改变样式
-
-## 元素
-
-### 圆角边框
-
-`border-radius`可为元素设置圆角边框
-
-### 盒子阴影
-
-`border-shadow`可为元素设置阴影效果，参数：水平偏移量、垂直偏移量、模糊半径、颜色
-
-当在所有的参数后加上`inset`后，就变成内阴影了
-
-::: demo 盒子阴影
-
-```html
-<div class="box1">外阴影</div>
-<div class="box2">内阴影</div>
-```
-
-```css
-div.box1,div.box2 {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  border: 1px solid #000;
-}
-.box1 {
-  box-shadow: 0 0 15px orange;
-}
-.box2 {
-  box-shadow: 0 0 15px orange inset;
-}
-```
-
-:::
-
-甚至可以添加多重阴影，只需要使用`,`分割
-
-::: demo 多重阴影
-
-```html
-<div class="box"></div>
-```
-
-```css
-.box {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #000;
-  box-shadow: 0 0 5px 10px pink, 0 0 5px 20px green;
-}
-```
-
-:::
-
-### 透明度
-
-`opacity`可以设置元素的透明度，它的取值在 0~1 之间，不需要带单位。元素依然占据空间，但是和`visibility`略微不一样的地方是元素依然会触发事件
-
-::: demo opacity
-
-```html
-<div class="box1"></div>
-<div class="box2"></div>
-<div class="box3"></div>
-```
-
-```css
-div.box1,div.box2,div.box3 {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  background-color: black;
-}
-
-.box1 {
-  opacity: 1;
-}
-.box2 {
-  opacity: 0.6;
-}
-.box3 {
-  opacity: 0.3;
-}
-```
-
-:::
-
-::: tip
-`opacity`和使用 RGBA 或 HSLA 设置的透明是不同的，`opacity`影响的是整个元素，包括内容，RGBA 和 HSLA 只是影响背景的透明度`
-:::
-
-### 轮廓
-
-`outline`可以设置元素的轮廓，轮廓是围绕在元素边框外面的线，不会影响大小，有三个参数：颜色、风格、尺寸
-
-::: demo 轮廓
-
-```html
-<div class="box">111</div>
-```
-
-```css
-.box {
-  width: 100px;
-  border: 5px solid #000;
-  outline: green solid 5px;
-}
-```
-
-:::
-
-## 渐变
-
-渐变是一种由两种颜色或多种颜色之间的渐进过渡组成，CSS 中有 3 中类型的渐变：线性渐变，径向渐变，圆锥渐变
-
-```css
-.simple-linear {
-  background: linear-gradient(blue, pink);
-}
-```
-
-默认情况下，线性渐变的方向是从上到下，可以指定一个值来改变渐变的方向
-`linear-gradient(direction, color1, color2, ...)`
-
-+ 对角线渐变`linear-gradient(to bottom right, color1, color2, ...)`
-+ 可以使用角度更精确的控制渐变`linear-gradient(70deg, color1, color2)`
-
-并不局限于两种颜色，如论使用多少种，都会被均匀的分布在渐变路径
-
-::: demo 线性渐变
-
-```html
-<div class="box a"></div>
-<div class="box b"></div>
-<div class="box c"></div>
-```
-
-```css
-.box {
-  display: inline-block;
-  width: 200px;
-  height: 100px;
-  border: 1px solid #000;
-}
-
-.a {
-  background: linear-gradient(red, green);
-}
-
-.b {
-  background: linear-gradient(to bottom right, red, green);
-}
-
-.c {
-  background: linear-gradient(40deg, red, green);
-}
-```
-
-:::
 
 ## 高亮
 
