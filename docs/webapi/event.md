@@ -10,10 +10,9 @@ article: false
 + CSS
 + JavaScript
 + DOM
-+ BOM
 :::
 
-事件是一种用于人机交互和响应程序内部的控制机制，在 JavaScript 中，对象可以响应一些事件，比如鼠标事件，包括使用鼠标的常见操作：单机和释放、鼠标指针是否在对象上。当这些事件产生后，就可以编写代码对这些事件做出响应的处理，指定为响应事件而应执行的动作叫做事件处理
+事件是一种用于人机交互和响应程序内部的控制机制，在 JavaScript 中，对象可以响应一些网页交互事件，比如鼠标事件，包括使用鼠标的常见操作：单机和释放、鼠标指针是否在对象上。当这些事件产生后，就可以编写代码对这些事件做出响应的处理，指定为响应事件而应执行的动作叫做事件处理
 
 首先要认识事件发生和处理的三个基本要素，当事件发生时，必然会牵扯到这些要素
 
@@ -41,10 +40,6 @@ article: false
 
 直接使用 HTML 元素事件特性
 
-```html
-<button onclick="alert('单击事件触发了')">点击我</button>
-```
-
 ::: demo 事件特性
 
 ```html
@@ -55,17 +50,7 @@ article: false
 
 HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发时会启动对应的 JavaScript 程序，但应该避免这种使用方式，因为不利于维护 HTML
 
-在 DOM 模型中，HTML 事件特性被看作元素节点的属性，只要为这个事件属性定义一个处理函数就可以了
-
-```html
-<button>click</button>
-
-<script>
-  document.querySelector('button').onclick = function () {
-    alert('单击事件触发了');
-  };
-</script>
-```
+由于 HTML 特性被看作元素节点的属性，只要为这个事件属性定义一个处理函数就可以了
 
 ::: demo DOM 元素的事件属性
 
@@ -123,6 +108,10 @@ document.querySelector('button').addEventListener('click', eventHandler, false);
 如果一个元素注册了多个同类型的事件监听，执行顺序是按照代码书写顺序
 :::
 
+::: tip
+在事件处理中，`this`指向绑定事件的 DOM 元素
+:::
+
 ## 删除事件
 
 对于`on<event>`这种处理方式，可以直接赋值为`null`来实现事件的删除
@@ -143,9 +132,9 @@ target.removeEventListener('click', mouseClick);
 必须是同一个函数引用，否则无法删除
 :::
 
-## 事件对象 — Event
+## 事件对象
 
-当 DOM 中某个事件被触发时，会同时产生一个描述事件相关信息的对象（触发事件的元素，鼠标的的位置，键盘的状态等等），这个对象就是 event，它通常被当作参数传递给事件处理函数
+当 DOM 中某个事件被触发时，会同时产生一个描述事件相关信息的对象（触发事件的元素，鼠标的的位置，键盘的状态等等），它通常被当作参数传递给事件处理函数
 
 ```html
 <body>
@@ -719,7 +708,7 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 
 由于用户和界面交互的太平凡，如果每一次发生的事件都要执行，就会造成性能下降，比如点了两下按钮，实际上这是误触，对应的处理函数不应该触发两次，防抖和节流就是应运而生的两种方案
 
-+ 防抖指的是事件发生的一定时间段只触发一次处理函数，一旦在一定的时间段内触发，则会重新计算时间在触发处理函数
++ 防抖指事件发生的一定时间段只触发一次处理函数，一旦在一定的时间段内触发，则会重新计算时间再触发处理函数
 + 节流指的是连续触发事件但是在 n 秒中只执行一次函数
 
 下面是使用`mousemove`的例子，当鼠标在上面移动时数字会增加，第一个没有进行处理，第二个使用防抖处理，第三个使用节流处理
@@ -875,7 +864,7 @@ button.addEventListener('mouseup', event => {
 + `ctrlKey`：Ctrl 键
 + `metaKey`：Win 键
 
-如果在鼠标事件期间按下了对应的键，则它的值为`true`，比如下面的示例中，按下三个键才会触发弹框
+如果在鼠标事件期间按下了对应的键，则它的值为`true`，比如下面的示例中，按下三个键（Ctrl，Shift，Alt）才会触发弹框
 
 ::: demo 组合键
 
@@ -894,10 +883,12 @@ button.addEventListener('click', event => {
 
 :::
 
-所有的鼠标事件都提供了两种形式的坐标：
+所有的鼠标事件对象都提供了两种形式的坐标：
 
 + 相对于窗口：`clienX`和`clienY`
 + 相对于文档：`pageX`和`pageY`
++ 相对于元素：`offsetX`和`offsetY`
++ 相对于屏幕：`screenX`和`screenY`
 
 ::: demo 鼠标坐标
 
@@ -995,7 +986,7 @@ table.onmouseout = function (e) {
 ```
 
 ```css
-table td{
+table td {
   border: 1px solid #000;
   width: 150px;
   text-align: center;
@@ -1007,7 +998,7 @@ table td{
 
 ## 键盘事件
 
-需要处理键盘行为时，就应该使用键盘事件，对任意按键作出反应，当按下时会触发`keydown`事件，而当释放按键时触发`keyup`事件
+需要处理键盘行为时，就应该使用键盘事件，当按下时会触发`keydown`事件，而当释放按键时触发`keyup`事件
 
 对于键盘事件对象来说，可以通过`key`来获取字符，而`code`属性允许获取物理上的按键代码
 
@@ -1370,6 +1361,8 @@ document.body.append(script);
 对于`<img>`来说，必须获得`src`才能够被开始加载，而`<ifrma>`不管加载成功还是失败都会触发`load`事件
 :::
 
+## 触摸事件
+
 ## 全屏
 
 如果想要以全屏的方式展示一个元素，可以调用`elem.requestFullscreen()`方法，同样使用`document.exitFullscreen()`来退出全屏，对于用户来说也可以使用自己的方式来退出（F11 或 ESC）
@@ -1382,5 +1375,13 @@ document.body.append(script);
 无法在网页加载后立即进入全屏状态，必须在事件处理中调用
 :::
 
+## 页面可见
+
+## 服务端事件
+
+[https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events](https://developer.mozilla.org/zh-CN/docs/Web/API/Server-sent_events/Using_server-sent_events)
+
 <!-- more -->
 <!-- to b e updated -->
+
+## 振动

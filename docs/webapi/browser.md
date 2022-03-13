@@ -1,8 +1,12 @@
 ---
-title: BOM
+title: 浏览器提供的能力
 category: Web
 article: false
 ---
+
+window 对象表示一个包含DOM文档的窗口，其 document 属性指向窗口中载入的 DOM文档
+
+window 作为全局变量，代表了脚本正在运行的窗口，暴露给 Javascript 代码
 
 ## 定时器
 
@@ -92,3 +96,5 @@ document.querySelector('#btn').addEventListener('click', () => {
 ## 跨窗口通信
 
 <!-- to be updated -->
+
+## 通知

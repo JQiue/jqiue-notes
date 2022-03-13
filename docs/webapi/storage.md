@@ -135,7 +135,7 @@ localStorage.testData = '测试数据'
 console.log(localStorage.testData) // '测试数据'
 ```
 
-对话存储针对一个会话进行数据存储，当网页被关闭时数据就会删除，不应该用于长期存储的应用，同时只会对当前页面公开，通过`window.sessionStorage`进行数据操作
+对话存储针对一个会话进行数据存储（浏览器处于打开，包括页面重新刷新和恢复），不应该用于长期存储的应用，同时只会对当前页面公开，通过`window.sessionStorage`进行数据操作
 
 ```js
 sessionStorage.testData = '测试数据'

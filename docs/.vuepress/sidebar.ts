@@ -81,15 +81,8 @@ const ds_algorithm = [
   'find',
   'sort',
   'random',
-  'core',
+  'think',
 ];
-
-const design_pattern = [
-  '',
-  'creational',
-  'structural',
-  'behavioral'
-]
 
 const database = [
   '',
@@ -105,13 +98,14 @@ const wasm = [
 
 const webapi = [
   '',
-  'bom',
+  'browser',
   'dom',
   'event',
   'network',
   'storage',
   'drag',
   'worker',
+  'WebRTC',
 ];
 
 const canvas = [
@@ -174,6 +168,8 @@ const sundry = [
   'security',
   'bootstrap',
   'learnpath',
+  'design-pattern',
+  'css-trick',
 ];
 
 const vue = [
@@ -205,7 +201,6 @@ export default defineSidebarConfig({
   "/python/": python,
   "/ds-algorithm/": ds_algorithm,
   "/database/": database,
-  "/design-pattern/": design_pattern,
   "/html-css/": html_css,
   "/canvas/": canvas,
   "/webapi/": webapi,

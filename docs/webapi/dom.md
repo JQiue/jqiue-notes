@@ -220,7 +220,7 @@ console.log( document.body instanceof EventTarget );     // true
 对于元素节点来说，返回的标签名始终是大写的
 :::
 
-`innerHTML`属性是一个能够读写元素内容的属性
+`elem.innerHTML`属性是一个能够读写元素内容的属性
 
 ```html
 <body>
@@ -240,7 +240,7 @@ console.log( document.body instanceof EventTarget );     // true
 
 另外，可以使用类似于这样的语法`elem.innerHTML +=`来追加更多内容，但它却是一种完全重写的方式，即使看起来像追加内容一样，它会先移除旧的内容，然后写入新旧结合的内容。这会导致一些问题，元素的状态会被重新加载了
 
-`outerHTML`是另一个读写元素的属性，但是它还包括了元素自身，相对`innerHTML`更加完整，只不过它的修改与`innerHTML`有所不同，它会将自身也替换掉，这导致变量还是原来的元素引用，所以写入内容的时候要注意查询新的元素引用，可以通过一个例子来证明：
+`elem.outerHTML`是另一个读写元素的属性，但是它还包括了元素自身，只不过它的修改与`innerHTML`有所不同，它会将自身也替换掉，这导致变量还是原来的元素引用，所以写入内容的时候要注意获取新的元素引用，可以通过一个例子来证明：
 
 ```html
 <body>
@@ -266,7 +266,7 @@ console.log( document.body instanceof EventTarget );     // true
 </body>
 ```
 
-还有一个`textContent`属性用来获得元素中的纯文本，它会裁掉其中的所有标签，只留下文本内容。相对于`innerHTML`来说，通过`textContent`写入文本要更加安全，因为它只会按照字面意思处理
+还有一个`elem.textContent`属性用来获得元素中的纯文本，它会裁掉其中的所有标签，只留下文本内容。相对于`innerHTML`来说，通过`textContent`写入文本要更加安全，因为它只会按照字面意思处理
 
 ```html
 <body>firstText
@@ -458,7 +458,7 @@ DOM 还提供了一个通用的方法`elem.insertAdjacentHTML(where, htmlstring)
 ```
 
 ::: tip
-所有的插入方法都会从旧位置删除该节点
+所有的插入方法都会从旧位置删除该节点，因为一个节点不能同时位于 DOM 中的两个位置
 :::
 
 `elem.cloneNode(boolean)`会用来创建一个和自身相同的元素，包括特性。当为`true`时，就会进行深克隆，`false`只是克隆自身并不包括子元素
@@ -592,6 +592,8 @@ HTML 特性是对大小写不敏感的，所以这种也是可行的。但是自
 
 大部分 DOM 属性都是字符串类型，但也有少部分不是，比如`input.checked`是布尔型。还有一个特别的情况，`a.href`在 DOM 中永远都是一个完整的 URL 字符串，即使在特性中只有一个相对路径或`#hash`
 
+## data-*
+
 虽然 HTML 允许自定义特性，但是如果处于目的是用了非标准的特性，但是后来被引入到了标准中有了自己的用途，这就问题很大了。HTML 是不断的在向前发展的，肯定会有很多特性引入后续的标准，为了解决这个问题，标准中提供了一个特殊的`data-*`特性，所有以这种开头的特性都会保留给开发者使用，被保留在 DOM 对象的`dataset`中
 
 ```html
@@ -642,7 +644,7 @@ HTML、CSS、JavaScript 是三个独立的技术，但每种技术都为对方�
 
 修改元素的样式有两种方式，通过`class`和`style`修改，那么 JavaScript 自然可以修改它们，因为它们也是特性。但是最好使用修改`class`的方式来添加样式，除非遇到`class`无法处理的情况才考虑使用`style`
 
-对于`class`特性来说，可以使用`elem.className`来访问它，也可以修改它
+对于`class`特性来说，可以使用`elem.className`来进行读写
 
 ```html
 <body>
@@ -682,12 +684,12 @@ HTML、CSS、JavaScript 是三个独立的技术，但每种技术都为对方�
 </body>
 ```
 
-这种方式定义的样式就像在 HTML 特性中的`style`一样所写的内容，`elem.style.color = 'red'`等价于`style="color: red;"`
+这种方式定义的样式就像在 HTML 特性中的`style`一样，`elem.style.color = 'red'`等价于`style="color: red;"`
 
 除此之外，对于多词属性，它在`elem.style`中是一种驼峰式，比如`font-size`等于`elem.style.fontSize`。对于一些浏览器专属前缀也是这种风格，`-moz-border-radius`等于`elem.style.MozBorderRadius`
 
 ::: tip
-对于一些需要单位的属性值不能忘记添加到值上，否则会设置失效
+对于一些需要单位的属性值不能忘记添加，否则会设置失效
 :::
 
 通常情况下，使用`elem.style.*`对各个样式的设置，但要想进行完全的重写，就需要使用`elem.style.cssText`属性，它的写法就像 HTML 特性中的`style`一样
@@ -700,6 +702,8 @@ HTML、CSS、JavaScript 是三个独立的技术，但每种技术都为对方�
   </script>
 </body>
 ```
+
+## getComputedStyle
 
 还有一个非常重要的问题，`elem.style`只和 HTML 中的`style`特性关联，如果元素的属性并不是在这里设置的，那么`elem.style`是无法获取到样式值的
 

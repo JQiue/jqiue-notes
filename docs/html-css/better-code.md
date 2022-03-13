@@ -6,7 +6,7 @@ article: false
 
 ## 教条式的规则
 
-基最具有现代标准的 HTML 结构：
+最具有现代标准的 HTML 结构：
 
 ```html
 <!DOCTYPE html>

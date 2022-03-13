@@ -49,3 +49,8 @@ BOM 并没有官方意义上的标准，只是一个民间模糊的称谓。BOM 
 比如`alert/confirm/prompt`就是 BOM 中的部分，它们和 DOM 没有直接关系
 
 在 HTML 规范中，不仅是 HTML 语言（标签，特性），还包括一些对象、方法和浏览器特定的 DOM 扩展，这是广义上的 HTML
+
+## 参考资料
+
++ JavaScript DOM 编程艺术
++ DOM 启蒙

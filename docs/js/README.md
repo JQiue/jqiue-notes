@@ -160,3 +160,15 @@ JavaScript 划分了两种内存：
 自动分配内存空间|由代码指定分配
 空间小，效率高|空间大，效率低
 先进后出，遵循栈结构特点|无序存储，根据引用获取
+
+## 参考资料
+
++ JavaScript 高级程序设计
++ JavaScript 权威指南
++ 你不知道的 JavaScript
++ 现代 JavaScript 教程
++ 廖雪峰
++ JavaScript 语言精髓与编程实践
++ JavaScript 忍者秘籍
++ JavaScript 二十年
++ 学习 JavaScript 设计模式

@@ -9,7 +9,28 @@ article: false
 
 ## 包装对象
 
-## 日期和时间
+很多语言都有包装对象的设计，目的是为了让基本类型获得构造函数上的方法
+
++ `String()`：将一个字符串转换为字符串对象，如果是`undefined`则返回`undefined`
++ `Number()`：将一个数值转换为数值对象，如果是`undefined`则返回`NaN`
++ `Boolean()`：将一个布尔值转换为布尔对象
+
+## Math
+
+`Math`是用来进行数值运算的对象，它不是构造器
+
++ Math.PI
++ Math.pow(x, y)：返回 x 的 y 次幂
++ Math.sqrt(x)：返回 x 的平方根
++ Math.ceil(x)：返回大于或等于 x 的最小整数
++ Math.floor(x)：返回小于或等于 x 的最大整数
++ Math.round(x)：返回四舍五入后最接近的整数
++ Math.random()：返回包括 0 到不包括 1 之间的浮点数
++ Math.abs(x)：返回 x 的绝对值
++ Math.max(value1, value2, ...)：返回一组数中的最大值
++ Math.min(value1, value2, ...)：返回一组数中的最小值
+
+## 时间
 
 一个时间对象是由`Date`构造函数产生的，如果不带参数会表示当前的日期和时间
 
@@ -39,7 +60,7 @@ console.log(new Date("2021-6-21")); // 2021-06-20T16:00:00.000Z or 2021-06-21T11
 + date 是当月的某一天，如果缺失默认为 1
 + 如果 hours/minutes/seconds/ms 缺失则默认为 0
 
-`Date`也提供了各种方法来访问年月等信息
+时间对象也提供了各种方法来访问年月等信息
 
 + getFullYear()
 + getMonth()
@@ -50,8 +71,9 @@ console.log(new Date("2021-6-21")); // 2021-06-20T16:00:00.000Z or 2021-06-21T11
 + setMonth()
 + setDate()
 + setHours(hour)，setMinutes(min)，setSeconds(sec)，setMilliseconds(ms)
++ getTime() - 时间戳
 
-Date 对象还会自动校准，如果设置了超出范围的值，会自动校准，比如：
+时间对象还会自动校准，如果设置了超出范围的值，会自动校准，比如：
 
 ```js
 console.log(new Date(2021, 0, 33)); // 2021-02-01
@@ -59,7 +81,7 @@ console.log(new Date(2021, 0, 33)); // 2021-02-01
 
 这说明超出的时间会被自动分配，这个特性通常用来获取给定时间段后的日期
 
-当 Date 转换为数字时，得到的是对应的时间戳，有一个非常重要的作用，可以用来相减测量某个代码的执行时间
+当事件对象转换为数字时，得到的是对应的时间戳，有一个非常重要的作用，可以用来相减测量某个代码的执行时间
 
 ```js
 let start = new Date(); // 开始测量时间
@@ -75,7 +97,7 @@ alert( `The loop took ${end - start} ms` );
 
 如果想要测量时间间隔，也可以用`Date.now()`，它同样返回的是当前的时间戳，但是它不会创建中间对象，因此程序的速度更快
 
-`Date.parse(str)`方法可以从一个字符串中读取日期，但是字符串的格式应该为：`YYYY-MM-DDTHH:mm:ss:sssZ`，这样该方法会返回该时间段的时间戳，因此可以通过该方法来立即创建一个对象
+`Date.parse(str)`可以从一个字符串中读取日期，但是字符串的格式应该为：`YYYY-MM-DDTHH:mm:ss:sssZ`，这样该方法会返回该时间段的时间戳，因此可以通过该方法来立即创建一个对象
 
 ```js
 let date = new Date(Date.parse('2021-06-21T23:30:00'))
@@ -85,20 +107,31 @@ let date = new Date(Date.parse('2021-06-21T23:30:00'))
 `T`代表分隔符，`Z`代表 UTC + 0 时区
 :::
 
-## Math
+这是一个求出高考时间的小例子：
 
-`Math`是用来进行数值运算的对象，它不是构造器
+::: demo 高考时间
 
-+ Math.PI
-+ Math.abs(x)：返回 x 的绝对值
-+ Math.ceil(x)：返回大于或等于 x 的最小整数
-+ Math.floor(x)：返回小于或等于 x 的最大整数
-+ Math.pow(x, y)：返回 x 的 y 次幂
-+ Math.round(x)：返回四舍五入后最接近的整数
-+ Math.sqrt(x)：返回 x 的平方根
-+ Math.random()：返回包括 0 到不包括 1 之间的浮点数
-+ Math.max(value1, value2, ...)：返回一组数中的最大值
-+ Math.min(value1, value2, ...)：返回一组数中的最小值
+```html
+<h1>高考倒计时：<span></span></h1>
+```
+
+```js
+let h1 = document.querySelector('h1');
+let span = document.querySelector('span');
+
+setInterval(() => {
+  let nd = new Date();
+  let td = new Date(new Date().getFullYear(), 5, 7);
+  let diff = td - nd;
+  let day = parseInt(diff / (1000 * 60 * 60 * 24));
+  let hours = parseInt(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+  let minutes = parseInt(diff % (1000 * 60 * 60) / (1000 * 60));
+  let seconds = parseInt(diff % (1000 * 60 * 60) % (1000 * 60) / 1000);
+  span.textContent = `${day}天${hours}小时${minutes}分钟${seconds}秒`;
+}, 1000);
+```
+
+:::
 
 ## JSON
 
@@ -200,7 +233,7 @@ let foo = JSON.parse(str, function(key, value) {
 console.lot(foo.date.getFullYear()) // 2021
 ```
 
-## RegExp
+## 正则表达式
 
 在 JavaScript中，正则表达式也是对象，可以使用两种方式来创建一个正则表达式
 
@@ -279,7 +312,7 @@ let reg = /a/g;
 reg.exec('abcabc');
 ```
 
-所以利用`g`修饰符允许匹配多次的情况下，可以利用循环完成全部匹配
+所以在`g`修饰符允许匹配多次的情况下，可以利用循环完成全部匹配
 
 <!-- more -->
 
@@ -315,9 +348,6 @@ decodeURIComponent(encodeURIComponent(strURI)); // https://jinqiu.wang/index?foo
 
 + `parseFloat()`：将一个字符串转换为浮点数，而且会解析字符串中的数字，直到不是数字部分的字符。如果字符串不是以一个有效的数字开头，则返回`NaN`，有效数字前的空格会被忽略
 + `parseInt()`：将一个字符串转换为整数，而且会解析字符串中的数字，直到不是数字部分的字符。如果字符串不是以一个有效的数字开头，则返回`NaN`，有效数字前的空格会被忽略
-+ `String()`：将一个对象转换为字符串，如果是`undefined`则返回`undefined`
-+ `Number()`：将一个对象转换为数值，如果是`undefined`则返回`NaN`
-+ `Boolean()`：将一个对象转换为逻辑值
 
 ```js
 let foo = '2.3';

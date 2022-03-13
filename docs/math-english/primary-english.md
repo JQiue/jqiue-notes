@@ -187,6 +187,16 @@ How beautiful a girl she is! 她是个多么漂亮的姑娘啊！
 
 ## 一般过去时
 
+一般过去时通常描述过去发生的事
+
+```plain
+Last summber I went to Italy. go 使用过去式
+```
+
+动词形式：
+
++ 过去式
+
 ## 主谓双宾
 
 主谓双宾是指一个句式有两个动作对象，这对及物动词具有一定的要求，它必须能够接下两个对象，常见的有：send、teach、lend、give、ask、tell、offer、cook、buy、get、make、write、bring、show
@@ -201,10 +211,18 @@ I tell you secret.
 He lent a book to me.
 ```
 
+## 现在完成时
+
+现在完成时表示现在的之前发生的事，可能全部完成，也可能部分完成，常常搭配 just、already、ever、never、yet、so far、up to now、before、lately、for + 一段时间
+
+形式：have/has + done（过去分词）
+
+动词的过去式和过去分词有时候是一样的，对此没有必要纠结，长的不一样就得明确分清楚哪个是过去式哪个是过去分词。从用途上来讲过去式和过去分词是完全不一样的，动词的过去式唯一的用途就是用在一般过去时。而过去分词可以用在所有的完成时态中，还可以用在被动语态，非谓语动词
+
 ## 一般将来时
 
 ## 动词不规则变化
-
+  
 原型|过去式|过去分词|现在分词
 ---|---|---|---
 be|was/were|been|
@@ -227,7 +245,7 @@ send|sent|sent|
 spoil|spoiled/spoilt|spoiled/spoil|
 lend|lent|lent|
 take|took||
-find|found||
+find|found|found|
 tell|told||
 see|saw|seen|
 meet|met||
@@ -247,6 +265,95 @@ sing|sang|sung|
 drink|drank|drunk|
 swim|swam|swum|
 begin|began|begun|
+
+## 辨析
+
+large 仅指物理上的大，是 small 的反义词，通常指体积、面积、形状、数量方面的大，修饰人时指个子大
+
+```plain
+China is a large country.
+Look at that large woman in white.
+```
+
+big 所表示的大不仅指体积大，还很重，在修饰人时，通常指大人物，但个子未必高大
+
+```plain
+It is a big house.
+She's very big in the filmdom.
+```
+
+small 指物理上的小或少，是 large 的反义词
+
+```plain
+It is small factory.
+```
+
+little 也表示小和少，但有小而可爱的感情色，是 big 的反义词
+
+```plain
+There is a little garden behind our house.
+She has the sweetest little smile.
+```
+
+desk 通常是指有抽屉的桌子，用于办公、读书、写字等
+
+```plain
+He is working at his desk.
+```
+
+table 通常指若干条腿支撑着的评判，没有抽屉，比如“餐桌”、“会议桌”、“工作台”等
+
+```plain
+I've booked a table for two at 7.00.
+```
+
+too 和 either 都表示“也”，但是 too 仅用于肯定句中，而 either 用于否定句。一般都放在句末，且用逗号隔开
+
+Here you are，Here it is，Here there are 是给对方东西的习惯用语，Here it is 用于单数的物，Here there are 用于复数的物
+
+some 和 any 是最常用的数量词，some 用于肯定句，或期望是肯定回答的疑问句
+
+```
+There is some water in the glass.
+Have you got some paper-clips in that box?
+```
+
+any 用于否定句，或不能确定是肯定还是否定以及期望是否定回答的疑问句
+
+```
+There are not any spoons in the cupboard.
+Are there any cigarettes on the floor?
+```
+
+损坏
+
++ spoil：精神方面的损坏
++ damage：可以修复好的损坏
++ destory：大范围的，猛烈的损坏
++ ruin：慢慢的，一点点的损坏
+
+借东西
+
++ lend：借出
++ borrow：借入
+
+接受
+
++ receive：表示客观上的收到
++ accept：表示主观上想要接受
+
+```plain
+I received an invitation, but I didn't accept it.
+```
+
+许多大量
+
++ a great/large number of - 可数
++ a number of - 可数
++ a great deal of - 不可数
+
++ have gone to 去了
++ have been to 去过
 
 ## time 的表达
 
@@ -1157,74 +1264,3 @@ The cats are running along the wall.
 The children are jumping off the branch.
 He is going into a shop.
 ```
-
-## 辨析
-
-large 仅指物理上的大，是 small 的反义词，通常指体积、面积、形状、数量方面的大，修饰人时指个子大
-
-```plain
-China is a large country.
-Look at that large woman in white.
-```
-
-big 所表示的大不仅指体积大，还很重，在修饰人时，通常指大人物，但个子未必高大
-
-```plain
-It is a big house.
-She's very big in the filmdom.
-```
-
-small 指物理上的小或少，是 large 的反义词
-
-```plain
-It is small factory.
-```
-
-little 也表示小和少，但有小而可爱的感情色，是 big 的反义词
-
-```plain
-There is a little garden behind our house.
-She has the sweetest little smile.
-```
-
-desk 通常是指有抽屉的桌子，用于办公、读书、写字等
-
-```plain
-He is working at his desk.
-```
-
-table 通常指若干条腿支撑着的评判，没有抽屉，比如“餐桌”、“会议桌”、“工作台”等
-
-```plain
-I've booked a table for two at 7.00.
-```
-
-too 和 either 都表示“也”，但是 too 仅用于肯定句中，而 either 用于否定句。一般都放在句末，且用逗号隔开
-
-Here you are，Here it is，Here there are 是给对方东西的习惯用语，Here it is 用于单数的物，Here there are 用于复数的物
-
-some 和 any 是最常用的数量词，some 用于肯定句，或期望是肯定回答的疑问句
-
-```
-There is some water in the glass.
-Have you got some paper-clips in that box?
-```
-
-any 用于否定句，或不能确定是肯定还是否定以及期望是否定回答的疑问句
-
-```
-There are not any spoons in the cupboard.
-Are there any cigarettes on the floor?
-```
-
-损坏
-
-+ spoil：精神方面的损坏
-+ damage：可以修复好的损坏
-+ destory：大范围的，猛烈的损坏
-+ ruin：慢慢的，一点点的损坏
-
-借东西
-
-+ lend：借出
-+ borrow：借入
