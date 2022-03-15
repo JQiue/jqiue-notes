@@ -74,59 +74,20 @@ function makeClass () {
 }
 ```
 
-## getter 和 setter
-
-当然少不了 getter 和 setter
+或者定义一个立即执行的表达式类
 
 ```js
-class Foo {
-  constructor(name) {
-    this.name = name;
-  }
-  get name() {
-    return this._name;
-  }
-  set name(name) {
-    this._name = name;
-  }
-}
-let foo = new Foo('foo');
-
-console.log(foo.name); // foo
-foo.name = 'foooo';
-console.log(foo.name); // foooo
+new (class {});
 ```
 
-## 计算属性
+## 实例属性
 
-也支持使用中括号的计算属性
-
-```js
-class Foo {
-  constructor(name) {
-    this.name = name;
-  }
-  get name() {
-    return this._name;
-  }
-  set name(name) {
-    this._name = name;
-  }
-}
-let foo = new Foo('foo');
-
-console.log(foo.name); // foo
-foo.name = 'foooo';
-console.log(foo.name); // foooo
-```
-
-## 类字段
-
-也允许定义一些属于类的字段，而不是对象的字段，类的字段对所有的对象可见
+在类中使用`constructor`方法定义属于实例的属性，这可能需要借助`this`，然而在类中只需要这么做
 
 ```js
 class Foo {
   name = 'foo';
+  age = 18;
 }
 
 let foo1 = new Foo();
@@ -151,6 +112,29 @@ console.log(Foo.prototype.name); // undefined
 ::: tip
 类字段还支持更加复杂的表达式和函数调用
 :::
+
+## 计算属性
+
+也支持使用中括号的计算属性
+
+```js
+class Foo {
+  constructor(name) {
+    this.name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(name) {
+    this._name = name;
+  }
+}
+let foo = new Foo('foo');
+
+console.log(foo.name); // foo
+foo.name = 'foooo';
+console.log(foo.name); // foooo
+```
 
 ## 字段绑定
 
@@ -186,6 +170,102 @@ setTimeout(foo.sayName, 1000); // foo
 
 `sayName`字段是基于对象创建的，每一个对象都有一个独立的方法，`this`总是指向该对象，所以就不必担心`this`丢失了
 
+## getter 和 setter
+
+当然少不了 getter 和 setter
+
+```js
+class Foo {
+  constructor(name) {
+    this.name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  set name(name) {
+    this._name = name;
+  }
+}
+let foo = new Foo('foo');
+
+console.log(foo.name); // foo
+foo.name = 'foooo';
+console.log(foo.name); // foooo
+```
+
+## 静态属性和方法
+
+JavaScript 提供了`static`关键字用于定义一个只属于类的属性，这在实例中是访问不到的
+
+```js
+class Person {
+  static name = 'foo'
+  static age = 18
+}
+
+const p = new Person();
+console.log(Person.name); // 'foo'
+console.log(p.name); // undefined
+```
+
+::: danger
+声明一个静态属性是一个非常新的特性，可能会有兼容性问题，最好只用来声明静态方法
+:::
+
+静态方法中的`this`指向类
+
+## 私有属性和方法
+
+一般情况下，类的属性和方法都是可以被访问的，为了保护它们不受任意的修改，有必要对该属性进行一个读写控制
+
+JavaScript 并没有提供原生的语法支持，所以需要一些故意的地方，让它看起来像私有的
+
+```js
+class Person {
+  constructor(name) {
+    this._name = name;
+  }
+  getName() {
+    return this._name;
+  }
+  setName(name) {
+    this._name = name;
+  }
+}
+
+const p = new Person();
+console.log(p.setName('foo'));
+console.log(p.getName());
+console.log(p._name); // 仍然可以直接访问属性
+```
+
+这种方式并没有什么强制性的约束力，如果想要更强的约束力，需要采用 IIFE 的方式
+
+```js
+(function () {
+  let _name = '';
+  class Person {
+    constructor(name) {
+      _name = name;
+    }
+    getName() {
+      return _name;
+    }
+    setName(name) {
+      _name = name;
+    }
+  }
+  globalThis.Person = Person;
+})();
+
+const p = new Person('foo');
+console.log(p.getName());
+setName('bar');
+console.log(p.getName());
+```
+
+这很简单，如果不主动暴露函数中的变量，外界是无法访问的
+
 ## 继承
 
 其它的类可以使用`extend`关键字继承一个用`class`定义的类
@@ -209,9 +289,35 @@ class Foo extends Person {
 const foo = new Person();
 ```
 
-## 静态的属性和方法
+实例属性和静态属性都会被子类所继承
 
-## 受保护的属性和方法
+## super
+
+`super`是一种特殊的关键字，当`super`在子类的构造方法中作为函数调用时，代表着父类的构造方法。虽然代表着父类的构造方法，但在父类的构造方法中的`this`实际上指向子类的实例
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Student extends Person {
+  constructor(name, sex) {
+    super(name);
+    this.sex = sex;
+  }
+}
+
+const s = new Student('foo', 18);
+
+console.log(s.name); // 'foo'
+console.log(s.sex); // 18
+```
+
+注意，`super`必须位于子类的构造方法中的第一行位置，优先于其它的代码执行
+
+如果`super`作为对象使用，实际上指向父类的`prototype`，所以无法访问实例上的属性，但调用父类的方法时，父类方法的`this`指向子类的实例
 
 ## 总结
 

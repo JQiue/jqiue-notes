@@ -15,10 +15,10 @@ webpack 是一套基于 Node.js 的"模块打包工具"，在刚推出的时候�
 
 ## 安装
 
-不推荐全局安装 webpack，这会将项目中的 webpack 锁定到指定版本，在使用不同的 webpack 版本打包的项目中，可能会导致构建失败
+不推荐全局安装 webpack，这会将项目中的 webpack 锁定到指定版本，在使用不同的 webpack 版本打包的项目中，这可能会导致构建失败
 
 ```sh
-npm i webpack webpack-cli --save--dev
+npm i webpack webpack-cli --save-dev
 ```
 
 ::: tip
@@ -72,20 +72,112 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins: [],
   module: {},
+  plugins: [],
 };
 ```
 
-对于 mode 来说用来控制开发环境和生产环境的打包策略，具有两种取值`development/production`
+对于`mode`来说用来控制开发环境和生产环境的打包策略，具有两种取值`development/production`
 
-`entry`则告知入口文件的位置，相对于配置文件，`output`控制输出目录以及打包后的文件，这里借用的 Node.js 的`path`模块来进行路径拼接
+`entry`则告知入口文件的位置，相对于配置文件。`output`控制输出目录以及打包后的文件，这里使用的 Node.js 的`path`模块来进行路径拼接
 
 <!-- more -->
 
 ## 使用 loader
 
-## html-webpack-plugin
+loader 让 webpack 处理非 JS 文件的模块，有各种各样的 loader，有官方开发的，社区开发的等等，所以每个 loader 都是一个独立的模块需要被安装
+
+webpack 会根据`module`中的规则来匹配对应的 loader，并应用它
+
+假如想要在 webpack 中使用 babel，则可以使用 babel-loader
+
+```js
+const path = require('path');
+module.exports = {
+  mode: 'development',
+  entry: './src/main.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }
+    ]
+  },
+  plugins: [],
+};
+```
+
+`rules`通过`test`来匹配对应文件，并应用对应的 loader 程序，`exclude`是排除 loader 对一些文件的操作
+
+## 使用 plugin
+
+插件比 loader 的范围更加广泛，有官方插件和社区插件等，都是独立的模块
+
+比如在 Webpack 打包完成后通常需要手动引入 js 文件到 HTML 中，而一些插件，比如`html-webpack-plugin`会自动完成这些工作
+
+```js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/main.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
+  module: {},
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
+  ],
+};
+```
+
+一般插件都是提供的构造函数，插件的用法要看具体的插件文档
+
+## 多入口
+
+webpack 允许多个入口，比如说有两个 HTML 文件，配合`html-webpack-plugin`应该这么用
+
+```js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  mode: 'development',
+  // 配置多个入口
+  entry: {
+    index: './src/index.js',
+    page: './src/page.js'
+  },
+  output: {
+    filename: '[name].js',  // 自动生成对应的文件名
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [
+    // 第一个 HTML 文件所需要的选项
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      filename: 'index.html', // 输出的文件名
+      chunks: ['index'] // 指定某个入口合并在 HTML 中
+    }),
+    // 第二个 HTML 文件所需要的选项
+    new HtmlWebpackPlugin({
+      template: 'page.html',
+      filename: 'page.html',
+      chunks: ['index'] 
+    }),
+  ],
+};
+```
 
 ## 热更新
 

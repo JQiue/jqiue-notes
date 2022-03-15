@@ -65,15 +65,20 @@ export default defineHopeConfig({
       }
     },
     plugins: {
-      search: {
-        locales: {
-          "/": { placeholder: '搜索' }
-        },
-        hotKeys: ['s'],
-        maxSuggestions: 5,
-        isSearchable: page => page.path != '/',
-        getExtraFields: page => page.frontmatter.tags ?? []
+      docsearch: {
+        appId: 'GNXC82PSDS',
+        apiKey: 'db4a8c13f20ffa235c13fe7cddf32488',
+        indexName: 'jinqiu-wang',
       },
+      // search: {
+      //   locales: {
+      //     "/": { placeholder: '搜索' }
+      //   },
+      //   hotKeys: ['s'],
+      //   maxSuggestions: 5,
+      //   isSearchable: page => page.path != '/',
+      //   getExtraFields: page => page.frontmatter.tags ?? []
+      // },
       blog: {
         autoExcerpt: true,
       },

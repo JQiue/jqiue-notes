@@ -167,7 +167,6 @@ const sundry = [
   'cicd',
   'security',
   'bootstrap',
-  'learnpath',
   'design-pattern',
   'css-trick',
 ];

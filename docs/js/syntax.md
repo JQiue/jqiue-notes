@@ -550,6 +550,49 @@ let fooCopy = { ...foo };
 console.log(fooCopy); // { name: 'foo', age: 23 }
 ```
 
+## 迭代器
+
+迭代器的目的就是为了提供统一遍历方式，对于数组可能使用 for 或 forEach，对于对象使用 for in。而这些可以被迭代的对象本身具有一个`Symbol.iterator`方法，当调用它后就会返回一个迭代器对象，然后它具有`next()`方法用于返回每次迭代的项。但一般不会这么做，而是使用 for...of
+
+只要具有`Symbol.iterator`，就是可遍历的，因此能够使用 for...of 统一进行遍历，比如常见的原生可遍历的有
+
++ 数组
++ 字符串
++ Set
++ Map
++ arguments
++ ...
+
+反过来，没有`Symbol.iterator`即不可遍历，比如：
+
++ 一般对象
+
+如果要将一个对象变成可遍历的，必须手动实现它的`Symbol.iterator`
+
+```js
+const person = {name: 'foo', age: 18};
+
+person[Symbol.iterator] = () => {
+  let index = 0;
+  return {
+    next() {
+      index++;
+      if(index === 1) {
+        return { value: person.name, done: false };
+      } else if (index === 2){
+        return { value: person.age, done: false };
+      } else {
+        return {done: true}
+      }
+    }
+  }
+}
+
+for (const iterator of person) {
+  console.log(iterator); // foo, 18
+}
+```
+
 ## 严格模式
 
 JavaScript 是不断发展的，但没有带来任何兼容性的问题，即使新的特性被加入，旧的特性也不会改变，这么做有利于兼容旧代码，但 JavaScript 中设计的不合理的地方也被保留了下来，这种情况一直持续到 ES5 出现

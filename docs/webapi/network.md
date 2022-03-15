@@ -65,6 +65,19 @@ xhr.onreadystatechange = function (){
 
 请求对象会将服务器的响应数据保存在`responseText`或`responseXML`中，这取决于响应头中的`Content-Type`，其中`responseXML`会直接看做成一个`document`对象
 
+`response`可以替代`responseText`，必须通过`responseType`设置响应体类型：
+
++ `text`：字符串形式
++ `json`：JSON 对象形式
+
+`timeout`可以设置请求头的超时时间，如果超时了就会触发超时时间
+
+默认在同域的情况下，发送一个请求会携带 Cookie，但在跨域时不会，此时可以设置请求对象的`withCredentials=true`来携带，这里涉及到安全问题，还得看服务单同不同意
+
+`abort()`方法可以用于终止请求，同时会触发一个`abort`事件
+
+`setRequestHeader()`方法用于设置请求头信息
+
 这是一个发送 GET 请求的例子，它将获得请求方的 IP 地址
 
 ::: demo GET 请求
@@ -236,11 +249,11 @@ Fetch 会解析响应头，用来检查是否请求成功，如果无法建立�
 
 ## 跨源策略
 
-一个源无法获取另一个源的内容，必须是同域名、同端口、同协议，这导致即使又有个子域，或另一个端口都导致内容不能够被访问
+一般在浏览器发送一个 HTTP 请求时，可能就会遇到浏览器禁止请求的现象
 
-要允许跨域访问，`<script>`要具有`crossorigin`特性，并且远程服务器必须提供特殊的请求头
+当一个请求发出者和接收者不属于同一个域，那么这个请求就会被浏览器所拦截，所谓的同一个域即：协议、地址、端口号都要相同，否则就是跨域请求
 
-对于垮源来说有三个访问级别：
+解决方案：
 
-+ 无`<crossorigin>`特性，禁止访问
-+ `crossorigin="anonymous"`如果服务器或源的`Access-Control-Allow-Origin`
++ CORS - 跨域资源共享，由后端解决，后端请求头配置了`Access-Control-Allow-Origin`则允许跨域，则浏览器不会拦截
++ JSONP - 利用 script 请求时不会触发跨域的限制，需要前后端配合

@@ -2,7 +2,6 @@
 title: 模块化
 category: 编程语言
 tag: [JavaScript]
-article: false
 ---
 
 早期的网站将所有代码全部写到一个文件，容易产生污染，JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些代码很多在一个文件中就可以完成了
@@ -120,7 +119,7 @@ const module1 = {
 
 ### CommonJS
 
-CommonJS 是用在服务器端的 Node.js 模块规范，Node.js 主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，比较适用 Node.js
+CommonJS 是用在 Node.js 中的模块规范，Node.js 主要用于服务器编程，模块文件一般都已经存在于本地硬盘，所以加载起来比较快，不用考虑非同步加载的方式，比较适用 Node.js
 
 特点：
 
@@ -251,6 +250,14 @@ export default function () {
 // b.js
 import foo, {x, y} from 'a.js'
 ```
+
+::: tip
+ESM 中的顶层`this`指向`undefined`
+:::
+
+`import`也具有提升效果，同时`import`和`export`只能在顶层中使用，不能再代码块中使用
+
+但是`import`作为方法调用的时候可以在代码中使用，会返回一个 Promise 对象
 
 ## 循环引用
 

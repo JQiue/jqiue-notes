@@ -1385,7 +1385,7 @@ Look out of the window.
 
 It's raining!
 That means you don't need to water the garden.
-That was a pleasant surprese.
+That was a pleasant surprise.
 It means I can have tea, instead.
 ```
 
@@ -1395,7 +1395,7 @@ It means I can have tea, instead.
 Can you recognize that woman. Liz?
 I think I can. Kate.
 It must be Karen Marsh, the actress.
-I though so.
+I thought so.
 Who's that beside her?
 That must be Conrad Reeves.
 Conrad Reeves, the actor?
@@ -1407,7 +1407,7 @@ Doesn't Karen Marsh look old!
 She does, doesn't she!
 I read she's twenty-nine, but she must be at least forty.
 I'm sure she is.
-She was a famous actress when I was still at scholl.
+She was a famous actress when I was still at school.
 That was a long time ago, wasn't it?
 Not that long ago!
 I'm not more tha twenty-nine myself.
@@ -1422,11 +1422,9 @@ He wants you to stop.
 
 Where do you think you are?
 On a race track?
-You must have been driving
-at seventy miles an hour.
+You must have been driving at seventy miles an hour.
 I can't have been.
-I was doing eighty
-when I overtook you.
+I was doing eighty when I overtook you.
 
 Didn't you see the speed limit?
 I'm afraid I didn't, officer.
@@ -1458,7 +1456,7 @@ I'd like to go there, too.
 We can't make up our minds.
 Will you travel by sea or by air?
 We may travel by sea.
-It's cheaper, isn't it?>
+It's cheaper, isn't it?
 It may be cheaper, but it takes a long time.
 I'm sure you'll enjoy yourselves.
 Don't be so sure.
@@ -1484,14 +1482,16 @@ I don't want to make another film for a long time.
 
 Let's buy a newspaper, Liz.
 Listen to this!
+
+“Karen Marsh: Sensational News!(轰动新闻) By our reporter, Alan Jones. Miss Karen Marsh arrived at London Airport today. She was wearing a blue dress and a mink coat. She told me she had just made a new film. She said she was not going to make another. She said she was going to retire. She told reporters she felt very tired and didn’t want to make another film for a long time.”
 ```
 
 ### Lesson 135 The latest report
 
 ```
-Are you really going  to retire, Miss Marsh?
+Are you really going to retire, Miss Marsh?
 I may.
-I cn't make up my mind.
+I can't make up my mind.
 I will have to ask my future husband.
 He won't let me make another film.
 Your future husband, Miss Marsh?
@@ -1507,8 +1507,7 @@ She said she would have to ask her future husband.
 She said her future husband would not let her make another film.
 Then she introduced us to Carlos and told us they would get married next week.'
 
-That's sensational news, isn't it,
-Kate?
+That's sensational news, isn't it, Kate?
 It certainly is.
 He'll be her sixth husband!
 ```
@@ -1528,7 +1527,7 @@ All right.
 If we win a lot of money we'll travel round the world and we'll stay at the best hotels.
 Then we'll return home and buy a big house in the country.
 We'll have a beautiful garden and ...
-But if we spend all that money we'll be poor agin.
+But if we spend all that money we'll be poor again.
 What'll we do then?
 If we spend all the money we'll try and win the football pools again.
 It's a pleasant dream but everything depends on 'if'!
@@ -1542,7 +1541,7 @@ Yes, speaking.
 Tell Mary we'll be late for dinner this evening.
 I'm afraid I don't understand.
 Hasn't Mary told you?
-She invited Charloate and me to dinner this evening.
+She invited Charlotte and me to dinner this evening.
 I said I would be at your house at six o'clock,
 but the boss wants me to do some extra work.
 I'll have to stay at the offce.
@@ -1563,7 +1562,7 @@ I'm John Smith the telephone enineer and I'm repairing your telephone line.
 ```
 Last week, my four-year-old daughter, Sally, was inveted to a children's party.
 I decided to take her by train.
-Sally was very exceted because she had never travelled on a train before.
+Sally was very excited because she had never travelled on a train before.
 She sat near the window and asked questions about everything she saw.
 Suddenly, a middle-aged lady got on the train and sat opposite Sally.
 'Hello, little girl,'she said.
@@ -1591,11 +1590,10 @@ but people still throw their rubbish everywhere.
 Last Wednesday, I went for a walk in the woods.
 What I saw made me very sad.
 I counted seven old cars and three old refrigerators.
-The litter baskets were emplty and the ground was covered with pieces of paper,
-cigarette ends, old tyres.
+The litter baskets were emplty and the ground was covered with pieces of paper, cigarette ends, old tyres,
 empty bottles and rusty tins.
 Among the rubbish, I found a sign which said,
-'Anyone' wholeaves litter in these woods will be prosecuted!'
+'Anyone' who leaves litter in these woods will be prosecuted!'
 ```
 
 ## 第二册

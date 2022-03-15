@@ -18,15 +18,15 @@ IndexedDB|文档型数据库|同域名|永久存储|大量的本地缓存
 
 Cookie 是服务器发送到用户浏览器并保存在本地的一种数据，它会在浏览器下次向同一服务器发送请求时被携带，这种操作使得无状态的 HTTP 拥有了一种记录稳定状态的可能
 
-```js
-document.cookie
-```
-
-`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，每一条都是`key=value`这种格式，当需要添加一条 cookie 时，就直接赋值即可，它是不会被替换的，只会追加
+`document.cookie`用于获取可从该位置访问的 Cookie，每条 Cookie 都以分号和空格分隔，都是`key=value`这种格式，当需要添加一条 cookie 时，就直接赋值即可，它是不会被替换的，只会追加，每次只能添加一条
 
 ```js
 document.cookie = "name=foo"
 ```
+
+::: danger
+如果包含非英文字母，写入时最好编码
+:::
 
 ::: tip 为什么代码会失效
 通过本地资源路径打开的 HTML 文件，设置 cookie 的代码是失效的，应该通过一个 Web 服务来启动它
@@ -107,11 +107,11 @@ var docCookies = {
 
 :::
 
-一条 cookie 的写入，不仅有必须写入的 name 和 value 还有一些其他的可选参数，比如：
+cookie 不仅有必须写入的 name 和 value 还有一些其他的可选参数，比如：
 
-+ expires：规定 cookie 有效期（GMT）
-+ domain：规定 cookie 的域名
++ expires：规定 cookie 有效期（GMT），没有则为会话 Cookie
 + path：规定 cookie 的路径
++ domain：规定 cookie 的域名
 + secure：规定 cookie 是否通过 https 所访问（boolean/null）
 
 这是一个限制有效期 cookie 的例子：
@@ -121,10 +121,14 @@ document.cookie = "test=time; expires=" + new Date().toString();
 ```
 
 ::: tip
+浏览器自动删除过期的 cookie 是对比服务器时间的，而不是浏览器本地时间，可以看响应头的 Date 得到服务器的时间
+:::
+
+::: tip
 时间戳应该是一个 GMT 格式
 :::
 
-通常情况下 cookie 是不允许客户端修改的，只允许服务端进行设置，如果服务端设置了`HttpOnly`，则在客户端是无法通过`document.cookie`访问 cookie 的，也无法修改
+通常情况下 cookie 是不允许客户端修改的，只允许服务端进行设置，如果服务端设置了`HttpOnly`，则在客户端是无法通过`document.cookie`访问 cookie 的
 
 ## 本地存储和会话存储
 

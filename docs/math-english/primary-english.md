@@ -213,7 +213,11 @@ He lent a book to me.
 
 ## 现在完成时
 
-现在完成时表示现在的之前发生的事，可能全部完成，也可能部分完成，常常搭配 just、already、ever、never、yet、so far、up to now、before、lately、for + 一段时间
+现在完成时表示现在的之前发生的事，可能全部完成，也可能部分完成，对现在可能产生了影响， 常常搭配 just、already、ever、never、yet、so far、up to now、before、lately、for + 一段时间
+
+```plain
+They have spent all their money, so they have to walk home.
+```
 
 形式：have/has + done（过去分词）
 
@@ -265,6 +269,8 @@ sing|sang|sung|
 drink|drank|drunk|
 swim|swam|swum|
 begin|began|begun|
+feel|felt|felt|
+leave|left|left|
 
 ## 辨析
 
