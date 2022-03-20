@@ -223,6 +223,81 @@ They have spent all their money, so they have to walk home.
 
 动词的过去式和过去分词有时候是一样的，对此没有必要纠结，长的不一样就得明确分清楚哪个是过去式哪个是过去分词。从用途上来讲过去式和过去分词是完全不一样的，动词的过去式唯一的用途就是用在一般过去时。而过去分词可以用在所有的完成时态中，还可以用在被动语态，非谓语动词
 
+## 短语动词
+
+当一个动词在一个词组中可能意思会发生变化，一定要根据上下文的语境来呈现出意思，本质上还是原来的意思，只不过根据上下文有点变化
+
+```plain
+I put your book on the shelf. 放
+I put on my hat and left the house. 带上（放到...上 ）
+Come and look at my phtograph album. 看着（看向某一点）
+I am looking for my pen. I lost it this morning. 寻找（为了...看）
+Will you look after the children for me please? 照顾（跟...后面k看）
+```
+
+## 冠词
+
+冠词是用来限定名词的，比如数量、特指等等，分为三类：
+
++ 不定冠词 - 泛指不确定的对象，只能用于可数名词单数
++ 定冠词 - 特指已确定的对象
++ 零冠词
+
+```plain
+Lisa gave me a tea as a gift.
+The tea tasted good.
+```
+
+## 过去进行时和过去将来时
+
+过去进行时是指过去的某段时间正在做什么事，经常搭配 when、while、as，一般会和一般过去式连用时，打破这个状态
+
+形式：was/were + 现在分词
+
+```plain
+While he was reading the letter, he heard a knock at the door.
+```
+
+when/while/as 都可以接进行时态，但只有 when 能够接过去时态
+
+```plain
+While/When/As two detectives were keeping guard at the door, two others opened the parcel.
+
+Two detectives were keeping guard at the door, when two other opened the parcel.
+
+I was having breakfast when the telephone rang.
+```
+
+过去将来时指过去的事件将要做什么事
+
+形式：
+
++ would do
++ was/were going to do
+
+```plain
+He said that he would travel abroad next year.
+
+```
+
+## 宾语从句
+
+当一个句子整体作为某个句子的宾语成分时即为宾语从句
+
+```plain
+A few hours earlier, someone had told the police that thieves would try to steal the diamonds.
+```
+
+陈述句变宾语从句：
+
++ 直接使用 that 连接，本身不作为成分
+
+```plain
+you are right.
+
+I think that you are right
+```
+
 ## 一般将来时
 
 ## 动词不规则变化
@@ -236,7 +311,7 @@ go|went|gone|
 get|got|got/gotten|getting
 come|came|come|coming
 make|made|made|making
-give|gave|given|gaving
+give|gave|given|giving
 buy|bought|bought|
 spend|spent|spent|
 write|wrote|written|writing
@@ -248,19 +323,22 @@ think|thought|thought|
 send|sent|sent|
 spoil|spoiled/spoilt|spoiled/spoil|
 lend|lent|lent|
-take|took||
+put|put|put|putting
+take|took|taken|taking
 find|found|found|
-tell|told||
+tell|told|told|
 see|saw|seen|
 meet|met||
 lose|lost||
+keep|kept|kept|
 understand|understood||
 read|read|read|
 run|ran||
-know|knew||
+stand|stood|stood
+know|knew|known|
 put|put||
 cut|cut||
-eat|ate||
+eat|ate||eaten
 come|came||
 lose|lost||
 speak|spoke||
@@ -271,6 +349,8 @@ swim|swam|swum|
 begin|began|begun|
 feel|felt|felt|
 leave|left|left|
+try|tried|tried|trying
+steal|stole|stolen
 
 ## 辨析
 

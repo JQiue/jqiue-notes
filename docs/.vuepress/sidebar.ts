@@ -45,7 +45,7 @@ const javascript = [
   'destructuring-assignment',
   'prototype',
   'class',
-  'try-catch',
+  'error',
   'promise-async-await',
   'proxy-reflect',
   'module',
@@ -142,7 +142,7 @@ const sundry = [
   'three-filtering-principles',
   'trick',
   'zhihu',
-  'excel',
+  'office',
   'adb',
   'http',
   'latex',
@@ -169,6 +169,7 @@ const sundry = [
   'bootstrap',
   'design-pattern',
   'css-trick',
+  'css-preprocessor',
 ];
 
 const vue = [

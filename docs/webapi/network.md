@@ -72,7 +72,7 @@ xhr.onreadystatechange = function (){
 
 `timeout`可以设置请求头的超时时间，如果超时了就会触发超时时间
 
-默认在同域的情况下，发送一个请求会携带 Cookie，但在跨域时不会，此时可以设置请求对象的`withCredentials=true`来携带，这里涉及到安全问题，还得看服务单同不同意
+默认在同域的情况下，发送一个请求会携带 Cookie，但在跨域时不会，此时可以设置请求对象的`withCredentials=true`来携带，这里涉及到安全问题，还得看服务端同不同意
 
 `abort()`方法可以用于终止请求，同时会触发一个`abort`事件
 
@@ -100,8 +100,6 @@ document.getElementById('btn').addEventListener('click', function () {
 ```
 
 :::
-
-### 请求的封装
 
 大多数情况下，没有必要引入一些库来发送请求，而是自己手动封装，减少了项目的依赖
 
@@ -239,9 +237,65 @@ Fetch 是一种现代请求技术，提供了一个全局的方法`fetch(url, [o
 
 Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，promise 就会 reject
 
-## 长轮询
+## 轮询
+
+HTTP 协议有一个缺陷，通信只能由客户端发起，如果想要直到服务端的状态，必须隔一段时间轮询服务器获取最新的状态。当然轮询的效率非常低，因为它不停的发生连接并中断
 
 ## WebSocket
+
+WebSocket 是一种网络通信协议，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，解决了即时通信的问题
+
+建立在 TCP 协议之上，服务器端的实现比较容易
+
+与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器
+
+数据格式比较轻量，性能开销小，通信高效
+
+可以发送文本，也可以发送二进制数据
+
+没有同源限制，客户端可以与任意服务器通信
+
+协议标识符是ws（如果加密，则为wss），服务器网址就是 URL
+
+`WebSocket('url')`对象作为一个构造函数，用于新建 WebSocket 实例，客户端就会与服务器进行连接
+
+实例对象的`webSocket.readyState`返回当前状态：
+
++ CONNECTING：值为0，表示正在连接
++ OPEN：值为1，表示连接成功，可以通信了
++ CLOSING：值为2，表示连接正在关闭
++ CLOSED：值为3，表示连接已经关闭，或者打开连接失败
+
+实例对象的事件有：
+
++ onopen - 连接成功后的回调函数
++ onclose - 连接关闭后的回调函数
++ onmessage - 收到服务器数据后的回调函数
++ onerror - 报错时的回调函数
+
+实例对象的`send()`方法用于向服务器发送数据
+
+这是一个示例：
+
+```js
+var ws = new WebSocket("wss://echo.websocket.org");
+
+ws.onopen = function(evt) { 
+  console.log("Connection open ..."); 
+  ws.send("Hello WebSockets!");
+};
+
+ws.onmessage = function(evt) {
+  console.log( "Received Message: " + evt.data);
+  ws.close();
+};
+
+ws.onclose = function(evt) {
+  console.log("Connection closed.");
+};  
+```
+
+当然服务端也要具有自己实现
 
 ## 文件上传
 

@@ -725,6 +725,22 @@ async function bar() {
 
 ## 顶层 await
 
+之前必须在`async`中使用`await`，如果在最外层会抛出错误，因此一般包装成一个立即执行函数
+
+```js
+(async function () {
+  await Promise.resolve({});
+})();
+```
+
+而现在可以在最外层直接使用`await`，将整个模块看起来像一个巨大的`async`函数
+
+```js
+await Promise.resolve({});
+```
+
+这种情况只适用于 ESM 模块化中，并不支持 CommonJS 以及传统的`<script>`的
+
 ## 总结
 
 + JavaScript 是一种单线程执行机制
@@ -733,6 +749,8 @@ async function bar() {
 + `new Promise`是同步的，而`then`则不是
 + `catch`也可以捕捉`reject`的回调
 + `finally`不管`resolve/reject`都会被执行，并且不会阻止结果传递
-+ `then`本身也会返回 Promise，`return`结果将会作为 Promise 对象的结果，所以可以产生链式调用，该 Promise 的状态，取决于返回值
++ `then`本身也会返回 Promise，`return`结果将会作为该 Promise 对象的结果，所以可以链式调用，该 Promise 的状态，取决于返回值是审美样的
 + Promise 提供了 5 个静态方法，在不需要进行`new`操作的时候使用
-+ 用`async`修饰的函数一定会返回一个 Promise 对象，在函数中使用`await`时，会让函数等待修饰的代码完成，然后继续执行下去，如果是一个 Promise 会直接将结果作为返回值，如果结果是正常的话
++ 用`async`修饰的函数一定会返回一个 Promise 对象
++ 只能在`async`函数中使用`await`，会让函数等待后面代码完成，然后继续执行下去，如果是一个 Promise 会直接将结果作为返回值，假如结果是正常的，否则会抛出错误
++ 在 ESM 中可以是使用顶层`await`，不仅仅在`async`中

@@ -15,7 +15,7 @@ ES6 提供原生的 Proxy 构造函数，用来生成实例
 let proxy = new Proxy(target, handler);
 ```
 
-Proxy 对象的所有用法，都是上面这种形式，不同的只是handler参数的写法。其中，new Proxy()表示生成一个Proxy实例，target参数表示所要拦截的目标对象，handler参数也是一个对象，用来定制拦截行为
+Proxy 对象的所有用法，都是上面这种形式，不同的只是`handler`参数的写法。其中，`new Proxy()`表示生成一个Proxy实例，target参数表示所要拦截的目标对象，handler参数也是一个对象，用来定制拦截行为
 
 这是一个拦截读取属性的例子：
 
@@ -32,7 +32,7 @@ proxy.age // 1
 proxy.name // 1
 ```
 
-由于 foo 被代理，且代理更改了读取属性的行为，这导致任何通过.访问的属性都是代理所改变的结果，对于代理处理对象来说，每一个被代理的操作，都需要提供一个对应的处理函数，该函数会拦截对应的操作，并且该函数的参数分别是目标对象和所要访问的属性，由于拦截函数总是返回 1，所以访问任何属性都会得到 1
+由于 foo 被代理，且代理更改了读取属性的行为，这导致任何通过`.`访问的属性都是代理所改变的结果，对于代理处理对象来说，每一个被代理的操作，都需要提供一个对应的处理函数，该函数会拦截对应的操作，并且该函数的参数分别是目标对象和所要访问的属性，由于拦截函数总是返回 1，所以访问任何属性都会得到 1
 
 如果没有配置拦截，就相当于直接访问目标对象
 
@@ -57,7 +57,7 @@ const foo = Object.create(proxy);
 foo.age // 1
 ```
 
-本来访问一个没有的属性将会的带undefined，但由于代理对象是当前对象的原型，所以会拦截这次访问操作，以至于不是得到undefined
+本来访问一个没有的属性将会的带`undefined`，但由于代理对象是当前对象的原型，所以会拦截这次访问操作，以至于不是得到`undefined`
 
 这是一些代理支持的拦截操作：
 
@@ -104,6 +104,8 @@ obj[prop] = value|Reflect.set(obj, prop, value)|[[Set]]
 delete obj[prop]|Reflect.deleteProperty(obj, prop)|[[Delete]]
 new F(value)|Reflect.construct(F, value)|[[Construct]]
 
-Reflect 允许我们将操作符（new，delete，……）作为函数（Reflect.construct，Reflect.deleteProperty，……）执行调用
+Reflect 允许将操作符（new，delete，……）作为函数（Reflect.construct，Reflect.deleteProperty，……）执行调用
 
 对于每个可被 Proxy 捕获的内部方法，在 Reflect 中都有一个对应的方法，其名称和参数与 Proxy 捕捉器相同
+
+## 总结

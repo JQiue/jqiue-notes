@@ -275,7 +275,7 @@ function Person() {
 var foo = new Person();
 foo.setName('foo');
 foo.getName();
-foo.name // Error
+foo.name // undefined
 ```
 
 ## 静态方法
@@ -320,8 +320,8 @@ Person.showGender();
 
 ## 总结
 
-+ 对象都有一个隐藏属性`prototype`，当读取该对象中没有的属性时，就会到这个属性中查找，通过`__proto__`来访问这个对象，`__proto__`的值可以是对象，也可以是`null`，其他类型会被忽略
++ 对象都有一个隐藏属性`prototype`，当访问对象中没有的属性，就会到这个属性中查找。通过`__proto__`来访问这个对象，`__proto__`的值可以是对象，也可以是`null`，其他类型会被忽略
 + `this`永远代表当前调用的对象，所以访问访问器属性时，不会改写原型对象上的数据
-+ 函数都有一个`prototype`，构造对象时，会将对象的`__proto__`指向函数的`prototype`，`ptototype`是一个只有`constructor`属性的对象，指向函数自身
++ 函数都有一个`prototype`，使用构造器创建对象时，会将对象的`__proto__`指向函数的`prototype`，`prototype`是一个只有`constructor`属性的对象，指向函数自身
 + `in`不仅检查自身的属性检查继承而来的属性，排除继承的属性就应该使用`hasOwnProperty(key)`
-+ `__proto__`是一种过时的原型设置方式，JavaScript 提供了以新的原型设置方式，Object.create，Object.getPrototypeOf，Object.setPrototype
++ `__proto__`是一种过时的原型设置方式，JavaScript 提供了以新的原型设置方式，`Object.create`，`Object.getPrototypeOf`，`Object.setPrototype`

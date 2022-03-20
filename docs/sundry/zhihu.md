@@ -7,6 +7,7 @@ date: 2019-06-22
 这里收集的是我在知乎上看到的好文，让我直呼学到了
 
 + [曾加老师所认为的木桶原理应该是这样的](https://www.zhihu.com/question/21466130/answer/39337466)
++ [且看各类大神对 FSD 的争论](https://www.zhihu.com/question/22420900)
 + [好家伙一个CSS垂直居中就这么多花样](https://zhuanlan.zhihu.com/p/44439903)
 + [哪种IDE能同时写java和前端代码?（真修仙属于是）](https://www.zhihu.com/question/291786472/answer/526486234)
 + [怎么提高表达能力？](https://www.zhihu.com/question/19727047/answer/522905472)

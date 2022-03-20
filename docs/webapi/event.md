@@ -290,13 +290,13 @@ div {
 </script>
 ```
 
-+ `e.preventDefault()`可以阻止默认事件行为不会被触发
-+ `e.stopPropagation()`可以阻止冒泡，阻止任何父元素事件处理
-+ `e.stopImmediatePropagation()`不仅可以阻止冒泡，也能阻止元素同类型事件的其他处理函数触发
++ `e.preventDefault()`可以阻止默认事件行为，但不能阻止冒泡
++ `e.stopPropagation()`可以阻止事件传播，但不能阻止默认事件行为
++ `e.stopImmediatePropagation()`不仅可以阻止事件传播，也能阻止元素同类型事件的其他处理函数触发
 
-对于`on<event>`这种的处理程序只需要返回一个`false`也能够阻止行为发生，对于一些其他的处理程序来说，返回`false`并没有什么意义，除了`on<event>`
+对于`on<event>`这种处理程序只需要返回一个`false`也能够阻止行为发生，也意味着阻止传播，对于一些其他的处理程序来说，返回`false`并没有什么意义
 
-有一些时间是可以相互转换的，如果阻止了前一个事件就不会出发第二个时间，比如`<input>`的`mousedown`会导致其获得焦点从而触发`focus`事件，阻止了`mousedown`就不会触发焦点了
+有一些事件是可以相互转换的，如果阻止了前一个事件就不会出发第二个时间，比如`<input>`的`mousedown`会导致其获得焦点从而触发`focus`事件，阻止了`mousedown`就不会触发焦点了
 
 ```html
 <input type="text" value="jinqiu.wang" onfocus="this.value=''">

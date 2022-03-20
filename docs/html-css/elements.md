@@ -533,7 +533,7 @@ a 标签的内容不一定是文本，也可以是图片，也可以是其他的
 
 ## 画布
 
-详见[Canvas](/application/web/canvas/basic/)
+详见[Canvas](/canvas/)
 
 ## 音视频
 

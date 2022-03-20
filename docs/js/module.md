@@ -295,3 +295,5 @@ babel src -d build
 ```sh
 browserify build/main.js -o dist/index.js
 ```
+
+## 总结

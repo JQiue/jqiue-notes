@@ -261,3 +261,11 @@ export default {
 ```
 
 ## 在组件中监听数据的改变
+
+## 总结
+
++ Vuex 本身不是用来做持久化存储的
++ Vuex 中的数据是一种单向数据流
++ state = data，getters = computed，mutations = methods，actions 提交 mutations，modules 将前面更加细分
++ mutations 是同步的，Actions 可以做任何异步的操作
++ 可以在其他组件中映射这些属性

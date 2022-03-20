@@ -32,6 +32,7 @@ timeline: false
 [Termius](https://www.termius.com/windows)（SSH）  
 [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)（Windows 自启动管理）  
 [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)（Windows 资源管理器）  
+[DroidCam](https://www.dev47apps.com/)（电脑调用手机摄像头）
 
 ## 开发
 

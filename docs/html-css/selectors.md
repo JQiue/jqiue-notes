@@ -364,6 +364,7 @@ div~p {
   + `:disabled`：选中无效的表单元素
   + `:checked`：选中已勾选的单选按钮或复选框
   + `:root`：选择根元素
+  + `:not(selector)`：选择不符合指定选择器的元素
 
 ::: demo 伪类
 
