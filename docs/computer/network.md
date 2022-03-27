@@ -1,5 +1,5 @@
 ---
-title: 跨越空间 - 计算机网络
+title: 计算机网络
 category: 计算机原理
 article: false
 ---

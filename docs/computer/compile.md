@@ -1,8 +1,8 @@
 ---
-title: 0 和 1 的改装 - 编译原理
+title: 编译原理
 category: 计算机原理
 tag: [编译原理]
-prev: false
+article: false
 ---
 
 ::: info 前置知识

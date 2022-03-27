@@ -298,6 +298,40 @@ you are right.
 I think that you are right
 ```
 
+## 可数名词复数变化
+
+可数名词在形容两个或多个以上时要进行变化：
+
++ 一般末尾加`s`，如 bag -> bags
++ 以 s、ch、sh 结尾加`es`，如 bus -> buses
++ 以`辅音字母 + y`结尾的将`y`变为`i`，再加`es`，如 baby -> babies
++ 以 f、fe，结尾的将`f`变为`v`，再加`es`，如 knife -> knives
++ 以`o`结尾加`es`（非外来词或缩写形式），如 potato -> potatoes
++ 不规则变化
+
+发音规则：
+
++ 词尾是清辅音发/s/
++ 词尾是浊辅音发/z/
+
+::: tip
+清辅音声带不震动，浊辅音声带振动
+:::
+
+不规则变化：
+
+```plain
+man -> men
+woman -> women
+child -> children
+foot -> feet
+tooth -> teeth
+mouse -> mice
+goose -> geese
+person -> people
+fish -> fish/fishes
+```
+
 ## 一般将来时
 
 ## 动词不规则变化
@@ -495,15 +529,6 @@ five times 5 次
 甚至还有种名词是有若干个单词组合而构成的复合名词，比如：girlfriend
 
 个体名词和集体名词可用数目来计算，称为**可数名词**，物质名词和抽象名词一般无法用数目来计算，称为**不可数名词**
-
-可数名词在形容两个或多个以上时要进行变化：
-
-+ 一般末尾加`s`，如 bag -> bags
-+ 以 s、ch、sh 结尾加`es`，如 bus -> buses
-+ 以`辅音字母 + y`结尾的将`y`变为`i`，再加`es`，如 baby -> babies
-+ 以 f、fe，结尾的将`f`变为`v`，再加`es`，如 knife -> knives
-+ 以`o`结尾加`es`（非外来词或缩写形式），如 potato -> potatoes
-+ 不规则变化
 
 可数名词前可以加`a/an`或量词进行修饰，看情况变复数
 
@@ -1303,20 +1328,6 @@ Don't speak to me like that!
 ### 倒装
 
 ### 虚拟
-
-## 名词复数不规则变化
-
-```plain
-man -> men
-woman -> women
-child -> children
-foot -> feet
-tooth -> teeth
-mouse -> mice
-goose -> geese
-person -> people
-fish -> fish/fishes
-```
 
 ## 介词短语
 

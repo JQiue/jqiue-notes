@@ -1,5 +1,5 @@
 ---
-title: 最复杂的软件 - 操作系统
+title: 操作系统
 article: false
 ---
 

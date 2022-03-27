@@ -20,35 +20,20 @@ sticky: true
 
 ## 他会点儿什么
 
-只会用 C，Java，JavaScript，Python 写写 HelloWorld 的水平
-
-会点 Web 前端开发，我 f*** 这该死的 CSS。也会一点点基于 Web 的后端开发，使用 Node.js 或 Java
-
-略懂一点爬虫，使用 Python 或 Node.js
-
-对于 MySQL，MongoDB 的使用仅限于增删改查的水平
-
-熟悉操作系统的安装与卸载，比如 Windows 和 Linux，以及黑苹果，会用那是另说
-
-玩转各种搜素引擎，嗯，很喜欢 Copy，真的不想再总结一遍，圣经就是圣经
-
-熟悉几种代理工具的玩法，也就上上 Google，浏览 Youtube 的水平，不会英语，即使翻出去也是摸瞎
-
-多亏了白嫖来的斐讯 k2p，对嵌入式设备有了一丢丢认知，但已经扔到家里做路由，早就忘完了是什么鬼
-
-小学全年级跳绳（速跳/花样）的奖状曾经贴满了墙，如今只能证明自己不是残疾，且奖状只剩一张
-
-也涉及口琴吹奏，属于孔都对不准的阶段
-
-就这样子了，真的很菜
++ C，Java，JavaScript，Python
++ Web 前端/后端开发
++ MySQL，MongoDB
++ Windows，Linux，黑苹果
++ 各类型代理工具
++ 口琴吹奏
 
 ## 内容和排版
 
-本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情，无法避免错误。目前大饼画完了 20% 不到，目标是 2022 年 6 月份完成整张饼的 30%（总进度由我说了算）
+本站记录的是我自大学以来学习的各类知识，想写（抄）的很多，总结是一种很花精力的事情
 
 - [x] 10%（2021.3.21）
 - [x] 20%（2021.10.28）
-- [ ] 30%
+- [x] 25%（2022.3.22）
 
 ::: danger
 如果没有必要，不建议查看未推送到首页列表的文章  
@@ -74,43 +59,39 @@ sticky: true
 
 ## 全站知识体系总览
 
-::: tip
-星星表示需要完成或学习的优先级、重要程度，并注有完成进度，整体遵守“二八定律”
-:::
-
-+ [计算机原理](/computer/) - 8%
++ [计算机原理](/computer/)
 + 编程语言
-  + [C](/c/):star: - 32%
-  + [Java](/java/):star: - 12%
-  + [JavaScript](/js/):star::star::star::star::star: - 73%
-    + [TypeScript](/sundry/typescript/):star::star: - 7%
-  + [Python](/python/):star: - 21%
-+ [数据结构与算法](/ds-algorithm/):star::star::star::star: - 22%
-+ [设计模式](/design-pattern/):star::star::star: - 6%
+  + [C](/c/)
+  + [Java](/java/)
+  + [JavaScript](/js/)
+    + [TypeScript](/sundry/typescript/)
+  + [Python](/python/)
++ [数据结构与算法](/ds-algorithm/)
++ [设计模式](/sundry/design-pattern/)
 + [数据库](/database/)
-  + SQL 语言:star: - 20%
-  + MySQL:star::star: - 26%
-  + MongoDB:star::star: - 20%
-  + Redis:star: - 0%
+  + SQL 语言
+  + MySQL
+  + MongoDB
+  + Redis
 + Web
-  + [HTML-CSS](/html-css/):star::star::star::star::star: - 80%  
-  + [WebAPI](/webapi/):star::star::star::star::star: - 70%
-  + [Canvas](/canvas/):star: 13%
-  + [WebAssembly](/wasm/):star: - 0%
+  + [HTML-CSS](/html-css/)
+  + [WebAPI](/webapi/)
+  + [Canvas](/canvas/)
+  + [WebAssembly](/wasm/)
 + 应用框架
-  + [Vue](/vue/):star::star::star: - 58%
-  + [React](/react/):star: - 0%
-  + [Express](/express/):star: - 0%
-  + [Spring](/spring/):star: - 0%
+  + [Vue](/vue/)
+  + [React](/react/)
+  + [Express](/express/)
+  + [Spring](/spring/)
 + 服务器 && 容器
-  + [Tomcat](/sundry/tomcat/):star: - 13%
-  + [Nginx](/sundry/nginx/):star::star: - 3%
+  + [Tomcat](/sundry/tomcat/)
+  + [Nginx](/sundry/nginx/)
 + 其他杂项
-  + [Git](/sundry/git/):star::star: - 40%
-  + [Linux](/linux/):star::star: - 14%
-  + Docker:star: - 0%
-  + 代码质量:star::star: - 0%
-  + [正则表达式](/sundry/regex/):star::star: - 4%
+  + [Git](/sundry/git/)
+  + [Linux](/linux/)
+  + Docker
+  + 代码质量
+  + [正则表达式](/sundry/regex/)
 
 > 全站预估为 24 万字，可花 800（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 30 万字时开始减少产出，浓缩质量
 

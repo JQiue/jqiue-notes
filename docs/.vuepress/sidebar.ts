@@ -125,12 +125,14 @@ const html_css = [
   'better-code',
 ];
 
-const math_english = [
+const subject = [
   '',
   'primary-english',
-  'primary-math',
   'advanced-english',
+  'primary-math',
   'advanced-math',
+  'physics',
+  'logic',
   'nce',
 ];
 
@@ -209,6 +211,6 @@ export default defineSidebarConfig({
   "/react/": react,
   "/express/": express,
   "/spring/": spring,
-  "/math-english/": math_english,
+  "/subject/": subject,
   "/sundry/": sundry,
 });

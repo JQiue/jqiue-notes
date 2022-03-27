@@ -53,15 +53,15 @@ export default defineHopeConfig({
       config: {
         "/database/": "123456",
         "/canvas/": "123456",
-        "/math-english/": "123456",
+        "/subject/": "123456",
         "/vue/": "123456",
         "/react/": "123456",
-        "/design-pattern/": "123456",
         "/java/": "123456",
         "/spring/": "123456",
         "/express/": "123456",
         "/python/": "123456",
         "/wasm/": "123456",
+        "/computer/": "123456",
       }
     },
     plugins: {
