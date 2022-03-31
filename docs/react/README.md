@@ -52,33 +52,7 @@ const content = 'Hello, World'
 <div>{content}</div>
 ```
 
-## 函数组件和类组件
-
-函数组件即将一个 JSX 封装到一个函数中返回
-
-```js
-function Foo(name) {
-  return <div>Hello, {name}</div>
-}
-```
-
-类组件即通过继承来实现一个组件
-
-```js
-class Foo extends React.Component {
-  render() {
-    return <div>Hello, {this.name}</div>
-  }
-}
-```
-
-它们都是等同的
-
 当一个自定义组件作为一个元素时，会将其中的属性转换为一个对象传给组件
-
-```js
-
-```
 
 ## 示例程序
 
@@ -113,9 +87,21 @@ class Foo extends React.Component {
 
 最后通过`React.render(component, mount)`渲染这个组件
 
-## 数据驱动
+## 类组件
 
-每个组件都维护一份属于自己的数据
+类组件即通过继承来实现一个组件
+
+```js
+class Foo extends React.Component {
+  render() {
+    return <div>Hello, {this.name}</div>
+  }
+}
+```
+
+### 数据驱动
+
+每个类组件都可以在构造函数中维护一份属于自己的数据，在 JSX 中通过`{}`来引用，一旦`state`中的数据改变后，React 就会更新页面
 
 ```js
 class Foo extends Component {
@@ -132,33 +118,6 @@ class Foo extends Component {
   }
 }
 ```
-
-在构造函数中初始化，在 JSX 中通过`{}`来引用，一旦`state`中的数据改变后，页面也会跟着改变
-
-为元素绑定事件处理程序，如果没有参数，默认传入事件对象
-
-```js
-class Foo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'hello',
-    };
-  }
-  click(event) {
-    this.setState({
-      value: 'world'
-    })
-  }
-  render() {
-    return (
-      <div onClick={this.click.bind(this)}>{this.state.value}</div>
-    )
-  }
-}
-```
-
-元素中的事件始终是驼峰式，并且要转发`this`，否则会丢失`state`，修改`state`只能通过`setState`方法
 
 `setState`是异步的，这非常重要，如果想要更改数据后才开始做一些操作，不应该传入一个对象，而是两个回调函数
 
@@ -240,8 +199,6 @@ class Foo extends Component {
 
 不要使用危险的<code v-pre>dangerouslySetInnerHTML={{__html: value}}</code>禁止转义
 
-## 类组件
-
 组件之间是可以传递数据的
 
 ```js
@@ -298,11 +255,23 @@ Props 是传入到组件中的数据，State 是组件自己的数据，Render �
 
 当然，Props 变化也会导致 Render 执行一次
 
-## 函数式组件和 Hook
+## 函数式组件
+
+函数式组件即将一个 JSX 封装到一个函数中返回
+
+```js
+function Foo() {
+  return <div>Hello</div>
+}
+```
+
+但是，函数式组件
 
 + 没有自己的 State 状态
 + 没有 this
 + 没有生命周期
+
+## Hook
 
 Hook 中的`useState`会返回一对值：当前状态和一个让你更新它的函数。只能用于最顶层
 
@@ -465,6 +434,31 @@ const B = memo(function () {
   console.log('子组件渲染了');
   return <div><div/>
 });
+```
+
+## 绑定事件
+
+为元素绑定事件处理程序，如果没有参数，默认传入事件对象。元素中的事件始终是驼峰式，在类组件中要转发`this`，否则会丢失`state`，修改`state`只能通过`setState`方法
+
+```js
+class Foo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'hello',
+    };
+  }
+  click(event) {
+    this.setState({
+      value: 'world'
+    })
+  }
+  render() {
+    return (
+      <div onClick={this.click.bind(this)}>{this.state.value}</div>
+    )
+  }
+}
 ```
 
 ## ref
