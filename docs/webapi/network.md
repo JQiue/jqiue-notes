@@ -235,7 +235,46 @@ const http = (function () {
 
 Fetch 是一种现代请求技术，提供了一个全局的方法`fetch(url, [options])`，它会返回一个 promise 对象
 
+```js
+fetch(url, options);
+```
+
+`options`可以有一下选项：
+
+`method`: 请求使用的方法，如 GET、POST
+`headers`: 请求的头信息，形式为 Headers 的对象或包含 ByteString 值的对象字面量
+`body`: 请求的 body 信息：可能是一个 Blob、BufferSource (en-US)、FormData、URLSearchParams 或者 USVString 对象
+
 Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，promise 就会 reject
+
+成功发送请求后，会将信息封装到`response`对象中，包含一些属性可以读取
+
++ `status` - 状态码
++ `statusText` - 状态信息
++ `ok` - 请求是否成功，`true`对应 HTTP 请求的状态码 200 到 299
++ `headers` - 响应头信息，可以被迭代
+
+```js
+fetch(url, options).then(response => {});
+```
+
+`headers`有很多方法，但只有以下方法最有用
+
++ `get(key)` - 用于获取某个字段的值
++ `keys()/values()` - 返回键名或键值
++ `forEach(callback(key, value))` - 便利所有的键和值
+
+`response`会根据不同的响应类型，提供不同的读取方法：
+
++ response.text()：得到文本字符串
++ response.json()：得到 JSON 对象
++ response.blob()：得到二进制 Blob 对象
++ response.formData()：得到 FormData 表单对象
++ response.arrayBuffer()：得到二进制 ArrayBuffer 对象
+
+::: tip
+都是异步的，返回的都是 Promise 对象。只能使用一个读取方法，否则就会报错
+:::
 
 ## 轮询
 

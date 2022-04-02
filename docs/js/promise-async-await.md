@@ -607,7 +607,7 @@ requestPromise('xxx.com').then(...)
 
 ## Async/Await
 
-`async/await`是 JavaScript 提供的新关键字，可以更加优雅的解决异步编程，首先看一个例子
+`async/await`是 JavaScript 提供的新关键字，可以更加优雅的解决 Promise 异步问题，而无需链式调用，首先看一个例子
 
 ```js
 function foo() {
@@ -622,7 +622,7 @@ console.log(foo()); // 1
 console.log(bar()); // Promise { 1 }
 ```
 
-这很简单，如果使用`async`关键字标记该函数，这个函数的返回值是一个 Promise 对象，`async`关键字只做了这样的一件事：这个函数总是返回一个 Promise 对象，并将返回值包装成一个“resolved”的 Promise 对象中
+这很简单，使用`async`关键字标记的函数，函数的返回值是一个 Promise 对象，`async`只做了这样的一件事：这个函数总是返回一个 Promise 对象，并将返回值包装成一个“resolved”的 Promise 对象中
 
 那么`await`能用来做什么呢？先看一个例子
 

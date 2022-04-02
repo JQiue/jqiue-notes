@@ -57,10 +57,6 @@ function foo(num:number):number {
 }
 ```
 
-::: tip
-ts 的类型是可选的
-:::
-
 在 ts 中，数组也可以定义类型，这样数组只能存储该类型的元素，而数组则是由 ts 提供了专门的类型语法，使用后缀`:type[]`
 
 ```ts
@@ -69,7 +65,7 @@ let arr1: string[] = [1, 2, 3];
 let arr2: Array<number> = [1, 2, 3];
 ```
 
-有时候，数组可以被 ts 当作成元组，当确定了数组类型以及类型时，元组允许不同类型的元素
+有时候，数组可以被 ts 当作成元组，当确定了数组类型以及元素类型时，元组允许不同类型的元素
 
 ```ts
 // 元组
@@ -84,7 +80,7 @@ let obj1: object = {a: 1, b: 2};
 let obj2: {a: number, y: number } = {a: 1, b: 2};
 ```
 
-ts 还提供`any`类型，选择性的绕过静态检查的方法，ts 无法检测该类型的变量是否存在以及类型正确。`any`类型会在对象的调用链中进行传导，所有的`any`类型对象的任意属性都是`any`类型，`any`类型无法提供静态检查，如果没有充足的理由，否则不建议使用。如果没有不指定一个变量的类型，默认就是`any`
+ts 还提供`any`类型，选择性的绕过静态检查的方法，无法检测该类型的变量是否存在以及类型正确。`any`类型会在对象的调用链中进行传导，所有的`any`类型对象的任意属性都是`any`类型，`any`类型无法提供静态检查，如果没有充足的理由，否则不建议使用。如果没有不指定一个变量的类型，默认就是`any`
 
 `unknown`是用来描述类型并不确定的变量，可以将任意类型的值赋值给`unknown`变量，但`unknown`类型的值只能赋值给`unknown`和`any`
 
@@ -172,8 +168,94 @@ let than2: number = <number> arr.find(num => num > 2); // ok
 
 也可以在值后面添加`!`用来排除`null/undefined`
 
+可以在函数的形参中定义类型，限定参数，保证函数是可靠的
+
+```js
+function sum(a: number, b:number): number {
+  return a + b;
+}
+```
+
+## 联合类型
+
+一个变量可能是多种类型，通过`|`运算符指定变量可以被赋值的类型范围
+
+```ts
+let foo:number|string|boolean;
+```
+
+数组也行：
+
+```ts
+let arr: number[] | string[];
+```
+
+同样的，在函数形参中也可以使用：
+
+```ts
+function sayRes(res: number|string) {
+  console.log(res);
+}
+```
+
+一般情况下，使用联合类型是因为不能确定变量最终值的类型
+
 ## 接口
 
+ts 也有接口的概念，它被用来校验数据类型是否符合要求
+
+没有使用接口之前：
+
+```ts
+let foo: { name: string; age: number } = {
+  name: "foo",
+  age: 22
+};
+
+let bar: { name: string; age: number } = {
+  name: "bar",
+  age: 22
+};
+```
+
+很明显造成了代码冗余，使用接口，规范类型
+
+```ts
+interface PersonalInfo {
+  name: string;
+  age: number;
+}
+
+let foo: PersonalInfo = {
+  name: "foo",
+  age: 22
+};
+
+let bar: PersonalInfo = {
+  name: "bar",
+  age: 22
+};
+```
+
 ## 泛型
+
+泛型即对类型变量的一个别称，由于未来不确定是否为其它类型，那么为类型声明一个变量是可行的。`T`是对类型声明一个变量，在使用的时候指定该类型，进行泛型擦除操作
+
+```ts
+function foo<T>(param: T): T {
+  return param;
+}
+```
+
+编译器可以自动知道参数类型，也可以手动指定
+
+```ts
+function foo<T>(param: T): T {
+  return param;
+}
+
+foo('2');
+foo<number>(1);
+```
 
 <!-- more -->

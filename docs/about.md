@@ -12,20 +12,68 @@ sticky: true
 
 ![照骗（长太丑浏览器并不想显示）](https://jinqiu.wang/404)
 
-+ 互联网 ID：JQiue
-+ QQ：861947542
-+ 邮箱：jqiue@foxmail.com
-+ Github：[https://github.com/JQiue](https://github.com/JQiue)
-+ 目前使用的站点域名：[jinqiu.wang](https://jinqiu.wang)（完美），~~[wjqis.me](https://wjqis.me)（已过期，不想续费）~~
+<CodeGroup>
 
-## 他会点儿什么
+<CodeGroupItem title="person" active>
 
-+ C，Java，JavaScript，Python
-+ Web 前端/后端开发
-+ MySQL，MongoDB
-+ Windows，Linux，黑苹果
-+ 各类型代理工具
-+ 口琴吹奏
+```js
+const person = {
+  'Pseudo names': 'JQiue',
+  age: 'Younger than the earth',
+  gender: 'Male',
+  hobbies: ['music', 'harmonica', 'rubik', 'learn', 'read'],
+  state: 'intern'
+}
+```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="skills">
+
+```js
+const skills = {
+  C: 'Beginner',
+  Java: 'Beginner',
+  JavaScript: 'Intermediate',
+  Python: 'Beginner',
+  CSS: 'Beginner',
+  NodeJS: 'Beginner',
+  React: 'Beginner',
+  Vue: 'Intermediate',
+  MySQL: 'Beginner',
+  MongoDB: 'Beginner',
+  Linux: 'Beginner',
+  Git: 'Beginner'
+} // This is just the tip of the iceberg
+```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="links">
+
+```js
+const SocialLinks = {
+  QQ: '861947542',
+  email: 'jqiue@foxmail.com',
+  Github: 'https://github.com/JQiue',
+  Zhihu: 'https://www.zhihu.com/people/JQiue',
+  Site: 'https://jinqiu.wang'
+}
+```
+
+</CodeGroupItem>
+
+<CodeGroupItem title="projects">
+
+```js
+const projects = {
+  `JQiue's notes`: 'Personal site created using Vuepress',
+}
+```
+
+</CodeGroupItem>
+
+</CodeGroup>
 
 ## 内容和排版
 
@@ -36,7 +84,7 @@ sticky: true
 - [x] 25%（2022.3.22）
 
 ::: danger
-如果没有必要，不建议查看未推送到首页列表的文章  
+如果没有必要，不建议查看未推送到首页列表的文章
 :::
 
 本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档

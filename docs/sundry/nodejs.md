@@ -139,20 +139,20 @@ Node.js 同样支持 ESM，和 CommonJS 有着很多的异同，由于 CommonJS 
 
 在 Node.js 中存在一个全局作用域，可以定义一些不需要使用任何模块加载即可使用的变量、函数或类，同时也预先定义了一些全局方法及全局类，它们都是`global`的属性，在交互模式下声明的变量和方法都是`global`的属性，但是在脚本模式下不是
 
-命名|说明
----|---
-`global`|全局对象
-`__dirname`|提供当前模块的目录名（绝对路径）
-`__filename`|提供当前模块的文件名（绝对路径）
-`module`|当前模块的引用
-`exports`|导出模块，是`module.exports`的简写方式
-`require()`|引入模块、JSON、本地文件
-`URL`|处理 URL 地址的类
-`Buffer`|处理二进制数据的类
-`console`|打印信息的类
-`process`|进程类
-`setInterval()`|定时器
-`setTimeout()`|定时器
+| 命名            | 说明                                   |
+| --------------- | -------------------------------------- |
+| `global`        | 全局对象                               |
+| `__dirname`     | 提供当前模块的目录名（绝对路径）       |
+| `__filename`    | 提供当前模块的文件名（绝对路径）       |
+| `module`        | 当前模块的引用                         |
+| `exports`       | 导出模块，是`module.exports`的简写方式 |
+| `require()`     | 引入模块、JSON、本地文件               |
+| `URL`           | 处理 URL 地址的类                      |
+| `Buffer`        | 处理二进制数据的类                     |
+| `console`       | 打印信息的类                           |
+| `process`       | 进程类                                 |
+| `setInterval()` | 定时器                                 |
+| `setTimeout()`  | 定时器                                 |
 
 这里简单说明几个比较重要的全局变量的用法：
 
@@ -384,6 +384,12 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 + [chalk](https://github.com/chalk/chalk)：为终端进行着色
 + [nodemailer](https://github.com/nodemailer/nodemailer)：发送邮件
 + [glob](https://github.com/isaacs/node-glob)：模式匹配目录文件
++ [commitlint](https://github.com/conventional-changelog/commitlint)：规范 Git 提交信息
++ [json-server](https://github.com/typicode/json-server)：快速启动一个 REST APi Server
+
+```sh
+npm i npm-check-updates nrm rimraf nodemon -g
+```
 
 ## NPM 的替代 Yarn
 
@@ -396,57 +402,16 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 ## 处理 URL
 
-`url` 是针对 URL 字符串相关操作的模块
-
 ::: tip
 URL 是为了标识网络资源位置的一种编码，平常说的网页地址就是 URL 地址，它由**协议、主机、端口、路径**四部分组成
 :::
 
-`parse(str, bool)`解析一个符合 URL 规则的字符串，并返回一个 URL 对象，第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象，而不是字符串
+`url` 是针对 URL 字符串相关操作的模块，这是它的一些方法
 
-```js
-const url = require("url");
-url.parse("https://jinqiu.wang");
-
-// `parse()`会返回这样的对象：
-
-{
-  protocol: 'http:',
-  slashes: true,
-  auth: null,
-  host: 'jinqiu.wang',
-  port: null,
-  hostname: 'jinqiu.wang',
-  hash: null,
-  search: null,
-  query: null,
-  pathname: '/',
-  path: '/',
-  href: 'http://jinqiu.wang/'
-}
-```
-
-`format(obj)`将一个 URL 对象转换为 URL 字符串
-
-```js
-const urlObj = {
-  protocol: 'http:',
-  slashes: true,
-  auth: null,
-  host: 'jinqiu.wang',
-  port: null,
-  hostname: 'jinqiu.wang',
-  hash: null,
-  search: null,
-  query: null,
-  pathname: '/',
-  path: '/',
-  href: 'http://jinqiu.wang/'
-};
-url.format(urlObj); // http://jinqiu.wang/
-```
-
-`resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
++ `parse(str)`解析一个字符串为 URL 对象
++ `format(obj)`将一个 URL 对象转换为 URL 字符串
++ `parse(str, bool)`解析一个符合 URL 规则的字符串，并返回一个 URL 对象。第二个参数是可选的，如果为`true`，URL 对象的`query`属性是一个对象
++ `resolve(from, to)`将一个 URL 字符串进行解析拼接，返回新的 URL 字符串
 
 ```js
 url.resolve("https://jinqiu.wang/foo/bar/qux", "/web") // https://jinqiu.wang/web
@@ -456,33 +421,12 @@ url.resolve("https://jinqiu.wang/foo/bar/qux", "../web") // https://jinqiu.wang/
 url.resolve("https://jinqiu.wang/foo/bar/qux", "../../web") // https://jinqiu.wang/web
 ```
 
-`querystring`模块则针对 URL 中的 query 部分
+`querystring`模块则针对 URL 中的 query 部分，这是它的一些方法
 
-`parse(str)`将一个 query 字符串解析成键值对对象
-
-```js
-const str = "https://jinqiu.wang/?name=zs&age=23"
-querystring.parse(url.parse(url).query) // {name: 'zs', age: '23'}
-```
-
-`stringify(obj)`将一个键值对对象解析成 query 字符串
-
-```js
-const obj = { name: 'zs', age: '23' }
-querystring.stringify(obj) // name=zs&age=23
-```
-
-`escape(str)`将一个 URL 字符串进行百分比编码
-
-```js
-qs.escape("https://jinqiu.wang/?name=zs&age=23") // https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23
-```
-
-`unescape(str)`将一个 URL 百分比编码的字符串进行解码
-
-```js
-qs.unescape("https%3A%2F%2Fjinqiu.wang%2F%3Fname%3Dzs%26age%3D23"); // https://jinqiu.wang/?name=zs&age=23
-```
++ `parse(str)`将一个 query 字符串解析成键值对对象
++ `stringify(obj)`将一个键值对对象解析成 query 字符串
++ `escape(str)`将一个 URL 字符串进行百分比编码
++ `unescape(str)`将一个 URL 百分比编码的字符串进行解码
 
 ## HTTP 服务
 
@@ -526,7 +470,7 @@ req.end();
 + `response.getHeader(field)`
 + `response.removeHeader(field)`
 
-对于响应处理操作，一定要在`response.write()`以及`response.end()`前使用
+处理响应操作时，一定要在`response.write()`以及`response.end()`前使用
 
 Node.js 的 HTTP 读取数据时，会触发`data`事件，并将数据块放到其中等待处理，数据块默认是一个 Buffer 对象，只要读入了新的数据块，就会触发`data`事件，一旦读取完毕，就会触发`end`事件
 

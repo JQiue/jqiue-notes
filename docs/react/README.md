@@ -27,7 +27,7 @@ JSX 必须严格闭合
 <div/>//正确（也行，看需求）
 ```
 
-在 JSX 中，一个标签就是一个组件，当存在同级组件时，必须拥有一个根元素
+当存在同级组件时，必须拥有一个根元素。这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
 
 ```js
 // 错误
@@ -41,8 +41,6 @@ JSX 必须严格闭合
 </div>
 ```
 
-这种可能会凭空多出一个嵌套，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外的生成什么
-
 当引用一个自定义组件时要大写首字母，否则会看做成一个普通的 HTML 标签，在一个组件中可以引用其他组件
 
 可以在 JSX 中嵌入一个任何 js 支持的表达式，使用`{expression}`引入
@@ -54,12 +52,26 @@ const content = 'Hello, World'
 
 当一个自定义组件作为一个元素时，会将其中的属性转换为一个对象传给组件
 
+在 JSX 内中只能写 js 注释并且在外面要套一个`{}`，很简单，因为会被正确的转义
+
+```js
+class Foo extends Component {
+  render() {
+    return (
+      {/* 这是一个 div */}
+      <div></div>
+    )
+  }
+}
+```
+
+不要使用危险的<code v-pre>dangerouslySetInnerHTML={{__html: value}}</code>禁止转义
+
 ## 示例程序
 
 这是一个浏览器中的例子
 
 ```html
-<!DOCTYPE html>
 <head>
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
@@ -85,7 +97,7 @@ const content = 'Hello, World'
 + `props`：属性对象或事件处理函数
 + `children`：任意需要加入到元素中的东西，比如文本，组件类型等，可以将多个类型放到一个数组
 
-最后通过`React.render(component, mount)`渲染这个组件
+最后通过`React.render(component, mount)`渲染
 
 ## 类组件
 
@@ -119,7 +131,7 @@ class Foo extends Component {
 }
 ```
 
-`setState`是异步的，这非常重要，如果想要更改数据后才开始做一些操作，不应该传入一个对象，而是两个回调函数
+不要直接修改`state`，而是使用`setState()`，它是异步的，这非常重要，如果想要更改数据后才开始做一些操作，不应该传入一个对象，而是两个回调函数
 
 ```js
 this.setState(() => {
@@ -130,32 +142,6 @@ this.setState(() => {
   // 更改完成后需要执行的代码
 })
 ```
-
-这是一个渲染列表的例子
-
-```js
-class Foo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      list: [1, 2, 3],
-    };
-  }
-  render() {
-    return (
-      <div>
-        <ul>
-        {this.state.list.map((value, index) => {
-          return <li key="index">{value}</li>
-        })}
-        </ul>
-      </div>
-    )
-  }
-}
-```
-
-一定要传输`key`值，会提高渲染性能
 
 如果想干掉令人讨厌的`bind`，可以在构造函数中处理，但只适用于不需要传入参数的处理函数
 
@@ -184,22 +170,117 @@ class Foo extends Component {
 
 有些属性可能具有歧义，比如`<label>`的`for`属性，应该使用`htmlFor`，其它的都是类似
 
-在 JSX 内中只能写 js 注释并且在外面要套一个`{}`，很简单，因为会被正确的转义
+React 中的数据是一种单向的数据流
+
+Props 是传入到组件中的数据，State 是组件自己的数据，Render 是组件的渲染函数
+
+当组件被创建的时候，Render 会调用一次，一个组件被`ReactDOM.render()`渲染的时候调用，由此依次调用其它的组件 Render
+
+不仅如此，组件的 State 发生变化，Render 也会重新执行一次
+
+当然，Props 变化也会导致 Render 执行一次
+
+### 生命周期
+
+生命周期是类组件在某一个时机自动执行的函数，比如 Render 就是其中的一个生命周期函数，在数据改变时触发。除此之外，还有很多其它的生命周期函数：
+
++ componentWillMount - 即将挂载到页面
++ componentDidMount - 已经挂载到页面
++ shouldComponetUpdate - 数据更新前时执行
++ render - 数据发生变化时执行
++ componetWillUpdate - 数据更新前时执行
++ componetDidUpdate - 数据更新后时执行
++ componetWillUnmount - 组件将被移除时执行
+
+如果在`shouldComponetUpdate`中返回了`false`，后续的生命周期不会执行，性能得到提高
+
+## 函数式组件
+
+函数式组件即将一个 JSX 封装到一个函数中返回
 
 ```js
-class Foo extends Component {
-  render() {
-    return (
-      {/* 这是一个 div */}
-      <div></div>
-    )
-  }
+function Foo() {
+  return <div>Hello</div>
 }
 ```
 
-不要使用危险的<code v-pre>dangerouslySetInnerHTML={{__html: value}}</code>禁止转义
+但是，函数式组件它：
 
-组件之间是可以传递数据的
++ 没有自己的 State 状态
++ 没有 this
++ 没有生命周期
+
+## Hook
+
+Hook 让函数组件更加强大
+
+Hook 中的`useState`会返回一对值：当前状态和一个让你更新它的函数
+
+```js
+const [num, setNume] = useState(1);
+```
+
+Hook 中的`useEffect`用于模拟生命周期
+
+```js
+const [num, setNume] = useState(1);
+
+useEffect(()=>{
+  console.log('组件被挂载时执行，或 useState 状态发生变化时更新');
+});
+
+/* 只监听某个 state 的变化 */
+useEffect(()=>{
+  console.log('num 发生变化时更新');
+}, [num]);
+
+/* 谁也不监听 */
+useEffect(()=>{
+  console.log('不监听任何数据');
+}, []);
+
+/* 销毁阶段 */
+useEffect(()=>{
+  return () => {
+    console.log('销毁阶段');
+  }
+});
+```
+
+可以自定义 Hook，比如下面自定义的 Hook 只会被执行一次，因此可以抽象出来
+
+```js
+const useMount = (callback) => {
+  useEffect(()=>{
+    callback();
+  }, []);
+}
+```
+
+自定义 Hook 必须使用`use`开头，Hook 只能在其他 Hook 中、组件中运行
+
+`useEffect`允许返回一个函数，当组件被卸载时执行这个函数，这会创建一个闭包
+
+所以一个自定义的节流 Hook，就可以这样定义了
+
+```js
+const useDebounce = (value, delay) => {
+  const [debounceValue, setDebounceValue] = useState(value);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [value, debounceValue]);
+  return debounceValue;
+};
+```
+
+## props
+
+组件之间是可以传递数据的，在组件上自定义属性即可实现传值
+
+在类组件中，子组件通过`this.props`访问
 
 ```js
 class A extends Component {
@@ -217,9 +298,11 @@ class B extends Component {
 }
 ```
 
-当父组件通过属性的形式向子组件传值时，子组件通过`this.props`访问
+父组件还可以给子组件传递方法，用于子组件间接修改父组件的数据
 
-父组件还可以给子组件传递方法，用于子组件修改父组件的数据，子组件仍然通过`this.props`访问
+::: danger
+如果传递的方法有访问到父级组件，必须使用`bind`转发，否则无法访问父级组件的数据
+:::
 
 ```js
 class A extends Component {
@@ -241,72 +324,7 @@ class B extends Component {
 }
 ```
 
-::: danger
-如果传递的方法有访问到父级组件，必须使用`bind`转发，否则无法访问父级组件的数据
-:::
-
-React 中的数据是一种单向的数据流
-
-Props 是传入到组件中的数据，State 是组件自己的数据，Render 是组件的渲染函数
-
-当组件被创建的时候，Render 会调用一次，一个组件被`ReactDOM.render()`渲染的时候调用，由此依次调用其它的组件 Render
-
-不仅如此，组件的 State 发生变化，Render 也会重新执行一次
-
-当然，Props 变化也会导致 Render 执行一次
-
-## 函数式组件
-
-函数式组件即将一个 JSX 封装到一个函数中返回
-
-```js
-function Foo() {
-  return <div>Hello</div>
-}
-```
-
-但是，函数式组件
-
-+ 没有自己的 State 状态
-+ 没有 this
-+ 没有生命周期
-
-## Hook
-
-Hook 中的`useState`会返回一对值：当前状态和一个让你更新它的函数。只能用于最顶层
-
-Hook 中的`useEffect`用于模拟生命周期
-
-::: tip
-只能用在函数式组件中的最顶层
-:::
-
-```js
-const [num, setNume] = useState(1);
-
-useEffect(()=>{
-  console.log('组件被挂载时执行，或 useState 状态发生变化时更新');
-});
-
-/* 只监听某个状态变化 */
-useEffect(()=>{
-  console.log('num 发生变化时更新');
-}, [num]);
-
-/* 谁也不监听 */
-useEffect(()=>{
-  console.log('不监听任何数据');
-}, []);
-
-/* 销毁阶段 */
-useEffect(()=>{
-  return () => {
-    console.log('销毁阶段');
-  }
-});
-```
-
-在组件上自定义属性即可实现传值
+这是函数式组件，会将数据传入到`props`参数
 
 ```js
 function Father(props) {
@@ -335,7 +353,9 @@ function Child() {
 }
 ```
 
-如果有多层级组件，一级一级地传递就不适用了，而需要使用上下文空间`createContent`
+## 上下文
+
+如果有多层级组件，一级一级地传递就不适用了，而需要使用上下文空间`createContext`
 
 ```js
 import { useState, useEffect, createContext } from 'react';
@@ -438,6 +458,8 @@ const B = memo(function () {
 
 ## 绑定事件
 
+事件是驼峰式的，
+
 为元素绑定事件处理程序，如果没有参数，默认传入事件对象。元素中的事件始终是驼峰式，在类组件中要转发`this`，否则会丢失`state`，修改`state`只能通过`setState`方法
 
 ```js
@@ -487,19 +509,35 @@ class TodoList extends Component {
 
 注意当作用于普通 HTML 标签时返回 DOM 对象，当作用于一个组件时返回组件对象
 
-## 生命周期
+## 列表渲染
 
-生命周期是组件在某一个时机自动执行的函数，比如 Render 就是其中的一个生命周期函数，在数据改变时触发。除此之外，还有很多其它的生命周期函数：
+这是一个渲染列表的例子
 
-+ componentWillMount - 即将挂载到页面
-+ componentDidMount - 已经挂载到页面
-+ shouldComponetUpdate - 数据更新前时执行
-+ render - 数据发生变化时执行
-+ componetWillUpdate - 数据更新前时执行
-+ componetDidUpdate - 数据更新后时执行
-+ componetWillUnmount - 组件将被移除时执行
+```js
+class Foo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      list: [1, 2, 3],
+    };
+  }
+  render() {
+    return (
+      <div>
+        <ul>
+        {this.state.list.map((value, index) => {
+          return <li key="index">{value}</li>
+        })}
+        </ul>
+      </div>
+    )
+  }
+}
+```
 
-如果在`shouldComponetUpdate`中返回了`false`，后续的生命周期不会执行，性能得到提高
+一定要传输`key`值，会提高渲染性能
+
+## 条件渲染
 
 ## 路由
 
@@ -554,3 +592,42 @@ import {
   // ....
 } from 'antd';
 ```
+
+## Redux
+
+React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx）
+
+不是 React 提供的，是第三方提供的全局状态组件库
+
+```js
+npm i redux
+```
+
+Redux 需要三个东西：
+
++ action - 是一个函数，返回包含`type`和`value`的对象
++ reducer - 是一个函数，返回最新的 State
++ store - 状态中心，发送 action，监听状态改变
+
+```js
+import { createStore } from 'redux';
+
+const action_1 = () => {
+  return {
+    type: 'action_1',
+    value: '我是 action_1'
+  }
+};
+
+const reducer = (state = { value = '默认值' }, action) => {
+  switch (action.type) {
+    case 'action_1':
+      return {...state, ...action }
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+```
+
