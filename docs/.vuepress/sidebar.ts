@@ -172,6 +172,7 @@ const sundry = [
   'design-pattern',
   'css-trick',
   'css-preprocessor',
+  'programmin-paradigm'
 ];
 
 const vue = [

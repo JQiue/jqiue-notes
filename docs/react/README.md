@@ -27,7 +27,7 @@ JSX 必须严格闭合
 <div/>//正确（也行，看需求）
 ```
 
-当存在同级组件时，必须拥有一个根元素。这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
+同级组件时必须拥有一个根元素，这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
 
 ```js
 // 错误
@@ -50,9 +50,7 @@ const content = 'Hello, World'
 <div>{content}</div>
 ```
 
-当一个自定义组件作为一个元素时，会将其中的属性转换为一个对象传给组件
-
-在 JSX 内中只能写 js 注释并且在外面要套一个`{}`，很简单，因为会被正确的转义
+在 JSX 内中写 js 注释必须在外面要套一个`{}`，很简单，会看做成表达式
 
 ```js
 class Foo extends Component {
@@ -106,12 +104,28 @@ class Foo extends Component {
 ```js
 class Foo extends React.Component {
   render() {
-    return <div>Hello, {this.name}</div>
+    return <div>Hello, World</div>
   }
 }
 ```
 
-### 数据驱动
+## 函数式组件
+
+函数式组件即将一个 JSX 封装到一个函数中返回
+
+```js
+function Foo() {
+  return <div>Hello</div>
+}
+```
+
+但是，函数式组件它：
+
++ 没有自己的 State 状态
++ 没有 this
++ 没有生命周期
+
+## 数据驱动
 
 每个类组件都可以在构造函数中维护一份属于自己的数据，在 JSX 中通过`{}`来引用，一旦`state`中的数据改变后，React 就会更新页面
 
@@ -180,7 +194,7 @@ Props 是传入到组件中的数据，State 是组件自己的数据，Render �
 
 当然，Props 变化也会导致 Render 执行一次
 
-### 生命周期
+## 生命周期
 
 生命周期是类组件在某一个时机自动执行的函数，比如 Render 就是其中的一个生命周期函数，在数据改变时触发。除此之外，还有很多其它的生命周期函数：
 
@@ -192,23 +206,7 @@ Props 是传入到组件中的数据，State 是组件自己的数据，Render �
 + componetDidUpdate - 数据更新后时执行
 + componetWillUnmount - 组件将被移除时执行
 
-如果在`shouldComponetUpdate`中返回了`false`，后续的生命周期不会执行，性能得到提高
-
-## 函数式组件
-
-函数式组件即将一个 JSX 封装到一个函数中返回
-
-```js
-function Foo() {
-  return <div>Hello</div>
-}
-```
-
-但是，函数式组件它：
-
-+ 没有自己的 State 状态
-+ 没有 this
-+ 没有生命周期
+如果在`shouldComponetUpdate`中返回了`false`，后续的生命周期不会执行，性能将得到提高
 
 ## Hook
 
@@ -225,12 +223,12 @@ Hook 中的`useEffect`用于模拟生命周期
 ```js
 const [num, setNume] = useState(1);
 
-useEffect(()=>{
+useEffect(() => {
   console.log('组件被挂载时执行，或 useState 状态发生变化时更新');
 });
 
 /* 只监听某个 state 的变化 */
-useEffect(()=>{
+useEffect(() => {
   console.log('num 发生变化时更新');
 }, [num]);
 
@@ -278,22 +276,20 @@ const useDebounce = (value, delay) => {
 
 ## props
 
-组件之间是可以传递数据的，在组件上自定义属性即可实现传值
+当在组件上定义属性时，会将属性转换为一个对象传给组件
 
 在类组件中，子组件通过`this.props`访问
 
 ```js
 class A extends Component {
   render() {
-    return (
-    <div><B content="123"/></div>
+    return (<B content="123"/>)
   }
 }
 
 class B extends Component {
   render() {
-    return (
-    <span>{this.props.content}</span>
+    return (<span>{this.props.content}</span>)
   }
 }
 ```
@@ -305,11 +301,10 @@ class B extends Component {
 :::
 
 ```js
-class A extends Component {
+class A extends React.Component {
   click() {}
   render() {
-    return (
-    <div><B clickFn={click}/></div>
+    return <div><B clickFn={click}/></div>
   }
 }
 
@@ -318,8 +313,7 @@ class B extends Component {
     this.props.clickFn();
   }
   render() {
-    return (
-    <span></span>
+    return <span></span>
   }
 }
 ```
@@ -385,7 +379,7 @@ function App() {
 }
 ```
 
-这可能让代码太复杂了，没关系，`useContext`能简化这一点：
+这代码太复杂了，没关系，`useContext`能简化这一点：
 
 ```js
 import { useState, useEffect, createContext, useContext } from 'react';
@@ -398,7 +392,7 @@ function A() {
 
 function B() {
   const {msg, setNum} = useContext(NumContext);
-  return <div>  {msg}<div/>
+  return <div>{msg}<div/>
 }
 
 function App() {
@@ -597,7 +591,7 @@ import {
 
 React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx）
 
-不是 React 提供的，是第三方提供的全局状态组件库
+Redux 是第三方全局状态管理库
 
 ```js
 npm i redux
@@ -605,29 +599,115 @@ npm i redux
 
 Redux 需要三个东西：
 
-+ action - 是一个函数，返回包含`type`和`value`的对象
-+ reducer - 是一个函数，返回最新的 State
-+ store - 状态中心，发送 action，监听状态改变
++ action - 是一个具有`type`和`payload`属性的对象
++ reducer - 是一个纯函数，根据 Action 的`type`计算后返回最新的 State
++ store - 状态中心，发送 Action 给 Reducer，监听状态改变
 
 ```js
 import { createStore } from 'redux';
 
-const action_1 = () => {
+const ADD_Action = () => {
   return {
-    type: 'action_1',
-    value: '我是 action_1'
+    type: 'ADD'
   }
 };
 
-const reducer = (state = { value = '默认值' }, action) => {
+const reducer = (state = 0, action) => {
   switch (action.type) {
-    case 'action_1':
-      return {...state, ...action }
+    case 'ADD':
+      return state + 1;
     default:
       return state;
   }
 };
 
 const store = createStore(reducer);
+
+function Foo() {
+  const handleClick = () => {
+    store.dispatch(ADD_Action());
+  };
+  useEffect(() => {
+    store.subscribe(() => {
+      console.log("subscribe:", store.getState());
+    });
+  });
+  return <div>{store.getState().value}</div>
+}
 ```
 
+基本流程是：
+
+1. 使用`createStore`根据 Reducer 创建一个状态，会自动调用一次 Reducer
+2. Store.getState() 获取 Reducer 返回的状态
+3. Store.subscribe(callback) 订阅状态改变监听
+4. UI 可以通过 Store.dispatch(Action) 发送一个 Action 给 Reducer 主动更新状态
+5. 触发 Store.subscribe(callback) 中的回调，得到最新状态
+
+`subscribe()` 会返回一个函数，调用这个函数就会注销监听器
+
+## React-redux
+
+是 React 官方出的状态管理库，React-redux 依然会依赖 Redux，所以会结合使用
+
+有两个非常重要的部分：
+
++ Provider - 是一个组件，能够使任何组件访问 Store 中的数据
++ connect - 是一个方法，能够使组件跟 Store 进行关联
+
+首先将所有的组件套在`Provider`中，并提供`store`
+
+```js
+import { Provider } from "react-redux";
+import store from "./store";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+然后在组件中使用`connect`加强组件，`connect`本身不会修改组件的什么，只是加强一下而已
+
+```js
+import { connect } from "react-redux";
+
+const A = function A(props) {
+  return (
+    <div>
+      {props.num}
+      <button onClick={props.add}>+</button>
+      <button onClick={props.minus}>-</button>
+    </div>
+  );
+};
+
+// 将状态映射到组件的 props
+const mapStateToprops = (state, props) => {
+  return {
+    ...state,
+  };
+};
+
+// 将对应的 dispath 函数映射到组件的 props
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: () => {
+      dispatch({ type: "ADD" });
+    },
+    minus: () => {
+      dispatch({ type: "MINUS" });
+    },
+  };
+};
+
+export default connect(mapStateToprops, mapDispatchToProps)(A);
+```
+
+不过，`connect`太麻烦了，react-redux 提供了对应的 hook 简化操作：
+
+```js
+
+```
