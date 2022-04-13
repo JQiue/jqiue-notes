@@ -1,6 +1,6 @@
 import { defineSidebarConfig } from "vuepress-theme-hope";
 
-const computer = [
+const computer: string[] = [
   '',
   'composition',
   'operating-system',
@@ -8,7 +8,7 @@ const computer = [
   'network',
 ];
 
-const c = [
+const c: string[] = [
   '',
   'syntax',
   'function',
@@ -22,7 +22,7 @@ const c = [
   'input-memory-buffer',
 ];
 
-const java = [
+const java: string[] = [
   '',
   'syntax',
   'string',
@@ -34,14 +34,13 @@ const java = [
   'standard',
 ];
 
-const javascript = [
+const javascript: string[] = [
   '',
   'syntax',
   'function',
   'object',
   'string',
-  'array',
-  'map-set',
+  'data-structure',
   'destructuring-assignment',
   'prototype',
   'class',
@@ -54,7 +53,7 @@ const javascript = [
   'quality',
 ];
 
-const python = [
+const python: string[] = [
   '',
   'syntax',
   'ds',
@@ -67,7 +66,7 @@ const python = [
   'spider',
 ];
 
-const ds_algorithm = [
+const ds_algorithm: string[] = [
   '',
   'array',
   'linkedlist',
@@ -84,7 +83,7 @@ const ds_algorithm = [
   'think',
 ];
 
-const database = [
+const database: string[] = [
   '',
   'sql-syntax',
   'mysql',
@@ -92,11 +91,7 @@ const database = [
   'redis',
 ];
 
-const wasm = [
-  '',
-]
-
-const webapi = [
+const webapi: string[] = [
   '',
   'browser',
   'dom',
@@ -104,15 +99,13 @@ const webapi = [
   'network',
   'storage',
   'drag',
+  'canvas',
   'worker',
   'WebRTC',
+  'wasm',
 ];
 
-const canvas = [
-  ''
-];
-
-const html_css = [
+const html_css: string[] = [
   '',
   'elements',
   'box-model',
@@ -125,7 +118,7 @@ const html_css = [
   'better-code',
 ];
 
-const subject = [
+const subject: string[] = [
   '',
   'primary-english',
   'advanced-english',
@@ -136,32 +129,27 @@ const subject = [
   'nce',
 ];
 
-const sundry = [
+const sundry: string[] = [
   '',
-  'git',
   'tools',
   'problems',
-  'three-filtering-principles',
   'trick',
+  'three-filtering-principles',
   'zhihu',
   'office',
+  'git',
   'adb',
   'http',
   'latex',
-  'tomcat',
   'emmet',
   'learntolearn',
   'nodejs',
-  'mock',
-  'nginx',
-  'webpack',
+  'server',
+  'frontend-tools',
   'regex',
   'interview',
   'jquery',
-  'lint',
-  'babel',
   'typescript',
-  'scaffolding',
   'openssl',
   'sport',
   'windows',
@@ -169,13 +157,12 @@ const sundry = [
   'cicd',
   'security',
   'bootstrap',
-  'design-pattern',
   'css-trick',
-  'css-preprocessor',
-  'programmin-paradigm'
+  'software-design',
+  'cloud-computing',
 ];
 
-const vue = [
+const vue: string[] = [
   '',
   'component',
   'vuex',
@@ -183,15 +170,19 @@ const vue = [
   'transition',
 ];
 
-const react = [
+const react: string[] = [
   '',
 ];
 
-const express = [
+const express: string[] = [
   '',
 ];
 
-const spring = [
+const koa: string[] = [
+  '',
+];
+
+const spring: string[] = [
   '',
 ];
 
@@ -205,12 +196,11 @@ export default defineSidebarConfig({
   "/ds-algorithm/": ds_algorithm,
   "/database/": database,
   "/html-css/": html_css,
-  "/canvas/": canvas,
   "/webapi/": webapi,
-  "/wasm/": wasm,
   "/vue/": vue,
   "/react/": react,
   "/express/": express,
+  "/koa/": koa,
   "/spring/": spring,
   "/subject/": subject,
   "/sundry/": sundry,

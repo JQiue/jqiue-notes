@@ -21,13 +21,15 @@ SQL 并不像其他语言那样，学习需要大量的程序基础，它更像�
 
 ### CREATE
 
-`CREATE`关键字用来定义数据库和表的操作
+`CREATE`关键字用来创建数据库和表
 
 ```sql
 -- 创建数据库
 CREATE DATABASE database_name;
 -- 创建数据库同时指定编码
 CREATE DATABASE database_name CHARACTER SET 字符集;
+-- 如果不存在就创建
+CREATE DATABASE IF NOT EXISTS database_name
 -- 创建表
 CREATE TABLE table_name (
   column_name1 类型 约束,
@@ -39,9 +41,10 @@ CREATE TABLE table_name (
 
 ```sql
 CREATE TABLE student (
-  id bigint,
+  id int,
   stu_name varchar(50),
-  stu_age int
+  stu_age int,
+  stu_score int
 );
 ```
 
@@ -149,19 +152,61 @@ TRUNCATE TABLE table_name;
 
 DQL 语句不会对数据进行改变，这个数据会从数据库中读到内存，以这种表的形式查询出来的数据称为虚拟结果集
 
+::: tip
+不要纠结`SELECT`到底属于 DML 还是 DQL
+:::
+
+这个表为下列查询提供：
+
+```sql
+CREATE TABLE student (
+  id int,
+  stu_name varchar(50),
+  stu_age int,
+  stu_gender varchar(1),
+  stu_score int
+);
+```
+
+
 ### SELECT
+
+`*`查出所有字段
+
+```sql
+SELECT * FROM table_name; 
+```
+
+查询指定列
 
 ```sql
 SELECT column1, column2, ... FROM table_name; 
 ```
 
-::: tip
-不要纠结`SELECT`到底属于 DML 还是 DQL，了解即可
-:::
+使用`as`将查询出来的字段指定别名，可以省略不写
 
-### 条件查询（WHERE）
+```sql
+SELECT column1 AS alias1, column2 AS alias2, ... FROM table_name; 
+SELECT column1 alias1, column2 alias2, ... FROM table_name; 
+```
 
-条件查询就是根据`where`关键字指定的条件查询，符合条件的才会被查询出来
+使用`DISTINCT`可指定列的查询出来的数据不是重复的
+
+```sql
+SELECT DISTINCT column1 FROM table_name
+```
+
+如果查询的列是数字类型就可以返回计算后的结果
+
+```sql
+SELECT age + 10 from table_name
+-- 和其他列进行计算
+SELECT math + english from table_name
+```
+
+### 条件查询
+
+条件查询就是根据`where`关键字指定的条件进行查询，符合条件的才会被查询出来
 
 ```sql
 SELECT * FROM table_name where column = value;
@@ -169,21 +214,21 @@ SELECT * FROM table_name where column = value;
 
 运算符不止有`=`，还有下列可用的运算符：
 
-运算符|描述|例子|解释
----|---|---|---
-=|等于|SELECT \* FROM student WHERE stu_name = 'zs'|查询 stu_name 等于 'zs' 的数据
-!=|不等于|SELECT \* FROM student WHERE stu_name != 'zs'|查询 stu_name 不等于 'zs' 的数据
-<>|不等于|SELECT \* FROM student WHERE stu_name <> 'zs'|查询 stu_name 不等于 'zs' 的数据
-<|小于|SELECT \* FROM student WHERE stu_age < 18|查询 stu_age 小于 18 的数据
-\>|大于|SELECT \* FROM student WHERE stu_age > 18|查询 stu_age 大于 18 的数据
-<=|小于等于|SELECT \* FROM student WHERE stu_age <= 18|查询 stu_age 小于等于 18 的数据
-\>=|大于等于|SELECT \* FROM student WHERE stu_age > 18|查询 stu_age 大于等于 18 的数据
-BETWEEN...AND...|值在什么范围|SELECT \* FROM student WHERE id BETWEEN 10001 AND 10003|查询 id 值 10001 到 10003 之间的数据
-IN(set)|固定范围值|SELECT * FROM student WHERE id IN (10001, 10002, 10003)|查询 id 为`10001`,`10002`,`10003`的值
-IS NULL|为空|SELECT \* FROM student WHERE stu_age IS NULL|查询 stu_age 为 NULL 的学生
-AND|与|SELECT \* FROM student WHERE id = 10001 AND stu_name = 'zs'|查询 id 为 10001 且 stu_name 为 'zs' 的数据
-OR|或|SELECT \* FROM student WHERE id = 10001 OR stu_name = 'zs'|查询 id 为 10001 或 stu_name 为 'zs' 的数据
-NOT|非|SELECT 、* FROM student WHERE stu_gender IS NOT NULL|查询 stu_gender 不为 NULL 的数据
+| 运算符           | 描述         | 例子                                                        | 解释                                        |
+| ---------------- | ------------ | ----------------------------------------------------------- | ------------------------------------------- |
+| =                | 等于         | SELECT \* FROM student WHERE stu_name = 'zs'                | 查询 stu_name 等于 'zs' 的数据              |
+| !=               | 不等于       | SELECT \* FROM student WHERE stu_name != 'zs'               | 查询 stu_name 不等于 'zs' 的数据            |
+| <>               | 不等于       | SELECT \* FROM student WHERE stu_name <> 'zs'               | 查询 stu_name 不等于 'zs' 的数据            |
+| <                | 小于         | SELECT \* FROM student WHERE stu_age < 18                   | 查询 stu_age 小于 18 的数据                 |
+| \>               | 大于         | SELECT \* FROM student WHERE stu_age > 18                   | 查询 stu_age 大于 18 的数据                 |
+| <=               | 小于等于     | SELECT \* FROM student WHERE stu_age <= 18                  | 查询 stu_age 小于等于 18 的数据             |
+| \>=              | 大于等于     | SELECT \* FROM student WHERE stu_age > 18                   | 查询 stu_age 大于等于 18 的数据             |
+| BETWEEN...AND... | 值在什么范围 | SELECT \* FROM student WHERE id BETWEEN 10001 AND 10003     | 查询 id 值 10001 到 10003 之间的数据        |
+| IN(set)          | 固定范围值   | SELECT * FROM student WHERE id IN (10001, 10002, 10003)     | 查询 id 为`10001`,`10002`,`10003`的值       |
+| IS NULL          | 为空         | SELECT \* FROM student WHERE stu_age IS NULL                | 查询 stu_age 为 NULL 的学生                 |
+| AND              | 与           | SELECT \* FROM student WHERE id = 10001 AND stu_name = 'zs' | 查询 id 为 10001 且 stu_name 为 'zs' 的数据 |
+| OR               | 或           | SELECT \* FROM student WHERE id = 10001 OR stu_name = 'zs'  | 查询 id 为 10001 或 stu_name 为 'zs' 的数据 |
+| NOT              | 非           | SELECT 、* FROM student WHERE stu_gender IS NOT NULL        | 查询 stu_gender 不为 NULL 的数据            |
 
 ### 模糊查询
 
@@ -229,6 +274,13 @@ SELECT * FROM student ORDER BY stu_score ASC;
 SELECT * FROM student ORDER BY stu_score DESC;
 ```
 
+还可以进行组合排序
+
+```sql
+-- 查询 stu_score 按降序排列，如果 stu_score 相同就按升序排列
+SELECT * FROM student ORDER BY stu_score DESC, stu_age ASC;
+```
+
 ### 聚合函数
 
 ```sql
@@ -248,7 +300,7 @@ SELECT MIN(stu_score) FROM student;
 
 ### 分组
 
-`GROUP BY`可以将列相同的值分为一组，通常和其他查询语句结合使用，单独使用只会查询每组中的第一条数据，意义不大
+`GROUP BY`可以将列相同的值分为一组，通常和其他查询语句结合使用，单独使用只会查询每组中的第一条数据，意义不大。分组目的是为了统计，一般会和聚合函数一起使用
 
 ```sql
 SELECT * FROM student GROUP BY stu_gender;
@@ -260,3 +312,31 @@ SELECT stu_gender, GROUP_CONCAT(stu_score) FROM student WHERE stu_score >= 60 GR
 ::: tip WHERE 和 HAVING
 HAVING 作用和 WHERE 一样，但只能用于`GROUP BY`，WHERE 会在分组之前进行数据筛选，HAVING 会在分组之后进行数据筛选，同时可以使用聚合函数，WHERE 是不可以的
 :::
+
+## limit
+
+`limit`可以限制查询记录的条数，常用于分页
+
+```sql
+-- 只查询三条
+SELECT * FROM student limit 3;
+-- 从第 2 条开始，只显示 6 条
+SELECT * FROM student limit 2, 6;
+```
+
+
+## trick
+,
++ 蠕虫复制 - 复制一个表的数据到另一个表
+
+```sql
+-- 复制 table_1 的结构
+CREATE TABLE table_1 like table_2;
+-- 插入 table_1 的数据到 table_2
+INSERT INTO table_1 SELECT * FROM table_2;
+```
+
+### SELECT 的书写和执行顺序
+
++ 书写：SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT
++ 执行：FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT

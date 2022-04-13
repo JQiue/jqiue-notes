@@ -14,24 +14,24 @@ sticky: true
 
 <CodeGroup>
 
-<CodeGroupItem title="person" active>
+<CodeGroupItem title="Person" active>
 
 ```js
-const person = {
+const Person = {
   'Pseudo names': 'JQiue',
   age: 'Younger than the earth',
   gender: 'Male',
-  hobbies: ['music', 'harmonica', 'rubik', 'learn', 'read'],
+  hobbies: ['music', 'harmonica', 'rubik', 'study', 'read', 'sleep'],
   state: 'intern'
 }
 ```
 
 </CodeGroupItem>
 
-<CodeGroupItem title="skills">
+<CodeGroupItem title="Skills">
 
 ```js
-const skills = {
+const Skills = {
   C: 'Beginner',
   Java: 'Beginner',
   JavaScript: 'Intermediate',
@@ -49,7 +49,7 @@ const skills = {
 
 </CodeGroupItem>
 
-<CodeGroupItem title="links">
+<CodeGroupItem title="SocialLinks">
 
 ```js
 const SocialLinks = {
@@ -63,7 +63,7 @@ const SocialLinks = {
 
 </CodeGroupItem>
 
-<CodeGroupItem title="projects">
+<CodeGroupItem title="Projects">
 
 ```js
 const projects = {
@@ -115,7 +115,7 @@ const projects = {
     + [TypeScript](/sundry/typescript/)
   + [Python](/python/)
 + [数据结构与算法](/ds-algorithm/)
-+ [设计模式](/sundry/design-pattern/)
++ [软件设计](/sundry/software-design/)
 + [数据库](/database/)
   + SQL 语言
   + MySQL
@@ -124,19 +124,18 @@ const projects = {
 + Web
   + [HTML-CSS](/html-css/)
   + [WebAPI](/webapi/)
-  + [Canvas](/canvas/)
-  + [WebAssembly](/wasm/)
 + 应用框架
   + [Vue](/vue/)
   + [React](/react/)
   + [Express](/express/)
+  + [Koa](/koa/)
   + [Spring](/spring/)
-+ 服务器 && 容器
-  + [Tomcat](/sundry/tomcat/)
-  + [Nginx](/sundry/nginx/)
++ [服务器 && 容器](/sundry/server/)
+  + Tomcat
+  + Nginx
 + 其他杂项
   + [Git](/sundry/git/)
-  + [Linux](/linux/)
+  + [Linux](sundry/linux/)
   + Docker
   + 代码质量
   + [正则表达式](/sundry/regex/)
@@ -148,4 +147,7 @@ const projects = {
 如果发现文章有误，可以通过本人联系方式通知我纠正，或者点击错误页最下方的`编辑此页`前往 Github 提交一个更正后的 PR，我将审核通过后合并
 
 > 来都来了，留个言再走？
-  
+
+::: danger
+暂时不能留言~~，没有弄好评论插件
+:::

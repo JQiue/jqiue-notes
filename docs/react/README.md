@@ -589,9 +589,7 @@ import {
 
 ## Redux
 
-React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx）
-
-Redux 是第三方全局状态管理库
+React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx）,Redux 是第三方全局状态管理库
 
 ```js
 npm i redux
@@ -646,6 +644,8 @@ function Foo() {
 
 `subscribe()` 会返回一个函数，调用这个函数就会注销监听器
 
+Redux 的设计是为了确定数据的流向，预测数据改变的行为。特定的 action 通过 reducer 去改变 state 中特定的值，state 是只读的，只能用 action 改变，action 记录了为什么变化，理由是什么，关联 action 和 state 就需要 reducer，所以 reducer 只能是一个纯函数
+
 ## React-redux
 
 是 React 官方出的状态管理库，React-redux 依然会依赖 Redux，所以会结合使用
@@ -669,7 +669,7 @@ ReactDOM.render(
 );
 ```
 
-然后在组件中使用`connect`加强组件，`connect`本身不会修改组件的什么，只是加强一下而已
+然后使用`connect`加强组件，`connect`本身不会修改组件的什么，只是加强一下而已
 
 ```js
 import { connect } from "react-redux";
@@ -709,5 +709,22 @@ export default connect(mapStateToprops, mapDispatchToProps)(A);
 不过，`connect`太麻烦了，react-redux 提供了对应的 hook 简化操作：
 
 ```js
+import { useSelector, useDispatch } from "react-redux";
 
+function Foo(props) {
+  const result = useSelector((state) => {
+    return {
+      ...state,
+    };
+  });
+  const dispatch = useDispatch();
+  return (
+    <div>
+      <button onClick={() => dispatch({ type: "ADD" })}>+</button>
+      <button onClick={() => dispatch({ type: "MINUS" })}>-</button>
+    </div>
+  );
+}
 ```
+
++ `useSelector(callback(state))` - 接受一个回调函数，并传入状态

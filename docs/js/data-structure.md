@@ -1,12 +1,14 @@
 ---
-title: 数组
+title: 数据结构
 category: 编程语言
 tag: [JavaScript]
 ---
 
-虽然对象允许储存数据，但对象中的属性是没有顺序的，有很多时候需要一个有序集合的结构，里面的元素是按照顺序排列的，数组（Array）就是这样的结构
+JavaScript 提供了一些数据结构
 
-## 声明和访问
+## 数组
+
+虽然对象允许储存数据，但对象中的属性是没有顺序的，有很多时候需要一个有序集合的结构，里面的元素是按照顺序排列的，数组（Array）就是这样的结构
 
 创建数组有两种方式：
 
@@ -17,26 +19,22 @@ let arr = new Array();
 let arr = [];
 ```
 
-通常使用第二种方式，可以在`[]`添加初始的元素：
+通常使用字面量创建，可以在`[]`添加初始的元素，并通过下标访问对应的元素，从`0`开始
 
 ```js
 let names = ['zs', 'ls', 'ww'];
-```
 
-并通过下标访问对应的元素，从`0`开始
-
-```js
 names[0]; // 'zs'
 names[1]; // 'ww'
 ```
 
-甚至可以替换元素
+也可以通过下标替换元素
 
 ```js
 names[2] = 'zz'; // ['zs', 'ls', 'zz']
 ```
 
-也可以新增一个元素
+数组长度是可变的，所以可以新增一个元素
 
 ```js
 nams[3] = 'zq'; // ['zs', 'ls', 'zz', 'zq']
@@ -48,7 +46,7 @@ nams[3] = 'zq'; // ['zs', 'ls', 'zz', 'zq']
 let arr = [1, 'zs', {name: 'foo'}, true, [], function() {} ];
 ```
 
-## length
+### length
 
 `length`不是数组的长度，而是最大索引值加`1`，会随着数组的修改而自动更新，准确来说它不是数组中元素的个数，比如一个数组的索引值很大，那么它的`length`也很大
 
@@ -71,7 +69,7 @@ console.log(arr[2]); // undefined
 
 所以清空数组最好的方式就是`arr.length = 0;`
 
-## 空位
+### 空位
 
 允许数组的某个位置是空元素，即两个逗号之间没有任何值，如果对空位进行访问，将会得到`undefined`
 
@@ -103,7 +101,7 @@ console.log(arr.length); //3
 
 空位和`undefined`是不一样的，空位会被`forEach`方法，`for...in`、以及`Object.keys`方法跳过
 
-## 数组是一种特殊的对象
+### 数组是一种特殊的对象
 
 使用方括号访问元素实际上是来自对象的语法，数组扩展了对象，提供了特殊的方法来处理有序的数据集合以及`lenght`属性，从本质上来讲，数组就是一个对象
 
@@ -113,7 +111,7 @@ console.log(arr.length); //3
 
 使用`typeof []`判断数组会返回一个`object`字符串，为了区分对象和数组应该使用`Array.isArray()`来进行判断
 
-## 类似于数组一样的对象
+### 类似于数组一样的对象
 
 如果一个对象的所有键都是正整数或`0`，且拥有`length`属性，那么这个对象就很像数组，在语法上被称为**类数组**
 
@@ -135,7 +133,7 @@ obj.push('d'); // error，报错
 
 但是，仅仅只是像而已，因为它并不会拥有数组特有的方法，同时类数组的`length`不会随着成员变化而变化
 
-## 遍历
+### 遍历
 
 可以使用传统的`for`循环遍历数组：
 
@@ -174,7 +172,7 @@ for (let item in arr) {
 
 从性能来讲，遍历效率最高的依次是：`for > forEach > for...of > map > for...in`
 
-## 多维数组
+### 多维数组
 
 数组中的元素当然也可以是数组，因此可以实现矩阵：
 
@@ -186,7 +184,7 @@ let matrix = [
 ];
 ```
 
-## 使用迭代器进行访问
+### 使用迭代器进行访问
 
 ES6 为 Array 增加了一个“iterator”属性，通过`Symbol.iterator`访问，因此可以调用迭代器的方法来进行访问
 
@@ -201,21 +199,21 @@ console.log(iterator.next()); // { value: 3, done: false }
 console.log(iterator.next()); // { value: 4, done: false }
 ```
 
-## 类型数组
+### 类型数组
 
 由于 JavaScript 数组不是强类型的，这导致它可以存储任意类型的元素，而类型数组则用于单一类型的数据，类型数组是一种新的补充，建立在 ArrayBuffer 的基础上，作用是分配一款连续的内存空间，语法是`let arr = new TypeArray(length)`，`TypeArray`可以替换下表中的之一
 
-可用的类型数组 | 数据类型
----|---
-Int8Array | 8 位二进制补码整数
-Uint8Array | 8 位无符号整数
-Uint8ClampedArray | 8 位无符号整数
-Int16Array | 16 位二进制补码整数
-Uint16Array | 16 位无符号整数
-Int32Array | 32 位二进制补码整数
-Uint32Array | 32 位无符号整数
-Float32Array | 32 位 IEEE 浮点数
-Float64Array | 64 位 IEEE 浮点
+| 可用的类型数组    | 数据类型            |
+| ----------------- | ------------------- |
+| Int8Array         | 8 位二进制补码整数  |
+| Uint8Array        | 8 位无符号整数      |
+| Uint8ClampedArray | 8 位无符号整数      |
+| Int16Array        | 16 位二进制补码整数 |
+| Uint16Array       | 16 位无符号整数     |
+| Int32Array        | 32 位二进制补码整数 |
+| Uint32Array       | 32 位无符号整数     |
+| Float32Array      | 32 位 IEEE 浮点数   |
+| Float64Array      | 64 位 IEEE 浮点     |
 
 ```js
 let int16 = new Int16Array(5);
@@ -231,7 +229,7 @@ console.log(int16);
 
 <!-- to be updated -->
 
-## 方法
+### 方法
 
 JavaScript 中的数组既可以是队列，也可以是栈
 
@@ -297,7 +295,7 @@ sort 方法实现了通用的排序算法
 
 会修改原数组的方法有：splice、sort、reverse、push、pop、shift、unshift
 
-## 手写一个数组的深克隆拷贝算法
+### 手写一个数组的深克隆拷贝算法
 
 由于 JavaScript 数组的项可能是基本类型也可能是引用类型，所以要判断一下项的类型
 
@@ -317,6 +315,137 @@ function clone(array) {
 }
 ```
 
+## Map
+
+map 是一个带键的数据集合，就像`object`一样，但是它们最大的区别就是，map 允许使用任何类型的键
+
+```js
+let map = new Map();
+map.set('1', 'str');
+map.set(1, 'num');
+map.set(true, 'bool');
+
+let user = {}
+map.set(user, 'object');
+
+map.get('1'); // 'str'
+map.get(1);  // 'num'
+map.get(true); // 'bool'
+map.get(user); // 'object'
+```
+
+这是 map 方法和属性：
+
++ new Map(iterable)
++ map.set(key, value)
++ map.get(key)
++ map.has(key)
++ map.delete(key)
++ map.clear()
++ map.keys()
++ map.values()
++ map.entries()
++ map.forEach(callback(value, key, map)))
++ map.size
+
+另外，`map.set()`调用会返回 map 本身，因此可以链式调用：
+
+```js
+map.set().set().set();
+```
+
+当创建一个 map 后，可以传入一个带有键值对的可迭代对象来初始化：
+
+```js
+let map = new Map([
+  ['1', 'str'],
+  [1, 'num'],
+  [true, 'bool'],
+])
+```
+
+如果想从一个对象来创建 map，只需要通过`Object.entries(obj)`即可创建，因为该方法会将对象转换为符合 map 格式的键值对
+
+另外，如果想将一个 map 转换为对象，也可以通过`Object.fromEntries(map)`来创建
+
+## Set
+
+Set 是一个没有键的数据集合，它的值是唯一的，即使重复添加，这意味着可以快速的对一个数组去重
+
+```js
+let set = new Set();
+
+set.add('foo');
+set.add('bar');
+set.add('qux');
+
+for (const i of set) {
+  console.log(i);
+}
+```
+
+它的属性和方法有：
+
++ new Set(iterable)
++ set.add(value)
++ set.delete(value)
++ set.has(value)
++ set.forEach(callback(value, value, set))
++ set.keys()
++ set.values()
++ set.clear()
++ set.size
+
+forEach 的回调出现了相同的参数，这是为了和 map 兼容，虽然看来有点奇怪，这导致 map 中用于迭代的方法对 set 也有用
+
+## 弱映射和弱集合
+
+对象的引用被使用时会将其保留在内存中，除非引用指向`null`
+
+```js
+let foo = {};
+
+// 引用为 null 时，{} 会被回收
+foo = null
+```
+
+通常，当对象、数组这类数据结构在内存中时，元素都是可以被访问的，如果一个对象被放到数组中，只要这个数组存在，对象就存在，即使没有其他的引用：
+
+```js
+let foo = {};
+// 数组保存了 foo 引用的对象，即使覆盖了引用，对象也不会被回收
+let arr = [foo];
+foo = null;
+```
+
+因此，如果将对象作为 map 的键，那么 map 存在，对象也就存在
+
+WeakMap 和 map 的区别就是，必须以对象作为键：
+
+```js
+let foo = {};
+let weakMap = new weakMap();
+weakMap.set(foo, '...');
+
+// foo 引用的对象被回收了
+foo = null;
+```
+
+和常规的 map，相比，如果一个对象只作为 WeakMap 的键而存在，那么它就会被回收
+
+WeakMap 不支持迭代以及`keys()`，`values()`，`entries()`方法，因为它无法确定数据项是否存在，导致元素的数量是未知的，它只支持下面的方法：
+
++ get(key)
++ set(key, value)
++ delete(key)
++ has(key)
+
+WeakMap 的主要应用场景是“额外数据的存储”和“数据的缓存”
+
+WeakSet 的表现和 WeakMap 一致，只能添加对象进去，当失去了其他地方的引用时，元素就会被回收，也不可迭代
+
+WeakMap 和 WeakSet 最明显的局限性就是不能迭代，并且无法获取所有当前内容。那样可能会造成不便，但是并不会阻止 WeakMap/WeakSet 完成其主要工作 — 成为在其它地方管理/存储“额外”的对象数据
+
 ## 总结
 
 + JavaScript 数组是可变长度的，并且能够存储不同类型的元素，数组的元素可以是数组
@@ -325,5 +454,9 @@ function clone(array) {
 + 类数组只是看起来像数组的对象，没有数组的方法
 + 最好不要使用`for...in`遍历数组，而是使用`for...of`，因为它能够区分数组和类数组
 + 数组可以被转换为一个迭代器对象进行遍历
++ Map 是一个带键的数据集合，允许使用任何类型的键
++ Set 是一个没有键的数据集合，它的值是唯一的，即使重复添加
++ Map 和 Set 都可以被迭代
++ WeakMap 和 map 的区别就是，必须以对象作为键，不支持迭代，一旦对象失去了引用就会被回收，WeakSet 也是如此
 
 <!-- to be updated -->

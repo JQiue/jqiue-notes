@@ -19,8 +19,7 @@ TypeScript（以下简称 TS）是一种开源的渐进式包含类型的 JavaSc
 先安装编译器，自带的`tsc`编译命令无法运行程序，所以需要额外的安装`ts-node`以便于运行
 
 ```sh
-npm install -g typescript
-npm install -g ts-node
+npm install -g typescript ts-node
 ```
 
 编译`.ts`文件：
@@ -33,44 +32,67 @@ tsc Test.ts
 
 此外，还可以通过`tsconfig.json`来控制编译过程，用命令`tsc --init`即可生成
 
-## 类型系统
+## 原始数据类型
 
-JavaScript 无法检测是否按照约定的类型对变量进行复制，而 ts 的类型系统很好的解决了这一点，编译时会检查值是否符合，否则就会报错错误。ts 使用`:TypeAnnotation`语法来为变量，函数参数以及函数返回值添加类型注解，相当于强类型语言中的类型声明
-
-像一些 JavaScript 原始类型正好适用于 ts 的类型系统：`string`、`number`、`boolean`等。除了 JavaScript 中的类型，ts 还提供了以下类型：
-
-+ void
-+ any
-+ never
-+ 元组
-+ 枚举
-+ 高级类型
+ts 使用`:TypeAnnotation`语法来为变量，函数参数以及函数返回值添加类型注解，相当于强类型语言中的类型声明
 
 ```ts
 // 原始类型
 const num: number = 123;
 const str: string = '123';
 const bool: boolean = true;
-
-function foo(num:number):number {
-  return num;
-}
 ```
 
-在 ts 中，数组也可以定义类型，这样数组只能存储该类型的元素，而数组则是由 ts 提供了专门的类型语法，使用后缀`:type[]`
+`null/undefined`是所有类型的子类型，可以赋值给其他类型，`undefined/null`最大的价值就是体现在接口类型上，表示一个可缺省、未定义的属性或表示对象或属性可能是空值，`undefined`可以赋值给`void`类型，但反过来不行
+
+```ts
+let un: undefined = undefined;
+let nu: null = null;
+let vod: void = undefined;
+```
+
+## 任意值
+
+ts 还提供`any`类型，选择性的绕过静态检查的方法，如果没有指定一个变量的类型，默认就是`any`。声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值
+
+`any`类型会在对象的调用链中进行传导，所有`any`类型的对象的任意属性都是`any`类型
+
+## 数组
+
+在 ts 中，为数组定义类型，数组就只能存储该类型的元素，使用后缀`:type[]`或`:Array<type>`定义
 
 ```ts
 // 数组
 let arr1: string[] = [1, 2, 3];
+// 泛型定义
 let arr2: Array<number> = [1, 2, 3];
 ```
 
-有时候，数组可以被 ts 当作成元组，当确定了数组类型以及元素类型时，元组允许不同类型的元素
+还可使用接口，一般不会这么做，只会用来表示类数组
+
+```ts
+interface ArrayLikeObject {
+  [index: number]: number;
+  length: number;
+  callee: Function;
+}
+
+function foo() {
+  let args1: [] = arguments; // Error
+  let args2: ArrayLikeObject = arguments; // Correct
+}
+```
+
+## 元组
+
+当确定了数组类型以及元素类型时，即可创建一个元组，允许不同类型的元素
 
 ```ts
 // 元组
 let zs: [string, number] = ['zs', 23];
 ```
+
+## 对象类型
 
 `object`的定义则稍微复杂
 
@@ -80,21 +102,12 @@ let obj1: object = {a: 1, b: 2};
 let obj2: {a: number, y: number } = {a: 1, b: 2};
 ```
 
-ts 还提供`any`类型，选择性的绕过静态检查的方法，无法检测该类型的变量是否存在以及类型正确。`any`类型会在对象的调用链中进行传导，所有的`any`类型对象的任意属性都是`any`类型，`any`类型无法提供静态检查，如果没有充足的理由，否则不建议使用。如果没有不指定一个变量的类型，默认就是`any`
+`unknown`是用来描述类型并不确定的变量，可以将任意类型的值赋值给`unknown`变量，但`unknown`类型的值只能赋值给`unknown`和`any`，和`any`一样是一种顶级类型
 
-`unknown`是用来描述类型并不确定的变量，可以将任意类型的值赋值给`unknown`变量，但`unknown`类型的值只能赋值给`unknown`和`any`
-
-`void`表示没有返回值的函数
+`void`表示没有任何类型，和`any`是相反的，只是表示一个没有返回值的函数，声明一个`void`类型的变量没有意义，它的值只能为`undefined/null`
 
 ```ts
 let noReturn = () => {};
-```
-
-`undefined/null`都是十分鸡肋的类型，和 JavaScript 中的效果是一样的，`undefined`最大的价值就是体现在接口类型上，表示一个可缺省、未定义的属性，`undefined`可以赋值给`void`类型，但反过来不行。`null`主要体现在接口指定上，表示对象或属性可能是空值
-
-```ts
-let un: undefined = undefined;
-let nu: null = null;
 ```
 
 `never`表示永远不会有返回值的类型，`never`是所有类型的子类型，可以为所有类型赋值，但反过来不可以。`void`只是表示返回值为空，而`never`则表示函数永远没有返回值
@@ -128,7 +141,7 @@ enum Msg {
   Fail = '失败'
 }
 
-// 异构枚举
+// 异构枚举，数字和字符串混合
 enum Answer {
   Y,
   N = 'No'
@@ -138,6 +151,58 @@ enum Answer {
 enum E {a, b};
 let e1: E = 10;
 ```
+
+## 类型推断
+
+没有指定类型，ts 会按照一定规则去推断出一个类型
+
+```ts
+// 已经推断出是字符串类型
+let foo = 'foo';
+foo  = 1; // Error
+```
+
+如果在定义时没有初始化，之后不管有没有赋值都会被推断为`any`
+
+## 联合类型
+
+一般情况下，使用联合类型是因为不能确定变量最终值的类型，通过`|`运算符指定变量可以被赋值的类型范围
+
+```ts
+let foo:number|string|boolean;
+foo = 1;
+foo = '1';
+foo = true;
+```
+
+当 ts 不确定联合类型的变量是哪个类型的时候，只能访问此联合类型中所有类型的共有属性和方法
+
+```ts
+// Error，number 类型没有 length 属性
+function foo(something: string | number) {
+  console.log(something.length);
+}
+
+// string 和 number 都具有 toString 方法
+function foo(something: string | number) {
+  console.log(something.toString());
+}
+```
+
+ts 会推断联合类型变量被赋值时的类型，这意味着：
+
+```ts
+let foo: string | number;
+
+foo = "foo";
+console.log(foo.length); // Correct
+foo = 7;
+console.log(foo.length);  // Error，已被推断成 number
+```
+
+## 断言
+
+类型断言的操作对象必须满足某些约束关系，否则会得到 2352 的错误，类型断言就像“指鹿为马”一样，但仍然不够准确来形容“鹿”一定是“马”，“白马”和“黑马”才是“马”，对于 ts 类型断言的约束条件就是类型之间可以使用类型断言进行转换
 
 ts 无法做到绝对智能的类型检测，在某些情况下它是无法区分的
 
@@ -160,10 +225,6 @@ let arr: number[] = [1, 2, 3, 4]
 let than2: number = <number> arr.find(num => num > 2); // ok
 ```
 
-::: tip 类型断言
-类型断言的操作对象必须满足某些约束关系，否则会得到 2352 的错误，类型断言就像“指鹿为马”一样，但仍然不够准确来形容“鹿”一定是“马”，“白马”和“黑马”才是“马”，对于 ts 类型断言的约束条件就是类型之间可以使用类型断言进行转换
-:::
-
 “字面量 + as const”语法结构可以进行常量断言
 
 也可以在值后面添加`!`用来排除`null/undefined`
@@ -176,65 +237,115 @@ function sum(a: number, b:number): number {
 }
 ```
 
-## 联合类型
+## 交叉类型
 
-一个变量可能是多种类型，通过`|`运算符指定变量可以被赋值的类型范围
-
-```ts
-let foo:number|string|boolean;
-```
-
-数组也行：
+交叉类型既将多个类型合并成一个类型，产生类型叠加，使该类型包含所有类型的特性
 
 ```ts
-let arr: number[] | string[];
-```
+interface Person {
+  name: string,
+  age: number
+}
 
-同样的，在函数形参中也可以使用：
+interface Worker {
+  job: string,
+}
 
-```ts
-function sayRes(res: number|string) {
-  console.log(res);
+const jinqiu: Person & Worker = {
+  name: 'jinqiu',
+  age: 18,
+  job: '搬砖'
 }
 ```
 
-一般情况下，使用联合类型是因为不能确定变量最终值的类型
+## 类型别名
+
+可以使用`type`为类型定义一个别名
+
+```ts
+type Message = string | string[];
+let msg:Message;
+```
 
 ## 接口
 
-ts 也有接口的概念，它被用来校验数据类型是否符合要求
-
-没有使用接口之前：
+ts 也有接口的概念，它被用来校验数据类型是否符合要求，多一些和少一些都是不被允许的，所以赋值的时候，对象的形状必须和接口的形状保持一致
 
 ```ts
-let foo: { name: string; age: number } = {
-  name: "foo",
-  age: 22
-};
-
-let bar: { name: string; age: number } = {
-  name: "bar",
-  age: 22
-};
-```
-
-很明显造成了代码冗余，使用接口，规范类型
-
-```ts
-interface PersonalInfo {
+interface Person {
   name: string;
   age: number;
 }
 
-let foo: PersonalInfo = {
-  name: "foo",
-  age: 22
-};
+// Correct
+let foo: Person =  {
+  name: 'Foo',
+  age: 18
+}
 
-let bar: PersonalInfo = {
-  name: "bar",
-  age: 22
+// Error
+let bar: Person = {
+  name: 'Bar'
+}
+
+// Error
+let qux: Person = {
+  name: 'Qux',
+  age: 20,
+  gender: '男'
+}
+```
+
+不想完全匹配一个形状可以使用可选属性，使用`?:`
+
+```ts
+interface Person { 
+  name: string;
+  age?: number;
+}
+
+let foo: Person =  {
+  name: 'Foo'
+}
+```
+
+也可以定义任意属性，用来允许未知的属性
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  [prop: string]: any;
+}
+
+let foo: Person = {
+  name: "",
+  age: 0,
+  gender: "男"
 };
+```
+
+::: danger
+如果定义了任意属性，已经确定的属性类型和可选的属性类型必须是任意属性类型的子类型
+:::
+
+
+一个接口中只能定义一个任意属性，但是其他属性必须是任意属性类型的子集，所以任意属性可以使用联合类型，如果同时存在任意属性、可选属性，那么任意属性的数据类型要带`undefined`
+
+只读属性在对象创建后不可修改，使用`readonly`定义，必须第一次给对象赋值
+
+```ts
+interface Person {
+  name: string;
+  readonly age: number;
+}
+
+let foo:Person = {
+  name: 'foo',
+  age: 18
+}
+
+foo.age = 19; // Error
 ```
 
 ## 泛型
@@ -247,7 +358,7 @@ function foo<T>(param: T): T {
 }
 ```
 
-编译器可以自动知道参数类型，也可以手动指定
+编译会自动知道参数类型，也可以手动指定
 
 ```ts
 function foo<T>(param: T): T {
@@ -257,5 +368,51 @@ function foo<T>(param: T): T {
 foo('2');
 foo<number>(1);
 ```
+
+## 函数
+
+ts 也可以约束函数的输入和输出，多余和少于的参数都是不被允许的
+
+```ts
+let sum: (x:number, y:number) => num;
+function sumFC (x:number, y:number) {
+  return x + y;
+}
+
+sum = sumFC;
+```
+
+::: tip
+不要混淆定义函数的`=>`和箭头函数中的`=>`
+:::
+
+也可以使用接口也可以定义函数的形状
+
+```ts
+interface SumFc {
+  (x: number, y: number): number;
+}
+let sum: SumFc;
+```
+
+可选参数可以用来打破多余或少于的参数，可选参数必须在最后面
+
+```ts
+function foo(id: number, name: string, age?:number) {}
+```
+
+默认参数会被识别成可选参数，这意味着不用放在最后面的限制了
+
+```ts
+function foo(id: number, name: string = 'bar', age: number) {}
+```
+
+ts 的函数具有重载的能力
+
+```ts
+function add()
+```
+
+## 类
 
 <!-- more -->
