@@ -1,5 +1,5 @@
 ---
-title: 这年头还要学 jQuery ？
+title: jQuery
 category: Web
 article: false
 ---

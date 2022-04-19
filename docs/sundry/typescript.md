@@ -1,5 +1,5 @@
 ---
-title: 怎么用 TypeScript 做类型体操
+title: TypeScript
 category: 编程语言
 article: false
 ---
@@ -8,7 +8,7 @@ JavaScript 可以实现移动终端到后端服务，从物联网到神经网络
 
 为了搞定这些问题，Facebook 在 2014 年推出了 Flow，微软推出了 TypeScript，都致力于 JavaScript 的静态类型检查，如今显然 TypeScript 发展的更好，大量的框架和库都在使用 TypeScript 重构，在 ECMAScript 推出类型检查之前，TypeScript 是目前最好的解决方案
 
-TypeScript（以下简称 TS）是一种开源的渐进式包含类型的 JavaScript 超集，由微软创建并维护，目的是为了增强 JavaScript 的能力使应用扩展更加容易，主要功能之一是为 JavaScript 变量提供了类型支持，实现了静态检查，更容易重构代码和寻找 BUG，这些都是在编译期中实现的，将问题扼杀于摇篮之中，比如`[] == ''`，TypeScript 能够在这种不清不明的地方摆脱出来，TS 最后依然会被编译成标准的 JavaScript 运行在任何地方
+TypeScript（以下简称 ts）是一种开源的渐进式包含类型的 JavaScript 超集，目的是为了增强 JavaScript 的能力使应用扩展更加容易，主要功能之一是为 JavaScript 变量提供了类型支持，实现了静态检查，更容易重构代码和寻找 BUG，这些都是在编译期中实现的，将问题扼杀于摇篮之中，比如`[] == ''`，ts 能够在这种不清不明的地方摆脱出来，ts 最后依然会被编译成标准的 JavaScript 运行在任何地方
 
 ::: tip 类型体操
 在使用类型表达复杂逻辑时，往往需要一些特殊的写法才能利用类型系统的特点，或者遇到类型系统的限制，需要使用特殊的写法规避，这种写法就像体操运动有技术得分点一样，一定要把动作做到位才能得分，因此编写复杂类型被戏称为类型体操
@@ -28,7 +28,7 @@ npm install -g typescript ts-node
 tsc Test.ts
 ```
 
-之后就可以运行生成的`.js`文件，如果嫌手动执行麻烦，可以添加`--watch`参数监听文件的改变，以自动编译
+之后就可以运行生成的`.js`文件，如果嫌手动编译麻烦，可以添加`--watch`参数监听文件的改变，以自动编译
 
 此外，还可以通过`tsconfig.json`来控制编译过程，用命令`tsc --init`即可生成
 

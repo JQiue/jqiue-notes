@@ -1,5 +1,5 @@
 ---
-title: 使用 LaTeX 写作 
+title: 使用 LaTeX 写作
 category: 知识分享
 article: false
 ---

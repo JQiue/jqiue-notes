@@ -5,26 +5,24 @@ tag: [React]
 article: false
 ---
 
-React 是 FaceBook 开源的一套构建用户界面的 JavaScript 框架，React 的流行不仅局限于普通开发工程师对它的认可，其他大量的流行框架都借鉴 React。其中包括 Vue 设计之初很多灵感来源于此，包括 Vue3 很多新特性都借鉴了 React。React Hook 是一个非常开创性的功能，Vue3 中的 Compostion API 都借鉴了 React Hook 的思想
-
-<!-- to be updated -->
+React 是 FaceBook 开源的一套构建用户界面的 JavaScript 框架，React 的流行不仅局限于普通开发工程师对它的认可，其他大量的流行框架都借鉴 React。其中 Vue 设计之初很多灵感来源于此，包括 Vue3 很多新特性都借鉴了 React。React Hook 是一个非常开创性的功能，Vue3 中的 Compostion API 都借鉴了 React Hook 的思想
 
 ## JSX
 
-JSX（JavaScript XML）是 js 内定义的一套 XML 语法，可以解析出目标 js 代码,颠覆传统 js 写法。实质上 HTML 也是 xml 协议，由浏览器解析，而 JSX 是由 js 解析。当然也可以通过构建工具先解析生成，如 webpack
+JSX（JavaScript XML）是 js 内定义的一套 XML 语法，可以解析出目标 js 代码，颠覆传统 js 写法。实质上 HTML 也是 xml 协议，由浏览器解析，而 JSX 是由 js 解析。当然也可以通过构建工具解析，如 Babel
+
+不用觉得很奇怪，`div`就等于`<div></div>`
 
 ```js
 let div = <div></div>
 ```
 
-不用觉得很奇怪，`div`就等于`<div></div>`
-
 JSX 必须严格闭合
 
 ```js
-<div> //错误
+<div>       //错误
 <div></div> //正确
-<div/>//正确（也行，看需求）
+<div/>      //正确（也行，看需求）
 ```
 
 同级组件时必须拥有一个根元素，这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
@@ -39,11 +37,23 @@ JSX 必须严格闭合
   <div></div>
   <div></div>
 </div>
+
+// 正确
+<Fragment>
+  <div></div>
+  <div></div>
+</Fragment>
 ```
 
-当引用一个自定义组件时要大写首字母，否则会看做成一个普通的 HTML 标签，在一个组件中可以引用其他组件
+在一个组件中可以引用其他组件，当引用一个自定义组件时要大写首字母，否则会看做成普通标签
 
-可以在 JSX 中嵌入一个任何 js 支持的表达式，使用`{expression}`引入
+```js
+<Foo>
+  <Bar></Bar>
+</Foo>
+```
+
+可以在 JSX 中使用`{expression}`嵌入 js 支持的表达式
 
 ```js
 const content = 'Hello, World'
@@ -53,14 +63,7 @@ const content = 'Hello, World'
 在 JSX 内中写 js 注释必须在外面要套一个`{}`，很简单，会看做成表达式
 
 ```js
-class Foo extends Component {
-  render() {
-    return (
-      {/* 这是一个 div */}
-      <div></div>
-    )
-  }
-}
+<div>{/* 这是一个 div */}</div>
 ```
 
 不要使用危险的<code v-pre>dangerouslySetInnerHTML={{__html: value}}</code>禁止转义
@@ -121,13 +124,13 @@ function Foo() {
 
 但是，函数式组件它：
 
-+ 没有自己的 State 状态
++ 没有自己的 State
 + 没有 this
 + 没有生命周期
 
 ## 数据驱动
 
-每个类组件都可以在构造函数中维护一份属于自己的数据，在 JSX 中通过`{}`来引用，一旦`state`中的数据改变后，React 就会更新页面
+每个类组件都可以在构造函数中维护一份属于自己的数据，一旦`state`中的数据改变后，React 就会更新页面
 
 ```js
 class Foo extends Component {
@@ -138,9 +141,7 @@ class Foo extends Component {
     };
   }
   render() {
-    return (
-      <div>{this.state.value}</div>
-    )
+    return <div>{this.state.value}</div>
   }
 }
 ```
@@ -186,13 +187,9 @@ class Foo extends Component {
 
 React 中的数据是一种单向的数据流
 
-Props 是传入到组件中的数据，State 是组件自己的数据，Render 是组件的渲染函数
-
 当组件被创建的时候，Render 会调用一次，一个组件被`ReactDOM.render()`渲染的时候调用，由此依次调用其它的组件 Render
 
-不仅如此，组件的 State 发生变化，Render 也会重新执行一次
-
-当然，Props 变化也会导致 Render 执行一次
+State 和 Props 变化都会导致渲染
 
 ## 生命周期
 
@@ -210,7 +207,7 @@ Props 是传入到组件中的数据，State 是组件自己的数据，Render �
 
 ## Hook
 
-Hook 让函数组件更加强大
+Hook 让函数组件更加强大，Hook 本质是一个函数
 
 Hook 中的`useState`会返回一对值：当前状态和一个让你更新它的函数
 
@@ -257,9 +254,7 @@ const useMount = (callback) => {
 
 自定义 Hook 必须使用`use`开头，Hook 只能在其他 Hook 中、组件中运行
 
-`useEffect`允许返回一个函数，当组件被卸载时执行这个函数，这会创建一个闭包
-
-所以一个自定义的节流 Hook，就可以这样定义了
+`useEffect`允许返回一个函数，当组件被卸载时执行这个函数，这会创建一个闭包。所以一个自定义的节流 Hook，就可以这样定义：
 
 ```js
 const useDebounce = (value, delay) => {
@@ -356,6 +351,17 @@ import { useState, useEffect, createContext } from 'react';
 
 const NumContext = createContext();
 
+
+function App() {
+  const [msg, setMsg] = useState('你好世界');
+
+  return <div>
+    <NumContext.Provider value={{msg, setMsg}}>
+      <A></A>
+    </NumContext.Provider>
+  </div> 
+}
+
 function A() {
   return <B></B>
 }
@@ -367,16 +373,6 @@ function B() {
     </NumContext.Consumer>
   </div>
 }
-
-function App() {
-  const [msg, setMsg] = useState('你好世界');
-
-  return <div>
-    <NumContext.Provider value={{msg, setMsg}}>
-      <A></A>
-    </NumContext.Provider>
-  </div> 
-}
 ```
 
 这代码太复杂了，没关系，`useContext`能简化这一点：
@@ -386,15 +382,6 @@ import { useState, useEffect, createContext, useContext } from 'react';
 
 const NumContext = createContext();
 
-function A() {
-  return <B></B>
-}
-
-function B() {
-  const {msg, setNum} = useContext(NumContext);
-  return <div>{msg}<div/>
-}
-
 function App() {
   const [msg, setMsg] = useState('你好世界');
 
@@ -404,33 +391,18 @@ function App() {
     </NumContext.Provider>
   </div> 
 }
-```
 
-受控组件和不受控组件只存在于表单元素，受控组件即表单元素的`value`需要通过`useState`设置，反之就是不受控
+function A() {
+  return <B></B>
+}
 
-```js
-function App() {
-  const [msg, setMsg] = useState('你好世界');
-  const inputChange = (e) => setMsg(e.target.value);
-  return <div>
-    <input type="text" value={msg} onChange={inputChange}/>
-  </div> 
+function B() {
+  const {msg, setNum} = useContext(NumContext);
+  return <div>{msg}<div/>
 }
 ```
 
-不可控组件主要是通过`ref`引用，通过`useRef`创建可变对象，其中可变对象的`current`会返回该元素对象
-
-```js
-function App() {
-  const element = useRef(null);
-  console.log(element.current); // <input type="text"/>
-  return <div>
-    <input type="text" ref={element}/>
-  </div> 
-}
-```
-
-如果在一个父组件中使用了子组件，此时父组件的每次数据更新都会重新渲染子组件，这非常耗性能，没事，`memo`帮忙处理这一点
+父组件的每次数据更新都会重新渲染子组件，这非常耗性能，`memo`帮忙处理这一点
 
 ```js
 import { useState, memo } from 'react';
@@ -452,9 +424,7 @@ const B = memo(function () {
 
 ## 绑定事件
 
-事件是驼峰式的，
-
-为元素绑定事件处理程序，如果没有参数，默认传入事件对象。元素中的事件始终是驼峰式，在类组件中要转发`this`，否则会丢失`state`，修改`state`只能通过`setState`方法
+如果为元素绑定事件处理程序，如果没有参数，默认传入事件对象。元素中的事件始终是驼峰式，在类组件中要转发`this`，否则会丢失`state`，修改`state`只能通过`setState`方法
 
 ```js
 class Foo extends Component {
@@ -501,7 +471,33 @@ class TodoList extends Component {
 }
 ```
 
-注意当作用于普通 HTML 标签时返回 DOM 对象，当作用于一个组件时返回组件对象
+当作用于普通 HTML 标签时返回 DOM 对象，当作用于一个组件时返回组件对象
+
+## 受控组件和不受控组件
+
+受控组件和不受控组件只存在于表单元素，受控组件即表单元素的`value`需要通过`useState`设置，反之就是不受控
+
+```js
+function App() {
+  const [msg, setMsg] = useState('你好世界');
+  const inputChange = (e) => setMsg(e.target.value);
+  return <div>
+    <input type="text" value={msg} onChange={inputChange}/>
+  </div> 
+}
+```
+
+不可控组件主要是通过`ref`引用，通过`useRef`创建可变对象，其中可变对象的`current`会返回该元素对象
+
+```js
+function App() {
+  const element = useRef(null);
+  console.log(element.current); // <input type="text"/>
+  return <div>
+    <input type="text" ref={element}/>
+  </div> 
+}
+```
 
 ## 列表渲染
 
@@ -529,7 +525,7 @@ class Foo extends Component {
 }
 ```
 
-一定要传输`key`值，会提高渲染性能
+一定要传输`key`值，会提高性能
 
 ## 条件渲染
 
@@ -568,13 +564,13 @@ ReactDOM.render(
 
 ## Ant Design
 
-[Ant](https://ant.design/index-cn) 是一款非常优秀的 React UI 组件库，只需要在项目中安装，即可使用大量封装好的组件
+[Ant](https://ant.design/index-cn) 是一款非常优秀的 React UI 组件库
 
 ```sh
 npm install antd
 ```
 
-在文件中引入：
+引入：
 
 ```js
 import 'antd/dist/antd.css';
@@ -708,6 +704,9 @@ export default connect(mapStateToprops, mapDispatchToProps)(A);
 
 不过，`connect`太麻烦了，react-redux 提供了对应的 hook 简化操作：
 
++ `useSelector(callback(state))` - 接受一个回调函数，并传入状态
++ `useDispath()`：获取 dispatch 方法用于提交 Action
+
 ```js
 import { useSelector, useDispatch } from "react-redux";
 
@@ -727,4 +726,34 @@ function Foo(props) {
 }
 ```
 
-+ `useSelector(callback(state))` - 接受一个回调函数，并传入状态
+## Redux-Saga
+
+由于 Reducer 是个纯函数，当遇到异步操作时，就不可避免副作用，为了解决这个问题，必须在发送 Action 之前就整理好数据
+
+```js
+import { useSelector, useDispatch } from "react-redux";
+import axios from 'axios';
+
+function Foo(props) {
+  const result = useSelector((state) => {...state});
+  const dispatch = useDispatch();
+  const onClick = async () => {
+    const { data } = await axios.get('http://httptest.jinqiu.wang');
+    dispatch({type: '', payload: data});
+  }
+  return (
+    <div>
+      <p></p>
+      <button onClick={onClick}>click</button>
+    </div>
+  );
+}
+```
+
+redux 借鉴了 Express 和 Koa 的中间件的概念，将 Actoin -> Reducer 变成了 Action -> Middlewares -> Reducer。这种机制可以改变数据流，实现异步 Action，过滤，日志输入，异常报告等
+
+Redux-Saga 就是 Redux 的一个中间件，用来处理副作用（异步），采用的是 ES6 的 Generator
+
+```js
+
+```
