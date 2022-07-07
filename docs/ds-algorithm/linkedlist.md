@@ -26,9 +26,9 @@ article: false
 + 数据
 + 指向下一个节点的引用
 
-<CodeGroup>
+::: code-tabs
 
-<CodeGroupItem title="C" active>
+@tab C
 
 ```c
 #include "stdio.h"
@@ -208,9 +208,7 @@ void print(LinkList list)
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
+@tab JavaScript
 
 ```js
 class Node {
@@ -225,7 +223,15 @@ class LinkedList {
     this.count = 0;
     this.head = null;
   }
+  // 头插法
   push(data) {
+    let node = new Node(data);
+    node.next = this.head;
+    this.head = node;
+    this.count++;
+  }
+  // 尾插法
+  append(data) {
     let node = new Node(data);
     if (this.head == null) {
       this.head = node;
@@ -298,6 +304,7 @@ class LinkedList {
     const index = this.indexOf(data);
     return this.removeAt(index);
   }
+  // 反转（迭代）
   reverse() {
     let current, prev, next;
     current = this.head;
@@ -310,6 +317,7 @@ class LinkedList {
     }
     this.head = prev;
   }
+  // 反转（递归）
   reverseRecursion(node) {
     if(node.next == null) {
       this.head = node;
@@ -325,19 +333,10 @@ class LinkedList {
   size() {
     return this.count;
   }
-  print() {
-    let node = this.head;
-    while(node != null) {
-      console.log(node.data);
-      node = node.next;
-    }
-  }
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
+:::
 
 ## 双向链表
 

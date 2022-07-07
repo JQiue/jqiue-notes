@@ -22,9 +22,9 @@ article: false
 + 插入和删除元素需要移动元素
 + 不能确定元素个数，产生额外的空间浪费
 
-<CodeGroup>
+::: code-tabs
 
-<CodeGroupItem title="C" active>
+@tab C
 
 ```c
 #include "stdio.h"
@@ -220,9 +220,7 @@ void toString(SqList *list)
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
+:::
 
 ## 多维数组
 

@@ -204,6 +204,22 @@ console.log(foo.length);  // Error，已被推断成 number
 
 类型断言的操作对象必须满足某些约束关系，否则会得到 2352 的错误，类型断言就像“指鹿为马”一样，但仍然不够准确来形容“鹿”一定是“马”，“白马”和“黑马”才是“马”，对于 ts 类型断言的约束条件就是类型之间可以使用类型断言进行转换
 
+```ts
+值 as 类型
+// or
+<类型>值
+```
+
+由于第二种语法可能与泛型冲突，所以最好使用第一种
+
+常用的断言场景：
+
++ 将一个联合类型断言为其中一个类型
++ 将一个父类断言为更加具体的子类
++ 将任何一个类型断言为 any
++ 将 any 断言为一个具体的类型
+
+
 ts 无法做到绝对智能的类型检测，在某些情况下它是无法区分的
 
 ```ts
@@ -218,24 +234,10 @@ let arr: number[] = [1, 2, 3, 4]
 let than2: number = arr.find(num => num > 2) as number; // ok
 ```
 
-也可以使用`<type>`形式
-
-```ts
-let arr: number[] = [1, 2, 3, 4]
-let than2: number = <number> arr.find(num => num > 2); // ok
-```
-
-“字面量 + as const”语法结构可以进行常量断言
-
 也可以在值后面添加`!`用来排除`null/undefined`
 
-可以在函数的形参中定义类型，限定参数，保证函数是可靠的
+断言并不是类型转换，不会真的影响到变量的类型
 
-```js
-function sum(a: number, b:number): number {
-  return a + b;
-}
-```
 
 ## 交叉类型
 
@@ -256,15 +258,6 @@ const jinqiu: Person & Worker = {
   age: 18,
   job: '搬砖'
 }
-```
-
-## 类型别名
-
-可以使用`type`为类型定义一个别名
-
-```ts
-type Message = string | string[];
-let msg:Message;
 ```
 
 ## 接口
@@ -329,7 +322,6 @@ let foo: Person = {
 如果定义了任意属性，已经确定的属性类型和可选的属性类型必须是任意属性类型的子类型
 :::
 
-
 一个接口中只能定义一个任意属性，但是其他属性必须是任意属性类型的子集，所以任意属性可以使用联合类型，如果同时存在任意属性、可选属性，那么任意属性的数据类型要带`undefined`
 
 只读属性在对象创建后不可修改，使用`readonly`定义，必须第一次给对象赋值
@@ -346,27 +338,6 @@ let foo:Person = {
 }
 
 foo.age = 19; // Error
-```
-
-## 泛型
-
-泛型即对类型变量的一个别称，由于未来不确定是否为其它类型，那么为类型声明一个变量是可行的。`T`是对类型声明一个变量，在使用的时候指定该类型，进行泛型擦除操作
-
-```ts
-function foo<T>(param: T): T {
-  return param;
-}
-```
-
-编译会自动知道参数类型，也可以手动指定
-
-```ts
-function foo<T>(param: T): T {
-  return param;
-}
-
-foo('2');
-foo<number>(1);
 ```
 
 ## 函数
@@ -407,12 +378,159 @@ function foo(id: number, name: string, age?:number) {}
 function foo(id: number, name: string = 'bar', age: number) {}
 ```
 
-ts 的函数具有重载的能力
+ts 的函数具有重载的能力，即可以声明多个同名，但参数类型不同的函数，在调用时会自动给根据参数类型匹配对应的函数
 
 ```ts
-function add()
+function add() {}
+```
+
+## 声明语句
+
+当使用第三方库时，需要引用它的声明文件，才能获得对应的代码补全、接口提示等功能
+
+比如 jQuery，在 ts 中并不知道`$`和`jQuery`是什么东西，使用时会报错，所以需要使用`declare var`来定义它的类型：
+
+```ts
+declare var jQuery: (selector: string) => any;
+```
+
+并没有声明变量，只是定义了全局变量`jQuery`的类型
+
+除了`declare var`以外，还有很多其他声明语句：
+
++ `declare function`声明全局方法
++ `declare class`声明全局类
++ `declare enum`声明全局枚举类型
++ `declare namespace`声明（含有子属性的）全局对象
++ `interface`和`type`声明全局类型
++ `export`导出变量
++ `export default` ES6 默认导出
++ `export =`CommonJS 导出模块
++ `export asnamespace`UMD 库声明全局变量
++ `declare global`扩展全局变量
++ `declare module`扩展模块
++ `/// <reference />`三斜线指令
+
+通常会将声明语句放到一个单独的文件`xxx.d.ts`中，必须以`.d.ts`为后缀，ts 会解析该后缀文件，在其它文件中就可以使用类型定义了
+
+对于类型声明文件，有一个`@types`用来管理所有第三方库的声明文件，只需要安装对应的声明模块即可，比如`@types/jquery`，同时在这个[页面](https://www.typescriptlang.org/dt/search?search=)可以搜索想要的声明模块
+
+JavaScript 中的内置对象已经在 ts 中定义好了类型，但 Node.js 不是内置对象的一部分，需要引入`@types/node`
+
+## 类型别名
+
+可以使用`type`为类型定义一个别名
+
+```ts
+type Message = string | string[];
+let msg:Message;
+```
+
+也可以定义基础类型的取值范围
+
+```ts
+type name = 'foo' | 'bar' | 'qux'
 ```
 
 ## 类
 
-<!-- more -->
+在 ts 中，可以使用三种修饰符来控制属性或方法的访问权限：
+
++ `public` - 可以被任何人访问，默认的
++ `private` - 不能再类外部访问，子类也不允许访问
++ `protected` - 不能在类外部访问，但允许子类访问
+
+当构造函数修饰为`private`时，该类不允许被继承或者实例化，当构造函数修饰为`protected`时，该类只允许被继承
+
+可以使用`abstract`定义一个抽象类，抽象类不允许实例化，只能被子类继承，子类必须实现
+
+```ts
+abstract class Animal {
+  public name;
+  public constructor(name) {
+    this.name = name;
+  }
+  public abstract run();
+}
+
+class Cat extends Animal {
+  public eat() {
+    console.log(`${this.name} is eating.`);
+  }
+}
+
+let cat = new Cat('Tom');
+```
+
+接口不仅可以定义对象的形状，还可以抽离类的共有特性，并被类所实现
+
+```ts
+interface Person {
+  say(): void;
+}
+
+class student implements Person {
+  say() {}
+}
+```
+
+一个类可以实现多个接口
+
+```ts
+interface Person {
+  say(): void;
+}
+
+interface Student {
+  goToSchool(): void;
+}
+
+class student implements Person, Student {
+  say() {}
+  goToSchool() {}
+}
+```
+
+接口也可以继承接口
+
+## 泛型
+
+泛型即对类型变量的一个别称，由于目前不确定类型，那么为类型声明一个变量是可行的。`T`是对类型声明一个变量，在使用的时候指定该类型，进行泛型擦除操作
+
+```ts
+function foo<T>(param: T): T {
+  return param;
+}
+```
+
+编译会自动知道参数类型，也可以手动指定
+
+```ts
+function foo<T>(param: T): T {
+  return param;
+}
+
+foo('2');
+foo<number>(1);
+```
+
+泛型可以被约束，只允许传入包含`length`属性的变量
+
+```ts
+function foo<T extends { length: number }>(args: T):T {
+  console.log(args.length);
+  return args;
+}
+```
+
+可以使用在接口上
+
+```ts
+interface {}
+```
+
+也可以使用在类上
+
+```ts
+class Foo<T> {}
+```

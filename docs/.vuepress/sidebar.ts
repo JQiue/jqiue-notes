@@ -1,4 +1,4 @@
-import { defineSidebarConfig } from "vuepress-theme-hope";
+import { sidebar } from "vuepress-theme-hope";
 
 const computer: string[] = [
   "",
@@ -95,7 +95,7 @@ const webapi: string[] = [
   "drag",
   "canvas",
   "worker",
-  "WebRTC",
+  "webrtc",
   "wasm",
 ];
 
@@ -156,6 +156,7 @@ const sundry: string[] = [
   "cloud-computing",
   "teamwork",
   "software-system-design",
+  "react-native",
 ];
 
 const vue: string[] = ["", "component", "vuex", "router", "transition"];
@@ -166,7 +167,7 @@ const express_koa: string[] = ["", "koa"];
 
 const spring: string[] = [""];
 
-export default defineSidebarConfig({
+export const zh = sidebar({
   "/about": [""],
   "/computer/": computer,
   "/c/": c,

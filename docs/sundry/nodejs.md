@@ -72,12 +72,14 @@ foo((err, result) => {
 });
 ```
 
-## 安装
+## 安装 && 运行
+
+安装：
 
 + 用于所有主流平台的官方软件包，可访问[Node.js 官网](http://nodejs.cn/download/)
 + 使用[NVM（Node 版本管理器）](https://github.com/coreybutler/nvm-windows/releases) 安装 Node.js
 
-## 运行 JavaScript
+运行 JavaScript
 
 + 交互式 - 终端输入`node`即可进入交互式编程
 + 脚本式 - 将代码写到文件中，在命令行中输入`node 文件名`
@@ -235,7 +237,7 @@ timeout
 
 ## NPM
 
-在模块化中，可以将任何文件看成一个模块，但是有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“。简而言之，一个包中有一个或多个模块，在 Node.js 中为了方便开发人员发布、安装和管理包, Node.js 推出了一个包管理工具：**NPM（Node Package Manager）**
+有些复杂功能可能需要多个模块组成，维护多个模块关系的就是”包“。简而言之，一个包中有一个或多个模块，为了方便开发人员发布、安装和管理包, Node.js 推出了一个包管理工具：**NPM（Node Package Manager）**
 
 一个完整符合 CommonJS 的包目录应该包含这些文件：
 
@@ -245,7 +247,7 @@ timeout
 + test - 存放进行单元测试的代码
 + package.json - 包描述文件
 
-包描述文件（package.json）用于表达非代码相关的信息，是一个 JSON 格式的文件，位于包的根目录下，是包的重要组成部分，NPM 的所有行为都与包描述的文件息息相关，package.json 可以有以下字段：
+包描述文件（package.json）用于表达非代码相关的信息，是一个 JSON 格式的文件，位于包的根目录下，是包的重要组成部分，NPM 的所有行为都与包描述的文件息息相关，可以有以下字段：
 
 + name：包名。小写字母和数字组成，包名必须是唯一的，否则无法对外发布
 + author：包的作者。由`name`、`email`、`url`组成
@@ -276,13 +278,13 @@ timeout
 
 NPM 由三个独立的部分组成：
 
-+ **网站**：是开发者查找包（package）、设置参数以及管理 npm 使用体验的主要途径
++ **网站**：是开发者查找包（package）、设置参数以及管理 NPM 使用体验的主要途径
 + **注册表**：是一个巨大的数据库，保存了每个包（package）的信息
 + **命令行工具**：CLI 通过终端运行，开发者通过 CLI 与 NPM 打交道
 
 在此之前，为了确认 NPM 没有随着 Node.js 安装出现问题，应该先执行一下`npm -v`，这会打印 NPM 的版本信息。在并不熟悉 NPM 命令之前，可以直接执行`npm`以获得帮助信息，而`npm help <command>`会详细查看具体命令说明
 
-在使用 NPM 创建项目之前，目录下应该至少有一个 package.json 文件，它对 NPM 非常重要，可以手动创建，也可以通过`npm init`命令生成。此为初始化命令，会在运行此命令的目录下创建，同时每行会出现一个问题供选择，这些问题都会被记录到 package.json 中，这种流程式的命令行不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
+在使用 NPM 创建项目之前，可以通过`npm init`在运行此命令的目录下创建包描述文件。同时每行会出现一个问题供选择，这些都会被记录到 package.json 中，这种流程不是必须的，可以添加`--yes`或`-y`参数来生成默认的 package.json
 
 ```json
 {
@@ -296,7 +298,7 @@ NPM 由三个独立的部分组成：
 }
 ```
 
-接下来开始为项目安装一些所需要的依赖包了，这是 NPM 中最常用的命令，它的命令是`npm install <package>`，也可缩写成`npm i <package>`，它会在当前目录下创建一个 node_modules 目录，并将所下载的包解压到该目录中，于此同时，它会将依赖的包名写入到 package.json 中的`dependencies`字段里，当安装好依赖包后，就可以在代码中使用`require()`来引入它
+安装包是 NPM 中最常用的命令，它的命令`npm install <package>`，可缩写成`npm i <package>`，它会在当前目录下创建一个 node_modules 目录，并将所下载的包解压到该目录中，于此同时，它会将依赖的包名写入到 package.json 中的`dependencies`字段里，因此就可以在代码中使用`require()`来引入它
 
 ::: tip
 这个包会从远程的 NPM 官方仓库中下载，由于官方仓库可能较慢，推荐使用以下命令更换淘宝镜像源
@@ -309,7 +311,7 @@ npm config set registry https://registry.npm.taobao.org
 
 如果包中有命令行工具，那么需要添加额外的`-g`参数进行全局模式安装，通过全局模式安装的包都被安装到了一个统一的 node_modules 目录中。这并不意味着全局模式的包可以在任意地方被`require()`引用，只是为了将包作为一个全局可用的可执行命令
 
-卸载包使用`npm uninstall <package> (--save/-S)`，删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除掉，默认是卸载当前命令执行目录的包（可以省略`-s`），卸载全局的包则需要加上`-g`。如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
+卸载包使用`npm uninstall <package> (--save/-S)`，删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除，默认是卸载当前命令执行目录的包（可以省略`-s`），卸载全局的包则需要加上`-g`。如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
 
 ::: warning
 如果卸载了 Node.js，最好手动清理`C:\Users\用户\AppData\Roaming\npm`和`C:\Users\用户\AppData\Roaming\npm-cache`（Windows），给下一次的安装带来干净的环境
@@ -327,11 +329,11 @@ package-lock.json 是在使用`npm install`时生成的文件，记录包的来�
 
 NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 
-## 发布
+## 发布包
 
-我们可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户
+可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户
 
-输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包即可
+输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包
 
 ::: tip
 在发布前，最好检查一下源地址，必须是官方源地址
@@ -347,9 +349,9 @@ NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 
 通常更新一个包版本，需要手动修改版本号，然后再进行发布，但是 NPM 提供了几个命令用来更好的遵从 Semver 规范：
 
-+ `npm version patch` - 升级补丁版本号
-+ `npm version minor` - 升级小版本号
 + `npm version major` - 升级大版本号
++ `npm version minor` - 升级小版本号
++ `npm version patch` - 升级补丁版本号
 
 ## NPX
 

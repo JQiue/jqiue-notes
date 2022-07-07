@@ -12,12 +12,12 @@ sticky: true
 
 ![照骗（长太丑浏览器并不想显示）](https://jinqiu.wang/404)
 
-<CodeGroup>
+::: code-tabs
 
-<CodeGroupItem title="Person" active>
+@tab Attribute
 
 ```js
-const Person = {
+const Attribute = {
   'Pseudo names': 'JQiue',
   age: 'Younger than the earth',
   gender: 'Male',
@@ -26,30 +26,29 @@ const Person = {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="Skills">
+@tab Skills
 
 ```js
 const Skills = {
   C: 'Beginner',
   Java: 'Beginner',
-  JavaScript: 'Intermediate',
+  JavaScript: 'Beginner',
   Python: 'Beginner',
+  TypeScript: 'Beginner',
   CSS: 'Beginner',
   NodeJS: 'Beginner',
   React: 'Beginner',
-  Vue: 'Intermediate',
+  Vue: 'Beginner',
   MySQL: 'Beginner',
   MongoDB: 'Beginner',
   Linux: 'Beginner',
-  Git: 'Beginner'
+  Git: 'Beginner', 
+  FrontEnd: 'Beginner',
+  BackEnd: 'Beginner'
 } // This is just the tip of the iceberg
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="SocialLinks">
+@tab SocialLinks
 
 ```js
 const SocialLinks = {
@@ -61,19 +60,13 @@ const SocialLinks = {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="Projects">
+@tab Projects
 
 ```js
-const projects = {
+const Projects = {
   `JQiue's notes`: 'Personal site created using Vuepress',
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 内容和排版
 
@@ -127,7 +120,7 @@ const projects = {
 + 应用框架
   + [Vue](/vue/)
   + [React](/react/)
-  + [Express-koa](/express-koa/)
+  + [Express/koa](/express-koa/)
   + [Spring](/spring/)
 + [服务器 && 容器](/sundry/server/)
   + Tomcat
