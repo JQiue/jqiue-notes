@@ -204,10 +204,6 @@ product1.init();
 
 单例模式就是保证一个类只有一个实例，实现方法就是先判断实例是否存在，如果存在直接返回，不存在就创建了再返回，确保一个类只有一个实例对象
 
-<CodeGroup>
-
-<CodeGroupItem title="Java" active>
-
 ```java
 class SingleObject {
   private static SingleObject instance = null;
@@ -232,10 +228,6 @@ public class Main {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 class SingleObject {}
 
@@ -253,10 +245,6 @@ let single1 = SingleObject.getInstance();
 let single2 = SingleObject.getInstance();
 console.log(single1 === single2); // true
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 意义：
 

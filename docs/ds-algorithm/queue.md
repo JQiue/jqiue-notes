@@ -8,10 +8,6 @@ article: false
 
 ## 数组实现
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -115,10 +111,6 @@ Status deQueue(Queue *q, ElementType *e)
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 class Queue {
   constructor () {
@@ -158,15 +150,7 @@ class Queue {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 链式实现
-
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
 
 ```c
 #include "stdio.h"
@@ -259,17 +243,9 @@ Status deQueue(LinkedQueue q, DataType *data) {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 双端队列
 
 双端队列是一种允许从队头和队尾同时添加或移除元素的特殊队列
-
-<CodeGroup>
-
-<CodeGroupItem title="JavaScript">
 
 ```js
 class Deque {
@@ -331,9 +307,6 @@ class Deque {
   }
 }
 ```
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 循环队列
 
@@ -343,10 +316,6 @@ class Deque {
 
 普通队列的元素都会被插入到队尾，优先级队列的元素再插入的同时会考虑该元素的优先级来决定它的位置
 
-
-<CodeGroup>
-
-<CodeGroupItem title="JavaScript" active>
 
 ```js
 class Element {
@@ -409,10 +378,6 @@ class PriorityQueue {
   }
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 阻塞队列
 

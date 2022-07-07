@@ -9,10 +9,6 @@ article: false
 
 集合是由一组无序且唯一（即不能重复）的项组成的，该数据结构使用了与有限集合相同的数学概念，但应用在计算机科学的数据结构中，集合中没有顺序概念
 
-<CodeGroup>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 class Set {
   constructor() {
@@ -87,10 +83,6 @@ class Set {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ### 多重集
 
 一般的集合只能计算元素有或者没有，但多重集可以计算同一个元素出现的次数，一个元素在多重集中出现的次数被称为重复度
@@ -98,10 +90,6 @@ class Set {
 ## 字典
 
 字典中，存储的是键值对，其中键名是用来查询特定元素的。字典和集合很相似，集合以值的形式存储元素，字典则是以键值的形式来存储元素。字典也称作映射、符号表或关联数组，在计算机科学中，字典经常用来保存对象的引用地址
-
-<CodeGroup>
-
-<CodeGroupItem title="JavaScript">
 
 ```js
 class ValuePair {
@@ -190,10 +178,6 @@ class Dictionary {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 散列表
 
 数组查找已经够快了，但是只能根据下标进行访问，如果根据内容查找，依然需要遍历每一个数组元素
@@ -208,10 +192,6 @@ class Dictionary {
 ::: tip 幻数
 在编程中直接使用的常数
 :::
-
-<CodeGroup>
-
-<CodeGroupItem title="JavaScript">
 
 ```js
 class ValuePair {
@@ -276,10 +256,6 @@ class HashTable {
   }
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 有时候，一些建会产生相同的哈希值，当不同的值在哈希表中对应相同位置时，就被称为冲突。使用一个数据结构来保存数据的目的显然不是丢失掉这些数据，而是通过某种方法来将它们保存起来，因此发生这种情况时必须要去解决
 

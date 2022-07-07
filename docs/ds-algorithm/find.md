@@ -12,10 +12,6 @@ article: false
 
 时间复杂度：O(n)
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
 ```c
 int linearSearch(int *list, int value, int size) {
   for (int i = 0; i < size; i++)
@@ -26,9 +22,6 @@ int linearSearch(int *list, int value, int size) {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript" active>
 
 ```js
 function linearSearch(list) {
@@ -40,19 +33,11 @@ function linearSearch(list) {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 二分查找
 
 也叫折半查找，将列表划分为一个候选区，通过与候选区的中间值比较，如果正好相等就代表找到了，如果大于中间值，则扔掉中间值左边的候选区，如果小于中间值则扔掉中间值右边的候选区，以此往复直到找到或者没有为止，但只适用于具有顺序排列的结构
 
 时间复杂度：O(logn)
-
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
 
 ```c
 int binarySearch(int *list, int value, int size) {
@@ -73,10 +58,6 @@ int binarySearch(int *list, int value, int size) {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 function binarySearch(list, value) {
   let left = 0;
@@ -94,10 +75,6 @@ function binarySearch(list, value) {
   }
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 内插搜索
 

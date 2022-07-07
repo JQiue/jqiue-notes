@@ -89,10 +89,6 @@ class Node {
 
 二叉树的搜索、插入、删除的时间复杂度都是 log(n)
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -192,10 +188,6 @@ Status traverse(Node *root){
   traverse(root->right);
 }
 ```
-
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
 
 ```js
 /* 节点 */
@@ -315,10 +307,6 @@ class BinarySearchTree {
   }
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 树的遍历
 

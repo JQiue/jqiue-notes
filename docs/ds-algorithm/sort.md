@@ -12,10 +12,6 @@ article: false
 
 时间复杂度：O(n^2^)
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
 ```c
 void swap(int *list, a, b){
 
@@ -36,19 +32,11 @@ void bubble(int *list, int size){
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 选择排序
 
 找到元素中最小的值并放在最前面，接着找到第二小的值并放到第二位，以此类推
 
 时间复杂度：O(n^2^)
-
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
 
 ```c
 void select(int *list, int size){
@@ -69,19 +57,11 @@ void select(int *list, int size){
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 插入排序
 
 每次都会排好一个元素，如果第一个元素已经排好序，它会和第二个元素进行比较，第二个元素将会决定待在原位置还是插入到第一个元素之前，这样两个元素已经排好序，接着和第三个元素比较，以此类推
 
 时间复杂度：O(n^2^)
-
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
 
 ```c
 void insert(int *list, int size) {
@@ -100,10 +80,6 @@ void insert(int *list, int size) {
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 function insert(array) {
   let temp;
@@ -119,10 +95,6 @@ function insert(array) {
   return array;
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 归并排序
 

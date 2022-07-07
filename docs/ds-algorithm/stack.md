@@ -20,10 +20,6 @@ category: 数据结构与算法
 
 不需要额外的内存空间
 
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
-
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -133,10 +129,6 @@ Status peek(SqStack s)
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 class Stack {
   constructor() {
@@ -168,17 +160,9 @@ class Stack {
 }
 ```
 
-</CodeGroupItem>
-
-</CodeGroup>
-
 ## 链式实现
 
 和使用数组实现的栈相比，它有无限的大小，但是需要额外的内存
-
-<CodeGroup>
-
-<CodeGroupItem title="C" active>
 
 ```c
 #include "stdio.h"
@@ -264,10 +248,6 @@ Status peek(LinkedStack s)
 }
 ```
 
-</CodeGroupItem>
-
-<CodeGroupItem title="JavaScript">
-
 ```js
 class Stack {
   constructor() {
@@ -307,10 +287,6 @@ class Stack {
   }
 }
 ```
-
-</CodeGroupItem>
-
-</CodeGroup>
 
 ## 反转
 
