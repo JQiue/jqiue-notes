@@ -5,6 +5,45 @@ tag: [英语]
 article: false
 ---
 
+## 数字表达
+
+one two three four five six seven eight nine ten
+eleven twelve thirteen fourteen fifteen
+twenty thirty forty
+
+超过 20 用“-”连接
+
+一百零几
+几百几十几
+一千零几
+几千几百几
+
+## 序数词
+
+first second third fourth fifth ninth tenth
+eleventh twelfth thirteenth fifteenth ...
+
+## time 的表达
+
+time 在英语中作不可数名词表示“时间”，作可数名词表示“次数”。3 次及以上通常用”基数词 + times“表示：
+
+```
+once 1 次
+twice 2 次
+three times 3 次
+five times 5 次
+```
+
+## 时间表达
+
+在某个钟点 1 到 30 分钟内，常用 past 表示，在某个钟点 31 到 下一个整点常用 to 表示，会进行换算
+
++ at 表示确切的时间
++ on 表示周和月份中的某一天
++ in 表示一天中的某段时间，年份，季节，节日，时期
+
+英语中表示时间的次序是从小到大
+
 ## 简单陈述句
 
 简单陈述句是从两个角度来评价一个句子，句子是用来表达不同的用处的，比如疑问、感叹、命令。如果即不疑问、也不感叹或命令，就是陈述一件事，把它说出来这就是陈述句，陈述句是使用频率最高的，疑问句、感叹句、祈使句都是从陈述句中演变而来
@@ -87,11 +126,31 @@ I got very angry. got 表示“变得”含义，是主系表
 
 在简单句中谓语动词并不是由一个单词组成的，只要在“三态一否”中变化，无论怎么变，都会将它们看做成一个整体的谓语动词
 
+## 情态动词
+
+must 是情态助动词
+
 ## 时态初步
 
 时态是从两个角度来看待一个动作的：动作发生的时间，动作发生的状态。既然看待的是一个动作，那么自然是通过谓语动词的变化来体现的
 
 英语中有 16 种时态，时间：过去、现在、将来，状态：一般，进行，完成，完成进行，由这些就组成了所有的时态变化
+
+## have 表拥有
+
+have 作为实义动词时表示拥有，I have a book
+
+## have 替代常用动词
+
+have 可以替代常用动词，比如 eat，enjoy，drink，take 等意义，这时的 have 与动作有关，不是表示“具有”那样表示状态
+
+```plain
+Have a cigarettle! 抽根烟
+I'm having a drink. 我在喝酒
+We had lunch together today. 我们今天一起吃了午饭
+```
+
+所以当 have 不表示“有”而表示其他意思时，用法和其他动词相同，因此 have 在疑问和否定的一般现在时和一般过去时必须使用 do
 
 ## 一般现在时和现在进行时
 
@@ -187,15 +246,15 @@ How beautiful a girl she is! 她是个多么漂亮的姑娘啊！
 
 ## 一般过去时
 
-一般过去时通常描述过去发生的事
-
-```plain
-Last summber I went to Italy. go 使用过去式
-```
+一般过去时通常描述过去发生的事，通常和过去的时间短语连用，比如 last + 时间名词，一段时间 + ago，in + 过去的某一年
 
 动词形式：
 
 + 过去式
+
+```plain
+Last summber I went to Italy. go 使用过去式
+```
 
 ## 主谓双宾
 
@@ -333,6 +392,23 @@ fish -> fish/fishes
 ```
 
 ## 一般将来时
+
+## 副词
+
+用来修饰动词，进行补充说明，告诉动作的情况，副词可以是单个词 slowly 也可以是词组 very well
+
+形容词可以转换为副词，规则为：
+
++ 在形容词后加 ly
++ 以 y 结尾，变 y 为 i，再加 ly
++ 形容词和副词形式相同
+
+形容词|副词
+---|---
+late|late
+fast|fast
+hard|hard
+well|well
 
 ## 动词不规则变化
   
@@ -474,17 +550,6 @@ I received an invitation, but I didn't accept it.
 
 + have gone to 去了
 + have been to 去过
-
-## time 的表达
-
-time 在英语中作不可数名词表示“时间”，作可数名词表示“次数”。3 次及以上通常用”基数词 + times“表示：
-
-```
-once 1 次
-twice 2 次
-three times 3 次
-five times 5 次
-```
 
 ## 词性
 
