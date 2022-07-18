@@ -14,59 +14,48 @@ sticky: true
 
 ::: code-tabs
 
-@tab Attribute
+@tab Person
 
 ```js
-const Attribute = {
-  'Pseudo names': 'JQiue',
-  age: 'Younger than the earth',
-  gender: 'Male',
-  hobbies: ['music', 'harmonica', 'rubik', 'study', 'read', 'sleep'],
-  state: 'intern'
+const Person = {
+  Attribute: {
+    'Pseudo names': 'JQiue',
+    age: 'Younger than the earth',
+    gender: 'Male',
+    hobbies: ['harmonica', 'rubik', 'lifelong learning', 'sleep'],
+    state: 'intern'
+  },
+  Skills: {
+    C: 'Beginner',
+    Java: 'Beginner',
+    JavaScript: 'Beginner',
+    Python: 'Beginner',
+    TypeScript: 'Beginner',
+    CSS: 'Beginner',
+    NodeJS: 'Beginner',
+    React: 'Beginner',
+    Vue: 'Beginner',
+    MySQL: 'Beginner',
+    MongoDB: 'Beginner',
+    Linux: 'Beginner',
+    Git: 'Beginner', 
+    FrontEnd: 'Beginner',
+    BackEnd: 'Beginner'
+  }, // This is just the tip of the iceberg
+  SocialLinks: {
+    QQ: '861947542',
+    Email: 'jqiue@foxmail.com',
+    Github: 'https://github.com/JQiue',
+    Zhihu: 'https://www.zhihu.com/people/JQiue',
+    Site: 'https://jinqiu.wang'
+  },
+  Projects: {
+    `JQiue's notes`: 'Personal site created using Vuepress',
+  }
 }
 ```
 
-@tab Skills
-
-```js
-const Skills = {
-  C: 'Beginner',
-  Java: 'Beginner',
-  JavaScript: 'Beginner',
-  Python: 'Beginner',
-  TypeScript: 'Beginner',
-  CSS: 'Beginner',
-  NodeJS: 'Beginner',
-  React: 'Beginner',
-  Vue: 'Beginner',
-  MySQL: 'Beginner',
-  MongoDB: 'Beginner',
-  Linux: 'Beginner',
-  Git: 'Beginner', 
-  FrontEnd: 'Beginner',
-  BackEnd: 'Beginner'
-} // This is just the tip of the iceberg
-```
-
-@tab SocialLinks
-
-```js
-const SocialLinks = {
-  QQ: '861947542',
-  email: 'jqiue@foxmail.com',
-  Github: 'https://github.com/JQiue',
-  Zhihu: 'https://www.zhihu.com/people/JQiue',
-  Site: 'https://jinqiu.wang'
-}
-```
-
-@tab Projects
-
-```js
-const Projects = {
-  `JQiue's notes`: 'Personal site created using Vuepress',
-}
-```
+:::
 
 ## 内容和排版
 
