@@ -120,6 +120,7 @@ const subject: string[] = [
   "advanced-math",
   "physics",
   "logic",
+  "economics-finance",
   "nce",
 ];
 
@@ -157,6 +158,9 @@ const sundry: string[] = [
   "teamwork",
   "software-system-design",
   "react-native",
+  "ai",
+  "ml",
+  "data-analysis-and-visualization",
 ];
 
 const vue: string[] = ["", "component", "vuex", "router", "transition"];

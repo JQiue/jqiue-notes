@@ -183,3 +183,6 @@ function bubbleSort(array) {
 + 学习 JavaScript 数据结构与算法第三版
 + 算法导论
 + 天才与算法：人脑与 AI 的数学思维
++ 大话数据结构
++ 妙趣横生的算法：C++语言实现
++ 算法图解

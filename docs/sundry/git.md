@@ -565,3 +565,7 @@ git remote add origin_ssh SSH地址
 ::: tip
 对于其他代码托管服务商都是类似的操作
 :::
+
+## 参考资料
+
++ GitHub 入门与实践

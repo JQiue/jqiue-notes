@@ -30,6 +30,16 @@ Node.js 适合解决下面这些应用场景中的问题：
 + 分布式应用
 + 工具类应用
 
+## 参考资料
+
++ Node.js 高级编程
++ Node.js 权威指南
++ Node.js 实战
++ Node.js 硬实战
++ Node 与 Express 开发
++ 了不起的 Node.js 将 JavaScript 进行到底
++ 深入浅出 Node.js
+
 ## 和浏览器中的一些区别
 
 Node.js 和浏览器都是 js 的运行环境，由于宿主不同所以特点也有所不同

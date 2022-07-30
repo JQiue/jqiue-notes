@@ -700,3 +700,5 @@ Vue.myPluginMethod();
 ## 参考资料
 
 + Vue 官方文档
++ 深入理解 Vue.js 实战
++ 深入浅出 Vue.js

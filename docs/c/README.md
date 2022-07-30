@@ -57,3 +57,8 @@ C 由一个或多个函数组成，`int main(void)`是主要程序入口，也�
 `}`表示函数定义的结束
 
 这里只需要明白，C 总是以`main()`作为程序的出入口
+
+## 参考资料
+
++ C Primer Plus
++ C++ Primer Plus

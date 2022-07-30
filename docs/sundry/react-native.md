@@ -2,6 +2,7 @@
 title: React-Native
 category: 知识分享
 author: JQiue
+article: false
 ---
 
 ## 搭建环境
@@ -70,3 +71,7 @@ const styles = StyleSheet.create({
 ```
 
 ## 事件处理
+
+## 参考资料
+
++ 第一行代码（第3版）
