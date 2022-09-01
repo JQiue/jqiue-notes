@@ -1,5 +1,5 @@
 ---
-title: 逻辑学
+title: 地理（常识性）
 category: 学科
 article: false
 ---

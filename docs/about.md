@@ -5,12 +5,14 @@ sticky: true
 ---
 
 ::: info 感谢观看
-如果你有幸访问到这里，应该做好没有收获的准备！
+如果你有幸访问到这里，请做好没有收获的准备！
+
+如果没有必要，不建议查看未推送到首页列表的文章
 :::
 
 ## 这个人的信息
 
-![照骗（长太丑浏览器并不想显示）](https://jinqiu.wang/404)
+![照骗（长太丑浏览器都懒得显示）](https://jinqiu.wang/404)
 
 ::: code-tabs
 
@@ -23,7 +25,7 @@ const Person = {
     age: 'Younger than the earth',
     gender: 'Male',
     hobbies: ['harmonica', 'rubik', 'lifelong learning', 'sleep'],
-    state: 'intern'
+    state: 'no work'
   },
   Skills: {
     C: 'Beginner',
@@ -64,10 +66,6 @@ const Person = {
 - [x] 10%（2021.3.21）
 - [x] 20%（2021.10.28）
 - [x] 25%（2022.3.22）
-
-::: danger
-如果没有必要，不建议查看未推送到首页列表的文章
-:::
 
 本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
 
@@ -114,6 +112,7 @@ const Person = {
 + [服务器 && 容器](/sundry/server/)
   + Tomcat
   + Nginx
++ [基础学科](/subject/)
 + 其他杂项
   + [Git](/sundry/git/)
   + [Linux](sundry/linux/)

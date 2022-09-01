@@ -30,16 +30,6 @@ Node.js 适合解决下面这些应用场景中的问题：
 + 分布式应用
 + 工具类应用
 
-## 参考资料
-
-+ Node.js 高级编程
-+ Node.js 权威指南
-+ Node.js 实战
-+ Node.js 硬实战
-+ Node 与 Express 开发
-+ 了不起的 Node.js 将 JavaScript 进行到底
-+ 深入浅出 Node.js
-
 ## 和浏览器中的一些区别
 
 Node.js 和浏览器都是 js 的运行环境，由于宿主不同所以特点也有所不同
@@ -377,6 +367,7 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 + [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
 + [nrm](https://github.com/Pana/nrm)：是一个注册表管理器，用于快速切换下载源
++ [concurrently](https://github.com/open-cli-tools/concurrently)：同时执行多条命令
 + [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
 + [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
 + [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
@@ -687,21 +678,19 @@ eventEmitter.emit('handler');
 
 ```js
 // 分配 11 字节的内存空间，每个字节由两个十六进制组成
-let buf = Buffer.alloc(11, 'jinqiu.wang');
-console.log(buf.toString()); // jinqiu.wang
-```
+const buf1 = Buffer.alloc(11, 'jinqiu.wang');
+console.log(buf1.toString()); // jinqiu.wang
 
-```js
 // 创建包含指定字符串、数组或缓冲区的新缓冲区，默认编码是 utf8，如果指定了 encoding 参数，则使用该编码
-const buf = Buffer.from('a');
+const buf2 = Buffer.from('a');
+
+// 合并缓冲区，用于处理图片的分包上传
+const buf3 = Buffer.concat('jinqiu');
+const buf4 = Buffer.concat('.wang');
+const buf5 = Buffer.concat([buf3, buf4]);
 ```
 
-```js
-// 合并缓冲区，用于处理图片的分包上传
-const buf1 = Buffer.concat('jinqiu');
-const buf2 = Buffer.concat('.wang');
-const buf3 = Buffer.concat([buf1, buf2]);
-```
+在处理网络请求中的数据时，通常使用 Buffer 来进行拼接
 
 ## 流
 
@@ -806,3 +795,13 @@ function fb(i) {
   return fb(i - 1) + fb(i - 2);
 }
 ```
+
+## 参考资料
+
++ Node.js 高级编程
++ Node.js 权威指南
++ Node.js 实战
++ Node.js 硬实战
++ Node 与 Express 开发
++ 了不起的 Node.js 将 JavaScript 进行到底
++ 深入浅出 Node.js

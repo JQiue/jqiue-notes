@@ -229,6 +229,46 @@ Null | 用于显示索引列中是否包含 NULL。若列含有 NULL，该列的
 Index_type | 显示索引使用的类型和方法（BTREE、FULLTEXT、HASH、RTREE）
 Comment | 显示评注
 
+## 备份和还原
+
+MySQL 本身提供了命令用于数据库的备份和还原
+
+`mysqldump`备份所有的数据和结构`-A`参数
+
+```sh
+mysqldump -uroot -p -A > /data/mysqlDump/mydb.sql
+```
+
+备份多个数据库的数据和结构
+
+```sh
+mysqldump -u root -p --databases 数据库1 数据库2 > xxx.sql
+```
+
+仅备份结构`-d`参数
+
+```sh
+mysqldump -uroot -p mydb -d > /data/mysqlDump/mydb.sql
+```
+
+仅备份数据`-t`参数
+
+```sh
+mysqldump -uroot -p mydb -t > /data/mysqlDump/mydb.sql
+```
+
+还原有两种方式，一种是通过 SHELL：
+
+```sh
+mysql -uroot -p < mydb.sql
+```
+
+一种是进入 MySQL 命令行通过`source`
+
+```sh
+mysql> source mydb.sql
+```
+
 ## 在各种语言平台上使用
 
 + Java

@@ -14,8 +14,8 @@ projects:
     name: 数据结构与算法
     link: /ds-algorithm/
   - icon: article
-    name: 学习学习
-    link: /sundry/learntolearn
+    name: 基础学科
+    link: /subject/
   - icon: article
     name: 资源和工具
     link: /sundry/tools/

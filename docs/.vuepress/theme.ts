@@ -22,6 +22,7 @@ export default hopeTheme({
       blog: {
         intro: "about.html",
         avatar: "/avatar.png",
+        roundAvatar: true,
         medias: {
           QQ: "http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes",
           Email: "mailto:jqiue@foxmail.com",
@@ -33,6 +34,7 @@ export default hopeTheme({
         editLink: "在 GitHub 上编辑此页",
       },
       displayFooter: true,
+      copyright: 'Copyright © 2019-present JQiue',
       footer:
         '<a href="https://beian.miit.gov.cn/" target="_blank">备案号：鄂ICP备2021016538号</a>',
     },
@@ -48,6 +50,7 @@ export default hopeTheme({
       "/python/": "123456",
       "/wasm/": "123456",
       "/computer/": "123456",
+      "/sundry/interview": "123456",
     },
   },
   plugins: {
@@ -67,7 +70,6 @@ export default hopeTheme({
       tasklist: true,
       codetabs: true,
     },
-    
     pwa: {
       favicon: "/favicon.ico",
       themeColor: "#5c92d1",
@@ -86,5 +88,4 @@ export default hopeTheme({
     },
     feed: false,
   },
-  
 });

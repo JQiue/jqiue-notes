@@ -114,14 +114,16 @@ const html_css: string[] = [
 
 const subject: string[] = [
   "",
-  "primary-english",
-  "advanced-english",
-  "primary-math",
-  "advanced-math",
+  "english",
+  "nce",
+  "math",
   "physics",
+  "chemistry",
+  "biology",
+  "history",
+  "geography",
   "logic",
   "economics-finance",
-  "nce",
 ];
 
 const sundry: string[] = [
@@ -129,7 +131,6 @@ const sundry: string[] = [
   "tools",
   "problems",
   "trick",
-  "three-filtering-principles",
   "zhihu",
   "office",
   "git",
@@ -146,12 +147,11 @@ const sundry: string[] = [
   "jquery",
   "typescript",
   "openssl",
-  "sport",
+  "game-sport",
   "windows",
   "linux",
   "cicd",
   "security",
-  "bootstrap",
   "css-trick",
   "software-design",
   "cloud-computing",

@@ -78,6 +78,38 @@ app.use('/static', express.static('files'))
 
 ## 请求对象
 
-
-
 ## 响应对象
+
+## Express 中使用 TypeScript
+
++ 问题1：express 类型定义文件不准确
++ 问题2：当使用中间件对请求或响应作出修改时，实际上类型声明文件没有跟着改变
+
+比如通常需要对 body 类型进行扩展
+
+```ts
+interface RequestWithBody extends Request {
+  body: {
+    [key: string]: string | undefined;
+  }
+}
+
+router.post('/getData', (req: RequestWithBody, res: Response) => {
+
+})
+```
+
+扩展 Request 类型定义
+
+```ts
+declare namespace Express {
+  interface Request {
+    auth: string
+  }
+}
+
+router.post('/getData', (req: Request, res: Response) => {
+  req.auth
+})
+```
+

@@ -1,6 +1,6 @@
 ---
 title: 问题汇总
-article: false
+author: JQiue
 ---
 
 ::: info
@@ -29,6 +29,11 @@ java.util.logging.ConsoleHandler.encoding = gbk
 
 原因：Tomcat 启动时需要找到正确配置的 JAVA_HOME  
 解决：环境变量中配置 JAVA_HOME
+
++ Nginx 不支持中文域名
+
+原因：中文域名不被标准的解析服务器支持
+解决：需要转换为 punycode 码
 
 ## Node.js
 
