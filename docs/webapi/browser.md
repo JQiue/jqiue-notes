@@ -4,9 +4,7 @@ category: Web
 article: false
 ---
 
-window 对象表示一个包含DOM文档的窗口，其 document 属性指向窗口中载入的 DOM文档
-
-window 作为全局变量，代表了脚本正在运行的窗口，暴露给 Javascript 代码
+`window` 作为全局变量，代表了脚本正在运行的窗口，将浏览器的 API 暴露给 Javascript 代码，其`document`属性指向窗口中载入的 DOM 文档
 
 ## 定时器
 
@@ -29,7 +27,7 @@ for (var i = 1; i < 1000; i++){
 }
 ```
 
-## 对话框
+## 消息框
 
 + `alert()`：警告对话框
 + `confirm()`：确认对话框，选择“确定”返回`true`
@@ -38,31 +36,41 @@ for (var i = 1; i < 1000; i++){
 ## 窗口交互
 
 + `open(url, name, params)`：打开一个新窗口，返回新窗口的实例
-+ `close()`：关闭一个窗口，默认关闭当前的窗口，可以传入其他窗口的引用并关闭
++ `close()`：关闭窗口，默H认关闭当前的窗口，只能由该窗口的实例所关闭
 
-::: demo 窗口
+::: normal-demo 窗口
 
 ```html
-<button id="btn">弹窗</button>
+<button id="open">打开弹窗</button>
+<button id="close">关闭弹窗</button>
 ```
 
 ```js
-document.querySelector('#btn').addEventListener('click', () => {
+document.querySelector('#open').addEventListener('click', () => {
   let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=nomenubar=no,width=0,height=0,left=-1000,top=-1000`;
   const newWindow = window.open('/', 'newWindow', params);
+  document.querySelector('#close').addEventListener('click', () => {
+    newWindow.close();
+  });
 });
 ```
 
 :::
 
-## 历史管理
+## 窗口尺寸
 
-一般浏览器会记住用户打开过的网址历史，并使用“前进”和“后退”两个按钮进行导航，这些都可以使用`history`进行操作
++ `innerWidth/innerHeight`：返回内部窗口的宽度和高度，都是只读的
++ `resizeTo(x, y)`：绝对调整窗口尺寸
++ `resizeBy(xDelta, yDelta)`：相对调整窗口尺寸
 
-+ `history.length`：返回历史记录的长度
-+ `history.back()`：和后退按钮是等效的，默认后退一步，可以传入整数表示后退的步数
-+ `history.forward()`：和前进按钮是等效的，默认前进一步，可以传入整数表示前进的步数
-+ `history.go()`：可以跳转到指定的位置，如果传入一个整数就表示前进或后退，如果传入一个 URL 则表示跳转到历史中的某一个地址，如果为 0，则会刷新页面
+## 屏幕对象
+
+`screen`对象包含了设备的屏幕信息
+
++ `screen.width`：返回屏幕的真实宽度
++ `screen.height`：返回屏幕的真实高度
++ `screen.availWidth`：返回屏幕的可用宽度
++ `screen.availHeight`：返回屏幕的可用高度（不会计算操作系统任务栏所占的高度）
 
 ## 地址管理
 
@@ -77,21 +85,21 @@ document.querySelector('#btn').addEventListener('click', () => {
 + `location.search`：返回查询字符串
 + `location.reload()`：重新加载页面
 
+## 历史记录
+
+一般浏览器会记住用户打开过的网址历史，并使用“前进”和“后退”两个按钮进行导航，这些都可以使用`history`进行操作，历史记录是由栈实现的
+
++ `history.length`：返回历史记录的长度
++ `history.back()`：和后退按钮是等效的，默认后退一步，可以传入整数表示后退的步数
++ `history.forward()`：和前进按钮是等效的，默认前进一步，可以传入整数表示前进的步数
++ `history.go()`：可以跳转到指定的位置，如果传入一个整数就表示前进或后退，如果传入一个 URL 则表示跳转到历史中的某一个地址，如果为 0，则会刷新页面
+
 ## 设备信息
 
 `navigator`对象包含了客户端设备的信息，通常做一些浏览器的类型检测，从而做出不同的兼容性处理
 
 + `navigator.appVersion`：返回浏览器版本信息
 + `navigator.onLine`：返回浏览器联网状态
-
-## 屏幕对象
-
-`screen`对象包含了设备的屏幕信息
-
-+ `screen.width`：返回屏幕的真实宽度
-+ `screen.height`：返回屏幕的真实高度
-+ `screen.availWidth`：返回屏幕的可用宽度
-+ `screen.availHeight`：返回屏幕的可用高度（不会计算操作系统任务栏所占的高度）
 
 ## 跨窗口通信
 

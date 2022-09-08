@@ -54,7 +54,7 @@ article: false
 + JDK - Java Development
 + JRE - Java Runtime Environment
 
-JRE 是运行 Java 字节码的虚拟机，但是需要 JDK 将 Java 源码编译成 Java 字节码，因此 JDK 除了包含 JRE、还提供了编译器，调试器等开发工具
+JRE 是运行 Java 字节码的虚拟机，但是需要 JDK 将 Java 源码编译成 Java 字节码，因此 JDK 除了包含 JRE、还提供了编译器，调试器等工具
 
 ## 安装 JDK
 
@@ -94,7 +94,6 @@ public class HelloWorld {
     System.out.println("hello, world");
   }
 }
-
 ```
 
 Java 源码本质上是一个文本文件，需要先用`javac`将保存好的 Java 文件编译成字节码文件，会自动生成后缀名为`.class`字节码文件，然后使用`java`命令执行这个字节码文件

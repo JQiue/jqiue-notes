@@ -11,7 +11,7 @@ article: false
 
 `inherit`可用于任何属性，如果希望该属性的取值继承父元素，就可以使用它
 
-::: demo inherit
+::: normal-demo inherit
 
 ```html
 <article>
@@ -34,7 +34,7 @@ p {
 
 大部分属性都有可供使用的预定值，比如，`text-align`可被设置为`center`、`left`、`right`，这些预定值都不需要引号包裹
 
-::: demo
+::: normal-demo
 
 ```html
 <p>center</p>
@@ -82,7 +82,7 @@ p {
 
 在 HTML 中一些常见的颜色都有对应的英文单词取值，但它是有限制的，不是所有的颜色都能用英文单词表达
 
-::: demo 英文单词
+::: normal-demo 英文单词
 
 ```html
 <span style="color:red">红色</span>
@@ -94,7 +94,7 @@ p {
 
 也可以使用 rgb 就是三原色（**r**ed，**g**reen，**b**lue），通过三原色来混合出不同的颜色，相对于英文单词来说取值更加精确，表现能力更加丰富，可以使用百分数、`0~255`来指定颜色
 
-::: demo RGB
+::: normal-demo RGB
 
 ```html
 <span style="color:rgb(255,0,0)">红色</span>
@@ -106,7 +106,7 @@ p {
 
 或者使用十六进制来表示颜色，本质上就是 rgb，每两位表示一个颜色，格式：#000000，前两位代表 R，中间两位代表 G，后面两位代表 B，取值范围为`0~F`，两位数的十六进制正好能够表示`0~255`。只要两位值是一样的就可以缩写成一位，否则不能简写，字母大小写随意。这个格式中的每一个数字都用来设置对应的三原色的亮度，0 代表不发光，数值越大就越亮
 
-::: demo 十六进制
+::: normal-demo 十六进制
 
 ```html
 <span style="color:#FF0000">红色</span>
@@ -118,7 +118,7 @@ p {
 
 CSS3 中新增了`rgba(red, green, blue, alpha)`，只是在 rgb 的基础上增加了透明度，最后一个数字用来控制透明度，取值在`0~1`之间，数字越小就越透明
 
-::: demo RGBA
+::: normal-demo RGBA
 
 ```html
 <span style="color:rgb(255,0,0,1)">红色</span>
@@ -130,7 +130,7 @@ CSS3 中新增了`rgba(red, green, blue, alpha)`，只是在 rgb 的基础上增
 
 CSS3 也新增了`HSL(hue, saturation, lightness)`和 HSLA，用来控制色相，饱和度，亮度。色相取值为`0 ~ 360`，饱和度和亮度取值均为百分数，HSLA 只是在 HSL 基础上增加了透明度控制
 
-::: demo
+::: normal-demo
 
 ```html
 <p style="color:hsl(0, 100%, 50%)">段落一</p>

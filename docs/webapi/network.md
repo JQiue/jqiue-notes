@@ -80,7 +80,7 @@ xhr.onreadystatechange = function (){
 
 这是一个发送 GET 请求的例子，它将获得请求方的 IP 地址
 
-::: demo GET 请求
+::: normal-demo GET 请求
 
 ```html
 <button id="btn">获取 IP 地址</button>
@@ -103,7 +103,7 @@ document.getElementById('btn').addEventListener('click', function () {
 
 大多数情况下，没有必要引入一些库来发送请求，而是自己手动封装，减少了项目的依赖
 
-::: demo 封装请求
+::: normal-demo 封装请求
 
 ```html
 <button id="btn">获取 IP 地址</button>

@@ -22,7 +22,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 现在浏览器都是使用的标准盒模型，想要使用 IE 盒模型，可以为元素添加`box-sizing: border-box`来实现
 
-::: demo 标准盒模型和 IE 盒模型
+::: normal-demo 标准盒模型和 IE 盒模型
 
 ```html
 <div class="box w3cbox"></div>
@@ -63,7 +63,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 + `margin-bottom`
 + `margin-left`
 
-::: demo margin 为正
+::: normal-demo margin 为正
 
 ```html
 <div class="container">
@@ -86,7 +86,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 :::
 
-::: demo margin 为负
+::: normal-demo margin 为负
 
 ```html
 <div class="container">
@@ -109,7 +109,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 :::
 
-::: demo margin 设置盒子居中
+::: normal-demo margin 设置盒子居中
 
 ```html
 <div class="container">
@@ -138,7 +138,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 在垂直方向的元素，margin 会有塌陷现象，即两个元素之间的距离取决于外边距最大的那个
 
-::: demo 外边距塌陷
+::: normal-demo 外边距塌陷
 
 ```html
 <div class="container">
@@ -178,7 +178,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 + `padding-bottom`
 + `padding-left`
 
-::: demo 内边距
+::: normal-demo 内边距
 
 ```html
 <div class="box">内容</div>
@@ -200,7 +200,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 + `border-bottom`
 + `border-left`
 
-::: demo 边框
+::: normal-demo 边框
 
 ```html
 <div class="box"></div>
@@ -221,7 +221,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 边框也可以通过`border-radius`属性设置成圆角的
 
-::: demo 圆角边框
+::: normal-demo 圆角边框
 
 ```html
 <div class="box"></div>
@@ -246,7 +246,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 内联元素和块级元素的本质就是`display`属性值不同，内联的取值为`inline`，块级的取值为`block`，同时还可以让一个元素混合显示，具有内联和块级元素的中间状态，取值为`inline-block`时，这元素和其他内容出现同一行，且拥有块级元素的属性
 
-::: demo display: inline-block
+::: normal-demo display: inline-block
 
 ```html
 <p class="paragraph">当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个<span>世界</span>，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢？我甚至可能改变这个世界。<p>
@@ -273,7 +273,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 + `visible`：可见（默认值）
 + `hidden`：不可见
 
-::: demo visibility
+::: normal-demo visibility
 
 ```html
 <p>This is <span>the</span> paragraph</p>
@@ -288,7 +288,7 @@ IE 盒模型又叫怪异盒模型，在这种模型中，`width`和`height`会�
 
 CSS 并没有提供设置行间距的属性，只能通过行高`line-height`来间接设置行间距，因为`行间距 = 行高 - 内容高度`，内容的高度由字号决定，如果没有设置行高，父元素就会被内容的高度撑起，所以看起来就像行高撑起一样。内容在行高中默认是垂直居中的，如果行高比内容的高度要大，就会出现行空隙，这个就是行间距
 
-::: demo 行高
+::: normal-demo 行高
 
 ```html
 <p class="sentence foo">People always say that it's too late. However, in fact, now is the best appropriate time. For a man who really wants to seek for something, every period of life is younger and timely.</p>
@@ -319,7 +319,7 @@ CSS 并没有提供设置行间距的属性，只能通过行高`line-height`来
 
 当往一个具有约束尺寸的盒子中塞很多东西时，往往就会产生溢出现象，就像这样：
 
-::: demo 溢出现象
+::: normal-demo 溢出现象
 
 ```html
 <div>aaaaaaaaaaaaaaaaaaaaa</div>
@@ -341,7 +341,7 @@ div {
 + `scroll`：无论是否溢出，都添加滚动条
 + `auto`：滚动条仅在溢出时出现
 
-::: demo overflow
+::: normal-demo overflow
 
 ```html
 <div class="box1">aaaaaaaaaaaaaaaaaaa</div>
@@ -376,7 +376,7 @@ div {
 
 当在所有的参数后加上`inset`后，就变成内阴影了
 
-::: demo 盒子阴影
+::: normal-demo 盒子阴影
 
 ```html
 <div class="box1">外阴影</div>
@@ -402,7 +402,7 @@ div.box1,div.box2 {
 
 甚至可以添加多重阴影，只需要使用`,`分割
 
-::: demo 多重阴影
+::: normal-demo 多重阴影
 
 ```html
 <div class="box"></div>
@@ -423,7 +423,7 @@ div.box1,div.box2 {
 
 `opacity`可以设置元素的透明度，它的取值在 0~1 之间，不需要带单位。元素依然占据空间，但是和`visibility`略微不一样的地方是元素依然会触发事件
 
-::: demo opacity
+::: normal-demo opacity
 
 ```html
 <div class="box1"></div>
@@ -460,7 +460,7 @@ div.box1,div.box2,div.box3 {
 
 `outline`可以设置元素的轮廓，轮廓是围绕在元素边框外面的线，不会影响大小，有三个参数：颜色、风格、尺寸
 
-::: demo 轮廓
+::: normal-demo 轮廓
 
 ```html
 <div class="box">111</div>
@@ -500,7 +500,7 @@ div.box1,div.box2,div.box3 {
 
 并不局限于两种颜色，如论使用多少种，都会被均匀的分布在渐变路径
 
-::: demo 线性渐变
+::: normal-demo 线性渐变
 
 ```html
 <div class="box a"></div>
@@ -533,7 +533,7 @@ div.box1,div.box2,div.box3 {
 
 也可以更加细粒度的控制每个颜色的渐变区域，比如`linear-gradient(to right, red 40%, green)`的意思是从红色开始渐变到宽度 40% 绿色渐变开始
 
-::: demo 线性渐变
+::: normal-demo 线性渐变
 
 ```html
 <div class="box"></div>
@@ -557,7 +557,7 @@ div.box1,div.box2,div.box3 {
 
 + `background-color`：设置背景颜色
 
-::: demo background-color
+::: normal-demo background-color
 
 ```html
 <div class="foo"></div>
@@ -575,7 +575,7 @@ div.box1,div.box2,div.box3 {
 
 + `background-image`：设置背景图片，必须提供图片地址并放在`url()`中，如果图片大小没有元素大，则会自动在水平和垂直方向平铺和填充背景
 
-::: demo background-image
+::: normal-demo background-image
 
 ```html
 <div class="foo"></div>
@@ -602,7 +602,7 @@ div.foo,div.bar {
   + repeat-y：垂直方向平铺和填充
   + no-repeat：不平铺图片
 
-::: demo background-repeat
+::: normal-demo background-repeat
 
 ```html
 <div class="foo"></div>
@@ -632,7 +632,7 @@ div.foo,div.bar,.div.baz {
   + 水平方向：`left`，`center`，`right`|像素
   + 垂直方向：`top`，`center`，`bottom`|像素
 
-::: demo background-position
+::: normal-demo background-position
 
 ```html
 <div class="foo"></div>
@@ -693,7 +693,7 @@ scale(x,y)|水平或垂直方向缩放，取值是 1 默认不变，大于 1 表
 skew(x-angle,y-angle)|x 轴或 y 轴倾斜
 matrix()|方法有六个参数，包含旋转，缩放，移动（平移）和倾斜功能
 
-::: demo transform
+::: normal-demo transform
 
 ```html
 <ul>
@@ -742,7 +742,7 @@ ul li:nth-child(5) {
 
 `perspective`属性用来改变 3D 元素的视图，只影响 3D 转换元素，只有子元素获得透视效果，本身不获得透视效果，具有近大远小的视觉效果，取值为像素，像素越小代表越近，反之越远
 
-::: demo perspective
+::: normal-demo perspective
 
 ```html
 <div class="box">

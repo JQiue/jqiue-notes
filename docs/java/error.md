@@ -1,5 +1,5 @@
 ---
-title: 异常
+title: 错误处理
 category: 编程语言
 tag: [Java]
 article: false
@@ -195,6 +195,3 @@ try {
 + `try catch`用于处理运行时造成的错误
 
 <!-- to be updated -->
-
-
-<!-- to be update -->

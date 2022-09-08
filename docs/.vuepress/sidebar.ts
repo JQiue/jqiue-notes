@@ -25,13 +25,14 @@ const c: string[] = [
 const java: string[] = [
   "",
   "syntax",
-  "string",
-  "method",
   "class",
+  "string",
+  "ds",
   "interface",
-  "collection",
+  "generics",
   "exception",
   "standard",
+  "multithreading"
 ];
 
 const javascript: string[] = [

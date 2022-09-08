@@ -40,7 +40,7 @@ article: false
 
 直接使用 HTML 元素事件特性
 
-::: demo 事件特性
+::: normal-demo 事件特性
 
 ```html
 <button onclick="alert('单击事件触发了')">点击我</button>
@@ -52,7 +52,7 @@ HTML 有很多这样直接作用于元素的事件特性`on<event>`，被触发�
 
 由于 HTML 特性被看作元素节点的属性，只要为这个事件属性定义一个处理函数就可以了
 
-::: demo DOM 元素的事件属性
+::: normal-demo DOM 元素的事件属性
 
 ```html
 <button>点击我</button>
@@ -88,7 +88,7 @@ document.querySelector('button').onclick = function () {
 </script>
 ```
 
-::: demo addEventListener 方法
+::: normal-demo addEventListener 方法
 
 ```html
 <button>点击我</button>
@@ -147,7 +147,7 @@ target.removeEventListener('click', mouseClick);
 </body>
 ```
 
-::: demo event
+::: normal-demo event
 
 ```html
 <button >点击我</button>
@@ -167,7 +167,7 @@ document.querySelector('button').addEventListener('click', event => {
 
 了解事件流之前先看示范程序，点击不同层次的元素，看看事件是按照什么顺序触发的
 
-::: demo 事件冒泡
+::: normal-demo 事件冒泡
 
 ```html
 <div id="foo" onclick="alert('我是 foo')">
@@ -212,7 +212,7 @@ div {
 
 冒泡是默认的事件流，但是可以设置`addEventListener(eventType, handler, true)`第三个参数为`true`变为捕获阶段
 
-::: demo 事件捕获
+::: normal-demo 事件捕获
 
 ```html
 <div id="foo">
@@ -303,7 +303,7 @@ div {
 <input type="text" value="jinqiu.wang" onmousedown="return false;" onfocus="this.value=''">
 ```
 
-::: demo 后续事件的阻止
+::: normal-demo 后续事件的阻止
 
 ```html
 <p>获得焦点</p>
@@ -338,7 +338,7 @@ div {
 </script>
 ```
 
-::: demo 产生冒泡
+::: normal-demo 产生冒泡
 
 ```html
 <div>
@@ -383,7 +383,7 @@ document.querySelector('div').oncontextmenu = function (e) {
 </script>
 ```
 
-::: demo 阻止冒泡
+::: normal-demo 阻止冒泡
 
 ```html
 <div>
@@ -433,7 +433,7 @@ document.querySelector('div').oncontextmenu = function (e) {
 </script>
 ```
 
-::: demo defaultPrevented
+::: normal-demo defaultPrevented
 
 ```html
 <div>
@@ -486,7 +486,7 @@ document.querySelector('div').oncontextmenu = function (e) {
 </body>
 ```
 
-::: demo 事件委托
+::: normal-demo 事件委托
 
 ```html
 <div>
@@ -518,7 +518,7 @@ document.querySelector('div').addEventListener('click', event => {
 事件委托应该看情况使用，不是所有的事件都应该委托，否则会产生事件误判的问题，本不应该触发的事件却被触发了
 :::
 
-::: demo 树形菜单练习
+::: normal-demo 树形菜单练习
 
 ```html
 <ul class="tree" id="tree">
@@ -647,7 +647,7 @@ elem.dispatchEvent(event);
 </script>
 ```
 
-::: demo 同步处理的事件
+::: normal-demo 同步处理的事件
 
 ```html
 <button>点击我</button>
@@ -685,7 +685,7 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 </script>
 ```
 
-::: demo 异步处理的事件
+::: normal-demo 异步处理的事件
 
 ```html
 <button>点击我</button>
@@ -713,7 +713,7 @@ button.addEventListener('button-click', () => alert('button-click handler'));
 
 下面是使用`mousemove`的例子，当鼠标在上面移动时数字会增加，第一个没有进行处理，第二个使用防抖处理，第三个使用节流处理
 
-::: demo 防抖和节流
+::: normal-demo 防抖和节流
 
 ```html
 <div class="box">0</div>
@@ -836,7 +836,7 @@ function throttle(func, delay) {
 大多数鼠标只有左键和右键
 :::
 
-::: demo event.button
+::: normal-demo event.button
 
 ```html
 <button>点击我</button>
@@ -866,7 +866,7 @@ button.addEventListener('mouseup', event => {
 
 如果在鼠标事件期间按下了对应的键，则它的值为`true`，比如下面的示例中，按下三个键（Ctrl，Shift，Alt）才会触发弹框
 
-::: demo 组合键
+::: normal-demo 组合键
 
 ```html
 <button>点击我</button>
@@ -890,7 +890,7 @@ button.addEventListener('click', event => {
 + 相对于元素：`offsetX`和`offsetY`
 + 相对于屏幕：`screenX`和`screenY`
 
-::: demo 鼠标坐标
+::: normal-demo 鼠标坐标
 
 ```html
 <input onmousemove="this.value=event.clientX + ', ' + event.clientY" value="移动鼠标测试坐标">
@@ -900,7 +900,7 @@ button.addEventListener('click', event => {
 
 有时候双击鼠标会有一些副作用，可能会出现选择文本的干扰
 
-::: demo 双击事件并选择文本
+::: normal-demo 双击事件并选择文本
 
 ```html
 <div ondblclick="alert('double click')">双击我</div>
@@ -910,7 +910,7 @@ button.addEventListener('click', event => {
 
 甚至有时按下不松开并移动鼠标也会造成文本选择的干扰，为了避免这些情况，最合理的方法是在`mousedown`上进行处理
 
-::: demo 双击事件并不选择文本
+::: normal-demo 双击事件并不选择文本
 
 ```html
 <div ondblclick="alert('double click')" onmousedown="return false">双击我</div>
@@ -922,7 +922,7 @@ button.addEventListener('click', event => {
 
 如果想要保护页面的内容不被复制，可以使用`copy`事件来处理，对于开发者来说，肯定是可以打开调试工具来访问源码进行复制，但是大多数人是不知道的
 
-::: demo copy 事件
+::: normal-demo copy 事件
 
 ```html
 <div oncopy="alert('当然，你是不可能复制成功的');return false">这里的内容是被禁止复制的</div>
@@ -957,7 +957,7 @@ button.addEventListener('click', event => {
 
 这是使用`mouseover/mouseout`进行事件委托的表格高亮示例
 
-::: demo 事件委托的应用
+::: normal-demo 事件委托的应用
 
 ```html
 <table>
@@ -1002,7 +1002,7 @@ table td {
 
 对于键盘事件对象来说，可以通过`key`来获取字符，而`code`属性允许获取物理上的按键代码
 
-::: demo 键盘事件上的信息
+::: normal-demo 键盘事件上的信息
 
 ```html
 <p>key：<br>code：</p>
@@ -1027,7 +1027,7 @@ document.querySelector('input').onkeydown = function (e) {
 
 `scroll`事件能够对页面或元素的滚动作出反应，这是一个示例：
 
-::: demo scroll
+::: normal-demo scroll
 
 ```html
 <p>当前窗口已滚动的像素：<span>0 px</span></p>
@@ -1128,7 +1128,7 @@ window.onscroll = function(e) {
 
 当元素聚焦时会触发`focus`事件，当失去焦点时会触发`blur`事件
 
-::: demo 焦点事件
+::: normal-demo 焦点事件
 
 ```html
 <p>没有任何元素获得焦点</p>
@@ -1155,7 +1155,7 @@ document.querySelector('input').onblur = function (e) {
 + `tabindex`接收`0`，表示是可聚焦的，可以通过键盘导航来访问该元素，但是顺序是与当前处于文档中的顺序来决定的
 + `tabindex`接收一个正值，表示是可聚焦的，可以通过键盘导航来访问该元素，但是它的访问顺序是按照`tabindex`的数值递增来决定获得焦点的顺序，如果拥有相同的数值，则按照在文档中的顺序来决定
 
-::: demo tabindex
+::: normal-demo tabindex
 
 ```html
 <div tabindex="1">1</div>
@@ -1187,7 +1187,7 @@ div {
 + 在`<input>`中按下`Enter`
 + 点击`<input type="submit">`或`<input type="image">`
 
-::: demo submit 事件
+::: normal-demo submit 事件
 
 ```html
 <form name="foo">
@@ -1219,7 +1219,7 @@ document.querySelector('form').onsubmit = function (e) {
 
 `change`事件可以在`<input>`失去焦点后触发，但是数据状态必须已经发生改变
 
-::: demo 失去焦点
+::: normal-demo 失去焦点
 
 ```html
 <input type="text" onchange="alert(this.value)">
@@ -1237,7 +1237,7 @@ document.querySelector('form').onsubmit = function (e) {
 
 剪切板事件是当发生复制/粘贴/剪切操作时触发的事件，分别是`copy`，`paste`，`cut`
 
-::: demo 剪切板事件
+::: normal-demo 剪切板事件
 
 ```html
 <input type="text" oncopy="alert(event.type)" onpaste="alert(event.type)" oncut="alert(event.type)">
@@ -1247,7 +1247,7 @@ document.querySelector('form').onsubmit = function (e) {
 
 如果想要访问剪切板上的数据，可以使用`ClipboardEvent`类的方法，比如`event.clipboardData.getData('text/plain')`用于获取对应的数据
 
-::: demo 访问数据
+::: normal-demo 访问数据
 
 ```html
 <input type="text" onpaste="alert(event.type + ':' + event.clipboardData.getData('text/plain'))">

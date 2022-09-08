@@ -31,7 +31,7 @@ H1 标签特别重要，它会帮助搜索引擎理解页面结构，有利于 S
 
 HTML 提供了一些简单的文本格式化标签，无需写样式调整
 
-::: demo 格式化
+::: normal-demo 格式化
 
 ```html
 <strong>加粗</strong>
@@ -53,7 +53,7 @@ HTML 提供了一些简单的文本格式化标签，无需写样式调整
 
 通常内容之间的额外的空格回车等都会被压缩，而预格式化文本可以保留这些东西，预格式化文本的内容通常以等宽字体显示
 
-::: demo 预格式化文本
+::: normal-demo 预格式化文本
 
 ```html
 <pre>
@@ -75,7 +75,7 @@ function foo() {
 
 通过`<ol>`定义有序列表，会有标明顺序的标识，可以改变`type`属性值来改变标识
 
-::: demo 有序列表
+::: normal-demo 有序列表
 
 ```html
 <ol>
@@ -99,7 +99,7 @@ function foo() {
 
 无序列表通过`ul`创建，列表项不具有顺序一样的标识，可以改变`type`属性值来改变样式
 
-::: demo 无序列表
+::: normal-demo 无序列表
 
 ```html
 <ul>
@@ -123,7 +123,7 @@ function foo() {
 
 自定义列表和其他列表不同的是，它是一个键值对形式的列表，通过`<dl>`（定义整个列表）、`<dt>`（定义标题）、`dd`（定义描述）这一套标签来定义
 
-::: demo 自定义列表
+::: normal-demo 自定义列表
 
 ```html
 <dl>
@@ -157,7 +157,7 @@ function foo() {
 
 表格是一套标签组成的，`<table>`定义表格容器，`<caption>`定义表格的标题，`<thead>`,`<tbody>`,`<tfoot>`这三个标签实现了对表格的语义化布局，`<tr>`定义行，`<tb>`定义单元格，`<thead>`中没有使用`<td>`，而是使用`<th>`，这也是语义化的一部分，`<th>` 是一个特殊的`<td>`单元格，唯一的区别就是`<th>`中的字体会默认加粗
 
-::: demo 表格
+::: normal-demo 表格
 
 ```html
 <table> 
@@ -219,7 +219,7 @@ function foo() {
 
 `<input>`是最重要的表单元素，用于给表单创建交互控件从用户中接收数据，改变`type`的值就可以转换为不同的表单元素，无论以何种形式展现，它的功能是输入数据
 
-::: demo 表单元素
+::: normal-demo 表单元素
 
 ```html
 <form action="" method="" name="">
@@ -270,7 +270,7 @@ function foo() {
 + `<datalist>`定义一个数据列表，描述`<input>`可能输入的值，将`id`值赋值给`<input>`的`list`属性即可实现绑定
 + `<label>`提供了内容绑定表单的能力，默认情况下点击内容是不会聚焦到元素的，只要将`for`属性和表单元素的`id`值关联起来就可以实现绑定，也可以将表单元素放入`<label>`中实现，这样无需编写属性
 
-::: demo 其他表单元素
+::: normal-demo 其他表单元素
 
 ```html
 <textarea></textarea><br/>
@@ -328,7 +328,7 @@ function foo() {
 
 通过`<img>`标签就能在文档中插入一张图片，只需要告诉`src`属性的图片链接，支持 JPEG、PNG、GIF、WebP、SVG 格式。`alt`是一个特别重要的属性，用于在图片无法展示时显示，`title`则是对图片进行标题说明
 
-::: demo img
+::: normal-demo img
 
 ```html
 <img src="https://jinqiu.wang/bgImage.jpg" alt="bgImage">
@@ -340,7 +340,7 @@ function foo() {
 
 在 HTML 中通过`<a>`标签来创建一个超链接，`href`属性指定要跳转的链接，链接类型不一定是网页链接，可以是 RSS 源、图像、文件等
 
-::: demo 文本链接
+::: normal-demo 文本链接
 
 ```html
 <a href="/html-css/elements.html#标题">点击回到顶部</a>
@@ -350,7 +350,7 @@ function foo() {
 
 `<a>`标签的内容不一定是文本，也可以是图片，也可以是其他的一些内容
 
-::: demo 图片链接
+::: normal-demo 图片链接
 
 ```html
 <a href="/html-css/elements.html#标题" target="_blank"><img src="https://jinqiu.wang/bgImage.jpg" alt="bgImage"></a>
@@ -390,7 +390,7 @@ function foo() {
 <div id="anchor">锚点位置</div>
 ```
 
-::: demo 锚点
+::: normal-demo 锚点
 
 ```html
 <a href="#标题">定位到标题位置</a>
@@ -425,7 +425,7 @@ function foo() {
 + `height`
 + `name` - 可以实现`<a>`和`<form>`的交互作用，在本页中打开外部的链接，前提是`target`必须指向`name`的值
 
-::: demo 嵌入网易云音乐
+::: normal-demo 嵌入网易云音乐
 
 ```html
 <iframe width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1332153723&auto=1&height=66"></iframe>
@@ -443,7 +443,7 @@ function foo() {
 
 `<audio>`是一个 HTML5 元素，通过`src`指定资源路径，支持 mp3 和 ogg 格式
 
-::: demo audio
+::: normal-demo audio
 
 ```html
 <audio controls src="http://s138.ananas.chaoxing.com/audio/a0/e8/52/f814b5355ffd42e059187d3ce16cba1e/audio.mp3?at_=1612934735878&ak_=a25ecb672f06e77a5036d511788ea77e&ad_=579c22a2cf3594c71a75b17fab204e15">浏览器不支持</audio>
@@ -453,7 +453,7 @@ function foo() {
 
 `<video>`是一个 HTML5 元素，通过`src`指定资源路径
 
-::: demo video
+::: normal-demo video
 
 ```html
 <video controls src="http://s138.ananas.chaoxing.com/video/c9/51/17/4a626b15b5abfa147da4af8084054c26/sd.mp4?at_=1612352532045&ak_=b3da89ddae922efb89270e7300931769&ad_=e36a6b4b68892a4f3b361772b5d8925c" width="222px">浏览器不支持</video>
@@ -501,7 +501,7 @@ function foo() {
 
 和图片搭配的标题是十分常见的，图片和标题被定义在`<figure>`中
 
-::: demo figure
+::: normal-demo figure
 
 ```html
 <figure>
@@ -516,7 +516,7 @@ function foo() {
 
 `progress`用于显示进度，支持三个属性：`max`、`value` 和 `form`。`max`指定总进度，`value`指定当前进度
 
-::: demo 进度
+::: normal-demo 进度
 
 ```html
 <progress max="100" value="30"></progress>

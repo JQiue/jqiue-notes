@@ -7,15 +7,13 @@ article: false
 
 Java 是一种强制性对象风格编程的语言，几乎任何东西都定义在类中
 
-## 创建对象
+## 对象
 
 `String s;`只是创建了一个 String 对象的引用，而非对象，直接使用时会报错，因为该引用没有指向任何对象，所以最好在创建对象的同时初始化变量
 
 ```java
 String s = "Hello, World";
 ```
-
-## 实例化
 
 “引用”用来关联对象，Java 中通常使用`new`关键字来创建一个该类型的对象，必须手动通过`new`实例化后才能使用，这样会产生一个该类型的对象引用
 
@@ -33,11 +31,13 @@ String s = new String("Hello, World");
 Character c = new Character('c');
 ```
 
-## 自定义类型
+一个对象如果没有被引用时就会被当作垃圾回收掉，打印一个对象会得到`包名.类名@十六进制的 hashcode`
 
-`class`关键字允许自定义类型，该类中只能存放两种元素：字段和方法
+使用`==`比较对象时，比较的是地址
 
-字段类型可以是基本类型，也可以是引用类型
+## 类
+
+`class`关键字定义类，该类中只能存放两种元素：字段和方法，字段类型可以是基本类型，也可以是引用类型
 
 ```java
 class Demo {
@@ -68,23 +68,9 @@ class Demo {
 }
 ```
 
-## 静态字段和静态方法
-
-静态字段和静态方法是用`static`修饰的，会被所有的的实例所共享。虽然可以通过`实例变量.静态字段/静态方法`访问，但它们并不属于实例，只是因为编译器可以根据实例类型自动转换为`类名.静态字段/静态方法`，所以推荐用类名来访问它们。静态字段和静态方法都是与此类对象无关的
-
-```java
-class Demo {
-  static int a = 1;
-}
-
-Demo.a;
-```
-
 ## 构造器
 
-构造器是一种特殊的方法，每创建一个对象，这个方法都会被自动调用一次，可用于进行对象的初始化操作
-
-构造器的名字和类名必须相同，它没有返回类型：
+必须使用`new`关键字调用构造器，构造器的名字和类名必须相同，它没有返回类型：
 
 ```java
 class Demo {
@@ -97,7 +83,21 @@ class Demo {
 Demo d = new Demo(1);
 ```
 
-如果没有显示创建构造器，编译器会自动创建一个无参的构造器方法，如果显示的定义了构造器则不会创建
+如果没有显式创建构造器，编译器会自动创建一个无参的构造器方法，如果显示的定义了构造器则不会创建
+
+## 静态字段和静态方法
+
+静态字段和静态方法是用`static`修饰的，会被所有的的实例所共享。虽然可以通过`实例变量.静态字段/静态方法`访问，但它们并不属于实例，只是因为编译器可以根据实例类型自动转换为`类名.静态字段/静态方法`，所以推荐用类名来访问它们。静态字段和静态方法都是与此类对象无关的
+
+```java
+class Demo {
+  static int a = 1;
+}
+
+Demo.a;
+```
+
+使用`static`修饰的字段和方法会的生命周期会持续到程序结束
 
 ## 访问权限
 
@@ -114,7 +114,7 @@ Java 有三个显式关键字来设置类中的访问权限，这些访问修饰
 
 ## 继承
 
-继承是一种非常强大的机制，它可以复用很多代码，当一个类继承了另一个类时，就会获得该类的所有功能，Java 通过`extends`关键字实现继承
+Java 通过`extends`关键字实现继承
 
 ```java
 class Person {
@@ -124,15 +124,16 @@ class Person {
     System.out.println("I'm" + name + ", My age is " + age);
   }
 }
+
 class Student extends Person {
   int score;
-  public void showMe(){}
+  public void showMe() {}
 }
 ```
 
 Student 会获得 Person 的所有属性和方法，也拥有自己的属性和方法
 
-继承是无法获得父类中包含`private`关键字的属性和方法的，这使继承的作用被削弱了，但 Java 提供了`protected`关键字来使字段或属性能够被子类所访问
+继承不能获得父类中包含`private`关键字的属性和方法，这使继承的作用被削弱了，但 Java 提供了`protected`关键字来使字段或属性能够被子类所访问
 
 ```java
 class Person {
@@ -151,7 +152,7 @@ class Student extends Person {
 
 ## 重载和覆盖
 
-Java 允许创建多个方法名相同，但参数不同的方法，这种方式叫做方法的重载
+Java 允许多个方法名相同，但参数不同的方法，叫做方法的重载
 
 ```java
 class Demo {
@@ -167,13 +168,13 @@ class Demo {
 
 ```java
 class Person {
-  public void show(){
+  public void show() {
     System.out.println("Person show");
   }
 }
 
 class Student extends Person {
-  public void show(){
+  public void show() {
     System.out.println("Student show");
   }
 }
@@ -333,8 +334,6 @@ s instanceof Student; // true
 
 `instanceof`会判断一个变量所指的实例是否为指定类型，或者是该类型的子类，如果为 null，那么判断都为 false
 
-## 多态
-
 ## 组合和聚合
 
 ## 单继承结构
@@ -461,7 +460,5 @@ Person s = new Student();
 + 具体的业务逻辑由不同的子类实现
 
 ## 内部类
-
-## 生命周期
 
 ## 包装类

@@ -821,7 +821,7 @@ setTimeout(() => {
 
 `window.scrollBy(x, y)`用于将页面滚动到相对于当前位置的位置
 
-::: demo scrollBy
+::: normal-demo scrollBy
 
 ```html
 <input type="button" value="向下滚动" id="clickScroll">
@@ -839,7 +839,7 @@ document.querySelector('#clickScroll').addEventListener('click', ()=>{
 
 还有一个`window.scrollIntoView()`用于将滚动页面且使这个元素可见，当取值为`true`时，页面会向下滚动，并且贴靠该元素的上边缘，那么为`false`，就是正好相反。如果滚动距离不够，它只会尝试滚动到最大值
 
-::: demo scrollIntoView
+::: normal-demo scrollIntoView
 
 ```html
 <input type="button" value="向下滚动使元素可见" id="topTrue">

@@ -14,7 +14,7 @@ article: false
 
 通过`font-*`属性来规定字体的样式
 
-::: demo font
+::: normal-demo font
 
 ```html
 <span style="font-style:normal;">默认</span>
@@ -52,7 +52,7 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 这些属性都可以直接通过`font`来简写，取值之间使用空格分隔，不需要写出所有的取值，但必须按照顺序
 
-::: demo font 简写形式
+::: normal-demo font 简写形式
 
 ```html
 <p style="font: italic bold 18px '楷体'">简写形式</p>
@@ -64,7 +64,7 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 `text-decoration`可以设置文本的一些装饰样式
 
-::: demo text-decoration
+::: normal-demo text-decoration
 
 ```html
 <span style="text-decoration:overline">上划线</span>
@@ -77,7 +77,7 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 `text-align`可以规定文本的水平对齐方式
 
-::: demo text-align
+::: normal-demo text-align
 
 ```html
 <p style="text-align:right">左对齐</p>
@@ -89,7 +89,7 @@ px 是一种尺寸单位，在浏览器中字体的默认大小为 16px
 
 `text-indent`可以控制文本的首行缩进距离
 
-::: demo text-indent
+::: normal-demo text-indent
 
 ```html
 <p style="text-indent:2em">当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。</p>
@@ -104,7 +104,7 @@ em 是一种相对尺寸的单位，1em 默认为父元素的字体大小
 + `word-spacing`控制英文单词之间的间距，对中文无效
 + `letter-spacing`控制字符之间的间距，中英文都有效
 
-::: demo 间距
+::: normal-demo 间距
 
 ```html
 <p>wjq is me</p>
@@ -117,7 +117,7 @@ em 是一种相对尺寸的单位，1em 默认为父元素的字体大小
 
 `color`属性可以改变文本的颜色
 
-::: demo color
+::: normal-demo color
 
 ```html
 <span style="color:red">红</span>
@@ -131,7 +131,7 @@ em 是一种相对尺寸的单位，1em 默认为父元素的字体大小
 
 `text-shadow`可为文本创建阴影效果，参数分别是：水平偏移量、垂直偏移量、模糊半径、颜色
 
-::: demo 阴影
+::: normal-demo 阴影
 
 ```html
 <p>文字阴影</p>
@@ -153,7 +153,7 @@ p {
 + `uppercase`：全部大写
 + `lowercase`：全部小写
 
-::: demo text-transform
+::: normal-demo text-transform
 
 ```html
 <p>hello, world</p>
@@ -182,7 +182,7 @@ p:nth-child(3) {
 + `clip`：在内容区域的极限处截断文本，默认值
 + `ellipsis`：用一个`...`来表示被截断的文本
 
-::: demo text-overflow
+::: normal-demo text-overflow
 
 ```html
 <div>
@@ -221,7 +221,7 @@ div {
 + `text`
 + `help`
 
-::: demo cursor
+::: normal-demo cursor
 
 ```html
 <ul>
@@ -260,7 +260,7 @@ ul li {
 
 在 CSS3 中，可以在不使用 Flash 或 JavaScript 的情况下，当一个元素从一种样式变成另一种样式时为其添加过渡效果，也就是让元素变化的更加平缓。它必须规定需要过渡的属性和过渡的时长，通过`transition: 过渡的属性，过渡的时间，过渡的时间曲线，过渡的时间延迟`
 
-::: demo transition
+::: normal-demo transition
 
 ```html
 <div class="box"></div>
@@ -283,7 +283,7 @@ ul li {
 
 可以同时过渡多个属性，只需要使用`,`隔开每个过渡的属性
 
-::: demo transition
+::: normal-demo transition
 
 ```html
 <div class="box"></div>
@@ -307,7 +307,7 @@ ul li {
 
 延时 2S
 
-::: demo transition
+::: normal-demo transition
 
 ```html
 <div class="box"></div>
@@ -356,7 +356,7 @@ ul li {
 }
 ```
 
-::: demo animation
+::: normal-demo animation
 
 ```html
 <div class="box"></div>
@@ -429,7 +429,7 @@ CSS3 新增`::selection`伪元素用于内容被高亮时的样式，只有这�
 + cursor
 + outline
 
-::: demo selection
+::: normal-demo selection
 
 ```html
 <p>
@@ -453,7 +453,7 @@ p::selection {
 + `ltr`：从左向右，默认值
 + `rtl`：从右向左
 
-::: demo direction
+::: normal-demo direction
 
 ```html
 <p>1234</p>
@@ -479,7 +479,7 @@ p {
 + ::-webkit-scrollbar-corner — 当同时有垂直滚动条和水平滚动条时交汇的部分
 + ::-webkit-resizer — 某些元素的corner部分的部分样式(例:textarea的可拖动按钮)
 
-::: demo 滚动条
+::: normal-demo 滚动条
 
 ```html
 <div class="box">

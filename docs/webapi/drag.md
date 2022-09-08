@@ -40,7 +40,7 @@ article: false
 目标元素默认是不能够被拖放的，即不会触发`ondrop`事件，可以通过在目标元素的 `ondragover`事件中取消默认事件来解决此问题
 :::
 
-::: demo
+::: normal-demo
 
 ```html
 <div class="container">
