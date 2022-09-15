@@ -30,7 +30,7 @@ const java: string[] = [
   "ds",
   "interface",
   "generics",
-  "exception",
+  "error",
   "standard",
   "multithreading"
 ];

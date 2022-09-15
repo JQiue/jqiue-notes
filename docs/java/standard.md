@@ -37,4 +37,10 @@ Scanner sc = new Scanner(Paths.get("text.txt"), "UTF-8");
 
 ## 文件处理
 
+使用`File(String path)`构造一个文件对象
+
 ## IO
+
+Java 可以操作用流的方式操作数据，`InputStream()`和`OutputStream()`分别是输入流和输出流的构造方式
+
+Java 还提供了字符流`Reader`和`Writer`，只能操作字符数据

@@ -5,9 +5,16 @@ tag: [Java]
 article: false
 ---
 
-通常如果程序发生了错误，就会立即停止运行，并在控制台打印错误信息，但是使用`try...catch`结构，可以捕获程序错误，而不是导致程序立即死掉
+Throwable 是所有错误或异常的超类，分为 Error 和 Exception，Exception 又分为编译时异常和运行时异常
+
++ 运行时异常 - 所有 RuntimeException 类及子类成为运行时异常，在编译时不会报错，在运行过程终止运行
++ 编译时异常 - 程序员必须处理，否则程序就会发生错误无法通过编译
+
+如果没有手动处理异常，JVM 就会抛出异常信息，同时停止运行
 
 ## try...catch
+
+通常如果程序发生了错误，就会立即停止运行，并在控制台打印错误信息，但是使用`try...catch`结构，可以捕获程序错误，而不是导致程序立即死掉
 
 这里是有两个代码块，首先执行`try`中的语句，如果没有出现错误，则会忽略`catch`代码块中的语句，运行到`try`末尾并跳过`catch`执行。如果`try`中出现了错误，则会立即转到`catch`中，并将错误信息传给`err`对
 象，这个对象包含了发生错误的详细信息
@@ -15,7 +22,7 @@ article: false
 ```java
 try {
   // 执行代码
-} catch (err) {
+} catch (Exception e) {
   // 错误处理
 }
 ```
@@ -24,22 +31,13 @@ try {
 
 ```java
 try {
-} catch (error) {
+} catch (Exception e) {
 }
 
-// 引用未定义的变量发生错误
 try {
-} catch (error) {
+} catch (Exception e) {
 }
 ```
-
-另外，错误处理只能对有效的代码进行处理，如果包含语法错误，是不会工作的，简而言之就是只能处理运行时的错误，而不是编译时的错误
-
-::: danger 处理同步任务
-`try...catch`只能处理同步任务，如果包裹了异步任务，则会无法捕获错误
-:::
-
-`catch`的参数是可选的，也可以忽略它
 
 ## Error 对象
 
@@ -47,24 +45,20 @@ try {
 
 一般来说，所有的内建错误对象，都会有两个属性：
 
-+ `name`：错误名称
-+ `message`：错误的详细信息描述
++ `getMessage()`：获取异常信息
++ `pirntStackTrace()`：获取异常类名和异常信息，及异常出现的位置
 
-```js
+```java
 try {
-  foo;
-} catch (error) {
-  console.log(error); // ReferenceError: foo is not defined at ...
-  console.log(error.name); // ReferenceError
-  console.log(error.message); // foo is not defined
+} catch (Exception e) {
 }
 ```
 
 ## 自定义 error
 
-除了内建的错误以外，还允许使用一些错误构造器来创建 error 对象，用于处理自定义的错误
+除了内建的错误以外，还允许使用一些错误构造器来创建 error 对象，用于处理自定义的错误，通常可以继承 RuntimeException 来定义运行时异常，继承 Exception 定义编译时异常
 
-```js
+```java
 let error = new Error(message);
 let syntaxError = new SyntaxError(message);
 let referenceError = new ReferenceError(message);
@@ -73,18 +67,17 @@ let referenceError = new ReferenceError(message);
 
 这些内建的错误的`name`就是构造器的名字
 
-### Throw
+### Throw 和 Throws
 
-`throw`可以手动抛出自定义的错误，主要的使用方式就是扔一个 error 对象给它
+`throw`是一个语句抛出异常，`throws`是一个方法抛出异常
 
-```js
+```java
 let foo = { name: 'foo' };
 try {
   if(!foo.age) {
     throw new SyntaxError('没有定义 age 属性');
   }
 } catch (error) {
-  console.log(error); // SyntaxError: 没有定义 age 属性
 }
 ```
 
@@ -92,7 +85,7 @@ try {
 
 `catch`应该只处理它知道的 error，然后抛出其他 error
 
-```js
+```java
 let foo = { name: 'foo' };
 try {
   aaa; // ReferenceError
@@ -106,33 +99,13 @@ try {
 }
 ```
 
-使用`instranceof`判断错误类型，然后处理这个错误，如果不符合就继续抛出，就达到了只在`catch`中处理`SyntaxError`的目的
-
-再次抛出的错误可以用另外一级的`try...catch`来处理
-
-```js
-try {
-  let foo = { name: 'foo' };
-  try {
-    aaa; // ReferenceError
-    if (!foo.age) throw new SyntaxError('没有定义的 age 属性');
-  } catch (error) {
-    if (error instanceof SyntaxError) {
-      console.log("SyntaxError: " + error.message); // SyntaxError: ReferenceError: aaa is not defined
-    } else {
-      throw error;
-    }
-  }
-} catch (error) {
-  console.log('捕获到了 ReferenceError');
-}
-```
+抛出运行时异常不需要处理，抛出编译时异常必须处理，如果不处理，就必须往上面抛，抛给方法的调用者
 
 ## finally
 
 `try...catch`还有一个可选的子句`finally`，无论何种情况下，这个子句中的代码最后都会执行
 
-```js
+```java
 try {
   // 尝试执行的代码
 } catch(error) {
@@ -146,7 +119,7 @@ try {
 
 另外，`finally`使用于`try...catch`中的任何出口，包括`return`
 
-```js
+```java
 function fc() {
   try {
     return 1;
@@ -164,7 +137,7 @@ console.log(fc());
 
 除此外，也可以使用不需要处理错误的`try...finally`
 
-```js
+```java
 try {
   // 被尝试运行的代码
 } finally {
@@ -195,3 +168,6 @@ try {
 + `try catch`用于处理运行时造成的错误
 
 <!-- to be updated -->
+
+
+<!-- to be update -->
