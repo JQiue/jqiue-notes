@@ -34,7 +34,20 @@ Tomcat 是 Apache 公司开发的一款免费的 Web 应用服务器，虽然它
 + webapps：发布应用的目录
 + work：处理 JSP 的工作目录
 
-最重要的是`webapps`，通过网址访问的路径都是这个目录下的应用，如果打开这个目录，会发现 Tomcat 自带几个 Web 应用，通过`localhost:8080`会默认指向`ROOT`目录中的应用。
+最重要的是`webapps`，通过网址访问的路径都是这个目录下的应用，如果打开这个目录，会发现 Tomcat 自带几个 Web 应用，通过`localhost:8080`会默认指向`ROOT`目录中的应用
+
+一个 Web 应用的目录结构是这样的：
+
+```
+WebName
+│  index.jsp
+│  ...
+└─WEB-INF
+    │  web.xml # 当前整个 Web 应用的核心配置文件
+    │
+    ├─classes # 编译后的 java 字节码文件
+    └─lib # jar 包
+```
 
 ::: danger
 `host-manager`、`manager`、`ROOT`这三个项目最好不要删，其它的都可以删掉以增加启动速度
@@ -42,35 +55,51 @@ Tomcat 是 Apache 公司开发的一款免费的 Web 应用服务器，虽然它
 
 ### 核心配置
 
-### 虚拟目录
+`server.xml`是 Tomcat 的核心配置文件
 
-`server.xml`
+```xml
+<Server>
+  <Service name="catalina">
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
+    <Engine defaultHost="Localhost" name="catalina">
+      <Host appBase="webapps" autoDeploy="true" name="LocaLhost" unpackwARs="true">
+        <Context docBase="project1" path=" /project1" reloadable="true" />
+        <Context docBase="project2" path="/project2" reloadable="true" />
+      </Host>
+      <Host appBase="webapps" autoDeploy="true" name="m. myxq.com" unpackWARs="true">
+        <Context docBase="project1" path="/project1" reloadable="true" >
+        <Context docBase="project2" path="/project2" reloadable="true" >
+      </Host>
+    </Engine>
+  </Service> 
+</Server>
+```
+
+- Server - 整个Server容器组合，可以包含一个或者多个 Service
+- Service - 由一个或者多个 Connector 组成，以及一个 Engine，负责处理所有的 Connector 所获得的客户请求
+- Connector - 客户端与程序交互组件，负责接受请求以及向客户端返回响应
+- Engine - 处理连接器接受到请求
+- Host - 虚拟主机
+- Context - 一个 Context 对应一个 Web Application
+
+#### 虚拟目录
 
 ```xml
 <Context docBase="" path="" reloadable="" source=""/>
 ```
 
-+ docBase：文件的目录
-+ path：网页路径
-+ reloadable：字节码改变时重新加载服务器
-
-### 最基本的应用目录
-
-+ WEB-INF
-  + classes：编译后的 java 字节码文件
-  + lib：java 运行后依赖的 jar 包
-  + web.xml：当前项目的配置文件
-+ index.jsp
++ docBase：Web 应用的文件目录
++ path：URL 入口
++ reloadable：字节码改变时是否重新加载
 
 ### Servlet
 
-Servlet 提供处理处理请求和响应的 API，由`servlet-api.jar`提供对应的接口，每一个实现该接口的 Java 类都是一个 Servlet 处理程序
+Servlet 提供处理处理请求和响应的 API，由`servlet-api.jar`提供对应的接口，每一个实现该接口的 Java 类都是一个 Servlet 处理程序。在运行对应的 Servlet 时，不需要`main`方法，会被编译成字节码文件放入`WEB-INF -> classes`目录下根据请求去执行对应的 Servlet 程序
 
-在运行对应的 Servlet 时，不需要`main`方法，会被编译成字节码文件放入`WEB-INF -> classes`目录下根据请求去执行对应的 Servlet 程序
+Tomcat 启动时会将网页中的 URL 映射成 webapps 中的应用目录，一个 URL 对应一个 Servlet，当请求这个 URL 时，会执行`<servlet>`标签中对应的 java 程序，这个程序是编译过的字节码文件，存放在`classes`目录，但是无法访问 WEB-INF 目录下的文件
 
-Tomcat 启动时会将网页中的 url 映射成 webapps 中的应用目录，只要在对应的路径放置页面就可以访问，但是无法访问 WEB-INF 目录下的文件
-
-如果想要将 url 映射成对应的 Servlet 程序，则应该在`web.xml`中进行配置，比如：
+如果想要将 URL 映射成对应的 Servlet 程序，则应该在`web.xml`中进行配置，比如：
 
 ```xml
 <web-app>
@@ -84,10 +113,6 @@ Tomcat 启动时会将网页中的 url 映射成 webapps 中的应用目录，�
   </servlet-mapping>
 </web-app>
 ```
-
-一个 url 对应一个 servlet，当请求这个 url 时，会执行`<servlet>`标签中对应的 java 程序，这个程序是编译过的字节码文件，存放在`classes`目录
-
-Servlet 程序必须实现 Servlet 接口，JRE 核心库没有这个接口库，但是 tomcat 的 lib 中提供了`servlet-api.jar`，在将对应的 servlet 程序编译成字节码文件时，必须提供该 jar 依赖
 
 因此一个标准的目录是这样的：
 
@@ -114,10 +139,9 @@ Servlet 程序必须实现 Servlet 接口，JRE 核心库没有这个接口库�
 ### 部署方式
 
 + 直接将 war 放入`webapps`文件夹中
++ 指定虚拟目录
 
 使用`jar -cvf <outnname.war> [file1, file2, ...]`命令，比如`jar -cvf test.war *`会将当前目录所有的文件打包成`test.war`文件，丢到`webapps`启动时，会在当前目录下解压出来部署
-
-+ 指定虚拟目录
 
 <!-- more -->
 

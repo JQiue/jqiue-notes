@@ -268,9 +268,7 @@ timeout
 + os：操作系统支持列表
 + cpu：CPU 架构的支持列表
 + engine：支持的 JavaScript 引擎列表
-+ builtin：标明包是为内建在底层系统的标准组件
 + directories：包目录说明
-+ implements：实现规范的列表
 
 但对于 NPM 实际需要的字段只有：name、version、description、keywords、repositories、author、bin、main、scripts、engines、dependencies、devDependencies
 
@@ -309,7 +307,7 @@ npm config set registry https://registry.npm.taobao.org
 
 :::
 
-如果包中有命令行工具，那么需要添加额外的`-g`参数进行全局模式安装，通过全局模式安装的包都被安装到了一个统一的 node_modules 目录中。这并不意味着全局模式的包可以在任意地方被`require()`引用，只是为了将包作为一个全局可用的可执行命令
+如果包中有命令行工具，那么需要添加额外的`-g`参数进行全局模式安装，通过全局模式安装的包都被安装到了一个统一的 node_modules 目录中。这并不意味着全局模式的包在任意地方引用，只是将包作为一个全局可用的可执行命令
 
 卸载包使用`npm uninstall <package> (--save/-S)`，删除 node_modules 中的包文件，并且会将 package.json 的`dependencies`字段中的相关包名也一并移除，默认是卸载当前命令执行目录的包（可以省略`-s`），卸载全局的包则需要加上`-g`。如果是以 devDependency 方式安装的包，则使用`npm uninstall <package> --save --dev`
 
@@ -324,8 +322,6 @@ npm config set registry https://registry.npm.taobao.org
 ## package-lock.json
 
 package-lock.json 是在使用`npm install`时生成的文件，记录包的来源以及更加确切的版本号，以确保别人复制项目时的依赖版本保持一致，这是 package.json 无法做到的
-
-## 版本规则
 
 NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 
@@ -396,7 +392,7 @@ Yarn 主要用来处理 npm 刚开始的缺点，后来 npm 开始逐渐吸取 y
 + `yarn global add <package>` = `npm install <package> -g`
 + `yarn add <package> --dev` = `npm install <package> --save --dev`
 + `yarn remove <package>` = `npm uninstall <package> --save --dev`
-+ `yarn run <script>` = `npm run <script>` 
++ `yarn run <script>` = `npm run <script>`
 + `yarn dlx` = `npx`
 
 yarn 和 npm 都没有解决磁盘占用问题，对此，[pnpm](https://www.pnpm.cn/) 做的更好，它的处理方式非常妙，大大节省了硬盘空间
@@ -692,9 +688,9 @@ eventEmitter.on('handler', eventHandler);
 eventEmitter.emit('handler');
 ```
 
-## 缓冲
+## Buffer
 
-在内存中临时存储数据的区域，如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回
+在内存中数据都是二进制，如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回
 
 创建 Buffer：
 
@@ -716,9 +712,9 @@ const buf5 = Buffer.concat([buf3, buf4]);
 
 ## 流
 
-使用`fs`读取的文件会一次性读取到内存中，如果文件过大，很容易造成内存爆满，因为它不能够对文件进行分块处理。而流可以有序的实现将一个数据分块的流向另一个地方，可以做到边读边写，甚至可以控制读取或写入文件的速度
+使用`fs`读取的文件会一次性读取到内存中，如果文件过大，很容易造成内存爆满，因为它不能对文件进行分块处理。而流可以有序的实现将一个数据分块的流向另一个地方，可以做到边读边写，甚至可以控制读取或写入文件的速度
 
-流是用于在 Node.js 中处理流数据的抽象接口，`stream`模块提供了用于实现流接口的 API，在 Node.js 中提供了很多流对象。比如 HTTP 服务的请求，进程的输入输出流。流是可读可写的，或者两者兼之，且所有的流都是`EventEmitter`的实例
+流是用于在 Node.js 中处理流数据的抽象接口，`stream`模块提供了用于实现流接口的 API，在 Node.js 中提供了很多流对象。比如 HTTP 服务的响应流，进程的输入输出流。流是可读可写的，或者两者兼之，且所有的流都是`EventEmitter`的实例
 
 Node.js 中有四种基本的流类型：
 
@@ -746,13 +742,32 @@ rs.on('end', () => {
 HTTP 的流
 
 ```js
-const fs = require('fs');
-const http = require('http');
 http.createServer((req, res) => {
   const data = fs.createReadStream('./data.txt');
   data.pipe(res);
 });
 ```
+
+控制流的速率：
+
+```js
+const rs = fs.createReadStream("./data.txt", {
+  highWaterMark: 1024
+});
+
+rs.on("readable", () => {
+  let chunk;
+  setTimeout(() => {
+    if ((chunk = rs.read()) !== null) {
+      res.write(chunk);
+    }
+   }, 1000);
+});
+```
+
+`highWaterMark`决定缓冲区的大小
+
+对于一个可读流来说，都是以暂停模式开始的，可以使用`read()`来消费它，只要不停的调用它，会一次性返回`highWaterMark`大小的数据块，然而监听`data`事件就能让暂停状态变成流动模式
 
 ## 路径
 
