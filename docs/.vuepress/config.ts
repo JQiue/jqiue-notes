@@ -1,6 +1,5 @@
 import { defineUserConfig } from "vuepress";
-const { docsearchPlugin } = require('@vuepress/plugin-docsearch')
-
+import { docsearchPlugin } from "@vuepress/plugin-docsearch"
 import theme from "./theme";
 
 export default defineUserConfig({
@@ -11,7 +10,7 @@ export default defineUserConfig({
       "link",
       {
         rel: "stylesheet",
-        href: "//at.alicdn.com/t/font_1939991_g29apyyacbb.css",
+        href: "//at.alicdn.com/t/c/font_1939991_t7cg5uxwjwb.css",
       },
     ],
   ],

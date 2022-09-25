@@ -367,11 +367,11 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 + [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
 + [nrm](https://github.com/Pana/nrm)：是一个注册表管理器，用于快速切换下载源
-+ [concurrently](https://github.com/open-cli-tools/concurrently)：同时执行多条命令
++ [nodemon](https://github.com/remy/nodemon)：监听 Node.js 应用程序的更改，并自动重启服务器
++ [concurrently](https://github.com/open-cli-tools/concurrently)：同时执行多个 NPM 命令
 + [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
 + [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
 + [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
-+ [nodemon](https://github.com/remy/nodemon)：监听 Node.js 应用程序的更改，并自动重启服务器
 + [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
 + [Progress](https://github.com/visionmedia/node-progress)：终端进度条
 + [chalk](https://github.com/chalk/chalk)：为终端进行着色
@@ -379,19 +379,41 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 + [glob](https://github.com/isaacs/node-glob)：模式匹配目录文件
 + [commitlint](https://github.com/conventional-changelog/commitlint)：规范 Git 提交信息
 + [json-server](https://github.com/typicode/json-server)：快速启动一个 REST APi Server
++ [pm2](https://github.com/Unitech/pm2)：Node.js 进程管理
+
+推荐全局安装的包
 
 ```sh
-npm i npm-check-updates nrm rimraf nodemon -g
+npm i npm-check-updates nrm rimraf nodemon pm2 -g
 ```
 
-## NPM 的替代 Yarn
+## NPM 的替代 Yarn，pnpm
+
+Yarn 主要用来处理 npm 刚开始的缺点，后来 npm 开始逐渐吸取 yarn 的特性，已经并驾齐驱，它们两个互相切换非常容易
 
 + `yarn init` = `npm init`
-+ `yarn` = `yarn install`
++ `yarn` = `npm install`
 + `yarn global add <package>` = `npm install <package> -g`
 + `yarn add <package> --dev` = `npm install <package> --save --dev`
 + `yarn remove <package>` = `npm uninstall <package> --save --dev`
-+ `yarn run <script>` = `npm run <script>`
++ `yarn run <script>` = `npm run <script>` 
++ `yarn dlx` = `npx`
+
+yarn 和 npm 都没有解决磁盘占用问题，对此，[pnpm](https://www.pnpm.cn/) 做的更好，它的处理方式非常妙，大大节省了硬盘空间
+
+安装 pnpm
+
+```sh
+npm install -g pnpm
+```
+
+与 npm 的等价命令
+
+npm 命令 |pnpm 等价命令
+---|---
+npm install | pnpm install
+npm i `<pkg>` |pnpm add `<pkg>`
+npm run `<cmd>` |pnpm `<cmd>`
 
 ## 处理 URL
 

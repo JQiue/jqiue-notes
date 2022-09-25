@@ -59,10 +59,10 @@ export default hopeTheme({
     },
     comment: {
       provider: "Waline",
-      serverURL: "https://vuepress-theme-hope-comment.vercel.app",
+      serverURL: "https://waline.jinqiu.wang/",
     },
     mdEnhance: {
-      tex: true,
+      katex: true,
       demo: true,
       align: true,
       sup: true,
@@ -73,6 +73,7 @@ export default hopeTheme({
     pwa: {
       favicon: "/favicon.ico",
       themeColor: "#5c92d1",
+      cacheHTML: true,
       cachePic: true,
       maxSize: 10240,
       maxPicSize: 5000,

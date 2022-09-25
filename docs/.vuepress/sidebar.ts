@@ -140,7 +140,7 @@ const sundry: string[] = [
   "latex",
   "emmet",
   "learntolearn",
-  "nodejs",
+  "node",
   "server",
   "frontend-tools",
   "regex",

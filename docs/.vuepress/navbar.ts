@@ -1,6 +1,6 @@
 import { navbar } from "vuepress-theme-hope";
 
-export const zh =  navbar([
+export const zh = navbar([
   { text: "首页", icon: "zhuye", link: "/" },
   {
     text: "技能",
@@ -43,7 +43,22 @@ export const zh =  navbar([
       { text: "Spring", icon: "spring", link: "/spring/" },
     ],
   },
-  { text: "基础学科", icon: "kemu", link: "/subject/" },
+  {
+    text: "基础学科",
+    prefix: "/subject",
+    icon: "kemu",
+    children: [
+      { text: "英语", icon: "yingyu", link: "/english/" },
+      { text: "数学", icon: "math", link: "/math/" },
+      { text: "物理", icon: "physics", link: "/physics/" },
+      { text: "化学", icon: "chemistry", link: "/chemistry/" },
+      { text: "生物", icon: "biology", link: "/biology/" },
+      { text: "历史", icon: "history", link: "/history/" },
+      { text: "地理", icon: "geography", link: "/geography/" },
+      { text: "逻辑学", icon: "logic", link: "/logic/" },
+      { text: "经济和金融", icon: "economics-finance", link: "/economics-finance/" },
+    ],
+  },
   {
     text: "杂七杂八",
     icon: "baibaoxiang",

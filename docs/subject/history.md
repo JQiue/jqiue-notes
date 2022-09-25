@@ -1,5 +1,5 @@
 ---
-title: 历史（常识性）
+title: 历史
 category: 学科
 article: false
 ---

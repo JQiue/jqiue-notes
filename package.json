@@ -7,6 +7,7 @@
     "email": "jqiue@foxmail.com",
     "url": "https://jinqiu.wang"
   },
+  "packageManager": "pnpm@7.12.1",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -17,10 +18,13 @@
     "build": "vuepress build docs"
   },
   "dependencies": {
+    "@algolia/client-search": "^4.9.1",
+    "@vuepress/client": "2.0.0-beta.51",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.48",
     "@vuepress/plugin-nprogress": "^1.9.7",
     "@vuepress/plugin-search": "^2.0.0-beta.36",
-    "vuepress": "^2.0.0-beta.47",
-    "vuepress-theme-hope": "2.0.0-beta.84"
+    "vue": "^3.2.29",
+    "vuepress": "^2.0.0-beta.51",
+    "vuepress-theme-hope": "2.0.0-beta.103"
   }
 }

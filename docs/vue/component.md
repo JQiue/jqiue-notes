@@ -11,7 +11,7 @@ article: false
 
 ## 组件制作
 
-`Vue.extend()`用于创建组件实例，这个方法接收一个对象，`template`属性用来决定组件的 HTML 内容。`Vue.component(name, component)`用于组件注册，通过`Vue.component()`注册的组件可以在任意 Vue 实例中使用
+`Vue.extend()`用于创建组件实例，这个方法接收一个对象，`template`属性决定组件的 HTML 内容。`Vue.component(name, component)`用于组件注册，通过`Vue.component()`注册的组件可以在任意 Vue 实例中使用
 
 ```js
 const foo = Vue.extend({

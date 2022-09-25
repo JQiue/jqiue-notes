@@ -1,5 +1,5 @@
 ---
-title: 地理（常识性）
+title: 地理
 category: 学科
 article: false
 ---

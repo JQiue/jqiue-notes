@@ -78,22 +78,22 @@ xhr.onreadystatechange = function (){
 
 `setRequestHeader()`方法用于设置请求头信息
 
-这是一个发送 GET 请求的例子，它将获得请求方的 IP 地址
+这是一个发送 GET 请求的例子，它将获取一个 UUID
 
 ::: normal-demo GET 请求
 
 ```html
-<button id="btn">获取 IP 地址</button>
+<button id="btn">获取 UUID</button>
 ```
 
 ```js
 document.getElementById('btn').addEventListener('click', function () {
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://httptest.jinqiu.wang/get', true);
+  xhr.open('GET', 'https://www.httpbin.org/uuid', true);
   xhr.send();
   xhr.onreadystatechange = function () {
     if(xhr.readyState === 4 && xhr.status === 200){
-      alert(JSON.parse(xhr.responseText).address);
+      alert(JSON.parse(xhr.response).uuid);
     }
   }
 }, false);
@@ -106,13 +106,13 @@ document.getElementById('btn').addEventListener('click', function () {
 ::: normal-demo 封装请求
 
 ```html
-<button id="btn">获取 IP 地址</button>
+<button id="btn">获取 UUID</button>
 ```
 
 ```js
 document.querySelector('#btn').addEventListener('click', function () {
-  http.get('https://httptest.jinqiu.wang/get', function (res) {
-    alert(res.address);
+  http.get('https://www.httpbin.org/uuid', function (res) {
+    alert(res.uuid);
   });
 });
 
@@ -233,21 +233,21 @@ const http = (function () {
 
 ## Fecth
 
-Fetch 是一种现代请求技术，提供了一个全局的方法`fetch(url, [options])`，它会返回一个 promise 对象
+Fetch 是一种现代请求技术，提供了一个全局的方法`fetch(url, [options])`，它会返回一个 Promise
 
 ```js
 fetch(url, options);
 ```
 
-`options`可以有一下选项：
+`options`可以有以下选项：
 
 `method`: 请求使用的方法，如 GET、POST
 `headers`: 请求的头信息，形式为 Headers 的对象或包含 ByteString 值的对象字面量
 `body`: 请求的 body 信息：可能是一个 Blob、BufferSource (en-US)、FormData、URLSearchParams 或者 USVString 对象
 
-Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，promise 就会 reject
+Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，Promise 就会 reject
 
-成功发送请求后，会将信息封装到`response`对象中，包含一些属性可以读取
+成功发送请求后，会将信息封装到`response`对象中，包含可以读取状态的属性
 
 + `status` - 状态码
 + `statusText` - 状态信息
@@ -262,9 +262,9 @@ fetch(url, options).then(response => {});
 
 + `get(key)` - 用于获取某个字段的值
 + `keys()/values()` - 返回键名或键值
-+ `forEach(callback(key, value))` - 便利所有的键和值
++ `forEach(callback(key, value))` - 遍历所有的键和值
 
-`response`会根据不同的响应类型，提供不同的读取方法：
+`response`会根据 Content-Type，提供不同的读取方法：
 
 + response.text()：得到文本字符串
 + response.json()：得到 JSON 对象
@@ -273,20 +273,18 @@ fetch(url, options).then(response => {});
 + response.arrayBuffer()：得到二进制 ArrayBuffer 对象
 
 ::: tip
-都是异步的，返回的都是 Promise 对象。只能使用一个读取方法，否则就会报错
+只能使用一个读取方法，否则就会报错，都是异步的，返回的都是 Promise 对象
 :::
 
 ## 轮询
 
-HTTP 协议有一个缺陷，通信只能由客户端发起，如果想要直到服务端的状态，必须隔一段时间轮询服务器获取最新的状态。当然轮询的效率非常低，因为它不停的发生连接并中断
+HTTP 协议有一个缺陷，通信只能由客户端发起，如果想要知道服务端的状态，必须隔一段时间轮询服务器获取最新的状态。当然轮询的效率非常低，因为它不停的发生连接并中断，这对于实时信息非常不利
 
 ## WebSocket
 
-WebSocket 是一种网络通信协议，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，解决了即时通信的问题
+WebSocket 是一种网络通信协议，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，解决了轮询的问题。WebSocket 建立在 TCP 协议之上，服务器端的实现比较容易
 
-建立在 TCP 协议之上，服务器端的实现比较容易
-
-与 HTTP 协议有着良好的兼容性。默认端口也是80和443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器
+与 HTTP 协议有着良好的兼容性。默认端口也是 80 和 443，并且握手阶段采用 HTTP 协议，因此握手时不容易屏蔽，能通过各种 HTTP 代理服务器
 
 数据格式比较轻量，性能开销小，通信高效
 
@@ -294,16 +292,16 @@ WebSocket 是一种网络通信协议，服务器可以主动向客户端推送�
 
 没有同源限制，客户端可以与任意服务器通信
 
-协议标识符是ws（如果加密，则为wss），服务器网址就是 URL
+协议标识符是 ws（如果加密，则为wss），服务器网址就是 URL
 
 `WebSocket('url')`对象作为一个构造函数，用于新建 WebSocket 实例，客户端就会与服务器进行连接
 
 实例对象的`webSocket.readyState`返回当前状态：
 
-+ CONNECTING：值为0，表示正在连接
-+ OPEN：值为1，表示连接成功，可以通信了
-+ CLOSING：值为2，表示连接正在关闭
-+ CLOSED：值为3，表示连接已经关闭，或者打开连接失败
++ CONNECTING：值为 0，表示正在连接
++ OPEN：值为 1，表示连接成功，可以通信了
++ CLOSING：值为 2，表示连接正在关闭
++ CLOSED：值为 3，表示连接已经关闭，或者打开连接失败
 
 实例对象的事件有：
 
@@ -314,27 +312,39 @@ WebSocket 是一种网络通信协议，服务器可以主动向客户端推送�
 
 实例对象的`send()`方法用于向服务器发送数据
 
-这是一个示例：
+::: normal-demo 示例
 
-```js
-var ws = new WebSocket("wss://echo.websocket.org");
-
-ws.onopen = function(evt) { 
-  console.log("Connection open ..."); 
-  ws.send("Hello WebSockets!");
-};
-
-ws.onmessage = function(evt) {
-  console.log( "Received Message: " + evt.data);
-  ws.close();
-};
-
-ws.onclose = function(evt) {
-  console.log("Connection closed.");
-};  
+```html
+<button id="connect">连接</button>
+<button id="close">关闭</button>
 ```
 
-当然服务端也要具有自己实现
+```js
+let ws = null;
+
+document.getElementById('connect').addEventListener('click', function () {
+  ws = new WebSocket("ws://121.40.165.18:8800");
+
+  ws.onopen = function(e) { 
+    console.log("Connection open ..."); 
+    ws.send("Hello WebSockets!");
+  };
+  ws.onmessage = function(e) {
+    console.log( "Received Message: " + e.data);
+  };
+  ws.onclose = function(e) {
+    console.log("Connection closed.");
+  };
+}, false);
+
+document.getElementById('close').addEventListener('click', function () {
+  ws.close();
+}, false);
+```
+
+:::
+
+对于 WebSocket 来说，服务端也要有自己的实现
 
 ## 文件上传
 
