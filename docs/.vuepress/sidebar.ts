@@ -9,17 +9,17 @@ const computer: string[] = [
 ];
 
 const c: string[] = [
-  "",
-  "syntax",
-  "function",
-  "array",
-  "pointer",
-  "struct-union",
-  "preprocessing",
-  "storage",
-  "malloc",
-  "standard",
-  "input-memory-buffer",
+  '',
+  'syntax',
+  'function',
+  'array',
+  'pointer',
+  'struct-union',
+  'preprocessing',
+  'storage',
+  'malloc',
+  'standard',
+  'input-memory-buffer',
 ];
 
 const java: string[] = [
