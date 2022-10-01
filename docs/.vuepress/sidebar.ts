@@ -52,6 +52,7 @@ const javascript: string[] = [
   "event-loop",
   "standard",
   "quality",
+  "typescript",
 ];
 
 const python: string[] = [
@@ -94,6 +95,7 @@ const webapi: string[] = [
   "network",
   "storage",
   "drag",
+  "binary",
   "canvas",
   "worker",
   "webrtc",
@@ -111,6 +113,7 @@ const html_css: string[] = [
   "reset-css-style",
   "responsive-design",
   "better-code",
+  "trick",
 ];
 
 const subject: string[] = [
@@ -131,46 +134,41 @@ const sundry: string[] = [
   "",
   "tools",
   "problems",
-  "trick",
-  "zhihu",
-  "office",
+  "skill",
   "git",
   "adb",
   "http",
   "latex",
-  "emmet",
   "learntolearn",
   "node",
+  "awesome-npm",
   "server",
-  "frontend-tools",
+  "frontend",
   "regex",
   "interview",
-  "jquery",
-  "typescript",
   "openssl",
   "game-sport",
   "windows",
   "linux",
   "cicd",
   "security",
-  "css-trick",
   "software-design",
   "cloud-computing",
   "teamwork",
   "software-system-design",
-  "react-native",
   "ai",
   "ml",
   "data-analysis-and-visualization",
 ];
 
-const vue: string[] = ["", "component", "vuex", "router", "transition"];
-
-const react: string[] = [""];
-
-const express_koa: string[] = ["", "koa"];
-
-const spring: string[] = [""];
+const framework:string[] = [
+  "vue",
+  "react",
+  "express",
+  "koa",
+  "spring",
+  "react-native",
+];
 
 export const zh = sidebar({
   "/about": [""],
@@ -183,10 +181,7 @@ export const zh = sidebar({
   "/database/": database,
   "/html-css/": html_css,
   "/webapi/": webapi,
-  "/vue/": vue,
-  "/react/": react,
-  "/express-koa/": express_koa,
-  "/spring/": spring,
+  "/framework/": framework,
   "/subject/": subject,
   "/sundry/": sundry,
 });

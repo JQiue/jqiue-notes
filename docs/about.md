@@ -7,7 +7,7 @@ sticky: true
 ::: info 感谢观看
 如果你有幸访问到这里，请做好没有收获的准备！
 
-如果没有必要，不建议查看未推送到首页列表的文章
+非不必要，不建议查看未推送到首页列表的文章
 :::
 
 ## 这个人的信息
@@ -50,9 +50,6 @@ const Person = {
     Github: 'https://github.com/JQiue',
     Zhihu: 'https://www.zhihu.com/people/JQiue',
     Site: 'https://jinqiu.wang'
-  },
-  Projects: {
-    `JQiue's notes`: 'Personal site created using Vuepress',
   }
 }
 ```

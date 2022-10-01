@@ -20,6 +20,7 @@ export const zh = navbar([
       { text: "C", icon: "c", link: "/c/" },
       { text: "Java", icon: "java", link: "/java/" },
       { text: "JavaScript", icon: "javascript", link: "/js/" },
+      { text: "TypeScript", icon: "javascript", link: "/js/typescript/" },
       { text: "Python", icon: "python", link: "/python/" },
     ],
   },
@@ -29,18 +30,19 @@ export const zh = navbar([
     children: [
       { text: "HTML/CSS", icon: "html", link: "/html-css/" },
       { text: "WebAPI", icon: "wangluo", link: "/webapi/" },
-      // { text: 'Canvas', icon: 'canvas', link: '/canvas/'},
-      // { text: 'WebAssembly', icon: 'wasm', link: '/wasm/'},
     ],
   },
   {
     text: "框架",
     icon: "framework",
+    prefix: "/framework",
     children: [
       { text: "Vue", icon: "vue", link: "/vue/" },
       { text: "React", icon: "react", link: "/react/" },
-      { text: "Express/Koa", icon: "express", link: "/express-koa/" },
+      { text: "Express", icon: "express", link: "/express/" },
+      { text: "Koa", icon: "express", link: "/koa/" },
       { text: "Spring", icon: "spring", link: "/spring/" },
+      { text: "ReactNative", icon: "react", link: "/react-native/" },
     ],
   },
   {

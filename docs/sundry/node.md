@@ -359,30 +359,6 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 在执行了`npm install`之后，如果`scripts`中定义了`preinstall`、`install`、`postinstall`等，就会依次执行`scripts`中定义的钩子
 
-## 很棒的第三方包
-
-+ [npm-check-updates](https://github.com/raineorshine/npm-check-updates)：检查 package.json 依赖项升级最新版本，只是修改 package.json 文件，需要执行`npm install`更新已安装的包
-+ [nrm](https://github.com/Pana/nrm)：是一个注册表管理器，用于快速切换下载源
-+ [nodemon](https://github.com/remy/nodemon)：监听 Node.js 应用程序的更改，并自动重启服务器
-+ [concurrently](https://github.com/open-cli-tools/concurrently)：同时执行多个 NPM 命令
-+ [live-server](https://github.com/tapio/live-server)：是一个具有实时重新加载功能的小型开发服务器
-+ [rimraf](https://github.com/isaacs/rimraf)：是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
-+ [anywhere](https://github.com/JacksonTian/anywhere)：快速启动一个静态的文件服务器
-+ [lodash](https://github.com/lodash/lodash)：现代 JavaScript 实用工具库
-+ [Progress](https://github.com/visionmedia/node-progress)：终端进度条
-+ [chalk](https://github.com/chalk/chalk)：为终端进行着色
-+ [nodemailer](https://github.com/nodemailer/nodemailer)：发送邮件
-+ [glob](https://github.com/isaacs/node-glob)：模式匹配目录文件
-+ [commitlint](https://github.com/conventional-changelog/commitlint)：规范 Git 提交信息
-+ [json-server](https://github.com/typicode/json-server)：快速启动一个 REST APi Server
-+ [pm2](https://github.com/Unitech/pm2)：Node.js 进程管理
-
-推荐全局安装的包
-
-```sh
-npm i npm-check-updates nrm rimraf nodemon pm2 -g
-```
-
 ## NPM 的替代 Yarn，pnpm
 
 Yarn 主要用来处理 npm 刚开始的缺点，后来 npm 开始逐渐吸取 yarn 的特性，已经并驾齐驱，它们两个互相切换非常容易
@@ -769,6 +745,27 @@ rs.on("readable", () => {
 
 对于一个可读流来说，都是以暂停模式开始的，可以使用`read()`来消费它，只要不停的调用它，会一次性返回`highWaterMark`大小的数据块，然而监听`data`事件就能让暂停状态变成流动模式
 
+`pipeline`用于将一些列流传输到一起，并在管道完全完成时收到通知
+
+```js
+const { pipeline } = require('stream');
+const fs = require('fs');
+const zlib = require('zlib');
+
+pipeline(
+  fs.createReadStream('archive.tar'),
+  zlib.createGzip(),
+  fs.createWriteStream('archive.tar.gz'),
+  (err) => {
+    if (err) {
+      console.error('Pipeline failed.', err);
+    } else {
+      console.log('Pipeline succeeded.');
+    }
+  }
+);
+```
+
 ## 路径
 
 `path`模块用于处理文件和目录的路径
@@ -791,7 +788,69 @@ console.log(path.extname('bar.js')); // .html
 
 ## 子线程
 
+`child_process`提供了创建子进程的方法：
+
+```js
+const cp = require('child_process')
+cp.spawn('node', ['worker.js'])
+cp.exec('node worker.js', function (err, stdout, stderr) {
+  // todo
+})
+cp.execFile('worker.js', function (err, stdout, stderr) {
+  // todo
+})
+cp.fork('./worker.js')
+```
+
+进程之间的通信：
+
+```js
+// parent.js
+const cp = require('child_process');
+const n = cp.fork('./sub.js');
+
+n.on('message', function (m) {
+    console.log('PARENT got message: ' + m);
+});
+n.send({hello: 'workd'});
+
+// sub.js
+process.on('message', function (m) {
+    console.log('CHILD got message: ' + m);
+});
+process.send({foo: 'bar'});
+```
+
 <!-- to be updated -->
+
+## 集群
+
+`cluster`模块允许设立一个主进程和若干个`worker`进程，由主进程监控和协调`worker`进程的运行
+
+```js
+const cluster = require('cluster');
+const os = require('os');
+const http = require('http');
+
+if (cluster.isMaster) {
+    console.log('是主进程');
+    const cpusLength = os.cpus().length // cpu 核数
+    for (let i = 0; i < cpusLength; i++) {
+        // fork() 方法用于新建一个 worker 进程，上下文都复制主进程。只有主进程才能调用这个方法
+        // 该方法返回一个 worker 对象。
+        cluster.fork();
+    }
+} else {
+    console.log('不是主进程');
+    // 运行该 demo 之后，可以运行 top 命令看下 node 的进程数量
+    // 如果电脑是 4 核 CPU ，会生成 4 个子进程，另外还有 1 个主进程，一共 5 个 node 进程
+    // 其中， 4 个子进程受理 http-server
+    http.createServer((req, res) => {
+        res.writeHead(200);
+        res.end('hello world');
+    }).listen(8000)  // 注意，这里就不会有端口冲突的问题了！！！
+}
+```
 
 ## 工具
 
@@ -807,6 +866,10 @@ readFile('data.txt').then(res => {
   console.log(data, data.toString());
 });
 ```
+
+## 压缩
+
+zlib 模块提供了使用 Gzip、Deflate/Inflate、以及 Brotli 实现的压缩功能
 
 ## 逐行读取
 
