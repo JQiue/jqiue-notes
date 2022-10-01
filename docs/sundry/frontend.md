@@ -39,6 +39,10 @@ npm install -g eslint
 
 ### CSSLint
 
+## prettier
+
+是一款代码格式化工具，它不同于 Lint，只是做一些代码风格检查
+
 ## CSS 预处理器
 
 众所周知，CSS 具有大量重复的代码，这看起来很不优雅，CSS 预处理器帮忙做到了简化，常见的预处理器有：

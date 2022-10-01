@@ -89,7 +89,7 @@ const Person = {
   + [C](/c/)
   + [Java](/java/)
   + [JavaScript](/js/)
-    + [TypeScript](/sundry/typescript/)
+    + [TypeScript](/js/typescript/)
   + [Python](/python/)
 + [数据结构与算法](/ds-algorithm/)
 + [软件设计](/sundry/software-design/)
@@ -102,10 +102,11 @@ const Person = {
   + [HTML-CSS](/html-css/)
   + [WebAPI](/webapi/)
 + 应用框架
-  + [Vue](/vue/)
-  + [React](/react/)
-  + [Express/koa](/express-koa/)
-  + [Spring](/spring/)
+  + [Vue](/framework/vue/)
+  + [React](/framework/react/)
+  + [Express](/framework/express-koa/)
+  + [koa](/framework/koa/)
+  + [Spring](/framework/spring/)
 + [服务器 && 容器](/sundry/server/)
   + Tomcat
   + Nginx

@@ -41,14 +41,9 @@ export default hopeTheme({
   },
   encrypt: {
     config: {
-      '/canvas/': '123456',
-      '/vue/': '123456',
-      '/react/': '123456',
+      '/framework/': '123456',
       '/java/': '123456',
-      '/spring/': '123456',
-      '/express/': '123456',
       '/python/': '123456',
-      '/wasm/': '123456',
       '/computer/': '123456',
       '/sundry/interview': '123456',
     },
