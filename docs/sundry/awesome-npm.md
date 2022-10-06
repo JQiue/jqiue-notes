@@ -95,3 +95,18 @@ PM2 delete <id|appname> # 杀死并删除某个应用
 pm2 startup             # 设置开机自启动
 pm2 unstartup           # 禁用开机自启动
 ```
+
+## [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
+
+根据 commit 自动生成 CHANGELOG.md
+
+```sh
+conventional-changelog -p angular -i CHANGELOG.md -s
+```
+
+## [standard-version](https://github.com/conventional-changelog/standard-version)
+
+发布版本控制，standard-version 会做以下事情：
+
+1. 创建一个新的 commit，并更新 CHANGELOG.md
+2. 根据 pacakge.json 创建一个新的 tag

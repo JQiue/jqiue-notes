@@ -3,9 +3,9 @@ title: 其他技能
 category: 知识分享
 tag: [技巧]
 date: 2019-05-10
+author: JQiue
+article: false
 ---
-
-
 
 为找不到资源的种子而担忧？不用怕。你可以通过 Google 直接找到下载地址
 

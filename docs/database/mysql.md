@@ -300,3 +300,12 @@ connection.query(`insert into foo (name) value ('zs')`, (error, result) => {
   console.log(result);
 });
 ```
+
+在 Java 平台中，首先要导入一个驱动包，然后使用以下代码
+
+```js
+Class.forName("com.mysql.jdbc.Driver");
+Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/database_name", "root", "123456", );
+Statement st = connection.createStatement();
+int row = st.executeUpdate("insert into foo (name) value ('zs')");
+```

@@ -1,18 +1,26 @@
 ---
 title: React-Native
-category: 知识分享
+category: 框架
 author: JQiue
 article: false
 ---
+
+::: tip
+基于 ReactNative v0.70
+:::
 
 ## 搭建环境
 
 + 安装 Android Studio
 + 安装 SDK
 + 使用 wifi 调试真机
-+ 在真机上设置电脑服务端 ip 和端口以最小代价启动开发
++ 在真机上设置服务端 ip 地址以最小代价启动开发
 
-最好在真机上进行开发
+创建 ReactNative 项目
+
+```sh
+npx react-native init my-project
+```
 
 ## 最小示例
 
@@ -71,6 +79,78 @@ const styles = StyleSheet.create({
 ```
 
 ## 事件处理
+
+## 注意事项
+
+Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：
+
+```xml
+<application
+  android:usesCleartextTraffic="true">
+</application>
+```
+
+不允许读写存储时，`AndroidManifest.xml`添加以下条目
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+```
+
+## 同时安装 release 和 debug 包的办法
+
+利于在同一设备进行调试，在`android\app\build.gradle`中加入
+
+```gradle
+buildTypes {
+    debug {
+        applicationIdSuffix "debug"
+    }
+}
+```
+
+## 根据 package.json 获取构建 APK 版本
+
+自动化版本构建
+
+```gradle
+/**
+ * 获取 APP 构建版本
+ */
+def getAppVersion() {
+    def inputFile = new File("../package.json")
+    def packageJson = new JsonSlurper().parseText(inputFile.text)
+    return packageJson["version"]
+}
+
+def appVersion = getAppVersion()
+
+android {
+    defaultConfig {
+        versionCode 1
+        versionName appVersion
+    }
+}
+```
+
+## 构建 APP
+
+```sh
+cd android
+./gradlew assembleRelease
+```
+
+## 构建优化
+
+为了减少构建体积，为`build.gradle`修改以下条目
+
+```gradle
+- ndk {
+-   abiFilters "armeabi-v7a", "x86"
+- }
+- def enableSeparateBuildPerCPUArchitecture = false
++ def enableSeparateBuildPerCPUArchitecture = true
+```
 
 ## 参考资料
 

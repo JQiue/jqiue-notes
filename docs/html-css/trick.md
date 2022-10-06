@@ -2,6 +2,7 @@
 title: 技巧性
 tag: [html, css]
 author: JQiue
+article: false
 ---
 
 ## 快速生成 HTML 片段
