@@ -36,7 +36,8 @@ for (var i = 1; i < 1000; i++){
 ## 窗口交互
 
 + `open(url, name, params)`：打开一个新窗口，返回新窗口的实例
-+ `close()`：关闭窗口，默H认关闭当前的窗口，只能由该窗口的实例所关闭
++ `close()`：关闭窗口，默认关闭当前的窗口，只能由该窗口的实例所关闭
++ `opener`：返回打开当前窗口的那个窗口的引用，如果当前窗口不是由其他窗口打开的，则返回`null`
 
 ::: normal-demo 窗口
 
@@ -103,6 +104,97 @@ document.querySelector('#open').addEventListener('click', () => {
 
 ## 跨窗口通信
 
-<!-- to be updated -->
+`window.postMessage(message, targetOrigin)`可以实现跨窗口通信，不会被限制
+
+`targetOrigin`最好指定目标窗口的协议，地址或端口，这三者的任意一项不符合都不会发送，不要指定为`*`，这可能有安全问题
+
+其他窗口可以监听`message`事件来获取信息
+
+```js
+window.addEventListener('message', (message) => {
+  /* message 有三个属性：
+    1. data：其他 window 传来的对象
+    2. origin：发送方的 origin 
+    3. source：发送方窗口的引用
+  */
+}, false )
+```
+
+## 打印文档
+
+调用`print()`即可打印当前文档，如果想要打印某个某个元素，可以使用一些其它的技巧
 
 ## 通知
+
+`Notification`允许调用操作系统级别的通知，在进行通知之前，必须向用户请求通知权限
+
+```js
+Notification.requestPermission( function(status) {
+  console.log(status); // 仅当值为 "granted" 时显示通知
+});
+```
+
+`Notification.permission`会返回一个字符串，表示权限状态：
+
++ `default`：还没有询问用户授权
++ `granted`：询问过用户，并授予权限
++ `denied`：用户拒绝授予权限
+
+创建一个通知非常简单，`Notification(title, options)`是一个构造方法：
+
+`options`包含以下属性：
+
++ `dir` : 文字的方向；它的值可以是 `auto（自动）`, `ltr（从左到右）`, or `rtl（从右到左）`
++ `lang`: 指定通知中所使用的语言
++ `body`: 通知中额外显示的字符串
++ `tag`: 赋予通知一个 ID，以便在必要的时候对通知进行刷新、替换或移除。
++ `icon`: 一个图片的 URL，将被用于显示通知的图标。
+
+```js
+const notice = new Notifications('title', {body: '这是一个通知'})
+```
+
+::: normal-demo 通知
+
+```html
+<button id="request">获取通知权限</button>
+<button id="send">发送通知</button>
+```
+
+```js
+document.querySelector('#request').onclick = (event) => {
+  Notification.requestPermission( function(status) {
+    if(Notification.permission == status) {
+      alert('用户已经授予通知权限');
+    }
+    if(Notification.permission == 'denied') {
+      alert('用户决绝授予通知权限');
+    }
+  });
+}
+
+document.querySelector('#send').onclick = (event) => {
+  if(Notification.permission == 'default') {
+    alert('没有询问用户授予通知权限');
+    return;
+  }
+  if(Notification.permission == 'denied') {
+    alert('用户没有授予通知权限');
+    return;
+  }
+  const n = new Notification("JQiue's notes", {
+    body: 'Hello, World'
+  });
+  n.onshow = event => {
+    setTimeout(n.close.bind(n), 3000);
+  }
+  n.onclick = event => {
+    alert('你点击了通知');
+  }
+  n.onclose = event => {
+    alert('通知已经关闭了')
+  }
+}
+```
+
+:::

@@ -57,6 +57,8 @@ CREATE TABLE student (
 ALTER DATABASE database_name CHARACTER SET 字符集
 -- 添加一列
 ALTER TABLE table_name ADD column_name 类型;
+-- 删除一列
+ALTER TABLE table_name DROP column_name 类型;
 -- 修改字段类型
 ALTER TABLE table_name MODIFY column_name 类型;
 -- 修改表名
@@ -137,6 +139,8 @@ DELETE FROM table_name;
 DELETE FROM table_name where column = value;
 ```
 
+### TRUNCATE
+
 删除所有记录并截断表的结构
 
 ```sql
@@ -167,7 +171,6 @@ CREATE TABLE student (
   stu_score int
 );
 ```
-
 
 ### SELECT
 
@@ -232,7 +235,7 @@ SELECT * FROM table_name where column = value;
 
 ### 模糊查询
 
-通过一种相对条件比较模糊的方式来查询数据，使用`LIKE`关键字来构成条件，其中又在条件中提供了几个通配符来配合：
+通过一种相对条件比较模糊的方式来查询数据，使用`LIKE`关键字来构成条件，又在其条件中提供了几个通配符来配合：
 
 + `_`：任意一个字符
 + `%`：0 ~ n 个字符
@@ -300,7 +303,7 @@ SELECT MIN(stu_score) FROM student;
 
 ### 分组
 
-`GROUP BY`可以将列相同的值分为一组，通常和其他查询语句结合使用，单独使用只会查询每组中的第一条数据，意义不大。分组目的是为了统计，一般会和聚合函数一起使用
+`GROUP BY`可以将列相同的值分为一组，通常和其他查询语句结合使用，单独使用只会查询每组中的第一条数据，意义不大。分组的目的是为了统计，一般会和聚合函数一起使用
 
 ```sql
 SELECT * FROM student GROUP BY stu_gender;
@@ -310,10 +313,10 @@ SELECT stu_gender, GROUP_CONCAT(stu_score) FROM student WHERE stu_score >= 60 GR
 ```
 
 ::: tip WHERE 和 HAVING
-HAVING 作用和 WHERE 一样，但只能用于`GROUP BY`，WHERE 会在分组之前进行数据筛选，HAVING 会在分组之后进行数据筛选，同时可以使用聚合函数，WHERE 是不可以的
+`HAVING`作用和`WHERE`一样，但只能用于`GROUP BY`，`WHERE`会在分组之前进行数据筛选，`HAVING`会在分组之后进行数据筛选，同时可以使用聚合函数，`WHERE`是不可以的
 :::
 
-## limit
+### limit
 
 `limit`可以限制查询记录的条数，常用于分页
 
@@ -324,9 +327,38 @@ SELECT * FROM student limit 3;
 SELECT * FROM student limit 2, 6;
 ```
 
+### SELECT 的书写和执行顺序
 
-## trick
-,
++ 书写：SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT
++ 执行：FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT
+
+### 多表查询
+
+将两个`SELECT`语句的查询结果合并在一起，列数，列类型必须相同
+
++ `SELECT * FROM 表1 UNION SELECT * FROM 表2`
++ `SELECT * FROM 表1 UNION ALL SELECT * FROM 表2`
+
+### 连接查询
+
+`SELECT`可以同时查询多个表，这时结果会是一个笛卡尔积
+
+::: tip 笛卡尔积
+两个集合 X 和 Y 的笛卡尔积，表示为 X × Y ，第一个对象是 X 的成员而第二个对象是 Y 的所有可能有序对的其中一个成员
+:::
+
+查询多个表示，最好主键保持一致，即`WHERE 表1.id = 表2.id`
+
+### 子查询
+
+一个`SELECT`语句中包含另一个完整的`SELECT`语句，或更多。即把一个表的结果当作新表查询
+
+```sql
+SELECT * FROM (SELECT * FROM 表1)
+```
+
+## 技巧
+
 + 蠕虫复制 - 复制一个表的数据到另一个表
 
 ```sql
@@ -335,8 +367,3 @@ CREATE TABLE table_1 like table_2;
 -- 插入 table_1 的数据到 table_2
 INSERT INTO table_1 SELECT * FROM table_2;
 ```
-
-### SELECT 的书写和执行顺序
-
-+ 书写：SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY -> LIMIT
-+ 执行：FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT

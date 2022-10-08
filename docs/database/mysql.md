@@ -67,8 +67,10 @@ use db_test;
 
 ## 数据类型
 
-+ double - 浮点型
-+ char - 定长字符串（空间固定）
+字段类型对于数据库优化特别重要
+
++ double - 浮点型，如`double(5, 2)`表示最多5位，其中必须有两位小数
++ char - 定长字符串（空间固定），空的地方使用空格填充
 + varchar - 可变字符串
 + text - 长文本字符串
 + blob - 二进制
@@ -80,7 +82,7 @@ use db_test;
 在 MySQL 中，字符和日期都需要用单引号表示
 :::
 
-## 创建一个表
+## 表的操作
 
 在使用`use`选择了一个数据库后，就可以在这个数据库下创建一个表了，我们创建一个`t_student`表
 
@@ -135,8 +137,6 @@ CREATE TABLE db_test.t_student (
 + 注释：`COMMENT`
 + 插入时间戳：
 + 更新时间戳：
-
-## 插入、删除、修改、查找
 
 ## 内置函数
 
@@ -228,6 +228,16 @@ Packed | 指示关键字如何被压缩。若没有被压缩，值为 NULL
 Null | 用于显示索引列中是否包含 NULL。若列含有 NULL，该列的值为 YES。若没有，则该列的值为 NO
 Index_type | 显示索引使用的类型和方法（BTREE、FULLTEXT、HASH、RTREE）
 Comment | 显示评注
+
+## 修改数据库密码
+
+```sql
+use mysql;
+update user set password=password('buxinga12345') where  user='root';
+update mysql.user set authentication_String=password('buxinga12345') where user='root' and host ='localhost';
+flush privileges;
+mysqladmin -u root -p password buxinga12345;
+```
 
 ## 备份和还原
 
