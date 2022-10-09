@@ -41,7 +41,6 @@ export const zh = navbar([
       { text: 'React', icon: 'react', link: '/react/' },
       { text: 'Express', icon: 'express', link: '/express/' },
       { text: 'Koa', icon: 'express', link: '/koa/' },
-      { text: 'Spring', icon: 'spring', link: '/spring/' },
       { text: 'ReactNative', icon: 'react', link: '/react-native/' },
     ],
   },

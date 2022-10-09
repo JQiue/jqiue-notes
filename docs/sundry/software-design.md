@@ -435,6 +435,13 @@ console.log(target.bar());  // 'foo'
 
 <!-- to be updated -->
 
+## 系统设计
+
++ 登录验证
++ 权限管理
++ 交易系统
++ 通知系统
+
 ## 参考资料
 
 + 学习设计模式（By Lydia Hallie and Addy Osmani）

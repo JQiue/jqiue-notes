@@ -153,12 +153,6 @@ const sundry: string[] = [
   "cicd",
   "security",
   "software-design",
-  "cloud-computing",
-  "teamwork",
-  "software-system-design",
-  "ai",
-  "ml",
-  "data-analysis-and-visualization",
 ];
 
 const framework:string[] = [
@@ -166,7 +160,6 @@ const framework:string[] = [
   "react",
   "express",
   "koa",
-  "spring",
   "react-native",
 ];
 

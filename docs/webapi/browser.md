@@ -128,6 +128,10 @@ window.addEventListener('message', (message) => {
 
 `Notification`允许调用操作系统级别的通知，在进行通知之前，必须向用户请求通知权限
 
+::: danger
+只能在 HTTPS 中使用，并且只适用于桌面浏览器，大多数移动浏览器没有实现它
+:::
+
 ```js
 Notification.requestPermission( function(status) {
   console.log(status); // 仅当值为 "granted" 时显示通知
@@ -168,7 +172,7 @@ document.querySelector('#request').onclick = (event) => {
       alert('用户已经授予通知权限');
     }
     if(Notification.permission == 'denied') {
-      alert('用户决绝授予通知权限');
+      alert('用户拒绝授予通知权限');
     }
   });
 }
