@@ -15,6 +15,7 @@ export default hopeTheme({
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
   docsDir: 'docs',
   docsBranch: 'master',
+  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "PageView"],
   locales: {
     '/': {
       navbar: navbar.zh,
@@ -23,6 +24,7 @@ export default hopeTheme({
         intro: 'about.html',
         avatar: '/avatar.png',
         roundAvatar: true,
+        articleInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "PageView"],
         medias: {
           QQ: 'http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes',
           Email: 'mailto:jqiue@foxmail.com',
@@ -42,6 +44,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       '/framework/': '123456',
+      '/subject/': '',
       '/java/': '123456',
       '/python/': '123456',
       '/computer/': '123456',
