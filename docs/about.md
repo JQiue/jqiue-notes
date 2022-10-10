@@ -44,13 +44,6 @@ const Person = {
     FrontEnd: 'Beginner',
     BackEnd: 'Beginner'
   }, // This is just the tip of the iceberg
-  SocialLinks: {
-    QQ: '861947542',
-    Email: 'jqiue@foxmail.com',
-    Github: 'https://github.com/JQiue',
-    Zhihu: 'https://www.zhihu.com/people/JQiue',
-    Site: 'https://jinqiu.wang'
-  }
 }
 ```
 
