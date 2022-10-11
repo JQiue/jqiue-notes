@@ -556,6 +556,8 @@ The key's randomart image is:
 
 ![ssh-4](./images/git-ssh-4.png)
 
+最后使用`ssh -T git@github.com`看一下是否提示愉快的信息，否则就要去处理一下网络方面的原因
+
 接下来只要使用 SSH 地址进行推送就行了，SSH 链接也是可以起别名的
 
 ```sh

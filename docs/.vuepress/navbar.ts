@@ -1,4 +1,4 @@
-import { navbar } from "vuepress-theme-hope";
+import { navbar } from 'vuepress-theme-hope';
 
 export const zh = navbar([
   { text: '首页', icon: 'zhuye', link: '/' },
@@ -66,7 +66,30 @@ export const zh = navbar([
   },
   {
     text: '杂七杂八',
+    prefix: '/sundry',
     icon: 'baibaoxiang',
-    link: '/sundry/',
+    children: [
+      { text: '资源和工具', link: '/tools/' },
+      { text: '问题汇总', link: '/problems/' },
+      { text: '其他技能', link: '/skill/' },
+      { text: 'Git 指南', link: '/git/' },
+      { text: 'Android 调试桥（adb）的用法', link: '/adb/' },
+      { text: '通向万维网的协议 - HTTP', link: '/http/' },
+      { text: '使用 LaTeX 写作', link: '/latex/' },
+      { text: '学习学习', link: '/learntolearn/' },
+      { text: 'Node.js', link: '/node/' },
+      { text: '很棒的 NPM 第三方包', link: '/awesome-npm/' },
+      { text: '服务端软件', link: '/server/' },
+      { text: '关于 Web 前端的一切', link: '/frontend/' },
+      { text: '正则表达式', link: '/regex/' },
+      { text: '面试经历', link: '/interview/' },
+      { text: '使用 openssl 生成证书', link: '/openssl/' },
+      { text: '游戏的基础：运动', link: '/game-sport/' },
+      { text: 'windows', link: '/windows/' },
+      { text: 'Linux', link: '/linux/' },
+      { text: 'CI/CD', link: '/cicd/' },
+      { text: '开发中的一些安全防范', link: '/security/' },
+      { text: '软件设计', link: '/software-design/' },
+    ],
   },
 ]);

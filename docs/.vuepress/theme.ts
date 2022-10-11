@@ -1,6 +1,6 @@
-import { hopeTheme } from "vuepress-theme-hope";
-import * as navbar from "./navbar";
-import * as sidebar from "./sidebar";
+import { hopeTheme } from 'vuepress-theme-hope';
+import * as navbar from './navbar';
+import * as sidebar from './sidebar';
 
 export default hopeTheme({
   hostname: 'https://jinqiu.wang',
@@ -15,7 +15,15 @@ export default hopeTheme({
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
   docsDir: 'docs',
   docsBranch: 'master',
-  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "PageView"],
+  pageInfo: [
+    'Author',
+    'Original',
+    'Date',
+    'Category',
+    'Tag',
+    'ReadingTime',
+    'PageView',
+  ],
   locales: {
     '/': {
       navbar: navbar.zh,
@@ -24,7 +32,15 @@ export default hopeTheme({
         intro: 'about.html',
         avatar: '/avatar.png',
         roundAvatar: true,
-        articleInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "PageView"],
+        articleInfo: [
+          'Author',
+          'Original',
+          'Date',
+          'Category',
+          'Tag',
+          'ReadingTime',
+          'PageView',
+        ],
         medias: {
           QQ: 'http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes',
           Email: 'mailto:jqiue@foxmail.com',
@@ -44,7 +60,7 @@ export default hopeTheme({
   encrypt: {
     config: {
       '/framework/': '123456',
-      '/subject/': '',
+      '/subject/': '123456',
       '/java/': '123456',
       '/python/': '123456',
       '/computer/': '123456',

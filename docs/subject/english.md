@@ -117,7 +117,7 @@ This is your handbag. 这是你的手提包.
 Is this your handBag? 这是你的手提包吗？
 ```
 
-针对一般疑问句的否定的简略答语是：No, it's not / it isn't. 
+针对一般疑问句的否定的简略答语是：No, it's not / it isn't.
 
 当对句中具体部分进行提问时，就要用到特殊疑问句，特殊疑问句由`特殊疑问词 + 一般疑问句`组成，特殊疑问词有：
 
@@ -138,6 +138,7 @@ What did he buy three books yesterday? - 询问宾语
 When did he buy three books? - 询问时间
 Where did he buy three books yesterday? - 询问地点
 ```
+
 ::: tip
 当对非主语部分提问时，要用 Be 动词或助动词
 :::
@@ -305,7 +306,6 @@ fish -> fish/fishes
 ```
 
 不可数名词分为物质名词和抽象名词，个体名词和物质名词的区别就是能不能区分形状
-
 
 ## 特殊句式 - 主系表
 
@@ -1720,3 +1720,11 @@ I will have seen the seen movie when she arrived in Beijing.
 形式：be + done
 
 done 表示被动的动作，be 表示被动的时间（变成对应的各种时态），不仅如此 be 还要表示单复数
+
+## 参考资料
+
++ 新东方: 英语语法新思维
++ 不就是语法和长难句吗？
++ 新概念英语
++ 赖世雄经典英语语法
++ 英语魔法师之语法俱乐部

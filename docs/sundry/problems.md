@@ -79,7 +79,7 @@ git rm -r --cached .
 解决：需要一些操作来确认一下是否为这种原因
 
 ```sh
-ssh -T git@github.com
+ssh -VT git@github.com
 ```
 
 如果以上命令得到了 timeout，这种情况应使用 http 协议进行推送，而不是 ssh，只需要将配置文件中的 url 更改为 http 即可
@@ -101,6 +101,8 @@ url = git@github.com:username/repo.git
 ```
 url = https://github.com/username/repo.git
 ```
+
+如果看到了 Github 的地址被解析成了 127.0.0.1，则说明被 DNS 污染了，需要获得真正的 IP 并修改 Hosts
 
 + push 到 Github 时产生：fatal: unable to access 'https://github.com/xxx/xxx': OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
 
