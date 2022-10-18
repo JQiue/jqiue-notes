@@ -32,7 +32,9 @@ timeline: false
 [Termius](https://www.termius.com/windows)（SSH）  
 [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)（Windows 自启动管理）  
 [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)（Windows 资源管理器）  
+[Office Tool Plus](https://otp.landian.vip/zh-cn/)（一个强大且实用的 Office 部署工具）  
 [DroidCam](https://www.dev47apps.com/)（电脑调用手机摄像头）
+[Neat Converter](https://neat-reader.cn/downloads/converter)免费电子书格式转换器  
 
 ## 开发
 

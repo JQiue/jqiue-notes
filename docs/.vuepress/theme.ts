@@ -83,6 +83,7 @@ export default hopeTheme({
       sub: true,
       tasklist: true,
       codetabs: true,
+      echarts: true,
     },
     pwa: {
       favicon: '/favicon.ico',
