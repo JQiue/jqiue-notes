@@ -81,6 +81,109 @@ setInterval(() => {
 
 这需要德摩根定律，勾股定理、距离，平方比较，内积、微分，条件划分，向量、圆的方程式，维度扩展
 
+::: normal-demo 矩形碰撞
+
+```html
+<div class="box" tabindex="0">
+  <canvas id="canvas"></canvas>
+</div>
+```
+
+```js
+const box = document.querySelector(".box");
+const canvas = document.querySelector("#canvas");
+const ctx = canvas.getContext("2d");
+const CANVAS_WIDTH = (canvas.width = 300);
+const CANVAS_HEIGHT = (canvas.height = 300);
+let PositionX = 0;
+let PositionY = 0;
+let speedX = 0;
+let speedY = 0;
+let gameFrame = 0;
+let staggerFrame = 8;
+const keyType = {
+  up: false,
+  down: false,
+  left: false,
+  right: false,
+};
+
+document.addEventListener("keydown", (event) => {
+  console.log(event.code);
+  if (event.code == "KeyD") {
+    keyType.right = true;
+    speedX = 2;
+  }
+  if (event.code == "KeyA") {
+    keyType.left = true;
+    speedX = -2;
+  }
+  if (event.code == "KeyS") {
+    keyType.down = true;
+    speedY = 2;
+  }
+  if (event.code == "KeyW") {
+    keyType.up = true;
+    speedY = -2;
+  }
+});
+
+document.addEventListener("keyup", (event) => {
+  if (event.code == "KeyD") {
+    keyType.right = false;
+    speedX = 0;
+  }
+  if (event.code == "KeyA") {
+    keyType.left = false;
+    speedX = 0;
+  }
+  if (event.code == "KeyS") {
+    keyType.down = false;
+    speedY = 0;
+  }
+  if (event.code == "KeyW") {
+    keyType.up = false;
+    speedY = 0;
+  }
+});
+
+let enemy = true;
+
+function animate(params) {
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  if (keyType.right || keyType.left) {
+    PositionX += speedX;
+  }
+  if (keyType.down || keyType.up) {
+    PositionY += speedY;
+  }
+  gameFrame++;
+  ctx.fillRect(PositionX, PositionY, 50, 50);
+  if (PositionX + 50 > 150 && PositionY + 50 > 150) {
+    alert("撞到了");
+    enemy = false;
+  }
+  if (enemy) ctx.fillRect(150, 150, 50, 50);
+  if(enemy) requestAnimationFrame(animate);
+}
+animate();
+```
+
+```css
+.box {
+  border: 5px solid #000;
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+}
+#canvas {
+  width: 300px;
+  height: 300px;
+}
+```
+
+:::
+
 ## 光线
 
 旋转，向量，圆，伪影，左右判定，外积，旋转速度，曲率，反射，

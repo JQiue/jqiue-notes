@@ -50,13 +50,11 @@ npm install -g eslint
 + Sass
 + Less
 
-### Sass
-
 Sass 是最成熟的预处理器，它的后缀文件一般为`scss`或`sass`，`sass`以严格的缩进语法来书写，省略了大括号和分号，而`scss`和平常的`css`类似
 
 嵌套规则：
 
-```css
+```scss
 /* css */
 .header span {
   color: red;
@@ -77,7 +75,7 @@ Sass 是最成熟的预处理器，它的后缀文件一般为`scss`或`sass`，
 
 在嵌套规则中引用父选择器
 
-```css
+```scss
 /* css */
 .header span {}
 .header span:active {}
@@ -100,7 +98,7 @@ Sass 是最成熟的预处理器，它的后缀文件一般为`scss`或`sass`，
 
 变量 - 任何符合 CSS 取值都可以定义，甚至能参与表达式计算
 
-```css
+```scss
 /* css */
 .title {
   color: #666;
@@ -142,7 +140,7 @@ span {
 
 混入 - 抽取公共的代码样式
 
-```css
+```scss
 /* scss */
 @mixin singleline-ellipsis {
   overflow: hidden;
@@ -178,7 +176,7 @@ span {
 
 且支持传参，使用`$`定义
 
-```css
+```scss
 /* scss */
 @mixin singleline-ellipsis($width) {
   width: $width;
@@ -213,7 +211,7 @@ span {
 
 还可以搭配`@content`语法，它在被导入的时候被内容所填充
 
-```css
+```scss
 /* scss */
 @mixin ipad {
   @media screen and(min-width: 768px) {
@@ -240,7 +238,7 @@ span {
 }
 ```
 
-## Babel
+## babel
 
 Babel 是一个 JavaScript 转义器，它将使用了最新的 ECMAScript 特性代码转换成了使用最广泛支持的 ES5 特性的等价代码，让开发人员享受新特性带来的爽点同时，避免了大部分兼容性问题
 
@@ -248,7 +246,7 @@ Babel 是一个 JavaScript 转义器，它将使用了最新的 ECMAScript 特�
 npm install --save-dev @babel/core @babel/cli @babel/preset-env
 ```
 
-+ `babel.config.json`文件配置
+`babel.config.json`文件配置
 
 ```json
 {
@@ -262,13 +260,13 @@ npm install --save-dev @babel/core @babel/cli @babel/preset-env
 babel src --out-dir dist
 ```
 
-## WebPack
-
-webpack 是一套基于 Node.js 的"模块打包工具"，在刚推出的时候就是一个单纯的 JS 模块打包工具，可以将多个模块的 JS 文件合并打包到一个文件中，但是随着时间的推移、众多开发者的追捧和众多开发者的贡献，现在 webpack 不仅仅能够打包 JS 模块, 还可以打包 CSS/LESS/SCSS/图片等其它文件
+## webPack
 
 模块化虽然解决了代码了维护性和复用性，但是由于导入资源变多了，请求次数变多了，网页性能也就变差了，因此需要一个打包工具将所有的模块合并到一个文件中，再引入到网页中去，而 webpack 恰恰就是这样的工具
 
-不推荐全局安装 webpack，在使用不本的 webpack 版本打包的项目中，这可能会导致构建失败
+webpack 是一套基于 Node.js 的"模块打包工具"，在刚推出的时候就是一个单纯的 JS 模块打包工具，可以将多个模块的 JS 文件合并打包到一个文件中，但是随着时间的推移、众多开发者的追捧和众多开发者的贡献，现在 webpack 不仅仅能够打包 JS 模块, 还可以打包 CSS/LESS/SCSS/图片等其它文件
+
+不推荐全局安装 webpack，在使用不同版本的 webpack 版本打包的项目中，这可能会导致构建失败
 
 ```sh
 npm i webpack webpack-cli --save-dev
@@ -278,27 +276,15 @@ npm i webpack webpack-cli --save-dev
 webpack 4+ 版本后，需要额外的安装 CLI
 :::
 
-### 核心概念
+webpack 处理模块时，它递归构建一个关系图，其中包含应用程序需要的每个模块，然后将这些模块打包成一个或多个 bundle，但是仍需告诉 webpack 该从哪里开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点依赖的，每个依赖项随即被处理，最后输出到称之为 bundles 的文件中
 
 这里需要理解四个核心概念：
 
-+ 入口
-+ 输出
-+ loader
-+ 插件
-+ 模式
-
-webpack 处理模块时，它递归构建一个关系图，其中包含应用程序需要的每个模块，然后将这些模块打包成一个或多个 bundle，但是仍需告诉 webpack 该从哪里开始。入口指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点依赖的，每个依赖项随即被处理，最后输出到称之为 bundles 的文件中
-
-出口告诉 webpack 应该在哪里输出它创建的 bundle，以及如何命名这些文件
-
-webpack 仅仅只是一个 JavaScript 打包器，但是通过 loader 也可以打包非 JavaScript 文件
-
-而插件可以用于执行更为广泛的任务，比如打包优化和压缩，可以处理各种各样的任务
-
-模式会应用不同的打包优化
-
-### 最小的使用示例
++ 模式 - 模式会应用不同的打包优化
++ 入口 - 入口指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始
++ loader - 通过 loader 也可以打包非 JavaScript 文件
++ 插件 - 插件可以用于执行更为广泛的任务，比如打包优化和压缩，可以处理各种各样的任务
++ 输出 - 出口告诉 webpack 应该在哪里输出它创建的 bundle，以及如何命名这些文件
 
 > 假设已经初始化了一个项目，且安装好了 webpack
 
@@ -310,11 +296,9 @@ webpack 仅仅只是一个 JavaScript 打包器，但是通过 loader 也可以�
 Webpack 支持 ES module, CommonJS, AMD 等模块化规范，随便使用
 :::
 
-### 使用配置文件控制打包
-
 上面是默认的配置，如果不按照默认的配置进行创建文件，就无法打包成功。而 webpack 提供了一个配置文件用来控制打包行为，执行`npx webpack`首先会看根目录是否有`webpack.config.js`文件，如果有就按照配置打包，没有就按照默认的方式进行打包
 
-`webpack.config.js`掌控着 webpack 的一切行为，这里可以配置入口，输出，loader，插件，模式，文件的标准结构是这样的：
+`webpack.config.js`掌控着 webpack 的一切行为，这里可以配置入口，输出，loader，插件，模式：
 
 ```js
 const path = require('path');
@@ -334,13 +318,7 @@ module.exports = {
 
 `entry`则告知入口文件的位置，相对于配置文件。`output`控制输出目录以及打包后的文件，这里使用的 Node.js 的`path`模块来进行路径拼接
 
-### 使用 loader
-
-loader 让 webpack 处理非 JS 文件的模块，有各种各样的 loader，有官方开发的，社区开发的等等，所以每个 loader 都是一个独立的模块需要被安装
-
-webpack 会根据`module`中的规则来匹配对应的 loader，并应用它
-
-假如想要在 webpack 中使用 babel，则可以使用 babel-loader
+loader 让 webpack 处理非 JS 文件的模块，有各种各样的 loader，有官方开发的，社区开发的等等，所以每个 loader 都是一个独立的模块需要被安装，webpack 会根据`module`中的规则来匹配对应的 loader，并应用它。假如想要在 webpack 中使用 babel，则可以使用 babel-loader
 
 ```js
 const path = require('path');
@@ -366,11 +344,7 @@ module.exports = {
 
 `rules`通过`test`来匹配对应文件，并应用对应的 loader 程序，`exclude`是排除 loader 对一些文件的操作
 
-### 使用 plugin
-
-插件比 loader 的范围更加广泛，有官方插件和社区插件等，都是独立的模块，一般插件都是提供的构造函数，插件的用法要看具体的插件文档
-
-比如在 Webpack 打包完成后通常需要手动引入 js 文件到 HTML 中，而一些插件，比如`html-webpack-plugin`会自动完成这些工作
+插件比 loader 的范围更加广泛，有官方插件和社区插件等，都是独立的模块，一般插件都是提供的构造函数，插件的用法要看具体的插件文档。比如打包完成后通常需要手动引入 js 文件到 HTML 中，而一些插件，比如`html-webpack-plugin`会自动完成这些工作
 
 ```js
 const path = require('path');
@@ -391,8 +365,6 @@ module.exports = {
   ],
 };
 ```
-
-### 多入口
 
 webpack 允许多个入口，比如说有两个 HTML 文件，配合`html-webpack-plugin`应该这么用
 
@@ -428,13 +400,7 @@ module.exports = {
 };
 ```
 
-### 热更新
-
-每次手动输入`webpack`打包，太繁琐，虽然直接配置的`script`项用来简化操作，但这仍然解决不了需要手动进行打包的过程
-
-webpack 提供了一个`--watch`的额外参数用来监听文件的改变，一旦发生改变就会自动打包，这很是方便，已经实现打包自动化
-
-但是仍然需要手动刷新网页查看效果，此时就需要用到`webpack-dev-server`，不仅具备自动打包功能，还能自动打开生成的`index.html`，同时能够实时重新加载，而不必按下 f5 刷新网页，需要进行额外的安装
+每次手动输入`webpack`打包太繁琐，虽然可以直接配置`script`用来简化操作，但这仍然解决不了需要手动进行打包的过程。webpack 提供了一个`--watch`的额外参数用来监听文件的改变，一旦发生改变就会自动打包，这很是方便，已经实现打包自动化。但这仍然需要手动刷新网页查看效果，此时就需要用到`webpack-dev-server`，不仅具备自动打包功能，还能自动打开生成的`index.html`，同时能够实时重新加载，而不必按下 f5 刷新网页，需要进行额外的安装
 
 ```js
 npm install --save-dev webpack-dev-server
@@ -442,11 +408,29 @@ npm install --save-dev webpack-dev-server
 
 执行`npx webpack-dev-server --open`即可，为了避免手动输入，在 package.json 的`script`项配置`"serve": "webpack-dev-server --open"`即可
 
-### 别名
-
 ### 很棒的 plugins
 
 <!-- more -->
+
+## swc
+
+SWC 是一个基于 Rust 编写的高性能 JavaScript 转义器，它对标 Babel，比 Babel 要快很多
+
+```sh
+npm i -D @swc/cli @swc/core
+
+npx swc ./file.js
+```
+
+## esbuild
+
+esbuild 是新一代打包器，它对标于 Webpack，速度与之更快
+
+```sh
+npm install esbuild -D
+
+npx esbuild app.js --bundle --outfile=out.js
+```
 
 ## 来搞一个脚手架工具
 
