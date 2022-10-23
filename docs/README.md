@@ -1,4 +1,5 @@
 ---
+title: 首页
 home: true
 layout: Blog
 icon: home

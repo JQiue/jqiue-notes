@@ -122,11 +122,11 @@ int main(void)
 在大多数情况下，指针和数组访问被视为相同的，但是有一些例外：
 
 + sizeof
-    + `sizeof(array)`会返回数组中所有的元素字节大小
-    + `sizeof(pointer)`会返回指针类型大小
+  + `sizeof(array)`会返回数组中所有的元素字节大小
+  + `sizeof(pointer)`会返回指针类型大小
 + &
-    + `&array`是`&array[0]`的别名，返回第一个元素的地址
-    + `&pointer`返回指针的地址
+  + `&array`是`&array[0]`的别名，返回第一个元素的地址
+  + `&pointer`返回指针的地址
 + 指针变量可以赋值，数组不能
 
 ::: tip 字符串

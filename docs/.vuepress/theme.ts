@@ -59,11 +59,7 @@ export default hopeTheme({
   },
   encrypt: {
     config: {
-      '/framework/': '123456',
       '/subject/': '123456',
-      '/java/': '123456',
-      '/python/': '123456',
-      '/computer/': '123456',
       '/sundry/interview': '123456',
     },
   },

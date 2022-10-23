@@ -316,7 +316,6 @@ class Deque {
 
 普通队列的元素都会被插入到队尾，优先级队列的元素再插入的同时会考虑该元素的优先级来决定它的位置
 
-
 ```js
 class Element {
   constructor (data, priority) {

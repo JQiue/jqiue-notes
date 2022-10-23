@@ -12,11 +12,9 @@ article: false
 + DOM
 :::
 
-Canvas API 提供了一个通过 JavaScript 和 HTML 的`<canvas>`元素来绘制图形的方式，它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面，注意它是非插件形式的，并不需要额外安装一些其它的东西
+Canvas API 提供了一个通过 JavaScript 和 HTML 的`<canvas>`元素来绘制图形的方式，它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面，Canvas API 主要聚焦于 2D 图形，而同样使用`<canvas>`元素的 WebGL API 则用于绘制硬件加速的 2D 和 3D 图形
 
-Canvas API 主要聚焦于 2D 图形，而同样使用`<canvas>`元素的 WebGL API 则用于绘制硬件加速的 2D 和 3D 图形
-
-Canvas 的默认大小为 300 × 150 像素，但是可以用 HTML 的宽高属性来调整 Canvas 的尺寸，该元素的功能就是创建一个画布，剩下的图像绘制交给 JavaScript 完成
+Canvas 的默认大小为 300 × 150 像素，但是可以用宽高属性来调整 Canvas 的尺寸，该元素的功能就是创建一个画布，剩下的图像绘制交给 JavaScript 完成
 
 Canvas 就像一个普通的 HTML 元素一样可以被设计，但这些样式完全不会影响画布中的实际图像
 
@@ -24,7 +22,7 @@ Canvas 就像一个普通的 HTML 元素一样可以被设计，但这些样式�
 canvas 元素必须要结束标签
 :::
 
-画布最初是空白的，为了绘制图形需要 JavaScript 找到渲染的上下文，然后在上面绘制，canvas 只有一个`getContext()`方法用于获取渲染上下文和它的绘画功能，`getContext()`的参数，决定了上下文的格式
+画布最初是空白的，为了绘制图形需要 JavaScript 找到渲染的上下文，然后在上面绘制，Canvas 元素有一个`getContext()`方法用于获取渲染上下文和它的绘画功能，`getContext()`的参数，决定了上下文的格式
 
 ```html
 <body>
@@ -79,12 +77,12 @@ if(canvas.getContext('2d')){
 
 ## 画一条直线
 
-想象一下画画时需要做什么？没错就是移动笔，`ctx.moveTo(x, y)`就是这样的方法，用于确定笔在画布上的起点，注意它只是移动笔而已，具体的绘制还需要别的方法，比如`ctx.lineTo(x, y)`方法用于画一条直线，它会从当前笔的坐标和该方法指定的坐标连接成一条直线，笔的落点也移动到了这个位置，之后都以这个位置为基础绘制
+想象一下画画时需要做什么？没错就是移动笔，`ctx.moveTo(x, y)`就是这样的方法，用于确定笔在画布上的起点，注意它只是移动笔而已，具体的绘制还需要别的方法，`ctx.lineTo(x, y)`方法用于画一条直线，它会从当前笔的坐标和该方法指定的坐标连接成一条直线，笔的落点也移动到了这个位置，之后都以这个位置为基础绘制
 
 此外笔的粗细可以使用`ctx.lineWidth`属性调整，它默认是`1`。而笔的颜色可以使用`ctx.strokeStyle`属性设置，默认是`#000000`，可以使用 CSS 颜色属性那样的取值
 
 ::: tip
-在所有的绘制方法之前，必须先调用一下`ctx.moveTo`来确定笔的起始位置
+在所有的绘制方法之前，必须先调用一下`moveTo`来确定笔的起始位置
 :::
 
 尽管画了一条直线，但是需要调用`ctx.stroke()`方法进行绘制着色
@@ -123,7 +121,7 @@ ctx.closePath();
 
 ## 绘制弧线
 
-`arc(x, y, radius, startAngle, endAngle, anticlockwise)`用于绘制一条弧线
+`ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)`用于绘制一条弧线
 
 ## 绘制多边形
 
@@ -151,3 +149,15 @@ canvas 支持矩形和路径这两种图形绘制的方式，提供了三种方�
 `ctx.strokeText(text, x, y, maxWidth)`用于创建空心文本
 
 ## 图片绘制
+
+只需要两步，获得图片源，使用`drawImage(image, x, y)`绘制到画布上
+
+```js
+const img = new Image();
+img.src = 'image.png';
+ctx.drawImage(img, 0, 0);
+```
+
++ `drawImage(image, dx, dy, width, height)`
++ `drawImage(image, dx, dy, width, height)`
++ `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`：`sx`和`sy`表示从什么地方开始裁切图片，`sWidth`和`sHeight`分别表示裁切的宽度和高度

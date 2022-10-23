@@ -6,7 +6,6 @@ article: false
 
 在浏览器中使用 JavaScript 处理音视频是困难的，Google 给出了 WebRTC 的答案
 
-
 ## 音视频采集
 
 + 摄像头
