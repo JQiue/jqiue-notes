@@ -14,16 +14,17 @@
     "url": "https://github.com/JQiue/jqiue-notes"
   },
   "scripts": {
-    "prettier check": "prettier --check .",
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "lint:md": "markdownlint **/*.md --ignore node_modules -f",
+    "lint:prettier": "prettier --check ."
   },
   "dependencies": {
     "@algolia/client-search": "4.14.2",
-    "@vuepress/client": "2.0.0-beta.52",
-    "@vuepress/plugin-docsearch": "2.0.0-beta.52",
+    "@vuepress/client": "2.0.0-beta.51",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.51",
     "vue": "3.2.41",
-    "vuepress": "2.0.0-beta.52",
-    "vuepress-theme-hope": "2.0.0-beta.113"
+    "vuepress": "2.0.0-beta.51",
+    "vuepress-theme-hope": "2.0.0-beta.108"
   }
 }
