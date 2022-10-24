@@ -68,6 +68,8 @@ const python: string[] = [
   'spider',
 ];
 
+const kotlin: string[] = ['', 'gradle'];
+
 const ds_algorithm: string[] = [
   '',
   'array',
@@ -162,6 +164,7 @@ export const zh = sidebar({
   '/java/': java,
   '/js/': javascript,
   '/python/': python,
+  '/kotlin/': kotlin,
   '/ds-algorithm/': ds_algorithm,
   '/database/': database,
   '/html-css/': html_css,

@@ -20,7 +20,7 @@ function understandRecursion() {
 }
 ```
 
-::: demo 理解递归
+::: normal-demo 理解递归
 
 ```html
 <button id="btn">开始理解递归</button>

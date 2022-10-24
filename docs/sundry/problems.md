@@ -18,7 +18,7 @@ author: JQiue
 
 + Tomcat 输出信息时出现中文乱码
 
-原因：Tomcat 默认编码为 UTF-8，和当前操作系统（windows）编码不一致  
+原因：没什么原因，就是编码出了问题，常常出现在 Windows
 解决：打开 tomcat 安装目录下的 conf/logging-properties 文件，修改如下参数项
 
 ```
@@ -27,12 +27,12 @@ java.util.logging.ConsoleHandler.encoding = gbk
 
 + Tomcat 启动时 CMD 窗口异常退出
 
-原因：Tomcat 启动时需要找到正确配置的 JAVA_HOME  
-解决：环境变量中配置 JAVA_HOME
+原因：Tomcat 启动时需要找到正确配置的`JAVA_HOME`  
+解决：环境变量中配置`JAVA_HOME`
 
 + Nginx 不支持中文域名
 
-原因：中文域名不被标准的解析服务器支持
+原因：中文域名不被标准的解析服务器支持  
 解决：需要转换为 punycode 码
 
 ## Node.js

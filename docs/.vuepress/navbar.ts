@@ -20,8 +20,9 @@ export const zh = navbar([
       { text: 'C', icon: 'c', link: '/c/' },
       { text: 'Java', icon: 'java', link: '/java/' },
       { text: 'JavaScript', icon: 'javascript', link: '/js/' },
-      { text: 'TypeScript', icon: 'javascript', link: '/js/typescript/' },
+      { text: 'TypeScript', icon: 'typescript', link: '/js/typescript/' },
       { text: 'Python', icon: 'python', link: '/python/' },
+      { text: 'Kotlin', icon: 'kotlin', link: '/kotlin/' },
     ],
   },
   {
