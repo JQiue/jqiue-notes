@@ -4,7 +4,26 @@ category: 学科
 article: false
 ---
 
-## 单词
+## 词性
+
+英语是由词、句、篇构成，单词的词性是打开英语大门的钥匙，词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
+
+英语有十大词类：
+
+词类|作用|充当成分
+---|----|---
+名词|表动作的对象|主，宾
+动词|表具体动作|谓，非谓
+冠词|限定名词|不能充当
+代词|代替名词|主，宾
+形容词|修饰名词|定，表
+副词|时间、地点、程度、方式|定，状，补，表
+介词|名词与其他成分之间的关系|定，状，补，表
+数词|数量或顺序|主，宾，表，定
+连词|连接句子成分|不能充当
+叹词|表示说话感情|不能充当
+
+有实在意义，能独立承担句子成分的是实词。没有实在意义，不能独立承担句子成分的是虚词
 
 ## 成分和句型
 
@@ -259,7 +278,7 @@ five times 5 次
 
 英语中表示时间的次序是从小到大
 
-## 名词
+## 名词和冠词
 
 名词分为专有名词和普通名词，专有名词指的是：人名，地名，机构，组织等
 
@@ -267,7 +286,8 @@ five times 5 次
 实词部分大写，虚词部分不大写，比如 the Great Wall
 :::
 
-名词按可不可数分为可数名词和不可数名词，可数名词还可以分为个体名词和集体名词
+名词按可不可数分为可数名词和不可数名词，可数名词还可以分为个体名词和集体名词，，不可数名词分为物质名词和抽象名词，个体名词和物质名词的区别就是能不能区分形状
+，甚至还有复合名词，比如 girlfriend
 
 ::: tip
 有些名词即是个体名词和集体名词，比如 family 表示家人是个体名词，表示家庭是集体名词
@@ -280,6 +300,7 @@ five times 5 次
 + 以`辅音字母 + y`结尾的将`y`变为`i`，再加`es`，如 baby -> babies
 + 以 f、fe，结尾的将`f`变为`v`，再加`es`，如 knife -> knives
 + 以`o`结尾加`es`（非外来词或缩写形式），如 potato -> potatoes
++ 若名词已有复数词尾`s`，只加`'`
 + 不规则变化
 
 发音规则：
@@ -305,7 +326,66 @@ person -> people
 fish -> fish/fishes
 ```
 
-不可数名词分为物质名词和抽象名词，个体名词和物质名词的区别就是能不能区分形状
+一些名词可以加“'s“表示所属关系，这种词尾形式的名词称为该名词的所有格。不仅如此，还有用 of 表示所属关系的名词，常常用来表示无生命特征的名词，比如 the windows of the room
+
+除此之外，表示店铺或教堂或某人的家时，常常不出现所修饰的名词，如 the bucher's
+
+两个名词并列时，如果分别有`'s`,表示“分别有”，如果只有一个名词有，则表示“共有”
+
+冠词是用来限定名词的，比如数量、特指等等，分为三类：
+
++ 不定冠词
++ 定冠词
++ 零冠词
+
+```plain
+Lisa gave me a tea as a gift.
+The tea tasted good.
+```
+
+不定冠词 a/an 都是用来限定名词的数量，在意义上没有区别。a 用于辅音音素，an 用于元音音素
+
++ 具有不确定的意义，泛指
++ 只能用于单数可数名词
++ 表示一个，如 a Mr. Wang waiting for you
++ 表示一类人或物，如 Mr. Smith is an engineer
+
+::: tip
+不定冠词 a/an 和数词 one 同源，都表示“一个”的意思
+:::
+
+::: tip 快速区分 a/an
+This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z.  
+This is an A/E/F/H/I/L/M/N/O/S/X.
+:::
+
+定冠词 the 用来表示特定的人或事物，可用于单数、复数以及不可数名词连用
+
++ 上文中提到的人或事
++ 表示双方都明白的人或事物，如 Take the medicine
++ 世上独一无二的事物，如 the sun
++ 与单数名词连用表示一类事物，如 the dollar
++ 与复数名词连用表示整个群体，如 They are the teachers of this school
++ 与形容词或分词连用表示一类人，如 the rich
++ 用在序数词和形容词最高级前，如 I live on the second floor
++ 用在专有名词前，如 the People's Republic of China
++ 用在乐器名词前，如 the piano
++ 用在姓氏前表示一家人，如 the Greens
++ 表示所有关系，相当于物主代词，用在身体部位的名词前，如 She caught me by the arm （她抓住了我的手臂）
+
+有些名词不需要加冠词，这些不加冠词的名词就是零冠词
+
++ 国家，洲，人名
++ 泛指的复数名词
++ 抽象名词和物质名词表示一般概念
++ 季节、月份、节日、假日、日期、星期等表示时间的名词
++ 称呼、官衔、职位
++ 三餐、球类运动、娱乐运动
++ 两个名词并列
++ by 与交通工具连用，表示一种方式
++ 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
+
+量词可以同时修饰可数和不可数名词
 
 ## 特殊句式 - 主系表
 
@@ -371,6 +451,8 @@ have 常与表示疼痛和疾病的名词连用，有以下用法：
 + 不定冠词可用可不用，catch (a) cold、have (a) backache
 + 复数形式的疾病前不用冠词
 
+have to...，客观上不得不做某事
+
 ## 一般现在时和现在进行时
 
 一般现在时和现在进行时都是表示现在发生的事情，但是它们强调的重点是不同的
@@ -381,18 +463,27 @@ They always play football in the street. 他们经常在街上踢足球（一般
 Now a little boy is kicking the ball. 现在一个小男孩正在踢球（现在进行时）
 ```
 
-一般现在时主要强调经常性发生的动作，通常会搭配一些频率副词，谓语主要有以下变化：
+一般现在时主要强调经常性发生的动作，通常会搭配一些频率副词，比如 every day、week、month、year、in the morning、afternoon、evening、at noon、at night、usually、always、often、sometimes、never、frequently、seldom、rarely
+
+```plain
+He often gets up late. 经常性
+I am a student. 现在的状态
+The earth is round. 永恒（科学事实）
+Practice makes perfect. 真理
+Knowledge is power. 名言警句
+```
+
+谓语主要有以下变化：
 
 + 在主系表中：我用 am，你用 are，is 连着他她它，单数名词用 is，复数名词全用 are
 + 非主系表结构：当主语是第三人称单数时，动词后面要加`s`，否则保持不变
 
-```plain
-I tell you a secret.
-He tells me a secret.
-We have the English class every day.
-I never get up early on Sundays.
-I sometimes stay in bed until lunchtime.
-```
+:: tip 第三人称变化规律
+
++ 动词结尾加`s`
++ 以字母 s、x、ch 或 o 结尾的加`es`
++ 以辅音字母结尾的变 y 为 i 在加`es`
+:::
 
 否定形式：
 
@@ -408,14 +499,36 @@ I sometimes stay in bed until lunchtime.
 do 也要变成三单形式
 :::
 
-现在进行时主要强调此时此刻正在发生的动作，将来确定要发生的事，谓语动词主要有一下变化：
+现在进行时主要强调此时此刻正在发生的动作，将来确定要发生的事，一般与 now，at the moment，today，this afternoon，this evening，tonight 等连用，谓语动词主要有一下变化：
 
 + am/is/are + doing
++ doing
 
 ```plain
 I am having breakfast now. 此时此刻
-I am coming to see you. 将来去顶要发生
-We are arriving at ... 将来去顶要发生
+I am coming to see you. 将来要发生
+We are arriving at ... 将来要发生
+```
+
+变化规律：
+
++ 一般在动词后加`ing`
++ 以不发音的`e`结尾，要去掉`e`再加`ing`
++ 重读闭音节的动词，要双写词尾字母再加`ing`
++ 以`ie`结尾的，变`y`为`i`再加`ing`
+
+将现在进行时的句子变为一般疑问句时只讲助动词提前
+
+```
+They are watching TV. => Are they watching TV?
+He is watching TV. => Is he watching TV?
+```
+
+否定时要将 not 放到助动词后：
+
+```
+The dog is drinking its milk.
+The dog is not drinking its milk.
 ```
 
 ## it
@@ -465,15 +578,26 @@ How beautiful a girl she is! 她是个多么漂亮的姑娘啊！
 
 ## 一般过去时
 
-一般过去时通常描述过去发生的事，通常和过去的时间短语连用，比如 last + 时间名词，一段时间 + ago，in + 过去的某一年
+一般过去时通常描述过去发生的事，跟现在没有关系，比如`He was a student.`表示过去是一个学生，现在不是了。通常和过去的时间短语连用，比如 last + 时间名词，一段时间 + ago，in + 过去的某一年，yesterday、the day bofore yesterday、last night
 
-动词形式：
+动词形式：过去式
 
-+ 过去式
++ was/were：be 动词的过去式，第一人称和第三人称单数用`was`，其他情况用`were`
++ did
 
 ```plain
 Last summber I went to Italy. go 使用过去式
 ```
+
+变化规律：
+
++ 一般加`ed`
++ 以字母`e`结尾的只加`d`
++ 以“辅音字母 + y” 结尾的，变 y 为 i 再加`ed`
++ 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
++ 不规则变化，需要记忆
+
+动词过去式和过去分词的用法是有区别的，过去式可以构成过去时态，过去分词可以构成完成时态，还能构成被动语态以及非谓语动词
 
 ## 主谓双宾
 
@@ -494,6 +618,12 @@ He lent a book to me.
 现在完成时表示现在的之前发生的事，可能全部完成，也可能部分完成，对现在可能产生了影响， 常常搭配 just、already、ever、never、yet、so far、up to now、before、lately、for + 一段时间
 
 ```plain
+I had learned English for 10 years when I graduated.
+
+I will have learned English for 10 years when I graduate.
+
+I have learned English for 10 years ago.
+
 They have spent all their money, so they have to walk home.
 ```
 
@@ -513,69 +643,15 @@ I am looking for my pen. I lost it this morning. 寻找（为了...看）
 Will you look after the children for me please? 照顾（跟...后面k看）
 ```
 
-## 冠词
-
-冠词是用来限定名词的，比如数量、特指等等，分为三类：
-
-+ 不定冠词
-+ 定冠词
-+ 零冠词
-
-```plain
-Lisa gave me a tea as a gift.
-The tea tasted good.
-```
-
-不定冠词 a/an 都是用来限定名词的数量，在意义上没有区别。a 用于辅音音素，an 用于元音音素
-
-+ 具有不确定的意义，泛指
-+ 只能用于单数可数名词
-+ 表示一个，如 a Mr. Wang waiting for you
-+ 表示一类人或物，如 Mr. Smith is an engineer
-
-::: tip
-不定冠词 a/an 和数词 one 同源，都表示“一个”的意思
-:::
-
-::: tip 快速区分 a/an
-This is a B/C/D/G/J/K/P/Q/R/T/U/V/W/Y/Z.  
-This is an A/E/F/H/I/L/M/N/O/S/X.
-:::
-
-定冠词 the 用来表示特定的人或事物，可用于单数、复数以及不可数名词连用
-
-+ 上文中提到的人或事
-+ 表示双方都明白的人或事物，如 Take the medicine
-+ 世上独一无二的事物，如 the sun
-+ 与单数名词连用表示一类事物，如 the dollar
-+ 与复数名词连用表示整个群体，如 They are the teachers of this school
-+ 与形容词或分词连用表示一类人，如 the rich
-+ 用在序数词和形容词最高级前，如 I live on the second floor
-+ 用在专有名词前，如 the People's Republic of China
-+ 用在乐器名词前，如 the piano
-+ 用在姓氏前表示一家人，如 the Greens
-+ 表示所有关系，相当于物主代词，用在身体部位的名词前，如 She caught me by the arm （她抓住了我的手臂）
-
-有些名词不需要加冠词，这些不加冠词的名词就是零冠词
-
-+ 国家，洲，人名
-+ 泛指的复数名词
-+ 抽象名词和物质名词表示一般概念
-+ 季节、月份、节日、假日、日期、星期等表示时间的名词
-+ 称呼、官衔、职位
-+ 三餐、球类运动、娱乐运动
-+ 两个名词并列
-+ by 与交通工具连用，表示一种方式
-+ 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
-
 ## 过去进行时和过去将来时
 
 过去进行时是指过去的某段时间正在做什么事，经常搭配 when、while、as，通常和一般过去式连用打破这个状态
 
-形式：was/were + 现在分词
+动词形式：was/were + 现在分词
 
 ```plain
 While he was reading the letter, he heard a knock at the door.
+A young man and a young woman were sitting behind me.
 ```
 
 when/while/as 都可以接进行时态，但只有 when 能够接过去时态
@@ -588,15 +664,16 @@ Two detectives were keeping guard at the door, when two other opened the parcel.
 I was having breakfast when the telephone rang.
 ```
 
-过去将来时指过去的事件将要做什么事
+过去将来时指过去的某个时间将要做什么事，常常和一般过去时搭配使用
 
 形式：
 
-+ would do
-+ was/were going to do
++ would + 动词原形
++ was/were going to + 动词原形
 
 ```plain
 He said that he would travel abroad next year.
+Tony finished his work. and then he would leave for London.
 ```
 
 ## 宾语从句
@@ -619,9 +696,52 @@ I think that you are right
 
 ## 一般将来时
 
+表示现在的将来，即将做某事。will 通常表示临时决定，be going to 表示计划好的
+
+动词变化：
+
++ will + 动词原形
++ be going to + 动词原型
+
+```plain
+I will make a new plan tomorrow.
+I will buy a car in 2020.
+We are going to study abroad next year.
+```
+
+对于 be going to 的疑问式和否定式
+
++ 疑问：将 be 提到句首
++ 否定：在 be 后面加 not
+
 ## 副词
 
 用来修饰动词，进行补充说明，告诉动作的情况，副词可以是单个词 slowly 也可以是词组 very well
+
+```
+He runs fast. 修饰动词
+She is very beautiful. 修饰形容词
+They work very hard.
+```
+
+副词的位置：
+
++ 根据情况放在助动词之后，实义动词之前或之后
++ 形容词之前，其他副词之 前或之后
++ 多个助动词时，副词一般放在第一个助动词后
+
+```
+He speaks very fast.
+They have already left.
+They have already been repaired.
+```
+
+常用的频度副词（akways，usually，often，sometimes，never）的位置通常放在一般动词前面，be 动词后面，助动词和实意动词之间
+
+```
+They always come early.
+Sam often writes homework at 7:00.
+```
 
 形容词可以转换为副词，规则为：
 
@@ -635,58 +755,6 @@ late|late
 fast|fast
 hard|hard
 well|well
-
-## 动词不规则变化
-  
-原型|过去式|过去分词|现在分词
----|---|---|---
-be|was/were|been|
-have|had|had|having
-do|did|done|
-go|went|gone|
-get|got|got/gotten|getting
-come|came|come|coming
-make|made|made|making
-give|gave|given|giving
-buy|bought|bought|
-spend|spent|spent|
-write|wrote|written|writing
-sit|sat|sat|sitting
-say|said|said|
-pay|paid|paid|
-bear|bore|borne|
-think|thought|thought|
-send|sent|sent|
-spoil|spoiled/spoilt|spoiled/spoil|
-lend|lent|lent|
-put|put|put|putting
-take|took|taken|taking
-find|found|found|
-tell|told|told|
-see|saw|seen|
-meet|met||
-lose|lost||
-keep|kept|kept|
-understand|understood||
-read|read|read|
-run|ran||
-stand|stood|stood
-know|knew|known|
-put|put||
-cut|cut||
-eat|ate||eaten
-come|came||
-lose|lost||
-speak|spoke||
-ring|rang|rung|
-sing|sang|sung|
-drink|drank|drunk|
-swim|swam|swum|
-begin|began|begun|
-feel|felt|felt|
-leave|left|left|
-try|tried|tried|trying
-steal|stole|stolen
 
 ## 辨析
 
@@ -776,73 +844,6 @@ I received an invitation, but I didn't accept it.
 
 + have gone to 去了
 + have been to 去过
-
-## 词性
-
-英语是由词、句、篇构成，单词的词性是打开英语大门的钥匙，词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
-
-英语有十大词类：
-
-词类|作用|充当成分
----|----|---|---
-名词|表动作的对象|主，宾
-动词|表具体动作|谓，非谓
-冠词|限定名词|不能充当
-代词|代替名词|主，宾
-形容词|修饰名词|定，表
-副词|时间、地点、程度、方式|定，状，补，表
-介词|名词与其他成分之间的关系|定，状，补，表
-数词|数量或顺序|主，宾，表，定
-连词|连接句子成分|不能充当
-叹词|表示说话感情|不能充当
-
-有实在意义，能独立承担句子成分的是实词。没有实在意义，不能独立承担句子成分的是虚词
-
-### 名词（Nouns）
-
-+ 作主语：The book is on the desk.
-+ 作表语：The tall man is a singer.
-+ 作宾语：I found a cat on the grass.
-+ 作宾语补足语：We call him a hero.
-+ 作定语：I found a stone wall in the village.
-+ 作同位语：Mr. Liu, our English teacher, is very handsome.
-+ 作状语：The desk weighs 20 kilometers.
-
-名词分为专有名词和普通名词，专有名词是某个人，地方，机构等专有的名称，比如 Beijing，China 等。普通名词是一类人或东西或抽象概念的名词，比如 book，sadness
-
-普通名词又可以分为下面四类：
-
-+ 个体名词：表示某类人或事物中的个体，如 gun
-+ 集体名词：表示若干个个体组成的集合，如 family
-+ 物质名词：表示无法分为个体的实物：如 air
-+ 抽象名词：表示动作、状态、品质、感情等抽象概念，如 work
-
-甚至还有种名词是有若干个单词组合而构成的复合名词，比如：girlfriend
-
-个体名词和集体名词可用数目来计算，称为**可数名词**，物质名词和抽象名词一般无法用数目来计算，称为**不可数名词**
-
-可数名词前可以加`a/an`或量词进行修饰，看情况变复数
-
-```
-an apple, a box of apples, a tomato, a bag of tomatoes
-```
-
-不可数名词前不能加`a/an`，没有复数形式，但可以用量词修饰
-
-```
-a cup of coffee
-```
-
-一些名词可以加`'s`表示所有关系，这种词尾形式的名词称为该名词的所有格，如 a teacher's book
-
-变化规律如下：
-
-+ 单数或复数名词词尾加`'s`
-+ 若名词已有复数词尾`s`，只加`'`，如 the workers' struggle
-+ 表示店铺或教堂或某人的家时，常常不出现所修饰的名词，如 the bucher's
-+ 两个名词并列，分别有`'s`,表示“分别有”，如果只有一个名词有，则表示“共有”
-
-还一种表示所有关系的形式：of 所有格，常用来表示无生命的名词，如 the windows of the room
 
 ### 动词（verbs）
 
@@ -1128,35 +1129,6 @@ He's very fat.
 + 一般加`ly`，qucik quickly
 + 以`y`结尾的，变`y`为`i`再加`ly` happy happily
 + 形容词和副词形式相同
-
-### 副词（Adverbs）
-
-副词可以修饰动词、形容词、其他副词以及其他结构，可以是单个的词或词组
-
-```
-He runs fast. 修饰动词
-She is very beautiful. 修饰形容词
-They work very hard.
-```
-
-副词的位置：
-
-+ 根据情况放在助动词之后，实义动词之前或之后
-+ 形容词之前，其他副词之 前或之后
-+ 多个助动词时，副词一般放在第一个助动词后
-
-```
-He speaks very fast.
-They have already left.
-They have already been repaired.
-```
-
-常用的频度副词（akways，usually，often，sometimes，never）的位置通常放在一般动词前面，be 动词后面，助动词和实意动词之间
-
-```
-They always come early.
-Sam often writes homework at 7:00.
-```
 
 ### 数词（Numerals）
 
@@ -1500,155 +1472,6 @@ She hadn't finished the homework yet.  她还没有完成家庭作业
 
 ## 时态
 
-因为动词可以表达动作的时间以及状态，所以理论上有 16 种可能的时态
-
-### 一般现在时态
-
-一般现在时态主要表示经常性习惯性的动作、现在的状态、永恒的状态，经常与频率副词连用，比如 every day、week、month、year、in the morning、afternoon、evening、at noon、at night、usually、always、often、sometimes、never、frequently、seldom、rarely
-
-```
-He often gets up late. 经常性
-I am a student. 现在的状态
-The earth is round. 永恒（科学事实）
-Practice makes perfect. 真理
-```
-
-除此之外还可以表示“永恒”：客观事实、科学真理、名言警句
-
-```
-The earth is round.
-The earth moves around the sun.
-Knowledge is power.
-```
-
-动词形式有两种，要么就是原形，要么就是第三人称单数，但是 be 动词和情态动词是没有第三人称单数变化的，只有实义动词有，主语是第三人称单数就要用三单形式
-
-+ 动词变化：原型/三单（do/does）
-
-```
-They often get up at 7:00. 他们经常在 7:00 起床（习惯性动作）
-He often gets up at 7:00. 他经常在 7:00 起床（习惯性动作）
-```
-
-一般现在时的否定和疑问句用 do、does 帮助构成
-
-::: tip 第三人称单数
-代词`he,she,it`，可数名词单数和不可数名词都属于第三人称单数主语
-
-> 有点像名词的复数变化，要做一些词性上的区分
-
-第三人称变化规律：
-
-+ 动词结尾加`s`
-+ 以字母 s、x、ch 或 o 结尾的加`es`
-+ 以辅音字母结尾的变 y 为 i 在加`es`
-:::
-
-### 一般过去时态
-
-用于描述过去发生的事，跟现在没有关系，比如`He was a student.`表示过去是一个学生，现在不是了。经常与时间状语连用：yesterday、the day bofore yesterday、last night、last + 时间名词、一段时间 + ago、in + 某一年。也可以和频率副词连用
-
-动词变化：
-
-+ was/were：be 动词的过去式，第一人称和第三人称单数用`was`，其他情况用`were`
-+ did
-
-变化规律：
-
-+ 一般加`ed`
-+ 以字母`e`结尾的只加`d`
-+ 以“辅音字母 + y” 结尾的，变 y 为 i 再加`ed`
-+ 重读闭音节结尾且末尾只有一个辅音字母的双写辅音字母再加`ed`
-+ 不规则变化，需要记忆
-
-```
-He worked very hard last night. 他昨天晚上工作的非常努力
-They came here by car. 他们开车来到了这里
-```
-
-::: danger
-动词过去式和过去分词的用法是有区别的，过去式可以构成过去时态，过去分词可以构成完成时态，还能构成被动语态以及非谓语动词
-:::
-
-### 一般将来时态
-
-表示现在的将来，即将做某事。will 通常表示临时决定，be going to 表示计划好的
-
-动词变化：
-
-+ will + 动词原形
-+ be going to + 动词原型
-
-```
-I will make a new plan tomorrow.
-I will buy a car in 2020.
-We are going to study abroad next year.
-```
-
-对于 be going to 的疑问式和否定式
-
-+ 疑问：将 be 提到句首
-+ 否定：在 be 后面加 not
-
-### 过去将来时态
-
-+ would + 动词原形
-+ was/were going to + 动词原形
-
-表示过去的将来
-
-```
-Tony finished his work. and then he would leave for London.
-```
-
-过去将来时常常和一般过去时搭配使用
-
-### 现在进行时态
-
-现在进行时表示现在进行或发生的动作，一般与 now，at the moment，today，this afternoon，this evening，tonight 等连用
-
-动词形式：
-
-+ be + doing
-+ doing
-
-```
-They are watching TV. 他们正在看电视
-He is watching TV. 他正在看电视
-I am watching TV. 我正在看电视
-```
-
-变化规律：
-
-+ 一般在动词后加`ing`
-+ 以不发音的`e`结尾，要去掉`e`再加`ing`
-+ 重读闭音节的动词，要双写词尾字母再加`ing`
-+ 以`ie`结尾的，变`y`为`i`再加`ing`
-
-将现在进行时的句子变为一般疑问句时只讲助动词提前
-
-```
-They are watching TV. => Are they watching TV?
-He is watching TV. => Is he watching TV?
-```
-
-否定时要将 not 放到助动词后：
-
-```
-The dog is drinking its milk.
-The dog is not drinking its milk.
-```
-
-### 过去进行时态
-
-过去某个时间点正在发生的动作
-
-过去一段时间持续发生的动作
-
-动词形式：was/were + 现在分词
-
-A young man and a young woman were sitting behind me.
-
 ### 将来进行时
 
 将来某个时间点正在发生的动作
@@ -1656,20 +1479,6 @@ A young man and a young woman were sitting behind me.
 将来某个时间点会持续发生的动作
 
 动词形式：will be doing
-
-### 现在完成时
-
-过去的动作对现在造成的影响
-
-动词形式：have/has + 过去分词
-
-标志词：for，since，already，yet，before，over the ...，
-
-I have learned English for 10 years ago.
-
-I had learned English for 10 years when I graduated.
-
-I will have learned English for 10 years when I graduate.
 
 ### 过去完成时
 
@@ -1689,7 +1498,7 @@ I will have seen the seen movie when she arrived in Beijing.
 
 动词形式：will + have + 过去分词
 
-### 总结
+## 时态总结
 
 时间/状态 | 现在 | 过去 | 将来 | 过去将来
 ---|---|---|---|---
@@ -1697,16 +1506,6 @@ I will have seen the seen movie when she arrived in Beijing.
 进行 | am/is/are doing | was/were doing | shall/will be doing | would be doing
 完成 | have/has done | had done | will have done | would have done
 完成进行 | have/has been doing | had been doing | will have been doing | would have been doing
-
-::: tip have
-
-+ 实意动词，表‘拥有’
-+ have + 过去分词，构成完成时态
-+ have + been + 现在分词，构成完成进行时态
-+ have + been + 过去分词，构成完成时被动语态
-+ have + n. 表示其他含义
-+ have to...，客观上不得不做某事
-:::
 
 ## 语态
 
@@ -1720,6 +1519,58 @@ I will have seen the seen movie when she arrived in Beijing.
 形式：be + done
 
 done 表示被动的动作，be 表示被动的时间（变成对应的各种时态），不仅如此 be 还要表示单复数
+
+## 动词不规则变化
+  
+原型|过去式|过去分词|现在分词
+---|---|---|---
+be|was/were|been|
+have|had|had|having
+do|did|done|
+go|went|gone|
+get|got|got/gotten|getting
+come|came|come|coming
+make|made|made|making
+give|gave|given|giving
+buy|bought|bought|
+spend|spent|spent|
+write|wrote|written|writing
+sit|sat|sat|sitting
+say|said|said|
+pay|paid|paid|
+bear|bore|borne|
+think|thought|thought|
+send|sent|sent|
+spoil|spoiled/spoilt|spoiled/spoil|
+lend|lent|lent|
+put|put|put|putting
+take|took|taken|taking
+find|found|found|
+tell|told|told|
+see|saw|seen|
+meet|met||
+lose|lost||
+keep|kept|kept|
+understand|understood||
+read|read|read|
+run|ran||
+stand|stood|stood
+know|knew|known|
+put|put||
+cut|cut||
+eat|ate||eaten
+come|came||
+lose|lost||
+speak|spoke||
+ring|rang|rung|
+sing|sang|sung|
+drink|drank|drunk|
+swim|swam|swum|
+begin|began|begun|
+feel|felt|felt|
+leave|left|left|
+try|tried|tried|trying
+steal|stole|stolen
 
 ## 参考资料
 

@@ -155,7 +155,14 @@ const sundry: string[] = [
   'software-design',
 ];
 
-const framework: string[] = ['vue', 'react', 'express', 'koa', 'react-native'];
+const framework: string[] = [
+  'vue',
+  'react',
+  'express',
+  'koa',
+  'react-native',
+  'electron',
+];
 
 export const zh = sidebar({
   '/about': [''],
