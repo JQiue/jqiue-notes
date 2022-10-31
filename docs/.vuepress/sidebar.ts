@@ -153,6 +153,7 @@ const sundry: string[] = [
   'cicd',
   'security',
   'software-design',
+  'ui',
 ];
 
 const framework: string[] = [

@@ -80,6 +80,17 @@ const styles = StyleSheet.create({
 
 ## 事件处理
 
+## 配置 Gradle 代理（重要）
+
+在 gradle.properties 加入如下内容：
+
+```gradle
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=7890
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=7890
+```
+
 ## 注意事项
 
 Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：
