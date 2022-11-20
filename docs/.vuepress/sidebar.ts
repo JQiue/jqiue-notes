@@ -102,17 +102,17 @@ const webapi: string[] = [
   'worker',
   'webrtc',
   'wasm',
+  'browser_extends',
 ];
 
 const html_css: string[] = [
   '',
   'elements',
-  'box-model',
   'selectors',
+  'box-model',
   'css',
   'layout',
   'value',
-  'reset-css-style',
   'responsive-design',
   'better-code',
   'trick',
@@ -172,7 +172,6 @@ export const zh = sidebar({
   '/java/': java,
   '/js/': javascript,
   '/python/': python,
-  '/kotlin/': kotlin,
   '/ds-algorithm/': ds_algorithm,
   '/database/': database,
   '/html-css/': html_css,

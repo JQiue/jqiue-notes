@@ -3,6 +3,10 @@ title: Node.js
 article: false
 ---
 
+::: tip
+基于 Node 12.x.x 开始编写
+:::
+
 到目前为止，大部分的前端工作都基于浏览器。但随着技术的发展，JavaScript 被移植到了浏览器环境外运行
 
 Node.js 是一个基于 Chrome V8 引擎的 JavaScript（以下简称 js） 运行环境，提供了浏览器中没有的功能，提供了系统级别的 API，使之能够进行文件的读写，进程的管理，以及网络通信，这在浏览器中是做不到的。Node.js 使用了事件驱动、非阻塞 I/O 的模型，轻量且高效，同时还提供了包管理工具（NPM），NPM 是全球最大的包管理器，比 Apache Maven 的软件包多两倍以上

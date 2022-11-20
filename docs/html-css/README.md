@@ -438,6 +438,12 @@ p {
 
 每个 Web 浏览器都有一个内置的 CSS 文件，它决定了每个 HTML 元素的默认样式，可以通过 CSS 来覆盖
 
+由于 HTML 标签自带一些 CSS 属性，导致在调试样式的时候会出现各种奇怪的问题，尤其是不同核心的浏览器对 CSS 的解析效果呈现各异，导致期望的效果跟浏览器的“理解”效果有偏差，为了大概率避免这些问题需要对 CSS 进行重置（复位），尽量保证元素在不同浏览器下是统一的，下面是一些几种常见的重置 CSS 样式代码：
+
++ <https://github.com/necolas/normalize.css>
++ <https://gist.github.com/freetonik/b432fa2ea224eca2f2458838049a8e7f>
++ <https://clarle.github.io/yui3/yui/docs/cssreset/>
+
 ## JavaScript
 
 至于怎么在 HTML 中使用，详见 [在浏览器中使用 JavaScript](/js/#浏览器的选择与使用)

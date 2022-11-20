@@ -112,19 +112,19 @@ document.addEventListener("keydown", (event) => {
   console.log(event.code);
   if (event.code == "KeyD") {
     keyType.right = true;
-    speedX = 2;
+    speedX = 1;
   }
   if (event.code == "KeyA") {
     keyType.left = true;
-    speedX = -2;
+    speedX = -1;
   }
   if (event.code == "KeyS") {
     keyType.down = true;
-    speedY = 2;
+    speedY = 1;
   }
   if (event.code == "KeyW") {
     keyType.up = true;
-    speedY = -2;
+    speedY = -1;
   }
 });
 
@@ -150,6 +150,7 @@ document.addEventListener("keyup", (event) => {
 let enemy = true;
 
 function animate(params) {
+  ctx.fillStyle = 'black';
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   if (keyType.right || keyType.left) {
     PositionX += speedX;
@@ -159,12 +160,14 @@ function animate(params) {
   }
   gameFrame++;
   ctx.fillRect(PositionX, PositionY, 50, 50);
-  if (PositionX + 50 > 150 && PositionY + 50 > 150) {
-    alert("撞到了");
+  if (PositionX + 50 > 150 && PositionY + 50 > 150 && PositionX < 150 + 50 && PositionY < 150 + 50) {
     enemy = false;
+  } else {
+    enemy = true;
   }
-  if (enemy) ctx.fillRect(150, 150, 50, 50);
-  if(enemy) requestAnimationFrame(animate);
+  if(!enemy) ctx.fillStyle = 'red';
+  ctx.fillRect(150, 150, 50, 50);
+  requestAnimationFrame(animate);
 }
 animate();
 ```

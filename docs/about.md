@@ -33,6 +33,7 @@ const Person = {
     JavaScript: 'Beginner',
     Python: 'Beginner',
     TypeScript: 'Beginner',
+    Kotlin: 'Beginner',
     CSS: 'Beginner',
     NodeJS: 'Beginner',
     React: 'Beginner',
@@ -84,6 +85,7 @@ const Person = {
   + [JavaScript](/js/)
     + [TypeScript](/js/typescript/)
   + [Python](/python/)
+  + [Kotlin](/kotlin/)
 + [数据结构与算法](/ds-algorithm/)
 + [软件设计](/sundry/software-design/)
 + [数据库](/database/)

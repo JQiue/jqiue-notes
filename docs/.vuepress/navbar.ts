@@ -22,7 +22,6 @@ export const zh = navbar([
       { text: 'JavaScript', icon: 'javascript', link: '/js/' },
       { text: 'TypeScript', icon: 'typescript', link: '/js/typescript/' },
       { text: 'Python', icon: 'python', link: '/python/' },
-      { text: 'Kotlin', icon: 'kotlin', link: '/kotlin/' },
     ],
   },
   {
