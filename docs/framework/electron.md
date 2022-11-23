@@ -3,7 +3,13 @@ title: Electron
 article: false
 ---
 
-Electron 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架
+::: tip 前置知识
+
++ HTML，CSS，JavaScript
++ Node.js
+:::
+
+Electron 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架，基于Chromium 和 Node.js 实现的，这就使得前端程序员可以使用 JavaScript、HTML 和 CSS 轻松构建跨平台的桌面应用。为了弥补 Node.js 和前端技术访问系统 API 方面的不足，Electron 对系统 API 做了封装，比如系统对话框、系统托盘、系统菜单、剪切板等。开发者基于 Electron 开发应用时，可以直接使用 JavaScript 访问这些 API
 
 ## Hello, World
 
@@ -79,7 +85,7 @@ app.on('window-all-closed', () => {
 </html>
 ```
 
-创建与加载文件`preload.js`
+创建预加载文件`preload.js`
 
 ```js
 window.addEventListener('DOMContentLoaded', () => {
@@ -96,6 +102,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 然后运行`yarn run start`即可运行
 
+## 主进程和渲染进程
+
 ## 发布
 
 安装 Electron Forge
@@ -107,3 +115,7 @@ yarn add --dev @electron-forge/cli
 并执行`npx electron-forge import`
 
 然后使用`make`命令发布程序
+
+## 参考资料
+
++ Electron 实战
