@@ -7,7 +7,7 @@
     "email": "jqiue@foxmail.com",
     "url": "https://jinqiu.wang"
   },
-  "packageManager": "pnpm@7.14.0",
+  "packageManager": "pnpm@7.17.0",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -25,6 +25,6 @@
     "@vuepress/plugin-docsearch": "2.0.0-beta.53",
     "vue": "3.2.45",
     "vuepress": "2.0.0-beta.53",
-    "vuepress-theme-hope": "2.0.0-beta.126"
+    "vuepress-theme-hope": "2.0.0-beta.130"
   }
 }
