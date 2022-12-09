@@ -92,6 +92,7 @@ export const zh = navbar([
       { text: '开发中的一些安全防范', link: '/security/' },
       { text: '软件设计', link: '/software-design/' },
       { text: 'UI 设计', link: '/ui/' },
+      { text: '网络抓包', link: '/packet-capture/' },
     ],
   },
 ]);

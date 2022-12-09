@@ -1,8 +1,8 @@
 ---
-title: 首页
 home: true
 layout: Blog
 icon: home
+title: 首页
 heroText: 嗨，欢迎来到这里！
 bgImage: bgImage.jpg
 heroFullScreen: true

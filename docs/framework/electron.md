@@ -104,6 +104,36 @@ window.addEventListener('DOMContentLoaded', () => {
 
 ## 主进程和渲染进程
 
+主进程负责完成监听应用程序的生命周期事件、启动第一个窗口、加载index.html页面、应用程序关闭后回收资源、退出程序等工作。渲染进程负责完成渲染界面、接收用户输入、响应用户的交互等工作
+
+一个Electron应用只有一个主进程，但可以有多个渲染进程。一个BrowserWindow实例就代表着一个渲染进程。当BrowserWindow实例被销毁后，渲染进程也跟着终结
+
+主进程负责管理所有的窗口及其对应的渲染进程。每个渲染进程都是独立的，它只关心所运行的Web页面。在开启nodeIntegration配置后，渲染进程也有能力访问Node.js的API
+
+在Electron中，GUI相关的模块仅在主进程中可用。如果想在渲染进程中完成创建窗口、创建菜单等操作，可以让渲染进程给主进程发送消息，主进程接到消息后再完成相应的操作；也可以通过渲染进程的remote模块来完成相应操作。这两种方法背后的实现机制是一样的
+
+主进程和渲染进程之间的通信通常使用`ipcRender`和`ipcMain`
+
+## 结合 Vue
+
+先安装 Vue 脚手架
+
+```sh
+npm i @vue/cli -g
+```
+
+创建项目：
+
+```sh
+vue create electron-vue
+```
+
+进入项目中，添加插件
+
+```sh
+vue add electron-builder
+```
+
 ## 发布
 
 安装 Electron Forge

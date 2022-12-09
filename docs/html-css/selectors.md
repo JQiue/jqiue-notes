@@ -5,7 +5,7 @@ tag: [CSS]
 article: false
 ---
 
-选择器简单来说就是 CSS 选择 HTML 元素的工具，通过某一种特征来选中 HTML 元素，并应用相关样式
+选择器简单来说就是 CSS 通过某一种特征来选中 HTML 元素的工具，并应用相关样式
 
 ## 基本选择器
 
@@ -444,6 +444,18 @@ span::after {
 
 :::
 
-::: tip
 content 属性可以插入内容，也可以不插入，也可以插入图片，也可以通过`attr()`获取元素的属性插入
+
+::: normal-demo 通过 attr() 获取属性内容
+
+```html
+<span id="1">内容</span>
+```
+
+```css
+span::before {
+  content: attr(id);
+}
+```
+
 :::

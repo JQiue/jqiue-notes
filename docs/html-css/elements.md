@@ -446,7 +446,7 @@ function foo() {
 ::: normal-demo audio
 
 ```html
-<audio controls src="http://s138.ananas.chaoxing.com/audio/a0/e8/52/f814b5355ffd42e059187d3ce16cba1e/audio.mp3?at_=1612934735878&ak_=a25ecb672f06e77a5036d511788ea77e&ad_=579c22a2cf3594c71a75b17fab204e15">浏览器不支持</audio>
+<audio controls src="https://s138.ananas.chaoxing.com/audio/a0/e8/52/f814b5355ffd42e059187d3ce16cba1e/audio.mp3?at_=1612934735878&ak_=a25ecb672f06e77a5036d511788ea77e&ad_=579c22a2cf3594c71a75b17fab204e15">浏览器不支持</audio>
 ```
 
 :::
@@ -456,7 +456,7 @@ function foo() {
 ::: normal-demo video
 
 ```html
-<video controls src="http://s138.ananas.chaoxing.com/video/c9/51/17/4a626b15b5abfa147da4af8084054c26/sd.mp4?at_=1612352532045&ak_=b3da89ddae922efb89270e7300931769&ad_=e36a6b4b68892a4f3b361772b5d8925c" width="222px">浏览器不支持</video>
+<video controls src="https://s138.ananas.chaoxing.com/video/c9/51/17/4a626b15b5abfa147da4af8084054c26/sd.mp4?at_=1612352532045&ak_=b3da89ddae922efb89270e7300931769&ad_=e36a6b4b68892a4f3b361772b5d8925c" width="222px">浏览器不支持</video>
 ```
 
 :::

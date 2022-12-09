@@ -3,10 +3,10 @@ import * as navbar from './navbar';
 import * as sidebar from './sidebar';
 
 export default hopeTheme({
-  hostname: 'https://jinqiu.wang',
+  hostname: 'https://jqiue.github.io/',
   author: {
     name: 'JQiue',
-    url: 'https://jinqiu.wang',
+    url: 'https://jqiue.github.io/',
   },
   breadcrumb: false,
   iconPrefix: 'iconfont icon-',
@@ -86,7 +86,7 @@ export default hopeTheme({
       themeColor: '#5c92d1',
       cacheHTML: true,
       cachePic: true,
-      maxSize: 10240,
+      maxSize: 40000,
       maxPicSize: 5000,
       apple: {
         icon: '/assets/icon/appleIcon152.png',
@@ -96,8 +96,10 @@ export default hopeTheme({
         image: '/assets/icon/msIcon144.png',
         color: '#ffffff',
       },
-      manifest: {},
+      manifest: {
+        scope: '/',
+        start_url: '/',
+      },
     },
-    feed: false,
   },
 });

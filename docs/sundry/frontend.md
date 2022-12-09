@@ -260,7 +260,7 @@ npm install --save-dev @babel/core @babel/cli @babel/preset-env
 babel src --out-dir dist
 ```
 
-## webPack
+## webpack
 
 模块化虽然解决了代码了维护性和复用性，但是由于导入资源变多了，请求次数变多了，网页性能也就变差了，因此需要一个打包工具将所有的模块合并到一个文件中，再引入到网页中去，而 webpack 恰恰就是这样的工具
 
