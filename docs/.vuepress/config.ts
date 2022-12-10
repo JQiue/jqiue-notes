@@ -5,15 +5,7 @@ import theme from './theme';
 export default defineUserConfig({
   base: '/',
   dest: './dist',
-  head: [
-    [
-      'link',
-      {
-        rel: 'stylesheet',
-        href: '//at.alicdn.com/t/c/font_1939991_h1r7l24h8kw.css',
-      },
-    ],
-  ],
+  head: [],
   locales: {
     '/': {
       lang: 'zh-CN',
