@@ -64,9 +64,7 @@ export default hopeTheme({
     },
   },
   plugins: {
-    blog: {
-      autoExcerpt: true,
-    },
+    blog: {},
     comment: {
       provider: 'Waline',
       serverURL: 'https://waline.jinqiu.wang/',
