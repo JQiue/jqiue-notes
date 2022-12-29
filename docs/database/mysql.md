@@ -9,17 +9,35 @@ article: false
 + SQL
 :::
 
-## 介绍
-
 ## 安装和启动
 
-Linux 下的安装方式，如果发行版是 ubuntu，则使用`apt install mysql-server`安装即可
+::: tabs
 
-通过`apt`安装的`mysql`是默认开启服务的，并且服务名叫`mysql`，而不是`mysqld`，所以不需要启动以及设置开机启动
+@tab:active Ubuntu
 
-使用`mysql`进入数据库中，`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`重置默认密码，然后`FLUSH PRIVILEGES;`刷新权限。至此，密码已经修改完毕
+```sh
+apt install mysql-server
+```
 
-如果要远程登录就必须创建一个允许远程访问的账户，`create user 'root'@'%' identified by '账户密码';`，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录。接下来使用`GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;`进行授权，然后`FLUSH PRIVILEGES;`刷新一下权限
+通过`apt`安装的`mysql`是默认开启服务以及开机启动的，并且服务名叫`mysql`，而不是`mysqld`
+
+:::
+
+## 修改 root 密码
+
+1. 进入数据库
+2. `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';`
+3. `FLUSH PRIVILEGES;`刷新权限
+
+## 允许远程设备登录
+
+如果要远程登录就必须创建一个允许远程访问的账户，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录
+
+```sql
+create user 'root'@'%' identified by '账户密码';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
 
 可以下面命令通过查看一下用户情况：
 
@@ -41,6 +59,42 @@ mysql> select host,user,authentication_string from user;
 ```
 
 一般情况下，MySQL 的配置文件是禁止了远程登录，所以需要去修改一下配置文件，编辑`sudo /etc/mysql/mysql.conf.d/mysqld.cnf`文件，将`bind-address = 127.0.0.1`使用`#`注释掉，然后`sudo service mysql restart`即可
+
+## MariaDB
+
+MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MySQL 一样
+
+::: tabs
+
+@tab Arch
+
+1. `pacman -S mariadb`
+2. `mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
+3. `systemctl enable mariadb.service`
+4. `systemctl start mariadb.service`
+
+:::
+
+不需要密码，直接`mariadb -u root -p`登录
+
+更改 root 密码
+
+```sh
+ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';
+flush privileges;
+exit;
+```
+
+允许远程登录步骤同 MySQL 一样
+
+## 存储引擎
+
+引擎|特点
+---|---
+MyISAM（5.5.5之前默认的引擎）|插入数据快，空间利用率高，功能少，不支持事务
+InnoDB（5.5.5之后默认的引擎）|支持事务，外键，崩溃修复和并发控制
+Memory|数据都在内存中，速度快，安全性差
+Archive|数据压缩，空间利用率高，插入数据快，不支持索引，查询性能差
 
 ## 创建第一个数据库
 
@@ -138,7 +192,9 @@ CREATE TABLE db_test.t_student (
 + 插入时间戳：
 + 更新时间戳：
 
-## 内置函数
+## 函数
+
+MySQL 有一些内置函数共给使用
 
 + `count()` - 求次数
 + `min()` - 求最小值
@@ -148,7 +204,7 @@ CREATE TABLE db_test.t_student (
 + `rand()` - 生成随机数
 + `concat()` - 拼接字符串
 
-### 自定义函数
+自定义函数
 
 ## 关系模型
 
@@ -160,7 +216,7 @@ CREATE TABLE db_test.t_student (
 
 ## 索引
 
-索引好比一本书的目录，能够快速定位到一些特定的值，从而加快数据查询的效率，如果不使用所有，就必须从最开始的地方进行扫描，直到把所有的数据扫描完，才能找到想要的数据
+索引是数据库中对某一列或多个列的值进行预排序的数据结构。索引好比一本书的目录，能够快速定位到一些特定的值，从而加快数据查询的效率，如果不使用所有，就必须从最开始的地方进行扫描，直到把所有的数据扫描完，才能找到想要的数据
 
 但是索引不是万能的，有时候反而会让效率变低，索引的价值就是在海量的数据中找到想要的数据，如果数据量较少，那么是否使用索引反而对结果的影响不大
 

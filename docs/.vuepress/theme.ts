@@ -1,6 +1,7 @@
 import { hopeTheme } from 'vuepress-theme-hope';
 import * as navbar from './navbar';
 import * as sidebar from './sidebar';
+import { updatetime } from './updatetime';
 
 export default hopeTheme({
   hostname: 'https://jqiue.github.io/',
@@ -53,7 +54,7 @@ export default hopeTheme({
         editLink: '在 GitHub 上编辑此页',
       },
       displayFooter: true,
-      copyright: 'Copyright © 2019-present JQiue',
+      copyright: 'Copyright © 2019-present JQiue | Last push: ' + updatetime,
       footer:
         '<a href="https://beian.miit.gov.cn/" target="_blank">备案号：鄂ICP备2021016538号</a>',
     },
@@ -79,6 +80,7 @@ export default hopeTheme({
       tasklist: true,
       codetabs: true,
       echarts: true,
+      tabs: true,
     },
     pwa: {
       favicon: '/favicon.ico',

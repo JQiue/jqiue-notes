@@ -509,11 +509,11 @@ function foo() {
 
 ```html
 <figure>
-   <img src="bgImage.jpg" alt="bgImage" width="304" height="228">
+   <img src="https://jinqiu.wang/bgImage.jpg  " alt="bgImage" width="304" height="228">
    <figcaption>首页背景图片</figcaption>
 </figure> 
 ```
-
+  
 :::
 
 ## 进度

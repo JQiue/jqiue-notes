@@ -1,6 +1,7 @@
 ---
 title: 关于 - 本站
 tag: [必读]
+excerpt: "里面是什么"
 sticky: true
 ---
 
@@ -13,10 +14,6 @@ sticky: true
 ## 这个人的信息
 
 ![照骗（长太丑浏览器都懒得显示）](https://jinqiu.wang/404)
-
-::: code-tabs
-
-@tab Person
 
 ```js
 const Person = {
@@ -47,8 +44,6 @@ const Person = {
   }, // This is just the tip of the iceberg
 }
 ```
-
-:::
 
 ## 内容和排版
 
@@ -112,7 +107,7 @@ const Person = {
   + 代码质量
   + [正则表达式](/sundry/regex/)
 
-> 全站预估为 286500 字，可花 955（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 30 万字时开始减少产出，浓缩质量
+> 全站预估为 300421 字，可花 1001（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 30 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 
