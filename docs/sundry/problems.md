@@ -1,6 +1,7 @@
 ---
 title: 问题汇总
 author: JQiue
+article: false
 ---
 
 ::: info

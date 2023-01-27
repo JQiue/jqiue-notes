@@ -87,7 +87,7 @@ const ds_algorithm: string[] = [
   'think',
 ];
 
-const database: string[] = ['', 'sql-syntax', 'mysql', 'mongodb', 'redis'];
+const database: string[] = ['', 'sql', 'mongodb', 'redis'];
 
 const webapi: string[] = [
   '',

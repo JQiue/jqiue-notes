@@ -2,6 +2,7 @@
 title: 模块化
 category: 编程语言
 tag: [JavaScript]
+article: false
 ---
 
 早期的网站将所有代码全部写到一个文件，容易产生污染，JavaScript 最初的作用仅仅是验证表单，后来会添加一些动画，但是这些代码很多在一个文件中就可以完成了

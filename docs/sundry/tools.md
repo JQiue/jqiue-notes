@@ -23,18 +23,20 @@ timeline: false
 [7-Zip](https://www.7-zip.org/a/7z2000-x64.exe)（压缩）  
 [ShanaEncoder](https://shana.pe.kr/shanaencoder_download)（视频转码）  
 [AS SSD](https://www.alex-is.de/progs/AS%20SSD%20Benchmark.zip)（硬盘测试）  
+[CrystalDiskInfo](https://crystalmark.info/en/download/)  
+[CrystalDiskMark](https://crystalmark.info/en/download/)  
 [FastCopy](https://dforest.watch.impress.co.jp/library/f/fastcopy/11574/FastCopy392_installer.exe)（复制）  
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads)（虚拟机）  
 [v2rayN](https://github.com/2dust/v2rayN/releases/download/3.29/v2rayN.zip)（电脑代理）  
 [v2rayNG](https://github.com/2dust/v2rayNG/releases/download/1.6.4/v2rayNG_1.6.4_x86_64.apk)（安卓代理）  
 [clash_for_windows](https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.15.2/Clash.for.Windows.Setup.0.15.2.exe)（电脑代理）  
 [ClashForAndroid](https://github.com/Kr328/ClashForAndroid/releases/download/v2.3.14/app-x86_64-release.apk)（安卓代理）  
-[Termius](https://www.termius.com/windows)（SSH）  
 [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)（Windows 自启动管理）  
 [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)（Windows 资源管理器）  
 [Office Tool Plus](https://otp.landian.vip/zh-cn/)（一个强大且实用的 Office 部署工具）  
 [DroidCam](https://www.dev47apps.com/)（电脑调用手机摄像头）
 [Neat Converter](https://neat-reader.cn/downloads/converter)免费电子书格式转换器  
+[PowerToys](https://github.com/microsoft/PowerToys)效率工具  
 
 ## 开发
 

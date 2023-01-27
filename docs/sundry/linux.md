@@ -320,7 +320,8 @@ root@VM-4-14-ubuntu:~# ps x
 + `ls -al | awk '{print $8, $9}'`：打印第 8 列 和第 9 列 的条目
 + `ls -al | awk '{print $9, $8}'`：打印第 8 列 和第 9 列 的条目，调换顺序
 + `ls -al | grep bash`：仅打印目录列表中包含 bash 的行
-+ `cat ls.out | sed  's/bash/hello/g'`：将所有的`bash`条目替换为`hello`
++ `cat ls.out | sed 's/bash/hello/g'`：将所有的`bash`条目替换为`hello`
++ `git branch -a | grep 'feature' | sed 's/remotes\///g' | xargs git branch -dr`：`xargs`用于将输出作为命令行参数
 
 ## 挂载共享目录
 

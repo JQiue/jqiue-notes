@@ -22,6 +22,15 @@ article: false
 npx react-native init my-project
 ```
 
+配置 Gradle 代理（非常重要），在 gradle.properties 加入如下内容：
+
+```gradle
+systemProp.http.proxyHost=127.0.0.1
+systemProp.http.proxyPort=7890
+systemProp.https.proxyHost=127.0.0.1
+systemProp.https.proxyPort=7890
+```
+
 ## 最小示例
 
 ```js
@@ -44,7 +53,6 @@ export default () => {
 View：作为布局组件使用
 Text：作为文本容
 ScrollView：创建滚动视图
-
 Button 创建一个按钮
 
 ```js
@@ -56,7 +64,7 @@ Image 创建一个图片组件
 ```js
 ```
 
-## 样式代码
+## 样式
 
 需要从`react-native`模块引入
 
@@ -80,17 +88,6 @@ const styles = StyleSheet.create({
 
 ## 事件处理
 
-## 配置 Gradle 代理（重要）
-
-在 gradle.properties 加入如下内容：
-
-```gradle
-systemProp.http.proxyHost=127.0.0.1
-systemProp.http.proxyPort=7890
-systemProp.https.proxyHost=127.0.0.1
-systemProp.https.proxyPort=7890
-```
-
 ## 注意事项
 
 Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：
@@ -108,7 +105,16 @@ Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
-## 同时安装 release 和 debug 包的办法
+## 构建应用
+
+构建 APP
+
+```sh
+cd android
+./gradlew assembleRelease
+```
+
+### 同时安装 release 和 debug 包的办法
 
 利于在同一设备进行调试，在`android\app\build.gradle`中加入
 
@@ -120,11 +126,13 @@ buildTypes {
 }
 ```
 
-## 根据 package.json 获取构建 APK 版本
+### 根据 package.json 获取构建 APK 版本
 
 自动化版本构建
 
 ```gradle
+import groovy.json.JsonSlurper
+
 /**
  * 获取 APP 构建版本
  */
@@ -138,20 +146,12 @@ def appVersion = getAppVersion()
 
 android {
     defaultConfig {
-        versionCode 1
         versionName appVersion
     }
 }
 ```
 
-## 构建 APP
-
-```sh
-cd android
-./gradlew assembleRelease
-```
-
-## 构建优化
+### 构建优化
 
 为了减少构建体积，为`build.gradle`修改以下条目
 

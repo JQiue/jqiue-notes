@@ -2,6 +2,7 @@
 title: 事件循环
 category: 编程语言
 tag: [JavaScript]
+article: false
 ---
 
 JavaScript 是一种单线程的执行机制，同一时间只能做一件事，如果前一个任务非常耗时，就会卡住程序的运行，也叫做线程堵塞。这使得所有的任务必须排队执行，为了防止这种情况，事件循环就应用而生，这使得 JavaScript 可以用同步去模拟异步

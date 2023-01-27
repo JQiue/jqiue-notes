@@ -2,6 +2,7 @@
 title: 数据结构
 category: 编程语言
 tag: [JavaScript]
+article: false
 ---
 
 JavaScript 提供了一些数据结构

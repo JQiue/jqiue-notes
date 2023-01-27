@@ -6,7 +6,7 @@ article: false
 ## 推荐全局安装的包
 
 ```sh
-npm i npm-check-updates nrm rimraf nodemon pnpm pm2 yarn -g
+npm i nrm npm-check-updates pnpm pm2 yarn -g
 ```
 
 ## [npm-check-updates](https://github.com/raineorshine/npm-check-updates)
