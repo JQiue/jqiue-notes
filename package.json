@@ -19,12 +19,13 @@
     "lint:md": "markdownlint **/*.md --ignore node_modules -f",
     "lint:prettier": "prettier --check ."
   },
-  "dependencies": {
-    "@algolia/client-search": "4.14.2",
-    "@vuepress/client": "2.0.0-beta.53",
-    "@vuepress/plugin-docsearch": "2.0.0-beta.53",
+  "dependencies": {},
+  "devDependencies": {
     "vue": "3.2.45",
-    "vuepress": "2.0.0-beta.53",
-    "vuepress-theme-hope": "2.0.0-beta.135"
+    "vuepress": "2.0.0-beta.60",
+    "@vuepress/client": "2.0.0-beta.60",
+    "@vuepress/plugin-docsearch": "2.0.0-beta.60",
+    "@algolia/client-search": "4.14.3",
+    "vuepress-theme-hope": "2.0.0-beta.171"
   }
 }
