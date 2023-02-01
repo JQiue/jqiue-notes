@@ -53,6 +53,7 @@ const javascript: string[] = [
   'standard',
   'quality',
   'typescript',
+  'node',
 ];
 
 const python: string[] = [
@@ -141,7 +142,6 @@ const sundry: string[] = [
   'http',
   'latex',
   'learntolearn',
-  'node',
   'awesome-npm',
   'server',
   'frontend',
