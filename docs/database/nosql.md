@@ -1,8 +1,11 @@
 ---
-title: MongoDB
+title: NoSQL
 category: 数据库
+tag: ["MongoDB", "Redis"]
 article: false
 ---
+
+## MongoDB
 
 MongoDB 是面向文档的非关系型数据库管理系统，并不是传统的关系数据库，基本的思路就是将“行”（row）的概念换成更加灵活的“文档”（document）模型。MongoDB 是基于 JSON，而面向文档的方式可以将文档或数组内嵌进来，所以一条记录可以表示非常复杂的关系。学习 MongoDB 需要具备一定的 JavaScript 和 JSON 基础
 
@@ -14,7 +17,7 @@ MongoDB 是面向文档的非关系型数据库管理系统，并不是传统的
 
 在 NoSQL 中，操作数据库都是通过指令或程序语言来完成的，在 MongoDB 中就是使用 JavaScript 来完成大部分操作
 
-## 基本操作
+### 基本操作
 
 首先在终端上输入`mongo`命令进入 MongoDB 命令行程序，退出使用`eixt`命令
 
@@ -75,7 +78,7 @@ db.集合名.insert([
 + remove()：删除数据
 + find()：查询数据
 
-## JavaScript 支持
+### JavaScript 支持
 
 MongoDB 底层是用 JavaScript 引擎实现的，支持部分 JavaScript 语法，于是：
 
@@ -85,7 +88,7 @@ for (let i = 1; i < 10; i++){
 }
 ```
 
-## 带条件的操作
+### 带条件的操作
 
 `db.集合名.find()`可以查看该集合中的数据，如果不传入参数，将会查询所有的数据，现在开始对下面的数据进行待条件的查询
 
@@ -153,7 +156,7 @@ db.users.find({
 })
 ```
 
-## 文档方法
+### 文档方法
 
 `sort()`会根据指定字段进行升序或降序排序
 
@@ -182,7 +185,7 @@ db.users.find().sort(age: -1)
 
 `findOne()`和`find()`相比它只查询一条数据，其他的没有什么区别
 
-## 更新数据
+### 更新数据
 
 `update(<filter>, <update>, <option>)`方法用于更新数据，`<filter>`用于过滤一些信息，如果传入空对象会对所有的数据进行更新，`<update>`用于设置需要更新的数据
 
@@ -259,3 +262,7 @@ db.mobiles.insert({
   Highlights: ''
 })
 ```
+
+## Redis
+
+最新的软件版本为 6，官方不推荐在 Windows 上使用 Redis，尽管微软维护了一份 3.2.100 版本的，但是好在 Github 社区无所不能，有人正在维护 5.0 版本的 Redis 可在 Windows 上安装，地址：[Github](https://github.com/tporadowski/redis)，这足够学习使用了

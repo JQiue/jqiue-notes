@@ -61,6 +61,8 @@ JavaScript 有局限性，不能够编写独立运行的程序，因此只能在
 
 ::: tip Atwood 定律
 Jeff Atwood 即 StackOverflow 的创始人在博客中提到著名的定律：任何可以用 JavaScript 来实现的应用，最终都将用 JavaScript 来实现
+
+> <https://blog.codinghorror.com/the-principle-of-least-power/>
 :::
 
 ## JavaScript “上层语言”

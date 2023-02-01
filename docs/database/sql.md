@@ -1,6 +1,7 @@
 ---
 title: SQL
 category: 数据库
+tag: ["MySQL", "MariaDB"]
 article: false
 ---
 
@@ -351,15 +352,31 @@ SELECT * FROM student JOIN class ON student.class_id = class.id
 SELECT * FROM (SELECT * FROM 表1)
 ```
 
-## 技巧
+## 事务
 
-+ 蠕虫复制 - 复制一个表的数据到另一个表
+事务是一组操作的集合，要么全部成功，要么全部执行失败
+
+设置/查看事务提交方式：
 
 ```sql
--- 复制 table_1 的结构
-CREATE TABLE table_1 like table_2;
--- 插入 table_1 的数据到 table_2
-INSERT INTO table_1 SELECT * FROM table_2;
+--  为 1 时自动提交，为 0 时手动提交，为全局设置
+SELECT @@autocommit;
+SET @@autocommit=0;
+```
+
+指定部分语句事务：
+
+```sql
+start transaction;
+
+-- 提交事务
+COMMIT;
+
+-- 回滚全部事务操作
+ROLLBACK;
+
+-- 开始自动提交
+BEGIN;
 ```
 
 ## MySQL
@@ -696,3 +713,14 @@ MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MyS
 :::
 
 不需要密码，直接`mariadb -u root -p`登录，修改密码以及远程登录同 MySQL
+
+## 技巧
+
++ 蠕虫复制 - 复制一个表的数据到另一个表
+
+```sql
+-- 复制 table_1 的结构
+CREATE TABLE table_1 like table_2;
+-- 插入 table_1 的数据到 table_2
+INSERT INTO table_1 SELECT * FROM table_2;
+```

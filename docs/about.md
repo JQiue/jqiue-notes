@@ -84,10 +84,6 @@ const Person = {
 + [数据结构与算法](/ds-algorithm/)
 + [软件设计](/sundry/software-design/)
 + [数据库](/database/)
-  + SQL 语言
-  + MySQL
-  + MongoDB
-  + Redis
 + Web
   + [HTML-CSS](/html-css/)
   + [WebAPI](/webapi/)
@@ -97,18 +93,16 @@ const Person = {
   + [ReactNative](/framework/react-native/)
   + [Electron](/framework/electron/)
   + [Express](/framework/express/)
-  + [Koa](/framework/koa/)
 + [服务器 && 容器](/sundry/server/)
-  + Tomcat
-  + Nginx
 + [基础学科](/subject/)
 + 其他杂项
   + [Git](/sundry/git/)
   + [Linux](sundry/linux/)
+  + Nginx
   + Docker
   + [正则表达式](/sundry/regex/)
 
-> 全站预估为 300421 字，可花 1001（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
+> 全站预估为 303159 字，可花 1010（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 

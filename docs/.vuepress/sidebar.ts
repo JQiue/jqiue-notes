@@ -87,7 +87,7 @@ const ds_algorithm: string[] = [
   'think',
 ];
 
-const database: string[] = ['', 'sql', 'mongodb', 'redis'];
+const database: string[] = ['', 'sql', 'nosql'];
 
 const webapi: string[] = [
   '',
@@ -132,6 +132,7 @@ const subject: string[] = [
 ];
 
 const sundry: string[] = [
+  '',
   'tools',
   'problems',
   'skill',
@@ -148,8 +149,6 @@ const sundry: string[] = [
   'interview',
   'openssl',
   'game-sport',
-  'windows',
-  'linux',
   'cicd',
   'security',
   'software-design',
