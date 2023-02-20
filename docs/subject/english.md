@@ -1455,8 +1455,15 @@ I received an invitation, but I didn't accept it.
 + a number of - 可数
 + a great deal of - 不可数
 
-+ have gone to 去了
-+ have been to 去过
++ have gone to 已经去了
++ have been to 曾经去过
+
+well, good, nice, great
+
++ well：副词修饰动词
++ good：作名词或作形容词
++ nice：形容词
++ great：形容词
 
 ## 参考资料
 

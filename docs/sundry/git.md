@@ -4,9 +4,7 @@ category: 知识分享
 article: false
 ---
 
-Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具
-
-从开发者的角度上来看，Git 有以下功能：
+Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具。从开发者的角度上来看，Git 有以下功能：
 
 + 从服务器上克隆代码到自己的机器上
 + 在自己的机器上创建分支，修改代码
@@ -37,8 +35,6 @@ Git 是一套程序源代码的分布式版本管理系统，最初用于管理 
 + Git 库（Repository）
   + local：本地仓库
   + remote：远程仓库
-
-## 初入 Git
 
 如果是第一次使用 Git 要配置用户名和邮箱，因为 Git 是基于分布式的管理系统，所以每个贡献者都有自己的用户名和地址，这样便于跟踪用户的操作
 
@@ -101,7 +97,7 @@ Changes to be committed:
 `git status`显示的信息可能过于复杂了，添加额外的`-s`会让信息更简洁紧凑
 :::
 
-如果提交到暂存区中的的文件很多，`git add <file>`则比较麻烦，但是 Git 提供了`git add .`命令用来将所有修改提交到暂存区，如果需要选择性的提交，可以使用`git add <file1> <file2> <file3>...`这种方式
+如果提交到暂存区中的的文件很多，可以使用`git add .`用来将所有修改提交到暂存区，如果需要选择性的提交，可以使用`git add <file1> <file2> <file3>...`这种方式
 
 暂存区保存着工作树的快照，并且将该快照作为下一次提交到本地仓库的内容。现在`index.html`已经被添加到暂存区，已经可以使用`git commit`命令提交到本地仓库了，增加额外`-m`参数来描述一下这个提交所做的内容
 
@@ -164,9 +160,7 @@ Date:   Mon Sep 6 14:04:25 2021 +0800
 
 ## 修改比较
 
-虽然`git status`也会输出一些修改信息，但并不能准确地知道修改了哪些地方。而`git diff`则是通过文件补丁的格式显示具体的哪些地方发生了变化，但是它只会显示尚未暂存的改动，因此有时候提交了所有的改动再次运行它会发现什么都没有
-
-这是因为`git diff`只会比较工作区和暂存区中的文件差异，如果提交了所有的改动执行这个命令会什么也得不到，但是增加一个额外的`--cached`参数会比较暂存区中和上一次提交的文件差异
+虽然`git status`也会输出一些修改信息，但并不能准确地知道修改了哪些地方。而`git diff`则是通过文件补丁的格式显示具体的哪些地方发生了变化，但是它只会显示尚未暂存的改动，因此有时候提交了所有的改动再次运行它会发现什么都没有。这是因为`git diff`只会比较工作区和暂存区中的文件差异，但是增加一个额外的`--cached`参数会比较暂存区中和上一次提交的文件差异
 
 `git diff <branch> <branch>`会比较两个分支中的所有差异，如果加上`--stat`则只会告诉有差异的文件列表，`git diff <branch> <branch> <file>`则显示指定文件的差异
 
@@ -200,7 +194,7 @@ Date:   Mon Sep 6 14:04:25 2021 +0800
 
 分支是 Git 最重要的功能，代码库应该有且只有一个主分支，所有的正式版本都会在这个分支下进行发布，分支简单来说就是指向某一个提交记录仅此而已，即使创建再多的分支也不会造成额外的存储开销
 
-Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在这个分支下的，想要查看当前的分支可以使用`git branch`，并且用`*`表示当前处于的分支，增加`-a`参数可以查看本地和远程的所有分支
+Git 有一个名为`main`默认主分支，初始化后的 Git 默认都是在这个分支下的，想要查看当前的分支可以使用`git branch`，并且用`*`表示当前处于的分支，增加`-a`参数可以查看本地和远程的所有分支
 
 主分支只用来发布重大的版本，但是一般的日常开发都会在另一条分支上完成。使用`git branch <branch_name>`即可创建一个新的分支，使用`git checkout <branch_name>`即可切换到指定的分支下，当然也可以使用`git checkout -b <branch_name>`命令创建分支的同时进行切换
 
@@ -220,15 +214,15 @@ Git 有一个名为`master`默认主分支，初始化后的 Git 默认都是在
 
 > 来源自 [https://nvie.com/posts/a-successful-git-branching-model/](https://nvie.com/posts/a-successful-git-branching-model/)
 
-根据上图，我们知道每个开发人员都要熟悉`master`和`develop`这两个主要的分支，它们拥有无限的寿命
-
-且在主要的分支旁边还可以使用其他类型的辅助分支，这三种分支都是临时性的，用完后就应该删除：
+根据上图，我们知道每个开发人员都要熟悉`master`和`develop`这两个主要的分支，它们拥有无限的寿命。且在主要的分支旁边还可以使用其他类型的辅助分支，这三种分支都是临时性的，用完后就应该删除：
 
 + `feature-*`：功能分支
 + `release-*`：预发布分支
 + `hotfix-*`：热修复分支
 
 功能分支是从开发分支上分离出来的，当功能开发完成后再次合并到开发分支。预发布分支是从开发分支上分离出来的，用来在发布正式版本前测试的版本，当确认没有问题后就合并到主分支和开发分支上。热修复分支是一种修复 BUG 的分支，正式版本的软件难免会有问题，从主分支上分离出来进行修补，然后再合并到主分支和开发分支上
+
+当主分支和其它分支对同一个文件的相同部分各自有新的提交时，这种情况下，Git 无法执行”快速合并“，只能试图把各自的修改合并起来，于是就产生了合并冲突，这时 Git 就会提示哪里出现了冲突内容，要手动处理冲突内容再次提交
 
 ## HEAD
 
@@ -244,11 +238,7 @@ HEAD 是一个对当前签出记录的符号引用，总是指向当前分支最
 
 这种移动 HEAD 的方式，可以用来将当前指向的分支指向另一个提交记录，比如`git branch -f master HEAD^`，这会将 master 分支强行指向上一级提交记录的地方。如果做了该操作，再向远程仓库提交时，要加上`-f`强制覆盖，注意不要在多人协作的项目中使用该操作
 
-## 分支冲突
-
-当主分支和其它分支对同一个文件的相同部分各自有新的提交时，这种情况下，Git 无法执行”快速合并“，只能试图把各自的修改合并起来，于是就产生了合并冲突，这时 Git 就会提示哪里出现了冲突内容，要手动处理冲突内容再次提交
-
-## 隐藏
+## 隐藏修改
 
 当前分支未提交的修改会导致无法切换到其他分支，Git 提供了`git stash`命令用于将当前的修改存储起来，以便于切换到其他分支，当需要恢复时使用`git stash pop`
 
@@ -302,11 +292,7 @@ Github 是用于存放使用 Git 版本控制的软件代码和内容项目的�
 7. 写作
 8. ...
 
-Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面
-
-## 远程仓库的推送和拉取
-
-远程仓库是指类似于 Github 这样的云服务提供的服务，一个项目可以有很多个远程仓库，运行`git remote`就会列出所有远程仓库，当然，刚初始化后的仓库自然是没有的
+Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面。远程仓库是指类似于 Github 这样的云服务提供的服务，一个项目可以有很多个远程仓库，运行`git remote`就会列出所有远程仓库，当然，刚初始化后的仓库自然是没有的
 
 + 添加远程仓库：`git remote add <name> <url>`（url 为远程仓库地址，name 是这个地址别名）
 + 修改远程仓库别名：`git remote rename <old> <new>`
@@ -320,30 +306,174 @@ Github 可以托管各种 Git 仓库，并提供可管理的 Web 界面
 
 虽然看起来`git pull = git fetch + git merge`一样，但是推荐使用`git fetch`，因为`git pull`的会将一些过程的细节隐藏起来，一旦代码出现问题，就很难找到出错的地方
 
-## 代码克隆
+从指定的服务器地址克隆代码到本地`git clone <remote>`，只会克隆一个主要分支，对于远程的其他分支只会建立关联。如果想要克隆其他分支，就要使用`checkout`命令签出，比如克隆远程`dev`分支的命令是`git checkout -b dev <remote>/dev`，`-b`参数的意思是克隆后立即切换到这个分支下。如果为了省事，也可以使用`-t`参数进行替代，`git checkout -t <remote>/dev`不但会克隆远程分支，还会自动创建同名的本地分支并切换到该分支下
 
-从指定的服务器地址克隆代码到本地：
+如果只想克隆某个分支就是用`git clone -b <branch> <remote>`。这样便可以修改本地的代码了，当完成了一定量的修改后，可以做个阶段的提交
 
-```sh
-git clone <remote>
+### CI/CD
+
+Github 提供了 CI/CD 功能，在更目录新建`.github/workflows`，编写`yml`格式定义工作流程实现 CI，以下概念是重要的：
+
++ Workflow：是由一个或多个 job 组成的可配置的自动化过程，可以通过 YAML 来进行配置
++ Event：触发 Workflow 的事件，比如 push
++ Job：一个 Workflow 包含多个 Job，默认情况下并行运行，每个 Job 都会在指定环境创建一个 Runner 运行 Step
++ Step：组成 Job 的部分，定义每一步的内容，每个 Step 在 Runner 中都是单独进程，可以访问工作区和文件系统
+
+```yml
+name: learn-github-actions
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
+      - run: npm install -g bats
+      - run: bats -v
 ```
 
-`clone`默认会把远程仓库都复制到本地，但是只会创建一个默认的`master`分支，对于远程的其他分支只会建立关联。如果想要克隆其他分支，就要使用`checkout`命令签出，比如克隆远程`dev`分支的命令是`git checkout -b dev <remote>/dev`，`-b`参数的意思是克隆后立即切换到这个分支下。如果为了省事，也可以使用`-t`参数进行替代，`git checkout -t <remote>/dev`不但会克隆远程分支，还会自动创建同名的本地分支并切换到该分支下
+比如你想在 push 代码后，让服务器拉取更新并部署，那么就可以使用以下 actions 来和服务器远程连接
 
-如果只想克隆某个分支就是用`git clone -b <branch> <remote>`
+```yml
+name: deplay
+on:
+  push:
+    branches:
+    - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+       - name: executing remote ssh commands using ssh key
+         uses: appleboy/ssh-action@v0.1.7
+         with:
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USERNAME }}
+           key: ${{ secrets.SSH_PRIVATE_KEY }}
+           port: ${{ secrets.PORT}}
+           script: |
+             whoami
+             ls -a
+```
 
-这样便可以修改本地的代码了，当完成了一定量的修改后，可以做个阶段的提交
+`uses`使用的是别人定义好的 action，可以在 marketplace 进行搜索
 
-## 让 git 走 Clash 代理
+使用`${{}}`的代码是一种引入方式，为了避免一些东西泄露，在仓库`Settions/Secrets and variables`中进行定义
 
-由于各种不为人知的原因，在国内使用 Git 推送以及拉取 Github 仓库时总是产生莫名其妙的网络原因导致失败，因此必须给 Git 安排一下代理。Git 有 HTTP 和 SSH 两种协议推送到远程仓库，这里介绍的是 Clash 代理的用法，首先需要确定 Clash 的访问端口，然后打开 Git 的`config`文件加上下面内容：
+如果执行`.sh`文件被拒绝，则在本机上进行以下操作：
+
+```sh
+git update-index --add --chmod=+x build.sh
+git commit -m 'Make build.sh executable'
+git push
+```
+
+如果你想要连接到远程服务器，请使用：
+
+```sh
+steps:
+  - uses: actions/checkout@v3
+    with:
+      node-version: "14"
+  - name: Write SSH keys
+    run: |
+     install -m 600 -D /dev/null ~/.ssh/id_rsa
+     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+     ssh-keyscan -H host > ~/.ssh/known_hosts
+  - name: link remote
+    run: ssh -T username@host | pwd
+  - run: pwd
+```
+
+## 让 git 走 clash 代理
+
+由于各种不为人知的原因，在国内使用 Git 推送以及拉取 Github 仓库时总是产生莫名其妙的网络原因导致失败，因此必须给 Git 安排一下代理。Git 有 HTTP 和 SSH 两种协议推送到远程仓库，这里介绍的是 Clash 代理的用法，首先需要确定 clash 的访问端口，然后打开 Git 的`config`文件加上下面内容：
 
 ```
 [http]
   proxy = 127.0.0.1:10808
 ```
 
-默认的 Clash 端口都是`10808`，所以要填写成一样的，这个时候进行推送或拉取操作都会走 Clash，实在是快乐
+这个时候进行推送或拉取操作都会走 clash，实在是快乐
+
+## 让你的提交带上 emoji
+
+在 git commit 说明中也可以通过特殊字符来转义一些小表情，这实际上很多余，不太推荐
+
+```shell
+git commit -m "fix：:bug: 修复一个缺陷"
+```
+
+## SSH 免登录推送
+
+基于 HTTPS 的推送方式，需要登录远程仓库的账号来获得推送权限，这可能带来一个问题，每当推送的时候就可能需要登录一次，这带来了不必要的麻烦，尽管有些操作系统会帮我们记住账号免于输入
+
+SSH 通过密钥来实现身份验证，而密钥是成对出现的，分为公钥和私钥，通过验证公钥和私钥的配对情况来决定验证是否成功，公钥和私钥需要使用命令生成，公钥提供给代码托管服务商，而私钥则保留在本地，当开发者通过 SSH 方式推送时，远程公钥和本地私钥就会进行配对，如果配对成功，则会将本地仓库推送到远程仓库，免去了输入账号的麻烦
+
+打开终端输入一下命令生成密钥对：
+
+```sh
+ssh-keygen
+```
+
+此命令会出现一个问题选择，用来询问密钥的创建方式，一路回车即可
+
+```sh
+Generating public/private rsa key pair.
+Enter file in which to save the key (/c/Users/wjq/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/wjq/.ssh/id_rsa
+Your public key has been saved in /c/Users/wjq/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:N7TuumKgj2rYSwur1oIDfoH4UWFzGs61kAxMVNKnI6U wjq@DESKTOP-4PAKPB7
+The key's randomart image is:
++---[RSA 3072]----+
+| +==..           |
+|  ..@ +          |
+|   * @ .  .      |
+|  E B .  . .     |
+|. .o .  S +      |
+|o....    o .     |
+|*ooo..    .      |
+|+O+=  o  .       |
+|Bo*o.. .oo.      |
++----[SHA256]-----+
+```
+
+当问题选择完毕时，会在用户目录`(C:\Users\***\.ssh)`下生成公钥和私钥
+
+![ssh-1](./images/git-ssh-1.png)
+
+以 Github 为例，进入`Settings`，找到`SSH and GPG keys`选项
+
+![ssh-2](./images/git-ssh-2.png)
+
+点击`New SSH key`，打开公钥文件将字符串粘贴到到对应的输入框中，点击`Add SSH key`
+
+![ssh-3](./images/git-ssh-3.png)
+
+这时 Github 会要求输入密码确认一次，验证完成后即可看到公钥添加成功
+
+![ssh-4](./images/git-ssh-4.png)
+
+最后使用`ssh -T git@github.com`看一下是否提示愉快的信息，否则就要去处理一下网络方面的原因
+
+接下来只要使用 SSH 地址进行推送就行了，SSH 链接也是可以起别名的
+
+```sh
+git remote add origin_ssh SSH地址
+```
+
+::: tip
+对于其他代码托管服务商都是类似的操作
+:::
+
+## 选择你的软件版权
+
+从<https://choosealicense.com/>选择适合的版权内容
 
 ## 提交规范
 
@@ -415,85 +545,6 @@ chore: 将表格中的查看详情改为详情
 ```
 
 其他类型的 commit 和上面三个示例差不多，在此不再叙述
-
-## 让你的提交带上 emoji
-
-在 git commit 说明中也可以通过特殊字符来转义一些小表情，这实际上很多余，不太推荐
-
-```shell
-git commit -m "fix：:bug: 修复一个缺陷"
-```
-
-## SSH 免登录推送
-
-基于 HTTPS 的推送方式，需要登录远程仓库的账号来获得推送权限，这可能带来一个问题，每当推送的时候就可能需要登录一次，这带来了不必要的麻烦，尽管有些操作系统会帮我们记住账号免于输入
-
-SSH 通过密钥来实现身份验证，而密钥是成对出现的，分为公钥和私钥，通过验证公钥和私钥的配对情况来决定验证是否成功，公钥和私钥需要使用命令生成，公钥提供给代码托管服务商，而私钥则保留在本地，当开发者通过 SSH 方式推送时，远程公钥和本地私钥就会进行配对，如果配对成功，则会将本地仓库推送到远程仓库，免去了输入账号的麻烦
-
-打开终端输入一下命令生成密钥对：
-
-```sh
-ssh-keygen
-```
-
-此命令会出现一个问题选择，用来询问密钥的创建方式，一路回车即可
-
-```sh
-Generating public/private rsa key pair.
-Enter file in which to save the key (/c/Users/wjq/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in /c/Users/wjq/.ssh/id_rsa
-Your public key has been saved in /c/Users/wjq/.ssh/id_rsa.pub
-The key fingerprint is:
-SHA256:N7TuumKgj2rYSwur1oIDfoH4UWFzGs61kAxMVNKnI6U wjq@DESKTOP-4PAKPB7
-The key's randomart image is:
-+---[RSA 3072]----+
-| +==..           |
-|  ..@ +          |
-|   * @ .  .      |
-|  E B .  . .     |
-|. .o .  S +      |
-|o....    o .     |
-|*ooo..    .      |
-|+O+=  o  .       |
-|Bo*o.. .oo.      |
-+----[SHA256]-----+
-```
-
-当问题选择完毕时，会在用户目录`(C:\Users\***\.ssh)`下生成公钥和私钥
-
-![ssh-1](./images/git-ssh-1.png)
-
-### 配置远程仓库的公钥
-
-以 Github 为例，进入`Settings`，找到`SSH and GPG keys`选项
-
-![ssh-2](./images/git-ssh-2.png)
-
-点击`New SSH key`，打开公钥文件将字符串粘贴到到对应的输入框中，点击`Add SSH key`
-
-![ssh-3](./images/git-ssh-3.png)
-
-这时 Github 会要求输入密码确认一次，验证完成后即可看到公钥添加成功
-
-![ssh-4](./images/git-ssh-4.png)
-
-最后使用`ssh -T git@github.com`看一下是否提示愉快的信息，否则就要去处理一下网络方面的原因
-
-接下来只要使用 SSH 地址进行推送就行了，SSH 链接也是可以起别名的
-
-```sh
-git remote add origin_ssh SSH地址
-```
-
-::: tip
-对于其他代码托管服务商都是类似的操作
-:::
-
-## 选择你的软件版权
-
-从<https://choosealicense.com/>选择适合的版权内容
 
 ## 参考资料
 
