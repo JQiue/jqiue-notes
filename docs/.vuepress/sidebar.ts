@@ -155,6 +155,7 @@ const sundry: string[] = [
   'ui',
   'packet-capture',
   'crypto',
+  'harmonica',
 ];
 
 const framework: string[] = [

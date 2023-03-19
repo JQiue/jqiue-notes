@@ -2,7 +2,7 @@ import { defineUserConfig } from 'vuepress';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import theme from './theme';
 
-export default defineUserConfig({
+const app = defineUserConfig({
   base: '/',
   dest: './dist',
   head: [],
@@ -66,3 +66,16 @@ export default defineUserConfig({
   ],
   shouldPrefetch: false,
 });
+
+app.onWatched = (app) => {
+  let m = 0,
+    w = 0;
+  for (let i = 0; i < app.pages.length; i++) {
+    const { minutes, words } = app.pages[i].data.readingTime;
+    m += minutes;
+    w += words;
+  }
+  console.log(m, w);
+};
+
+export default app;

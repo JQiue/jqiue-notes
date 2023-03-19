@@ -579,9 +579,9 @@ systemctl start NetworkManager sshd
 
 配置 shell，使用更好的 Oh-my-zsh：
 
-1. 使用 curl 下载脚本并安装：`sh -c "$(curl -fsSL <https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh>)"`
+1. 使用 curl 下载脚本并安装：`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 2. 同意使用 Oh-my-zsh 的配置模板覆盖已有的`.zshrc`
-3. 使用`powerlevel10k`主题,`git clone --depth=1 <https://gitee.com/romkatv/powerlevel10k.git> ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
+3. 使用`powerlevel10k`主题,`git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
 4. 在`.zshrc`设置`ZSH_THEME="powerlevel10k/powerlevel10k"`启用主题
 5. 执行`source ~/.zshrc`配置生效
 6. 启用`z`获取快速跳转目录的能力，不需要安装，直接在`.zshrc`中设置`plugins=(z)`启用

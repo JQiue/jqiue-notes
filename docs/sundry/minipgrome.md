@@ -1,5 +1,5 @@
 ---
-title: 小程序
+title: 微信小程序
 article: false
 ---
 
@@ -29,13 +29,13 @@ article: false
 
 ## 概念
 
-页面由四个文件组成，使用页面时，必须在 app.json 中进行配置，小程序会将第一个页面作为首页
+页面由四个文件组成，使用页面时，必须在 局样式和app.json 中进行配置，小程序会将第一个页面作为首页
 
 WXML 和 HTML 类似是标签语言，但是和 HTML 不同，封装了自己的标签，属性节点也不同，提供了类似于 Vue 的模板语法
 
-WXSS 和 CSS 类似，最主要的区别有提供了全局样式和局部样式，新增了 rpx 尺寸单位，仅支持部分选择器
+WXSS 和 CSS 类似，最主要的区别有提供了全局部样式，新增了 rpx 尺寸单位，仅支持部分选择器
 
-js 文件是页面的
+js 文件是页面的首要语言，当然也可以选择 typescript
 
 ## 组件
 
@@ -216,3 +216,15 @@ wx.request({
 同步 API，以 Sync 结尾的 API
 
 异步 API，比如通过`wx.request()`发送网络请求
+
+## 最佳实践
+
+重要的 api：
+
+```js
+// 获取设备基础信息
+wx.getSystemInfoSync()
+
+// 获取右上角胶囊的布局位置信息
+wx.getMenuButtonBoundingClientRect()
+```

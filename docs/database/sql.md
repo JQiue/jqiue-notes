@@ -264,23 +264,6 @@ SELECT * FROM student ORDER BY stu_score DESC;
 SELECT * FROM student ORDER BY stu_score DESC, stu_age ASC;
 ```
 
-### 聚合函数
-
-```sql
--- COUNT() 统计列不为空的记录数
-SELECT COUNT(*) FROM student;
--- 统计该列不为空的记录数
-SELECT COUNT(stu_age) FROM student;
--- SUM() 对列进行求和
-SELECT SUM(stu_score) FROM student;
--- AVG() 求出列的平均值
-SELECT AVG(stu_score) FROM student;
--- MAX() 返回列的最大值
-SELECT MAX(stu_score) FROM student;
--- MAX() 返回列的最小值
-SELECT MIN(stu_score) FROM student;
-```
-
 ### 分组
 
 `GROUP BY`可以将列相同的值分为一组，通常和其他查询语句结合使用，单独使用只会查询每组中的第一条数据，意义不大。分组的目的是为了统计，一般会和聚合函数一起使用
@@ -381,22 +364,20 @@ BEGIN;
 
 ## MySQL
 
-### 存储引擎
-
-引擎|特点
+存储引擎|特点
 ---|---
 MyISAM（5.5.5之前默认的引擎）|插入数据快，空间利用率高，功能少，不支持事务
 InnoDB（5.5.5之后默认的引擎）|支持事务，外键，崩溃修复和并发控制
 Memory|数据都在内存中，速度快，安全性差
 Archive|数据压缩，空间利用率高，插入数据快，不支持索引，查询性能差
 
-### 关系模型
+关系模型：
 
 + 主键
 + 外键
 + 索引
 
-### 安装和启动
+### 安装，启动以及卸载
 
 ::: tabs
 
@@ -416,17 +397,14 @@ pacman -S mysql
 
 :::
 
-### 修改 root 密码
+修改 root 密码
 
 ```sh
 ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码';
 flush privileges;
-exit;
 ```
 
-### 允许远程设备登录
-
-如果要远程登录就必须创建一个允许远程访问的账户，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录
+如果要远程设备登录就必须创建一个允许远程访问的账户，为什么有两个`root`账户？这是因为其中的一个`root`账户的`host`为`localhost`，这只允许从本地登录，而增加一个`%`表示可以从任意计算机上登录
 
 ```sql
 create user 'root'@'%' identified by '账户密码';
@@ -452,9 +430,15 @@ mysql> select host,user,authentication_string from user;
 6 rows in set (0.00 sec)
 ```
 
-一般情况下，MySQL 的配置文件是禁止了远程登录，所以需要去修改一下配置文件，编辑`sudo /etc/mysql/mysql.conf.d/mysqld.cnf`文件，将`bind-address = 127.0.0.1`使用`#`注释掉，然后`sudo service mysql restart`即可
+一般情况下，MySQL 的配置文件禁止了远程登录，所以需要去修改一下配置文件，编辑`sudo /etc/mysql/mysql.conf.d/mysqld.cnf`文件，将`bind-address = 127.0.0.1`使用`#`注释掉，可能是在`[mysqld]`字段下，然后`sudo service mysql restart`即可
 
 可以使用`show databases;`列出当前系统中所有的数据库，使用`use`语句，它将进入到指定的数据库中，然后就可以进行表相关的操作
+
+Ubuntu 可以使用以下命令干净的卸载掉：
+
+```sh
+apt autoremove --purge mysql
+```
 
 ```sql
 use db_test;
@@ -464,17 +448,18 @@ use db_test;
 
 字段类型对于数据库优化特别重要
 
-+ double - 浮点型，如`double(5, 2)`表示最多5位，其中必须有两位小数
 + char - 定长字符串（空间固定），空的地方使用空格填充
 + varchar - 可变字符串
 + text - 长文本字符串
-+ blob - 二进制
++ int - 整型
++ double - 浮点型，如`double(5, 2)`表示最多5位，其中必须有两位小数
 + date - 日期
 + time - 时间
 + datetime - 日期时间
++ blob - 二进制
 
 ::: tip
-在 MySQL 中，字符和日期都需要用单引号表示
+字符和日期都需要用单引号表示
 :::
 
 ### 字段约束
@@ -537,17 +522,43 @@ CREATE TABLE db_test.t_student (
 
 MySQL 有一些内置函数共给使用
 
-+ `count()` - 求次数
-+ `min()` - 求最小值
-+ `max()` - 求最大值
-+ `sum()` - 求和
+```sql
+-- COUNT() 统计列不为空的记录数
+SELECT COUNT(*) FROM student;
+-- 统计该列不为空的记录数
+SELECT COUNT(stu_age) FROM student;
+-- SUM() 对列进行求和
+SELECT SUM(stu_score) FROM student;
+-- AVG() 求出列的平均值
+SELECT AVG(stu_score) FROM student;
+-- MAX() 返回列的最大值
+SELECT MAX(stu_score) FROM student;
+-- MAX() 返回列的最小值
+SELECT MIN(stu_score) FROM student;
+```
+
+聚合函数会产生单个值，这些值可以为更复杂的查询创造条件，比如子查询
+
 + `sqrt()` - 求平方根
 + `rand()` - 生成随机数
 + `concat()` - 拼接字符串
++ `IFNULL(v1,v2)` - 如果 v1 为 NULL，则返回 v2
 
 更多函数：<https://www.hxstrive.com/tools/command_manual_mysql.htm>
+  
+MYSQL 中可以自定义函数
 
-自定义函数
+### 日期操作
+
+```sql
+select now()        -- 获取当前具体的日期和时间 2019-11-13 16:38:20
+select curdate()    -- 获取当前日期 2019-11-13
+select curtime()    -- 获取当前时间 6:38:20
+select date_add(now(), interval 1 year);    -- 加1年
+select date_add(now(), interval 1 month);   -- 加1月
+select date_sub(now(), interval 1 year);    -- 减1年
+select datediff('20230220', now());         -- 返回两个日期相差的天数
+```
 
 ### 索引
 
@@ -713,6 +724,13 @@ MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MyS
 :::
 
 不需要密码，直接`mariadb -u root -p`登录，修改密码以及远程登录同 MySQL
+
+## 最佳实践
+
+1. 表名使用集合或者不那么理想的复数
+2. 不要使用驼峰命名法
+3. 列名使用单数
+4. 不要使用 delete 物理删除数据，而是使用逻辑删除
 
 ## 技巧
 
