@@ -43,6 +43,7 @@ export const zh = navbar([
       { text: 'Koa', icon: 'express', link: '/koa/' },
       { text: 'ReactNative', icon: 'react', link: '/react-native/' },
       { text: 'Electron', icon: 'electron', link: '/electron/' },
+      { text: 'Tauri', icon: 'electron', link: '/tauri/' },
     ],
   },
   {

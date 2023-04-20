@@ -8,45 +8,45 @@ article: false
 
 英语由词、句、篇构成，单词的词性是打开英语大门的钥匙，而词法是英语学习的基础。词法能帮助理解许多英语概念，只有掌握了词性知识，才能理解英语句子结构，从而理解句子及整篇文章。牢固掌握每个词性的句法功能，及每个句子成分都由哪些词性的单词构成。主抓实词，兼顾虚词，总结固定词组
 
-词性|作用|充当成分
----|----|---
-名词（noun）|动作的对象|主，宾
-动词（verb）|具体动作|谓，非谓
-冠词（Article）|限定名词|不能单独使用
-代词（pronoun）|代替名词|主，宾
-形容词（adjective）|修饰名词|定，表
-副词（adverb）|时间、地点、程度、方式|定，状，补，表
-介词（preposition）|名词与其他成分之间的关系|定，状，补，表
-数词（numeral）|数量或顺序|主，宾，表，定
-连词（conjunction）|连接句子成分|不能单独使用
-叹词（interjection）|表示说话感情|不能单独使用
+::: tip
+有实际意义，能独立承担句子成分的是**实词**。没有实际意义，不能独立承担句子成分的是**虚词**
+:::
+
+| 词性                 | 作用                     | 充当成分       |
+| -------------------- | ------------------------ | -------------- |
+| 名词（noun）         | 动作的对象               | 主，宾         |
+| 动词（verb）         | 具体动作                 | 谓，非谓       |
+| 冠词（Article）      | 限定名词                 | 不能单独使用   |
+| 代词（pronoun）      | 代替名词                 | 主，宾         |
+| 形容词（adjective）  | 修饰名词                 | 定，表         |
+| 副词（adverb）       | 时间、地点、程度、方式   | 定，状，补，表 |
+| 介词（preposition）  | 名词与其他成分之间的关系 | 定，状，补，表 |
+| 数词（numeral）      | 数量或顺序               | 主，宾，表，定 |
+| 连词（conjunction）  | 连接句子成分             | 不能单独使用   |
+| 叹词（interjection） | 表示说话感情             | 不能单独使用   |
 
 不同的词性充当句子中不同的成分，主要有以下成分：
 
-成分|作用
----|---
-主语|主体对象
-谓语|主体对象发生的动作
-宾语|主体发生的动作所作用的对象
-定语|修饰主体对象
-状语|修饰动词，形容词以及全句，表示句中的背景
-补语|宾语补语：对句子进行补充说明，主语补语（表语），表示主语的状态
-同位语|和句子前面的名词可互换
-
-有实际意义，能独立承担句子成分的是**实词**。没有实际意义，不能独立承担句子成分的是**虚词**
-
-可以毫不夸张的说，句法通，英语通，它在英语中的作用相当于一幢大楼的骨架。会分析了句子成分才能理解简单句，掌握了六大句型，才会在写作中游刃有余，避免写出中国式英语，而英语句子的理解难点就在主从复合句。养成分析句子成分的习惯，当遇到难句，长句时，注意从句子成分的角度去解决问题，不要把时间放在对知识点的死记硬背上，要注意分析语言实践
+| 成分   | 作用                                                           |
+| ------ | -------------------------------------------------------------- |
+| 主语   | 主体对象                                                       |
+| 谓语   | 主体对象发生的动作                                             |
+| 宾语   | 主体发生的动作所作用的对象                                     |
+| 定语   | 修饰主体对象                                                   |
+| 状语   | 修饰动词，形容词以及全句，表示句中的背景                       |
+| 补语   | 宾语补语：对句子进行补充说明，主语补语（表语），表示主语的状态 |
+| 同位语 | 和句子前面的名词可互换                                         |
 
 英语来说大致分为**简单句**和由简单句构成的**复合句**
 
-简单句用于说明一件事，最基本的就是“名词+动词”结构，也就是“主谓”结构，分为 5 大句型：
+简单句用于说明一件事，最基本的就是“主谓”结构，由此衍生 5 大基本句型：
 
 ```
-+ 主(S)+谓(V)                 -- 不需要另一个对象，仅表示自己的动作
-+ 主(S)+谓(V)+宾(O)           -- 最常用的结构，表示一个对象对另一个对象所做的动作
-+ 主(S)+谓(V)+间宾(O)+直宾(O)  -- 通常作用于两个物体身上
-+ 主(S)+谓(V)+宾(O)+宾补(C)   -- 通常用于补充说明宾语的情况
-+ 主(S)+系(V)+表(P)           -- 说明人和事物的特征等
+主(S)+谓(V)                 -- 不需要另一个对象，仅表示自己的动作
+主(S)+谓(V)+宾(O)           -- 最常用的结构，表示一个对象对另一个对象所做的动作
+主(S)+谓(V)+间宾(O)+直宾(O)  -- 通常作用于两个物体身上
+主(S)+谓(V)+宾(O)+宾补(C)   -- 通常用于补充说明宾语的情况
+主(S)+系(V)+表(P)           -- 说明人和事物的特征等
 
 I run. 我
 I fancy you. 我想你了
@@ -354,12 +354,12 @@ five times 5 次
 
 英语中表示时间的次序是从小到大
 
-## 名词和冠词
+## 名词短语
 
 名词短语（noun phrase）是句子中非常重要的组成部分，无论是句子还是文章都有含有大量的名词短语，名词短语由名词和它的修饰词组成的，修饰词无外乎两种，放在前面叫做前置定语，放在后面称为后置定语。前置定于通常要么是限定名词范围，要么是形容词用来表示特征。但更常见的是后置定语，种类非常多：
 
 + The boy is my brother. 构成：限定词 + 名词
-+ The cute boy is my brother. 构成：限定词 + 形容词 名词
++ The cute boy is my brother. 构成：限定词 + 形容词 + 名词
 + The cute boy in blue jeans is my brother. 构成：限定词 + 形容词 + 名词 + 介词短语
 + The cute boy wearing blue jeans is my brother. 构成：限定词 + 形容词 + 名词 + 分词短语
 + The cute boy who is wearing blue jeans is my brother. 构成：限定词 + 形容词 + 名词 + 定语从句
@@ -379,15 +379,17 @@ five times 5 次
 有些名词即是个体名词和集体名词，比如 family 表示家人是个体名词，表示家庭是集体名词
 :::
 
+在英语中名词用词尾表示单复数，在名词短语的开头还有一些词语用来指定名词的范围。这叫做**限定词**，与词尾的单复数互相呼应。名词短短语中的每个部分都可以拿掉，比如 a new book 变成 a book，the best answer 变成 the best，those sweet roses 变成 those，这都是正确的。a new book 如果把 a 拿掉就错误了，因为 a 是 one 的弱化，只是语气弱，都是交代后面的名词只有“一个”，但如果后面的名词不适合用“一个”就可以不用限定词，或者说复数名词以及没有复数形态的词不能加限定词。专有名词则稍微麻烦一点，在某些情况要特殊一点
+
 一个名词可数还是不可数是看上下文语境的，可数名词在形容两个以上时要进行变化：
 
 + 一般末尾加 s，如 bag -> bags
 + 以 s、ch、sh 结尾加 es，如 bus -> buses
-+ 以辅音字母 + y 结尾的将 y 变为 i，再加es，如 baby -> babies
++ 以辅音字母 + y 结尾的将 y 变为 i，再加 es，如 baby -> babies
 + 以 f、fe，结尾的将 f 变为 v ，再加 es，如 knife -> knives
 + 以 o 结尾加 es （非外来词或缩写形式），如 potato -> potatoes
 + 若名词已有复数词尾 s，只加 '
-+ 不规则变化
++ [不规则变化](/subject/english.html#不规则变化)
 
 变化后的发音规则：词尾是清辅音发/s/，词尾是浊辅音发/z/
 
@@ -444,6 +446,8 @@ This is an A/E/F/H/I/L/M/N/O/S/X.
 + 用在姓氏前表示一家人，如 the Greens
 + 表示所有关系，相当于物主代词，用在身体部位的名词前，如 She caught me by the arm （她抓住了我的手臂）
 
+the 是 that 和 those 的弱化形式，适用明确或暗示的时候使用，专有名词是不能加 the 的，因为既然只有一个对象存在，就没有“这个，那个”的区别，所以二者不能共存
+
 有些名词不需要加冠词，这些不加冠词的名词就是零冠词
 
 + 国家，洲，人名
@@ -455,6 +459,26 @@ This is an A/E/F/H/I/L/M/N/O/S/X.
 + 两个名词并列
 + by 与交通工具连用，表示一种方式
 + 不用冠词的序数词：序数词前有物主代词、序数词作副词、固定词组
+
+## 动词短语
+
+动词短语通常是指动词后面跟着一个介词或副词短语的动词，英语中存在用动词短语代替与其同义的单个动词的强烈趋势，比如听到敲门声，会说 Come in，而不是 Enter。这些动词常与表示位置或方向的词组合，比如 along，down，in，off，on，out，over，under 等
+
+```
+The cats are running along the wall.
+The children are jumping off the branch.
+He is going into a shop.
+```
+
+当一个动词在一个词组中可能意思会发生变化，一定要根据上下文的语境来呈现出意思，本质上还是原来的意思，只不过根据上下文有点变化
+
+```text
+I put your book on the shelf. 放
+I put on my hat and left the house. 带上（放到...上 ）
+Come and look at my phtograph album. 看着（看向某一点）
+I am looking for my pen. I lost it this morning. 寻找（为了...看）
+Will you look after the children for me please? 照顾（跟...后面k看）
+```
 
 ## 代词
 
@@ -513,15 +537,15 @@ The apple is hers.
 This computer is theirs.
 ```
 
-主格|宾格|形容词性物主代词|名词性物主代词
----|---|---|---
-I|me|my|mine
-You|you|your|yours
-He|him|his|his
-She|her|her|hers
-It|it|its|its
-we|us|our|ours
-They|them|their|theirs
+| 主格 | 宾格 | 形容词性物主代词 | 名词性物主代词 |
+| ---- | ---- | ---------------- | -------------- |
+| I    | me   | my               | mine           |
+| You  | you  | your             | yours          |
+| He   | him  | his              | his            |
+| She  | her  | her              | hers           |
+| It   | it   | its              | its            |
+| we   | us   | our              | ours           |
+| They | them | their            | theirs         |
 
 当宾语和主语是同一个人时，一般需要用反身代词
 
@@ -555,9 +579,9 @@ I have something to tell you. 我有一些事告诉你
 
 疑问代词在句子中用来构成特殊疑问句，且疑问代词可用作连接代词，引导名词性从句
 
-## 特殊句式 - 主系表
+## 主系表
 
-主系表结构是较为特殊的结构，是一种对主语进行补充说明的句式，这里的动词在这个句式中叫做连系动词，用来连接主语和表语，没有实际意义。表语即对主语的说明部分，用来修饰主语的状态，比如性质、特点、位置
+主系表结构是较为特殊的结构，是一种对主语进行补充说明的句式，这里的动词在这个句式中叫做连系动词，用来连接主语和表语，没有实际意义。表语即对主语的说明部分，用来修饰主语的状态，比如性质、特点、位置。只有解释为“是”的动词才需要补语补足句子的意思，但在翻译中是不必要的，这种动词叫做连系动词，后面跟上补语使句子完整，比如一下连系动词：look,seem,appear,sound,feel,turn,prove,become,make，将包含以上句子里的动词换成 be 意思也是不会有太大的改变
 
 ```text
 The food is delicions. 食物很美味
@@ -575,7 +599,15 @@ They were talking loudly. Be 动词和其他动词结合出现，不是主系表
 I got very angry. got 表示“变得”含义，是主系表
 ```
 
+be 是最纯粹的连系动词，意为“是”，如果没有补语则不完整。但是如果 be 动词没有补语，它经常会解释为“存在”，用在最纯粹的 SV 句型中。比如 I think; there I am，不应该翻译成“我是”而是“我存在”，再比如 To be or not to be, that is a question 应该是“要存在还是不要存在”，既“要不要活下去”
+
 ## 谓语动词的变化
+
+动词时态的变化很多，但只需要搞懂简单式和完成式就行，简单式的动词可以交代此动作发生在某个时段，所以一般和时间副词连用，be 只是用来交代时态，是一个没有意义的连系动词，将过去分词和现在分词当做形容词补语就行
+
+完成时和简单式的区别就在于，简单式交代了时间，而完成时没有交代时间，只是说明曾经有过，或者到目前为止
+
+现在分词有正在进行的意思，过去分词有被动的意思
 
 谓语动词有四种变化“三态一否”：
 
@@ -589,6 +621,82 @@ I got very angry. got 表示“变得”含义，是主系表
 ## 情态动词
 
 must 是情态助动词
+
+## 不定词短语
+
+就是 to 加动词原形组成的短语，不定词和助动词的关系非常密切，后面都要接动词原形
+
+```plain
+I will go.
+I wll to go.
+```
+
+都有”不确定“含义
+
+```plain
+He is right.
+He may be right.
+He seems to be right.
+```
+
+都要用完成式来表达相对的过去时间，助动词要接动词原形，所以不能用过去式，只好用完成式来表示过去，也就是 must have rained 这种形态：
+
+```plain
+It must be rainning now.
+It may rain any minute.
+It might even snow.
+It must have rained last night.
+It seems to have rained las night.
+```
+
+所有的语气助动词都可以改写成不定式：
+
+```plain
+must - have to
+should - ought to
+will/would - be going to
+can/could - be able to
+may/might - be likely to
+```
+
+现在分词和过去分词都是形容词类，不定词“则不一定是什么词类”，动名词和不定式如何区分就要借助一下观察
+
+```
+They plan to marry next month. 下个月要发生，所以是未来式
+I avoid making the same mistake twice. “避免”含义用 to make（will make）意思就会变得不清楚
+I hate to say this. 虽然 hate 是否定的意思，但是 to say 是 I have to say，也就是 I must say 的变化
+I dislike standing in long lines. dilike 本身是否定的，没有“必须的暗示（have to）”，就不适合用 to stand
+```
+
+使役动词具有强制性，它的结果是确定的，所以排除了助动词存在的空间，因此不能使用不定词，而是后接原形动词
+
+```
+The teacher made the little girl stay behind.
+```
+
+感官动词和使役动词的后面接原形动词的道理是相同的，因为不定词的不确定性不适合这个上下文，但是可以和现在分词连用表示持续性
+
+```
+I heard her cry out in pain.
+I heard her playing the violin.
+```
+
+## 动名词
+
+动状词有四种，动名词就是其中一种，但动名词术语名词类，和现在分词不能混淆，只有和不定词的使用区别要注意
+
+动名词和普通名词的区别在于动名词对于普通名词仍然保留一定程度的“动作”意味，可以有“持续性”的暗示，如果只喝一杯，那就是 have a drink，如果是经常性的，采用 drinking。此外很多运动都用动名词来表示，比如 swimming，skiing，jumping。这就是动名词的特色
+
+```
+Let me buy you a drink.
+Drinking is his only vice.
+```
+
+大部分动名词都是不可数的，但少部分使可数的，和普通名词的用法没什么区别，但不定词不能这么用，所以动名词既可以有冠词，所有格，复数形式的疾病前不用冠词
+
+```
+There are two weddings at the restaurant tonight.
+```
 
 ## have
 
@@ -758,7 +866,11 @@ Last summber I went to Italy. go 使用过去式
 
 动词过去式和过去分词的用法是有区别的，过去式可以构成过去时态，过去分词可以构成完成时态，还能构成被动语态以及非谓语动词
 
-## 主谓双宾
+## 主谓宾补和主谓双宾
+
+宾语补语中间有个暗示的“是”存在，比如 I find the dress pretty，将宾语和补语拿出来用 be 动词连系，发现就是主系表结构，因此这是快速检验 SVOC 句型的方法
+
+有一种动词可以接两个宾语，既 SVOO 句型，它不同于 SVOC，SVOC 的宾语和补语存在“等于是”的关系，比如 I call your a dog，而 SVOO 并不是宾语和补语的关系
 
 主谓双宾是指一个句式有两个动作对象，这对及物动词具有一定的要求，它必须能够接下两个对象，常见的有：send、teach、lend、give、ask、tell、offer、cook、buy、get、make、write、bring、show
 
@@ -820,18 +932,6 @@ He's very fat.
 + 以`y`结尾的，变`y`为`i`再加`ly` happy happily
 + 形容词和副词形式相同
 
-## 动词短语
-
-当一个动词在一个词组中可能意思会发生变化，一定要根据上下文的语境来呈现出意思，本质上还是原来的意思，只不过根据上下文有点变化
-
-```text
-I put your book on the shelf. 放
-I put on my hat and left the house. 带上（放到...上 ）
-Come and look at my phtograph album. 看着（看向某一点）
-I am looking for my pen. I lost it this morning. 寻找（为了...看）
-Will you look after the children for me please? 照顾（跟...后面k看）
-```
-
 ## 过去进行时和过去将来时
 
 过去进行时是指过去的某段时间正在做什么事，经常搭配 when、while、as，通常和一般过去式连用打破这个状态
@@ -866,6 +966,27 @@ Tony finished his work. and then he would leave for London.
 ```
 
 ## 介词短语
+
+很多介词短语是由介词 + 名词构成的
+
+```text
+put on 穿上
+take off 脱掉
+turn on 开
+turn off 关
+out of 自...离开
+in front of 在...前面
+do with 处理
+next door 隔壁
+a minute 一会儿
+at the moment 此刻
+get up 起床
+hundreds of ... 数以百计的...
+on the way 在...途中
+take out 取出
+a lot of 许多
+all the time 一直，始终
+```
 
 ## 宾语从句
 
@@ -940,12 +1061,12 @@ Sam often writes homework at 7:00.
 + 以 y 结尾，变 y 为 i，再加 ly
 + 形容词和副词形式相同
 
-形容词|副词
----|---
-late|late
-fast|fast
-hard|hard
-well|well
+| 形容词 | 副词 |
+| ------ | ---- |
+| late   | late |
+| fast   | fast |
+| hard   | hard |
+| well   | well |
 
 ### 动词（verbs）
 
@@ -1232,39 +1353,6 @@ No one knows the answer. 没有人知道答案
 None of us have arrived. 我们都没有到
 ```
 
-## 介词短语
-
-很多介词短语是由介词 + 名词构成的
-
-```text
-put on 穿上
-take off 脱掉
-turn on 开
-turn off 关
-out of 自...离开
-in front of 在...前面
-do with 处理
-next door 隔壁
-a minute 一会儿
-at the moment 此刻
-get up 起床
-hundreds of ... 数以百计的...
-on the way 在...途中
-take out 取出
-a lot of 许多
-all the time 一直，始终
-```
-
-## 动词短语
-
-动词短语通常是指动词后面跟着一个介词或副词短语的动词，英语中存在用动词短语代替与其同义的单个动词的强烈趋势，比如听到敲门声，会说 Come in，而不是 Enter。这些动词常与表示位置或方向的词组合，比如 along，down，in，off，on，out，over，under 等
-
-```
-The cats are running along the wall.
-The children are jumping off the branch.
-He is going into a shop.
-```
-
 ## 时态
 
 ### 将来进行时
@@ -1308,66 +1396,68 @@ done 表示被动的动作，be 表示被动的时间（变成对应的各种时
 
 ## 时态总结
 
-时间/状态 | 现在 | 过去 | 将来 | 过去将来
----|---|---|---|---
-一般 | am/is/are，do | was/were，did | shall/will do | would do
-进行 | am/is/are doing | was/were doing | shall/will be doing | would be doing
-完成 | have/has done | had done | will have done | would have done
-完成进行 | have/has been doing | had been doing | will have been doing | would have been doing
-
-## 动词不规则变化
-  
-原型|过去式|过去分词|现在分词
----|---|---|---
-be|was/were|been|
-have|had|had|having
-do|did|done|
-go|went|gone|
-get|got|got/gotten|getting
-come|came|come|coming
-make|made|made|making
-give|gave|given|giving
-buy|bought|bought|
-spend|spent|spent|
-write|wrote|written|writing
-sit|sat|sat|sitting
-say|said|said|
-pay|paid|paid|
-bear|bore|borne|
-think|thought|thought|
-send|sent|sent|
-spoil|spoiled/spoilt|spoiled/spoil|
-lend|lent|lent|
-put|put|put|putting
-take|took|taken|taking
-find|found|found|
-tell|told|told|
-see|saw|seen|
-meet|met||
-lose|lost||
-keep|kept|kept|
-understand|understood||
-read|read|read|
-run|ran||
-stand|stood|stood
-know|knew|known|
-put|put||
-cut|cut||
-eat|ate||eaten
-come|came||
-lose|lost||
-speak|spoke||
-ring|rang|rung|
-sing|sang|sung|
-drink|drank|drunk|
-swim|swam|swum|
-begin|began|begun|
-feel|felt|felt|
-leave|left|left|
-try|tried|tried|trying
-steal|stole|stolen
+| 时间/状态 | 现在                | 过去           | 将来                 | 过去将来              |
+| --------- | ------------------- | -------------- | -------------------- | --------------------- |
+| 一般      | am/is/are，do       | was/were，did  | shall/will do        | would do              |
+| 进行      | am/is/are doing     | was/were doing | shall/will be doing  | would be doing        |
+| 完成      | have/has done       | had done       | will have done       | would have done       |
+| 完成进行  | have/has been doing | had been doing | will have been doing | would have been doing |
 
 ## 不规则变化
+
+动词不规则变化
+  
+| 原型       | 过去式         | 过去分词      | 现在分词 |
+| ---------- | -------------- | ------------- | -------- |
+| be         | was/were       | been          |
+| have       | had            | had           | having   |
+| do         | did            | done          |
+| go         | went           | gone          |
+| get        | got            | got/gotten    | getting  |
+| come       | came           | come          | coming   |
+| make       | made           | made          | making   |
+| give       | gave           | given         | giving   |
+| buy        | bought         | bought        |
+| spend      | spent          | spent         |
+| write      | wrote          | written       | writing  |
+| sit        | sat            | sat           | sitting  |
+| say        | said           | said          |
+| pay        | paid           | paid          |
+| bear       | bore           | borne         |
+| think      | thought        | thought       |
+| send       | sent           | sent          |
+| spoil      | spoiled/spoilt | spoiled/spoil |
+| lend       | lent           | lent          |
+| put        | put            | put           | putting  |
+| take       | took           | taken         | taking   |
+| find       | found          | found         |
+| tell       | told           | told          |
+| see        | saw            | seen          |
+| meet       | met            |               |
+| lose       | lost           |               |
+| keep       | kept           | kept          |
+| understand | understood     |               |
+| read       | read           | read          |
+| run        | ran            |               |
+| stand      | stood          | stood         |
+| know       | knew           | known         |
+| put        | put            |               |
+| cut        | cut            |               |
+| eat        | ate            |               | eaten    |
+| come       | came           |               |
+| lose       | lost           |               |
+| speak      | spoke          |               |
+| ring       | rang           | rung          |
+| sing       | sang           | sung          |
+| drink      | drank          | drunk         |
+| swim       | swam           | swum          |
+| begin      | began          | begun         |
+| feel       | felt           | felt          |
+| leave      | left           | left          |
+| try        | tried          | tried         | trying   |
+| steal      | stole          | stolen        |
+
+名词不规则变化
 
 ```text
 man -> men
@@ -1479,10 +1569,25 @@ well, good, nice, great
 
 number 是一个抽象的数量概念，figure 是一个有意义的数值
 
+## 扩展
+
+score 有 20 的意思，这来源于以前欧洲喜欢用 20 进制作为数词的缘故
+
++ 词素：构成单词最小的音义单位
+  + 词根：本身可以作为单词的是**自由词根**，本身不能作为单词的是**粘着词根**
+  + 词缀：用于与粘着词根构成原生词的是**原生词缀**，用于与自由词根构成派生词的是**派生词缀**，同一个词缀可以是两者。用于曲折变化的是曲折词缀
++ 单词：分为原生词和派生词
++ 词根：去掉所有词缀的剩下部分，所有词根都是词素
++ 词干：去掉曲折词缀的剩下部分，当一个词干中没有词缀时，词干才是词素
+
+## 工具
+
+- [Grammarly](https://www.grammarly.com/) - 强大的语法纠错工具
+
 ## 参考资料
 
 + 英语魔法师之语法俱乐部
 + 新东方: 英语语法新思维
-+ 不就是语法和长难句吗？
 + 新概念英语
-+ 赖世雄经典英语语法
+<!-- + 不就是语法和长难句吗？ -->
+<!-- + 赖世雄经典英语语法 -->

@@ -5,35 +5,9 @@ tag: [Rust]
 excerpt: "Rust 简介"
 article: false
 ---
-
-作为万维网 Web 前端最重要的编程语言，JavaScript 的出现使网页和用户之间实现了实时和动态的交互关系，所有的浏览器都嵌入了 JavaScript 解释引擎
-
-JavaScript 在刚诞生时，它的名字叫做“LiveScript”，在当时 Java 很流行，所以碰瓷一下 Java 会有助于它流行。现在 JavaScript 完全成为了一门独立的语言，也拥有了自己的语言规范 ECMAScript
-
-ECMAScript 通常被称为 JavaScript，但后者为更多人所认知。真正的标准其实是 ECMAScript，而 JavaScript 只是其中的一个实现，大部分浏览器厂商都有自己的 ECMAScript 标准实现，比如谷歌的 V8，苹果的 JavaScriptCore，Mozilla 的 JavaScript。学习 JavaScript，实际上学习的是 ECMAScript，对于开发者来说基本不会感知到不同实现的区别
-
-JavaScript 第一版设计的非常大杂烩：
-
-+ 基本语法：借鉴 C 和 Java
-+ 数据结构：借鉴 Java，将值分为原始值和对象两大类
-+ 函数：借鉴了 Scheme 和 Awk，将函数作为一等公民，且引入闭包
-+ 字符串和数组处理：借鉴 Python
-+ 原型继承模型：借鉴 Self
-+ 正则表达式：借鉴 Perl
-
-为了保持简单，它缺少一些关键的功能，比如块级作用域、模块、子类型等，这些都在后面的版本中补充
-
-ECMAScript 从发布标准至今已经迭代到了 ES11，但很多新特性都是在 ES6 这个版本中添加的，比如：
-
-## 规范
-
-ECMA-262 规范 包含了大部分深入的、详细的、规范化的关于 JavaScript 的信息，这份规范明确地定义了这门语言，但正因其规范化，对于新手来说难以理解。所以，如果你需要关于这门语言细节最权威的信息来源，这份规范就很适合你（去阅读）。但它并不适合日常使用。
-
-每年都会发布一个新版本的规范，最新的规范草案请见 [https://tc39.es/ecma262/](https://tc39.es/ecma262/)，想了解最新最前沿的功能，包括“即将纳入规范的”（所谓的 “stage 3”），请看这里的提案 [https://github.com/tc39/proposals](https://github.com/tc39/proposals)
-
 ## 安装 && 编译 && 运行
 
-在 Widnows 安装 Rust 需要有预备环境[Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)，保持最小安装的组件为：MSVC C++ Build，Windows SDK
+在 Windows 安装 Rust 需要有预备环境[Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)，保持最小安装的组件为：MSVC C++ Build，Windows SDK
 
 编写一个代码：
 
@@ -47,30 +21,24 @@ fn main() {
 
 ## Cargo
 
-Cargo 是 Rust 构建工具，通常使用它来创建 Rust 项目，使用`cargo new <name>`，构建项目使用`cargo build`，优化构建则加上`--release`参数。`cargo run`会编译并运行可执行文件
+Cargo 是 Rust 官网构建工具，通常使用它来创建 Rust 项目，使用`cargo new <name>`，构建项目使用`cargo build`，优化构建则加上`--release`参数。`cargo run`会编译并运行可执行文件
 
 `Cargo.toml`使用 TOML (Tom's Obvious, Minimal Language) 格式，这是 Cargo 配置文件的格式.`[package]`是一个片段（section）标题，表明下面的语句用来配置一个包。`[dependencies]`是项目依赖片段的开始。在 Rust 中，代码包被称为 **crates**
-
-## 预导入 preclude
-
-默认情况下，Rust 设定了若干个会自动导入到每个程序作用域中的标准库内容，这组内容被称为**预导入（preclude）**内容，可以在标准库文档中查看预导入的所有内容。如果需要的类型不在预导入内容中，就必须使用`use`语句显式地将其引入作用域。`std::io`库提供很多有用的功能，包括接收用户输入的功能
-
-```rust
-use std::io;
-```
 
 ## 注释
 
 ```rust
 // 单行注释，只能注释单行
 
+/* 块注释 */
+
 /// 文档注释
-/// # Examples
+//! 为注释所属的项生成帮助文档
 ```
 
 ## 代码块和语句
 
-Rust 采用`{}来`区分代码之间的层次以及作用域范围，语句不能省略分号
+Rust 采用`{}`来区分代码之间的层次以及作用域范围，语句不能省略分号
 
 ## 标识符
 
@@ -86,7 +54,7 @@ Rust 采用`{}来`区分代码之间的层次以及作用域范围，语句不�
 let foo = 5;
 ```
 
-在 Rust 中变量默认是不可变的，必须在变量名前加上`mut`表示可变
+在 Rust 中变量默认是不可变的，在变量名前加上`mut`表示可变
 
 ```rust
 let mut foo = 5;
@@ -99,7 +67,7 @@ foo = 6;
 const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 ```
 
-可以在同一个作用于下声明多个变量，这并不意味着之前声明的变量消失了，只不过编译器会使用更近的那个
+可以在同一个作用域下声明多个变量，这并不意味着之前声明的变量消失了，只不过编译器会使用更近的那个
 
 ```rust
 fn main() {
@@ -115,90 +83,60 @@ fn main() {
 
 ## 数据类型
 
-### 标量
-
 标量（scalar）类型代表一个单独的值，Rust 有四种基本的标量类型：整型、浮点型、布尔类型和字符类型
 
-整型：
++ 整型：
 
-长度 有符号 无符号
----|---|---
-8-bit|i8|u8
-16-bit|i16|u16
-32-bit|i32|u32
-64-bit|i64|u64
-128-bit|i128|u128
-arch|isize|usize
+| 长度    | 有符号 | 无符号 |
+| ------- | ------ | ------ |
+| 8-bit   | i8     | u8     |
+| 16-bit  | i16    | u16    |
+| 32-bit  | i32    | u32    |
+| 64-bit  | i64    | u64    |
+| 128-bit | i128   | u128   |
+| arch    | isize  | usize  |
 
-浮点型：`f32`,`f64`
++ 浮点型：`f32`，`f64`
++ 布尔型：`bool`
++ 字符型：`char`，使用单引号，都是 4 字节
++ 单元类型：`()`，唯一可能的值就是`()`这个空元组
 
-布尔型：`boll`
+Rust 有两个原生的复合类型：和数组（array）和元组（tuple）
 
-字符型：`char`，使用单引号
+### 类型转换
 
-### 复合
-
-Rust 有两个原生的复合类型：元组（tuple）和数组（array）
-
-数组中的每个元素的类型必须相同。Rust 中的数组与一些其他语言中的数组不同，Rust中的数组长度是固定的
-
-```rust
-fn main() {
-  let a = [1, 2, 3, 4, 5];
-}
-```
-
-指定类型和数量
+Rust 只能用`as`关键字进行显式类型转换，不支持隐式转换
 
 ```rust
-let a: [i32; 5] = [1, 2, 3, 4, 5];
+let decimal = 1.2345;
+let integer = decimal as u8;
 ```
 
-指定初始值和数量
+### 类型推断
+
+Rust 类型推导也是很智能的，不仅可以通过右值推导类型，还能根据后续使用推导类型，因此不需要声明变量的类型
+
+### 类型别名
+
+`type`关键字可以定义某个类型的别名，但必须使用驼峰命名法
 
 ```rust
-let a = [3; 5];
+type Inch = u8;
+let inches:inch = 8;
 ```
 
-使用索引访问数组元素
+## 表达式
+
+Rust 中几乎所有语句都是表达式，在一个语句上加`;`表示忽略该值
+
+代码块也是表达式，代码块的值是其最后一个语句表达式的值，如果是以`;`结束，则返回`()`
 
 ```rust
-fn main() {
-  let a = [1, 2, 3, 4, 5];
-  let first = a[0];
-  let second = a[1];
-}
+let x = 1;
+let y = {
+  x*x
+};
 ```
-
-元组是一个将多个其他类型的值组合进一个复合类型的主要方式。元组长度固定：一旦声明，其长度不会增大或缩小
-
-```rust
-fn main() {
-  let tup: (i32, f64, u8) = (500, 6.4, 1);
-}
-```
-
-可以通过索引访问：
-
-```rust
-fn main() {
-  let x: (i32, f64, u8) = (500, 6.4, 1);
-  let five_hundred = x.0;
-  let six_point_four = x.1;
-  let one = x.2;
-}
-```
-
-元组可以被解构
-
-```rust
-fn main() {
-  let tup = (500, 6.4, 1);
-  let (x, y, z) = tup;
-}
-```
-
-不带任何值的元组有个特殊的名称，叫做 **单元（unit）** 元组。这种值以及对应的类型都写作`()`，表示空值或空的返回类型。如果表达式不返回任何其他值，则会隐式返回单元值
 
 ## 运算符
 
@@ -206,7 +144,7 @@ fn main() {
 
 ### 条件分支
 
-`if`语句和条件运算符`?`均可实现根据条件来执行不同的语句, if 表达式必须是个 bool 类型，Rust 不会转换其他类型
+`if`语句和条件运算符`?`均可实现根据条件来执行不同的语句, 表达式必须是个 bool 类型，Rust 不会转换其他类型
 
 ```rust
 if 2 > 1 {
@@ -216,15 +154,21 @@ if 2 > 1 {
 }
 ```
 
-`if`是一个表达式，所以可以用于变量声明
+`if`也是一个表达式，所以可以用于变量声明
+
+```rust
+let x = if 1 > 2 {
+  2
+} else {
+  1
+}
+```
 
 ```rust
 let number = if true { 1 } else { 2 };
 ```
 
-::: tip 代码块的值
-代码块的值是其最后一个表达式的值
-:::
+### 循环
 
 Rust 有三种循环：loop、while 和 for
 
@@ -241,7 +185,7 @@ while 1 != 0 {
 }
 ```
 
-for 循环
+`for in`可以遍历一个迭代器
 
 ```rust
 let a = [10, 20, 30, 40, 50];
@@ -250,7 +194,41 @@ for element in a {
 }
 ```
 
+可以使用`a..b`快速创建一个步长为`1`的迭代器
+
+```rust
+// 包含 a ，不包含 b
+for n in 1..101 {}
+// 包含 a ，也包含 b
+for n in 1..=101 {}
+```
+
 `break`语句用于终止整个循环，`continue`是`break`的轻量版本，不会终止整个循环，而是终止当前的迭代，并强制执行新的一轮循环
+
+### 匹配
+
+类似于`switch`，使用`match`来提供模式匹配
+
+```rust
+let n = 6;
+match n {
+  // 匹配一个值
+  1 => println!("匹配一个值"),
+  2 | 3 | 4 => println!("匹配多个个值"),
+  6..=10 => println!("匹配一个区间"),
+  _ => println!("其他情况"),
+}
+```
+
+`match`也是一个表达式
+
+```rust
+let bol = true;
+let binary = match bol {
+  true => 1,
+  false => 0,
+}
+```
 
 ## 函数
 
@@ -261,7 +239,7 @@ fn main() {}
 fn another_function () {}
 ```
 
-声明参数，必须声明参数类型
+声明参数时，必须声明参数类型
 
 ```rust
 fn foo(x: i32, y: char) {}
@@ -279,33 +257,49 @@ fn six() -> i32 {
 }
 ```
 
-## 结构体
+## 自定义类型
 
-定义结构体，需要使用`struct`关键字并为整个结构体提供一个名字
+### 结构体
+
+使用`struct`关键字定义结构体
 
 ```rust
+// 4 个字段的结构体
 struct User {
   active: bool,
   username: String,
   email: String,
   sign_in_count: u64,
 }
+
+// 单元结构体
+struct Unit;
+
+// 元组结构体（实际上就是具名元组）
+struct Pair(i32, f32);
 ```
 
 创建实例：
 
 ```rust
-fn main() {
-  let user = User {
-    email: String::from("someone@example.com"),
-    username: String::from("someusername123"),
-    active: true,
-    sign_in_count: 1,
-  };
-}
+let user = User {
+  email: String::from("someone@example.com"),
+  username: String::from("someusername123"),
+  active: true,
+  sign_in_count: 1,
+};
+
+// 实例化单元结构体
+let _unit = Unit;
+
+// 实例化元组结构体
+let pair = Pair(1, 0.1);
+
+// 通过 . 访问字段
+user.username;
 ```
 
-可以为结构体定义方法，和函数类似：
+可以为结构体定义方法，和函数类似，方法的第一个参数总是`self`，指向实例：
 
 ```rust
 struct User {
@@ -319,10 +313,113 @@ impl User {
 }
 ```
 
-方法的第一个参数总是`self`，指向实例
+所有在 `impl` 块中定义的函数被称为**关联函数（associated functions）**，因为它们与 impl 后面命名的类型相关
 
-所有在 `impl` 块中定义的函数被称为 **关联函数（associated functions）**，因为它们与 impl 后面命名的类型相关
+### 枚举
+
+`enum`关键字允许创建一个从数个不同取值中选其一的枚举类型
 
 ## 集合
+
+## 数据结构
+
+### 数组
+
+数组中的每个元素的类型必须相同，数组长度是固定的
+
+```rust
+// 初始化定长数组
+let a = [1, 2, 3, 4, 5];
+// 指定类型和数量（类型和长度都是多余的）
+let a: [i32; 5] = [1, 2, 3, 4, 5];
+// 指定初始值和数量
+let a = [3; 5];
+```
+
+使用索引访问数组元素
+
+```rust
+let a = [1, 2, 3, 4, 5];
+let first = a[0];
+let second = a[1];
+```
+
+使用`len()`返回数组长度
+
+```rust
+let a = [1, 2, 3, 4, 5];
+a.len();
+```
+
+可以使用切片语法
+
+```rust
+let a = [1, 2, 3, 4, 5];
+// 完整的部分
+let a_slice1 = &a;
+// 从索引 1 开始切，但不包含 4
+let a_slice2 = &a[1..4];
+```
+
+### 元组
+
+元组是一个将多个其他类型的值组合进一个复合类型的主要方式。元组长度是固定，一旦声明，其长度不会增大或缩小
+
+```rust
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+```
+
+可以通过索引访问：
+
+```rust
+let x: (i32, f64, u8) = (500, 6.4, 1);
+let five_hundred = x.0;
+let six_point_four = x.1;
+let one = x.2;
+```
+
+元组可以被解构
+
+```rust
+let tup = (500, 6.4, 1);
+let (x, y, z) = tup;
+```
+
+没有任何值的元组有个特殊的名称，叫做 **单元（unit）** 元组。这种值以及对应的类型都写作`()`，表示空值或空的返回类型。如果表达式不返回任何其他值，则会隐式返回单元值
+
+## 泛型
+
+## 模块
+
+模块由：函数，结构体，接口，实现，子模块组成
+
+## 属性
+
+## 错误处理
+
+## 标准库
+
+默认情况下，Rust 设定了若干个会自动导入到每个程序作用域中的标准库内容，这组内容被称为**预导入**（preclude）内容，可以在标准库文档中查看预导入的所有内容。如果需要的类型不在预导入内容中，就必须使用`use`语句显式地将其引入作用域。比如`std::io`库提供很多有用的功能，包括接收用户输入的功能
+
+```rust
+use std::io;
+```
+
+### 格式化输出
+
+打印操作由 std::fmt 里面所定义的一系列宏来处理，包括：
+
++ `format!`：将格式化文本写到字符串。
++ `print!`：与 format! 类似，但将文本输出到控制台（io::stdout）
++ `println!`: 与 print! 类似，但输出结果追加一个换行符。
++ `eprint!`：与 print! 类似，但将文本输出到标准错误（io::stderr）
++ `eprintln!`：与 eprint! 类似，但输出结果追加一个换行符
+
+```rust
+// {} 会被内容替换
+println!("{} days", 31);
+// 可以使用位置参数调整替换内容
+println!("{0}, this is {1}. {1}, this is {0}", "Alice", "Bob");
+```
 
 ## 参考资料

@@ -130,6 +130,7 @@ const subject: string[] = [
   'geography',
   'logic',
   'economics-finance',
+  'interdisciplinarity',
 ];
 
 const sundry: string[] = [
@@ -165,6 +166,7 @@ const framework: string[] = [
   'koa',
   'react-native',
   'electron',
+  'tauri',
 ];
 
 export const zh = sidebar({

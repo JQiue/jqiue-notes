@@ -27,19 +27,19 @@ const Person = {
   Skills: {
     C: 'Beginner',
     Java: 'Beginner',
-    JavaScript: 'Beginner',
+    'JavaScript/TypeScript': 'Beginner',
     Python: 'Beginner',
-    TypeScript: 'Beginner',
+    Rust: 'Beginner',
     Kotlin: 'Beginner',
     CSS: 'Beginner',
     NodeJS: 'Beginner',
     React: 'Beginner',
     Vue: 'Beginner',
-    MySQL: 'Beginner',
+    'MySQL/MariaDB': 'Beginner',
     MongoDB: 'Beginner',
     Linux: 'Beginner',
     Git: 'Beginner', 
-    FrontEnd: 'Beginner',
+    Web: 'Beginner',
     BackEnd: 'Beginner'
   }, // This is just the tip of the iceberg
 }
