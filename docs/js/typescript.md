@@ -713,3 +713,16 @@ namespace Father {
   export namespace Son {}
 }
 ```
+
+## 工具类型
+
+ts 提供了工具类型，且全局可用，用于避免重复造轮子
+
++ `Partial<T>` - 将类型的属性变成可选的
++ `Required<T>` - 将类型的属性变成必须的
++ `Record<K, V>` - 生成 K/V 类型
+
+## 参考资料
+
++ [TypeScript 入门教程](https://ts.xcatliu.com/basics/any.html)
++ [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)

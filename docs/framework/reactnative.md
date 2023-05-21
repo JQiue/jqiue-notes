@@ -1,5 +1,5 @@
 ---
-title: React-Native
+title: ReactNative
 category: 框架
 author: JQiue
 article: false

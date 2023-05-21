@@ -143,7 +143,6 @@ const sundry: string[] = [
   'http',
   'latex',
   'learntolearn',
-  'awesome-npm',
   'server',
   'frontend',
   'regex',
@@ -157,6 +156,8 @@ const sundry: string[] = [
   'packet-capture',
   'crypto',
   'harmonica',
+  'libraries',
+  'silkworm',
 ];
 
 const framework: string[] = [
@@ -164,7 +165,7 @@ const framework: string[] = [
   'react',
   'express',
   'koa',
-  'react-native',
+  'reactnative',
   'electron',
   'tauri',
 ];

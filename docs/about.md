@@ -31,7 +31,7 @@ const Person = {
     Python: 'Beginner',
     Rust: 'Beginner',
     Kotlin: 'Beginner',
-    CSS: 'Beginner',
+    Web: 'Beginner',
     NodeJS: 'Beginner',
     React: 'Beginner',
     Vue: 'Beginner',
@@ -39,8 +39,8 @@ const Person = {
     MongoDB: 'Beginner',
     Linux: 'Beginner',
     Git: 'Beginner', 
-    Web: 'Beginner',
-    BackEnd: 'Beginner'
+    BackEnd: 'Beginner',
+    CrossPlatform: 'Beginner',
   }, // This is just the tip of the iceberg
 }
 ```
@@ -52,6 +52,7 @@ const Person = {
 - [x] 10%（2021.3.21）
 - [x] 20%（2021.10.28）
 - [x] 25%（2022.3.22）
+- [ ] 35%
 
 本站统一中文文案，排版的相关用法，降低访问者的沟通成本，并约束所有的文档
 
@@ -90,19 +91,18 @@ const Person = {
 + 应用框架
   + [Vue](/framework/vue/)
   + [React](/framework/react/)
-  + [ReactNative](/framework/react-native/)
+  + [React Native](/framework/reactnative/)
   + [Electron](/framework/electron/)
   + [Express](/framework/express/)
-+ [服务器 && 容器](/sundry/server/)
+  + [Tauri](/framework/tauri/)
 + [基础学科](/subject/)
 + 其他杂项
   + [Git](/sundry/git/)
-  + [Linux](sundry/linux/)
-  + Nginx
+  + [Linux](/computer/operating-system.html#linux)
   + Docker
   + [正则表达式](/sundry/regex/)
 
-> 全站预估为 303159 字，可花 1010（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
+> 全站预估为 315937 字，可花 1053 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 

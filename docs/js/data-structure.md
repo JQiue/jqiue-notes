@@ -226,6 +226,8 @@ int16[4] = 5;
 console.log(int16);
 ```
 
+ArrayBuffer 是最原始的数据，所有对 ArrayBuffer 的操作都需要借助一个视图或者 DataView
+
 常常用来处理一些二进制数据，使用起来和普通数组是一致的
 
 <!-- to be updated -->

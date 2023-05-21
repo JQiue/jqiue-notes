@@ -90,7 +90,7 @@ foo((err, result) => {
 
 ## 模块
 
-Node.js 借鉴了 CommonJS 来实现了一套模块系统，其中 NPM 对模块的规范完美支持使 Node.js 应用在开发中事半功倍，CommonJS 非常简短，主要有模块引用、模块定义和模块标识三个部分
+Node.js 使用 CommonJS 规范来实现模块系统，其中 NPM 对模块的规范完美支持使 Node.js 应用在开发中事半功倍，CommonJS 非常简短，主要有模块引用、模块定义和模块标识三个部分
 
 ```js
 // 引用模块
@@ -99,8 +99,6 @@ const math = require('math');
 // 定义模块
 exports.foo = function() {};
 ```
-
-`require()`方法是这个规范中用来引入一个模块到当前上下文的功能，接收一个模块标识
 
 `require()`方法提供了引入模块的功能，而导出模块的功能则交给`exports`对象，它是唯一的导出接口，在这里还存在一个`module`对象，表示当前模块自身，而`exports`是`module`的属性。在 Node.js 中一个文件就是一个模块，将其中变量或方法等挂载到`exports`对象上作为属性，即可在其它地方使用`require()`来导入这个模块使用其中的功能
 
@@ -353,9 +351,7 @@ Yarn 主要用来处理 npm 刚开始的缺点，后来 npm 开始逐渐吸取 y
 + `yarn run <script>` = `npm run <script>`
 + `yarn dlx` = `npx`
 
-yarn 和 npm 都没有解决磁盘占用问题，对此，[pnpm](https://www.pnpm.cn/) 做的更好，它的处理方式非常妙，大大节省了硬盘空间
-
-安装 pnpm
+但 yarn 和 npm 都没有解决磁盘占用空间问题，[pnpm](https://www.pnpm.cn/) 做的更好，它的处理方式非常妙，大大节省了硬盘空间
 
 ```sh
 npm install -g pnpm
@@ -363,11 +359,17 @@ npm install -g pnpm
 
 与 npm 的等价命令
 
-npm 命令 |pnpm 等价命令
----|---
-npm install | pnpm install
-npm i `<pkg>` |pnpm add `<pkg>`
-npm run `<cmd>` |pnpm `<cmd>`
+| npm 命令        | pnpm 等价命令    |
+| --------------- | ---------------- |
+| npm install     | pnpm install     |
+| npm i `<pkg>`   | pnpm add `<pkg>` |
+| npm run `<cmd>` | pnpm `<cmd>`     |
+
+## 推荐全局安装的包
+
+```sh
+npm i nrm npm-check-updates pnpm pm2 yarn -g
+```
 
 ## 处理 URL
 
@@ -876,6 +878,32 @@ function fb(i) {
   if (i == 1 || i == 2) return 1;
   return fb(i - 1) + fb(i - 2);
 }
+```
+
+## [pm2](https://github.com/Unitech/pm2)
+
+Node.js 进程管理
+
+```sh
+pm2 start app.js --watch # 以实时监控 app.js 启动，文件发生改动后会自动 reload
+pm2 start --name <AppName> app.js  #  app.js 启动，以 AppName 命名该进程
+pm2 start --name <AppName> npm -- start  # 启动 npm start 项目
+pm2 start --name <AppName>  npm -- run <scripts> -n  # 启动 npm run 项目
+pm2 start pm2confg.json # 以配置文件形式启动
+pm2 list                # 显示所有应用状态
+PM2 show <id|appname>   # 显示某个应用的详细信息
+pm2 monit               # 监视所有应用
+pm2 log                 # 显示所有进程日志
+pm2 log <id|appname>    # 显示某个进程日志
+pm2 stop <id|appname>   # 停止某个应用
+pm2 stop all            # 停止所有应用
+pm2 restart all         # 重启所有应用
+pm2 stop <id|appname>   # 重启某个应用
+pm2 stop all            # 停止所有应用
+PM2 delete all          # 杀死并删除所有应用
+PM2 delete <id|appname> # 杀死并删除某个应用
+pm2 startup             # 设置开机自启动
+pm2 unstartup           # 禁用开机自启动
 ```
 
 ## 参考资料

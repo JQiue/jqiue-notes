@@ -241,13 +241,11 @@ fetch(url, options);
 
 `options`可以有以下选项：
 
-`method`: 请求使用的方法，如 GET、POST
-`headers`: 请求的头信息，形式为 Headers 的对象或包含 ByteString 值的对象字面量
-`body`: 请求的 body 信息：可能是一个 Blob、BufferSource (en-US)、FormData、URLSearchParams 或者 USVString 对象
++ `method`: 请求方法，如 GET（默认）、POST
++ `headers`: 请求头信息，形式为 Headers 的对象或包含 ByteString 值的对象字面量
++ `body`: 请求的 body 信息：可能是一个 Blob、BufferSource (en-US)、FormData、URLSearchParams 或者 USVString 对象
 
-Fetch 会解析响应头，用来检查是否请求成功，如果无法建立连接，或者因为一些其他的问题导致请求失败，Promise 就会 reject
-
-成功发送请求后，会将信息封装到`response`对象中，包含可以读取状态的属性
+Fetch 会解析响应头，用来检查是否请求成功，这时还没有响应体，如果无法建立连接，或者因为一些其他的问题导致请求失败，Promise 就会 reject。成功发送请求后，会将信息封装到`response`对象中，包含可以读取状态的属性
 
 + `status` - 状态码
 + `statusText` - 状态信息
@@ -266,11 +264,11 @@ fetch(url, options).then(response => {});
 
 `response`会根据 Content-Type，提供不同的读取方法：
 
-+ response.text()：得到文本字符串
-+ response.json()：得到 JSON 对象
-+ response.blob()：得到二进制 Blob 对象
-+ response.formData()：得到 FormData 表单对象
-+ response.arrayBuffer()：得到二进制 ArrayBuffer 对象
++ `response.text()`：得到文本字符串
++ `response.json()`：得到 JSON 对象
++ `response.blob()`：得到 Blob 对象
++ `response.formData()`：得到 FormData 表单对象
++ `response.arrayBuffer()`：得到 ArrayBuffer 对象
 
 ::: tip
 只能使用一个读取方法，否则就会报错，都是异步的，返回的都是 Promise 对象

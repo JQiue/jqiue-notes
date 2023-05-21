@@ -683,7 +683,7 @@ I heard her playing the violin.
 
 ## 动名词
 
-动状词有四种，动名词就是其中一种，但动名词术语名词类，和现在分词不能混淆，只有和不定词的使用区别要注意
+动状词有四种，动名词就是其中一种，但动名词属于名词类，和现在分词不能混淆，只有和不定词的使用区别要注意
 
 动名词和普通名词的区别在于动名词对于普通名词仍然保留一定程度的“动作”意味，可以有“持续性”的暗示，如果只喝一杯，那就是 have a drink，如果是经常性的，采用 drinking。此外很多运动都用动名词来表示，比如 swimming，skiing，jumping。这就是动名词的特色
 
@@ -696,6 +696,50 @@ Drinking is his only vice.
 
 ```
 There are two weddings at the restaurant tonight.
+```
+
+## 分词
+
+分词主要有现在分词和过去分词，可视为形容词，甚至出现于被动语态，进行时也可以视为形容词。和形容词的相同之处：
+
++ 都可以用在名词短语中
++ 补语位置
+
+在这个示例中，barking 除了修饰名词以外，还有进行的暗示，而形容词则比较单纯
+
+```text
+That black dog doesn't bite.
+A barking dog doesn't bite.
+```
+
+在这个示例中，现在分词和普通形容词都作为补语出现，但一般说这是 be + Ving 的形式动词短语
+
+```text
+The dog is black.
+The dog is barking.
+```
+
+而过去分词和现在分词一样，但它的弦外之音是被动或者完成的暗示，用“被”，“已经”来解释
+
+过去分词 Boiled 和普通形容词在同一个位置，只不过暗示“被煮过了”这种“被动”，“完成“的意思
+
+```text
+Clean water is safe to drink.
+Boiled water is safe to drink.
+```
+
+当然也可以作为补语出现，表示”被煮过的水“，着用一般形式说 be + Ven 是被动态
+
+```text
+The water is clean.
+The water is boiled.
+```
+
+有时候虽然看起来像 be + ven 的构造，但却不是被动态。gone 只是作为形容词补语有”完成“的暗示，只是形容主语 it，表示”跑掉了，不见了“。fallen 同样只是表示”掉下来了，落下来了“，没有被动的意思
+
+```text
+I can't find my wallet. It's gone.
+The leaves are all fallen. now that winter is here.
 ```
 
 ## have

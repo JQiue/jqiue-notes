@@ -9,8 +9,8 @@ heroFullScreen: true
 tagline: 每一个想要学习的念头，都有可能是未来的你在向你求救
 projects:
   - icon: article
-    name: 计算机原理
-    link: /computer/
+    name: 库
+    link: /sundry/libraries
   - icon: article
     name: 数据结构与算法
     link: /ds-algorithm/
