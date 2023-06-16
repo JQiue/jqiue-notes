@@ -121,7 +121,7 @@ Vue 默认是单向绑定的，只要将数据交给实例对象，实例对象�
 <input type="text" v-model="msg">
 ```
 
-::: demo [vue] 双向绑定
+::: vue-demo 双向绑定
 
 ```vue
 <template>
@@ -149,7 +149,7 @@ export default {
 1. 使用`v-bind`绑定元素的`value`，当 data 中的数据变化时，同步输入框的内容
 2. 利用`v-on`监听元素的`input`或`change`事件，当输入框的内容变化时，同步 data 中的数据
 
-::: demo [vue] 双向绑定实现
+::: vue-demo 双向绑定实现
 
 ```vue
 <template>
@@ -243,7 +243,7 @@ Vue 指令本质就是自定义属性，由于 Mustache 语法不能作用在 HT
 
 为了提高`v-for`的性能，在更新已渲染的元素列表时，会采用“就地更新“策略，正是因为这个策略，在某些时刻会导致数据产生一种混乱。下面是一个例子，请选中一项，然后点击添加，会发现选择的某一项在数据渲染后居然变了，比如选中了`ls`，渲染后居然变成选中了`zs`
 
-::: demo [vue] 未绑定 key
+::: vue-demo 未绑定 key
 
 ```vue
 <template>
@@ -286,7 +286,7 @@ export default {
 
 这是因为`v-for`渲染元素时，会先查看缓存中有没有需要渲染的元素，如果没有，就会创建一个新的放在缓存中，如果有，则不会创建新的，直接复用原来的元素，为了给 Vue 更好的追踪节点的身份，从而重用和重新排序现有元素，应该为每项提供一个唯一`key`属性，千万不要将类似于数组的索引为`key`的值
 
-::: demo [vue] 绑定 key
+::: vue-demo 绑定 key
 
 ```vue
 <template>
@@ -479,7 +479,7 @@ methods 也可以直接使用在插值语法中，对于函数来说，每次都
 
 侦听器可以监听某一个数据发生变化时触发一个函数，给实例增加`watch`属性接受一个对象，其中方法名必须和要监听的数据名相同，每个方法还可以接收两个参数，分别是修改的新值和被修改的旧值
 
-::: demo [vue] 侦听器
+::: vue-demo 侦听器
 
 ```vue
 <template>
@@ -515,7 +515,7 @@ export default {
 
 :::
 
-::: demo [vue] 侦听器
+::: vue-demo 侦听器
 
 ```vue
 <template>
@@ -860,7 +860,7 @@ const app = new Vue({
 <bar v-else></bar>
 ```
 
-::: demo [vue] 组件切换
+::: vue-demo 组件切换
 
 ```vue
 <template>
@@ -903,7 +903,7 @@ Vue 专门提供了内置组件`component`用来实现切换，`is`属性用于�
 <component :is="name"></component>
 ```
 
-::: demo [vue] component 实现组件切换
+::: vue-demo component 实现组件切换
 
 ```vue
 <template>
@@ -943,7 +943,7 @@ export default {
 
 组件进行切换的时候不能保存当前组建的状态，因为触发了重新渲染，下面的选择框就是个例子
 
-::: demo [vue] 组件切换
+::: vue-demo 组件切换
 
 ```vue
 <template>
@@ -987,7 +987,7 @@ export default {
 </keep-alive>
 ```
 
-::: demo [vue] keep-alive 组件保存状态
+::: vue-demo keep-alive 组件保存状态
 
 ```vue
 <template>
@@ -1035,7 +1035,7 @@ export default {
 <foo>content</foo>
 ```
 
-::: demo [vue] vue
+::: vue-demo vue
 
 ```vue
 <template>
@@ -1065,7 +1065,7 @@ export default {
 </template>
 ```
 
-::: demo [vue] 插槽
+::: vue-demo 插槽
 
 ```vue
 <template>
@@ -1091,7 +1091,7 @@ export default {
 
 如果定义了多个多个插槽，内容则会填充所有的插槽
 
-::: demo [vue] 多个插槽
+::: vue-demo 多个插槽
 
 ```vue
 <template>
@@ -1161,7 +1161,7 @@ const app = new Vue({
 </template>
 ```
 
-::: demo [vue] v-slot
+::: vue-demo v-slot
 
 ```vue
 <template>
@@ -1199,7 +1199,7 @@ export default {
 
 也可以在定义插槽的时候预定义一些默认的内容，如果没有从外部填充，那么就会显示默认的内容
 
-::: demo [vue] 预留内容的插槽
+::: vue-demo 预留内容的插槽
 
 ```vue
 <template>
@@ -1225,7 +1225,7 @@ export default {
 
 作用域插槽就是带数据的插槽，让父组件能够填充插槽内容的时候也能使用子组件的数据，首先要在插槽中通过`v-bind`暴露子组件的数据，然后父组件`template`的`slot-scope`属性来接收
 
-::: demo [vue] 作用域插槽
+::: vue-demo 作用域插槽
 
 ```vue
 <template>
@@ -1260,7 +1260,7 @@ export default {
 
 作用域插槽应用场景是：**子组件提供数据，父组件决定渲染**
 
-::: demo [vue] 应用场景
+::: vue-demo 应用场景
 
 ```vue
 <template>
@@ -1295,7 +1295,7 @@ export default {
 
 `v-slot`不仅可以指定填充具名插槽，也可以接收暴露的数据
 
-::: demo [vue] v-slot 的用法
+::: vue-demo v-slot 的用法
 
 ```vue
 <template>
@@ -1445,7 +1445,7 @@ Vue 提供了内置组件`transition`用于给任何元素或组件提供过渡�
 
 如果使用了没有名字的`transition`组件，`v-`是这些类名的默认前缀，如果为这个组件提供了`name`属性指定前缀，那么`v-`将会被替换为`name`的属性值，这样可以为不同的元素设置不同的过渡效果
 
-::: demo [vue] 过渡演示
+::: vue-demo 过渡演示
 
 ```vue
 <template>
@@ -1535,7 +1535,7 @@ Vue 也提供了过渡的钩子函数，用于实现不同时期的动画效果�
 </transition>
 ```
 
-::: demo [vue] 自定义过渡类名示例
+::: vue-demo 自定义过渡类名示例
 
 ```vue
 <template>
@@ -1582,7 +1582,7 @@ export default {
 
 对于`v-for`渲染的元素来说，需要使用`<transition-group>`组件包裹，且必须为每一个列表项绑定`key`，这样每次更新列表项都会获得过渡效果
 
-::: demo [vue] 列表组过渡示例
+::: vue-demo 列表组过渡示例
 
 ```vue
 <template>

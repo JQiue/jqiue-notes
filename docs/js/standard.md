@@ -109,7 +109,7 @@ let date = new Date(Date.parse('2021-06-21T23:30:00'))
 
 这是一个求出高考时间的小例子：
 
-::: demo 高考时间
+::: normal-demo 高考时间
 
 ```html
 <h1>高考倒计时：<span></span></h1>

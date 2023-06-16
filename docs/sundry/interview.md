@@ -178,7 +178,7 @@ arr.forEach((e, index) => {
 });
 ```
 
-::: demo 示例
+::: normal-demo 示例
 
 ```html
 <table>

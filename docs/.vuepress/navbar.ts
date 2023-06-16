@@ -6,10 +6,13 @@ export const zh = navbar([
     text: '技能',
     icon: 'jishuzhan',
     children: [
-      { text: '计算机原理', icon: 'yuanli', link: '/computer/' },
-      { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
+      { text: '计算机组成', icon: 'yuanli', link: '/composition/' },
+      { text: '操作系统', icon: 'caozuoxitong', link: '/operating-system/' },
+      { text: '计算机网络', icon: 'wangluo', link: '/network/' },
+      { text: '编译原理', icon: 'bianyi', link: '/compiler/' },
       // { text: '设计模式', icon: 'shejimoshi', link: '/sundry/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
+      { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
     ],
   },
   {
@@ -57,7 +60,6 @@ export const zh = navbar([
       { text: '化学', icon: 'chemistry', link: '/chemistry/' },
       { text: '生物', icon: 'biology', link: '/biology/' },
       { text: '历史', icon: 'history', link: '/history/' },
-      { text: '地理', icon: 'geography', link: '/geography/' },
       { text: '逻辑学', icon: 'logic', link: '/logic/' },
       {
         text: '经济和金融',

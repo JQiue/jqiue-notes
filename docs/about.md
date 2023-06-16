@@ -1,7 +1,7 @@
 ---
 title: 关于 - 本站
 tag: [必读]
-excerpt: "里面是什么"
+excerpt: "里面是什么？"
 sticky: true
 ---
 
@@ -74,7 +74,11 @@ const Person = {
 
 ## 全站知识体系总览
 
-+ [计算机原理](/computer/)
++ [计算机组成](/composition/)
++ [操作系统](/operating-system/)
++ [计算机网络](/network/)
++ [编译原理](/compiler/)
++ [数据库](/database/)
 + 编程语言
   + [C](/c/)
   + [Java](/java/)
@@ -84,7 +88,6 @@ const Person = {
   + [Rust](/rust/)
 + [数据结构与算法](/ds-algorithm/)
 + [软件设计](/sundry/software-design/)
-+ [数据库](/database/)
 + Web
   + [HTML-CSS](/html-css/)
   + [WebAPI](/webapi/)
@@ -102,7 +105,7 @@ const Person = {
   + Docker
   + [正则表达式](/sundry/regex/)
 
-> 全站预估为 315937 字，可花 1053 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
+> 全站预估为 322187 字，可花 1073（300 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 

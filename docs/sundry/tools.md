@@ -22,9 +22,9 @@ timeline: false
 [Bandizip](http://www.bandisoft.com/bandizip/dl/)（压缩）  
 [7-Zip](https://www.7-zip.org/a/7z2000-x64.exe)（压缩）  
 [ShanaEncoder](https://shana.pe.kr/shanaencoder_download)（视频转码）  
-[AS SSD](https://www.alex-is.de/progs/AS%20SSD%20Benchmark.zip)（硬盘测试）  
-[CrystalDiskInfo](https://crystalmark.info/en/download/)  
-[CrystalDiskMark](https://crystalmark.info/en/download/)  
+[AS SSD](https://www.alex-is.de/progs/AS%20SSD%20Benchmark.zip)（硬盘基准测试）  
+[CrystalDiskInfo](https://crystalmark.info/en/download/)（硬盘信息）  
+[CrystalDiskMark](https://crystalmark.info/en/download/)（硬盘基准测试）  
 [FastCopy](https://dforest.watch.impress.co.jp/library/f/fastcopy/11574/FastCopy392_installer.exe)（复制）  
 [VirtualBox](https://www.virtualbox.org/wiki/Downloads)（虚拟机）  
 [v2rayN](https://github.com/2dust/v2rayN/releases/download/3.29/v2rayN.zip)（电脑代理）  
@@ -34,9 +34,10 @@ timeline: false
 [Autoruns](https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns)（Windows 自启动管理）  
 [Process Explorer](https://docs.microsoft.com/en-us/sysinternals/downloads/process-explorer)（Windows 资源管理器）  
 [Office Tool Plus](https://otp.landian.vip/zh-cn/)（一个强大且实用的 Office 部署工具）  
-[DroidCam](https://www.dev47apps.com/)（电脑调用手机摄像头）
+[DroidCam](https://www.dev47apps.com/)（电脑调用手机摄像头）  
 [Neat Converter](https://neat-reader.cn/downloads/converter)免费电子书格式转换器  
 [PowerToys](https://github.com/microsoft/PowerToys)效率工具  
+[Mem Reduct](https://www.henrypp.org/)内存清理工具  
 
 ## 开发
 
@@ -140,3 +141,4 @@ MySQL：
 [Kali（installer，amd64）](https://mirrors.tuna.tsinghua.edu.cn/kali-images/current/kali-linux-2020.2-installer-amd64.iso)  
 [Ubuntu 20.04（Desktop，LiveDVD）](https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/focal/ubuntu-20.04-desktop-amd64.iso)  
 [Ubuntu 20.04（Server）](https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/focal/ubuntu-20.04-live-server-amd64.iso)  
+[Arch](https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/latest/archlinux-2023.06.01-x86_64.iso)
