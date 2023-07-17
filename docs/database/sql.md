@@ -721,6 +721,11 @@ MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MyS
 3. `systemctl enable mariadb.service`
 4. `systemctl start mariadb.service`
 
+@tab Windows
+
+1. 前往 <https://mariadb.org/download> 下载 MariaDB 的 Windows x86_64 MSI 安装程序
+2. 启动安装程序，设置数据库访问密码以及端口号
+
 :::
 
 不需要密码，直接`mariadb -u root -p`登录，修改密码以及远程登录同 MySQL

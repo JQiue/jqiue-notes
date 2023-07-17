@@ -63,6 +63,7 @@ export const zh = sidebar({
     'standard',
     'spider',
   ],
+  '/rust/': [''],
   '/ds-algorithm/': [
     '',
     'array',

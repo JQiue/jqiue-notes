@@ -46,6 +46,20 @@ CE 按钮会做这些：
 
 ## Office
 
+通常使用[OTP](https://otp.landian.vip/zh-cn/download.html)来部署 Office 应用，安装步骤如下：
+
+1. 体系结构为“64 位“
+2. 更新通道为“Office 2019 企业长期版”
+3. 添加产品”Office 专业增强版 2019 - 批量许可证“
+4. 添加语言”中文简体“
+5. 开始部署
+
+激活步骤：
+
+1. 选择安装的版本，并安装许可证
+2. KMS 管理设置主机和端口，主机地址参考<https://www.coolhub.top/tech-articles/kms_list.html>
+3. 激活！！！
+
 ### Excel
 
 + 列宽或行高一致：选中边缘要调整的所有列或行，选择其中一个进行大小调整，其他就会自动变成一致

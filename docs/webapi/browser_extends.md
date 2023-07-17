@@ -35,7 +35,7 @@ article: false
 
 ## 弹出页
 
-如果没有声明在 Manifest 中`action`字段，左击只会显示默认的浏览器上下文菜单，这个字段的作用就是为鼠标左击扩展时弹出的页面
+如果没有在 Manifest 中声明`action`字段，左击只会显示默认的浏览器上下文菜单，这个字段的作用就是为鼠标左击扩展时弹出的页面
 
 ```json
 {
@@ -59,7 +59,7 @@ article: false
 
 ## 内容脚本
 
-扩展可以对用户的当前浏览的页面进行操作，实际上是对 DOM 的操作，通过 Manifest 的`content_scripts`字段可以指定将哪些脚本何时注入到哪里页面中，当用户访问这些页面时，相应脚本便会自动执行
+扩展可以对用户的当前浏览的页面进行操作，实际上是对 DOM 的操作，通过 Manifest 的`content_scripts`字段可以指定将哪些脚本何时注入到页面中，当用户访问这些页面时，相应脚本便会自动执行
 
 ```json
 {
@@ -102,7 +102,7 @@ article: false
     "service_worker": "background.js"
   }
 }
-```z
+```
 
 `service_worker`用于定义后台脚本的位置，后台脚本是没有 UI 的
 
@@ -116,15 +116,13 @@ chrome.runtime.onInstalled.addListener(() => {});
 
 ## 选项页
 
-有一些扩展允许用户进行个性化设置，这样就需要向用户提供一个选项页面，通过`options_page`定义选项页的位置
+有一些扩展允许用户进行个性化设置，这样就需要向用户提供一个选项页面，通过`options_page`定义选项页的位置。一旦声明了选项页，用户右击扩展图标时会显示“扩展选项”字眼，点击它就可以跳转到选项页
 
 ```json
 {
   "options_page": "./option/option.html"
 }
 ```
-
-一旦声明了选项页，用户右击扩展图标时会显示“扩展选项”字眼，点击它就可以跳转到选项页
 
 ## 扩展 API
 
@@ -136,9 +134,9 @@ chrome.runtime.onInstalled.addListener(() => {});
 
 有时需要让扩展中的多个页面之间，或者不同扩展的多个页面之间相互传输数据，以获得彼此的状态。比如在弹出页中修改状态，弹出页将这个状态传给后台服务脚本
 
-Chrome 提供了 4 个有关扩展页面间相互通信的接口，分别是 runtime.sendMessage、runtime.onMessage、runtime.connect 和 runtime.onConnect
+Chrome 提供了 4 个有关扩展页面间相互通信的接口，分别是`runtime.sendMessage`、`runtime.onMessage`、`runtime.connect`和`runtime.onConnect`
 
-其中 runtime.sendMessage、runtime.onMessage 支持在注入脚本中访问
+其中`runtime.sendMessage`、`runtime.onMessage`支持在注入脚本中访问
 
 如果想要弹出页和后台服务进行通信，可以使用以下方式发送消息
 
@@ -192,23 +190,23 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
 ## 存储
 
-扩展虽然可以使用方式来存储数据：
+扩展可以使用以下方式来持久化数据：
 
 + localStorage
 + 扩展 API
 + Web SQL
 
-对于一般的设置可以使用第一种，对于稍微复杂的使用第二种，Chrome 为扩展提供了对应的 API 用于将数据保存在硬盘，它可以看作 localStorage 的改进版，内容脚本可以直接访问这个 API 读取数据，不必通过后台服务
+对于一般的设置可以使用第一种，对于稍微复杂的使用第二种，Chrome 为扩展提供了对应的 API 用于将数据保存在硬盘，它可以看作`localStorage`的改进版，内容脚本可以直接访问这个 API 读取数据，不必通过后台服务
 
 使用存储  API 必须先声明`storage`权限，存储 API 提供了两种储存区域，分别是 sync 和 local，前者会根据用户的 Google 账户自动同步数据，当无网络时，sync 和 local 对数据的读写一致
 
 每种区域又提供了五种方法用于操作数据：
 
-+ get(key, callback(result))：如果 key 是字符串则和 localStorage 一致，如果是数组相当于一次性获取多个数据
-+ set(items, callback())：items 为对象类型，如果属性值是字符串，数字，数组则存储的格式不会变，如果是对象或  函数，则会被存储为`{}`，如果是日期和正则，会被存储为他们都在字符串形式
-+ remove(keys, callback())：删除某个或多个数据
-+ clear(callback())：清除所有的数据
-+ getBytesInUse(key, callback(bytes))：获取一个数据或多个数据占用的总空间，单位是字节
++ `get(key, callback(result))`：如果 key 是字符串则和 localStorage 一致，如果是数组相当于一次性获取多个数据
++ `set(items, callback())`：items 为对象类型，如果属性值是字符串，数字，数组则存储的格式不会变，如果是对象或  函数，则会被存储为`{}`，如果是日期和正则，会被存储为他们都在字符串形式
++ `remove(keys, callback())`：删除某个或多个数据
++ `clear(callback())`：清除所有的数据
++ `getBytesInUse(key, callback(bytes))`：获取一个数据或多个数据占用的总空间，单位是字节
 
 ```js
 chrome.storage.sync.get(keys, function(result){});

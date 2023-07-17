@@ -7,14 +7,16 @@ set -e
 cd ./dist
 
 # 如果是发布到自定义域名
-echo 'jinqiu.wang' > CNAME
+# echo 'jinqiu.wang' > CNAME
 
 git init
 git add -A
 git commit -m 'deploy'
 
+git remote add origin git@github.com:JQiue/jqiue.github.io.git
+
 # 如果发布到 https://<USERNAME>.github.io
-git push -f git@github.com:JQiue/JQiue.github.io.git master
+git push -f origin main
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
