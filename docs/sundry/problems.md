@@ -19,7 +19,7 @@ article: false
 
 + Tomcat 输出信息时出现中文乱码
 
-原因：没什么原因，就是编码出了问题，常常出现在 Windows
+原因：没什么原因，就是编码出了问题，常常出现在 Windows  
 解决：打开 tomcat 安装目录下的 conf/logging-properties 文件，修改如下参数项
 
 ```

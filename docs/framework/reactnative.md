@@ -1,28 +1,29 @@
 ---
-title: ReactNative
+title: React Native
 category: 框架
 author: JQiue
 article: false
 ---
 
 ::: tip
-基于 ReactNative v0.70
+基于 ReactNative v0.72
 :::
 
 ## 搭建环境
 
 + 安装 Android Studio
-+ 安装 SDK
-+ 使用 wifi 调试真机
-+ 在真机上设置服务端 ip 地址以最小代价启动开发
++ 安装 Android SDK
 
-创建 ReactNative 项目
+## 创建项目
 
 ```sh
 npx react-native init my-project
 ```
 
-配置 Gradle 代理（非常重要），在 gradle.properties 加入如下内容：
++ 使用 wifi 调试真机
++ 在真机上设置服务端 ip 地址以最小代价启动开发
+
+配置 Gradle 代理（非常重要），在 gradle.properties 添加如下内容：
 
 ```gradle
 systemProp.http.proxyHost=127.0.0.1
@@ -31,7 +32,7 @@ systemProp.https.proxyHost=127.0.0.1
 systemProp.https.proxyPort=7890
 ```
 
-## 最小示例
+最小启动示例
 
 ```js
 import React from 'react';
@@ -46,29 +47,22 @@ export default () => {
 };
 ```
 
-## 原生组件
+## 核心组件
 
-需要从`react-native`模块引入
+由于平台差异，RN 提供了很多核心组件，需要从`react-native`模块引入
 
-View：作为布局组件使用
-Text：作为文本容
-ScrollView：创建滚动视图
-Button 创建一个按钮
-
-```js
-<Button onPress={()=>{}} title="点我！"/>
+```jsx
+import { Button } from "react-native";
+<Button title="点我！"/>
 ```
 
-Image 创建一个图片组件
-
-```js
-```
+[官网](https://reactnative.dev/docs/button)提供了更多原始组件的用法
 
 ## 样式
 
 需要从`react-native`模块引入
 
-```js
+```jsx
 import {View, Text, StyleSheet} from 'react-native';
 
 export default () => {
@@ -80,9 +74,9 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
-    txt1: {
-        color: 'red'
-    }
+  txt1: {
+    color: 'red'
+  }
 })
 ```
 
@@ -162,6 +156,10 @@ android {
 - def enableSeparateBuildPerCPUArchitecture = false
 + def enableSeparateBuildPerCPUArchitecture = true
 ```
+
+## 库
+
++ [React Native Paper](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator)
 
 ## 参考资料
 

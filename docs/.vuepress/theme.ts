@@ -11,7 +11,7 @@ export default hopeTheme({
   },
   breadcrumb: false,
   iconPrefix: 'iconfont icon-',
-  iconAssets: '//at.alicdn.com/t/c/font_1939991_cby3jw45apj.css',
+  iconAssets: '//at.alicdn.com/t/c/font_1939991_s7hqzfug6eg.css',
   logo: '/logo.png',
   repo: 'https://github.com/JQiue/jqiue-notes',
   docsRepo: 'https://github.com/JQiue/jqiue-notes',

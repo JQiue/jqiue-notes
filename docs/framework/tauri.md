@@ -6,7 +6,7 @@ article: false
 ---
 
 ::: tip
-基于 Tauri v1.0
+基于 Tauri v1.2
 :::
 
 Tauri 是一个对标 Electron 的跨平台 UI 框架，采用 Rust 编写，相比 Electron 它有以下优点：
@@ -18,6 +18,7 @@ Tauri 是一个对标 Electron 的跨平台 UI 框架，采用 Rust 编写，相
 ## 搭建环境
 
 + 必须拥有 Rust 环境
++ 创建项目`pnpm create tauri-app`
 
 ## 构建应用
 

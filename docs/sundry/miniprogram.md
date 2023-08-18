@@ -5,6 +5,9 @@ article: false
 
 ## 环境搭建
 
++ 微信开发者工具
++ 去微信公众平台申请 APPID 号
+
 ## 项目结构
 
 ```
@@ -228,3 +231,26 @@ wx.getSystemInfoSync()
 // 获取右上角胶囊的布局位置信息
 wx.getMenuButtonBoundingClientRect()
 ```
+
+## Taro
+
+Taro 是一个开放式跨端跨框架解决方案，支持使用 React/Vue 等框架来开发小程序
+
+```sh
+# 安装 cli
+npm i @tarojs/cli -g
+
+# 使用脚手架初始化项目
+taro init appName
+```
+
+编译程序
+
+```sh
+# dev 
+npm run dev:weapp
+# build
+npm run build:weapp
+```
+
+然后使用微信开发者工具打开项目根目录并运行

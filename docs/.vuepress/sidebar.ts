@@ -152,6 +152,7 @@ export const zh = sidebar({
     'ui',
     'packet-capture',
     'crypto',
+    'miniprogram',
     'harmonica',
     'libraries',
     'silkworm',
