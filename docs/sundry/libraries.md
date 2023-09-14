@@ -35,8 +35,3 @@ conventional-changelog -p angular -i CHANGELOG.md -s
 ```
 
 + [standard-version](https://github.com/conventional-changelog/standard-version) - 标准化发布版本控制
-
-## Rust
-
-+ [rand](https://github.com/rust-random/rand) - 随机数生成器
-+ 

@@ -13,7 +13,7 @@ Tauri 是一个对标 Electron 的跨平台 UI 框架，采用 Rust 编写，相
 
 + 应用体积非常小
 + 运行内存也非常小
-+ 可以使用所有的 Web 前端框架
++ 可以使用所有的 Web 前端生态
 
 ## 搭建环境
 
@@ -26,6 +26,11 @@ Tauri 是一个对标 Electron 的跨平台 UI 框架，采用 Rust 编写，相
 
 ## 构建优化
 
+## 插件
+
+<https://github.com/tauri-apps/plugins-workspace>
+
 ## 参考资料
 
 + [Tauri 官网](https://tauri.app/)
++ [Awesome](https://github.com/tauri-apps/awesome-tauri)

@@ -13,6 +13,7 @@ export const zh = navbar([
       // { text: '设计模式', icon: 'shejimoshi', link: '/sundry/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
+      { text: '人工智能', icon: 'rengongzhineng', link: '/ai/' },
     ],
   },
   {

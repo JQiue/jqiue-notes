@@ -44,7 +44,7 @@ int main(void){
 双击 exe 执行程序可能会出现控制台程序一闪而过的情况，这是因为程序执行完毕后自动关闭了。可以添加`system("pause")`函数来调用系统命令使控制台暂停等待，当运行到该函数时，控制台会提示“Press any key to continue . . . ”，如果在 vc 6 的环境下则需要添加`#include <stdib.h>`
 :::
 
-`#include <stdio.h>`是[预处理器](./preprocessing)，告诉编译器在`stdio.h`发现的内容息，这是 C 的标准库，用于提供键盘输入和显示输出的功能支持
+`#include <stdio.h>`是[预处理器](./preprocessing)，告诉编译器在`stdio.h`发现的内容，这是 C 的标准库，用于提供键盘输入和显示输出的功能支持
 
 C 由一个或多个函数组成，`int main(void)`是主要程序入口，也叫做主函数。`()`会将`main()`作为一个函数名，`int`代表函数的返回值类型，`void`表示函数不需要任何参数
 

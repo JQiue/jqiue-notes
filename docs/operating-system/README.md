@@ -3,11 +3,9 @@ title: 操作系统
 article: false
 ---
 
-操作系统无疑是最为复杂的软件，对上为无数的用户和应用程序提供服务，从用户角度来看，操作系统是一个控制软件，用于管理和运行应用程序。对下操作系统是整个计算机硬件的资源分配器、管理外设、分配资源
+现代计算机系统由一个或多个处理器、主存、磁盘、打印机、键盘、鼠标、显示器、网络接口以及各种其他输入/输出设备组成。一般而言，现代计算机系统是一个复杂的系统。如果每个程序员都不得不掌握系统所有的细节，那就不可能再编写代码了。而且，管理所有这些部件并加以优化使用，是一件挑战性极强的工作。所以计算机安装了一层软件直接运行在裸机上，称为**操作系统**，它的任务是为用户程序提供一个更好、更简单、更清晰的计算机模型，并管理刚才提到的所有这些设备
 
-现代计算机系统由一个或多个处理器、主存、磁盘、打印机、键盘、鼠标、显示器、网络接口以及各种其他输入/输出设备组成。一般而言，现代计算机系统是一个复杂的系统。如果每位应用程序员都不得不掌握系统所有的细节，那就不可能再编写代码了。而且，管理所有这些部件并加以优化使用，是一件挑战性极强的工作。所以计算机安装了一层软件，称为操作系统，它的任务是为用户程序提供一个更好、更简单、更清晰的计算机模型，并管理刚才提到的所有这些设备
-
-操作系统的层次是在硬件之上、软件之下。虽然操作系统本身是一种软件，但是它为其他的软件提供服务支撑
+操作系统无疑是最为复杂的软件，为无数的用户和应用程序提供服务，从用户角度来看，操作系统是一个控制软件，用于管理和运行应用程序。对下操作系统是整个计算机硬件的资源分配器、管理外设、分配资源。操作系统的层次是在硬件之上、软件之下。虽然操作系统本身是一种软件，但是它为其他的软件提供服务支撑
 
 Linux、Windows 的界面属于外壳（Shell），而不是内核（Kernel），对于操作系统更多的是站在内核的角度，内核底层更能看到操作系统里面的细节
 
@@ -27,11 +25,11 @@ Kernel 的特征：
 + 虚拟 - 利用多道程序设计技术，让每个用户都觉得一个计算机专门为它服务
 + 异步 - 程序的执行不是一贯到底，而是走走停停，向前推进的速度不可预知，但只要运行环境相同，OS 需要保证程序运行的结果也要相同
 
-操作系统至今有三大家族：
+操作系统至今有一下家族：
 
-+ UNIX
-+ Linux
++ UNIX/Linux
 + Windows
++ macOS
 
 早期的计算机使用纸带传输程序和数据，操作系统只起到加载作用。随着 CPU 等硬件的发展，计算机的速度得到提升，性能未能得到充分利用。
 
@@ -66,72 +64,6 @@ Kernel 的特征：
 ## 文件
 
 文件这个简单而精致的概念是非常强大的，因为它向应用程序提供了一个统一的视图，来看待系统中可能含有的所有的各式各样的 I/O 设备
-
-## Windows
-
-### CMD 和 PowerShell
-
-shell 是运行在终端上的文本互动程序，对于 Windows 来说，它有`cmd`和`powershell`两种终端程序
-
-+ `tasklist`：显示所有进程
-+ `tasklist | findstr "StudentMain"`：在所有进程中查询包含`StudentMain`的进程
-+ `taskkill /im StudentMain.exe /f`：杀掉`StudentMain.exe`进程
-+ `tasklist /pid 1488`：杀掉 PID 为`1488`的进程
-+ `tree /f`：树形输出文件
-
-### 环境变量
-
-环境变量是操作系统的概念，用具解决编程中的硬编码情况，一般通过界面的方式来设置环境变量，但可以通过命令维护一套属于自己的环境变量配置
-
-在 CMD 中使用`set`命令会显示所有的环境变量，如果要修改环境变量，`set [variable]=[value]`则是基本的操作，但是这种做法会将原有的值覆盖掉，可以通过`%variable%new_Value`的方式来实现追加，这种设置方式是临时的，在本次对话结束后就会消失，也不会共享给其他对话
-
-`setx` 是一个永久性的环境变量设置工具
-
-```sh
-setx PATH "%PATH%;[new_path;]"
-```
-
-这是使用 PowerShell 的例子
-
-```sh
-[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Python27\;C:\Python27\Scripts\", "User")
-```
-
-### 封装系统
-
-准备工作：
-
-+ 虚拟机
-+ 系统镜像
-+ 常用软件
-
-创建虚拟机步骤：
-
-1. 创建新的虚拟机
-2. 稍后安装操作系统
-3. 选择客户机操作系统版本
-4. 酌情分配虚拟机配置
-5. 不使用网络连接
-6. 创建磁盘容量为 40GB，存储为单个文件
-7. 移除声卡，虚拟机硬件
-8. 设置虚拟机的 CD/DVD 来源为系统镜像
-
-安装系统：
-
-1. 选择进入固件方式启动虚拟机
-2. 将 BOOT 启动项设置为 CD-ROM，F10 保存并重启
-3. 开始进入系统的安装
-
-启动系统：
-
-1. 在 OOBE 界面中按下`CTRL+SHIFT+F3`进入部署模式，详见[微软文档](https://docs.microsoft.com/zh-cn/windows-hardware/manufacture/desktop/boot-windows-to-audit-mode-or-oobe?view=windows-10)
-2. 启用超级管理员模式
-
-封装系统：
-
-1. 使用封装系统工具对系统进行封装
-2. 使用微 PE 生成可启动的 ISO，进入 PE
-3. 使用 Dism ++ 进行系统备份，一定要勾选可启动，并且不要存在系统所在的分区
 
 ## Linux
 
@@ -427,27 +359,53 @@ root@VM-4-14-ubuntu:~# ps x
 
 ### 文件权限
 
-对于 Linux 中的每个文件，都有三个权限类。对于每个权限类，有三个权限
+在 Linux，通过文件权限，属性和所有权来管理对文件的访问
 
-类|描述
----|---
-用户 | 文件的拥有者
-分组 | 同组用户
-其它人 | 任何其他用户或组
+对于 Linux 中的每个文件，都有三个权限类
 
-这是每个类可分配的权限：
+| 类     | 描述             |
+| ------ | ---------------- |
+| 用户   | 文件的拥有者     |
+| 分组   | 同组用户         |
+| 其它人 | 任何其他用户或组 |
 
-权限 | 符号 | 描述
----|---|---
-读 | r-- | 读取文件的能力
-写 | -w- | 写入文件的能力
-执行 | --x | 将文件作为程序执行的能力，例如 ShellScript 应该设置这个
+对于每个权限类，有三个可分配的权限：
 
-以及管理权限的命令：
+| 权限 | 符号 | 描述                                                    |
+| ---- | ---- | ------------------------------------------------------- |
+| 读   | r--  | 读取文件的能力                                          |
+| 写   | -w-  | 写入文件的能力                                          |
+| 执行 | --x  | 将文件作为程序执行的能力，例如 ShellScript 应该设置这个 |
+
+可以通过`ls -l filename.txt`查看文件权限
+
+以及管理权限的命令，只有 root，文件所有者的用户才能修改：
 
 + `chmod` — 修改文件权限
 + `chown` — 修改所有者
 + `umask` — 修改掩码，以便将权限赋予新创建的文件
+
+第一组参数是用户类型：
+
++ `u`- 文件所有者。
++ `g`- 组。
++ `o`- 其它人。
++ `a`- 所有用户，与同时指定 ugo 一样。
+
+第二组参数，操作权限的参数，定义是否要删除、添加或设置权限：
+
++ `-` 删除指定的权限。
++ `+` 添加指定的权限。
++ `=` 将当前权限改为指定权限。如果在符号后没有指定权限`=`，则删除指定用户类的所有权限
+
+```sh
+# 授予组成员读取文件的权限，但不能写入和执行
+chmod g=r filename
+# 删除所有用户的执行权限
+chmod a-x filename
+# 递归删除其他用户的写权限
+chmod -R o-w dirname
+```
 
 ### 挂载共享目录
 
@@ -493,6 +451,43 @@ sudo mount -t cifs -o credentials=/root/win-credentials //WIN_SHARE_IP/<share_na
 
 使用`mount /mnt/win_share`,该命令将读取`/etc/fstab`的内容并装载共享,下次重新启动系统时，将自动装载 Windows 共享
 
+### 软件包管理
+
+在为软件安装程序之前，有必要了解下面的概念：
+
++ 源码包 - 不能编译，必须手动编译，并配置才能运行（大佬定制化时使用），一般后缀名为`.tar.gz`
++ 二进制包 - 已经编译过，可以立即执行
++ RPM - 是二进制包的子系列，用来处理二进制包依赖关系，基于软件包管理系统
++ 软件源 - 存放包的仓库，比如阿里云、清华等
+
+一般情况下，默认的软件源就足够使用了，但有的软件源比较慢，甚至会连接失败，所以需要换一些国内的源，比如阿里云
+
+在 Linux 中，不同发行版的软件包有不同的格式，比如 Ubuntu 的软件包格式是`.deb`，只要在网上看到`.deb`包就意味着它可以被安装到 Ubuntu 上
+
+通常需要先使用`wget`或`curl`工具下载软件包到本地，然后就可以使用`dpkg`程序进行安装：
+
+```sh
+sudo dpkg -i <package.deb>
+```
+
+但是`dpkg`是基于 Debian 的最低级包管理器，可能无法处理一些依赖关系
+
+通常可以使用`sudo apt install -f`来处理依赖问题，`apt`是 Ubuntu 自带的包管理器，比`dpkg`要更加强大，使用`sudo apt install ./<package.deb>`可以安装本地 deb 软件包，使用相对路径会安装当前目录的 deb 包，否则会尝试从软件源仓库中检索并安装软件包，不过通常使用另一种包管理工具`aptitude`来替代：
+
+```
+aptitude update             更新可用的包列表
+aptitude safe-upgrade       执行一次安全的升级
+aptitude full-upgrade       将系统升级到新的发行版
+aptitude install <pkgname>  安装包
+aptitude remove <pkgname>   删除包
+aptitude purge <pkgname>    删除包及其配置文件
+aptitude search <string>    搜索包
+aptitude show <pkgname>     显示包的详细信息
+aptitude clean              删除下载的包文件
+aptitude autoclean          仅删除过期的包文件
+aptitude versions <pkgname> 显示指定包的版本
+```
+
 ### 远程登陆
 
 如果买了远程服务器，且系统是 Linux，便可以使用 SSH 工具来远程连接，一般输入`用户名@机器地址`，然后输入密码就可以连接成功了，但是有时候远程不允许 SSH 连接，这个时候就要在控制台中进入机器，然后更改系统配置即可
@@ -531,100 +526,8 @@ alias setproxy="export http_proxy=socks5://127.0.0.1:1024; export https_proxy=$h
 alias unsetproxy="unset http_proxy; unset https_proxy; echo 'HTTP Proxy off';
 ```
 
-### Ubuntu
-
-前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像
-
-Ubuntu 的软件源配置文件是`/etc/apt/sources.list`。首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份一下原来的源，然后`vim /etc/apt/sources.list`将内容全部替换为 TUNA 的源,即可使用 TUNA 的软件源镜像
-
-```
-# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
-
-# 预发布软件源，不建议启用
-# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
-```
-
-### Arch
-
-前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像
-
-直接挂载镜像，使用 UEFI 模式启动，然后进入 live-cd 系统，使用`archinstall`命令进行脚本安装
-
-更新软件包缓存：
-
-```sh
-sudo pacman -Syy
-```
-
-安装一些必要的包：
-
-```sh
-pacman -S openssh vim networkmanager git zsh
-```
-
-启动服务：
-
-```sh
-systemctl start NetworkManager sshd
-```
-
-配置 shell，使用更好的 Oh-my-zsh：
-
-1. 使用 curl 下载脚本并安装：`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-2. 同意使用 Oh-my-zsh 的配置模板覆盖已有的`.zshrc`
-3. 使用`powerlevel10k`主题,`git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
-4. 在`.zshrc`设置`ZSH_THEME="powerlevel10k/powerlevel10k"`启用主题
-5. 执行`source ~/.zshrc`配置生效
-6. 启用`z`获取快速跳转目录的能力，不需要安装，直接在`.zshrc`中设置`plugins=(z)`启用
-7. 安装`zsh-autosuggestions`获取命令提示，`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`，在`.zshrc`中设置`plugins=(zsh-autosuggestions)`
-8. 安装`zsh-syntax-highlighting`获取语法检查，`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git`，`echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc`
-
-### 软件包管理
-
-在为软件安装程序之前，有必要了解下面的概念：
-
-+ 源码包 - 不能编译，必须手动编译，并配置才能运行（大佬定制化时使用），一般后缀名为`.tar.gz`
-+ 二进制包 - 已经编译过，可以立即执行
-+ RPM - 是二进制包的子系列，用来处理二进制包依赖关系，基于软件包管理系统
-+ 软件源 - 存放包的仓库，比如阿里云、清华等
-
-一般情况下，默认的软件源就足够使用了，但有的软件源比较慢，甚至会连接失败，所以需要换一些国内的源，比如阿里云
-
-在 Linux 中，不同发行版的软件包有不同的格式，比如 Ubuntu 的软件包格式是`.deb`，只要在网上看到`.deb`包就意味着它可以被安装到 Ubuntu 上
-
-通常需要先使用`wget`或`curl`工具下载软件包到本地，然后就可以使用`dpkg`程序进行安装：
-
-```sh
-sudo dpkg -i <package.deb>
-```
-
-但是`dpkg`是基于 Debian 的最低级包管理器，可能无法处理一些依赖关系
-
-通常可以使用`sudo apt install -f`来处理依赖问题，`apt`是 Ubuntu 自带的包管理器，比`dpkg`要更加强大，使用`sudo apt install ./<package.deb>`可以安装本地 deb 软件包，使用相对路径会安装当前目录的 deb 包，否则会尝试从软件源仓库中检索并安装软件包，不过通常使用另一种包管理工具`aptitude`来替代：
-
-```
-aptitude update             更新可用的包列表
-aptitude safe-upgrade       执行一次安全的升级
-aptitude full-upgrade       将系统升级到新的发行版
-aptitude install <pkgname>  安装包
-aptitude remove <pkgname>   删除包
-aptitude purge <pkgname>    删除包及其配置文件
-aptitude search <string>    搜索包
-aptitude show <pkgname>     显示包的详细信息
-aptitude clean              删除下载的包文件
-aptitude autoclean          仅删除过期的包文件
-aptitude versions <pkgname> 显示指定包的版本
-```
 
 ## 参考资料
 
 + 现代操作系统（第3版）
++ <https://www.myfreax.com/linux-tutorial/>

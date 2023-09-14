@@ -2166,6 +2166,26 @@ export default {
 
 <!-- to be updated -->
 
+## Vue3
+
+Vue3 已经推出很久，可以上线使用了，这里列出一些涉及到的问题以及解决方案
+
+使用`watch`监听`props`变化：
+
+```js
+/**
+ * 1. 千万不要解构 props
+ */
+const props = defineProps();
+
+watch(() => props.data, () => {
+
+}, {
+  immediate: true,
+  deep: true
+})
+```
+
 ## 组件库
 
 有很多基于 Vue 打造的 UI 库：
