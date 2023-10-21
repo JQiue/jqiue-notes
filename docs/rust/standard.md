@@ -1,5 +1,5 @@
 ---
-title: 标准库
+title: 标准功能
 category: 编程语言
 tag: [Rust]
 article: false

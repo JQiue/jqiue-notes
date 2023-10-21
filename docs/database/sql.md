@@ -136,10 +136,6 @@ TRUNCATE TABLE table_name;
 
 DQL 语句不会对数据进行改变，这个数据会从数据库中读到内存，以这种表的形式查询出来的数据称为虚拟结果集，`SELECT`是 SQL 中最重要的关键字
 
-::: tip
-不要纠结`SELECT`到底属于 DML 还是 DQL
-:::
-
 这个表为下列查询提供支持：
 
 ```sql
@@ -248,7 +244,7 @@ SELECT stu_age, stu_score, IFNULL(stu_score, 0) + IFNULL(stu_age, 0) FROM studen
 
 ### 排序
 
-`ORDER BY`关键字可以对结果进行排序
+默认情况下，数据的排序顺序是不确定的。这意味着查询结果的顺序可能会随着时间、数据插入或其他因素而变化，MySQL 的默认排序规则是基于数据存储的物理顺序。当数据插入到表中时，它们通常按照它们在磁盘上的存储顺序进行排序。然而，这种物理排序并不是可靠的，`ORDER BY`关键字可以对结果进行可靠排序
 
 ```sql
 -- 根据 stu_score 进行升序，默认关键字`ASC`可以省略不写
@@ -750,10 +746,16 @@ SQLite 大部分操作与其他关系型数据库基本相同，只有部分不�
 
 ## 最佳实践
 
-1. 表名使用集合或者不那么理想的复数
-2. 不要使用驼峰命名法
-3. 列名使用单数
-4. 不要使用 delete 物理删除数据，而是使用逻辑删除
+1. 表名使用集合或者不那么理想的复数，用`staff`替代`employees`更好
+2. 列名使用单数，避免和表名重复，总是小写
+3. 不要使用驼峰命名法
+4. 不要使用 DELETE 物理删除数据，而是使用逻辑删除
+5. 表示有限状态的字段应该使用 tinyint，而不是 int
+6. 不要添加任何外键，而是在应用层解决
+7. 关键字总是大写
+8. 尽可能使用标准函数，而不是数据库提供商扩展的函数
+9. 尽量不选择提供商相关的数据类型，为了移植性
+10. 只在真的需要浮点数运算的时候才使用 REAL 和 FLOAT 类型，否则使用 NUMERIC 和 DECIMAL 类型。浮点数舍入误差是个麻烦
 
 ## 技巧
 
@@ -770,3 +772,4 @@ INSERT INTO table_1 SELECT * FROM table_2;
 
 + [SQLite 学习手册](https://wizardforcel.gitbooks.io/sqlite-learning-manual/content/index.html)
 + SQLite 权威指南
++ [SQL 样式指南](https://www.sqlstyle.guide/zh/)

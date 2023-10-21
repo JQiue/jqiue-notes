@@ -13,21 +13,21 @@ JSX（JavaScript XML）是 js 内定义的一套 XML 语法，可以解析出目
 
 不用觉得很奇怪，`div`就等于`<div></div>`
 
-```js
+```jsx
 let div = <div></div>
 ```
 
 JSX 必须严格闭合
 
-```js
-<div>       //错误
-<div></div> //正确
-<div/>      //正确（也行，看需求）
+```jsx
+<div>       // 错误
+<div></div> // 正确
+<div/>      // 正确（也行，看需求）
 ```
 
 同级组件时必须拥有一个根元素，这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
 
-```js
+```jsx
 // 错误
 <div></div>
 <div></div>
@@ -47,7 +47,7 @@ JSX 必须严格闭合
 
 在一个组件中可以引用其他组件，当引用一个自定义组件时要大写首字母，否则会看做成普通标签
 
-```js
+```jsx
 <Foo>
   <Bar></Bar>
 </Foo>
@@ -104,7 +104,7 @@ const content = 'Hello, World'
 
 类组件即通过继承来实现一个组件
 
-```js
+```jsx
 class Foo extends React.Component {
   render() {
     return <div>Hello, World</div>
@@ -116,7 +116,7 @@ class Foo extends React.Component {
 
 函数式组件即将一个 JSX 封装到一个函数中返回
 
-```js
+```jsx
 function Foo() {
   return <div>Hello</div>
 }

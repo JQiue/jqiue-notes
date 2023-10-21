@@ -82,23 +82,6 @@ const styles = StyleSheet.create({
 
 ## 事件处理
 
-## 注意事项
-
-Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：
-
-```xml
-<application
-  android:usesCleartextTraffic="true">
-</application>
-```
-
-不允许读写存储时，`AndroidManifest.xml`添加以下条目
-
-```xml
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-```
-
 ## 构建应用
 
 构建 APP
@@ -155,6 +138,23 @@ android {
 - }
 - def enableSeparateBuildPerCPUArchitecture = false
 + def enableSeparateBuildPerCPUArchitecture = true
+```
+
+## 注意事项
+
+Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：
+
+```xml
+<application
+  android:usesCleartextTraffic="true">
+</application>
+```
+
+不允许读写存储时，`AndroidManifest.xml`添加以下条目
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
 ## 库

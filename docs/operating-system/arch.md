@@ -7,7 +7,66 @@ article: false
 
 前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像
 
-直接挂载镜像，使用 UEFI 模式启动，然后进入 live-cd 系统，使用`archinstall`命令进行脚本安装
+### 脚本安装
+
+直接挂载镜像，使用 UEFI 模式启动，进入 live-cd 系统，使用`archinstall`命令进行脚本安装
+
+### 手动安装
+
+进入 live-cd 系统
+
++ 禁用 reflector
+
+```sh
+systemctl stop reflector.service
+```
+
++ 测试网络连通性
+
+```sh
+ping baidu.com
+```
+
++ 更新系统时钟
+
+```sh
+timedatectl set-ntp true # 将系统时间与网络时间进行同步
+timedatectl status # 检查服务状态
+```
+
++ 更换国内软件源
+
+```sh
+vim /etc/pacman.d/mirrorlist
+```
+
+推荐源：
+
+```text
+Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中国科学技术大学开源镜像站
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学开源软件镜像站
+Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch # 华为开源镜像站
+Server = http://mirror.lzu.edu.cn/archlinux/$repo/os/$arch # 兰州大学开源镜像站
+```
+
++ 通过 lsblk 命令观察磁盘分区情况
+
+::: tip
+如果是 NVME 协议的硬盘，则不是 sd(x)，而是 nvme(x)n1
+:::
+
++ 使用 cfdisk 分区
+
+```sh
+cfdisk /dev/sdx
+cfdisk /dev/nvmexn1
+```
+
++ 创建 EFI 分区，类型为 EFI System
++ 创建 SWAP 分区，将类型改为 Linux swap
++ 创建根目录分区，类型默认
++ 选中 Write，回车确认分区操作
++ 使用 fdisk 或 lsblk 命令复查分区情况
 
 ## Pacman
 

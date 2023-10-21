@@ -18,6 +18,11 @@ Canvas API 提供了一个通过 JavaScript 和 HTML 的`<canvas>`元素来绘�
 
 Canvas 的默认大小为 300 × 150 像素，但是可以用宽高属性来调整 Canvas 的尺寸，该元素的功能就是创建一个画布，剩下的图像绘制交给 JavaScript 完成
 
+::: tip 注意
+不要使用 CSS 选择器设置 Canvas 的宽高，而是使用它自身的 width 和 height 属性
+:::
+
+
 Canvas 就像一个普通的 HTML 元素一样可以被设计，但这些样式完全不会影响画布中的实际图像
 
 ::: danger
@@ -89,12 +94,6 @@ if(canvas.getContext('2d')){
 
 尽管画了一条直线，但是需要调用`ctx.stroke()`方法进行绘制着色
 
-如果绘制的闭合线段形成了多边形想要对其进行填充，就可以使用`ctx.fill()`方法，颜色取决于`ctx.fillStyle`属性，默认为`#000000`
-
-::: tip
-如果起点和终点的路径没有重合，调用`ctx.fill()`是无效的，因为它只能绘制闭合路径
-:::
-
 此外，canvas 是基于状态的绘制，在某些情况我们需要对不同的路径进行着色，`stroke`和`fill`在后续的多次调用中总会以最后一次为准，这会改变之前所有绘制的东西，这个时候`beginPath`和`closePath`方法就派上用场了，我们可以将单独的一个绘制放到这两个方法之间，形成独立的状态，永远不会被其他所影响
 
 `beginPath`不一定要和`closePath`成对出现，`beginPath`只代表重新规划一条路径，`closePath`只代表闭合路径之后图形绘制命令又重新指向到上下文中
@@ -121,11 +120,30 @@ ctx.stroke();
 ctx.closePath();
 ```
 
+## 填充
+
+如果绘制的闭合线段形成了多边形想要对其进行填充，就可以使用`ctx.fill()`方法，颜色取决于`ctx.fillStyle`属性，默认为`#000000`
+
+::: tip
+如果起点和终点的路径没有重合，调用`ctx.fill()`是无效的，因为它只能绘制闭合路径
+:::
+
 ## 绘制弧线
 
-`ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise)`用于绘制一条弧线
+`ctx.arc(x, y, r, startAngle, endAngle, anticlockwise)`用于绘制一条弧线
+
+| 参数             | 描述                                                              |
+| ---------------- | ----------------------------------------------------------------- |
+| x                | 圆心的 x 坐标                                                     |
+| y                | 圆心的 y 坐标                                                     |
+| r                | 半径                                                              |
+| sAngle           | 起始角，以弧度计（弧的圆形的三点钟位置是 0 度）                   |
+| eAngle           | 结束角，以弧度计，通常和 PI 计算                                  |
+| counterclockwise | 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针 |
 
 ## 绘制多边形
+
+`ctx.rect(x, y, width, height)`用于创建一个矩形，注意是封闭的路径
 
 canvas 支持矩形和路径这两种图形绘制的方式，提供了三种方法绘制矩形：
 

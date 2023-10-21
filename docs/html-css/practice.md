@@ -1,10 +1,104 @@
 ---
-title: 更好的编写习惯
-category: Web
+title: 实践
+tag: [html, css]
+author: JQiue
 article: false
 ---
 
-## 教条式的规则
+## 技巧性
+
+### 快速生成 HTML 片段
+
+有没有在写 HTML 大量的标签、属性、引号等写法所恶心到？以及同样在编写 CSS 时，要写很多的属性、属性值、大括号和分号等。当然，大多数的文本编辑器都或多或少带有代码自动提示功能，在开发之时，帮了很大的忙，但仍然需要手动输入很多代码。而 Emmet 插件，集成了很多代码片段的缩写，在开发时只需要输入简单的缩写，按`tab`键或`Ctrl+E`键就能扩展出所需的代码片段，令人高兴的是，大部分编辑器都集成了该插件，因此没必要去手动安装
+
+Emmet 语法的核心与 CSS 选择器非常相似，也就是说像 CSS 选择器一样来使用它，比如，当在支持 Emmet 的编辑器中写上`ul>li>p`，然后按下触发 Emmet 的快捷键，就会生成：
+
+```html
+<ul>
+  <li>
+    <p></p>
+  </li>
+</ul>
+```
+
+更棒的是，Emmet 还能帮忙生成初始的文档，比如输入`!`：
+
+```html
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
+```
+
+相邻元素生成`div+p`：
+
+```html
+<div></div><p></p>
+```
+
+一次性生成多个相同元素`ul>li*5`:
+
+```html
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+```
+
+更强大的是能帮助生成带有属性的标签，只需要熟悉 CSS 选择器
+
++ `E#id`添加id名
++ `E.class`添加类名
++ `E[attr]`添加属性
++ `E{text}`添加文本
+
+Emmet 不但能够生成标签，还能生成 CSS 属性，Emmet 定义了所有已知 CSS 属性的缩写。比如`font-size`缩写是`fz`，`border` 缩写是`bd`
+
+Emmet 不仅能生成属性名，还能带着一起生成属性值，比如`fz14`会生成`font-size: 14px;`，`dib`生成`display: inline-block;`
+
+还可以生成用于测试的“Lorem Ipsum”假文本内容用于填充，比如`lorem`会生成：
+
+```html
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem fuga expedita odio porro excepturi vero eligendi, animi tempore. Id rem tenetur iusto. Cupiditate cum totam nemo qui dolorum in delectus!
+```
+
+更多详见[Emmet](https://docs.emmet.io/)
+
+### 设表先关
+
+当事件触发时，先清除定时器，再设置一个新的定时器，防止动画累积
+
+### 拉终停表
+
+在定时器内部每次 (每次信号量增加)都要判断是否走到了终点，要不要停止定时器; 如果走到或超过了终点，强行拉到重点，并停止定时器
+
+### 无缝连续滚动
+
+障眼法
+
+### 跑马灯轮播图
+
+### 呼吸灯轮播图
+
+将图片重叠到同一个位置，切换 z-index、透明度等实现
+
+## 更好的编写习惯
+
+### 教条式的规则
 
 最具有现代标准的 HTML 结构：
 
@@ -59,13 +153,9 @@ article: false
 
 以上都会被选中，实际上 checked 属性不需要设置值，只需要添加此属性，复选框就会被选中，disabled 或者 selected 等属性也是同样的道理，无需设置属性值，可以节省若干代码量，也符合标准
 
-## 内容、表现和行为分离
+### 内容、表现和行为分离
 
-内容、表现和行为分离是前端页面基本原则
-
-1. 网页的组成部分
-
-应用于项目中的网页通常有如下几个部分构成：
+内容、表现和行为分离是前端页面基本原则，应用于项目中的网页通常有如下几个部分构成：
 
 + 通过 HTML 结构创建的结构与填写的文本，它是页面基本框架与实质内容
 + CSS 代码部分，负责对 HTML 结构和其中的文本内容进行美化修饰，也就是网页的表现部分
@@ -162,7 +252,7 @@ window.onload = function() {
 
 布局页面的最终目的是在于用户有良好交互与视觉体验的前提下，能够做到页面以非常简洁的形式展现在开发者和搜索引擎面前，以便于代码开发维护和搜索引擎的抓取
 
-## 属性顺序
+### 属性顺序
 
 HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会在一个元素中写入很多个属性，为了提高可读性，推荐属性按照如下顺序排列：
 
@@ -178,7 +268,7 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 <input class="text" id="text" type="text" disabled>
 ```
 
-## type 属性
+### type 属性
 
 项目中，通常需要引入外部 css 文件或者 js 文件
 
@@ -194,7 +284,7 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 <script src="index.js"></script>
 ```
 
-## 注释规范
+### 注释规范
 
 注释对于团队开发和后期维护有着重要的作用，但是也增加了代码的体积。尽量不要写注释，尽可能减少文档的体积，如果必须要添加注释，那么就要遵循如下规则：
 
@@ -213,7 +303,7 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 <!-- TODO:待办事项 -->
 ```
 
-## 标签嵌套规则
+### 标签嵌套规则
 
 通常情况下行内级元素不能包含块级元素，注意的是“通常”，也就是说大部分元素都要遵守前面的的规则。
 
@@ -275,31 +365,34 @@ time， u， var， video， wbr， text
 
 每个元素基本都有自己的嵌套规则（即父元素可以是什么，子元素可以是什么），除了严格嵌套约束之外的一些规则就是语义嵌套约束，对于语义嵌套约束，如果不遵守，页面可能正常，但也可能解析错误，尽量要遵守，不过也要遵循最佳实践，比如导航菜单经常就会有`<ul>`元素作为`<li>`的子元素
 
-## 宽高分离
+### 宽高分离
 
 所谓“宽度分离原则”，就是 CSS 中的 width 属性不与影响宽度的
  padding/border （有时候包括 margin）属性共存，也就是不能出现以
 下的组合：
 
 ```css
-.box { width: 100px; border: 1px solid; }
+.box { 
+  width: 100px;
+  border: 1px solid;
+}
 ```
 
 而是 width 单独占用一层标签, 其他属性利用流动性在内部自适应
 
 ```css
 .father {
-width: 180px;
+  width: 180px;
 }
 .son {
-margin: 0 20px;
-padding: 20px;
-border: 1px solid;
+  margin: 0 20px;
+  padding: 20px;
+  border: 1px solid;
 }
 ```
 
 当一件事情的发展可以被多个因素所左右的时候，这个事情最终的结果就会变数很大而不可预期。宽度在这里也是类似，由于盒尺寸中的 4 个盒子都能影响宽度，自然页面元素的最终宽度就很容易发生变化而导致意想不到的布局发生
 
-## 不要使用 * 选择器
+### 不要使用 * 选择器
 
 这种做法易产生没必要的消耗。通配符应该是一个慎用的选择器，因为它会选择所有的标签元素。对于普通内联元素（非图片等替，box-sizing 无论是什么值，对其渲染表现都没有影响，因此，对这些元素而言就是没有必要的消耗

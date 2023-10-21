@@ -12,6 +12,16 @@ Rust 由 Mozila 一位工程师创造，他对这个语言的期望是：安全�
 
 一般不单独安装 Rust 的编译器，而是使用 rustup 安装 Rust 相关的一整套工具链：编译器，标准库，cargo 等
 
+::: tip
+可以为 rustup 添加国内源：
+
+```
+RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+```
+
+:::
+
 在 Windows 安装 Rust 需要有预备环境[Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)，保持最小安装的组件为：MSVC C++ Build，Windows SDK
 
 编写一个代码，使用`rustc main.rs`进行编译生成可执行程序，最后执行生成的可执行程序

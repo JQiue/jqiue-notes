@@ -192,7 +192,7 @@ let s1 = String::new();
 // 调用 `to_string`
 let s2 = "".to_string();
 // 使用 from 基于字面量创建
-let s3 = String::fron();
+let s3 = String::from/*  */();
 ```
 
 `String`的内容可以变化，因为它在堆上申请了一块内存空间，有权对这块空间扩容

@@ -880,9 +880,29 @@ function fb(i) {
 }
 ```
 
-## [pm2](https://github.com/Unitech/pm2)
+## 库
 
-Node.js 进程管理
++ [npm-check-updates](https://github.com/raineorshine/npm-check-updates) - 检查 package.json 依赖项版本
++ [nrm](https://github.com/Pana/nrm) - 是一个注册表管理器，用于快速切换下载源
++ [nodemon](https://github.com/remy/nodemon) - 监听 Node.js 应用程序的更改，并自动重启服务器
++ [concurrently](https://github.com/open-cli-tools/concurrently) - 同时执行多个 NPM 命令
++ [live-server](https://github.com/tapio/live-server) - 是一个具有实时重新加载功能的小型开发服务器
++ [rimraf](https://github.com/isaacs/rimraf) - 是一个类似于 UNIX command`rm rf`命令的包，能大大加快移除文件的速度，可以快速的移除`node_modules`了
++ [anywhere](https://github.com/JacksonTian/anywhere) - 快速启动一个静态的文件服务器
++ [Progress](https://github.com/visionmedia/node-progress) - 终端进度条
++ [chalk](https://github.com/chalk/chalk) - 为终端进行着色
++ [nodemailer](https://github.com/nodemailer/nodemailer) - 发送邮件
++ [glob](https://github.com/isaacs/node-glob) - 模式匹配目录文件
++ [commitlint](https://github.com/conventional-changelog/commitlint) - 规范 Git 提交信息
++ [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) - 根据 commit 自动生成 CHANGELOG.md
+
+```sh
+conventional-changelog -p angular -i CHANGELOG.md -s
+```
+
++ [standard-version](https://github.com/conventional-changelog/standard-version) - 标准化发布版本控制
+
++ [pm2](https://github.com/Unitech/pm2) - 基于 Node.js 进程的管理进程管理工具
 
 ```sh
 pm2 start app.js --watch # 以实时监控 app.js 启动，文件发生改动后会自动 reload
@@ -904,6 +924,45 @@ PM2 delete all          # 杀死并删除所有应用
 PM2 delete <id|appname> # 杀死并删除某个应用
 pm2 startup             # 设置开机自启动
 pm2 unstartup           # 禁用开机自启动
+```
+
+配置文件可用`pm2 init simple`生成：
+
+```js
+module.exports = {
+  apps: [
+    {
+      name: 'aurora',
+      script: './build/app.js',
+      max_memory_restart: '100M',
+      instances: 'max',
+      instance_var: 'INSTANCE_ID',
+      error_file: './log/pm2.error.log',
+      out_file: './log/pm2.out.log',
+    },
+  ],
+};
+```
+
+比较重要的可用属性
+
+| 字段      | 描述                                                       |
+| --------- | ---------------------------------------------------------- |
+| instances | 要启动的应用实例数量，可以指定数字，或者指定 “max”自动分配 |
+| exec_mode | 启动应用程序的模式，可以是“cluster”或“fork”，默认fork      |
+
+## 性能优化
+
+在做性能优化前，需要先做 Profile，可以使用 0x 包来生成一个火焰图进行分析：
+
+```sh
+npm i 0x -g
+```
+
+使用`0x`命令行执行`js`文件，当退出程序时就会立即打开浏览器生成一个火焰图
+
+```sh
+0x -o app.js
 ```
 
 ## 参考资料

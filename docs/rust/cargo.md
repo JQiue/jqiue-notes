@@ -23,7 +23,7 @@ color = { git = "https://github.com/bjz/color-rs" }
 geometry = { path = "crates/geometry" }
 ```
 
-将仓库默认地址替换为国内的地址，加快下载依赖的速度
+添加`$CARGO_HOME/config`文件，将仓库默认地址替换为国内的地址，加快下载依赖的速度
 
 ```rust
 [source.crates-io]
