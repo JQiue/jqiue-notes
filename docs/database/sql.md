@@ -706,7 +706,7 @@ int row = st.executeUpdate("insert into foo (name) value ('zs')");
 
 ## MariaDB
 
-MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MySQL 一样
+MariaDB 是 MySQL 更好的替代品，是另一种 MySQL 实现
 
 ::: tabs
 
@@ -714,14 +714,21 @@ MariaDB 是 MySQL 更好的替代者，是另一种 MySQL 实现，几乎和 MyS
 
 1. `pacman -S mariadb`
 2. `mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
-3. `systemctl enable mariadb.service`
-4. `systemctl start mariadb.service`
+3. `chmod -R mysql /var/lib/mysql`
+4. `systemctl enable mariadb.service`
+5. `systemctl start mariadb.service`
 
 @tab Windows
 
 1. 前往 <https://mariadb.org/download> 下载 MariaDB 的 Windows x86_64 MSI 安装程序
 2. 启动安装程序，设置数据库访问密码以及端口号
 
+:::
+
+::: tip 以 root 用户启动
+不建议用 root 用户启动，这是没有必要的
+
+这需要额外的工作，安装脚本应该为`mariadb-install-db --user=root --basedir=/usr --datadir=/var/lib/mysql`。执行`mysqld --check`
 :::
 
 不需要密码，直接`mariadb -u root -p`登录，修改密码以及远程登录同 MySQL

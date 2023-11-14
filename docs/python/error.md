@@ -1,5 +1,5 @@
 ---
-title: 异常
+title: 错误处理
 category: 编程语言
 tag: [Python]
 article: false

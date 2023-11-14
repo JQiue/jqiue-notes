@@ -84,6 +84,7 @@ setInterval(() => {
 ::: normal-demo 矩形碰撞
 
 ```html
+<p>按 W，A，S，D 或者方向键进行碰撞检测</p>
 <div class="box" tabindex="0">
   <canvas id="canvas"></canvas>
 </div>
@@ -110,38 +111,38 @@ const keyType = {
 
 document.addEventListener("keydown", (event) => {
   console.log(event.code);
-  if (event.code == "KeyD") {
+  if (event.code == "KeyD" || event.code == "ArrowRight") {
     keyType.right = true;
     speedX = 1;
   }
-  if (event.code == "KeyA") {
+  if (event.code == "KeyA" || event.code == "ArrowLeft") {
     keyType.left = true;
     speedX = -1;
   }
-  if (event.code == "KeyS") {
+  if (event.code == "KeyS" || event.code == "ArrowDown") {
     keyType.down = true;
     speedY = 1;
   }
-  if (event.code == "KeyW") {
+  if (event.code == "KeyW" || event.code == "ArrowUp") {
     keyType.up = true;
     speedY = -1;
   }
 });
 
 document.addEventListener("keyup", (event) => {
-  if (event.code == "KeyD") {
+  if (event.code == "KeyD" || event.code == "ArrowRight") {
     keyType.right = false;
     speedX = 0;
   }
-  if (event.code == "KeyA") {
+  if (event.code == "KeyA" || event.code == "ArrowLeft") {
     keyType.left = false;
     speedX = 0;
   }
-  if (event.code == "KeyS") {
+  if (event.code == "KeyS" || event.code == "ArrowDown") {
     keyType.down = false;
     speedY = 0;
   }
-  if (event.code == "KeyW") {
+  if (event.code == "KeyW" || event.code == "ArrowUp") {
     keyType.up = false;
     speedY = 0;
   }

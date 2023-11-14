@@ -87,6 +87,13 @@ let file = File::open("hello.txt").unwrap();
 let file = File::open("hello.txt").expect("Failed to open hello.txt");
 ```
 
+这是一些其他的常用方法：
+
++ `is_ok()`和`is_err()`：返回 bool 值，告诉 Result 是成功的结果还是错误的结果
++ `ok()`：返回`Option<T>`类型的成功值，否则返回 None
++ `err()`：返回`Option<E>`类型的错误值
++ `result.unwrap_or(fallback)`：返回成功值，否则返回 fallback，丢弃错误值
+
 ## ?
 
 Rust 提供了`?`运算符用来传播错误，用来将错误返回给调用者，如果出现错误，就会提前终止函数执行，并返回错误。只能用于返回`Result`类型的函数

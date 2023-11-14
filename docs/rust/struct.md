@@ -122,3 +122,21 @@ impl User {
   fn print_user(&self) {}
 }
 ```
+
+## 实用 Trait
+
+### Drop
+
+当一个值的所有者离开时，Rust 会清除（drop）这个值。很大程度上，Rust 会自动处理清除值
+
+### Clone
+
+### Copy
+
+### Deref
+
+### Default
+
+### Borrow 和 BorrowMut
+
+### From 和 Into

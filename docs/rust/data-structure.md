@@ -133,7 +133,54 @@ let (x, y, z) = tup;
 
 没有任何值的元组有个特殊的名称，叫做 **单元（unit）** 元组。这种值以及对应的类型都写作`()`，表示空值或空的返回类型。如果表达式不返回任何其他值，则会隐式返回单元值
 
-## 动态数组
+## String
+
+字符串本身是基于字符的集合，并通过方法将字节解析为文本。Rust 中有两种类型：`String`和`&str`，它们都是标准库的部分
+
+```rust
+// 使用 new 构建一个空串
+let s1 = String::new();
+// 调用 `to_string`
+let s2 = "".to_string();
+// 使用 from 基于字面量创建
+let s3 = String::from/*  */();
+```
+
+`String`的内容可以变化，因为它在堆上申请了一块内存空间，有权对这块空间扩容
+
+```rust
+let s = String::new();
+// 使用 push_str
+s.push_str("hello");
+// 使用 push 
+s.push_str(',');
+// 使用 + 运算符，此时发生移动
+s + "world";
+```
+
+这里的`+`会调用`add(self, s: &str)->String`方法，所以只能将`&str`和`String`相加，而不能`String`+`String`。为什么`&String`能够调用`add`是因为这里发生了解引用强制类型转换，将`&String`转换为了`&[..]`
+
+使用`format!`也可以创建，它和`println!`原理相同，常用于复杂的字符串合并
+
+```rust
+let s = format!("{}-{}-{}", "a", "b", "c")
+```
+
+字符串不支持索引获取字符,但可以使用`chars`或`bytes`方法来遍历字符串
+
+```rust
+let mut s1 = String::from("hello, ");
+// 返回 char 
+for c in s1.chars() {
+  println!("{}", c);
+}
+// 返回对应字节数
+for c in s1.bytes() {
+  println!("{}", c);
+}
+```
+
+## Vec
 
 `Vec<T>`也就是所谓的动态数组，动态数组允许在单个数据结构中存储多个相同类型的值
 
@@ -182,52 +229,24 @@ let row = vec![
 ];
 ```
 
-## String
+## VecDeque
 
-字符串本身是基于字符的集合，并通过方法将字节解析为文本。Rust 中有两种类型：`String`和`&str`，它们都是标准库的部分
-
-```rust
-// 使用 new 构建一个空串
-let s1 = String::new();
-// 调用 `to_string`
-let s2 = "".to_string();
-// 使用 from 基于字面量创建
-let s3 = String::from/*  */();
-```
-
-`String`的内容可以变化，因为它在堆上申请了一块内存空间，有权对这块空间扩容
+Vec 只支持在两端高效添加和移除元素。如果程序需要把值保存在队列中间，Vec 就慢了。VecDeque 是一个双端队列，支持高效的两端添加和移除操作
 
 ```rust
-let s = String::new();
-// 使用 push_str
-s.push_str("hello");
-// 使用 push 
-s.push_str(',');
-// 使用 + 运算符，此时发生移动
-s + "world";
+let deque = VecDeque::from([1, 2, 3]);
 ```
 
-这里的`+`会调用`add(self, s: &str)->String`方法，所以只能将`&str`和`String`相加，而不能`String`+`String`。为什么`&String`能够调用`add`是因为这里发生了解引用强制类型转换，将`&String`转换为了`&[..]`
++ push_front(value) 在队列前面添加值
++ push_back(value) 在队列后面添加值
++ pop_front() 移除并返回队列前面的值，返回`Option<T>`，队列为空时返回 None
++ pop_back() 移除并返回队列后面的值，同样返回`Option<T>`
++ front() 和 deque.back() 返回队列前端和后端元素的引用。返回`Option<T>`，队列为空时返回 None
++ front_mut() 和 back_mut() 返回`Option<&mut T>`
 
-使用`format!`也可以创建，它和`println!`原理相同，常用于复杂的字符串合并
+## LinkedList
 
-```rust
-let s = format!("{}-{}-{}", "a", "b", "c")
-```
-
-字符串不支持索引获取字符,但可以使用`chars`或`bytes`方法来遍历字符串
-
-```rust
-let mut s1 = String::from("hello, ");
-// 返回 char 
-for c in s1.chars() {
-  println!("{}", c);
-}
-// 返回对应字节数
-for c in s1.bytes() {
-  println!("{}", c);
-}
-```
+`LinkedList<T>`是 Rust 提供的双向链表
 
 ## HashMap
 
@@ -238,3 +257,7 @@ let mut colors = HashMap::new();
 colors.insert("red", "红色");
 colors.get("red");
 ```
+
+## HashSet
+
+`HashSet<T>`是 Rust 提供的集合，元素永远不会包含同一个值的副本
