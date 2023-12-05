@@ -105,7 +105,7 @@ url = https://github.com/username/repo.git
 
 如果看到了 Github 的地址被解析成了 127.0.0.1，则说明被 DNS 污染了，需要获得真正的 IP 并修改 Hosts
 
-+ push 到 Github 时产生：fatal: unable to access 'https://github.com/xxx/xxx': OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
++ push 到 Github 时产生：`fatal: unable to access 'https://github.com/xxx/xxx': OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443`
 
 原因：这是因为某些东西挡住了 Git 与 Github 之间的连接  
 解决1：给 Git 配置代理  
@@ -170,3 +170,7 @@ Active code page: 65001
 原因：这是因为文件本身是用带签名的`utf-8 with BOM`保存的  
 解决1：open 文件时使用`utf-8-sig`编码  
 解决2：转换文件格式
+
++ pkg 打包的 node.js 程序不想在 Console 下运行
+
+解决：详见[https://github.com/vercel/pkg/issues/135#issuecomment-1009036281](https://github.com/vercel/pkg/issues/135#issuecomment-1009036281)

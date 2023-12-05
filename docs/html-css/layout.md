@@ -209,7 +209,7 @@ span {
 
 定位流是为了解决更加精细的元素定位，也是一种脱离标准流的排版，通过`position`属性来设置一个元素的定位类型，它的取值有四种，对应着不同的定位属性，同时也需要设置`top`、`left`、`right`、`bottom`属性来调整元素的偏移距离
 
-::: danger
+::: caution
 如果设置相反方向的偏移，可能是无效的
 :::
 
@@ -296,7 +296,7 @@ span {
 
 在 Flex 容器中表现为弹性盒子的元素被称为 Flex 项（flex item）或项目
 
-::: danger
+::: caution
 容器设为 Flex 布局以后，子元素的`float`、`clear`和`vertical-align`属性将失效
 :::
 

@@ -12,7 +12,7 @@ Windows 相比 Linux 提供了一个图形用户界面（GUI），并成为了�
 
 ## CMD 和 PowerShell
 
-shell 是运行在终端上的文本互动程序，对于 Windows 来说，它有`cmd`和`powershell`两种终端程序
+Windows 有`cmd`和`powershell`两种终端程序
 
 + `tasklist`：显示所有进程
 + `tasklist | findstr "StudentMain"`：在所有进程中查询包含`StudentMain`的进程

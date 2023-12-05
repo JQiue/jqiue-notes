@@ -152,6 +152,24 @@ fn main() {
 
 它的语法是，在你希望 impl trait 的类型前面写`#[derive（…）]`，括号里面是你希望 impl 的 trait 的名字。这样写了之后，编译器就帮你自动加上了 impl 块
 
-## 标准库常见的 trait
+## 实用 Trait
 
-Display 和 Debug 它们的主要用处就是用在类似 println！这样的地方。只有实现了Display trait 的类型，才能用`{}`格式控制打印出来；只有实现了 Debug trait 的类型，才能用`{：？}``{：#？}`格式控制打印出来
+### Display 和 Debug
+
+Display 和 Debug 它们的主要用处就是用在类似 println！这样的地方。只有实现了 Display 的类型，才能用`{}`格式控制打印出来；只有实现了 Debug 的类型，才能用`{:?}``{:#?}`格式控制打印出来
+
+### Drop
+
+当一个值的所有者离开时，Rust 会清除（drop）这个值。很大程度上，Rust 会自动处理清除值
+
+### Clone
+
+### Copy
+
+### Deref
+
+### Default
+
+### Borrow 和 BorrowMut
+
+### From 和 Into

@@ -9,6 +9,10 @@ article: false
 
 集合是由一组无序且唯一（即不能重复）的项组成的，该数据结构使用了与有限集合相同的数学概念，但应用在计算机科学的数据结构中，集合中没有顺序概念
 
+::: code-tabs
+
+@tab JavaScript
+
 ```js
 class Set {
   constructor() {
@@ -40,12 +44,14 @@ class Set {
   values() {
     return Object.values(this.items);
   }
+  // 并集
   union(set) {
     const unionSet = new Set();
     this.values().forEach(value => unionSet.add(value));
     set.values().forEach(value => unionSet.add(value));
     return unionSet;
   }
+  // 交集
   intersection(set) {
     const intersectionSet = new Set();
     const values = this.values();
@@ -56,6 +62,7 @@ class Set {
     }
     return intersectionSet;
   }
+  // 差集
   difference(set) {
     const differenceSet = new Set();
     const values = this.values();
@@ -66,6 +73,7 @@ class Set {
     }
     return differenceSet;
   }
+  // 判断是否是子集
   isSubSetOf(set) {
     if(this.size() > set.size()) {
       return false;
@@ -83,6 +91,8 @@ class Set {
 }
 ```
 
+:::
+
 ### 多重集
 
 一般的集合只能计算元素有或者没有，但多重集可以计算同一个元素出现的次数，一个元素在多重集中出现的次数被称为重复度
@@ -90,6 +100,10 @@ class Set {
 ## 字典
 
 字典中，存储的是键值对，其中键名是用来查询特定元素的。字典和集合很相似，集合以值的形式存储元素，字典则是以键值的形式来存储元素。字典也称作映射、符号表或关联数组，在计算机科学中，字典经常用来保存对象的引用地址
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class ValuePair {
@@ -149,9 +163,11 @@ class Dictionary {
     }
     return valuePairs;
   }
+  /* 以数组形式返回所有的键 */
   keys() {
     return this.keyValues().map(valuePair => valuePair.key);
   }
+  /* 以数组形式返回所有的值 */
   values() {
     return this.keyValues().map(valuePair => valuePair.value);
   }
@@ -178,6 +194,8 @@ class Dictionary {
 }
 ```
 
+:::
+
 ## 散列表
 
 数组查找已经够快了，但是只能根据下标进行访问，如果根据内容查找，依然需要遍历每一个数组元素
@@ -192,6 +210,10 @@ class Dictionary {
 ::: tip 幻数
 在编程中直接使用的常数
 :::
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class ValuePair {
@@ -257,11 +279,15 @@ class HashTable {
 }
 ```
 
-有时候，一些建会产生相同的哈希值，当不同的值在哈希表中对应相同位置时，就被称为冲突。使用一个数据结构来保存数据的目的显然不是丢失掉这些数据，而是通过某种方法来将它们保存起来，因此发生这种情况时必须要去解决
+:::
+
+## 哈希冲突
+
+由于哈希算法计算结果长度有限，很小概率下一些键会产生相同的哈希值，当不同的值在哈希表中对应相同位置时，就被称为冲突。使用一个数据结构来保存数据的目的显然不是丢失掉这些数据，而是通过某种方法来将它们保存起来，因此发生这种情况时必须要去解决
 
 + 分离链接 - 为每一个位置创建一个链表存储元素，需要额外的空间
 + 线性探查 - 如果该位置有值，则看下一个位置，直到发现空位置
 + 双散列法 - 一个哈希函数解决不了冲突就是用第二个哈希函数继续计算，只到解决为止
 + 布谷鸟 - 利用较少的计算换取较大的空间
 
-<!-- to be updated -->
+<!-- todo -->

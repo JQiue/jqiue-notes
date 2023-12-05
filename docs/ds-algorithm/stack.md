@@ -21,6 +21,10 @@ article: false
 
 不需要额外的内存空间
 
+::: code-tabs
+
+@tab C
+
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -130,6 +134,8 @@ Status peek(SqStack s)
 }
 ```
 
+@tab JavaScript
+
 ```js
 class Stack {
   constructor() {
@@ -161,9 +167,15 @@ class Stack {
 }
 ```
 
+:::
+
 ## 链式实现
 
 和使用数组实现的栈相比，它有无限的大小，但是需要额外的内存
+
+::: code-tabs
+
+@tab C
 
 ```c
 #include "stdio.h"
@@ -249,6 +261,8 @@ Status peek(LinkedStack s)
 }
 ```
 
+@tab JavaScript
+
 ```js
 class Stack {
   constructor() {
@@ -289,9 +303,15 @@ class Stack {
 }
 ```
 
+:::
+
 ## 反转
 
 利用栈的结构特点可以很方便的反转链表，字符串等
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class Stack {}
@@ -320,6 +340,8 @@ class LinkedList {
   }
 }
 ```
+
+:::
 
 ## 十进制转二进制
 

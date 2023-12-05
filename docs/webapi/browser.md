@@ -128,7 +128,7 @@ window.addEventListener('message', (message) => {
 
 `Notification`允许调用操作系统级别的通知，在进行通知之前，必须向用户请求通知权限
 
-::: danger
+::: caution
 只能在 HTTPS 中使用，并且只适用于桌面浏览器，大多数移动浏览器没有实现它
 :::
 
@@ -168,7 +168,7 @@ const notice = new Notifications('title', {body: '这是一个通知'})
 ```js
 document.querySelector('#request').onclick = (event) => {
   Notification.requestPermission( function(status) {
-    if(Notification.permission == status) {
+    if(Notification.permission == 'granted') {
       alert('用户已经授予通知权限');
     }
     if(Notification.permission == 'denied') {
@@ -179,12 +179,10 @@ document.querySelector('#request').onclick = (event) => {
 
 document.querySelector('#send').onclick = (event) => {
   if(Notification.permission == 'default') {
-    alert('没有询问用户授予通知权限');
-    return;
+    return alert('没有询问用户授予通知权限');
   }
   if(Notification.permission == 'denied') {
-    alert('用户没有授予通知权限');
-    return;
+    return alert('用户已经拒绝通知权限');
   }
   const n = new Notification("JQiue's notes", {
     body: 'Hello, World'

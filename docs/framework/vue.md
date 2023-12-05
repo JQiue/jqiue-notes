@@ -5,7 +5,7 @@ tag: [Vue]
 article: false
 ---
 
-::: danger
+::: caution
 基于 Vue 2 编写，Vue 3 已经推出
 :::
 
@@ -674,7 +674,7 @@ const foo = Vue.extend({
 Vue.component("foo", foo);
 ```
 
-::: danger
+::: caution
 组件只能有一个根元素，如果注册时使用的是驼峰命名，使用时必须是短横线命名
 :::
 
@@ -804,7 +804,7 @@ Vue.component('my-component', {
 });
 ```
 
-::: danger
+::: caution
 如果在传递的时候使用了驼峰命名，在接收的时候要转换为小写，如果想要在使用的过程中使用驼峰命名，则应该在传递的时候使用短横线命名，接收的时候使用驼峰命名
 :::
 
@@ -842,7 +842,7 @@ const app = new Vue({
 </script>
 ```
 
-::: danger
+::: caution
 在使用自定义事件时最好使用短横线命名
 :::
 

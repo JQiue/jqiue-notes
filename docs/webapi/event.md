@@ -514,7 +514,7 @@ document.querySelector('div').addEventListener('click', event => {
 
 `event.target`会返会目标的元素节点对象，可以通过判断该对象的`nodeName`或`class`来做一些事件处理
 
-::: danger
+::: caution
 事件委托应该看情况使用，不是所有的事件都应该委托，否则会产生事件误判的问题，本不应该触发的事件却被触发了
 :::
 
@@ -824,13 +824,13 @@ function throttle(func, delay) {
 
 只有在`mousedown`和`mouseup`事件中才会用到这个属性，因为这两个事件会在任何按键上触发，对于`event.button`的值可能如下：
 
-按键状态|event.button
----|---
-左键|0
-中键|1
-右键|2
-后退键|3
-前进键|4
+| 按键状态 | event.button |
+| -------- | ------------ |
+| 左键     | 0            |
+| 中键     | 1            |
+| 右键     | 2            |
+| 后退键   | 3            |
+| 前进键   | 4            |
 
 ::: tip
 大多数鼠标只有左键和右键

@@ -89,6 +89,10 @@ class Node {
 
 二叉树的搜索、插入、删除的时间复杂度都是 log(n)
 
+::: code-tabs
+
+@tab C
+
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -188,6 +192,8 @@ Status traverse(Node *root){
   traverse(root->right);
 }
 ```
+
+@tab JavaScript
 
 ```js
 /* 节点 */
@@ -308,6 +314,8 @@ class BinarySearchTree {
 }
 ```
 
+:::
+
 ## 树的遍历
 
 ## 平衡树
@@ -328,6 +336,10 @@ AVL（Adelson-Velskii-Landi）树是一种自平衡树，用来解决二叉搜�
 
 + 是一颗完全二叉树
 + 不是最小堆就是最大堆，即所有的节点都大于等于或着小于等于它的每个子节点
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class MinHeap {
@@ -377,6 +389,8 @@ class MinHeap {
   }
 }
 ```
+
+:::
 
 ## B 树
 

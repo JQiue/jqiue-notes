@@ -329,7 +329,7 @@ ul li {
 
 :::
 
-::: danger
+::: caution
 `transition`无法过渡`display`，因为元素会被破坏，如果需要元素在可见和不可见过渡应该使用`visibility`
 :::
 

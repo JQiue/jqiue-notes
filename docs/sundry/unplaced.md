@@ -49,7 +49,7 @@ WebName
     └─lib # jar 包
 ```
 
-::: danger
+::: caution
 `host-manager`、`manager`、`ROOT`这三个项目最好不要删，其它的都可以删掉以增加启动速度
 :::
 

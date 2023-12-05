@@ -8,9 +8,8 @@ article: false
 结构体相比元组，每个元素都赋予名字的含义，每个元素被称为字段，使用`struct`定义结构体
 
 ```rust
-// 4 个字段的结构体
+// 3 个字段的结构体
 struct User {
-  active: bool,
   username: String,
   email: String,
   sign_in_count: u64,
@@ -49,6 +48,8 @@ let email = "someone@example.com".to_string();
 let mut jqiue = User { name, email };
 ```
 
+## 可变性
+
 实例可变，那么字段就是可变的，不允许单独声明某个字段可变性
 
 ```rust
@@ -67,7 +68,7 @@ let mut user = User {
 ```rust
 struct User {
   username: String,
-  age: u32,
+  age: i32,
 }
 
 impl User {
@@ -90,20 +91,20 @@ jqiue.print_user();
 
 ```rust
 struct User {
-    username: String,
-    email: String,
+  username: String,
+  email: String,
 }
 
 impl User {
-    fn new(username: String, email: String) -> User {
-        User {
-          email,
-          username,
-        }
+  fn new(username: String, email: String) -> User {
+    User {
+      email,
+      username,
     }
+  }
 }
 
-let mut jqiue = User::new("jqiue", "861947542@qq.com");
+let jqiue = User::new("jqiue", "861947542@qq.com");
 ```
 
 可以拥有多个`impl`块，这是合法的
@@ -122,21 +123,3 @@ impl User {
   fn print_user(&self) {}
 }
 ```
-
-## 实用 Trait
-
-### Drop
-
-当一个值的所有者离开时，Rust 会清除（drop）这个值。很大程度上，Rust 会自动处理清除值
-
-### Clone
-
-### Copy
-
-### Deref
-
-### Default
-
-### Borrow 和 BorrowMut
-
-### From 和 Into

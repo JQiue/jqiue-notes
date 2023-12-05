@@ -23,6 +23,8 @@ Yes, it is.
 Thank you very much.
 ```
 
++ 掌握句式：Is this your ...?，以及回答
+
 ### Lesson 3 Sorry sir
 
 ```
@@ -39,6 +41,10 @@ Is this it?
 Yes, it is.
 Thank you very much.
 ```
+
++ 掌握句式：Here is ...
++ 掌握 not 否定回答
++ 掌握 it 代词上文出现的物体
 
 ### Lesson 5 Nice to meet you
 
@@ -59,7 +65,13 @@ And this is Xiaohui. She's Chinese, too.
 Nice to meet you.
 ```
 
-### Lesson 7 Are you are teacher
++ 掌握基本的问候
++ 掌握一些常见的国家词汇
++ 掌握句式 He/She is..，以及否定形式，以及缩写形式，比如：She isn't Chinese;
++ 掌握 What 开头的特殊疑问句以及回答，比如：What make is it?/It is an English car.
++ 区分 a/an，以元音开头的用 an，有一条大致的规律：以 a/e/i/o/u 开头的用 an
+
+### Lesson 7 Are you a teacher
 
 ```
 I am a new student.  
@@ -79,6 +91,12 @@ What's your job?
 I'm an engineer.
 ```
 
++ 掌握一般疑问句式
++ 掌握基本的自我介绍以及询问国籍和工作的句式
++ 掌握一些职位词汇
++ 掌握 be 动词的三种人称形式 am/is/are，以及缩写形式
++ 掌握人称代词所有格形式
+
 ### Lesson 9 How are you today
 
 ```
@@ -96,6 +114,10 @@ Nice to see you, too, Steven.
 Goodbye.
 ```
 
++ 掌握基本问候语句
++ 掌握 How 开头的特殊疑问句以及回答
++ 掌握 Look at ... 句式，比如：Look at that man. Who is he?
+
 ### Lesson 11 Is this you shirt
 
 ```
@@ -112,6 +134,9 @@ Yes, sir.
 Here you are. Catch!  
 Thank you, sir.
 ```
+
++ 掌握 Whose 开头的特殊疑问句
++ 掌握名词所有格形式表示所属
 
 ### Lesson 13 A new dress
 

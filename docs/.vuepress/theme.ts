@@ -98,6 +98,7 @@ export default hopeTheme({
         color: '#ffffff',
       },
       manifest: {
+        id: '/',
         scope: '/',
         start_url: '/',
       },

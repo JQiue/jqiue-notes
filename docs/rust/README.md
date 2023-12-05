@@ -13,7 +13,7 @@ Rust 由 Mozila 一位工程师创造，他对这个语言的期望是：安全�
 一般不单独安装 Rust 的编译器，而是使用 rustup 安装 Rust 相关的一整套工具链：编译器，标准库，cargo 等
 
 ::: tip
-可以为 rustup 添加国内源：
+可以为 rustup 添加国内源，详见[清华镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/rustup/)
 
 ```
 RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
@@ -32,9 +32,19 @@ fn main() {
 }
 ```
 
+## 工具链
+
+### cargo
+
 Cargo 是官方构建工具，使用`cargo new <name>`创建，构建项目使用`cargo build`，构建结果在`target`下，优化构建则加上`--release`参数，`cargo run`或直接`run`会编译并运行可执行文件
 
-```rust
+::: tip 为 Cargo 添加国内源
+
+详见[清华镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/crates.io-index/)
+
+:::
+
+```
 .
 ├── .git
 ├── .gitignore
@@ -49,6 +59,7 @@ Cargo 是官方构建工具，使用`cargo new <name>`创建，构建项目使�
 + `cargo update`更新依赖，可以增加`-p`指定依赖
 + `cargo clean`清除编译产物
 + `cargo check`在开发过程中检查代码
++ `cargo install`安装可执行程序
 :::
 
 `Cargo.toml`使用 TOML (Tom's Obvious, Minimal Language) 格式，这是 Cargo 配置文件的格式。`[package]`是一个片段（section）标题，表明下面的语句用来配置一个包。`[dependencies]`是项目依赖片段的开始
@@ -66,13 +77,23 @@ edition = "2021"     # 声明使用的 Rust 大版本，2015 2018 2021
 可以在[这里](https://doc.rust-lang.org/cargo/reference/manifest.html)看到更多关于清单的描述
 :::
 
-## 工具链
+### rustfmt
 
-rustfmt
+rustfmt 是格式化工具，可以为项目添加一个`rustfmt.toml`进行配置
+
+```toml
+max_width = 100                   // 设置最大行宽为 100 个字符
+tab_spaces = 2                    // 设置缩进宽度为 2 个空格
+```
+
+然后执行`cargo fmt`进行格式化
 
 ## 参考资料
 
-+ [Rust 语言圣经](https://course.rs/about-book.html)
 + Rust 权威指南
++ [Rust 语言圣经](https://course.rs/about-book.html)
++ [LearnRustEasy](https://rustycab.github.io/LearnRustEasy/chapter_1.html)
 + [Easy Rust](https://dhghomon.github.io/easy_rust/)
 + 深入浅出 Rust
++ [Rust 生态社区指南](https://blessed.rs/crates)
++ [Comprehensive Rust - Google 发布的 Rust 教程](https://google.github.io/comprehensive-rust/)

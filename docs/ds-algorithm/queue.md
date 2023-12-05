@@ -8,6 +8,10 @@ article: false
 
 ## 数组实现
 
+::: code-tabs
+
+@tab C
+
 ```c
 #include "stdio.h"
 #include "stdlib.h"
@@ -111,6 +115,8 @@ Status deQueue(Queue *q, ElementType *e)
 }
 ```
 
+@tab JavaScript
+
 ```js
 class Queue {
   constructor () {
@@ -150,7 +156,13 @@ class Queue {
 }
 ```
 
+:::
+
 ## 链式实现
+
+::: code-tabs
+
+@tab C
 
 ```c
 #include "stdio.h"
@@ -243,9 +255,15 @@ Status deQueue(LinkedQueue q, DataType *data) {
 }
 ```
 
+:::
+
 ## 双端队列
 
 双端队列是一种允许从队头和队尾同时添加或移除元素的特殊队列
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class Deque {
@@ -308,6 +326,8 @@ class Deque {
 }
 ```
 
+:::
+
 ## 循环队列
 
 当队列的长度是固定的时候，会出现队尾追队头的现象，因为只能在有限的空间上进行入队操作
@@ -315,6 +335,10 @@ class Deque {
 ## 优先级队列
 
 普通队列的元素都会被插入到队尾，优先级队列的元素再插入的同时会考虑该元素的优先级来决定它的位置
+
+::: code-tabs
+
+@tab JavaScript
 
 ```js
 class Element {
@@ -377,6 +401,8 @@ class PriorityQueue {
   }
 }
 ```
+
+:::
 
 ## 阻塞队列
 

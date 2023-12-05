@@ -1,5 +1,5 @@
 ---
-title: 多线程
+title: 多任务处理
 category: 编程语言
 tag: [Java]
 article: false
@@ -15,8 +15,12 @@ article: false
 
 ## 同步
 
+<!-- todo -->
+
 ## 安全
 
 多线程并发操作同一数据时, 就有可能出现线程安全问题，使用同步技术可以解决这种问题, 把操作数据的代码进行同步, 不要多个线程一起操作
 
 Vector 是线程安全的,ArrayList是线程不安全的，StringBuffer是线程安全的,StringBuilder是线程不安全的，Hashtable是线程安全的,HashMap是线程不安全的
+
+<!-- todo -->

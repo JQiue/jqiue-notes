@@ -12,7 +12,7 @@ Throwable 是所有错误或异常的超类，分为 Error 和 Exception，Excep
 
 如果没有手动处理异常，JVM 就会抛出异常信息，同时停止运行
 
-## try...catch
+## try catch
 
 通常如果程序发生了错误，就会立即停止运行，并在控制台打印错误信息，但是使用`try...catch`结构，可以捕获程序错误，而不是导致程序立即死掉
 
@@ -67,7 +67,7 @@ let referenceError = new ReferenceError(message);
 
 这些内建的错误的`name`就是构造器的名字
 
-### Throw 和 Throws
+## Throw 和 Throws
 
 `throw`是一个语句抛出异常，`throws`是一个方法抛出异常
 
@@ -167,6 +167,4 @@ try {
 
 + `try catch`用于处理运行时造成的错误
 
-<!-- to be updated -->
-
-<!-- to be update -->
+<!-- todo -->

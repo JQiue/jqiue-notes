@@ -31,7 +31,7 @@ Electron 是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的�
 
 安装 Electron 依赖
 
-::: danger
+::: caution
 一定要先给`.npmrc`添加`electron_mirror="https://npm.taobao.org/mirrors/electron/"`
 :::
 

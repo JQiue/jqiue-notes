@@ -482,7 +482,7 @@ console.log(user?.address?.street) // undefined
 
 这样的写法简洁明了，且就算`user`不存在，也没有关系，但是从逻辑上来讲，`user`对象是肯定存在的，所以不要过度的使用可选链，应改为`user.address?.street`
 
-::: danger
+::: caution
 `?.`前面的变量必须是已声明的，否则会触发一个错误
 :::
 

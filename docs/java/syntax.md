@@ -257,3 +257,38 @@ void setName(String... names){}
 ::: tip
 当返回类型设置为`void`时，`return`可以省略
 :::
+
+### Lambda
+
+Lambda 表达式使用最小可能语法编写的函数定义
+
+```java
+(parameters) -> expression
+(parameters) -> { statements; }
+```
+
+函数式接口
+
+```java
+interface MyInterface {
+  void doSomething();
+}
+
+MyInterface myInterface = () -> {
+  System.out.println("Do something");
+};
+
+myInterface.doSomething();
+```
+
+在集合中使用，使用`::`运算符可以传递一个方法的引用
+
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+// 使用 Lambda 表达式对集合中的每个元素进行平方操作
+numbers.stream().map(n -> n * n).forEach(System.out::println);
+// 使用 Lambda 表达式过滤出集合中的偶数
+numbers.stream().filter(n -> n % 2 == 0).forEach(System.out::println);
+```
+
+<!-- todo -->

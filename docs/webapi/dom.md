@@ -99,7 +99,7 @@ DOM 集合还是实时的，反映了 DOM 的当前状态，对 DOM 进行节点
 + 下一兄弟节点在`elem.nextSibling`属性中，而上一个节点在`elem.previousSibling`属性中
 + `elem.parentNode`可以访问父节点
 
-::: danger
+::: caution
 由于子节点可能包含文本节点，做相关操作时要注意是否为元素节点
 :::
 
@@ -496,14 +496,14 @@ DOM 还提供了一个通用的方法`elem.insertAdjacentHTML(where, htmlstring)
 
 因为历史原因还存在一些老式的文档修改方法，它们非常不灵活，需要确定父节点
 
-方法|描述
----|---
-parent.appendChlid(node)|插入一个子节点到末尾
-parent.insertBefore(node)|在节点前插入一个节点
-parent.cloneChlid()|克隆一个节点
-parent.removeChild()|移除子节点
-parent.replaceChild()|替换子节点
-parent.hasChildNodes()|检查是否有子节点
+| 方法                      | 描述                 |
+| ------------------------- | -------------------- |
+| parent.appendChlid(node)  | 插入一个子节点到末尾 |
+| parent.insertBefore(node) | 在节点前插入一个节点 |
+| parent.cloneChlid()       | 克隆一个节点         |
+| parent.removeChild()      | 移除子节点           |
+| parent.replaceChild()     | 替换子节点           |
+| parent.hasChildNodes()    | 检查是否有子节点     |
 
 `document.write()`可以为 HTML 文档添加一些内容，接受一个字符串，并能够解析字符串中的标签，但它是一个非常古老的方法，一旦调用就会立即写入页面。它只会在页面加载时工作，所以如果进行延迟调用，它会擦除现有的所有文档内容，由于不涉及 DOM 修改，运行非常快
 
@@ -522,12 +522,12 @@ parent.hasChildNodes()|检查是否有子节点
 
 总结先写在前面：
 
-HTML attribute| DOM property
----|---
-大小写不敏感|大小写敏感
-值是字符串或`null`|是任意合法的 JavaScript 类型
-不存在则返回`null`|不存在则返回`undefined`
-更新`value`，属性也会更新|更新`value`，特性也会更新（除了`input.value`）
+| HTML attribute            | DOM property                                   |
+| ------------------------- | ---------------------------------------------- |
+| 大小写不敏感              | 大小写敏感                                     |
+| 值是字符串或`null`        | 是任意合法的 JavaScript 类型                   |
+| 不存在则返回`null`        | 不存在则返回`undefined`                        |
+| 更新`value`，属性也会更新 | 更新`value`，特性也会更新（除了`input.value`） |
 
 ```html
 <body id="standard" custom="no standard">
@@ -586,7 +586,7 @@ HTML 特性是对大小写不敏感的，所以这种也是可行的。但是自
 </body>
 ```
 
-::: danger
+::: caution
 有一个例外，它是`input.value`，只能从特性同步到属性，反之不行
 :::
 
@@ -813,7 +813,7 @@ setTimeout(() => {
 }, 0);
 ```
 
-::: danger 重要
+::: caution 重要
 必须在 DOM 完全渲染好后，才能通过 JavaScript 滚动页面，否则无法工作
 :::
 

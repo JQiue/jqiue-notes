@@ -5,7 +5,7 @@ tag: [JavaScript]
 article: false
 ---
 
-::: danger 涉及到的概念
+::: caution 涉及到的概念
 异步编程、基于回调、error-first-callback、回调地狱
 :::
 
@@ -296,7 +296,7 @@ Promise 是用来控制异步操作的对象，它能够把异步操作的最终
 2. 已完成（fulfilled）：意味着成功
 3. 已拒绝（rejected）：意味着失败
 
-::: danger
+::: caution
 状态只能由 pending 转到 fulfilled 或 rejected，不能逆向转换，同时 fulfilled 和 rejected 不能相互转换
 :::
 

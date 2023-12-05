@@ -54,29 +54,6 @@ fn main() {
 }
 ```
 
-### Range
-
-可以使用`..`快速的创建一个 Range 类型，它拥有迭代器的全部功能
-
-```rust
-let v1 = 1..3;
-for item in v1 {
-  println!("{item}")
-}
-```
-
-两个小数点只是一个语法糖，它相当于
-
-```rust
-use std::ops::Range;
-fn main() {
-  let r = Range {start: 1, end: 10}; // r 是一个Range<i32>
-  for i in r {
-    print!("{:?}\t", i);
-  }
-}
-```
-
 ### 遍历
 
 ```rust
@@ -143,7 +120,7 @@ let s1 = String::new();
 // 调用 `to_string`
 let s2 = "".to_string();
 // 使用 from 基于字面量创建
-let s3 = String::from/*  */();
+let s3 = String::from("");
 ```
 
 `String`的内容可以变化，因为它在堆上申请了一块内存空间，有权对这块空间扩容
@@ -180,9 +157,33 @@ for c in s1.bytes() {
 }
 ```
 
+## Range
+
+Range 不是及存储元素，只是描述一个范围，并且不能够随机遍历。可以使用`..`快速的创建一个 Range 类型，它拥有迭代器的全部功能
+
+```rust
+let v1 = 1..3;
+for item in v1 {
+  println!("{item}")
+}
+```
+
+两个小数点只是一个语法糖，它相当于：
+
+```rust
+use std::ops::Range;
+
+fn main() {
+  let r = Range {start: 1, end: 10}; // r 是一个Range<i32>
+  for i in r {
+    print!("{:?}\t", i);
+  }
+}
+```
+
 ## Vec
 
-`Vec<T>`也就是所谓的动态数组，动态数组允许在单个数据结构中存储多个相同类型的值
+`Vec<T>`也就是所谓的动态数组，允许扩容和删除元素
 
 ```rust
 let v1: Vec<i32> = Vec::new();
@@ -212,6 +213,8 @@ for item in v {
   println!("{}", item)
 }
 ```
+
+### 存储不同类型的元素
 
 如果想要存储不同类型的元素，可以使用枚举来实现
 
@@ -248,6 +251,8 @@ let deque = VecDeque::from([1, 2, 3]);
 
 `LinkedList<T>`是 Rust 提供的双向链表
 
+<!-- todo -->
+
 ## HashMap
 
 ```rust
@@ -261,3 +266,5 @@ colors.get("red");
 ## HashSet
 
 `HashSet<T>`是 Rust 提供的集合，元素永远不会包含同一个值的副本
+
+<!-- todo -->

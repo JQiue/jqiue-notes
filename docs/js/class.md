@@ -208,7 +208,7 @@ console.log(Person.name); // 'foo'
 console.log(p.name); // undefined
 ```
 
-::: danger
+::: caution
 声明一个静态属性是一个非常新的特性，可能会有兼容性问题，最好只用来声明静态方法
 :::
 

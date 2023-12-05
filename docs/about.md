@@ -34,7 +34,7 @@ const Person = {
     NodeJS: 'Beginner',
     React: 'Beginner',
     Vue: 'Beginner',
-    'MySQL/MariaDB': 'Beginner',
+    'SQLite/MySQL/MariaDB': 'Beginner',
     MongoDB: 'Beginner',
     Linux: 'Beginner',
     Git: 'Beginner', 
@@ -105,7 +105,7 @@ const Person = {
   + Docker
   + [正则表达式](/sundry/regex/)
 
-> 全站预估为 351777 字，可花 1172 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
+> 全站预估为 363312 字，可花 1211 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 

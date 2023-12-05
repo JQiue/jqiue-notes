@@ -8,7 +8,7 @@ article: false
 抽象类中，抽象方法本质上是定义接口规范，如果一个类没有字段，所有的方法都是抽象方法，那么就可以将该抽象类改写为接口，用`interface`声明
 
 ```java
-interface Person{
+interface Person {
   void show();
 }
 ```
@@ -74,7 +74,7 @@ interface Foo {
 
 目的是为了当新增一个方法时，会涉及到修改所有的实现类，如果是`default`方法，就无需覆写
 
-::: danger
+::: caution
 接口中的`default`方法不能访问字段，而抽象类的方法是可以访问字段的
 :::
 

@@ -1,5 +1,5 @@
 ---
-title: 类与对象
+title: 类
 category: 编程语言
 tag: [Java]
 article: false
@@ -278,7 +278,7 @@ class Person {
 }
 ```
 
-::: danger
+::: caution
 子类不会继承父类的构造方法
 :::
 
