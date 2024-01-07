@@ -174,68 +174,6 @@ Unsafe Rust 是 Safe Rust 的超集，编译器依然会进行安全检查，但
 + 访问或修改可变的静态变量
 + 实现不安全的 trait
 
-## Workspace
-
-工作空间用于将代码拆分多个代码包，`Cargo.toml`有所不同，以`workspace`区域开始，同时指定二进制包的位置来添加成员
-
-```toml
-[workspace]
-members=[
-  "main"
-]
-```
-
-此时整个目录如下：
-
-```
-├── Cargo.toml
-├── main
-│ ├── Cargo.toml
-│ └── src
-│     └── main.rs
-└── target
-```
-
-`cargo build`会将所有成员的产物放在根目录的`target`中
-
-添加一个库包`cargo new add-one --lib`，此时目录如下：
-
-```
-├── Cargo.toml
-├── add-one
-│ ├── Cargo.toml
-│ └── src
-│    └── lib.rs
-└── main
-  ├── Cargo.toml
-  └── src
-     └── main.rs
-```
-
-cargo 不会自动引入依赖，所以需要主动引入包之间的依赖关系
-
-```toml
-[package]
-name = "main"
-version = "0.1.0"
-edition = "2021"
-
-[workspace]
-members=[
-  "main",
-  "add-one"
-]
-
-[dependencies]
-add-one = { path = "../add-one" }
-```
-
-为了在根目录运行二进制包，需要使用`cargo run -p main`来指定
-
-整个工作空间只会在根目录下有`Cargo.lock`文件，即使在每个包中添加相同的依赖包，Cargo 也不会重复下载，保证相同的包都是一个版本，节约了磁盘空间，确保了包之间彼此兼容
-
-除此之外，还有不包含的`[package]`的工作目录，被称为虚拟清单（virtual manifest）。对于没有主`package`的场景希望将所有的`package`组织在一起时非常适合
-
 ## 基准测试
 
 在 Rust 中，有两种方式可以实现：

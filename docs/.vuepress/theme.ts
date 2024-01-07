@@ -17,6 +17,11 @@ export default hopeTheme({
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
   docsDir: 'docs',
   docsBranch: 'master',
+  navbarLayout: {
+    start: ['Brand'],
+    center: ['Links'],
+    end: ['Language', 'Repo', 'Outlook', 'MeiliSearch'],
+  },
   pageInfo: [
     'Author',
     'Original',

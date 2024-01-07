@@ -932,7 +932,7 @@ button.addEventListener('click', event => {
 
 当鼠标从元素身上移动时就会触发对应的移动事件，移动到某个元素上时就会触发`mouseover`，而离开某个元素时就会触发`mouseout`
 
-这些事件都有一个特殊的`relatedTarget`属性，这是对`target`的补充。当从一个元素是上离开到另一个元素时，其中一个元素就是`target`，另一个就变成了`relatedTarget`，对于`mouseover`和`mouseout`来说，`target`和`relatedTarget`是互相相反的
+这些事件都有一个特殊的`relatedTarget`属性，这是对`target`的补充。当从一个元素是上离开到另一个元素时，其中一个元素就是`target`，另一个就变成了`relatedTarget`，对于`mouseover`和`mouseout`来说，`target`和`relatedTarget`是相反的
 
 ::: tip
 `relatedTarget`的取值是可能为`null`的，不一定总是页面上的某个元素的引用，鼠标如果来自窗口外，或者离开了窗口，就会产生这种现象，因此对于`relatedTarget`要记住这个特性，以免发生错误

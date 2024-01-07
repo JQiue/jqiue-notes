@@ -6,11 +6,11 @@ excerpt: "Rust 简介"
 article: false
 ---
 
-Rust 由 Mozila 一位工程师创造，他对这个语言的期望是：安全，性能，特性广泛，以内存安全为第一原则，注重并发安全，持续提升性能，现代化语言特性，拥抱开源社区。Rust 是通用型语言，适用所有领域绝大数场景，但本质是弥补 C 的内存安全问题，因为世界上百分之 70 的安全漏洞都是非法访问内存引起。Rust 将会为各领域的基础设施做出贡献，但也有可能会出现杀手级应用
+Rust 由 Mozila 一位工程师创造，他对这个语言的期望是：安全，性能，特性广泛，以内存安全为第一原则，注重并发安全，持续提升性能，现代化语言特性，拥抱开源社区。Rust 是通用型语言，适用所有领域绝大数场景，但本质是弥补 C 的内存安全问题，因为百分之 70 的安全漏洞都是非法访问内存引起。Rust 将会为各领域的基础设施做出贡献，但也有可能会出现杀手级应用
 
 ## 安装 && 编译 && 运行
 
-一般不单独安装 Rust 的编译器，而是使用 rustup 安装 Rust 相关的一整套工具链：编译器，标准库，cargo 等
+一般不单独安装 Rust 的编译器，而是使用 rustup 安装 Rust 相关的一整套工具链：编译器，标准库，Cargo 等
 
 ::: tip
 可以为 rustup 添加国内源，详见[清华镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/rustup/)
@@ -22,7 +22,7 @@ RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 
 :::
 
-在 Windows 安装 Rust 需要有预备环境[Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)，保持最小安装的组件为：MSVC C++ Build，Windows SDK
+在 Windows 安装 Rust 需要有预备环境[Microsoft C++ 生成工具](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)，保持最小安装的组件为：MSVC C++ Build 和 Windows SDK
 
 编写一个代码，使用`rustc main.rs`进行编译生成可执行程序，最后执行生成的可执行程序
 
@@ -32,11 +32,9 @@ fn main() {
 }
 ```
 
-## 工具链
+## Cargo
 
-### cargo
-
-Cargo 是官方构建工具，使用`cargo new <name>`创建，构建项目使用`cargo build`，构建结果在`target`下，优化构建则加上`--release`参数，`cargo run`或直接`run`会编译并运行可执行文件
+Cargo 是官方构建工具，用来管理 Rust 项目，使用`cargo new <name>`创建项目，构建项目使用`cargo build`，构建结果在`target`下，`cargo run`或直接`run`会编译并运行可执行文件
 
 ::: tip 为 Cargo 添加国内源
 
@@ -53,14 +51,13 @@ Cargo 是官方构建工具，使用`cargo new <name>`创建，构建项目使�
     └── main.rs
 ```
 
-::: tip Cargo 常用命令
+Cargo 常用命令
 
-+ `cargo add <crates>`可以添加依赖项到`Cargo.toml`
++ `cargo add <crates>`添加依赖项到`Cargo.toml`
 + `cargo update`更新依赖，可以增加`-p`指定依赖
 + `cargo clean`清除编译产物
 + `cargo check`在开发过程中检查代码
 + `cargo install`安装可执行程序
-:::
 
 `Cargo.toml`使用 TOML (Tom's Obvious, Minimal Language) 格式，这是 Cargo 配置文件的格式。`[package]`是一个片段（section）标题，表明下面的语句用来配置一个包。`[dependencies]`是项目依赖片段的开始
 
@@ -77,7 +74,7 @@ edition = "2021"     # 声明使用的 Rust 大版本，2015 2018 2021
 可以在[这里](https://doc.rust-lang.org/cargo/reference/manifest.html)看到更多关于清单的描述
 :::
 
-### rustfmt
+## rustfmt
 
 rustfmt 是格式化工具，可以为项目添加一个`rustfmt.toml`进行配置
 
@@ -87,6 +84,68 @@ tab_spaces = 2                    // 设置缩进宽度为 2 个空格
 ```
 
 然后执行`cargo fmt`进行格式化
+
+## Workspace
+
+工作空间用于将代码拆分多个代码包，`Cargo.toml`有所不同，以`workspace`区域开始，同时指定二进制包的位置来添加成员
+
+```toml
+[workspace]
+members=[
+  "main"
+]
+```
+
+此时整个目录如下：
+
+```
+├── Cargo.toml
+├── main
+│ ├── Cargo.toml
+│ └── src
+│     └── main.rs
+└── target
+```
+
+`cargo build`会将所有成员的产物放在根目录的`target`中
+
+添加一个库包`cargo new add-one --lib`，此时目录如下：
+
+```
+├── Cargo.toml
+├── add-one
+│ ├── Cargo.toml
+│ └── src
+│    └── lib.rs
+└── main
+  ├── Cargo.toml
+  └── src
+     └── main.rs
+```
+
+Cargo 不会自动引入依赖，所以需要主动引入包之间的依赖关系
+
+```toml
+[package]
+name = "main"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members=[
+  "main",
+  "add-one"
+]
+
+[dependencies]
+add-one = { path = "../add-one" }
+```
+
+为了在根目录运行二进制包，需要使用`cargo run -p main`来指定
+
+整个工作空间只会在根目录下有`Cargo.lock`文件，即使在每个包中添加相同的依赖包，Cargo 也不会重复下载，保证相同的包都是一个版本，节约了磁盘空间，确保了包之间彼此兼容
+
+除此之外，还有不包含的`[package]`的工作目录，被称为**虚拟清单**（virtual manifest）。对于没有主`package`的场景且希望将所有的`package`组织在一起时非常适合
 
 ## 参考资料
 

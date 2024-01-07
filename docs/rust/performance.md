@@ -5,11 +5,21 @@ tag: [Rust]
 article: false
 ---
 
-## 构建
+## 测量
 
-+ 使用`--release`标识构建
+如果想要测量执行时间
 
-并在 Cargo.toml 中加入以下项：
+```rust
+use std::time::Instant;
+
+let start = Instant::now();
+func_to_test();
+let duration = start.elapsed();
+```
+
+## 构建优化
+
+使用`--release`标识构建，并在 Cargo.toml 中加入以下项：
 
 ```toml
 [profile.release]

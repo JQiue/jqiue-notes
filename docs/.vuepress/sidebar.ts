@@ -177,5 +177,6 @@ export const zh = sidebar({
     'harmonica',
     'silkworm',
     'ai-products',
+    'meilisearch',
   ],
 });

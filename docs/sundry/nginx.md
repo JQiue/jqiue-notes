@@ -90,7 +90,7 @@ server {
   server_name one.com;
   location / {
     root /dist;
-    index index.html, index.htm
+    index index.html;
   }
 }
 
@@ -99,7 +99,7 @@ server {
   server_name two.com;
   location / {
     root /dist;
-    index index.html, index.htm
+  index index.html;
   }
 }
 ```
@@ -112,7 +112,7 @@ server {
   server_name 192.168.2.0;
   location / {
     root /dist;
-    index index.html, index.htm
+  index index.html;
   }
 }
 
@@ -121,7 +121,7 @@ server {
   server_name 192.168.2.1;
   location / {
     root /dist;
-    index index.html, index.htm
+  index index.html;
   }
 }
 ```
@@ -135,7 +135,7 @@ server
   server_name one.com;
   location / {
     root /dist;
-    index index.html, index.htm
+    index index.html;
   }
 }
 server
@@ -144,7 +144,7 @@ server
   server_name one.com;
   location / {
     root /dist;
-    index index.html, index.htm
+    index index.html;
   }
 }
 ```

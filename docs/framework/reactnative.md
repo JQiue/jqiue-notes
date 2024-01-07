@@ -6,13 +6,16 @@ article: false
 ---
 
 ::: tip
-基于 ReactNative v0.72
+基于 ReactNative v0.73
 :::
+
+通过编写 JavaScript、HTML 和 CSS 的方式进行应用开发的方案大多使用 WebView 进行界面渲染，虽然可行，但是会导致性能损耗，同时无法达到原生平台的流畅性。相反 React Native 则将代码解析成真正原生的 UI 组件，接近原生平台，再不牺牲灵活性的前提下保持高性能
 
 ## 搭建环境
 
-+ 安装 Android Studio
-+ 安装 Android SDK
++ 安装 JDK 17
++ 安装 [Android Studio](https://developer.android.com/studio?hl=zh-cn)
++ 安装 Android <SDK></SDK>
 
 ## 创建项目
 
@@ -47,7 +50,18 @@ export default () => {
 };
 ```
 
+一定要使用`yarn`作为包管理器
+
 ## 核心组件
+
+在 React Native 中，所有的元素都将被平台特定的 React 组件所替换
+
+| Web    | React Native |
+| ------ | ------------ |
+| div    | View         |
+| span   | Text         |
+| ul, li | ListView     |
+| img    | Image        |
 
 由于平台差异，RN 提供了很多核心组件，需要从`react-native`模块引入
 
@@ -60,24 +74,34 @@ import { Button } from "react-native";
 
 ## 样式
 
+React 和宿主平台之间的“桥接”包含了一个缩减版 CSS 子集的实现，这个 CSS 子集主要通过 flexbox 进行布局，做到了尽量简单化，而不是去实现所有的 CSS 规则
+
+React 团队提倡使用内联样式
+
+```jsx
+const style = {
+  color: 'red';
+}
+
+export default () => <Text style={style}>text</Text>
+```
+
 需要从`react-native`模块引入
 
 ```jsx
 import {View, Text, StyleSheet} from 'react-native';
 
-export default () => {
-  return (
-    <View>
-      <Text style={styles.txt1} >Header</Text>
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   txt1: {
     color: 'red'
   }
-})
+});
+
+export default () => {
+  return (
+    <Text style={styles.  }>Header</Text>
+  )
+};
 ```
 
 ## 事件处理

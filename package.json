@@ -21,15 +21,16 @@
   },
   "devDependencies": {
     "vuepress": "2.0.0-rc.0",
-    "vuepress-theme-hope": "2.0.0-rc.2"
+    "vuepress-theme-hope": "2.0.0-rc.4"
   },
   "dependencies": {
-    "@algolia/client-search": "4.15.0",
     "@vuepress/client": "2.0.0-rc.0",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.0",
+    "@vuepress/utils": "2.0.0-rc.0",
     "@waline/client": "2.15.8",
     "echarts": "^5.4.3",
     "katex": "^0.16.9",
-    "vue": "^3.3.10"
+    "keyword-mark": "^1.0.6",
+    "meilisearch": "^0.36.0",
+    "vue": "^3.3.11"
   }
 }

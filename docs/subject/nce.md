@@ -136,7 +136,14 @@ Thank you, sir.
 ```
 
 + 掌握 Whose 开头的特殊疑问句
++ 掌握 this/that 代词
 + 掌握名词所有格形式表示所属
++ 掌握副词 Perhaps/Maybe
+  记住必备词汇
+
+::: tip
+Whose is this shirt? 和 Whose shirt is this? 都可以，只不过是省略了 shirt 而已
+:::
 
 ### Lesson 13 A new dress
 
@@ -155,6 +162,11 @@ It's the same colour.
 It's green, too.  
 That is a lovely hat!
 ```
+
++ 掌握形容词的用法
++ 掌握副词：too
++ 掌握颜色词汇
++ 掌握更多名词
 
 ### Lesson 15 Your passport, please
 
@@ -182,8 +194,20 @@ Yes, they are.
 
 That's fine.  
 Thank you very much.
-
 ```
+
++ 掌握可数名词单数和复数形式，以及复数变化形式
++ 开始理解 a/an 修饰可数名词单数形式
++ 掌握 be 动词 are 用于复数
++ 掌握 this/that 的 these/those 复数形式
++ 掌握更多名词
+
+::: tip 可数名词变复数的发音规则
+
++ 词尾是清辅音发/s/
++ 词尾是浊辅音发/z/
++ 以 s 结尾的发/iz/
+:::
 
 ### Lesson 17 How do you do
 
@@ -210,6 +234,11 @@ This is Jim.
 He's our office assistant.
 ```
 
++ 复数名次用 are
++ 掌握工作相关的名词
++ 以 f/fe 结尾的名词变复数，去掉再加 es
++ 掌握一些不规则变化的复数形式
+
 ### Lesson 19 Tired and thirsty
 
 ```
@@ -231,6 +260,13 @@ These ice creams are nice.
 Are you all right now?  
 Yes, we are, thank you!
 ```
+
++ 掌握 There be 句型
++ 掌握更多名词和形容词
+
+::: tip 就近原则
+距离最近的名词决定 be 是 are 还是 is
+:::
 
 ### Lesson 21 Which book
 

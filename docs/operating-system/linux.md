@@ -3,7 +3,7 @@ title: Linux
 article: false
 ---
 
-Linux 是一种免费开源的类 Unix 操作系统，使用了UNIX设计哲学，支持多任务多用户，性能稳定可靠，没有统一的桌面环境，常见的有 GNOME、KDE、XFCE 等，与 Unix 兼容性好。在服务器上 Linux 使用率极高，也支持在个人电脑和嵌入式设备上使用。提供虚拟化能力强,在云计算场景中广泛应用。安全性好，病毒几乎没有针对性，适合网络服务器
+Linux 是一种免费开源的类 Unix 操作系统，使用了 UNIX 设计哲学，支持多任务多用户，性能稳定可靠，没有统一的桌面环境，常见的有 GNOME、KDE、XFCE 等，与 Unix 兼容性好。在服务器上 Linux 使用率极高，也支持在个人电脑和嵌入式设备上使用。提供虚拟化能力强,在云计算场景中广泛应用。安全性好，病毒几乎没有针对性，适合网络服务器
 
 ## 发行版
 
@@ -24,7 +24,24 @@ Linux 发行版是指基于 Linux 内核开发的完整操作系统。它们会�
 
 Ubuntu 安装较为简单，前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像，通过 bios 启动 U盘，直接开始安装
 
-Ubuntu 的软件源配置文件是`/etc/apt/sources.list`，首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份原来的源，然后`vim /etc/apt/sources.list`将内容全部替换为 TUNA 的源
+Ubuntu 的软件包格式是`.deb`，只要是`.deb`包就意味着它可以被安装到 Ubuntu 上。`dpkg`是基于 Debian 的最低级包管理器，不会处理一些依赖关系
+
+```sh
+sudo dpkg -i <package.deb>
+```
+
+`apt`是 Ubuntu 自带的包管理器，会自动处理依赖关系
+
+apt 命令：
+
++ `apt install` - 安装包，使用相对路径会安装当前目录的 deb 包，否则会尝试从软件源仓库中检索并安装软件包
++ `apt update` - 更新软件包索引
++ `apt upgrade` - 升级所有当前已安装的软件包
++ `apt remove` - 删除一个或多个软件包
++ `apt purge` - 全删除软件包并清除其配置文件
++ `apt search` - 搜索软件包仓库中的可用软件
+
+软件源配置文件是`/etc/apt/sources.list`，首先`cp /etc/apt/sources.list /etc/apt/sources.list.old`备份原来的源，然后`vim /etc/apt/sources.list`将内容全部替换为 TUNA 的源
 
 ```
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
@@ -42,17 +59,7 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-security main restricted 
 # deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ jammy-proposed main restricted universe multiverse
 ```
 
-Ubuntu 的软件包格式是`.deb`，只要是`.deb`包就意味着它可以被安装到 Ubuntu 上
-
-通常需要先使用`wget`或`curl`工具下载软件包到本地，然后就可以使用`dpkg`程序进行安装：
-
-```sh
-sudo dpkg -i <package.deb>
-```
-
-但是`dpkg`是基于 Debian 的最低级包管理器，可能无法处理一些依赖关系
-
-通常可以使用`sudo apt install -f`来处理依赖问题，`apt`是 Ubuntu 自带的包管理器，比`dpkg`要更加强大，使用`sudo apt install ./<package.deb>`可以安装本地 deb 软件包，使用相对路径会安装当前目录的 deb 包，否则会尝试从软件源仓库中检索并安装软件包，不过通常使用另一种包管理工具`aptitude`来替代：
+不过通常使用另一种包管理工具`aptitude`来替代：
 
 ```
 aptitude update             更新可用的包列表
@@ -106,7 +113,7 @@ vim /etc/pacman.d/mirrorlist
 
 推荐源：
 
-```text
+```
 Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch # 中国科学技术大学开源镜像站
 Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch # 清华大学开源软件镜像站
 Server = https://repo.huaweicloud.com/archlinux/$repo/os/$arch # 华为开源镜像站
@@ -180,8 +187,8 @@ Windows 存在盘符的概念，而 Linux 则不存在，只有一个根目录�
 + 黑色表示文件
 + 白色表示一般文件
 + 青色表示链接
-+ 红色压缩文件或者包文件
-+ 绿色文件表示可执行文件
++ 红色表示压缩文件或者包文件
++ 绿色表示表示可执行文件
 
 根目录解释：
 
@@ -229,7 +236,7 @@ shell 是运行在终端上的文本互动程序，bash 是最常用的一种 sh
 + `echo Hello, $LOGNAME!`：输出一个字符串，并用环境变量`$LOGNAME`替换`Hello, $LOGNAME`中的对应文本
 + `echo 'echo Hello, $LOGNAME!' >> <file>`：将`echo Hello, $LOGNAME!`添加到文件
 + `cp -v <file> <new_file>`：复制一个文件到另一个文件，`-v`参数会给这个命令显示更详细的输入
-+ `tail -n 5 <file>`：从文件中精确打印最后 5 行
++ `tail -n 5 <file>`：从文件中打印最后 5 行
 + `history -w`：将所有输入过的命令历史写入到`.bash_history`文件
 + `shutdown -r now`：立即重启，`now`表示时间
 + `shutdown -h now`：立即关机，`now`表示时间
@@ -440,6 +447,41 @@ root@VM-4-14-ubuntu:~# ps x
 + `fuser -n tcp 80`：查看 80 端口被哪个程序占用
 
 ## 系统启动
+
+如果 Linux 发行版支持 systemd，那么从启动时开始，它每秒钟都会从系统的所有进程和应用程序中收集日志。所有这些日志事件都由 systemd 的 journald 守护程序管理。journald 收集所有的日志（信息、警告、错误等），并将其作为二进制数据存储在磁盘文件中，日志以二进制形式存储在路径 /var/log/journal
+
+由于日志保留在磁盘中，而且每秒钟都在收集，所以它占用了巨大的磁盘空间，`journalctl --disk-usage`查看占用空间
+
+可以手动删除日志
+
+```sh
+sudo journalctl --flush --rotate
+# 删除所有存档的日志文件，直到最后一秒
+sudo journalctl --vacuum-time=1s
+
+# 这将清除所有存档的日志文件，并保留最后 400MB 的文件。记住这个开关只适用于存档的日志文件，不适用于活动的日志文件
+sudo journalctl --vacuum-size=400M
+
+# 清除所有低于指定数量的日志文件，只有最后两个日志文件被保留
+sudo journalctl --vacuum-files=2
+```
+
+虽然上述方法很好，也很容易使用，但建议使用 journald 配置文件来控制日志文件的清理过程，该文件存在于 /etc/systemd/journald.conf
+
+| journald.conf   参数 | 描述                                                                           | 实例                    |
+| -------------------- | ------------------------------------------------------------------------------ | ----------------------- |
+| SystemMaxUse         | 指定日志在持久性存储中可使用的最大磁盘空间                                     | SystemMaxUse=500M       |
+| SystemKeepFree       | 指定在将日志条目添加到持久性存储时，日志应留出的空间量                         | SystemKeepFree=100M     |
+| SystemMaxFileSize    | 控制单个日志文件在被轮换之前在持久性存储中可以增长到多大。                     | SystemMaxFileSize=100M  |
+| RuntimeMaxUse        | 指定在易失性存储中可以使用的最大磁盘空间（在 /run 文件系统内）                 | RuntimeMaxUse=100M      |
+| RuntimeKeepFree      | 指定将数据写入易失性存储（在 /run 文件系统内）时为其他用途预留的空间数量       | RuntimeMaxUse=100M      |
+| RuntimeMaxFileSize   | 指定单个日志文件在被轮换之前在易失性存储（在 /run 文件系统内）所能占用的空间量 | RuntimeMaxFileSize=200M |
+
+最后重启 journald
+
+```sh
+sudo systemctl restart systemd-journald
+```
 
 ## 性能信息
 

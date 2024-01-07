@@ -12,25 +12,43 @@ article: false
 
 时间复杂度：O(n^2^)
 
-```c
-void swap(int *list, a, b){
+::: code-tabs
 
+@tab C
+
+```c
+void swap(int *list, int a, int b){
+  int temp = list[a];
+  list[a] = list[b];
+  list[b] = temp;
 }
 
-void bubble(int *list, int size){
-  for (int i = 0; i < size; i++)
-  {
+void bubble(int *list, int size) {
+  for (int i = 0; i < size; i++) {
     for (int j = 0; j < size - i - 1; j++) {
-      if (list[j] > list[j + 1]){
-        int temp;
-        temp = list[j + 1];
-        list[j + 1] = list[j];
-        list[j] = temp;
+      if (list[j] > list[j + 1]) {
+        swap(list, j, j + 1);
       }
     }
   }
 }
 ```
+
+@tab Rust
+
+```rust
+fn bubble(list: &mut Vec<i32>) {
+  for i in 0..list.len() {
+    for j in 0..list.len() - i - 1 {
+      if list[j] > list[j + 1] {
+        list.swap(j, j + 1);
+      }
+    }
+  }
+}
+```
+
+:::
 
 ## 选择排序
 
@@ -38,13 +56,15 @@ void bubble(int *list, int size){
 
 时间复杂度：O(n^2^)
 
+::: code-tabs
+
+@tab C
+
 ```c
-void select(int *list, int size){
-  for (int i = 0; i < size; i++)
-  {
+void select(int *list, int size) {
+  for (int i = 0; i < size; i++) {
     int minIndex = i;
-    for (int j = i + 1; j < size; j++)
-    {
+    for (int j = i + 1; j < size; j++) {
       if(list[j] < list[minIndex]) {
         minIndex = j;
       }
@@ -57,11 +77,33 @@ void select(int *list, int size){
 }
 ```
 
+@tab Rust
+
+```rust
+pub fn select(list: &mut Vec<i32>) {
+  for i in 0..list.len() {
+    let mut min_idx = i;
+    for j in (i + 1)..list.len() {
+      if list[j] < list[min_idx] {
+        min_idx = j;
+      }
+    }
+    list.swap(i, min_idx);
+  }
+}
+```
+
+:::
+
 ## 插入排序
 
 每次都会排好一个元素，如果第一个元素已经排好序，它会和第二个元素进行比较，第二个元素将会决定待在原位置还是插入到第一个元素之前，这样两个元素已经排好序，接着和第三个元素比较，以此类推
 
 时间复杂度：O(n^2^)
+
+::: code-tabs
+
+@tab C
 
 ```c
 void insert(int *list, int size) {
@@ -80,6 +122,10 @@ void insert(int *list, int size) {
 }
 ```
 
+::: code-tabs
+
+@tab JavaScript
+
 ```js
 function insert(array) {
   let temp;
@@ -95,6 +141,28 @@ function insert(array) {
   return array;
 }
 ```
+
+::: code-tabs
+
+@tab Rust
+
+```rust
+pub fn insertion<T: Ord + Copy>(arr: &mut [T]) {
+  for i in 1..arr.len() {
+    let mut j = i;
+    let cur = arr[i];
+
+    while j > 0 && cur < arr[j - 1] {
+      arr[j] = arr[j - 1];
+      j -= 1;
+    }
+
+    arr[j] = cur;
+  }
+}
+```
+
+:::
 
 ## 归并排序
 

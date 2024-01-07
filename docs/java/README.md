@@ -39,6 +39,13 @@ article: false
 | 2020/3 | 14        |
 | 2020/9 | 15        |
 
+Java 有不同的发行商版本
+
+| 发行版   | 厂商          |
+| -------- | ------------- |
+| Zulu     | Azul          |
+| Liberica | Bell Software |
+
 ## 环境搭建
 
 推荐 [Liberica](https://bell-sw.com/pages/downloads/#/java-11-lts) 实现，无脑下一步就完事了，这个实现是自动配置环境变量的，无需再找一些七七八八的教程配置

@@ -148,39 +148,47 @@ CREATE TABLE student (
 );
 ```
 
-### SELECT
-
-`*`查出所有字段
+`*`查出所有列
 
 ```sql
-SELECT * FROM table_name; 
+SELECT * FROM student; 
 ```
 
 查询指定列
 
 ```sql
-SELECT column1, column2, ... FROM table_name; 
+SELECT stu_name, stu_age, ... FROM student; 
 ```
 
 使用`as`将查询出来的字段指定别名，可以省略不写
 
 ```sql
-SELECT column1 AS alias1, column2 AS alias2, ... FROM table_name; 
-SELECT column1 alias1, column2 alias2, ... FROM table_name; 
+SELECT stu_name AS name, stu_age AS age, ... FROM student; 
+SELECT stu_name name, stu_age age, ... FROM student; 
 ```
 
-使用`DISTINCT`可指定列的查询出来的数据不是重复的
+### 字段控制
+
+使用`DISTINCT`能够对查询的列进行去重
 
 ```sql
-SELECT DISTINCT column1 FROM table_name
+SELECT DISTINCT stu_name FROM student;
 ```
 
-如果查询的列是数字类型就可以返回计算后的结果
+如果查询的列是数字类型可以返回计算后的结果
 
 ```sql
-SELECT age + 10 from table_name
+-- 列的结果可以做运算得到形成新的列
+SELECT age + 10 from student
 -- 和其他列进行计算
 SELECT math + english from table_name
+SELECT stu_age, stu_score, stu_score + stu_age FROM student;
+```
+
+通过`IFNULL()`函数处理为列为空的值，如果为空，则会被视为第二个参数
+
+```sql
+SELECT stu_age, stu_score, IFNULL(stu_score, 0) + IFNULL(stu_age, 0) FROM student;
 ```
 
 ### 条件查询
@@ -207,7 +215,7 @@ SELECT * FROM table_name where column = value;
 | IS NULL          | 为空         | SELECT \* FROM student WHERE stu_age IS NULL                | 查询 stu_age 为 NULL 的学生                 |
 | AND              | 与           | SELECT \* FROM student WHERE id = 10001 AND stu_name = 'zs' | 查询 id 为 10001 且 stu_name 为 'zs' 的数据 |
 | OR               | 或           | SELECT \* FROM student WHERE id = 10001 OR stu_name = 'zs'  | 查询 id 为 10001 或 stu_name 为 'zs' 的数据 |
-| NOT              | 非           | SELECT 、* FROM student WHERE stu_gender IS NOT NULL        | 查询 stu_gender 不为 NULL 的数据            |
+| NOT              | 非           | SELECT \* FROM student WHERE stu_gender IS NOT NULL         | 查询 stu_gender 不为 NULL 的数据            |
 
 ### 模糊查询
 
@@ -229,17 +237,6 @@ SELECT * FROM student WHERE stu_name LIKE 'z%';
 SELECT * FROM student WHERE stu_name LIKE '_u%';
 -- 查询包含 s 的字符
 SELECT * FROM student WHERE stu_name LIKE '%s%';
-```
-
-### 字段控制
-
-```sql
--- DISTINCT 能够对查询的列进行去重
-SELECT DISTINCT stu_name FROM student;
--- 列的结果可以做运算得到形成新的列
-SELECT stu_age, stu_score, stu_score + stu_age FROM student;
--- 通过 IFNULL() 函数处理为列为空的值，如果为空，则会被视为第二个参数
-SELECT stu_age, stu_score, IFNULL(stu_score, 0) + IFNULL(stu_age, 0) FROM student;
 ```
 
 ### 排序
@@ -293,10 +290,15 @@ SELECT * FROM student limit 2, 6;
 
 ### 联合查询
 
-联合查询可以将多个表的结果集结果合并在一起，不会产生额外列，列数和列类型必须相同
+联合查询可以将多个表的结果集结果合并在一起，但不会产生额外列，列数和列类型必须相同
 
-+ `SELECT * FROM 表1 UNION SELECT * FROM 表2` - 去重
-+ `SELECT * FROM 表1 UNION ALL SELECT * FROM 表2` - 选取所有值
+```sql
+
+-- 去重
+`SELECT * FROM 表1 UNION SELECT * FROM 表2`
+-- 选取所有值
+`SELECT * FROM 表1 UNION ALL SELECT * FROM 表2`
+```
 
 ### 连接查询
 

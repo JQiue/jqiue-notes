@@ -343,27 +343,19 @@ NPX 是自带的包命令执行工具，常用来执行可执行命令，使用`
 
 Yarn 主要用来处理 npm 刚开始的缺点，后来 npm 开始逐渐吸取 yarn 的特性，已经并驾齐驱，它们两个互相切换非常容易
 
-+ `yarn init` = `npm init`
-+ `yarn` = `npm install`
-+ `yarn global add <package>` = `npm install <package> -g`
-+ `yarn add <package> --dev` = `npm install <package> --save --dev`
-+ `yarn remove <package>` = `npm uninstall <package> --save --dev`
-+ `yarn run <script>` = `npm run <script>`
 + `yarn dlx` = `npx`
 
 但 yarn 和 npm 都没有解决磁盘占用空间问题，[pnpm](https://www.pnpm.cn/) 做的更好，它的处理方式非常妙，大大节省了硬盘空间
 
-```sh
-npm install -g pnpm
-```
-
 与 npm 的等价命令
 
-| npm 命令        | pnpm 等价命令    |
-| --------------- | ---------------- |
-| npm install     | pnpm install     |
-| npm i `<pkg>`   | pnpm add `<pkg>` |
-| npm run `<cmd>` | pnpm `<cmd>`     |
+| npm             | yarn        | pnpm             |
+| --------------- | ----------- | ---------------- |
+| npm init        | yarn init   | pnpm init        |
+| npm install     | yarn        | pnpm install     |
+| npm i `<pkg>`   | yarn add    | pnpm add `<pkg>` |
+| npm run `<cmd>` | yarn run    | pnpm `<cmd>`     |
+| npm uninstall   | yarn remove | pnpm remove      |
 
 ## 推荐全局安装的包
 
