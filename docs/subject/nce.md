@@ -1109,7 +1109,6 @@ Hey!
 What's matter?  
 This case doesn't belong to me!  
 You've given me the wrong case!
-
 ```
 
 ### Lesson 99 Ow

@@ -103,3 +103,27 @@ fn main() {
   mobiles = serde_json::from_str(&mobiles_json_str).unwrap();
 }
 ```
+
+## rust-embed
+
+rust-embed 用于在发布期间在编译时将文件加载到 Rust 二进制文件中，并在开发期间从 fs 加载文件
+
+```rust
+#[derive(RustEmbed)]
+#[folder = "examples/public/"]
+#[prefix = "prefix/"]
+struct Asset;
+
+fn main() {
+  let index_html = Asset::get("prefix/index.html").unwrap();
+  println!("{:?}", std::str::from_utf8(index_html.data.as_ref()));
+
+  for file in Asset::iter() {
+    println!("{}", file.as_ref());
+  }
+}
+```
+
+## lettre
+
+lettre 是一个功能强大的邮件库

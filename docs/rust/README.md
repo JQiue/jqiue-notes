@@ -156,3 +156,6 @@ add-one = { path = "../add-one" }
 + 深入浅出 Rust
 + [Rust 生态社区指南](https://blessed.rs/crates)
 + [Comprehensive Rust - Google 发布的 Rust 教程](https://google.github.io/comprehensive-rust/)
++ [Rust Language Cheat Sheet](https://cheats.rs/)
++ [Rust 生态系统的非官方指南](https://blessed.rs/crates)
++ [Rust 库和程序的索引](https://lib.rs/)

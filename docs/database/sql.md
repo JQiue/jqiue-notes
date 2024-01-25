@@ -265,6 +265,7 @@ SELECT * FROM student ORDER BY stu_score DESC, stu_age ASC;
 SELECT * FROM student GROUP BY stu_gender;
 -- GROUP_CONCAT() 用于将每个组的列值拼接成一个集合，MAX() 和 SUM() 会分别对每个组的值进行统计
 SELECT GROUP_CONCAT(stu_name), MAX(stu_age), SUM(stu_score) FROM student GROUP BY stu_gender;
+-- 分组后使用 HAVING 筛选
 SELECT stu_gender, GROUP_CONCAT(stu_score) FROM student WHERE stu_score >= 60 GROUP BY stu_gender HAVING SUM(stu_score) > 190;
 ```
 
@@ -274,13 +275,13 @@ SELECT stu_gender, GROUP_CONCAT(stu_score) FROM student WHERE stu_score >= 60 GR
 
 ### limit
 
-`limit`可以限制查询记录的条数，常用于分页
+`LIMIT`可以限制查询记录的条数，常用于分页
 
 ```sql
 -- 只查询三条
-SELECT * FROM student limit 3;
+SELECT * FROM student LIMIT 3;
 -- 从第 2 条开始，只显示 6 条
-SELECT * FROM student limit 2, 6;
+SELECT * FROM student LIMIT 2, 6;
 ```
 
 ### SELECT 的书写和执行顺序
@@ -290,7 +291,7 @@ SELECT * FROM student limit 2, 6;
 
 ### 联合查询
 
-联合查询可以将多个表的结果集结果合并在一起，但不会产生额外列，列数和列类型必须相同
+联合查询可以将多个表的结果集合并在一起，但不会产生额外列，列数和列类型必须相同
 
 ```sql
 
@@ -302,7 +303,7 @@ SELECT * FROM student limit 2, 6;
 
 ### 连接查询
 
-`SELECT`可以同时查询多个表，这时结果会是一个笛卡尔积，会产生额外列
+`SELECT`可以同时查询多个表，结果会是一个笛卡尔积，会产生额外列
 
 ::: tip 笛卡尔积
 两个集合 X 和 Y 的笛卡尔积，表示为 X × Y ，第一个对象是 X 的成员而第二个对象是 Y 的所有可能有序对的其中一个成员
@@ -323,11 +324,11 @@ SELECT * FROM student RIGHT JOIN class ON student.class_id = class.id
 SELECT * FROM student JOIN class ON student.class_id = class.id
 ```
 
-得出结论，当连接查询时，当连接 on 条件是非唯一字段时，会出现笛卡尔积(局部笛卡尔积)。当连接 on 条件是唯一字段时，则不会出现笛卡尔积
+得出结论，连接查询时，当 on 条件是非唯一字段时，会出现笛卡尔积（局部笛卡尔积）。当 on 条件是唯一字段时，则不会出现笛卡尔积
 
 ### 子查询
 
-一个`SELECT`语句中包含另一个完整的`SELECT`语句，或更多。即把一个表的结果当作新表查询
+一个`SELECT`语句中包含另一个完整的`SELECT`语句，或更多，即把一个表的结果集当作新表查询
 
 ```sql
 SELECT * FROM (SELECT * FROM 表1)
@@ -340,6 +341,7 @@ SELECT * FROM (SELECT * FROM 表1)
 设置/查看事务提交方式：
 
 ```sql
+-- MySQL
 --  为 1 时自动提交，为 0 时手动提交，为全局设置
 SELECT @@autocommit;
 SET @@autocommit=0;
@@ -348,6 +350,7 @@ SET @@autocommit=0;
 指定部分语句事务：
 
 ```sql
+--- MySQL
 start transaction;
 
 -- 提交事务
@@ -358,6 +361,13 @@ ROLLBACK;
 
 -- 开始自动提交
 BEGIN;
+
+--- SQLite
+BEGIN;
+
+COMMIT;
+
+ROLLBACK;
 ```
 
 ## MySQL
@@ -520,6 +530,8 @@ CREATE TABLE db_test.t_student (
 
 MySQL 有一些内置函数共给使用
 
+聚合函数只会产生单个值，这些值可以为更复杂的查询创造条件，比如子查询
+
 ```sql
 -- COUNT() 统计列不为空的记录数
 SELECT COUNT(*) FROM student;
@@ -534,8 +546,6 @@ SELECT MAX(stu_score) FROM student;
 -- MAX() 返回列的最小值
 SELECT MIN(stu_score) FROM student;
 ```
-
-聚合函数会产生单个值，这些值可以为更复杂的查询创造条件，比如子查询
 
 + `sqrt()` - 求平方根
 + `rand()` - 生成随机数
@@ -737,14 +747,13 @@ MariaDB 是 MySQL 更好的替代品，是另一种 MySQL 实现
 
 ## SQLite
 
-SQlite 是本次存储的解决方案，不像 MySQL 一样是一个 C/S 架构，它们不是竞争关系，而是一种嵌入式数据库
+SQlite 是本地存储的解决方案，不像 MySQL 一样是一个 C/S 架构，它们不是竞争关系，而是一种嵌入式数据库
 
 + 一致性的文件格式
 + 在嵌入式和移动设备上使用
 + 内部数据库
 + 数据分析
 + 零配置
-+ 没有独立的服务器
 + 单一的磁盘文件
 + 平台无关
 + 弱类型
@@ -752,6 +761,17 @@ SQlite 是本次存储的解决方案，不像 MySQL 一样是一个 C/S 架构�
 SQLite 大部分操作与其他关系型数据库基本相同，只有部分不同
 
 数据类型：NULL，INTEGER，REAL（浮点），TEXT，BLOB
+
+### PRAGMA
+
+PRAGMA 语句是特定于 SQLite 的 SQL 扩展，用于修改或查询 SQLite 库的内部数据
+
+| list         | value                                            |
+| ------------ | ------------------------------------------------ |
+| page_size    | bytes                                            |
+| cache_size   | pages,-kibibytes                                 |
+| synchronous  | 0 or OFF, 1 or NORMAL, 2 or FULL, 3 or EXTRA     |
+| journal_mode | DELETE , TRUNCATE , PERSIST , MEMORY , WAL , OFF |
 
 ## 最佳实践
 

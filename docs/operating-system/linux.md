@@ -562,15 +562,10 @@ chmod -R o-w dirname
 
 在系统上安装`cifs-utils`包
 
-创建一个目录作为挂载点
-
 ```sh
+# 创建一个目录作为挂载点
 mkdir /mnt/win_share
-```
-
-开始挂载共享目录
-
-```sh
+# 开始挂载共享目录
 sudo mount -t cifs -o username=<win_share_user>,password=<password> //WIN_SHARE_IP/<share_name> /mnt/win_share
 ```
 
@@ -651,4 +646,19 @@ export https_proxy=$http_proxy
 # 不需要时输入命令 unsetproxy
 alias setproxy="export http_proxy=socks5://127.0.0.1:1024; export https_proxy=$http_proxy; echo 'HTTP Proxy on';"
 alias unsetproxy="unset http_proxy; unset https_proxy; echo 'HTTP Proxy off';
+```
+
+## 定时任务
+
+使用 cronie
+
+```sh
+# 编辑
+crontab -e
+```
+
+文本中添加定时任务
+
+```text
+0 23 * * * rtcwake -v -s 32400 -m mem
 ```

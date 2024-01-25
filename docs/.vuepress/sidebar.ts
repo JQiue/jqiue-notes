@@ -84,6 +84,7 @@ export const zh = sidebar({
     'standard',
     'libraries',
     'performance',
+    'practice',
   ],
   '/ds-algorithm/': [
     '',
