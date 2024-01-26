@@ -20,7 +20,7 @@ export default hopeTheme({
   navbarLayout: {
     start: ['Brand'],
     center: ['Links'],
-    end: ['Language', 'Repo', 'Outlook', 'Search', 'MeiliSearch'],
+    end: ['Language', 'Repo', 'Outlook', 'MeiliSearch'],
   },
   pageInfo: [
     'Author',

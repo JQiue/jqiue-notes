@@ -12,11 +12,11 @@ cd ./dist
 git init
 git add -A
 git commit -m 'deploy'
-
-git remote add origin git@github.com:JQiue/jqiue.github.io.git
+git checkout -b deploy
 
 # 如果发布到 https://<USERNAME>.github.io
-git push -f origin main
+git push -f git@github.com:JQiue/jqiue-notes.git deploy
+git push -f git@gitee.com:JQiue/jqiue-notes.git deploy
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
