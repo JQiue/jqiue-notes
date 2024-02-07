@@ -11,9 +11,11 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v4
       - name: Install dependency
-        run: yarn install
+        run: |
+          npm i pnpm -g
+          pnpm i
       - name: Build
-        run: yarn run build
+        run: pnpm run build
       - name: Set name and email
         run: |
           git config --global user.name github-actions[bot]
