@@ -11,7 +11,10 @@ jobs:
         with:
           node-version: 20
       - name: Check out Git repository
-        uses: actions/checkout@v4
+        uses:
+          actions/checkout@v4
+          # with:
+          #   token: {{ secrets.ACCESS_TOKN }}
       - name: Install dependency
         run: |
           npm i pnpm -g
@@ -22,8 +25,9 @@ jobs:
         run: |
           cd ./dist
           git init
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global url.https://${{ secrets.GITHUB_TOKEN }}@github.com/.insteadOf https://github.com/
           git add -A
           git commit -m 'deploy'
           git checkout -b deploy
