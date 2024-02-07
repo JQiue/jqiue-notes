@@ -5,6 +5,95 @@ tag: [Rust]
 article: false
 ---
 
+## 基准测试
+
+在 Rust 中，有两种方式可以实现：
+
++ 官方提供的`benchmark`
++ 社区实现，例如`criterion.rs`
+
+官方提供的测试工具只能在非 stable 下使用，首先切换 Rust 版本
+
+1. 安装`nightly`，`rustup install nightly`
+2. 切换到`ngihtly`，`rustup override set nightly`
+
+然后在代码中编写`benchmark`代码
+
+```rust
+#![feature(test)]
+
+extern crate test;
+
+fn sum(mut count: i32) {
+  let mut num = 0;
+  while count > 0 {
+    num += count;
+    count -= 1;
+  }
+  println!("{num}");
+}
+
+#[bench]
+fn bench_test(b: &mut Bencher) {
+  b.iter(|| sum(10000));
+}
+```
+
+标有`#[bench]`的函数，`iter`接收没有参数的闭包用于使基准测试重复运行。在进行测试后会显示以 ns 为单位的执行每次迭代花费的时间
+
+标准版的`benchmark`最有名的是`criterion.rs`，有以下特点：
+
++ 统计分析，跟上一次的结果进行对比
++ 图表
+
+首先在`Cargo.toml`添加以下内容：
+
+```toml
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "fibonacci"
+harness = false
+```
+
+其中`[[bench]]`中的`name`和`benches/`目录下的文件名匹配，`harness`表示不使用内置的基准测试工具，随后就可以在`benches/fibonacci.rs`中编写测试代码了
+
+```rust
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
+
+pub fn slow_fibonacci(nth: usize) -> u64 {
+  if nth <= 1 {
+    return nth as u64;
+  } else {
+    return slow_fibonacci(nth - 1) + slow_fibonacci(nth - 2);
+  }
+}
+
+pub fn fast_fibonacci(nth: usize) -> u64 {
+  let mut a = 0;
+  let mut b = 1;
+  let mut c = 0;
+  for _ in 1..nth {
+    c = a + b;
+    a = b;
+    b = c;
+  }
+  c
+}
+
+fn fibonacci_benchmark(c: &mut Criterion) {
+  c.bench_function("fib 20", |b: &mut criterion::Bencher| {
+    b.iter(|| slow_fibonacci(black_box(20)))
+  });
+}
+
+criterion_group!(benches, fibonacci_benchmark);
+criterion_main!(benches);
+```
+
+`bench_function`函数是用于在给定的名称的闭包中运行基准代码，随后就可以使用`cargo bench`运行了
+
 ## 测量
 
 如果想要测量执行时间

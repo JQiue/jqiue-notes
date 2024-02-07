@@ -127,3 +127,53 @@ fn main() {
 ## lettre
 
 lettre 是一个功能强大的邮件库
+
+## reqwest
+
+比较知名的 HTTP 请求库
+
+最简单的 GET 请求
+
+```rust
+let body = reqwest::get("https://www.rust-lang.org")
+    .await?
+    .text()
+    .await?;
+```
+
+发送 POST 请求
+
+```rust
+use reqwest::Client;
+
+let client = Client::new();
+
+let res = client.post("http://httpbin.org/post")
+  .body("the exact body that is sent")
+  .send()
+  .await?;
+```
+
+发送 JSON 必须开启`json`features
+
+```rust
+let mut map = HashMap::new();
+map.insert("username", "admin");
+map.insert("password", "admin");
+let data = client
+  .post(url + "/user/login")
+  .json(&map)
+  .send()
+  .await?
+  .text()
+  .await?;
+```
+
+到目前为止，都是基于异步的请求，reqwest 提供了堵塞的请求客户端，必须开启`blocking`features
+
+```rust
+use reqwest::blocking;
+
+let data = blocking::get(format!("{url}/ping"))?.text()?;
+println!("{data}");
+```

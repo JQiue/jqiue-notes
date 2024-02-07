@@ -1,12 +1,5 @@
 <template>
   <div class="honeycomb">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
   </div>
 </template>
 

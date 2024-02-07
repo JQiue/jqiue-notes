@@ -120,7 +120,7 @@ async fn uri(uri: Uri) -> String {
 }
 ```
 
-### response Image'
+### response Image
 
 ```toml
 [dependencies]
@@ -239,6 +239,27 @@ async fn get_json() -> extract::Json<Value> {
 async fn put_json(extract::Json(data): extract::Json<Value>) -> String {
   format!("put JSON data: {data}")
 }
+```
+
+## 构建多个二进制文件
+
+`src/main.rs`是一个入口点，Rust 允许多个入口点构建不同的二进制文件
+
+```toml
+[[bin]]
+# src/bin/one.rs or src/bin/one/main.rs
+name = "one"
+[[bin]]
+# src/bin/two.rs or src/bin/two/main.rs
+name = "two"
+```
+
+当不遵循约定时需要指定路径
+
+```toml
+[[bin]]
+name = "app"
+path = "src/app.rs"
 ```
 
 ## 参考资料

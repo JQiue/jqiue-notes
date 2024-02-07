@@ -288,7 +288,7 @@ timeout
 这个包会从远程的 NPM 官方仓库中下载，由于官方仓库可能较慢，推荐使用以下命令更换淘宝镜像源
 
 ```sh
-npm config set registry https://registry.npm.taobao.org
+npm config set registry https://registry.npmmirror.com
 ```
 
 :::

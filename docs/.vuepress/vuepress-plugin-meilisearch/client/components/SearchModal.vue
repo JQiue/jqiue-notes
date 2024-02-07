@@ -1,34 +1,59 @@
 <template>
-  <div class="modal" v-if="modalVisible" @keyup.down="() => currentIndex++" @mouseleave="handleMouseLeave">
-    <Honeycomb v-if="isLoading"></Honeycomb>
+  <div class="modal" ref="modalEl" v-if="modalVisible" @keyup.down="() => currentIndex++" @mouseleave="handleMouseLeave">
+    <div v-if="hits.length == 0" class="empty">
+      <svg width="40" height="40" viewBox="0 0 20 20" fill="none" fill-rule="evenodd" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2">
+        </path>
+      </svg>
+      <p>无法找到相关结果 “<strong>{{ query }}</strong>”</p>
+    </div>
     <div v-else style="flex: 1; display: flex; flex-direction: column;  align-items: center;">
-      <div :class="{ result: true, active: index == currentIndex }" v-for="(hit, index) in hits" :key="index"
+      <div :class="{ result: true, active: index == currentIndex }" v-for="(hit, index) in hits" :key="hit.objectID"
         @mouseenter="handleMouseEnter(hit, index)" @click="handleClick(hit)">
-        <span v-html="markKeyword(hit.hierarchy_lvl1)"></span>|
-        <a :href="hit.url" v-html="markKeyword(hit.hierarchy_lvl2 ?? hit.hierarchy_lvl1)"> </a>
+        <span>
+          <span v-html="markKeyword(hit.hierarchy_lvl1)"></span>
+          |
+          <a v-html="markKeyword(hit.hierarchy_lvl2 ?? hit.hierarchy_lvl1)" :href="hit.url"> </a>
+        </span>
         <p class="content" v-html="markKeyword(hit.content)"></p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="flex items-center">
+        <kbd class="shortcut-key">↑</kbd>
+        <kbd class="shortcut-key">↓</kbd>
+        <span class="text">定位</span>
+        <kbd class="shortcut-key">↩</kbd>
+        <span class="text">选择</span>
+      </div>
+      <div>
+        <div class="flex items-center">
+          <kbd class="shortcut-key">ESC</kbd>
+          <span class="text">关闭</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Honeycomb from './Honeycomb.vue';
-import keywordMark from 'keyword-mark';
-import { MeiliSearch } from 'meilisearch'
 import { ref, watch } from 'vue';
+import { MeiliSearch } from 'meilisearch'
+import keywordMark from 'keyword-mark';
 import { currentIndex, modalVisible, query, isLoading, hits, canHide } from '../global';
+import { pluginOptions } from '../define';
 
 const client = new MeiliSearch({
-  host: 'https://search.jinqiu.wang',
-  apiKey: '@QQ.wjq21',
+  host: pluginOptions.HOST,
+  apiKey: pluginOptions.API_KEY,
 })
 
-let index = ref('jinqiu-wang');
+const index = ref(pluginOptions.INDEX);
+const modalEl = ref<HTMLDivElement>();
 
 const handleChange = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  const result = await client.index(index.value).search(query.value);
+  const result = await client.index(index.value).search(query.value, { limit: 5 });
   isLoading.value = false;
   hits.value = result.hits;
 }
@@ -43,15 +68,10 @@ const handleMouseLeave = () => {
 }
 
 const handleClick = (hit) => {
-  const url = hit.url;
-  location.href = url;
+  location.href = hit.url;
 }
 
-watch(query, () => {
-  handleChange();
-})
-
-function markKeyword(content: string) {
+const markKeyword = (content: string) => {
   return keywordMark(content, query.value, {
     tag: 'strong',
     ignoreCase: true,
@@ -60,6 +80,10 @@ function markKeyword(content: string) {
     // }
   })
 }
+
+watch(query, () => {
+  handleChange();
+})
 </script>
 
 <style scoped lang="scss">
@@ -85,27 +109,68 @@ $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2),
   top: 100%;
   right: 0;
   width: 556px;
-  height: 356px;
-  padding: 10px 10px;
+  padding: 5px 5px;
   background-color: #E4EBF5;
   z-index: 999;
   border-radius: 0.25rem;
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .result {
-  text-align: center;
-  width: 516px;
-}
-
-.active {
-  opacity: 0.8;
-  background-color: green;
-}
-
-.content {
-  font-size: 0.8rem;
-  width: 516px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   overflow: hidden;
+
+  .content {
+    text-align: center;
+    font-size: 0.8rem;
+    width: 516px;
+  }
+}
+
+.active,
+.active>a {
+  opacity: 0.8;
+  border-radius: 4px;
+  background-color: green;
+  color: #fff;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+
+  p {
+    padding: 2rem 0;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.shortcut-key {
+  margin-left: .5rem;
+  font-size: .725rem;
+}
+
+.text {
+  font-size: .725rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
 }
 
 @media screen and (max-width: 719px) {

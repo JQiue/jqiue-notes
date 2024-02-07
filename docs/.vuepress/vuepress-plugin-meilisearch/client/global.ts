@@ -12,8 +12,10 @@ export let hits = ref<Hits>([]);
 export const showModal = () => {
   modalVisible.value = true;
 };
+
 export const hideModal = () => {
   if (canHide.value) {
+    currentIndex.value = 0;
     modalVisible.value = false;
   }
 };
