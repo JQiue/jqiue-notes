@@ -30,4 +30,4 @@ jobs:
           git add -A
           git commit -m 'deploy'
           git checkout -b deploy
-          git push -f https://${{secrets.ACCESS_TOKN}}github.com/JQiue/jqiue-notes.git deploy
+          git push -f https://${{secrets.ACCESS_TOKN}}@github.com/JQiue/jqiue-notes.git deploy
