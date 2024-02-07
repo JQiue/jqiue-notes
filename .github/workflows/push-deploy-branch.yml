@@ -27,4 +27,4 @@ jobs:
           git add -A
           git commit -m 'deploy'
           git checkout -b deploy
-          git push -f origin deploy
+          git push -f https://github.com/JQiue/jqiue-notes.git deploy
