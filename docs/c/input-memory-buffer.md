@@ -4,6 +4,7 @@ category: 编程语言
 tag: [C]
 date: 2019-03-19
 article: false
+order: 10
 ---
 
 ## 缓冲区

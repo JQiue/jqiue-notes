@@ -262,6 +262,188 @@ name = "app"
 path = "src/app.rs"
 ```
 
+## 爬虫
+
++ 请求库 - reqwest
++ 解析库 - scraper
+
+```rust
+use scraper::{Html, Selector};
+
+fn main() {
+  let html = r#"
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Hello, World</title>
+    </head>
+    <body>
+      <h1 class="foor">Hello, <i>World</i></h1>
+    </body>
+    </html>
+"#;
+  let document = Html::parse_document(html);
+  let selector = Selector::parse("title").unwrap();
+  for element in document.select(&selector) {
+    println!("{:?}", element.text().collect::<Vec<_>>());
+  }
+}
+```
+
+## actix-web
+
+```toml
+[dependencies]
+
+actix-web = "4.5.1"
+```
+
+```rust
+use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+
+async fn index() -> impl Responder {
+  HttpResponse::Ok().body("Hey there!")
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+  let port = 3000;
+  println!("Server running at http://localhost:{port}");
+  HttpServer::new(|| {
+    App::new().route("/", web::get().to(index))
+  })
+  .bind(("localhost", port))?
+  .run()
+  .await
+}
+```
+
+### macro
+
+```rust
+#[get("/")]
+async fn index() -> impl Responder {
+  HttpResponse::Ok().body("Hello world!")
+}
+
+App::new().wrap(cors).service(index)
+```
+
+### multiple HTTP verbs
+
+```rust
+async fn index() -> impl Responder {
+  HttpResponse::Ok().body("Hello world!")
+}
+
+App::new().wrap(cors).service(
+  resource("/")
+    .route(web::get().to(index))   // GET /
+    .route(web::post().to(index)), // POST /
+)
+```
+
+### response HTML
+
+```rust
+async fn get_html() -> impl Responder {
+  HttpResponse::Ok()
+    .content_type(ContentType::html())
+    .body("<h1>Hello World</h1>")
+}
+```
+
+response HTML file
+
+```rust
+async fn get_html() -> impl Responder {
+  HttpResponse::Ok()
+    .content_type(ContentType::html())
+    .body(include_str!("./index.html"))
+}
+```
+
+### scope
+
+```rust
+async fn foo() -> impl Responder {
+  HttpResponse::Ok().body("foo")
+}
+
+async fn bar() -> impl Responder {
+  HttpResponse::Ok().body("bar")
+}
+
+App::new().wrap(cors).service(
+  web::scope("/v1/api")
+    .route("/foo", web::get().to(foo))
+    .route("/bar", web::get().to(bar)),
+)
+```
+
+### response StatusCode
+
+```rust
+async fn get_status_code() -> impl Responder {
+  HttpResponse::NotFound()
+}
+```
+
+response StatusCode and content
+
+```rust
+async fn get_status_code() -> impl Responder {
+  HttpResponse::NotFound().body("不见了")
+}
+```
+
+### response Image
+
+```rust
+async fn get_image() -> impl Responder {
+  let png = concat!(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB",
+    "CAYAAAAfFcSJAAAADUlEQVR42mPk+89Q",
+    "DwADvgGOSHzRgAAAAABJRU5ErkJggg=="
+  );
+  HttpResponse::Ok()
+    .content_type(ContentType::png())
+    .body(engine::general_purpose::STANDARD.decode(png).unwrap())
+}
+```
+
+### response JSON
+
+```rust
+
+
+async fn get_json() -> impl Responder {
+  HttpResponse::Ok().json(json!({"a":"b"}))
+}
+```
+
+## anyhow
+
+`anyhow`用于简化错误处理和提供更好的错误报告。这个库适合用于应用程序，而不是用于创建库，因为它提供了一个非结构化的，方便使用的错误类型
+
+Rust 的标准库提供了 Result 和 Option 类型用于错误处理，但它们通常需要指定错误类型。与此不同，anyhow::Result 允许更简单地创建和处理错误
+
+任何返回 Result 的函数都可以轻松地改为返回 anyhow::Result
+
+```rust
+fn do_something() -> Result<(), std::io::Error> {
+    //...
+    Ok(())
+}
+
+// 使用 anyhow::Result
+fn do_something_anyhow() -> anyhow::Result<()> {
+    //...
+    Ok(())
+}
+```
+
 ## 参考资料
 
 + <https://github.com/joelparkerhenderson/demo-rust-axum?tab=readme-ov-file>

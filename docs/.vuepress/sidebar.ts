@@ -2,24 +2,12 @@ import { sidebar } from 'vuepress-theme-hope';
 
 export const zh = sidebar({
   '/about': [''],
-  '/composition/': [''],
+  '/composition/': 'structure',
   '/operating-system/': ['', 'windows', 'linux'],
-  '/compiler/': [''],
+  '/compiler/': 'structure',
   '/network/': [''],
   '/ai/': ['', 'dl'],
-  '/c/': [
-    '',
-    'syntax',
-    'function',
-    'data-structure',
-    'struct-union',
-    'pointer',
-    'preprocessing',
-    'storage',
-    'malloc',
-    'standard',
-    'input-memory-buffer',
-  ],
+  '/c/': 'structure',
   '/java/': [
     '',
     'syntax',
@@ -61,7 +49,7 @@ export const zh = sidebar({
     'error',
     'multitasking',
     'standard',
-    'spider',
+    'practice',
   ],
   '/rust/': [
     '',

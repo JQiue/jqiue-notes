@@ -3,6 +3,7 @@ title: 基本语法
 category: 编程语言
 tag: [C]
 article: false
+order: 1
 ---
 
 这里是 C 的基本语法规则

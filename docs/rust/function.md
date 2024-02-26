@@ -30,13 +30,15 @@ fn six() -> i32 {
 }
 ```
 
+## 无返回值
+
 `()`可以用来表达一个函数没有返回值，当没有返回值或以`;`结尾的表达式
 
 ```rust
 // 隐式
 fn foo() {}
 // 显式
-fn bar() ->() {}
+fn bar() -> () {}
 ```
 
 ## main
@@ -77,5 +79,46 @@ fn main() {
   } else {
     100
   };
+}
+```
+
+## 函数指针
+
+将一个函数作为值进行传递是函数式编程的关键，Rust 允许通过引用将函数作为一等值传递的能力
+
+```rust
+fn hello() {}
+
+fn main() {
+  let hello_ref: fn() = hello;
+  // 打印函数指针
+  println!("{:p}", hello);
+  // 调用
+  hello_ref();
+}
+```
+
+### type
+
+函数作为参数时，为了提升代码可读性，可以使用 type 关键字为函数指针类型定义别名
+
+```rust
+type MathOp = fn(i32, i32) -> i32;
+
+fn math(op: MathOp, x: i32, y: i32) -> i32 {
+  op(x, y)
+}
+
+fn add(x: i32, y: i32) -> i32 {
+  x + y
+}
+
+fn subtract(x: i32, y: i32) -> i32 {
+  x - y
+}
+
+fn main() {
+  println!("add result: {}", math(add, 1, 1));
+  println!("subtract result: {}", math(subtract, 1, 1));
 }
 ```

@@ -143,6 +143,7 @@ Rust 里面为类型 impl 某些 trait 的时候，逻辑是非常机械化的�
 struct Foo {
   data : i32
 }
+
 fn main() {
   let v1 = Foo { data : 0 };
   let v2 = v1;
@@ -150,26 +151,51 @@ fn main() {
 }
 ```
 
-它的语法是，在你希望 impl trait 的类型前面写`#[derive（…）]`，括号里面是你希望 impl 的 trait 的名字。这样写了之后，编译器就帮你自动加上了 impl 块
+它的语法是，在你希望 impl trait 的类型前面写`#[derive()]`，括号里面是你希望 impl 的 trait 的名字。这样写了之后，编译器就帮你自动加上了 impl 块
 
 ## 实用 Trait
 
 ### Display 和 Debug
 
-Display 和 Debug 它们的主要用处就是用在类似 println！这样的地方。只有实现了 Display 的类型，才能用`{}`格式控制打印出来；只有实现了 Debug 的类型，才能用`{:?}``{:#?}`格式控制打印出来
+Display 和 Debug 它们的主要用处就是用在类似 println! 这样的地方。只有实现 Display 的类型，才能用`{}`格式控制打印出来
+
+只有实现了 Debug 的类型，才能用`{:?}``{:#?}`格式控制打印出来
 
 ### Drop
 
 当一个值的所有者离开时，Rust 会清除（drop）这个值。很大程度上，Rust 会自动处理清除值
 
-### Clone
+### Copy 和 Clone
 
-### Copy
+Clone trait 用于标记可以对值进行深复制的类型，即对栈上和堆上的数据一起复制。要实现 Clone，需要实现 clone 方法。如果要使用#[derive(Clone)]语法标记结构体或枚举，要求结构体的每个字段或枚举的每个值都可调用clone方法，意味着所有字段或值的类型都必须实现Clone
+
+Copy trait用于标记可以按位复制其值的类型，即复制栈上的数据。Copy继承自Clone，这意味着要实现Copy的类型，必须实现Clone的 clone 方法。如果想让一个类型实现 Copy，就必须同时实现 Clone，会比较烦琐且累赘，所以Rust提供了方便的 derive 属性来完成这项重复的工作
+
+Rust为 数字类型、字符类型、布尔类型、单元值等实现了Copy，但并非所有类型都可以实现Copy。对于结构体来说，必须所有字段都实现了 Copy，这个结构体才能实现 Copy
+
+Copy 是一个隐式行为。开发者不能重载Copy行为，它永远是简单的位复制。Copy的隐式行为常发生在执行变量绑定、函数参数传递、函数返回等场景中。与Copy不同的是，Clone是一个显式行为。任何类型都可以实现Clone，开发者可以按需实现clone方法
 
 ### Deref
 
 ### Default
 
+Default trait为类型提供有用的默认值，通常用于为结构体的字段提供默认值。如果结构体每个字段的类型都实现了Default，那么Default可以与derive属性一起使用，对每个字段的类型都使用默认值
+
 ### Borrow 和 BorrowMut
 
 ### From 和 Into
+
+### Eq 和 PartialEq
+
+Eq trait 和 PartialEq trait 来自数学中的等价关系和局部等价关系。两者都满足以下两个特性
+
++ 对称性（Symmetric），即 a == b 可推导出 b == a
++ 传递性（Transitive），即 a == b 且 b == c 可推导出 a == c
+
+Eq 相比 PartialEq 还需要满足反身性（Reflexive），即 a == a
+
+对于浮点数类型，两个非数字值NaN（Not-a-Number）是互不相等的，即 NaN != NaN，因此 Rust 只为其实现了 PartialEq。实现 Eq 不需要额外的代码，只需要在实现 PartialEq 的基础上，在类型上标记`#[derive(Eq)]`即可
+
+PartialEq 也可以与 derive 属性一起使用，用于比较一个类型的两个实例是否相等，并开启“==”和“!=”运算符功能。在结构体上标记`#[derive(PartialEq)]`，只有所有字段都相等，两个实例才相等，只要有任何字段不相等则两个实例不相等。在枚举上标记`#[derive(PartialEq)]`，当每一个成员都和其自身相等，且和其他成员都不相等时，两个实例才相等
+
+<!-- to be updated -->

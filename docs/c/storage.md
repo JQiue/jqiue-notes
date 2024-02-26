@@ -3,6 +3,7 @@ title: 存储类型
 category: 编程语言
 tag: [C]
 article: false
+order: 8
 ---
 
 C 中的变量和函数都有两种属性：数据类型和数据存储类型

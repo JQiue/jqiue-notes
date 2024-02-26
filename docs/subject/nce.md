@@ -234,7 +234,7 @@ This is Jim.
 He's our office assistant.
 ```
 
-+ 复数名次用 are
++ 复数名词用 are
 + 掌握工作相关的名词
 + 以 f/fe 结尾的名词变复数，去掉再加 es
 + 掌握一些不规则变化的复数形式
@@ -262,6 +262,7 @@ Yes, we are, thank you!
 ```
 
 + 掌握 There be 句型
++ 掌握以 Are 开头的一般疑问句，回答时要用复数
 + 掌握更多名词和形容词
 
 ::: tip 就近原则
@@ -281,6 +282,19 @@ Here you are.
 Thank you.
 ```
 
++ 掌握祈使句，以原型动词开头
++ 掌握 one 作为代词替代上文对象
++ 掌握人称代词的主语形式和宾语形式
+
+::: tip
+
+```
+把酱汁递给我.
+Pass me the sauce.
+```
+
+:::
+
 ### Lesson 23 Which glasses
 
 ```
@@ -294,6 +308,9 @@ Yes, please.
 Here you are.  
 Thanks.
 ```
+
++ 复数形式
++ 掌握 ones 作为代词复数替代上文对象
 
 ### Lesson 25 Mrs. Smith's kitchen
 
@@ -311,6 +328,9 @@ The bottle is empty.
 There is a cup on the table, too.  
 The cup is clean.  
 ```
+
++ 掌握介词表示空间位置
++ where's it?
 
 ### Lesson 27 Mrs. Smith's living room
 
@@ -330,6 +350,8 @@ There are some pictures in the room.
 The pictures are on the wall.  
 ```
 
++ 掌握介词表示空间位置
+
 ### Lesson 29 Come in, Amy
 
 ```
@@ -343,6 +365,11 @@ Then make the bed.
 Dust the dressing table.
 Then sweep the floor.
 ```
+
++ 固定搭配：make the bed
++ 情态动词 must 后必须跟动词原形
++ open 是物理层面的打开，打开电视用 turn on，而不是 open，关闭电视用 turn off
++ put on 表示穿上的意思，take of 表示拿开
 
 ### Lesson 31 Where's Sally
 
@@ -363,6 +390,13 @@ It's running across the grass.
 It's running after a cat.  
 ```
 
++ 掌握现在进行时，动词转换为 -ing 形式（现在分词）
++ 现在分词直接加 ing
++ 以 -e 结尾，去 e 加 ing
++ 辅音字母结尾，双写辅音字母再加 ing
++ 学习更多介词和动词用法
++ 掌握动词短语：running across
+
 ### Lesson 33 A fine day
 
 ```
@@ -377,6 +411,8 @@ The ship is going under the bridge.
 Tim is looking at an aeroplane.  
 The aeroplane is flying over the river.
 ```
+
++ 掌握更多介词和形容词的用法
 
 ### Lesson 35 Our village
 
@@ -400,6 +436,9 @@ Some children are coming out of the building.
 Some of them are going into the park.
 ```
 
++ 掌握 of 所有格的用法
++ 掌握更多介词和名词的用法
+
 ### Lesson 37 Making a bookcase
 
 ```
@@ -421,6 +460,10 @@ It's for my daughter, Susan.
 Pink's her favourite colour.
 ```
 
++ 掌握副词如何修饰动词
++ 掌握一般将来时的形式之一：be going to
++ 掌握主谓宾补：I'm going to paint it.
+
 ### Lesson 39 Don't drop it
 
 ```
@@ -437,6 +480,10 @@ It's a lovely vase.
 Those flowers are lovely, too.
 ```
 
++ 掌握祈使句否定形式
++ give/show/send/take sb sth 或 sth to sb。当是代词时只能这种形式：it/them to sb
++ 动词 + 副词这种短语，比如 turn on the TV。但是如果是代词就只能把代词放在中间：turn it on
+
 ### Lesson 41 Penny's bag
 
 ```
@@ -450,6 +497,9 @@ A quarter of pound of tea. And a tin of tobacco.
 Is that tin of tobacco for me?
 Well, it's certainly not for me!
 ```
+
++ 掌握如何量化不可数名词
++ some 用于肯定句以及期望肯定回答的疑问句，any 用于否定句或不能确定以及期望否定回答的疑问句
 
 ### Lesson 43 Hurry up
 
@@ -472,6 +522,10 @@ Yes. Here they are.
 Hurry up, Sam!
 The kettle's boiling!
 ```
+
++ Are there any + 可数名词复数，回答 There are some + 可数名词复数
++ Is there any + 不可数名词，回答 There is some + 不可数名词
++ a loaf of bread 和 two loaves of bread
 
 ### Lesson 45 The boss's letter
 
@@ -513,6 +567,8 @@ Do you want one?
 Yes, please.
 ```
 
++ 掌握助动词 do 进行提问，以及回答
+
 ### Lesson 49 At the butcher's
 
 ```
@@ -532,6 +588,10 @@ No, thank you.
 My husband likes steak, but he doesn't like chicken.  
 To tell you the truth, Mrs. Bird, I don't like chicken either!
 ```
+
++ 掌握选择疑问句的用法以及回答，可以有无限的选择，3 项选择以及 2 项选择
++ 掌握一般现在时的单数第三人称形式
++ too 用于肯定和疑问句，either 用于否定句
 
 ### Lesson 51 A pleasant climate
 
@@ -554,6 +614,10 @@ It's often cold in December, January and February.
 It snows sometimes.
 ```
 
++ 掌握 what...like? 句式
++ 掌握频度副词
++ 掌握月份名词
+
 ### Lesson 53 An interesting climate
 
 ```
@@ -574,6 +638,9 @@ Our climate is not very good, but it's certainly interesting.
 It's our favourite subject of conversation.
 ```
 
++ 掌握方位名词
++ 掌握国家名词
+
 ### Lesson 55 The Sawyer family
 
 ```
@@ -586,6 +653,9 @@ Mr. Sawyer comes home from work. He arrives home late.
 At night, the children always do their homework. Then they go to bed.
 Mr. Sawyer usually reads his newspaper, but sometimes he and his wife watch television.
 ```
+
++ go to work/school/bed
++ stay at home 是名词，stay home 是副词，意思一样
 
 ### Lesson 57 An unusual day
 
@@ -637,6 +707,9 @@ That's all, thank you.
 What else do you want?  
 I want my change.  
 ```
+
++ 掌握 what else...? 表示“还有什么...吗?”
++ 掌握 have 完全动词表示“拥有“，只能用于一般时态，不能是进行时态
 
 ### Lesson 61 A bad cold
 

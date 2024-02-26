@@ -3,6 +3,7 @@ title: 标准功能
 category: 编程语言
 tag: [C]
 article: false
+order: 9
 ---
 
 这里是 C 中提供的一些标准功能

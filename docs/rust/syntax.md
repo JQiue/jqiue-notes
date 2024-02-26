@@ -49,11 +49,7 @@ let mut foo = 5;
 foo = 6;
 ```
 
-`const`用来声明常量，常量不光默认不能变，它总是不能变，并且必须注明值的类型，常量只能被设置为常量表达式，而不能是任何在运行时计算出的值
-
-```rust
-const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-```
+### Shadowing
 
 可以在同一个作用域下声明多个变量，这并不意味着之前声明的变量消失了，只不过编译器会使用更近的那个，这被称为”Shadowing“
 
@@ -66,6 +62,14 @@ let x = 2;
 }
 println!("{x}"); // 2
 ```
+
+`const`用来声明常量，常量不光默认不能变，它总是不能变，并且必须注明值的类型，常量只能被设置为常量表达式，而不能是任何在运行时计算出的值
+
+```rust
+const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
+```
+
+### static
 
 可以使用`static`声明静态变量，它在整个程序执行过程中都不会被回收
 
@@ -130,7 +134,13 @@ let decimal = 1.2345;
 let integer = decimal as u8;
 ```
 
-但有一些比较重要的自动转换，这也被称为“解引用强制转换”，因为他们实现了内置的 Defer
+::: warning
+as 关键字用于 Rust 中原生数据类型间的转换。需要注意的是，短类型转换为长类型是没有问题的，但是长类型转换为短类型会被截断处理。此外，当有符号类型向无符号类型转换时，不适合使用 as 关键字
+:::
+
+数字与 String 类型间的转换是常见的场景。使用 to_string 方法可以将任意数字转换为 String 类型，使用 parse 方法可以将 String 类型解析为指定的数字类型
+
+但有一些比较重要的自动转换，这也被称为“解引用强制转换”，因为他们实现了内置的 Defer trait
 
 + `&String -> &str`
 + `&Vec<T> -> &[T]`
@@ -349,5 +359,17 @@ if let 6 = n {
   println!("{}", n)
 } else {
   println!("n isn't 6")
+}
+```
+
+### while let
+
+`while let`用于处理循环中可选值的情况
+
+```rust
+let mut vec = vec![1, 2, 3];
+// 匹配 Option
+while let Some(value) = vec.pop() {
+  println!("{value}");
 }
 ```

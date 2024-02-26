@@ -1001,6 +1001,55 @@ He said that he would travel abroad next year.
 Tony finished his work. and then he would leave for London.
 ```
 
+## 介词
+
+### 位置
+
+| 介词     | 含义                             | 示例                                |
+| -------- | -------------------------------- | ----------------------------------- |
+| on       | 表示在物体表面或某事件或时间点上 | on the table, on Monday, on arrival |
+| in       | 表示某个含义广阔的地方           | in the city, in the park            |
+| at       | 表示在某个具体地点               | at home                             |
+| beside   | 表示在旁边                       | beside the river                    |
+| between  | 表示在中间                       | between two hills                   |
+| near     | 表示更接近广泛的位置             | near the table                      |
+| by       | 表示更接近具体的位置             | wait by the door                    |
+| behind   | 表示在后面或背后                 | behind me                           |
+| above    | 表示在上面                       | the picture above the desk          |
+| below    | 表示在下面                       | the box below the table             |
+| opposite | 表示在对面                       | opposite the post office            |
+
+除位置介词外,还有一些辅助性的位置词用于更精细地描述位置关系：
+
++ Front(前面):如front door字面为前门
++ Back(后面):如backyard字面为后院
++ Top(顶部):如on top of字面为在...的顶部
++ Bottom(底部):如at the bottom字面是在底部
++ Side(侧面):如by side指相邻的位置
++ Edge(边缘):如ontheedgeof指在...的边缘
++ Corner(角落):如in the corner指在角落里
++ Center(中间部位):如atthecenter指在中间
++ Inside(内部):如insidethebox指在箱子内部
++ Outside(外部):如outsidethebuilding指在外面
++ Above(上面):如above the table指在桌子上面
++ Below(下面):如belowthewindow指在窗口下面
+
+### 时间
+
+### 伴随介词
+
+### 运动或方向介词
+
+### 原因或目的介词
+
+### 具体对象介词
+
+### 助介词
+
+### 分隔介词
+
+### 拥有关系介词
+
 ## 介词短语
 
 很多介词短语是由介词 + 名词构成的
@@ -1445,53 +1494,53 @@ done 表示被动的动作，be 表示被动的时间（变成对应的各种时
   
 | 原型       | 过去式         | 过去分词      | 现在分词 |
 | ---------- | -------------- | ------------- | -------- |
-| be         | was/were       | been          |
+| be         | was/were       | been          |          |
 | have       | had            | had           | having   |
-| do         | did            | done          |
-| go         | went           | gone          |
+| do         | did            | done          |          |
+| go         | went           | gone          |          |
 | get        | got            | got/gotten    | getting  |
 | come       | came           | come          | coming   |
 | make       | made           | made          | making   |
 | give       | gave           | given         | giving   |
-| buy        | bought         | bought        |
-| spend      | spent          | spent         |
+| buy        | bought         | bought        |          |
+| spend      | spent          | spent         |          |
 | write      | wrote          | written       | writing  |
 | sit        | sat            | sat           | sitting  |
-| say        | said           | said          |
-| pay        | paid           | paid          |
-| bear       | bore           | borne         |
-| think      | thought        | thought       |
-| send       | sent           | sent          |
-| spoil      | spoiled/spoilt | spoiled/spoil |
-| lend       | lent           | lent          |
+| say        | said           | said          |          |
+| pay        | paid           | paid          |          |
+| bear       | bore           | borne         |          |
+| think      | thought        | thought       |          |
+| send       | sent           | sent          |          |
+| spoil      | spoiled/spoilt | spoiled/spoil |          |
+| lend       | lent           | lent          |          |
 | put        | put            | put           | putting  |
 | take       | took           | taken         | taking   |
-| find       | found          | found         |
-| tell       | told           | told          |
-| see        | saw            | seen          |
-| meet       | met            |               |
-| lose       | lost           |               |
-| keep       | kept           | kept          |
-| understand | understood     |               |
-| read       | read           | read          |
-| run        | ran            |               |
-| stand      | stood          | stood         |
-| know       | knew           | known         |
-| put        | put            |               |
-| cut        | cut            |               |
+| find       | found          | found         |          |
+| tell       | told           | told          |          |
+| see        | saw            | seen          |          |
+| meet       | met            |               |          |
+| lose       | lost           |               |          |
+| keep       | kept           | kept          |          |
+| understand | understood     |               |          |
+| read       | read           | read          |          |
+| run        | ran            |               |          |
+| stand      | stood          | stood         |          |
+| know       | knew           | known         |          |
+| put        | put            |               |          |
+| cut        | cut            |               |          |
 | eat        | ate            |               | eaten    |
-| come       | came           |               |
-| lose       | lost           |               |
-| speak      | spoke          |               |
-| ring       | rang           | rung          |
-| sing       | sang           | sung          |
-| drink      | drank          | drunk         |
-| swim       | swam           | swum          |
-| begin      | began          | begun         |
-| feel       | felt           | felt          |
-| leave      | left           | left          |
+| come       | came           |               |          |
+| lose       | lost           |               |          |
+| speak      | spoke          |               |          |
+| ring       | rang           | rung          |          |
+| sing       | sang           | sung          |          |
+| drink      | drank          | drunk         |          |
+| swim       | swam           | swum          |          |
+| begin      | began          | begun         |          |
+| feel       | felt           | felt          |          |
+| leave      | left           | left          |          |
 | try        | tried          | tried         | trying   |
-| steal      | stole          | stolen        |
+| steal      | stole          | stolen        |          |
 
 名词不规则变化
 

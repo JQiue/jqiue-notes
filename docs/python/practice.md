@@ -1,7 +1,9 @@
 ---
-title: 实战：Python 爬虫
+title: 实战
 article: false
 ---
+
+## 爬虫
 
 模拟浏览器获取网页数据，需要具备基本的 HTML，CSS，JavaScript，HTTP，正则等知识
 
@@ -15,7 +17,7 @@ article: false
    + lxml
 3. 静态请求，动态请求
 
-## 发起请求
+### 发起请求
 
 确定网页的 url 地址，使用`requests`库的`get`方法对百度发送请求，该方法会将响应内容封装成对象返回
 
@@ -24,7 +26,7 @@ url = 'https://www.baidu.com'
 response = requests.get(url)
 ```
 
-## 响应内容
+### 响应内容
 
 对象的`text`属性可以获取网页内容，根据 unicode 字符集进行解码
 
@@ -57,7 +59,7 @@ response.content
 response.content.decode('utf-8')
 ```
 
-## 伪造请求头
+### 伪造请求头
 
 如果对知乎`https://www.zhihu.com`发送请求，你应该得到`403`响应码
 
@@ -82,7 +84,7 @@ print(response.status_code) # 200
 Requests 中没有设定`user-agent`时，默认为`python-requests`，这等于告诉服务器我是爬虫，自然访问不了大部分网页，所以要修改参数模拟浏览器进行请求，达到欺骗的目的
 :::
 
-## 带参数的 GET 请求
+### 带参数的 GET 请求
 
 GET 请求的参数都是在 URL 上，所以将 URL 和查询参数进行拼接即可，这里以哔哩哔哩为例，搜索`python`关键字的视频
 
@@ -103,7 +105,7 @@ response = requests.get(url, params=params)
 print(response.status_code) # 200
 ```
 
-## 下载图片
+### 下载图片
 
 图片地址比较好爬取，图片地址在`img`标签中的`src`属性中，图片是字节码的形式，写入本地就行了
 
@@ -115,7 +117,7 @@ with open('./image.jpg', 'wb') as file:
   file.write(response.content)
 ```
 
-## 下载视频
+### 下载视频
 
 只要我们获得视频的地址，就可以请求下载，但是有些视频网站做的比较好，不允许下载视频，所以这里以”好看视频“为例，这家网站的视频是可以爬取的
 
@@ -144,7 +146,7 @@ with open('./2.mp4', 'wb') as file:
   file.write(response.content)
 ```
 
-## 保存 HTML 页面
+### 保存 HTML 页面
 
 如果频繁的请求某个网站，会对该网站的服务器造成一定的压力，所以我们应该将爬取的网页保存到本地，然后进行分析
 
@@ -152,7 +154,7 @@ with open('./2.mp4', 'wb') as file:
 
 ```
 
-## 解析 HTML
+### 解析 HTML
 
 如果想要下载一个图片，可以打开浏览器调试工具拿到链接并发送请求，这样就可以完成下载，但是如果想要全部的图片链接，这种方式就不可取了，没有人会傻到一个一个的复制黏贴图片地址去下载，我们可以通过分析保存的 HTML 页面，然后通过一些方式来分析出页面中的图片链接，这样效率就会大大提高
 

@@ -164,6 +164,8 @@ android {
 + def enableSeparateBuildPerCPUArchitecture = true
 ```
 
+## expo
+
 ## 注意事项
 
 Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条目：

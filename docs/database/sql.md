@@ -438,6 +438,8 @@ mysql> select host,user,authentication_string from user;
 6 rows in set (0.00 sec)
 ```
 
+查看权限`show grants;`
+
 一般情况下，MySQL 的配置文件禁止了远程登录，所以需要去修改一下配置文件，编辑`sudo /etc/mysql/mysql.conf.d/mysqld.cnf`文件，将`bind-address = 127.0.0.1`使用`#`注释掉，可能是在`[mysqld]`字段下，然后`sudo service mysql restart`即可
 
 可以使用`show databases;`列出当前系统中所有的数据库，使用`use`语句，它将进入到指定的数据库中，然后就可以进行表相关的操作
