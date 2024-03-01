@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { query, currentIndex, hits, hideModal, showModal } from '../global';
+import { query, currentIndex, hits, hideModal, showModal } from '../global.ts';
 
 const handleInput = () => {
   showModal();

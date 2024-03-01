@@ -1,7 +1,8 @@
-import { viteBundler } from '@vuepress/bundler-vite';
 import { defineUserConfig } from 'vuepress';
-import theme from './theme';
-import { MeiliSearchPlugin } from './vuepress-plugin-meilisearch/index';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { pwaPlugin } from 'vuepress-plugin-pwa2';
+import theme from './theme.ts';
+import { MeiliSearchPlugin } from './vuepress-plugin-meilisearch/index.ts';
 
 const app = defineUserConfig({
   bundler: viteBundler(),
@@ -22,6 +23,27 @@ const app = defineUserConfig({
       apiKey:
         'adaf72e2a6d6f428ec465bc786ec41de868bbd5f1997e89ba2299e9566c88213',
       index: 'jinqiu-wang',
+    }),
+    pwaPlugin({
+      favicon: '/favicon.ico',
+      themeColor: '#5c92d1',
+      cacheHTML: true,
+      cachePic: true,
+      maxSize: 40000,
+      maxPicSize: 5000,
+      apple: {
+        icon: '/assets/icon/appleIcon152.png',
+        statusBarColor: 'black',
+      },
+      msTile: {
+        image: '/assets/icon/msIcon144.png',
+        color: '#ffffff',
+      },
+      manifest: {
+        id: '/',
+        scope: '/',
+        start_url: '/',
+      },
     }),
   ],
   shouldPrefetch: false,

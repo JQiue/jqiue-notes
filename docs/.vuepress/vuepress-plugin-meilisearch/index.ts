@@ -1,4 +1,4 @@
-import { getDirname, path } from '@vuepress/utils';
+import { getDirname, path } from 'vuepress/utils';
 
 interface PluginOptions {
   host: string;

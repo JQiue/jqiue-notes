@@ -92,12 +92,28 @@ geometry = { path = "crates/geometry" }
 
 添加`$CARGO_HOME/config`文件，将仓库默认地址替换为国内的地址，加快下载依赖的速度
 
-```rust
+```toml
 [source.crates-io]
 registry = "https://github.com/rust-lang/crates.io-index"
-replace-with = 'tuna'
+replace-with = 'rsproxy-sparse'
+
+# 清华
 [source.tuna]
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+[source.tuna-sparse]
+registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
+
+# 中科大
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+[source.ustc-sparse]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+# 字节
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
 ```
 
 ::: tip

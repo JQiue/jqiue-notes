@@ -1,7 +1,7 @@
 import { hopeTheme } from 'vuepress-theme-hope';
-import * as navbar from './navbar';
-import * as sidebar from './sidebar';
-import { updatetime } from './updatetime';
+import * as navbar from './navbar.ts';
+import * as sidebar from './sidebar.ts';
+import { updatetime } from './updatetime.ts';
 
 export default hopeTheme({
   hostname: 'https://jinqiu.wang/',
@@ -74,7 +74,7 @@ export default hopeTheme({
     blog: {},
     comment: {
       provider: 'Waline',
-      serverURL: 'https://waline.jinqiu.wang/',
+      serverURL: 'https://waline.jinqiu.wang',
     },
     mdEnhance: {
       katex: true,
@@ -86,27 +86,6 @@ export default hopeTheme({
       codetabs: true,
       echarts: true,
       tabs: true,
-    },
-    pwa: {
-      favicon: '/favicon.ico',
-      themeColor: '#5c92d1',
-      cacheHTML: true,
-      cachePic: true,
-      maxSize: 40000,
-      maxPicSize: 5000,
-      apple: {
-        icon: '/assets/icon/appleIcon152.png',
-        statusBarColor: 'black',
-      },
-      msTile: {
-        image: '/assets/icon/msIcon144.png',
-        color: '#ffffff',
-      },
-      manifest: {
-        id: '/',
-        scope: '/',
-        start_url: '/',
-      },
     },
   },
 });

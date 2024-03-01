@@ -732,6 +732,10 @@ Good news? Why?
 Because he doesn't like school!
 ```
 
++ 掌握主系表结构，及系动词：feel, look
++ 掌握情态动词：must
++ 掌握 for 表示一个动作持续多少时间
+
 ### Lesson 63 Thank you, doctor
 
 ```
@@ -762,6 +766,10 @@ Can you see him please?
 He has a bad cold, too!  
 ```
 
++ 接触形容词比较级：well-better
++ 掌握 have 与表示疼痛和疾病的名词连用
++ don't 和 must't 都表示不禁令，但后者语气更加强烈
+
 ### Lesson 65 Not a baby
 
 ```
@@ -791,6 +799,9 @@ That's all right. Goodbye.
 Enjoy yourself!  
 We always enjoy ourselves, Mum. Bye-bye.
 ```
+
++ 当宾语和主语是一个人时就可以用反身代词
++ 掌握钟点表达法
 
 ### Lesson 67 The weekend
 

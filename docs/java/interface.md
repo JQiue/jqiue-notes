@@ -3,6 +3,7 @@ title: 接口
 category: 编程语言
 tag: [Java]
 article: false
+order: 4
 ---
 
 抽象类中，抽象方法本质上是定义接口规范，如果一个类没有字段，所有的方法都是抽象方法，那么就可以将该抽象类改写为接口，用`interface`声明

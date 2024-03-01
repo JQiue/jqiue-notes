@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": ["./docs/.vuepress/**/*", "./node_modules/vuepress/**/*"],
+  "exclude": ["node_modules"]
+}

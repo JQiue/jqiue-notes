@@ -3,6 +3,7 @@ title: 类
 category: 编程语言
 tag: [Java]
 article: false
+order: 3
 ---
 
 Java 是一种强制性对象风格编程的语言，几乎任何东西都定义在类中

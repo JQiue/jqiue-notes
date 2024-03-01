@@ -3,6 +3,7 @@ title: 多任务处理
 category: 编程语言
 tag: [Java]
 article: false
+order: 7
 ---
 
 只需要继承`Thread`，重写`run`方法，把新线程要做的事写在`run`方法中,创建线程对象，开启新线程, 内部会自动执行`run`方法

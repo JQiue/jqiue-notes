@@ -3,6 +3,7 @@ title: 错误处理
 category: 编程语言
 tag: [Java]
 article: false
+order: 6
 ---
 
 Throwable 是所有错误或异常的超类，分为 Error 和 Exception，Exception 又分为编译时异常和运行时异常

@@ -2,6 +2,7 @@
 title: 查找
 category: 数据结构与算法
 article: false
+order: 10
 ---
 
 在一些数据元素中，通过一定的方法找出与给定关键字相同的数据元素的过程

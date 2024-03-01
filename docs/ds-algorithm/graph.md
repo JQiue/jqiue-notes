@@ -2,6 +2,7 @@
 title: 图
 category: 数据结构与算法
 article: false
+order: 7
 ---
 
 图是网络结构的抽象模型，学习图是重要的，因为任何二元关系都可以用图来表示。任何社交网络，例如 Facebook、Twitter 和 Google+，都可以用图来表示，还可以使用图来表示道路、航班以及通信

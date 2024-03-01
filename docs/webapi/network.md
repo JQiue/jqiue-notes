@@ -274,11 +274,9 @@ fetch(url, options).then(response => {});
 只能使用一个读取方法，否则就会报错，都是异步的，返回的都是 Promise 对象
 :::
 
-## 轮询
+## WebSocket
 
 HTTP 协议有一个缺陷，通信只能由客户端发起，如果想要知道服务端的状态，必须隔一段时间轮询服务器获取最新的状态。当然轮询的效率非常低，因为它不停的发生连接并中断，这对于实时信息非常不利
-
-## WebSocket
 
 WebSocket 是一种网络通信协议，服务器可以主动向客户端推送信息，客户端也可以主动向服务器发送信息，是真正的双向平等对话，解决了轮询的问题。WebSocket 建立在 TCP 协议之上，服务器端的实现比较容易
 
@@ -321,7 +319,7 @@ WebSocket 是一种网络通信协议，服务器可以主动向客户端推送�
 let ws = null;
 
 document.getElementById('connect').addEventListener('click', function () {
-  ws = new WebSocket("ws://121.40.165.18:8800");
+  ws = new WebSocket("wss://echo.websocket.org");
 
   ws.onopen = function(e) { 
     console.log("Connection open ..."); 
@@ -346,15 +344,15 @@ document.getElementById('close').addEventListener('click', function () {
 
 ## 文件上传
 
-<!-- to be updated -->
+<!-- todo -->
 
 ## 跨源策略
 
 一般在浏览器发送一个 HTTP 请求时，可能就会遇到浏览器禁止请求的现象
 
-当一个请求发出者和接收者不属于同一个域，那么这个请求就会被浏览器所拦截，所谓的同一个域即：协议、地址、端口号都要相同，否则就是跨域请求
+当一个请求发出者和接收者不属于同一个域，那么这个请求就会被浏览器所拦截，所谓的同一个域即：**协议、地址、端口号**都要相同，否则就是跨域请求
 
 解决方案：
 
-+ CORS - 跨域资源共享，由后端解决，后端请求头配置了`Access-Control-Allow-Origin`则允许跨域，则浏览器不会拦截
-+ JSONP - 利用 script 请求时不会触发跨域的限制，需要前后端配合
++ CORS - 跨域资源共享，由后端解决，后端请求头配置了`Access-Control-Allow-Origin`则允许跨域，则浏览器不会拦截（推荐）
++ JSONP - 利用 script 请求时不会触发跨域的限制，需要前后端配合（不推荐）

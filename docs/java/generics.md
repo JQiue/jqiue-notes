@@ -3,6 +3,7 @@ title: 泛型
 category: 编程语言
 tag: [Java]
 article: false
+order: 5
 ---
 
 由 Object 转型问题提出泛型，提高安全性（将运行期的错误转换到编译期），省去强转的麻烦

@@ -41,8 +41,8 @@
 import { ref, watch } from 'vue';
 import { MeiliSearch } from 'meilisearch'
 import keywordMark from 'keyword-mark';
-import { currentIndex, modalVisible, query, isLoading, hits, canHide } from '../global';
-import { pluginOptions } from '../define';
+import { currentIndex, modalVisible, query, isLoading, hits, canHide } from '../global.ts';
+import { pluginOptions } from '../define.ts';
 
 const client = new MeiliSearch({
   host: pluginOptions.HOST,

@@ -2,6 +2,7 @@
 title: 思想
 category: 数据结构与算法
 article: false
+order: 13
 ---
 
 ## 穷举

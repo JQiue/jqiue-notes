@@ -175,3 +175,4 @@ JavaScript 划分了两种内存：
 + JavaScript 忍者秘籍
 + JavaScript 二十年
 + 学习 JavaScript 设计模式
++ [JavaScript中的怪异行为](https://www.thomas-yang.me/projects/oh-my-dear-js/)

@@ -3,6 +3,7 @@ title: 标准功能
 category: 编程语言
 tag: [Java]
 article: false
+order: 8
 ---
 
 ## 输入和输出

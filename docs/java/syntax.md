@@ -3,6 +3,7 @@ title: 基本语法
 category: 编程语言
 tag: [Java]
 article: false
+order: 1
 ---
 
 这里是 Java 的基本语法规则

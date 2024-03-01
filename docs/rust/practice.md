@@ -241,6 +241,28 @@ async fn put_json(extract::Json(data): extract::Json<Value>) -> String {
 }
 ```
 
+### CORS
+
+```toml
+# 启用 cors
+tower-http = { version = "0.5.0", features = ["fs", "cors"] }
+```
+
+```rust
+use http::Method;
+use tower_http::{
+  cors::{Any, CorsLayer}
+};
+
+let cors = CorsLayer::new()
+  .allow_methods([Method::GET, Method::POST])
+  .allow_origin(Any);
+
+Router::new()
+  .route("/", get(|| async { "hello world" }))
+  .layer(cors);
+```
+
 ## 构建多个二进制文件
 
 `src/main.rs`是一个入口点，Rust 允许多个入口点构建不同的二进制文件
@@ -295,12 +317,13 @@ fn main() {
 
 ```toml
 [dependencies]
-
 actix-web = "4.5.1"
+actix-cors = "0.6.5"
 ```
 
 ```rust
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_cors::Cors;
 
 async fn index() -> impl Responder {
   HttpResponse::Ok().body("Hey there!")
@@ -311,12 +334,37 @@ async fn main() -> std::io::Result<()> {
   let port = 3000;
   println!("Server running at http://localhost:{port}");
   HttpServer::new(|| {
-    App::new().route("/", web::get().to(index))
+    // 配置 CORS
+    let cors = Cors::permissive();
+    App::new()
+      .wrap(cors)
+      .route("/", web::get().to(index))
   })
   .bind(("localhost", port))?
   .run()
   .await
 }
+```
+
+### App state
+
+```rust
+#[derive(Debug, Clone)]
+struct AppState {
+  foo: string,
+}
+
+let foo = "foo".to_string();
+let state = AppState { foo };
+
+HttpServer::new(move || {
+    App::new()
+      .app_data(web::Data::new(state.clone()))
+  })
+  .bind(server_url)?
+  .workers(workers)
+  .run()
+  .await;
 ```
 
 ### macro
@@ -416,12 +464,12 @@ async fn get_image() -> impl Responder {
 ### response JSON
 
 ```rust
-
-
 async fn get_json() -> impl Responder {
   HttpResponse::Ok().json(json!({"a":"b"}))
 }
 ```
+
+### use SeaORM
 
 ## anyhow
 

@@ -3,6 +3,7 @@ title: 数据结构
 category: 编程语言
 tag: [Java]
 article: false
+order: 2
 ---
 
 ## 数组
