@@ -3,6 +3,7 @@ title: trait
 category: 编程语言
 tag: [Rust]
 article: false
+order: 6
 ---
 
 `trait`与其他语⾔中常被称为接口（interface）的功能类似，但也不尽相同，`trait`被用来描述某些特定类型能够拥有的且能够被其他类型共享的功能。类型的行为由方法组成，当在不同类型上调用了相同的方法时，就称这些类型共享了相同的行为，`trait`提供了将指定方法组合起来的途径。通常 trait 代表一种能力，即某种类型能够做什么
@@ -14,57 +15,33 @@ article: false
 定义 trait 很简单，只要给它命名并列出特性方法的类型签名即可。使用`trait`来声明，可以声明方法签名并省略具体实现，以分号直接结束，每一个类型就可以实现该 trait，并实现该类型 trait 方法的行为，`self`表示实现了此 trait 的具体类型
 
 ```rust
-trait Summary {
-  fn summarize(&self) -> String;
+struct Dog {
+  name: String,
+  age: String,
 }
 
-struct NewsArticle {
-  author: String,
-  content: String,
+struct Cat {
+    lives: i8,
 }
 
-impl Summary for NewsArticle {
-  fn summarize(&self) -> String {
-    format!("author: {}, content: {}", self.author, self.content)
+trait Pet {
+  // 必须实现
+  fn talk(&self) -> String;
+  // 可以拥有默认方法实现的 trait，这就可以指定空的实现，使用默认的 trait 实现，但也不会影响已有的实现，实现了重载
+  fn greet(&self) {
+    println!("Oh you're a cutie! What's your name? {}", self.talk());
   }
 }
 
-struct Tweet {
-  username: String,
-  content: String,
-}
-
-impl Summary for Tweet {
-  fn summarize(&self) -> String {
-    format!("username: {}, content: {}", self.username, self.content)
-  }
-}
-```
-
-可以拥有默认方法实现的 trait，这就可以指定空的实现，使用默认的 trait 实现，但也不会影响已有的实现，实现了重载
-
-```rust
-trait Summary {
-  fn summarize(&self) -> String {
-    "Read more...".to_string()
+impl Pet for Dog {
+  fn talk(&self) -> String {
+    format!("Woof, my name is {}!", self.name)
   }
 }
 
-struct NewsArticle {
-  author: String,
-  content: String,
-}
-
-struct Tweet {
-  username: String,
-  content: String,
-}
-
-impl Summary for NewsArticle {}
-
-impl Summary for Tweet {
-  fn summarize(&self) -> String {
-    format!("username: {}, content: {}", self.username, self.content)
+impl Pet for Cat {
+  fn talk(&self) -> String {
+    String::from("Miau!")
   }
 }
 ```
@@ -91,48 +68,7 @@ impl Summary for Tweet {
 }
 ```
 
-## 约束
-
-使用 trait 作为函数参数，这一参数就只能接收任何实现该 trait 的类型，传入其他类型会导致无法通过编译
-
-```rust
-fn notify(item: impl Summary) {
-  println!("{}", item.summarize());
-}
-```
-
-但这种只是一个 trait 约束的语法糖，实际上是这样的
-
-```rust
-fn notify<T: Summary>(item: T) {
-  println!("{}", item.summarize());
-}
-```
-
-可以使用`+`来指定多个 trait 约束
-
-```rust
-fn notify(item: impl Foo + Bar) {}
-fn notify<T: Foo + Bar>(item: T) {}
-```
-
-如果有多个泛型约束，过多的的 trait 就会导致难以理解，`where`解决了这一点，这样看起来函数签名容易理解的多
-
-```rust
-fn sn<T: Foo + Bar, U: Display + Clone>(t: T, u: U) -> i32;
-fn sn<T, U>(t: T, u: U) -> i32 where T: Foo + Bar,U: Display + Clone;
-```
-
-同样可以返回实现 trait 的类型，但只能返回一个类型，并不支持返回多个类型的写法
-
-```rust
-fn returns_summarizable() -> impl Summary {
-  Tweet {
-    username: "".to_string(),
-    content: "".to_string()
-  }
-}
-```
+<!-- to be updated -->
 
 ## Derive
 
@@ -177,13 +113,55 @@ Copy 是一个隐式行为。开发者不能重载Copy行为，它永远是简�
 
 ### Deref
 
+实现 Deref 的值，在解引用时会自动转换成 Target 类型
+
+```rust
+struct SmartPtr {
+  s: String,
+}
+
+impl Deref for SmartPtr {
+  type Target = String;
+  fn deref(&self) -> &Self::Target {
+    &self.s
+  }
+}
+
+fn main() {
+  let p = SmartPtr {
+    s: "Hello World".to_string(),
+  };
+  println!("{}", *p);
+}
+```
+
 ### Default
 
-Default trait为类型提供有用的默认值，通常用于为结构体的字段提供默认值。如果结构体每个字段的类型都实现了Default，那么Default可以与derive属性一起使用，对每个字段的类型都使用默认值
+Default 为类型提供有用的默认值，通常用于为结构体的字段提供默认值。如果结构体每个字段的类型都实现了 Default，那么 Default 可以与 derive 属性一起使用，对每个字段的类型都使用默认值
 
 ### Borrow 和 BorrowMut
 
 ### From 和 Into
+
+类型会实现 From 和 Into 以加快类型转换
+
+```rust
+let s = String::from("hello");
+let addr = std::net::Ipv4Addr::from([127, 0, 0, 1]);
+let one = i16::from(true);
+let bigger = i32::from(123_i16);
+println!("{s}, {addr}, {one}, {bigger}");
+```
+
+实现 From 后，系统会自动实现 Into：
+
+```rust
+let s: String = "hello".into();
+let addr: std::net::Ipv4Addr = [127, 0, 0, 1].into();
+let one: i16 = true.into();
+let bigger: i32 = 123_i16.into();
+println!("{s}, {addr}, {one}, {bigger}");
+```
 
 ### Eq 和 PartialEq
 
@@ -199,3 +177,11 @@ Eq 相比 PartialEq 还需要满足反身性（Reflexive），即 a == a
 PartialEq 也可以与 derive 属性一起使用，用于比较一个类型的两个实例是否相等，并开启“==”和“!=”运算符功能。在结构体上标记`#[derive(PartialEq)]`，只有所有字段都相等，两个实例才相等，只要有任何字段不相等则两个实例不相等。在枚举上标记`#[derive(PartialEq)]`，当每一个成员都和其自身相等，且和其他成员都不相等时，两个实例才相等
 
 <!-- to be updated -->
+
+### Fn 和 FnMut 和 FnOnce
+
+闭包或 lambda 表达式具有无法命名的类型。不过，它们会实现特殊的 Fn， FnMut 和 FnOnce 特征
+
++ Fn - 既不会耗用也不会修改捕获的值，或许也不会捕获任何值。它可被并发调用多次
++ FnMut - 可能会改变捕获的值。可以多次调用它，但不能并发调用它。如果使用 FnOnce，或许只能调用它一次。它可能会耗用所捕获的值
++ FnMut - 是 FnOnce 的子类型。Fn 是 FnMut 和 FnOnce 的子类型。可以在任何需要调用 FnOnce 的地方使用 FnMut，还可在任何需要调用 FnMut 或 FnOnce 的地方 使用 Fn

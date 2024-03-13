@@ -77,7 +77,7 @@ curl \
     "description": "Search jinqiu-wang records key",
     "actions": ["search"],
     "indexes": ["jinqiu-wang"],
-    "expiresAt": "2023-01-01T00:00:00Z"
+    "expiresAt": "2025-01-01T00:00:00Z"
   }'
 ```
 

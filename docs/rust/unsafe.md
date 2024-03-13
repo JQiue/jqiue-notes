@@ -3,6 +3,7 @@ title: Unsafe Rust
 category: 编程语言
 tag: [Rust]
 article: false
+order: 14
 ---
 
 如果使用 Safe Rust 和底层操作系统或其它语言打交道，此时的安全检查将鞭长莫及，所以这就是 Unsafe Rust 的意义，Unsafe Rust 不等于不安全，只是将安全性交给开发者自己判断

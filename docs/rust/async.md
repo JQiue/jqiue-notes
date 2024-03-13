@@ -1,8 +1,9 @@
 ---
-title: Async
+title: 异步编程
 category: 编程语言
 tag: [Rust]
 article: false
+order: 10
 ---
 
 Rust 借鉴了 JavasSript 来编写异步编程，当需要高并发，异步 I/O 就需要改模型了

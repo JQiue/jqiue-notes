@@ -20,15 +20,12 @@ class ClassName {
 
 ```js
 class Foo {
-
   constructor (name) {
     this.name = name;
   }
-  
   sayName() {
     console.log(foo.name);
   }
-
 }
 
 let foo = new Foo('foo');
@@ -77,7 +74,7 @@ function makeClass () {
 或者定义一个立即执行的表达式类
 
 ```js
-new (class {});
+new(class {});
 ```
 
 ## 实例属性

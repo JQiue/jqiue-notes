@@ -3,7 +3,7 @@ title: 微信小程序
 article: false
 ---
 
-## 环境搭建
+## 配置环境
 
 + 微信开发者工具
 + 去微信公众平台申请 APPID 号
@@ -107,7 +107,7 @@ button
 image
 
 ```html
-<image src="../../asserts/pic1.png" mode=""/>
+<image src="../../assets/pic1.png" mode=""/>
 ```
 
 ## 条件渲染和列表渲染
@@ -126,7 +126,7 @@ Page({
    */
   data: {
     msg: 'hello, world',
-    imgSrc: '../../asserts/pic1.png'
+    imgSrc: '../../assets/pic1.png'
   },
   /**
    * 生命周期函数--监听页面加载

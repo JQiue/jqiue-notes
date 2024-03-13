@@ -35,9 +35,9 @@ Python 不仅在说语言本身，也包括具体的实现，Python 实际上是
 + [IronPython](https://ironpython.net/) 可以运行在 .NET 和 Mono 平台
 + [PyPy](https://www.pypy.org/) 支持 JIT 即时编译，具有静态类型，特点是运行速度快
 
-## 环境搭建
+## 配置环境
 
-和其他高级语言一样，Python 也需要编译器或叫解释器来运行程序，在系统上安装 Python 就像安装普通软件一样简单，下载安装包一路猛击即可
+在系统上安装 Python 就像安装普通软件一样简单，下载安装包一路猛击即可
 
 安装包地址：[Download](https://www.python.org/downloads/)
 
@@ -76,6 +76,30 @@ Python 支持两种代码的运行方式：
 
 1. 使用 IDLE 打开源文件，然后在菜单中选择`Run->Run Module`，或者按下 F5
 2. 使用 python 提供的命令来执行源文件（安装编译器勾选 Add Python to PATH），进入源文件目录下执行`python <源文件路径>`，可以是相对路径，也可以是绝对路径
+
+## pip
+
+pip 是官方的包管理器
+
+### requirements.txt
+
+requirements.txt 文件包含项目所需要的依赖，但它不会自动生成，通常移植时进行使用，`pip install`会安装声明的依赖
+
+```
+annotated-types==0.6.0
+anyio==4.3.0
+click==8.1.7
+colorama==0.4.6
+fastapi==0.110.0
+h11==0.14.0
+idna==3.6
+pydantic==2.6.3
+pydantic_core==2.16.3
+sniffio==1.3.1
+starlette==0.36.3
+typing_extensions==4.10.0
+uvicorn==0.27.1
+```
 
 ## 参考资料
 

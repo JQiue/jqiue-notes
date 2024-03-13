@@ -165,3 +165,97 @@ HTML 可以看做成一个字符串，那么正则表达式就派上用场了
 ### BS4
 
 ### lxml
+
+## FastAPI
+
+```sh
+pip install fastapi
+pip install uvicorn
+```
+
+### HelloWorld
+
+```py
+import uvicorn
+from fastapi import FastAPI, Request
+
+app = FastAPI()
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=3000, log_level="info", reload=True)
+```
+
+### CORS
+
+```py
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
+```
+
+### handle function
+
+```py
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return "hello world"
+```
+
+### router fallback
+
+```py
+async def not_found_handler(request: Request, exec: RequestValidationError):
+    return FileResponse("./assets/404.html", 404)
+
+# 处理 404
+app.add_exception_handler(404, not_found_handler)
+```
+
+### response HTML
+
+```py
+from fastapi.responses import HTMLResponse
+
+@app.get("/get_html")
+async def get_html():
+    return HTMLResponse("<h1>Hello World</h1>")
+```
+
+### response StatusCode
+
+```py
+@app.get("/get_status_code", status_code=404)
+async def get_status_code():
+    return
+```
+
+### response file
+
+```py
+@app.get("/get_file")
+async def get_file():
+    return FileResponse("./assets/index.html")
+```
+
+### echo
+
+```py
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    a: str
+
+@app.post("/echo")
+async def echo(body: Item):
+    return body
+```
+
+### static
+
+```py
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+```

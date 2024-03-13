@@ -2,7 +2,8 @@ import { defineUserConfig } from 'vuepress';
 import { viteBundler } from '@vuepress/bundler-vite';
 import { pwaPlugin } from 'vuepress-plugin-pwa2';
 import theme from './theme.ts';
-import { MeiliSearchPlugin } from './vuepress-plugin-meilisearch/index.ts';
+// import { MeiliSearchPlugin } from './vuepress-plugin-meilisearch/index.ts';
+import { MeiliSearchPlugin } from 'vuepress-plugin-meilisearch2';
 
 const app = defineUserConfig({
   bundler: viteBundler(),
@@ -21,7 +22,7 @@ const app = defineUserConfig({
     MeiliSearchPlugin({
       host: 'https://search.jinqiu.wang',
       apiKey:
-        'adaf72e2a6d6f428ec465bc786ec41de868bbd5f1997e89ba2299e9566c88213',
+        'b172d836e622bd80787992d0ad189cca8bd1735fe9ca767e8c8340b0cdfd6638',
       index: 'jinqiu-wang',
     }),
     pwaPlugin({

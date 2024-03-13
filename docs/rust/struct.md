@@ -3,6 +3,7 @@ title: 结构体
 category: 编程语言
 tag: [Rust]
 article: false
+order: 4
 ---
 
 结构体相比元组，每个元素都赋予名字的含义，每个元素被称为字段，使用`struct`定义结构体
@@ -26,7 +27,7 @@ struct Pair(i32, f32);
 
 ```rust
 let user = User {
-  username: String::from("someusername123"),
+  user: String::from("someusername123"),
   email: String::from("someone@example.com"),
 };
 
@@ -37,7 +38,7 @@ let _unit = Unit;
 let pair = Pair(1, 0.1);
 
 // 通过 . 访问字段
-user.username;
+user.user;
 ```
 
 如果参数和字段名相同可以省略
@@ -54,36 +55,51 @@ let mut jqiue = User { name, email };
 
 ```rust
 let mut user = User {
-    email: String::from("someone@example.com"),
-    username: String::from("someusername123"),
-    active: true,
-    sign_in_count: 1,
+  email: String::from("someone@example.com"),
+  user: String::from("someusername123"),
+  active: true,
+  sign_in_count: 1,
 };
 ```
 
 ## 方法
 
-可以使用`impl`为结构体定义方法，和函数类似，方法的第一个参数总是`self`，可以是只读的或可变的，指向实例：
+可以使用`impl`为结构体定义方法，和函数类似
 
 ```rust
+#[derive(Debug)]
 struct User {
-  username: String,
+  name: String,
   age: i32,
 }
 
 impl User {
-  fn print_user(&self) {
-    println!("{}", self.username);
+  fn new(name: &str, age: i32) -> Self {
+    Self {
+      name: name.to_string(),
+      age,
+    }
   }
+  fn set_age(&mut self, age: i32) {
+    self.age = age;
+  }
+  fn print_user(&self) {
+    println!("{:?}", self);
+  }
+  fn finish(self) {}
 }
-
-let jqiue = User {
-  username: "JQiue".to_string(),
-  age: 18
-}
-
-jqiue.print_user();
 ```
+
+方法有几个`self`，指向实例：
+
++ 没有 self：这将变为结构体上的静态方法，通常用于创建构造函数，按惯例被称为“new”
++ &self：使用不可变的共享引用从调用方借用对象，之后可以再次使用该对象
++ &mut self：使用唯一的可变引用从调用方借用对象，之后可以再次使用该对象
++ self：获取对象的所有权并将其从调用方移出，该方法会成为对象的所有者。除非明确转移对象的所有权，否则在该方法返回时，对象将被丢弃（取消分配）。具备完全所有权，不自动等同于具备可变性
+
+::: tip
+说明 Self 是 impl 块所属类型的类型别名，可以在块中的其他位置使用
+:::
 
 ## 关联函数
 

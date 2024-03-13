@@ -3,6 +3,7 @@ title: 多任务处理
 category: 编程语言
 tag: [Rust]
 article: false
+order: 9
 ---
 
 并发编程（concurrent programming）与并行编程（parallel programming）这两种概念随着计算机设备的多核心化而变得越来越重要。前者允许程序中的不同部分相互独立地运行，而后者则允许程序中的不同部分同时执行
@@ -151,3 +152,18 @@ fn main() {
 ```
 
 在以上代码中，`Arc<T>`是一个和`Rc<T>`类似的引用计数指针，但是`Rc<T>`在多线程中并不安全，而`Arc<T>`是一个原子引用计数，保证安全的在多个线程中共享，但是要付出一定的性能开销，所以`Rc<T>`适合在单线程中
+
+## Send 和 Sync
+
+如果将 T 值移动到另一个线程是安全的，则类型 T 为 Send
+
+如果同时从多个线程访问 T 值是安全的，则类型 T 为 Sync。更准确地说，定义是：当且仅当 &T 为 Send 时，T 为 Sync
+
+大部分类型都属于 `Send + Sync`
+
++ `i8`、`f32`、`bool`、`char`、`&str`…
++ `(T1, T2)`、`[T; N]`、`&[T]`、`struct { x: T }`…
++ `String`、`Option<T>`、`Vec<T>`、`Box<T>`…
++ `Arc<T>`：明确通过原子引用计数实现线程安全。
++ `Mutex<T>`：明确通过内部锁定实现线程安全。
++ `AtomicBool`、`AtomicU8`…：使用特殊的原子指令

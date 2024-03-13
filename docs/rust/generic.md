@@ -3,6 +3,7 @@ title: 泛型
 category: 编程语言
 tag: [Rust]
 article: false
+order: 7
 ---
 
 ## 函数与泛型
@@ -18,19 +19,6 @@ add(1, 2);
 add(1.1, 2.2);
 ```
 
-## 方法与泛型
-
-```rust
-impl<T> Rectangle<T> { 
-  fn width(&self) -> &T { 
-    &self.width 
-  } 
-  fn height(&self) -> &T { 
-    &self.height 
-  } 
-}
-```
-
 ## 结构体与泛型
 
 在结构体中定义泛型
@@ -39,6 +27,12 @@ impl<T> Rectangle<T> {
 struct Point<T> {
   x: T,
   y: T,
+}
+
+impl<T> Point<T> {
+    fn coords(&self) -> (&T, &T) {
+        (&self.x, &self.y)
+    }
 }
 
 let p1 = Point { x: 1, y: 2 };
@@ -60,6 +54,54 @@ struct Point<T, U> {
 }
 
 let p = Point { x: 1, y: 2.2};
+```
+
+## 约束
+
+使用 trait 作为函数参数，这一参数就只能接收任何实现该 trait 的类型，传入其他类型会导致无法通过编译
+
+```rust
+fn notify(msg: impl Debug) {
+  println!("{:?}", msg);
+}
+
+notify("Hi");
+```
+
+但这只是一个 trait 约束的语法糖，实际上是这样的
+
+```rust
+fn notify<T: Debug>(msg: T) {
+  println!("{:?}", msg);
+}
+```
+
+可以使用`+`来指定多个 trait 约束
+
+```rust
+fn notify(item: impl Foo + Bar) {}
+fn notify<T: Foo + Bar>(item: T) {}
+```
+
+### where
+
+如果有多个泛型约束，过多的的 trait 就会导致难以理解，`where`解决了这一点，这样看起来函数签名容易理解的多
+
+```rust
+fn sn<T: Foo + Bar, U: Display + Clone>(t: T, u: U) -> i32;
+
+fn sn<T, U>(t: T, u: U) -> i32 
+where 
+  T: Foo + Bar,
+  U: Display + Clone;
+```
+
+同样可以返回实现 trait 的类型，但只能返回一个类型，并不支持返回多个类型的写法
+
+```rust
+fn returns() -> impl Debug {
+  1
+}
 ```
 
 ## turbofish

@@ -3,7 +3,29 @@ title: 实战
 category: 编程语言
 tag: [Rust]
 article: false
+order: 18
 ---
+
+## 发布 crate
+
+步骤：
+
+1. 登录 <crates.io> 获取 API Token
+2. 使用`cargo login <token>`
+3. 创建`cargo new --lib <name>`
+4. 填写必须的清单
+5. 发布`cargo publish --registry crates-io`
+
+```toml
+[package]
+name = ""
+description = ""
+version = "0.1.0"
+edition = "2021"
+authors = [""]
+license = ""
+readme = "README.md"
+```
 
 ## axum
 
@@ -490,6 +512,165 @@ fn do_something_anyhow() -> anyhow::Result<()> {
     //...
     Ok(())
 }
+```
+
+## SeaORM
+
+选择数据库和运行时
+
+```toml
+[dependencies]
+
+sea-orm = { version = "0.12", features = [
+  "sqlx-mysql",
+  "runtime-tokio-rustls",
+  "macros",
+] }
+```
+
+安装`sea-orm-cli`用于迁移数据或生成实体
+
+```sh
+cargo install sea-orm-cli
+```
+
+### 从现有数据库中生成实体
+
+需要提供`.env`
+
+```env
+DATABASE_URL=mysql://username:password@host/database
+```
+
+使用下面命令迁移
+
+```sh
+sea-orm-cli generate entity -o src/entitys
+```
+
+实体是进行 CRUD 关键
+
+### Select
+
+定义实体后就可以进行查询了
+
+根据主键查询
+
+```rust
+// 查询主键为 1 的一条记录
+Entity::find_by_id(1).one(db).await;
+// 查询复合主键为 1,2 的一条记录
+Entity::find_by_id(1, 2).one(db).await;
+```
+
+查询所有数据
+
+```rust
+Entity::find().all(db).await;
+```
+
+条件查询
+
+```rust
+// WHERE id BETWEEN 2 AND 3
+Entity::find().filter(Column::Id.between(2, 3)).all(db).await;
+// WHERE id NOT BETWEEN 2 AND 3
+Entity::find().filter(Column::Id.not_between(2, 3)).all(db).await;
+// WHERE Name LIKE foo
+Entity::find().filter(Column::Name.like("foo")).all(db).await;
+// WHERE Name NOT LIKE foo
+Entity::find().filter(Column::Name.not_like("foo")).all(db).await;
+// name = foo%
+Entity::find().filter(Column::Name.starts_with("foo")).all(db).await;
+// name = %foo
+Entity::find().filter(Column::Name.ends_with("foo")).all(db).await;
+// name = %foo%
+Entity::find().filter(Column::Name.contains("foo")).all(db).await;
+```
+
+### Insert
+
+插入一个 model
+
+```rust
+let model = ActiveModel {
+    name: Set("foo".to_owned()),
+    ..Default::default()
+};
+
+Entity::insert(model).exec(&db).await?;
+```
+
+插入多个 model
+
+```rust
+let foo = ActiveModel {
+    name: Set("foo".to_owned()),
+    ..Default::default()
+};
+let bar = ActiveModel {
+    name: Set("bar".to_owned()),
+    ..Default::default()
+};
+
+Entity::insert_many([foo, bar]).exec(&db).await?;
+```
+
+### Update
+
+更新一个 model
+
+```rust
+let model = ActiveModel {
+    id: Set(1),
+    name: Set("Orange".to_owned()),
+    ..Default::default()
+};
+
+Entity::update(model.clone())
+  .filter(fruit::Column::Name.contains("foo"))
+  .exec(&db)
+  .await?,
+```
+
+更新多个 model
+
+```rust
+Entity::update_many()
+    .col_expr(Column::Id, Expr::value(Value::Int(None)))
+    .filter(fruit::Column::Name.contains("foo"))
+    .exec(&db)
+    .await?;
+```
+
+### Delete
+
+删除一个 model
+
+```rust
+let model = ActiveModel {
+  id: Set(3),
+  ..Default::default()
+};
+
+// WHERE "id" = $1",
+Entity::delete(model).exec(&db).await?;
+```
+
+根据主键删除 model
+
+```rust
+// WHERE "id" = $1",
+Entity::delete_by_id(1).exec(&db).await?;
+```
+
+删除多个 model
+
+```rust
+Entity::delete_many()
+    .filter(Column::Name.contains("foo"))
+    .exec(&db)
+    .await?;
 ```
 
 ## 参考资料

@@ -808,8 +808,7 @@ We always enjoy ourselves, Mum. Bye-bye.
 ```
 Hello. Were you at the butcher's?  
 Yes, I was. Were you at the butcher's, too?  
-No, I wasn't.  
-I was at the greengrocer's.  
+No, I wasn't. I was at the greengrocer's.  
 How's Jimmy today?  
 He's very well, thank you.  
 Was he absent from school last week?  

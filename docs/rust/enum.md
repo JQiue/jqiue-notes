@@ -3,6 +3,7 @@ title: 枚举
 category: 编程语言
 tag: [Rust]
 article: false
+order: 5
 ---
 
 `enum`关键字允许创建一个从多个不同取值中选其一的枚举类型

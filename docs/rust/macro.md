@@ -3,6 +3,7 @@ title: 宏
 category: 编程语言
 tag: [Rust]
 article: false
+order: 11
 ---
 
 宏和函数有点像，只不过末尾有个`!`，但不产生函数调用，只是展开成源码一起编译

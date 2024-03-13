@@ -1,9 +1,11 @@
 <template>
-  <div class="modal" ref="modalEl" v-if="modalVisible" @keyup.down="() => currentIndex++" @mouseleave="handleMouseLeave">
+  <div class="modal" ref="modalEl" v-if="modalVisible" @keyup.down="() => currentIndex++"
+    @mouseleave="handleMouseLeave">
     <div v-if="hits.length == 0" class="empty">
       <svg width="40" height="40" viewBox="0 0 20 20" fill="none" fill-rule="evenodd" stroke="currentColor"
         stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2">
+        <path
+          d="M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2">
         </path>
       </svg>
       <p>无法找到相关结果 “<strong>{{ query }}</strong>”</p>
@@ -41,7 +43,7 @@
 import { ref, watch } from 'vue';
 import { MeiliSearch } from 'meilisearch'
 import keywordMark from 'keyword-mark';
-import { currentIndex, modalVisible, query, isLoading, hits, canHide } from '../global.ts';
+import { currentIndex, modalVisible, query, hits, canHide } from '../global.ts';
 import { pluginOptions } from '../define.ts';
 
 const client = new MeiliSearch({
@@ -54,7 +56,6 @@ const modalEl = ref<HTMLDivElement>();
 
 const handleChange = async () => {
   const result = await client.index(index.value).search(query.value, { limit: 5 });
-  isLoading.value = false;
   hits.value = result.hits;
 }
 

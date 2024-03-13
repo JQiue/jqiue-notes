@@ -3,6 +3,7 @@ title: 所有权
 category: 编程语言
 tag: [Rust]
 article: false
+order: 12
 ---
 
 在计算机中所有程序都必须和内存打交道，如何申请空间和释放空间很重要，因此编程语言出现了三种内存管理的流派：
@@ -14,6 +15,8 @@ article: false
 ::: tip 栈和堆
 都是运行时可以使用的内存空间，栈存放已知固定大小的数据，而无法在编译期确定的数据都只能放在堆中，相对比较松散，操作系统会将请求的堆空间作为特定的大小空间，并标记为已使用，把指向这块空间的指针返回，由此堆的性能肯定是不如栈的，如何管理堆内存这就是所有权存在的意义
 :::
+
+## 所有权模型
 
 Rust 选择了第三种，这种检查只发生在编译期，因此对于运行期不会有任何性能损失，所有权机制的核心思想是：
 
@@ -28,8 +31,11 @@ Rust 选择了第三种，这种检查只发生在编译期，因此对于运行
 {
   let str = String::form("hello"); // 从这里开始有效
 }
+// drop(str)
 // 变量 str 失效
 ```
+
+## Move
 
 但这太苛刻了，Rust 进行了扩展：
 
@@ -43,21 +49,6 @@ let s1 = String::from("hello");
 let s2 = s1;
 println!("{}, world!", s1); // s1 失效
 ```
-
-如果确实想要一份值的副本，则明确调用`clone`方法
-
-```rust
-let s1 = String::from("hello");
-let s2 = s1.clone();
-```
-
-Rust 提供了一个名为 Copy 的 trait，一旦某种类型的变量拥有 Copy 这种 trait，那么该变量在赋值给其他变量时也会保持可用性，一般来说任何简单标量类型都是 Copy 的，而需要分配内存的资源都不是 Copy 的，比如：
-
-+ 整数类型
-+ bool
-+ 字符类型
-+ 浮点类型
-+ 如果元组所有字段都是 Copy 的，那么这个元组也是 Copy 的
 
 将值传给函数也会触发转移或复制，即便是返回值的时候也会发生所有权的转移
 
@@ -80,25 +71,69 @@ fn makes_copy(value: i32) {
 } // 没有什么事情发生
 ```
 
-## 借用
+## Clone
 
-另外，为了处理一些复杂的场景，Rust 还提供了一些附加机制，如**借用**（Borrowing）
+如果确实想要一份值的副本，则明确调用`clone`方法
+
+```rust
+let s1 = String::from("hello");
+let s2 = s1.clone();
+```
+
+Rust 提供了一个名为 Copy 的 trait，一旦某种类型的变量拥有 Copy 这种 trait，那么该变量在赋值给其他变量时也会保持可用性，一般来说任何简单标量类型都是 Copy 的，而需要分配内存的资源都不是 Copy 的，比如：
+
++ 整数类型
++ bool
++ 字符类型
++ 浮点类型
++ 如果元组所有字段都是 Copy 的，那么这个元组也是 Copy 的
+
+## Drop
+
+实现 Drop trait 的值，在被 drop 时会执行额外的代码
+
+```rust
+struct Droppable {
+  name: &'static str,
+}
+
+impl Drop for Droppable {
+  fn drop(&mut self) {
+    println!("Dropping {}", self.name);
+  }
+}
+
+fn main() {
+  let a = Droppable { name: "a" };
+  {
+    let b = Droppable { name: "b" };
+    {
+      let c = Droppable { name: "c" };
+    }
+  }
+  // 手动 drop
+  drop(a);
+  println!("Exiting main");
+}
+```
+
+## 借用
 
 在下面这个例子中，希望函数保留参数的所有权，就必须将传入的值作为结果返回
 
 ```rust
 fn main() {
-    let s1 = String::from("hello");
-    let (s2, len) = calculate_length(s1);
+  let s1 = String::from("hello");
+  let (s2, len) = calculate_length(s1);
 }
 
 fn calculate_length(s: String) -> (String, usize) {
-    let length = s.len();
-    return (s, length);
+  let length = s.len();
+  return (s, length);
 }
 ```
 
-在不转移所有权的前提下，使用`&`创建一个指向该变量的引用，由于引用没有所有权，所以离开作用域时也不会销毁所指向的值
+在不转移所有权的前提下，使用`&`创建一个指向该变量的引用，由于引用没有所有权，所以离开作用域时也不会销毁所指向的值，像这种通过引用传递参数给函数的方法就是**借用**，它的类型是`&T`
 
 ```rust
 fn main() {
@@ -111,7 +146,7 @@ fn calculate_length(s: &String) -> usize { // s 是一个指向 String 类型
 } // 什么也不会发生
 ```
 
-像这种通过引用传递参数给函数的方法就是借用，但引用默认是不可变的。使用`&mut`声明可变引用，同时使用`&mut`传入可变引用才可以修改值
+引用默认是不可变的，使用`&mut`声明可变引用，它的类型是`&mut T`
 
 ```rust
 fn main() {
@@ -124,7 +159,7 @@ fn change(s: &mut String) { // s 是一个可变引用
 }
 ```
 
-可变引用只能在作用域中声明一个，这种避免了数据竞争问题，但是可以巧妙地使用`{}`创建一个新的作用域来创建多个可变引用
+可变引用只能在作用域中声明一个，避免了数据竞争，但是可以巧妙地使用`{}`创建一个新的作用域来创建多个可变引用
 
 ```rust
 let mut s1 = String::from("hello");
@@ -137,7 +172,7 @@ let r2 = &mut s1; // error
 
 ## 切片
 
-切片是另一种不需要所有权的类型，允许引用集合中一段连续的元素，字符串切片类型是`&str`
+切片是另一种不需要所有权的类型，允许借用集合中一段连续的元素，`String`切片类型是`&str`
 
 ```rust
 let s = String::from("hello world");

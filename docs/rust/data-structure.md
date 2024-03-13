@@ -3,6 +3,7 @@ title: 数据结构
 category: 编程语言
 tag: [Rust]
 article: false
+order: 3
 ---
 
 Rust 提供了一些数据结构
@@ -48,6 +49,24 @@ let s1 = "Hello";
 // as_str 将字符串对象转换为 str
 let str = String::from("Hello");
 let s2 = str.as_str();
+```
+
+### raw string
+
+raw string 不处理任意转移字符，以 r 开头，紧跟着 0～n 个 # 字符，中间是任何的 Unicode character 序列，然后以同样数量的 # 结束
+
+```rust
+ let s1 = r"abc";   // -> abc
+ let s2 = r"abc'"; // -> abc'
+ let s3 = r"我";  // -> 我
+ let s4 = r"\x41"; // -> \x41
+ let s5 = r"\n"; // -> \n
+ let s6 = r"\u{6211}\u{6211}"; // -> \u{6211}\u{6211}
+ let s7 = r#"""#;  // -> "
+ let s8 = r"###"; // -> ###
+ let s9 = r#"hello
+ ​
+     world"#;  // -> hello\n\n\tworld
 ```
 
 ### String
@@ -218,6 +237,11 @@ let v1 = 1..3;
 for item in v1 {
   println!("{item}")
 }
+
+// 包含 a ，不包含 b
+for n in 1..101 {}
+// 包含 a ，也包含 b
+for n in 1..=101 {}
 ```
 
 两个小数点只是一个语法糖，它相当于：

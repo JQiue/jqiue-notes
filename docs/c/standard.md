@@ -8,7 +8,7 @@ order: 9
 
 这里是 C 中提供的一些标准功能
 
-## 标准库函数
+## 标准库
 
 必须引入`stdlib.h`头文件
 
@@ -21,7 +21,7 @@ order: 9
 + realloc
 + free
 
-## IO 函数
+## IO
 
 必须引入`stdio.h`头文件
 
@@ -136,7 +136,7 @@ scanf("%d %d", &foo, &bar);
 + fread
 + fwrite
 
-## 字符串函数
+## 字符串
 
 必须引入`string.h`头文件
 
@@ -144,7 +144,7 @@ scanf("%d %d", &foo, &bar);
 + strcmp - 比较字符串
 + strlen - 返回字符串长度
 
-## 数学函数
+## 数学
 
 必须引入`math.h`头文件
 
