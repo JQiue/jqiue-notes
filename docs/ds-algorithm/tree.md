@@ -82,7 +82,7 @@ class Node {
 
 ## 二叉搜索树
 
-二叉搜索树是二叉树的一种，但是只允许在左节点存储（比父节点）小的值，在右节点存储（比父节点）大的值，定义如下：
+二叉搜索树是二叉树的一种，但是只允许在左节点存储比父节点小的值，在右节点存储比父节点大的值，定义如下：
 
 + 任意节点的值都大于其左子树所有节点的值
 + 任意节点的值都小于其右子树所有节点的值
@@ -319,13 +319,102 @@ class BinarySearchTree {
 
 ## 树的遍历
 
+遍历一棵树是指访问树的每个节点并对它们进行某种操作的过程，访问树的所有节点有三种方式：中序、先序和后序
+
+### 中序
+
+中序遍历是一种以上行顺序访问 BST 所有节点的遍历方式，也就是以从最小到最大的顺序访问所有节点
+
+```js
+class BinarySearchTree {
+  inOrderTraverse(callback) {
+    this.inOrderTraverseNode(this.root, callback);
+  }
+  inOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.inOrderTraverseNode(node.left, callback);
+      callback(node.data);
+      this.inOrderTraverseNode(node.right, callback);
+    }
+  }
+}
+```
+
+### 先序
+
+先序遍历是以优先于后代节点的顺序访问每个节点的，先序遍历的一种应用是打印一个结构化的文档
+
+```js
+class BinarySearchTree {
+  preOrderTraverse(callback) {
+    this.preOrderTraverseNode(this.root, callback);
+  }
+  preOrderTraverseNode(node, callback) {
+    if (node != null) {
+      callback(node.data);
+      this.preOrderTraverseNode(node.left, callback);
+      this.preOrderTraverseNode(node.right, callback);
+    }
+  }
+}
+```
+
+### 后序
+
+后序遍历则是先访问节点的后代节点，再访问节点本身。后序遍历的一种应用是计算一个目录及其子目录中所有文件所占空间的大小
+
+```js
+class BinarySearchTree {
+  postOrderTraverse(callback) {
+    this.postOrderTraverseNode(this.root, callback);
+  }
+  postOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.postOrderTraverseNode(node.left, callback); 
+      this.postOrderTraverseNode(node.right, callback); 
+      callback(node.data); 
+    }
+  }
+}
+```
+
 ## 平衡树
 
 二叉搜索树在某些极端的情况下，会出现退化的情况，比如插入的值依次越来越小，二叉搜索树就会退化成链表，非常影响树的查找性能，让树平衡就是为了降低树的高度
 
+### AVL 树
+
 AVL（Adelson-Velskii-Landi）树是一种自平衡树，用来解决二叉搜索树的性能问题，在添加或移除节点时，任意节点的左子树和右子树的高度最多差 1，让它的节点尽量的均匀分布
 
-## 红黑树
+在 AVL 树中插入或移除节点和 BST 完全相同。然而，AVL 树的不同之处在于我们需要检验它的平衡因子
+
+在 AVL 树中，需要对每个节点计算右子树高度（hr）和左子树高度（hl）之间的差值，该值（hr－hl）应为 0、1 或 -1。如果结果不是这三个值之一，则需要平衡该 AVL 树，这就是平衡因子的概念
+
+AVL 树需要进行旋转操作来维持平衡性，主要有四种情况：
+
++ 左左旋转: 当一个节点的左子树的左子树高度大于右子树高度时，需要进行左左旋转
+  + 具体操作如下:
+    1. 将该节点的左子节点作为新的根节点。
+    2. 原根节点成为新根节点的右子节点。
+    3. 原根节点的右子节点成为新根节点的左子节点。
+
++ 右右旋转: 当一个节点的右子树的右子树高度大于左子树高度时,需要进行右右旋转
+  + 具体操作如下：
+    1. 将该节点的右子节点作为新的根节点。
+    2. 原根节点成为新根节点的左子节点。
+    3. 原根节点的左子节点成为新根节点的右子节点。
+
++ 左右旋转：当一个节点的左子树的右子树高度大于左子树高度时,需要先进行左旋转,然后再进行右旋转。
+  + 具体操作如下:
+    1. 先对该节点的左子节点进行左旋转
+    2. 然后对该节点进行右旋转
+
++ 右左旋转：当一个节点的右子树的左子树高度大于右子树高度时,需要先进行右旋转,然后再进行左旋转
+  + 具体操作如下:
+    1. 先对该节点的右子节点进行右旋转
+    2. 然后对该节点进行左旋转
+
+### 红黑树
 
 红黑树也是一个自平衡二叉搜索树，AVL 树在进行添加或移除节点的时候可能会造成旋转，所以需要一个包含多次插入和删除的自平衡树
 

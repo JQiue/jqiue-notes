@@ -178,3 +178,130 @@ use reqwest::blocking;
 let data = blocking::get(format!("{url}/ping"))?.text()?;
 println!("{data}");
 ```
+
+## jsonwebtoken
+
+用于生成和验证 jwt 的库
+
+```toml
+[dependencies]
+jsonwebtoken = "9.2.0"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0"
+time = "0.3.34"
+```
+
+```rust
+use jsonwebtoken::errors::{Error, ErrorKind};
+use jsonwebtoken::{
+    decode, encode, Algorithm, DecodingKey, EncodingKey, Header, TokenData, Validation,
+};
+use serde::{Deserialize, Serialize};
+use time::{Duration, OffsetDateTime};
+
+mod jwt_numeric_date {
+    //! Custom serialization of OffsetDateTime to conform with the JWT spec (RFC 7519 section 2, "Numeric Date")
+    use serde::{self, Deserialize, Deserializer, Serializer};
+    use time::OffsetDateTime;
+
+    /// Serializes an OffsetDateTime to a Unix timestamp (milliseconds since 1970/1/1T00:00:00T)
+    pub fn serialize<S>(date: &OffsetDateTime, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        let timestamp = date.unix_timestamp();
+        serializer.serialize_i64(timestamp)
+    }
+
+    /// Attempts to deserialize an i64 and use as a Unix timestamp
+    pub fn deserialize<'de, D>(deserializer: D) -> Result<OffsetDateTime, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        OffsetDateTime::from_unix_timestamp(i64::deserialize(deserializer)?)
+            .map_err(|_| serde::de::Error::custom("invalid Unix timestamp value"))
+    }
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Data {
+    user_id: String,
+    is_plus: i8,
+}
+
+#[derive(Debug, PartialEq, Serialize, Deserialize)]
+struct Claims {
+    data: Data,
+    #[serde(with = "jwt_numeric_date")]
+    iat: OffsetDateTime,
+    #[serde(with = "jwt_numeric_date")]
+    exp: OffsetDateTime,
+}
+
+impl Claims {
+    pub fn new(data: Data, iat: OffsetDateTime, exp: OffsetDateTime) -> Self {
+        // normalize the timestamps by stripping of microseconds
+        let iat = iat
+            .date()
+            .with_hms_milli(iat.hour(), iat.minute(), iat.second(), 0)
+            .unwrap()
+            .assume_utc();
+        let exp = exp
+            .date()
+            .with_hms_milli(exp.hour(), exp.minute(), exp.second(), 0)
+            .unwrap()
+            .assume_utc();
+
+        Self { data, iat, exp }
+    }
+}
+
+// 签发
+fn sign(payload: Claims, key: String) -> String {
+    let header = Header::default();
+    let key = EncodingKey::from_secret(key.as_ref());
+    match encode(&header, &payload, &key) {
+        Ok(token) => token,
+        Err(error) => panic!("{error}"),
+    }
+}
+
+// 验证
+fn verify(token: String, key: String) -> Result<TokenData<Claims>, Error> {
+    let key = DecodingKey::from_secret(key.as_ref());
+    let validation = Validation::new(Algorithm::HS256);
+
+    match decode::<Claims>(&token, &key, &validation) {
+        Ok(c) => Ok(c),
+        Err(err) => match *err.kind() {
+            ErrorKind::InvalidToken => Err(Error::from(ErrorKind::InvalidToken)), // Example on how to handle a specific error
+            ErrorKind::InvalidIssuer => Err(Error::from(ErrorKind::InvalidIssuer)), // Example on how to handle a specific error
+            _ => Err(err),
+        },
+    }
+}
+
+fn main() {
+    let key = "aurora";
+    let iat = OffsetDateTime::now_utc();
+    let exp = iat + Duration::days(7);
+    let data = Data {
+        user_id: "foo_id".to_string(),
+        is_plus: 1,
+    };
+    let my_claims = Claims::new(data, iat, exp);
+
+    let token = sign(my_claims, key.to_string());
+
+    match verify(token, key.to_string()) {
+        Ok(res) => {
+            println!("{:?}", res.claims.data);
+            println!("{:?}", res.header);
+        }
+        Err(_) => {
+            println!("验证失败")
+        }
+    }
+}
+
+```

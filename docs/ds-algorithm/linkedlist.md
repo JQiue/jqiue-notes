@@ -351,6 +351,10 @@ class LinkedList {
 
 在链表中，一个节点只有链向下一个节点的链接。而在双向链表中，链接是双向的，一个节点链向下一个元素，另一个节点链向前一个元素，可以很方便的访问回到上一个节点
 
+::: code-tabs
+
+@tab JavaScript
+
 ```js
 class Node {
   constructor(data) {
@@ -477,6 +481,8 @@ class DoublyLinkedList {
   }
 }
 ```
+
+:::
 
 ## 循环链表
 
