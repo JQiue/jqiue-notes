@@ -309,7 +309,9 @@ package-lock.json 是在使用`npm install`时生成的文件，记录包的来�
 
 NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 
-可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户，输入账户和密码进行登录，登陆成功后使用`npm publish`命令发布包
+### 发布 NPM 包
+
+可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户，登陆成功后使用`npm publish`命令发布包
 
 ::: tip
 在发布前，最好检查一下源地址，必须是官方源地址
@@ -328,6 +330,25 @@ NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 + `npm version major` - 升级大版本号
 + `npm version minor` - 升级小版本号
 + `npm version patch` - 升级补丁版本号
+
+发布一个纯 ESM 包，需要做以下几件事：
+
+1. 添加`"type": "module"`到 package.json：node 会使用 esm 加载器运行，默认是 cjs
+2. 使用`"exports": "./index.js"`替换`"main": "index.js"`：限制 esm 的导出范围，防止隐式导入
+3. 添加`"engines"`字段限制 node 运行版本号
+4. 删除`use strict`：esm 不需要这个严格声明
+5. 将代码中所有的 cjs 导入导出替换为 esm 导入导出
+6. 使用完整的相对文件路径引入文件，文件名和扩展名
+7. 使用`node:*`协议导入 node 内置模块：防止混淆，明确告诉 node 导入一个内置的模块
+
+如果是 typescript 发布一个纯 esm 包，则和上大致相同：
+
+1. 如上
+2. 如上
+3. 如上
+4. 如上
+5. 删除`namespace`并使用`export`
+6. 更改`tsconfig.json`中编译目标位 es，即`module: "es2020"`
 
 ## NPX
 

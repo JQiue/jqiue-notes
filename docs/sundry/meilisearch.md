@@ -59,7 +59,7 @@ export MEILI_MASTER_KEY="Master Key"
 docker run -t --rm \
   --network=host \
   -e MEILISEARCH_HOST_URL='http://localhost:7700' \
-  -e MEILISEARCH_API_KEY='root' \
+  -e MEILISEARCH_API_KEY=$MEILI_MASTER_KEY \
   -v /root/crawl/meilisearch.json:/docs-scraper/config.json \
   getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json
 ```

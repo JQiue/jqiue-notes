@@ -344,7 +344,24 @@ document.getElementById('close').addEventListener('click', function () {
 
 ## 文件上传
 
-<!-- todo -->
+```js
+async function uploadFile(file, startByte = 0) {
+  const fileName = file.name;
+  const fileSize = file.size;
+  const response = await fetch('/upload', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
+    body: file
+  });
+  if (response.ok) {
+    console.log('File uploaded successfully');
+  } else {
+    console.error('Error uploading file:', response.status);
+  }
+}
+```
 
 ## 跨源策略
 

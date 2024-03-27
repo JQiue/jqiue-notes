@@ -124,6 +124,16 @@ opt-level = "s" # 优化二进制大小，可以有多个选项，在平衡中�
 
 如果想分析 crate 占用大小，可以安装`cargo install cargo-bloat --no-default-features`，然后使用`cargo bloat --release --crates`进行构建就会分析每个依赖占用的大小
 
+### 使用 cargo-wizard 自动配置 Cargo 项目
+
+Cargo 子命令 cargo-wizard，它简化了 Cargo 项目的配置，以实现最大的运行时性能、最快的编译时间或最小的二进制大小
+
+```sh
+cargo install cargo-wizard
+```
+
+项目中使用`cargo wizard`快速配置
+
 ## 参考资料
 
 + [Rust 性能手册](https://blues-star.github.io/perf-book-zh/title-page.html)
