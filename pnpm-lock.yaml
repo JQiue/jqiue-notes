@@ -24,8 +24,8 @@ dependencies:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.3.3)
   vuepress-plugin-meilisearch2:
-    specifier: 0.1.15
-    version: 0.1.15(@types/node@20.11.25)(postcss@8.4.35)
+    specifier: 0.2.0
+    version: 0.2.0(@types/node@20.11.25)(postcss@8.4.35)
   vuepress-plugin-pwa2:
     specifier: 2.0.0-rc.24
     version: 2.0.0-rc.24(typescript@5.3.3)(vuepress@2.0.0-rc.8)
@@ -1947,6 +1947,7 @@ packages:
     resolution: {integrity: sha512-0bK9aG1kIg0Su7OcFTlexkVeNZ5IzEsnz1ept87a0TUgZ6HplSgkJAnFpEVRW7GRcikT4GlPV0pbtVedOaXHQQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     optional: true
 
@@ -1954,6 +1955,7 @@ packages:
     resolution: {integrity: sha512-qB6AFRXuP8bdkBI4D7UPUbE7OQf7u5OL+R94JE42Z2Qjmyj74FtDdLGeriRyBDhm4rQSvqAGCGC01b8Fu2LthQ==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     optional: true
 
@@ -1961,6 +1963,7 @@ packages:
     resolution: {integrity: sha512-sHig3LaGlpNgDj5o8uPEoGs98RII8HpNIqFtAI8/pYABO8i0nb1QzT0JDoXF/pxzqO+FkxvwkHZo9k0NJYDedg==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     optional: true
 
@@ -1968,6 +1971,7 @@ packages:
     resolution: {integrity: sha512-nD3YcUv6jBJbBNFvSbp0IV66+ba/1teuBcu+fBBPZ33sidxitc6ErhON3JNavaH8HlswhWMC3s5rgZpM4MtPqQ==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     optional: true
 
@@ -1975,6 +1979,7 @@ packages:
     resolution: {integrity: sha512-7/XVZqgBby2qp/cO0TQ8uJK+9xnSdJ9ct6gSDdEr4MfABrjTyrW6Bau7HQ73a2a5tPB7hno49A0y1jhWGDN9OQ==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     optional: true
 
@@ -4114,6 +4119,23 @@ packages:
   /mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
+  /meilisearch-docsearch@0.6.0:
+    resolution: {integrity: sha512-Pq61rCNIrwxMZ2vGc7ZkPUJSv92hPz1xPqy/jbDXmmA5GLSje6n98dotiUC9TKGzeRrG7DYCNbCjjdrlyoi8Bg==}
+    dependencies:
+      meilisearch: 0.35.0
+      solid-js: 1.8.5
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /meilisearch@0.35.0:
+    resolution: {integrity: sha512-gF1I6K5/Wpe7BWfjBnG+o19y/FIpJ9HbN+byON6CB9U3uE7qc6GvwUbjKOllh7LKXQVVxH/kCu7Jn0ODCUwqbQ==}
+    dependencies:
+      cross-fetch: 3.1.8
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /meilisearch@0.37.0:
     resolution: {integrity: sha512-LdbK6JmRghCawrmWKJSEQF0OiE82md+YqJGE/U2JcCD8ROwlhTx0KM6NX4rQt0u0VpV0QZVG9umYiu3CSSIJAQ==}
     dependencies:
@@ -4686,6 +4708,11 @@ packages:
       randombytes: 2.1.0
     dev: false
 
+  /seroval@0.12.4:
+    resolution: {integrity: sha512-JIsZHp98o+okpYN8HEPyI9Blr0gxAUPIGvg3waXrEMFjPz9obiLYMz0uFiUGezKiCK8loosYbn8WsqO8WtAJUA==}
+    engines: {node: '>=10'}
+    dev: false
+
   /set-blocking@2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
     dev: true
@@ -4762,6 +4789,13 @@ packages:
   /slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
+
+  /solid-js@1.8.5:
+    resolution: {integrity: sha512-xvtJvzJzWbsn35oKFhW9kNwaxG1Z/YLMsDp4tLVcYZTMPzvzQ8vEZuyDQ6nt7xDArVgZJ7TUFrJUwrui/oq53A==}
+    dependencies:
+      csstype: 3.1.3
+      seroval: 0.12.4
+    dev: false
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
@@ -5458,13 +5492,14 @@ packages:
       - typescript
     dev: true
 
-  /vuepress-plugin-meilisearch2@0.1.15(@types/node@20.11.25)(postcss@8.4.35):
-    resolution: {integrity: sha512-IVTjQTg3aFgKmKrHtxPVAKN4fWPc3WGbKLCCQbpUfGbxK1fmdaLnnBzBTD7pHCOaoHG8lPzOcvncd7cKgVdEOw==}
+  /vuepress-plugin-meilisearch2@0.2.0(@types/node@20.11.25)(postcss@8.4.35):
+    resolution: {integrity: sha512-qti9MzIa8ijhRRPLAF0jYc7+oL8LXNW7Vk0qV9yCo8EG2VWn6GpiesGxmTe5z1YLjHwJGkSsRAl0UC4WT2hIOw==}
     dependencies:
       '@vuepress/utils': 2.0.0-rc.2
       cpx2: 7.0.1
       keyword-mark: 1.0.6
       meilisearch: 0.37.0
+      meilisearch-docsearch: 0.6.0
       ts-node: 10.9.2(@types/node@20.11.25)(typescript@5.3.3)
       tsconfig-vuepress: 4.5.0
       tsup: 8.0.2(postcss@8.4.35)(ts-node@10.9.2)(typescript@5.3.3)

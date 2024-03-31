@@ -108,4 +108,40 @@ C 还提供了一些预定义的宏
 
 ## 条件编译
 
-<!-- todo -->
+在 C 语言中，条件编译是一种非常强大的功能，它允许我们根据特定的条件来决定是否编译某些代码块。这对于跨平台开发、特性选择以及调试和优化等场景非常有用
+
+语法：
+
+```c
+#if condition
+    // code block
+#elif condition
+    // another code block
+#else
+    // default code block
+#endif
+```
+
+简单例子：
+
+```c
+#include <stdio.h>
+
+#define DEBUG
+
+int main() {
+    printf("This is the main function.\n");
+    #ifdef DEBUG
+        printf("Debug mode is enabled.\n");
+    #else
+        printf("Debug mode is disabled.\n");
+    #endif
+    
+    #if __STDC_VERSION__ >= 201112L
+        printf("You are using C11 or a later version.\n");
+    #else
+        printf("You are using an earlier version of C.\n");
+    #endif
+        return 0;
+}
+```

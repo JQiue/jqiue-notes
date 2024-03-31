@@ -215,3 +215,4 @@ add-one = { path = "../add-one" }
 + [Rust Language Cheat Sheet](https://cheats.rs/)
 + [Rust 生态系统的非官方指南](https://blessed.rs/crates)
 + [Rust 库和程序的索引](https://lib.rs/)
++ [Rust Cookbook - 各种良好实践](https://rustwiki.org/zh-CN/rust-cookbook/intro.html)

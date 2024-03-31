@@ -305,3 +305,63 @@ fn main() {
 }
 
 ```
+
+## Chrono
+
+Chrono 是时间库的首选
+
+获取当前时间
+
+```rust
+use chrono::Utc;
+
+let now: chrono::DateTime<Utc> = Utc::now();
+println!("Current time: {}", now);
+
+let date_time_str = "2023-04-25 12:34:56";
+let date_time: DateTime<Utc> = DateTime::parse_from_str(date_time_str, "%Y-%m-%d %H:%M:%S")
+    .unwrap()
+    .with_timezone(&Utc);
+println!("Parsed time: {}", date_time);
+```
+
+解析字符串格式的时间
+
+```rust
+let formatted = date_time.format("%Y-%m-%d %H:%M:%S").to_string();
+```
+
+格式化时间
+
+```rust
+let start = Utc::now();
+// 执行某些操作
+let end = Utc::now();
+let duration = end - start;
+println!("Operation took: {:?}", duration);
+```
+
+计算时间差
+
+```rust
+let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(timestamp, 0), Utc);
+```
+
+将时间转换为时间戳
+
+```rust
+let timestamp: i64 = date_time.timestamp();
+```
+
+从时间戳创建时间:
+
+```rust
+let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(timestamp, 0), Utc);
+```
+
+日期计算:
+
+```rust
+let tomorrow = date_time.checked_add_days(1).unwrap();
+let last_month = date_time.checked_sub_months(1).unwrap();
+```

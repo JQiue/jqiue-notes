@@ -23,8 +23,6 @@ TensorFlow.js 是第一个成熟的工业级 JavaScript 神经网络软件库。
 
 从传统意义上讲，JavaScript 是一种用于创建 Web 浏览器 UI 和后端业务逻辑（通过Node.js）的编程语言，而深度学习革命似乎是 Python、R 和 C++ 这些语言的专属领域。因此，作为用 JavaScript 来表达想法和发挥创造力的人，可能觉得自己有点脱离深度学习革命了。在通过叫作 TensorFlow.js 的 JavaScript 深度学习库，将深度学习与 JavaScript 结合起来。如此一来，无须学习新的编程语言，JavaScript 开发者就可以学习如何编写深度神经网络
 
-<!-- todo -->
-
 ### 用 Node.js 进行深度学习
 
 对训练涉及大量数据的大型机器学习模型来说，这意味着浏览器并不是一个理想的环境。但是，当 Node.js 出现后，JavaScript 的地位就不可同日而语了。Node.js 让 JavaScript 脱离了 Web 浏览器的桎梏，使它能够最大限度地利用系统的原生资源，比如内存和文件系统。TensorFlow.js 包含了一个 Node.js 版本，叫作 tfjsnode，可以与 C++ 和 CUDA 代码编译而成的 TensorFlow 库直接对接，这样 TensorFlow.js 用户也能够受益于 Python 版 TensorFlow 所使用的 CPU 并行计算和 GPU 核函数计算
@@ -100,6 +98,12 @@ const testTensors = tf.tensor1d(data);
 })();
 ```
 
+<!-- to be update -->
+
 ## 使用 Python
 
+<!-- todo -->
+
 ### Pytorch
+
+<!-- todo -->
