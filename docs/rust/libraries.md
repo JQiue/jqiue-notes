@@ -353,13 +353,13 @@ let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(
 let timestamp: i64 = date_time.timestamp();
 ```
 
-从时间戳创建时间:
+从时间戳创建时间
 
 ```rust
 let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(timestamp, 0), Utc);
 ```
 
-日期计算:
+日期计算
 
 ```rust
 let tomorrow = date_time.checked_add_days(1).unwrap();
