@@ -150,7 +150,7 @@ pacman -S package_name
 pacman -R package_name
 # 搜索软件包
 pacman -Ss keyword
-# 更新系统
+# 更新系统（使用 Arch 最好定期更新系统，否则不如用 Ubuntu）
 pacman -Syu
 ```
 
@@ -329,6 +329,34 @@ scp 本地文件路径 目标机器:目标机器的文件路径
 
 不管是`set`还是`env`设置的变量，都只对当前 shell 有效，不会对新的 shell 可见，所以必须修改一些文件来达到永久设置变量的目的
 
+在 Linux 中,环境变量的加载顺序是非常重要的,不同的加载顺序会导致环境变量的优先级和作用范围发生变化。以下是 Linux 中常见的环境变量加载顺序:
+
+1. /etc/profile
+
+这是系统级别的配置文件,在系统启动时加载。
+在这个文件中设置的环境变量对所有用户都生效。
+
+2. /etc/environment
+
+这也是系统级别的配置文件,在系统启动时加载。
+在这个文件中设置的环境变量对所有用户都生效。
+
+3. /etc/profile.d/*.sh
+
+这个目录下的所有 .sh 脚本文件会在系统启动时被加载。
+可以在这些脚本文件中设置针对特定服务或应用的环境变量。
+
+4. ~/.bash_profile 或 ~/.bash_login 或 ~/.profile
+这些是用户级别的配置文件,在用户登录时加载。
+在这些文件中设置的环境变量只对当前用户生效。
+
+5. ~/.bashrc
+这也是用户级别的配置文件,在每次打开 shell 时加载。
+在这个文件中设置的环境变量只对当前用户生效。
+需要注意的是,上述加载顺序是针对使用 Bourne shell 及其衍生 shell (如 bash) 的情况。如果使用其他 shell,如 zsh 或 fish,加载顺序可能会略有不同。
+
+另外,对于 systemd 服务,环境变量的加载顺序也会略有不同。通常建议直接在 systemd 服务文件的 [Service] 部分设置环境变量,以确保它们能被正确加载
+
 ## 语言设置
 
 在 Linux 中，进行语言选择像导出变量一样简单，通过查看这个变量，程序会决定如何跟你交流
@@ -447,6 +475,34 @@ root@VM-4-14-ubuntu:~# ps x
 + `fuser -n tcp 80`：查看 80 端口被哪个程序占用
 
 ## 系统启动
+
+Systemd 是 Linux 操作系统中用于初始化、管理和监控系统和服务的系统和服务管理器
+
+主要功能：
+
++ 系统启动和关闭管理
++ 服务和守护进程的启动、停止和重启管理
++ 系统日志和事件管理
++ 网络连接和挂载管理
++ 电源管理和休眠处理
++ 资源限制和依赖关系管理
+
+```sh
+# 列出系统中所有正在运行的 Systemd 服务
+systemctl list-units --type=service
+# 查看服务的详细信息
+systemctl status your-service.service
+# 停止、重启和删除服务
+systemctl stop/restart/disable your-service.service
+# 设置开机自启动
+systemctl enable/disable your-service.service 
+# 查看系统日志
+journalctl
+# 查看某个服务的日志
+journalctl -u your-service.service
+```
+
+
 
 如果 Linux 发行版支持 systemd，那么从启动时开始，它每秒钟都会从系统的所有进程和应用程序中收集日志。所有这些日志事件都由 systemd 的 journald 守护程序管理。journald 收集所有的日志（信息、警告、错误等），并将其作为二进制数据存储在磁盘文件中，日志以二进制形式存储在路径 /var/log/journal
 

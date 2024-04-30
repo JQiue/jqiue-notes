@@ -74,8 +74,8 @@ export default hopeTheme({
     blog: {},
     comment: {
       provider: 'Waline',
-      serverURL: 'https://waline.jinqiu.wang',
-      // serverURL: 'http://127.0.0.1:3000',
+      // serverURL: 'https://waline.jinqiu.wang',
+      serverURL: 'http://127.0.0.1:3000',
     },
     mdEnhance: {
       katex: true,

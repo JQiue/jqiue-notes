@@ -491,6 +491,8 @@ async fn get_json() -> impl Responder {
 }
 ```
 
+### Extractors
+
 ### use SeaORM
 
 ## anyhow

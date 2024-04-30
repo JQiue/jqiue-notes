@@ -101,57 +101,34 @@ curl \
 
 ## 启动配置
 
-### 数据库路径
++ 数据库路径 - Environment variable: `MEILI_DB_PATH`，Default value: `"data.ms/"`。Designates the location where database files will be created and retrieved.
++ 地址和端口 - Environment variable: `MEILI_HTTP_ADDR`，Default value: `"localhost:7700"`。Sets the HTTP address and port Meilisearch will use.
++ Master key - Environment variable: `MEILI_MASTER_KEY`，Default value: None。Expected value: a UTF-8 string of at least 16 bytes
++ 最大索引内存 - Environment variable: `MEILI_MAX_INDEXING_MEMORY`，Default value: 2/3 of the available RAM。Expected value: an integer (`104857600`) or a human readable size (`'100Mb'`). Sets the maximum amount of RAM Meilisearch can use when indexing. By default, Meilisearch uses no more than two thirds of available memory. The value must either be given in bytes or explicitly state a base unit: `107374182400`, `'107.7Gb'`, or `'107374 Mb'`. It is possible that Meilisearch goes over the exact RAM limit during indexing. In most contexts and machines, this should be a negligible amount with little to no impact on stability and performance.
++ 最大索引线程 - Environment variable: `MEILI_MAX_INDEXING_THREADS`，Default value: half of the available threads。Expected value: an integer。Sets the maximum number of threads Meilisearch can use during indexing. By default, the indexer avoids using more than half of a machine's total processing units. This ensures Meilisearch is always ready to perform searches, even while you are updating an index.
 
-Database path
-Environment variable: `MEILI_DB_PATH`
-CLI option: `--db-path`
-Default value: `"data.ms/"`
-Expected value: a filepath
+## 快照
 
-Designates the location where database files will be created and retrieved.
+快照是 Meilisearch 数据库的精确副本，默认位于`./data.ms`中。快照中的文档已编入索引并准备就绪，大大提高了导入速度。但是，快照在不同版本的美利搜索之间不兼容。快照也比转储大得多
 
-### 地址和端口
+## 转储
 
-Environment variable: `MEILI_HTTP_ADDR`
-CLI option: `--http-addr`
-Default value: `"localhost:7700"`
-Expected value: an HTTP address and port
+转储不像快照那样是数据库的精确副本。相反，它更接近于一个蓝图，Meilisearch 以后可以使用它从头开始重新创建整个实例。
 
-Sets the HTTP address and port Meilisearch will use.
+导入转储需要 Meilisearch 重新索引所有文档。此过程使用与数据库大小成正比的大量时间和内存。与快照相比，导入转储是一种缓慢且低效的操作。
 
-### Master key
+同时，转储不绑定到特定的 Meilisearch 版本。这意味着转储非常适合在升级 Meilisearch 时迁移数据。
 
-Environment variable: `MEILI_MASTER_KEY`
-CLI option: `--master-key`
-Default value: None
-Expected value: a UTF-8 string of at least 16 bytes
+```sh
+# 创建转储
+curl \
+  -X POST 'http://localhost:7700/dumps'
+```
 
-### 最大索引内存
-
-Environment variable: `MEILI_MAX_INDEXING_MEMORY`
-CLI option: `--max-indexing-memory`
-Default value: 2/3 of the available RAM
-Expected value: an integer (`104857600`) or a human readable size (`'100Mb'`)
-
-Sets the maximum amount of RAM Meilisearch can use when indexing. By default, Meilisearch uses no more than two thirds of available memory.
-
-The value must either be given in bytes or explicitly state a base unit: `107374182400`, `'107.7Gb'`, or `'107374 Mb'`.
-
-It is possible that Meilisearch goes over the exact RAM limit during indexing. In most contexts and machines, this should be a negligible amount with little to no impact on stability and performance.
-
-### 最大索引线程
-
-Environment variable: `MEILI_MAX_INDEXING_THREADS`
-CLI option: `--max-indexing-threads`
-Default value: half of the available threads
-Expected value: an integer
-
-Sets the maximum number of threads Meilisearch can use during indexing. By default, the indexer avoids using more than half of a machine's total processing units. This ensures Meilisearch is always ready to perform searches, even while you are updating an index.
-
-If --max-indexing-threads is higher than the real number of cores available in the machine, Meilisearch uses the maximum number of available cores.
-
-In single-core machines, Meilisearch has no choice but to use the only core available for indexing. This may lead to a degraded search experience during indexing.
+```sh
+# 导入转储
+./meilisearch --import-dump /dumps/20200813-042312213.dump
+```
 
 ## 参考资料
 
