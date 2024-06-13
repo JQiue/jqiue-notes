@@ -365,3 +365,40 @@ let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(
 let tomorrow = date_time.checked_add_days(1).unwrap();
 let last_month = date_time.checked_sub_months(1).unwrap();
 ```
+
+## Regex
+
+regex 是事实上的标准正则表达式库，非常快，但不支持更花哨的功能，如回溯
+
+```rust
+use regex::Regex;
+
+// 基本匹配
+let re = Regex::new(r"foo").unwrap();
+assert!(re.is_match("foo bar"));
+
+// 捕获分组
+let re = Regex::new(r"(\w+) (\w+)").unwrap();
+let captures = re.captures("hello world").unwrap();
+assert_eq!(captures.get(1).unwrap().as_str(), "hello");
+assert_eq!(captures.get(2).unwrap().as_str(), "world");
+
+// 替换
+let re = Regex::new(r"foo").unwrap();
+let text = re.replace("foo bar foo", "baz");
+assert_eq!(text, "baz bar baz");
+
+// 迭代匹配
+let re = Regex::new(r"\w+").unwrap();
+for capture in re.captures_iter("foo bar baz") {
+  println!("{}", capture.get(0).unwrap().as_str());
+}
+
+// 缓存
+
+static REF_RE: Regex = Regex::new(r"foo").unwrap();
+
+fn is_foo(text: &str) -> bool {
+    REF_RE.is_match(text)
+}
+```

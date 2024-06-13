@@ -29,7 +29,7 @@
     "echarts": "^5.5.0",
     "katex": "^0.16.10",
     "vue": "^3.4.26",
-    "vuepress-plugin-meilisearch2": "0.3.0",
+    "vuepress-plugin-meilisearch2": "0.4.0",
     "vuepress-plugin-pwa2": "2.0.0-rc.24"
   }
 }

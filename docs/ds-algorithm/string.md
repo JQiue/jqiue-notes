@@ -16,3 +16,48 @@ order: 5
 ## 压缩
 
 ## 替换
+
+## 乱序字符串
+
+乱序字符串是指一个字符串只是另一个字符串的重新排列，比如`heart`和`earth`
+
+```rust
+// 检查法 O(n2)
+pub fn anagram(s1: &str, s2: &str) -> bool {
+  // 字符串长度不同，一定不是乱序字符串
+  if s1.len() != s2.len() {
+    return false;
+  }
+  // s1 和 s2 中的字符分别加入 alist，blist
+  let mut alist = vec![];
+  let mut blist = vec![];
+  for c in s1.chars() {
+    alist.push(c)
+  }
+  for c in s2.chars() {
+    blist.push(c)
+  }
+
+  let mut pos1 = 0;
+  let mut ok = true;
+  while pos1 < s1.len() && ok {
+    let mut pos2 = 0;
+    let mut found = false;
+    while pos2 < blist.len() && !found {
+      if alist[pos1] == blist[pos2] {
+        found = true;
+      } else {
+        pos2 += 1;
+      }
+    }
+    if found {
+      blist[pos2] = ' ';
+    } else {
+      ok = false;
+    }
+    pos1 += 1;
+  }
+  ok
+}
+
+```

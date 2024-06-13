@@ -10,7 +10,7 @@ order: 18
 
 步骤：
 
-1. 登录 <crates.io> 获取 API Token
+1. 登录 <https://crates.io> 获取 API Token
 2. 使用`cargo login <token>`
 3. 创建`cargo new --lib <name>`
 4. 填写必须的清单
@@ -674,6 +674,36 @@ Entity::delete_many()
     .exec(&db)
     .await?;
 ```
+
+## 静态链接
+
+Rust 编译器默认情况下会采用动态链接的方式来链接 C/C++ 标准库：
+
++ Windows：Rust 默认使用 MSVCRT（Microsoft Visual C++ Runtime）作为 C 标准库
++ Linux：Rust 默认使用 glibc（GNU C Library）作为 C 标准库
+
+优点是：更小的可执行体积文件，易于更新，更好的系统集成，而缺点则是：依赖性更强，运行时性能略有损失
+
+想避免这些缺点，可以选择静态链接
+
+在 Windows 为`.cargo/config.toml`添加以下内容开启静态链接
+
+```toml
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+```
+
+在 Linux 中则添加以下内容使用 MUSL 作为静态链接
+
+```toml
+[target.x86_64-unknown-linux-musl]
+rustflags = [
+  "-C", "target-feature=+crt-static",
+  "-C", "link-self-contained=yes",
+]
+```
+
+## OpenDAL
 
 ## 参考资料
 

@@ -10,7 +10,12 @@ const app = defineUserConfig({
   theme,
   base: '/',
   dest: './dist',
-  head: [],
+  head: [
+    [
+      'script',
+      { type: 'text/javascript', src: '//js.users.51.la/21880055.js' },
+    ],
+  ],
   locales: {
     '/': {
       lang: 'zh-CN',
@@ -50,7 +55,7 @@ const app = defineUserConfig({
   shouldPrefetch: false,
 });
 
-app.onWatched = (app) => {
+app.onWatched = (app: any) => {
   let m = 0,
     w = 0;
   for (let i = 0; i < app.pages.length; i++) {

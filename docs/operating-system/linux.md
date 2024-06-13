@@ -512,8 +512,8 @@ journalctl -u your-service.service
 
 ```sh
 sudo journalctl --flush --rotate
-# 删除所有存档的日志文件，直到最后一秒
-sudo journalctl --vacuum-time=1s
+# 超过最近 1秒/周/月/年的日志会被删除
+sudo journalctl --vacuum-time=1s/w/m/y
 
 # 这将清除所有存档的日志文件，并保留最后 400MB 的文件。记住这个开关只适用于存档的日志文件，不适用于活动的日志文件
 sudo journalctl --vacuum-size=400M

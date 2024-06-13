@@ -108,7 +108,7 @@ fn returns() -> impl Debug {
 
 Rust 中的 turbofish 语法是使用显式类型注解来消除歧义的语法糖
 
-当编译器无法推断出泛型参数的具体类型时,需要使用 turbofish 来消除歧义
+当编译器无法推断出泛型参数的具体类型时，需要使用 turbofish 来消除歧义
 
 ```rust
 let v: Vec<i32> = Vec::new(); // 编译器可以推断

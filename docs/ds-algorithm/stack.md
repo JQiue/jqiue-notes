@@ -168,6 +168,50 @@ class Stack {
 }
 ```
 
+@tab rust
+
+```rust
+struct Statck<T> {
+  top: usize,
+  data: Vec<T>,
+}
+
+impl<T> Statck<T> {
+  fn new() -> Self {
+    Statck {
+      top: 0,
+      data: vec![],
+    }
+  }
+  fn push(&mut self, value: T) {
+    self.data.push(value);
+    self.top += 1;
+  }
+  fn pop(&mut self) -> Option<T> {
+    if self.top == 0 {
+      None
+    } else {
+      self.top -= 1;
+      self.data.pop()
+    }
+  }
+  fn peek(&self) -> Option<&T> {
+    if self.top == 0 {
+      None
+    } else {
+      self.data.get(self.top - 1)
+    }
+  }
+  fn is_empty(&self) -> bool {
+    self.top == 0
+  }
+  fn size(&self) -> usize {
+    self.top
+  }
+}
+
+```
+
 :::
 
 ## 链式实现
@@ -348,7 +392,7 @@ class LinkedList {
 
 在现实中十进制是最主要的方式，然而在计算机中二进制是最重要的，因为计算机中所有的内容都是用二进制表示，没有十进制和二进制互相转换的能力，和计算机交流就很困难
 
-这是一个十进制转二进制的算法
+将整数值转换为二进制最简单的方法是“除2”算法，它用栈来跟踪二进制结果的数字
 
 ```js
 function decimalToBinary(decNumber) {
@@ -438,3 +482,5 @@ function checkExpression(str) {
 后缀表达式又称为逆波兰表达式，如果一个中缀表达式`1+2`使用前缀表达式，它将是`12+`
 
 前缀、后缀表达式进行解析和求值时，不需要考虑优先级、结合性
+
+对于中缀表达式`A + B * C`，用人脑算的时候，眼睛会自动移到后面两个数上，最后再计算加法。实际上是没意识到自己的大脑已经添加了括号并划分好了计算顺序：`(A + ( B * C))`

@@ -141,6 +141,22 @@ tab_spaces = 2                    // 设置缩进宽度为 2 个空格
 
 然后执行`cargo fmt`进行格式化
 
+## clippy
+
+Clippy 是 Rust 的 lint 工具
+
+对整个项目进行静态检查
+
+```sh
+cargo clippy
+```
+
+自动修复 Clippy 指出的问题
+
+```sh
+cargo fix
+```
+
 ## Workspace
 
 工作空间用于将代码拆分多个代码包，`Cargo.toml`有所不同，以`workspace`区域开始，同时指定二进制包的位置来添加成员

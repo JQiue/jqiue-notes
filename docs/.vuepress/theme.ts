@@ -17,11 +17,6 @@ export default hopeTheme({
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
   docsDir: 'docs',
   docsBranch: 'master',
-  navbarLayout: {
-    start: ['Brand'],
-    center: ['Links'],
-    end: ['Repo', 'Outlook', 'MeiliSearch'],
-  },
   pageInfo: [
     'Author',
     'Original',
@@ -38,7 +33,6 @@ export default hopeTheme({
       blog: {
         intro: 'about.html',
         avatar: '/avatar.png',
-        roundAvatar: true,
         articleInfo: [
           'Author',
           'Original',
@@ -74,8 +68,9 @@ export default hopeTheme({
     blog: {},
     comment: {
       provider: 'Waline',
-      // serverURL: 'https://waline.jinqiu.wang',
-      serverURL: 'http://127.0.0.1:3000',
+      // serverURL: 'https://waline.jinqiu.w ang',
+      serverURL: 'http://127.0.0.1:8360',
+      reaction: true,
     },
     mdEnhance: {
       katex: true,

@@ -345,6 +345,12 @@ class LinkedList {
 }
 ```
 
+@tab rust
+
+```rust
+
+```
+
 :::
 
 ## 双向链表
