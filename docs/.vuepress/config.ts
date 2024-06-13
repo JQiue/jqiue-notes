@@ -9,12 +9,7 @@ const app = defineUserConfig({
   theme,
   base: '/',
   dest: './dist',
-  head: [
-    [
-      'script',
-      { type: 'text/javascript', src: '//js.users.51.la/21880055.js' },
-    ],
-  ],
+  head: [],
   locales: {
     '/': {
       lang: 'zh-CN',
