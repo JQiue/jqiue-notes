@@ -68,8 +68,8 @@ export default hopeTheme({
     blog: {},
     comment: {
       provider: 'Waline',
-      // serverURL: 'https://waline.jinqiu.w ang',
-      serverURL: 'http://127.0.0.1:8360',
+      serverURL: 'https://waline.jinqiu.wang',
+      // serverURL: 'http://127.0.0.1:8360',
       reaction: true,
     },
     mdEnhance: {

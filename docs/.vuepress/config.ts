@@ -2,7 +2,6 @@ import { defineUserConfig } from 'vuepress';
 import { viteBundler } from '@vuepress/bundler-vite';
 import { pwaPlugin } from 'vuepress-plugin-pwa2';
 import theme from './theme.ts';
-// import { MeiliSearchPlugin } from './vuepress-plugin-meilisearch/index.ts';
 import { MeiliSearchPlugin } from 'vuepress-plugin-meilisearch2';
 
 const app = defineUserConfig({
