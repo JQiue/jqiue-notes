@@ -10,7 +10,7 @@ Express 是基于 Node.js 的后端框架，特点是：
 + 封装路由处理
 + 提供中间件机制
 
-```js
+```sh
 npm i express
 ```
 

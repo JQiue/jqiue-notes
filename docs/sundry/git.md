@@ -358,7 +358,7 @@ Github 提供了 CI/CD 功能，在更目录新建`.github/workflows`，编写`y
 + Job：一个 Workflow 包含多个 Job，默认情况下并行运行，每个 Job 都会在指定环境创建一个 Runner 运行 Step
 + Step：组成 Job 的部分，定义每一步的内容，每个 Step 在 Runner 中都是单独进程，可以访问工作区和文件系统
 
-```yml
+```yaml
 name: learn-github-actions
 on: [push]
 jobs:
@@ -375,7 +375,7 @@ jobs:
 
 比如你想在 push 代码后，让服务器拉取更新并部署，那么就可以使用以下 actions 来和服务器远程连接
 
-```yml
+```yaml
 name: deplay
 on:
   push:

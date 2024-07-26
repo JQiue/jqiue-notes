@@ -27,7 +27,7 @@ license = ""
 readme = "README.md"
 ```
 
-## axum
+## Axum
 
 + axum: web framework that focuses on ergonomics and modularity.
 + tower: library for building robust clients and servers.
@@ -335,7 +335,7 @@ fn main() {
 }
 ```
 
-## actix-web
+## Actix Web
 
 ```toml
 [dependencies]
@@ -495,7 +495,7 @@ async fn get_json() -> impl Responder {
 
 ### use SeaORM
 
-## anyhow
+## Anyhow
 
 `anyhow`用于简化错误处理和提供更好的错误报告。这个库适合用于应用程序，而不是用于创建库，因为它提供了一个非结构化的，方便使用的错误类型
 
@@ -540,7 +540,7 @@ cargo install sea-orm-cli
 
 需要提供`.env`
 
-```env
+```plain
 DATABASE_URL=mysql://username:password@host/database
 ```
 
@@ -704,6 +704,14 @@ rustflags = [
 ```
 
 ## OpenDAL
+
+## Rouille
+
+Rouille 是一个微型 web 同步I/O框架库，但是它的性能也是足够的
+
+## Prisma Client Rust
+
+Prisma Client Rust 是一个自动生成的查询构建器，它利用 Prisma 生态系统提供简单且完全类型安全的数据库访问
 
 ## 参考资料
 

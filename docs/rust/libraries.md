@@ -12,15 +12,15 @@ order: 16
 
 ## Serde
 
-Serde 是一个处理数据结构的序列化和反序列化的框架，serde_json 则是用来处理 JSON 的库
+`serde`是一个处理数据结构的序列化和反序列化的框架，`serde_json`则是用来处理 JSON 的库
 
-可以快速地使用`!json`构建一个 JSON 对象
+可以快速地使用`json!`构建一个 JSON 对象
 
 ```rust
 use serde_json::json;
 
 fn main() {
-  let p = !json({
+  let p = json!({
     "name": "JQiue",
     "age": 24,
     "hobbies": ["sleep", "harmonica"]
@@ -43,7 +43,7 @@ fn main() {
 
 ::: tip 如果访问了不存在的属性咋办？
 
-serde_json 对未类型化的 JSON 提供了一个递归枚举用来表示 serde_json::Value
+serde_json 对未类型化的 JSON 提供了一个递归枚举用来表示`serde_json::Value`
 
 ```rust
 enum Value {
@@ -58,7 +58,7 @@ enum Value {
 
 :::
 
-serde_json 也能将 JSON 映射成 rust 数据结构，这需要提前定义结构体
+serde_json 也能将 JSON 映射成 Rust 数据结构，这需要提前定义结构体
 
 ```rust
 use serde::{Deserialize, Serialize};
@@ -105,7 +105,24 @@ fn main() {
 }
 ```
 
-## rust-embed
+可以对一个字段设置默认值
+
+```rust
+#[derive(Deserialize, Debug)]
+pub struct Config {
+  #[serde(default = "default_workers")] // 调用 default_workers 函数设置默认值
+  pub workers: usize,
+  pub host: String,
+  pub port: u16,
+  pub database_url: String,
+}
+
+fn default_workers() -> usize {
+  1
+}
+```
+
+## Rust-embed
 
 rust-embed 用于在发布期间在编译时将文件加载到 Rust 二进制文件中，并在开发期间从 fs 加载文件
 
@@ -125,11 +142,11 @@ fn main() {
 }
 ```
 
-## lettre
+## Lettre
 
 lettre 是一个功能强大的邮件库
 
-## reqwest
+## Reqwest
 
 比较知名的 HTTP 请求库
 
@@ -179,7 +196,7 @@ let data = blocking::get(format!("{url}/ping"))?.text()?;
 println!("{data}");
 ```
 
-## jsonwebtoken
+## Jsonwebtoken
 
 用于生成和验证 jwt 的库
 

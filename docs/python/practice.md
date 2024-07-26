@@ -175,7 +175,7 @@ pip install uvicorn
 
 ### HelloWorld
 
-```py
+```python
 import uvicorn
 from fastapi import FastAPI, Request
 
@@ -187,7 +187,7 @@ if __name__ == "__main__":
 
 ### CORS
 
-```py
+```python
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], allow_headers=['*'])
@@ -195,7 +195,7 @@ app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_methods=['*'], all
 
 ### handle function
 
-```py
+```python
 app = FastAPI()
 
 @app.get("/")
@@ -205,7 +205,7 @@ async def root():
 
 ### router fallback
 
-```py
+```python
 async def not_found_handler(request: Request, exec: RequestValidationError):
     return FileResponse("./assets/404.html", 404)
 
@@ -215,7 +215,7 @@ app.add_exception_handler(404, not_found_handler)
 
 ### response HTML
 
-```py
+```python
 from fastapi.responses import HTMLResponse
 
 @app.get("/get_html")
@@ -225,7 +225,7 @@ async def get_html():
 
 ### response StatusCode
 
-```py
+```python
 @app.get("/get_status_code", status_code=404)
 async def get_status_code():
     return
@@ -233,7 +233,7 @@ async def get_status_code():
 
 ### response file
 
-```py
+```python
 @app.get("/get_file")
 async def get_file():
     return FileResponse("./assets/index.html")
@@ -241,7 +241,7 @@ async def get_file():
 
 ### echo
 
-```py
+```python
 from pydantic import BaseModel
 
 class Item(BaseModel):
@@ -254,7 +254,7 @@ async def echo(body: Item):
 
 ### static
 
-```py
+```python
 from fastapi.staticfiles import StaticFiles
 
 app.mount("/static", StaticFiles(directory="static"), name="static")

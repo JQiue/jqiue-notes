@@ -28,7 +28,7 @@ npx react-native init my-project
 
 配置 Gradle 代理（非常重要），在 gradle.properties 添加如下内容：
 
-```gradle
+```properties
 systemProp.http.proxyHost=127.0.0.1
 systemProp.http.proxyPort=7890
 systemProp.https.proxyHost=127.0.0.1
@@ -115,7 +115,7 @@ cd android
 
 利于在同一设备进行调试，在`android\app\build.gradle`中加入
 
-```gradle
+```plain
 buildTypes {
     debug {
         applicationIdSuffix "debug"
@@ -127,7 +127,7 @@ buildTypes {
 
 自动化版本构建
 
-```gradle
+```kotlin
 import groovy.json.JsonSlurper
 
 /**
@@ -152,7 +152,7 @@ android {
 
 为了减少构建体积，为`build.gradle`修改以下条目
 
-```gradle
+```groovy
 - ndk {
 -   abiFilters "armeabi-v7a", "x86"
 - }

@@ -74,7 +74,7 @@ edition = "2021"     # 声明使用的 Rust 大版本，2015 2018 2021
 可以在[这里](https://doc.rust-lang.org/cargo/reference/manifest.html)看到更多关于清单的描述
 :::
 
-### crate
+### Crate
 
 在 Rust 中，代码包被称为 **crate**，在`Cargo.toml`中主要通过以下方式描述项目的依赖：
 
@@ -130,7 +130,7 @@ Cargo.lock 文件在 Rust 项目中有以下几个主要作用：
 4. 孤立环境构建：在没有联网的环境下,通过 Cargo.lock 记录的本地依赖版本信息可以完成项目构建
 5. 依赖升级：cargo update 会更新 Cargo.lock 中的依赖版本，方便跟踪依赖是否已经升级
 
-## rustfmt
+## Rustfmt
 
 rustfmt 是格式化工具，可以为项目添加一个`rustfmt.toml`进行配置
 
@@ -141,7 +141,7 @@ tab_spaces = 2                    // 设置缩进宽度为 2 个空格
 
 然后执行`cargo fmt`进行格式化
 
-## clippy
+## Clippy
 
 Clippy 是 Rust 的 lint 工具
 
@@ -218,6 +218,44 @@ add-one = { path = "../add-one" }
 整个工作空间只会在根目录下有`Cargo.lock`文件，即使在每个包中添加相同的依赖包，Cargo 也不会重复下载，保证相同的包都是一个版本，节约了磁盘空间，确保了包之间彼此兼容
 
 除此之外，还有不包含的`[package]`的工作目录，被称为**虚拟清单**（virtual manifest）。对于没有主`package`的场景且希望将所有的`package`组织在一起时非常适合
+
+## Build Scripts
+
+构建脚本本质上是一个名为`build.rs`的 Rust 程序，它在编译主项目之前运行，主要用于：
+
+1. 生成代码 - 可以动态生成 Rust 代码，这在处理复杂的宏或者从其他格式（如 JSON 或 YAML）生成代码时很有用
+2. 编译本地代码 - 如果项目依赖于 C 或 C++ 代码，可以使用构建脚本来编译这些代码
+3. 配置条件编译 - 可以基于环境变量或系统特性设置条件编译标志
+4. 查找系统库 - 可以检测系统中是否存在某些库，并相应地配置项目
+5. 设置链接器参数 - 可以指定如何链接外部库
+
+这是一个使用 ffi 调用 C 库的例子：
+
+```rs
+// build.rs
+fn main() {
+    // 默认情况下，build.rs 不会每次都重新编译执行，但可以使用 stdout 来和 Cargo 进行通信告知何时重新运行构建脚本
+    println!("cargo:rerun-if-changed=src/example.c");
+    cc::Build::new().file("src/example.c").compile("example");
+}
+
+// main.rs
+// 外部函数接口（FFI）声明，“C”指定使用了 C 语言的 ABI
+// #[link(name = "example")] // 用于告诉 Rust 编译器需要链接哪个外部库，由于使用了 cc，所以自动处理了链接，因此可以忽略
+extern "C" {
+    fn c_add(a: i32, b: i32) -> i32;
+}
+
+fn main() {
+    unsafe { println!("{}", c_add(1, 2)) };
+}
+```
+
+```toml
+# 只会在构建时使用的依赖
+[build-dependencies]
+cc = "1.0.66"
+```
 
 ## 参考资料
 

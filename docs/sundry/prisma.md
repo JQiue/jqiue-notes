@@ -17,7 +17,7 @@ datasource db {
 }
 ```
 
-```env
+```plain
 DATABASE_URL="file:./dev.db"
 ```
 
@@ -73,7 +73,7 @@ datasource db {
 }
 ```
 
-```env
+```plain
 DATABASE_URL="file:./dev.db"
 ```
 

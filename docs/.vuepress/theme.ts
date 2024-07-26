@@ -3,7 +3,7 @@ import * as navbar from './navbar.ts';
 import * as sidebar from './sidebar.ts';
 import { updatetime } from './updatetime.ts';
 
-export default hopeTheme({
+const theme = hopeTheme({
   hostname: 'https://jinqiu.wang/',
   author: {
     name: 'JQiue',
@@ -68,9 +68,12 @@ export default hopeTheme({
     blog: {},
     comment: {
       provider: 'Waline',
-      serverURL: 'https://waline.jinqiu.wang',
-      // serverURL: 'http://127.0.0.1:8360',
+      serverURL:
+        process.env.NODE_ENV == 'production'
+          ? 'https://waline.jinqiu.wang'
+          : 'http://127.0.0.1:8360',
       reaction: true,
+      lang: 'en',
     },
     mdEnhance: {
       katex: true,
@@ -132,3 +135,5 @@ export default hopeTheme({
     },
   },
 });
+
+export default theme;
