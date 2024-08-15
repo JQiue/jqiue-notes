@@ -6,14 +6,24 @@ article: false
 是一款开源免费，高性能的 Web 服务器，一般用于静态服务和负载均衡以及反向代理：
 
 + 作为 Web 服务器：相比 Apache，Nginx 占用更少的资源，支持更多的并发连接，体现更高的效率，这点使 Nginx 尤其受到虚拟主机提供商的欢迎。能够支持高达 50,000 个并发连接数的响应
-+ 作为负载均衡服务器：Nginx 既可以在内部直接支持 Rails 和 PHP，也可以支持作为 HTTP代理服务器 对外进行服务。Nginx 用 C 编写, 不论是系统资源开销还是 CPU 使用效率都比 Perl 要好的多
++ 作为负载均衡服务器：Nginx 既可以在内部直接支持 Rails 和 PHP，也可以支持作为 HTTP 代理服务器对外进行服务。Nginx 用 C 编写, 不论是系统资源开销还是 CPU 使用效率都比 Perl 要好的多
 + 作为邮件代理服务器: Nginx 同时也是一个非常优秀的邮件代理服务器（最早开发这个产品的目的之一也是作为邮件代理服务器），Last.fm 描述了成功并且美妙的使用经验
 
-在 Linux 中安装：
+::: code-tabs
+
+@tab Ubuntu
 
 ```sh
-
+apt install nginx
 ```
+
+@tab Arch
+
+```sh
+pacman -S nginx
+```
+
+:::
 
 在 Ubuntu 中安装后的目录结构大致如下：
 
@@ -72,7 +82,7 @@ http
 }
 ```
 
-### 虚拟主机
+## 虚拟主机
 
 虚拟主机是一种特殊的软硬件技术，它可以将网络上的每一台计算机分成多个虚拟主机，每个虚拟主机可以独立对外提供 Web 服务，这样就可以实现一台主机对外提供多个 Web 服务，每个虚拟主机之间是独立的，互不影响。Nginx 支持 3 种类型的虚拟主机配置：
 
@@ -80,7 +90,7 @@ http
 + 基于 ip 的虚拟主机，一个主机绑定多个 ip 地址
 + 基于端口的虚拟主机，端口来区分虚拟主机——应用：公司内部网站，外部网站的管理后台
 
-### 托管静态资源
+## 托管静态资源
 
 很简单，这是是一个基于域名的虚拟主机
 
@@ -149,7 +159,7 @@ server
 }
 ```
 
-### 内置变量
+## 内置变量
 
 | 变量名             | 功能                                                            |
 | ------------------ | --------------------------------------------------------------- |
@@ -167,7 +177,7 @@ server
 | `$server_name`     | 服务器名称                                                      |
 | `$server_port`     | 服务器的端口号                                                  |
 
-### 反向代理
+## 反向代理
 
 正向代理是为客户端服务的，客户端可以通过正向代理访问它本身无法访问到的服务器。对于服务端来说，服务端无法区分是否来自代理访问还是真实客户端访问
 
@@ -207,7 +217,7 @@ server {
 Nginx 无法分辨请求方的 IP 是否真实，也可能是伪造的
 :::
 
-### 设置响应头
+## 设置响应头
 
 比如跨域请求可使用`add_header`进行添加跨域头来允许
 
@@ -222,7 +232,7 @@ server {
 }
 ```
 
-### 请求体大小
+## 请求体大小
 
 如果上传的文件过大，会返回 413 错误，Nginx 默认是 1m 大小的限制，但是可以添加`client_max_body_size`进行修改
 
@@ -237,7 +247,7 @@ server {
 }
 ```
 
-### 带宽速率限制
+## 带宽速率限制
 
 默认情况下，有多少带宽，Nginx 就能消耗掉多少，Nginx 允许限制来自 HTTP 连接所使用的最大速率，比如使用`limit_rate`就可以限制下载速度：
 
@@ -268,7 +278,7 @@ server {
 }
 ```
 
-### 配置 gzip 压缩传输
+## gzip 压缩传输
 
 gzip 压缩能够提高网站速度节约网站流量，开启 gzip 之后的网站加载速度几乎是未开启的两倍，所以非常推荐开启，将下面的内容添加到配置文件，重启 nginx
 
@@ -288,7 +298,7 @@ gzip_types application/atom+xml application/geo+json application/javascript appl
 
 只需要检查响应头是否包含`content-encoding: gzip`即可
 
-### 负载均衡
+## 负载均衡
 
 负载均衡是为了解决某一个服务挂掉不能访问，而影响用户的体验，一般来说 nginx 的配置会将请求分发到同一个服务，如果挂掉了话仍然会分发给这个服务，这时候就需要负载均衡
 
@@ -368,7 +378,7 @@ upstream youngfitapp {
 }
 ```
 
-### location
+## location
 
 | 修饰符 | 含义                                                  |
 | ------ | ----------------------------------------------------- |
@@ -397,7 +407,7 @@ location ~* \.(gif|jpg|jpeg)$ {
 }
 ```
 
-### 配置 HTTPS
+## 配置 HTTPS
 
 必须先有 SSL 证书，通常在第三方申请，下载私钥和证书在 nginx 中配置
 
@@ -406,12 +416,12 @@ server {
   listen 443 ssl;
   server_name jinqiu.wang;
 
-  # ssl on;
-  ssl_certificate   jinqiu.wang.pem;
+  ssl on;
+  ssl_certificate      jinqiu.wang.pem;
   ssl_certificate_key  jinqiu.wang.key;
-  ssl_session_timeout 5m;
-  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-  ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+  ssl_session_timeout  5m;
+  ssl_protocols        TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers          ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
   ssl_prefer_server_ciphers on;
 
   location / {
@@ -421,6 +431,10 @@ server {
 }
 ```
 
-### 地址重写
+## 地址重写
 
-### 动静分离
+<!-- todo -->
+
+## 动静分离
+
+<!-- todo -->

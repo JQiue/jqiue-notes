@@ -779,6 +779,8 @@ PRAGMA 语句是特定于 SQLite 的 SQL 扩展，用于修改或查询 SQLite �
 
 `sqlite_master`是一个特殊表, 存储有数据库的元信息, 如表(table), 索引(index), 视图(view), 触发器(trigger), 可通过 select 查询相关信息
 
+## PostgreSQL
+
 ## 最佳实践
 
 1. 表名使用集合或者不那么理想的复数，用`staff`替代`employees`更好

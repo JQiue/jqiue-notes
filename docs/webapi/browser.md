@@ -4,21 +4,19 @@ category: Web
 article: false
 ---
 
-`window` 作为全局变量，代表了脚本正在运行的窗口，将浏览器的 API 暴露给 Javascript 代码，其`document`属性指向窗口中载入的 DOM 文档
+`window` 作为全局变量，代表了脚本正在运行的窗口，将浏览器的 API 暴露给 JavaScript 代码，其`document`属性指向窗口中载入的 DOM 文档
 
 ## 定时器
 
 + 间隔调用：`setInterval(callback, delay)`指定一定时长的间隔时间来调用一个函数
 + 延时调用：`setTimeout(callback, delay)`在一定的延迟后调用函数，仅仅只调用一次
 
-时间单位都是毫秒，两个定时器都会返回一个值被用于取消，比如`clearTimeout(timer)/clearInterval(timer)`
-
 ```js
 let timer1 = setInterval(function () {}, 5000);
 let timer2 = setTimeout(function () {}, 5000);
 ```
 
-虽然没有内建的方法能够清除所有的定时器函数，但是可以实现一个强制清除的逻辑
+时间单位都是毫秒，两个定时器都会返回一个值被用于取消，比如`clearTimeout(timer)/clearInterval(timer)`。虽然没有内建的方法能够清除所有的定时器函数，但是可以实现一个强制清除的逻辑
 
 ```js
 for (var i = 1; i < 1000; i++){

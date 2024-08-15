@@ -98,7 +98,7 @@ const testTensors = tf.tensor1d(data);
 })();
 ```
 
-<!-- to be update -->
+<!-- to be updated -->
 
 ## 使用 Python
 

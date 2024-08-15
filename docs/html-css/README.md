@@ -44,7 +44,7 @@ Web 前端的未来趋势：
 + Gecko - Firefox
 + blink/Webkit/Presto - Opera
 
-JavaScript 引擎则是解析 Javascript 语言并执行
+JavaScript 引擎则是解析 JavaScript 语言并执行
 
 + JScript（IE3.0-IE8.0）/Chakra（IE9+） - IE/Edge
 + JSCore/Nitro - Safari
