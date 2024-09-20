@@ -83,3 +83,18 @@ ffmpeg -i video.mp4 -i audio.mp3 -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output
 5. `-map 0:v:0`: 从第一个输入文件（视频）中选择第一个视频流
 6. `-map 1:a:0`: 从第二个输入文件（音频）中选择第一个音频流
 7. `output.mp4`: 指定输出文件名和格式
+
+## 连接
+
+使用 concat 分离器（推荐方法，这种方法适用于大多数音频格式，并且可以保持原始音频的质量。首先，创建一个文本文件（例如 input.txt），列出要合并的音频文件：
+
+```plain
+file 'audio1.mp3'
+file 'audio2.mp3'
+```
+
+然后，使用以下命令：
+
+```sh
+ffmpeg -f concat -safe 0 -i input.txt -c copy output.mp3
+```

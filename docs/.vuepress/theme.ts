@@ -73,7 +73,6 @@ const theme = hopeTheme({
           ? 'https://waline.jinqiu.wang'
           : 'http://127.0.0.1:8360',
       reaction: true,
-      lang: 'en',
     },
     mdEnhance: {
       katex: true,

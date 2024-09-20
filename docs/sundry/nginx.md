@@ -438,3 +438,59 @@ server {
 ## 动静分离
 
 <!-- todo -->
+
+## 自动 HTTPS
+
+Nginx 可以通过 Let's Encrypt 来自动申请证书
+
+安装 cerbot 以及 certbot-nginx
+
+```sh
+pacman -S certbot certbot-nginx
+```
+
+配置 Nginx，比如`your.conf`
+
+```plain
+server {
+  listen 80;
+  server_name yourdomain.com www.yourdomain.com;
+  return 301 https://$server_name$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name yourdomain.com www.yourdomain.com;
+
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_prefer_server_ciphers on;
+  ssl_ciphers EECDH+AESGCM:EDH+AESGCM;
+  ssl_ecdh_curve secp384r1;
+  ssl_session_timeout  10m;
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_tickets off;
+  ssl_stapling on;
+  ssl_stapling_verify on;
+
+  location / {
+      proxy_pass http://localhost:YOUR_APP_PORT;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+```
+
+获取证书，这一步需要验证域名所有权，否则无法申请成功，如果申请成功，将会修改对应的 Nginx 配置文件添加对应证书文件
+
+```sh
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+```
+
+Let's Encrypt 的证书有效期为 90 天，certbot 已经提供自动续期服务，开启自动续期
+
+```sh
+systemctl enable certbot-renew.timer
+systemctl start certbot-renew.timer
+```

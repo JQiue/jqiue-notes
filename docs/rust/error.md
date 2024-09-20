@@ -6,9 +6,18 @@ article: false
 order: 8
 ---
 
-Rust 将错误分为两大类：可恢复错误与不可恢复错误。对于可恢复错误，比如文件未找到等，⼀般需要将它们报告给用户并再次尝试进行操作。而不可恢复错误往往就是 bug 的另⼀种说法，比如尝试访问超出数组结尾的位置等。其他大部分的编程语言都没有刻意地区分这两种错误，而是通过异常之类的机制来统⼀处理它们。虽然 Rust 没有类似的异常机制，但它提供了用于可恢复错误的类型`Result<T, E>`，以及在程序出现不可恢复错误时终止运行的`panic!`宏
+Rust 的错误处理机制是其安全性和可靠性的重要组成部分，与许多其他语言不同，Rust 强制开发者显式地处理错误，这有助于创建更健壮的程序
 
-使用`panic!`会导致不可恢复错误，并打印一段错误提示信息，同时展开并清理当前的调用栈，然后退出程序
+Rust 将错误分为两大类：
+
+1. 可恢复错误 - 比如文件未找到等，⼀般需要将它们报告给用户并再次尝试进行操作
+2. 不可恢复错误 -  而不可恢复错误往往就是 bug 的另⼀种说法，比如尝试访问超出数组结尾的位置等
+
+其他大部分的编程语言都没有刻意地区分这两种错误，而是通过异常之类的机制来统⼀处理它们
+
+## panic
+
+`panic!`用于处理不可恢复错误
 
 ```rust
 fn main() {
@@ -16,13 +25,16 @@ fn main() {
 }
 ```
 
-::: tip 直接终止
-可以向 Cargo.toml 中添加的`[profile]`区域添加`panic='abort'`来直接终止展开，这样就不会执行任何清理工作，由 OS 来进行回收，也可以在 release 模式使用，`[profile.release]`
-:::
+在发生 panic 时，程序默认会展开调用栈，这个过程可能会消耗大量资源。如果希望立即终止程序，可以在 Cargo.toml 中设置
+
+```toml
+[profile.release]
+panic = 'abort'
+```
 
 ## Result
 
-大部分错误没有严重到需要终止程序的地步，与`Option`枚举类型一样，`Result`也被预导入，有两个变体：`Ok`和`Err`，比如在读取文件中
+大部分错误没有严重到需要终止程序的地步，`Result<T, E>`是 Rust 处理可恢复错误的主要方式，有两个变体：`Ok`和`Err`，比如在读取文件中
 
 ```rust
 use std::fs::File;
@@ -30,9 +42,7 @@ use std::fs::File;
 fn main() {
   let file = File::open("hello.txt");
   match file {
-    Ok(file) => {
-      println!("找到啦")
-    }
+    Ok(file) => file,
     Err(error) => {
       panic!("{}", err)
     }
@@ -76,7 +86,9 @@ fn main() {
 }
 ```
 
-对于`Result`类型本身也定义了很多方法用来应对，比如`unwrap`方法，当返回值是 OK 则返回内部值，否则就会调用`panic!`
+### 方法
+
+`Result`类型本身也定义了很多方法用来应对，比如`unwrap`方法，当返回值是 OK 则返回内部值，否则就会调用`panic!`
 
 ```rust
 let file = File::open("hello.txt").unwrap();
@@ -91,11 +103,11 @@ let file = File::open("hello.txt").expect("Failed to open hello.txt");
 这是一些其他的常用方法：
 
 + `is_ok()`和`is_err()`：返回 bool 值，告诉 Result 是成功的结果还是错误的结果
-+ `ok()`：返回`Option<T>`类型的成功值，否则返回 None
++ `ok()`：返回`Option<T>`类型的成功值，否则返回`None`
 + `err()`：返回`Option<E>`类型的错误值
-+ `result.unwrap_or(fallback)`：返回成功值，否则返回 fallback，丢弃错误值
++ `unwrap_or(fallback)`：返回成功值，否则返回 fallback，丢弃错误值
 
-## ?
+## ? 运算符
 
 Rust 提供了`?`运算符用来传播错误，用来将错误返回给调用者，如果出现错误，就会提前终止函数执行，并返回错误。只能用于返回`Result`类型的函数
 
@@ -107,3 +119,34 @@ fn read_file() -> Result<String, io::Error> {
   Ok(s)
 }
 ```
+
+## 自定义错误类型
+
+对于复杂的应用，通常会定义自己的错误类型
+
+```rust
+use std::fmt;
+use std::error::Error;
+
+#[derive(Debug)]
+struct AppError {
+  kind: String,
+  message: String,
+}
+
+impl fmt::Display for AppError {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+      write!(f, "{}: {}", self.kind, self.message)
+  }
+}
+
+impl Error for AppError {}
+```
+
+## 错误处理最佳实践
+
+1. 对于库代码，通常返回 Result，让调用者决定如何处理错误
+2. 对于应用代码，可以在 main 函数中使用 ? 运算符
+3. 使用 thiserror 或 anyhow 等 crate 来简化错误处理
+4. 为自定义错误类型实现 std::error::Error trait
+5. 使用有意义的错误消息，帮助用户或开发者理解和解决问题

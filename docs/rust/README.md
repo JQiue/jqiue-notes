@@ -38,7 +38,31 @@ Cargo 是官方构建工具，用来管理 Rust 项目，使用`cargo new <name>
 
 ::: tip 为 Cargo 添加国内源
 
-详见[清华镜像源](https://mirrors.tuna.tsinghua.edu.cn/help/crates.io-index/)
+添加`$CARGO_HOME/config.toml`文件，将仓库默认地址替换为国内的地址，加快下载依赖的速度
+
+```toml
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = 'rsproxy-sparse'
+
+# 清华
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+[source.tuna-sparse]
+registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
+
+# 中科大
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+[source.ustc-sparse]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+# 字节
+[registries.rsproxy]
+index = "https://rsproxy.cn/crates.io-index"
+[source.rsproxy-sparse]
+registry = "sparse+https://rsproxy.cn/index/"
+```
 
 :::
 
@@ -90,32 +114,6 @@ color = { git = "https://github.com/bjz/color-rs" }
 geometry = { path = "crates/geometry" }
 ```
 
-添加`$CARGO_HOME/config`文件，将仓库默认地址替换为国内的地址，加快下载依赖的速度
-
-```toml
-[source.crates-io]
-registry = "https://github.com/rust-lang/crates.io-index"
-replace-with = 'rsproxy-sparse'
-
-# 清华
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
-[source.tuna-sparse]
-registry = "sparse+https://mirrors.tuna.tsinghua.edu.cn/crates.io-index/"
-
-# 中科大
-[source.ustc]
-registry = "git://mirrors.ustc.edu.cn/crates.io-index"
-[source.ustc-sparse]
-registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
-
-# 字节
-[registries.rsproxy]
-index = "https://rsproxy.cn/crates.io-index"
-[source.rsproxy-sparse]
-registry = "sparse+https://rsproxy.cn/index/"
-```
-
 ::: tip
 如果想要知道依赖的用法，可以使用`cargo doc --open`
 :::
@@ -132,7 +130,7 @@ Cargo.lock 文件在 Rust 项目中有以下几个主要作用：
 
 ## Rustfmt
 
-rustfmt 是格式化工具，可以为项目添加一个`rustfmt.toml`进行配置
+Rustfmt 是格式化工具，可以为项目添加一个`rustfmt.toml`进行配置
 
 ```toml
 max_width = 100                   // 设置最大行宽为 100 个字符

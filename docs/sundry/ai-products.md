@@ -6,30 +6,35 @@ article: true
 
 ## 聊天 AI
 
-GPT-4 算是地表最强了，而 Claude-2 算是 GPT-4 强有力的竞争对手
+GPT-4 算是地表最强了，而 Claude-3.5 算是 GPT-4 强有力的竞争对手
 
-| 模型                | 发布者    | 是否收费 | Token | 数据时效性 |
-| ------------------- | --------- | -------- | ----- | ---------- |
-| GPT-3.5-Turbo       | OpenAI    | 免费     | 2K    | 2021年9月  |
-| GPT-4               | OpenAI    | 收费     | 4k    |            |
-| PaLM-2              | Google    | 免费     | 8k    |            |
-| Gemini-Pro          | Google    | 收费     | 200K  |            |
-| LLaMA2-70b          | Meta      | 免费     | 8k    |            |
-| Claude-Instant      | Anthropic | 免费     | 9K    |            |
-| Claude-Instant-100K | Anthropic | 收费     | 100K  |            |
-| Claude-2            | Anthropic | 收费     | 4K    |            |
-| Claude-2.1          | Anthropic | 收费     | 200K  |            |
-| Claude-3-Haiku      | Anthropic | 免费     | 4K    |            |
-| Claude-3-Sonnet     | Anthropic | 免费     | 4K    |            |
-| 讯飞星火            | 讯飞      | 免费     |       |            |
-| 文心一言            | 百度      | 免费     |       |            |
-| 通义千问            | 阿里云    | 免费     | 32K   |            |
+| 模型               | 发布者    | 是否收费 | Token | 数据时效性 |
+| ------------------ | --------- | -------- | ----- | ---------- |
+| GPT-3.5-Turbo      | OpenAI    | 免费     | 16k   | 2021年9月  |
+| GPT-4              | OpenAI    | 收费     | 8k    |            |
+| GPT-4o             | OpenAI    | 免费     | 128k  |            |
+| GPT-4o-Mini        | OpenAI    | 免费     | 128k  |            |
+| Gemini 1.5 Pro     | Google    | 收费     | 2m    |            |
+| Llama 2 Chat 70B   | Meta      | 收费     | 4k    |            |
+| Llama 3 70B        | Meta      | 收费     | 8k    |            |
+| Llama 3.1 Chat 70B | Meta      | 收费     | 128k  |            |
+| Llama 3.1 405B     | Meta      | 收费     | 128k  |            |
+| Claude-3-Haiku     | Anthropic | 免费     | 200k  |            |
+| Claude-3-Sonnet    | Anthropic | 免费     | 200k  |            |
+| Claude-3-Opus      | Anthropic | 免费     | 200k  |            |
+| Claude-3.5-Sonnet  | Anthropic | 免费     | 200k  |            |
+| Mistral Large 2    | Anthropic | 免费     | 128k  |            |
+| 讯飞星火           | 讯飞      | 免费     |       |            |
+| 文心一言           | 百度      | 免费     |       |            |
+| Qwen2 72B          | 阿里云    | 免费     | 128k  |            |
+
+推荐 GPT-4o，Mistral Large 2，Claude-3.5-Sonnet
 
 ## 绘画 AI
 
 Midjourney 算是地表最强的绘画 AI 了
 
-当然，Stable Diffusion 也算是最强开源 AI 绘画工具
+当然，Stable Diffusion 也算是最强开源 AI
 
 ## 其他
 
@@ -47,7 +52,7 @@ Midjourney 算是地表最强的绘画 AI 了
 git diff --cached --diff-algorithm=minimal > diff.txt
 ```
 
-准备以下 Prombt：
+准备以下 Prompt：
 
 ```
 生成一个简洁的 git 提交信息，语言是英语，用现在时编写，提交消息最多 50 个字符，排除任何不必要的东西，比如翻译，你的整个响应将直接传递到 git commit，代码差异如下：

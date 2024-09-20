@@ -6,7 +6,7 @@ article: false
 order: 10
 ---
 
-Rust 借鉴了 JavasSript 来编写异步编程，当需要高并发，异步 I/O 就需要改模型了
+Rust 借鉴了 JavaScript 来编写异步编程，当需要高并发，异步 I/O 就需要改模型了
 
 Rust 和 JavaScript 有所不同：
 

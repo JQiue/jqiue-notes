@@ -49,53 +49,6 @@ print("%s%d%f" % (name, age, height)) # 可以同时输出多个变量
 这里的(name, age, height)本质上是元组类型
 :::
 
-## 类型检测
-
-### type
-
-type 函数用于返回对象的类型
-
-```python
-print(type(1))    # <class 'int'>
-print(type(1.1))  # <class 'float'>
-print(type("1"))  # <class 'str'>
-print(type(True)) # <class 'bool'>
-print(type([]))  # <class 'list'>
-print(type(()))  # <class 'tuple'>
-print(type({}))  # <class 'dict'>
-print(type({1,})) # <class 'set'>
-```
-
-### isinstance
-
-isinstance 函数用于判断一个对象是否为另一个已知的类型，可以是 Python 定义的，也可是通过 class 定义的类
-
-```python
-print(isinstance(1, int)) # true
-print(isinstance(1.1, float)) # true
-print(isinstance("1", str)) # true
-print(isinstance(True, bool)) # true
-print(isinstance([], list)) # true
-```
-
-### type 和 isinstance 的不同
-
-```python
-class Person:
-  def say(slef):
-    print("I am a human")
-
-class Student(Person):
-  pass
-
-print(type(Student()) == Student) # true
-print(type(Student()) == Person) # false
-print(isinstance(Student(), Student)) # true
-print(isinstance(Student(), Person)) # true
-```
-
-结论可知，type 不会考虑该类型的继承关系，而 isinstance 则会将子类认为父类的类型，会考虑继承关系
-
 ## 类型转换
 
 1. int：转换为整型
