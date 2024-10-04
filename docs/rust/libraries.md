@@ -150,7 +150,7 @@ lettre 是一个功能强大的邮件库
 
 比较知名的 HTTP 请求库
 
-最简单的 GET 请求
+GET 请求
 
 ```rust
 let body = reqwest::get("https://www.rust-lang.org")
@@ -159,7 +159,7 @@ let body = reqwest::get("https://www.rust-lang.org")
     .await?;
 ```
 
-发送 POST 请求
+POST 请求
 
 ```rust
 use reqwest::Client;
@@ -419,3 +419,21 @@ fn is_foo(text: &str) -> bool {
     REF_RE.is_match(text)
 }
 ```
+
+## Anyhow
+
+anyhow 主要解决以下问题：
+
++ 简化错误处理：anyhow 提供了一个通用的错误类型 anyhow::Error，它可以包装几乎任何类型的错误。这使得在函数返回值中使用`Result<T, anyhow::Error>`变得非常方便
++ 动态错误：anyhow::Error 是一个动态错误类型，可以在运行时存储任何实现了 std::error::Error trait 的错误
++ 错误上下文：anyhow 提供了 .context() 方法，允许为错误添加额外的上下文信息
++ 适合应用程序级别使用：anyhow 特别适合在应用程序的顶层使用，当可能需要处理多种不同类型的错误
+
+## Thiserror
+
+thiserror 主要解决以下问题：
+
++ 自定义错误类型：thiserror 提供了一个派生宏，使得创建自定义错误类型变得简单
++ 静态错误：与 anyhow 不同，thiserror 创建的是静态类型的错误，这意味着它们在编译时就确定了类型
++ 错误消息模板：thiserror 允许你为每种错误类型定义自定义的错误消息模板
++ 适合库级别使用：thiserror 当需要定义明确的错误类型

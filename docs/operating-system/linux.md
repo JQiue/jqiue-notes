@@ -654,7 +654,7 @@ sudo mount -t cifs -o credentials=/root/win-credentials //WIN_SHARE_IP/<share_na
 sudo vim /etc/ssh/sshd_config
 ```
 
-找到`PermitRootLogin prohibit-password`行并用`#`注释掉，新添加`PermitRootLogin yes`行，保存编辑退出，使用`sudo service ssh restart`就行了
+找到`PermitRootLogin`行并改为`PermitRootLogin yes`，以及开启`PubkeyAuthentication yes`，保存编辑退出，使用`sudo service ssh restart`就行了
 
 每次连接输入密码太麻烦，可以使用密钥的方式来登录，首先本机使用`ssh-keygen -t ed25519`生成密钥对，然后使用`ssh-copy-id 用户名@机器地址`上传密钥到远程机器，随后输入密码验证一下，以后就可以免密登录了
 
@@ -695,4 +695,12 @@ crontab -e
 
 ```text
 0 23 * * * rtcwake -v -s 32400 -m mem
+```
+
+## benchmark
+
+购买了一台 Linux 服务器怎么不跑一下各种测试呢？
+
+```sh
+wget -qO- bench.sh | bash
 ```

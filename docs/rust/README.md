@@ -115,7 +115,7 @@ geometry = { path = "crates/geometry" }
 ```
 
 ::: tip
-如果想要知道依赖的用法，可以使用`cargo doc --open`
+如果想要知道依赖的用法，可以使用`cargo doc --open`，如果不想生成依赖就加上`--no-deps`参数
 :::
 
 ### Cargo.lock
@@ -215,7 +215,7 @@ add-one = { path = "../add-one" }
 
 整个工作空间只会在根目录下有`Cargo.lock`文件，即使在每个包中添加相同的依赖包，Cargo 也不会重复下载，保证相同的包都是一个版本，节约了磁盘空间，确保了包之间彼此兼容
 
-除此之外，还有不包含的`[package]`的工作目录，被称为**虚拟清单**（virtual manifest）。对于没有主`package`的场景且希望将所有的`package`组织在一起时非常适合
+除此之外，还有不包含的`[package]`的工作目录，被称为**虚拟清单**（virtual manifest）。对于没有主`package`的场景且希望将所有的`package`组织在一起时非常适合，虚拟清单是不能够添加`dependencies`的
 
 ## Build Scripts
 
@@ -232,20 +232,20 @@ add-one = { path = "../add-one" }
 ```rs
 // build.rs
 fn main() {
-    // 默认情况下，build.rs 不会每次都重新编译执行，但可以使用 stdout 来和 Cargo 进行通信告知何时重新运行构建脚本
-    println!("cargo:rerun-if-changed=src/example.c");
-    cc::Build::new().file("src/example.c").compile("example");
+  // 默认情况下，build.rs 不会每次都重新编译执行，但可以使用 stdout 来和 Cargo 进行通信告知何时重新运行构建脚本
+  println!("cargo:rerun-if-changed=src/example.c");
+  cc::Build::new().file("src/example.c").compile("example");
 }
 
 // main.rs
 // 外部函数接口（FFI）声明，“C”指定使用了 C 语言的 ABI
 // #[link(name = "example")] // 用于告诉 Rust 编译器需要链接哪个外部库，由于使用了 cc，所以自动处理了链接，因此可以忽略
 extern "C" {
-    fn c_add(a: i32, b: i32) -> i32;
+  fn c_add(a: i32, b: i32) -> i32;
 }
 
 fn main() {
-    unsafe { println!("{}", c_add(1, 2)) };
+  unsafe { println!("{}", c_add(1, 2)) };
 }
 ```
 

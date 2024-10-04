@@ -64,6 +64,156 @@ fn main() {
 
 ## 文件操作
 
+读取文件内容：
+
+```rust
+use std::fs;
+use std::io::{self, Read};
+
+// 读取整个文件内容到字符串
+fn read_whole_file() -> io::Result<()> {
+  let content = fs::read_to_string("example.txt")?;
+  println!("File content: {}", content);
+  Ok(())
+}
+
+// 读取文件内容到字节数组
+fn read_file_to_bytes() -> io::Result<()> {
+  let content = fs::read("example.txt")?;
+  println!("File content (bytes): {:?}", content);
+  Ok(())
+}
+
+// 使用 BufReader 逐行读取文件
+fn read_lines() -> io::Result<()> {
+  let file = fs::File::open("example.txt")?;
+  let reader = io::BufReader::new(file);
+  for line in reader.lines() {
+    println!("{}", line?);
+  }
+  Ok(())
+}
+```
+
+写入文件：
+
+```rust
+use std::fs::{self, File};
+use std::io::{self, Write};
+
+// 写入字符串到文件
+fn write_string_to_file() -> io::Result<()> {
+  fs::write("output.txt", "Hello, Rust!")?;
+  Ok(())
+}
+
+// 使用 BufWriter 写入文件
+fn write_with_bufwriter() -> io::Result<()> {
+  let file = File::create("output.txt")?;
+  let mut writer = io::BufWriter::new(file);
+  writeln!(writer, "Line 1")?;
+  writeln!(writer, "Line 2")?;
+  writer.flush()?;
+  Ok(())
+}
+```
+
+文件和目录操作：
+
+```rust
+use std::fs;
+use std::path::Path;
+
+// 创建目录
+fn create_directory() -> io::Result<()> {
+  fs::create_dir("new_directory")?;
+  Ok(())
+}
+
+// 递归创建目录
+fn create_directories() -> io::Result<()> {
+  fs::create_dir_all("path/to/new/directory")?;
+  Ok(())
+}
+
+// 遍历目录
+fn traverse_directory(dir: &Path) -> io::Result<()> {
+  if dir.is_dir() {
+    for entry in fs::read_dir(dir)? {
+      let entry = entry?;
+      let path = entry.path();
+      if path.is_dir() {
+        println!("Directory: {:?}", path);
+        traverse_directory(&path)?;
+      } else {
+        println!("File: {:?}", path);
+      }
+    }
+  }
+  Ok(())
+}
+
+// 删除文件
+fn remove_file() -> io::Result<()> {
+  fs::remove_file("file_to_delete.txt")?;
+  Ok(())
+}
+
+// 删除目录
+fn remove_directory() -> io::Result<()> {
+  fs::remove_dir("directory_to_delete")?;
+  Ok(())
+}
+
+// 重命名文件或目录
+fn rename_file_or_directory() -> io::Result<()> {
+  fs::rename("old_name.txt", "new_name.txt")?;
+  Ok(())
+}
+
+// 检查文件或目录是否存在
+fn check_existence() {
+  let path = Path::new("file_or_directory");
+  if path.exists() {
+    println!("Path exists");
+  } else {
+    println!("Path does not exist");
+  }
+}
+
+// 获取文件元数据
+fn get_file_metadata() -> io::Result<()> {
+  let metadata = fs::metadata("example.txt")?;
+  println!("File size: {} bytes", metadata.len());
+  println!("File type: {:?}", metadata.file_type());
+  println!("Last modified: {:?}", metadata.modified()?);
+  Ok(())
+}
+```
+
+临时文件和目录：
+
+```rust
+use std::fs::File;
+use tempfile::{tempdir, NamedTempFile};
+
+// 创建临时文件
+fn create_temp_file() -> io::Result<()> {
+  let mut file = NamedTempFile::new()?;
+  writeln!(file, "Some content")?;
+  println!("Temp file path: {:?}", file.path());
+  Ok(())
+}
+
+// 创建临时目录
+fn create_temp_directory() -> io::Result<()> {
+  let dir = tempdir()?;
+  println!("Temp directory path: {:?}", dir.path());
+  // 目录会在 `dir` 离开作用域时自动删除
+  Ok(())
+}
+```
+
 ## 网络编程
 
 Rust 标准库提供了`std::net`模块，用于网络编程。这个模块包含了处理 TCP 和 UDP 通信的基本类型
