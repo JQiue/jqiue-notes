@@ -108,7 +108,7 @@ s + &str;
 let s = format!("{}-{}-{}", "a", "b", "c")
 ```
 
-字符串不支持索引获取字符,但可以使用`chars`或`bytes`方法来遍历字符串
+字符串不支持索引获取字符，但可以使用`chars`或`bytes`方法来遍历字符串
 
 ```rust
 let mut s1 = String::from("hello, ");
@@ -350,20 +350,20 @@ colors.get("red");
 
 ### HashMap 常用方法
 
-+ insert(): 插入新的 key-value对,如果key已存在就替换 value,返回 Option
-+ entry(): 获取 key 对应的访问权限,可以决定是否插入还是获取已有的值
++ insert(): 插入新的 key-value 对，如果 key 已存在就替换 value，返回 Option
++ entry(): 获取 key 对应的访问权限，可以决定是否插入还是获取已有的值
 + contains_key(): 检查key是否存在
-+ get(): 获取key对应的value,如果key不存在返回None
-+ remove(): 删除key-value对,如果key不存在返回None
-+ clear(): 删除HashMap中的所有项
-+ iter(): 迭代器,用于遍历key-value对
-+ keys(): 迭代器,只遍历所有的key
-+ values(): 迭代器,只遍历所有的value
-+ len(): 返回HashMap的键值对数目
-+ is_empty(): 判断HashMap是否为空
-+ entry.or_insert(): 如果key不存在,插入默认值,如果存在返回修改权限
-+ entry.or_insert_with(): 如果key不存在,使用函数生成默认值插入
-+ entry.or_default(): 如果key不存在返回默认值,存在返回修改权限
++ get(): 获取 key 对应的value,如果 key 不存在返回 None
++ remove(): 删除 key-value 对，如果 key 不存在返回 None
++ clear(): 删除 HashMap 中的所有项
++ iter(): 迭代器，用于遍历 key-value 对
++ keys(): 迭代器，只遍历所有的 key
++ values(): 迭代器，只遍历所有的 value
++ len(): 返回 HashMap 的键值对数目
++ is_empty(): 判断 HashMap 是否为空
++ entry.or_insert(): 如果 key 不存在，插入默认值，如果存在返回修改权限
++ entry.or_insert_with(): 如果 key 不存在，使用函数生成默认值插入
++ entry.or_default(): 如果 key 不存在返回默认值，存在返回修改权限
 + entry.or_insert_with(): 根据key是否存在决定操作
 
 <!-- to be updated -->

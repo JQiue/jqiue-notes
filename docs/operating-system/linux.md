@@ -3,13 +3,13 @@ title: Linux
 article: false
 ---
 
-Linux 是一种免费开源的类 Unix 操作系统，使用了 UNIX 设计哲学，支持多任务多用户，性能稳定可靠，没有统一的桌面环境，常见的有 GNOME、KDE、XFCE 等，与 Unix 兼容性好。在服务器上 Linux 使用率极高，也支持在个人电脑和嵌入式设备上使用。提供虚拟化能力强,在云计算场景中广泛应用。安全性好，病毒几乎没有针对性，适合网络服务器
+Linux 是一种免费开源的类 Unix 操作系统，使用了 UNIX 设计哲学，支持多任务多用户，性能稳定可靠，没有统一的桌面环境，常见的有 GNOME、KDE、XFCE 等，与 Unix 兼容性好。在服务器上 Linux 使用率极高，也支持在个人电脑和嵌入式设备上使用。提供虚拟化能力强，在云计算场景中广泛应用。安全性好，病毒几乎没有针对性，适合网络服务器
 
 ## 发行版
 
-Linux 发行版是指基于 Linux 内核开发的完整操作系统，它们会额外打包一些应用软件并提供生态支持，主要的 Linux 发行版有:
+Linux 发行版是指基于 Linux 内核开发的完整操作系统，它们会额外打包一些应用软件并提供生态支持，主要的 Linux 发行版有：
 
-+ Debian：非常成熟稳定,用于种服务器及工作站
++ Debian：非常成熟稳定，用于种服务器及工作站
 + Ubuntu：基于 Debian 开发，桌面版用户体验好，很受个人用户欢迎
 + CentOS：免费版本 RHEL，与企业 Linux 流通性好，也常用于服务器
 + Fedora：源自 Red Hat，重视开放源代码，内置最新软件版本
@@ -20,7 +20,7 @@ Linux 发行版是指基于 Linux 内核开发的完整操作系统，它们会�
 
 ### Ubuntu
 
-Ubuntu 安装较为简单，前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像，通过 bios 启动 U盘，直接开始安装
+Ubuntu 安装较为简单，前往<https://mirrors.tuna.tsinghua.edu.cn/>下载镜像，通过 bios 启动 U 盘，直接开始安装
 
 Ubuntu 的软件包格式是`.deb`，只要是`.deb`包就意味着它可以被安装到 Ubuntu 上。`dpkg`是基于 Debian 的最低级包管理器，不会处理一些依赖关系
 
@@ -327,15 +327,15 @@ scp 本地文件路径 目标机器:目标机器的文件路径
 
 不管是`set`还是`env`设置的变量，都只对当前 shell 有效，不会对新的 shell 可见，所以必须修改一些文件来达到永久设置变量的目的
 
-在 Linux 中,环境变量的加载顺序是非常重要的,不同的加载顺序会导致环境变量的优先级和作用范围发生变化。以下是 Linux 中常见的环境变量加载顺序:
+在 Linux 中，环境变量的加载顺序是非常重要的，不同的加载顺序会导致环境变量的优先级和作用范围发生变化。以下是 Linux 中常见的环境变量加载顺序：
 
-1. /etc/profile - 这是系统级别的配置文件,在系统启动时加载。在这个文件中设置的环境变量对所有用户都生效。
-2. /etc/environment - 这也是系统级别的配置文件,在系统启动时加载。在这个文件中设置的环境变量对所有用户都生效。
-3. /etc/profile.d/*.sh - 这个目录下的所有 .sh 脚本文件会在系统启动时被加载。可以在这些脚本文件中设置针对特定服务或应用的环境变量。
-4. ~/.bash_profile 或 ~/.bash_login 或 ~/.profile - 这些是用户级别的配置文件,在用户登录时加载。在这些文件中设置的环境变量只对当前用户生效。
-5. ~/.bashrc - 这也是用户级别的配置文件,在每次打开 shell 时加载。在这个文件中设置的环境变量只对当前用户生效。需要注意的是,上述加载顺序是针对使用 Bourne shell 及其衍生 shell (如 bash) 的情况。如果使用其他 shell,如 zsh 或 fish,加载顺序可能会略有不同。
+1. /etc/profile - 这是系统级别的配置文件，在系统启动时加载。在这个文件中设置的环境变量对所有用户都生效
+2. /etc/environment - 这也是系统级别的配置文件，在系统启动时加载。在这个文件中设置的环境变量对所有用户都生效
+3. /etc/profile.d/*.sh - 这个目录下的所有 .sh 脚本文件会在系统启动时被加载。可以在这些脚本文件中设置针对特定服务或应用的环境变量
+4. ~/.bash_profile 或 ~/.bash_login 或 ~/.profile - 这些是用户级别的配置文件，在用户登录时加载。在这些文件中设置的环境变量只对当前用户生效
+5. ~/.bashrc - 这也是用户级别的配置文件，在每次打开 shell 时加载。在这个文件中设置的环境变量只对当前用户生效。需要注意的是，上述加载顺序是针对使用 Bourne shell 及其衍生 shell (如 bash) 的情况。如果使用其他 shell,如 zsh 或 fish,加载顺序可能会略有不同
 
-另外,对于 systemd 服务,环境变量的加载顺序也会略有不同。通常建议直接在 systemd 服务文件的 [Service] 部分设置环境变量,以确保它们能被正确加载
+另外，对于 systemd 服务，环境变量的加载顺序也会略有不同。通常建议直接在 systemd 服务文件的 [Service] 部分设置环境变量，以确保它们能被正确加载
 
 ## 语言设置
 
@@ -572,15 +572,15 @@ sudo systemctl restart systemd-journald
 
 第一组参数是用户类型：
 
-+ `u`- 文件所有者。
-+ `g`- 组。
-+ `o`- 其它人。
-+ `a`- 所有用户，与同时指定 ugo 一样。
++ `u`- 文件所有者
++ `g`- 组
++ `o`- 其它人
++ `a`- 所有用户，与同时指定 ugo 一样
 
 第二组参数，操作权限的参数，定义是否要删除、添加或设置权限：
 
-+ `-` 删除指定的权限。
-+ `+` 添加指定的权限。
++ `-` 删除指定的权限
++ `+` 添加指定的权限
 + `=` 将当前权限改为指定权限。如果在符号后没有指定权限`=`，则删除指定用户类的所有权限
 
 ```sh
@@ -659,7 +659,7 @@ sudo vim /etc/ssh/sshd_config
 每次连接输入密码太麻烦，可以使用密钥的方式来登录，首先本机使用`ssh-keygen -t ed25519`生成密钥对，然后使用`ssh-copy-id 用户名@机器地址`上传密钥到远程机器，随后输入密码验证一下，以后就可以免密登录了
 
 ::: tip
-windows 的`cmd`和`powershell`是没有`ssh-copy-id`命令的，最好使用比如 git bash 这样的终端来操作
+Windows 的`cmd`和`powershell`是没有`ssh-copy-id`命令的，最好使用比如 git bash 这样的终端来操作
 :::
 
 ## 端口管理
@@ -671,11 +671,11 @@ windows 的`cmd`和`powershell`是没有`ssh-copy-id`命令的，最好使用比
 ## 设置代理
 
 ```
-# 修改shell配置文件 ~/.bashrc ~/.zshrc等
+# 修改 shell 配置文件 ~/.bashrc ~/.zshrc 等
 export http_proxy=socks5://127.0.0.1:1024
 export https_proxy=$http_proxy
 
-# 设置setproxy和unsetproxy 可以快捷的开关
+# 设置 setproxy 和 unsetproxy 可以快捷的开关
 # 需要时先输入命令 setproxy
 # 不需要时输入命令 unsetproxy
 alias setproxy="export http_proxy=socks5://127.0.0.1:1024; export https_proxy=$http_proxy; echo 'HTTP Proxy on';"

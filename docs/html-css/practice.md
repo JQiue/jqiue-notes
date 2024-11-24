@@ -47,7 +47,7 @@ Emmet 语法的核心与 CSS 选择器非常相似，也就是说像 CSS 选择�
 <div></div><p></p>
 ```
 
-一次性生成多个相同元素`ul>li*5`:
+一次性生成多个相同元素`ul>li*5`：
 
 ```html
 <ul>
@@ -61,7 +61,7 @@ Emmet 语法的核心与 CSS 选择器非常相似，也就是说像 CSS 选择�
 
 更强大的是能帮助生成带有属性的标签，只需要熟悉 CSS 选择器
 
-+ `E#id`添加id名
++ `E#id`添加 id 名
 + `E.class`添加类名
 + `E[attr]`添加属性
 + `E{text}`添加文本
@@ -335,7 +335,7 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 注释对于团队开发和后期维护有着重要的作用，但是也增加了代码的体积。尽量不要写注释，尽可能减少文档的体积，如果必须要添加注释，那么就要遵循如下规则：
 
 + 详尽注释，解释代码解决问题、解决思路、是否为新鲜方案等
-+ 模块注释，github建议不使用模块结束注释
++ 模块注释，Github 建议不使用模块结束注释
 
 ```html
 <!-- 列表模块 -->
@@ -351,15 +351,15 @@ HTML 标签具有一些属性，比如`type`、`class`或者`id`等，通常会�
 
 ### 标签嵌套规则
 
-通常情况下行内级元素不能包含块级元素，注意的是“通常”，也就是说大部分元素都要遵守前面的的规则。
+通常情况下行内级元素不能包含块级元素，注意的是“通常”，也就是说大部分元素都要遵守前面的的规则
 
-在HTML5中元素的分类已经不是按照块级元素和行内元素来分了，而是按照如下分类来分：**Flow（流式元素）、Heading（标题元素）、Sectioning（章节元素）、Phrasing（段落元素）、Embedded（嵌入元素）、Interactive（交互元素）、Metadata（元数据元素）**
+在 HTML5 中元素的分类已经不是按照块级元素和行内元素来分了，而是按照如下分类来分：**Flow（流式元素）、Heading（标题元素）、Sectioning（章节元素）、Phrasing（段落元素）、Embedded（嵌入元素）、Interactive（交互元素）、Metadata（元数据元素）**
 
 ![better-code-1](../images/better-code-1.jpg)
 
 + Flow（流式元素）:在应用程序和文档的主体部分中使用的大部分元素都被分类为流式元素
 
-> a， abbr， address， area（如果它是map元素的后裔）， article， aside， audio， b， bdi， bdo， blockquote， br， button， canvas， cite， code， command， datalist， del， details， dfn,  div, dl，em， embed， fieldset， figure， footer， form， h1， h2， h3， h4， h5， h6， header， hgroup， hr， i， iframe， img， input， ins， kbd， keygen， label， map， mark， math， menu， meter，nav，noscript， object， ol， output， p， pre， progress， q， ruby， s， samp， script， section， select，small， span， strong， style（如果该元素设置了scoped属性）， sub， sup， svg， table，textarea， time，
+> a， abbr， address， area（如果它是 map 元素的后裔），article， aside， audio， b， bdi， bdo， blockquote， br， button， canvas， cite， code， command， datalist， del， details， dfn,  div, dl，em， embed， fieldset， figure， footer， form， h1， h2， h3， h4， h5， h6， header， hgroup， hr， i， iframe， img， input， ins， kbd， keygen， label， map， mark， math， menu， meter，nav，noscript， object， ol， output， p， pre， progress， q， ruby， s， samp， script， section， select，small， span， strong， style（如果该元素设置了 scoped 属性）， sub， sup， svg， table，textarea， time，
 u， ul， var， video， wbr， text
 
 + Heading（标题元素）:标题式元素定义一个区块/章节（section）（无论是明确的使用章节式内容的元素标记，或者标题式内容自身所隐含的）的标题
@@ -372,7 +372,7 @@ u， ul， var， video， wbr， text
 
 + Phrasing（段落元素）:段落式元素是文档中的文本、标记段落级文本的元素
 
-> a（如果其只包含段落式元素）， abbr， area（如果它是map元素的后裔）， audio， b， bdi， bdo， br， button， canvas， cite， code， command， datalist， del（如果其只包含段落式元素）， dfn， em， embed， i，iframe， img， input， ins（如果其只包含段落式元素）， kbd， keygen， label， map（如果其只包含段落式元素）， mark， math， meter， noscript， object， output， progress， q， ruby， s， samp， script，select， small， span， strong， sub， sup， svg， textarea，
+> a（如果其只包含段落式元素）， abbr， area（如果它是 map 元素的后裔）， audio， b， bdi， bdo， br， button， canvas， cite， code， command， datalist， del（如果其只包含段落式元素）， dfn， em， embed， i，iframe， img， input， ins（如果其只包含段落式元素）， kbd， keygen， label， map（如果其只包含段落式元素）， mark， math， meter， noscript， object， output， progress， q， ruby， s， samp， script，select， small， span， strong， sub， sup， svg， textarea，
 time， u， var， video， wbr， text
 
 + Embedded（嵌入元素）:嵌入式元素是引用或插入到文档中其他资源的元素
@@ -381,24 +381,24 @@ time， u， var， video， wbr， text
 
 + Interactive（交互元素）:交互式元素是专门用于与用户交互的元素
 
-> a， audio（如果设置了controls属性）， button， details， embed， iframe， img（如果设置了usemap属性）， input（如果type属性不为hidden状态）， keygen， label， menu（如果type属性为toolbar状态），object（如果设置了usemap属性）， select， textarea， video（如果设置了controls属性）
+> a， audio（如果设置了 controls 属性）， button， details， embed， iframe， img（如果设置了 usemap 属性）， input（如果 type 属性不为 hidden 状态）， keygen， label， menu（如果 type 属性为 toolbar 状态），object（如果设置了 usemap 属性）， select， textarea， video（如果设置了 controls 属性）
 
 + Metadata（元数据元素）:元数据元素是可以被用于说明其他内容的表现或行为，或者在当前文档和其他文档之间建立联系的元素
 
 > base，command，link，meta，noscript，script，style，title
 
-各分类会有交叉或重叠的现象，这说明在html5中，元素可能属于上述所有分类中的一个或多个
+各分类会有交叉或重叠的现象，这说明在 html5 中，元素可能属于上述所有分类中的一个或多个
 
-需要注意的是，HTML5中的这种元素分类与inline、block没有任何关系，任何元素都可以在CSS中被定义为display:inline或者display:block
+需要注意的是，HTML5 中的这种元素分类与 inline、block 没有任何关系，任何元素都可以在 CSS 中被定义为 display:inline 或者 display:block
 
-+ 元素开始与结束标签嵌套错误，页面可以在大部分浏览器被正常解析，IE9会出现解析错误
++ 元素开始与结束标签嵌套错误，页面可以在大部分浏览器被正常解析，IE9 会出现解析错误
 + 在`<p>`元素内嵌入`<div>`等元素造成所有浏览器的解析错误
 
 ```html
 <p><div></div></p>
 ```
 
-以上写法会被Chrome内核浏览器解析成
+以上写法会被 Chrome 内核浏览器解析成
 
 ```html
 <p></p>
@@ -407,7 +407,7 @@ time， u， var， video， wbr， text
 ```
 
 + 在`<a>`元素内嵌入`<a>`元素会导致所有浏览器的解析错误
-+ 在列表元素`<li><dt><dd>`等插入非列表兄弟元素会导致IE6\IE7的解析错误
++ 在列表元素`<li><dt><dd>`等插入非列表兄弟元素会导致 IE6\IE7 的解析错误
 
 每个元素基本都有自己的嵌套规则（即父元素可以是什么，子元素可以是什么），除了严格嵌套约束之外的一些规则就是语义嵌套约束，对于语义嵌套约束，如果不遵守，页面可能正常，但也可能解析错误，尽量要遵守，不过也要遵循最佳实践，比如导航菜单经常就会有`<ul>`元素作为`<li>`的子元素
 

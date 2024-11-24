@@ -40,7 +40,7 @@ function shuffle(arr) {
 
 ## Fisher-Yates
 
-Fisher-Yates 洗牌算法的分布非常均匀，时间复杂度 O(n)，重点是:
+Fisher-Yates 洗牌算法的分布非常均匀，时间复杂度 O(n)，重点是：
 
 + 从数组末尾开始交换元素
 + 每次随机选择前面的索引进行交换

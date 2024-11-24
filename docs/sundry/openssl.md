@@ -7,8 +7,8 @@ category: 知识分享
 
 一般来说，申请证书的步骤是：
 
-1. 创建一个私钥(key)文件。
-2. 根据私钥生成一个证书签名请求(csr， Certificate Signing Request)文件。
+1. 创建一个私钥(key)文件
+2. 根据私钥生成一个证书签名请求(csr， Certificate Signing Request)文件
 3. 把请求文件提交给权威的证书颁发机构，颁发机构审核通过之后，再根据这些申请信息生成相应的证书。(crt， certificate 文件)
 
 证书颁发机构用于给别人签署的证书属于 CA 证书，只要 CA 证书受信任，则 CA 证书签署过的证书也会受信任

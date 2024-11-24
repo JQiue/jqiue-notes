@@ -834,7 +834,7 @@ if (cluster.isMaster) {
     const cpusLength = os.cpus().length // cpu 核数
     for (let i = 0; i < cpusLength; i++) {
         // fork() 方法用于新建一个 worker 进程，上下文都复制主进程。只有主进程才能调用这个方法
-        // 该方法返回一个 worker 对象。
+        // 该方法返回一个 worker 对象
         cluster.fork();
     }
 } else {
@@ -880,7 +880,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-// 监听到行尾输入`\n、\r或\n\r`时触发
+// 监听到行尾输入`\n、\r 或\n\r`时触发
 rl.on('line', input => {
   console.log(fb(i));
   // 关闭
@@ -962,7 +962,7 @@ module.exports = {
 | 字段      | 描述                                                       |
 | --------- | ---------------------------------------------------------- |
 | instances | 要启动的应用实例数量，可以指定数字，或者指定 “max”自动分配 |
-| exec_mode | 启动应用程序的模式，可以是“cluster”或“fork”，默认fork      |
+| exec_mode | 启动应用程序的模式，可以是“cluster”或“fork”，默认 fork     |
 
 ## 性能优化
 

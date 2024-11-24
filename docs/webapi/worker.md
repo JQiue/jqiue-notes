@@ -48,7 +48,7 @@ onmessage = (event) => {
 
 ### Dedicated Worker
 
-这是最常见的 Worker 类型，每个 Dedicated Worker 都有自己独立的线程,只能被创建它的页面访问。通过`new Worker('worker.js')`创建。适用于执行耗时的计算任务或长时间运行的后台操作
+这是最常见的 Worker 类型，每个 Dedicated Worker 都有自己独立的线程，只能被创建它的页面访问。通过`new Worker('worker.js')`创建。适用于执行耗时的计算任务或长时间运行的后台操作
 
 ### Shared Worker
 

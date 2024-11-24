@@ -17,7 +17,7 @@ const str = "Hello";
 const str = 'Hello';
 ```
 
-使用 new String() 构造函数创建 String 对象:
+使用 new String() 构造函数创建 String 对象：
 
 ```js
 const str = new String("Hello");

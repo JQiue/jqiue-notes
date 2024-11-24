@@ -119,12 +119,12 @@ url = https://github.com/username/repo.git
 原因：板载声卡没有驱动  
 解决：去主板官网下载驱动
 
-+ windows 10 无法登陆商店或账户
++ Windows 10 无法登陆商店或账户
 
 原因：可能当前运营商网络访问的 DNS 有问题（对此原因暂时存疑）  
 解决：设置 DNS 为 4.2.2.2，并`cmd ipconfig /flushdns`刷新一下，登陆后最好还原 DNS，否则会影响其他的网络访问
 
-+ windows 10 20H1 后续版本使用`Alt + Tab`切换窗口时会将 Edge 中的标签看做成独立的窗口进行切换
++ Windows 10 20H1 后续版本使用`Alt + Tab`切换窗口时会将 Edge 中的标签看做成独立的窗口进行切换
 
 原因：没有任何原因，很 SB 的设计  
 解决：进入系统设置中的多任务处理选项，将`Alt + Tab`项切换成`仅打开的窗口`
@@ -157,6 +157,33 @@ Active code page: 65001
 注意这只是临时的，只对本次终端程序有效，启动新的终端还是`936`
 
 > 更多受支持的[代码页](https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/chcp)
+
++ Hyper-V 开启和关闭的自动化
+
+检查 Hyper-V 的当前状态是 ON 还是 OFF，以管理员身份运行 CMD 并执行以下命令
+
+```sh
+bcdedit /enum | find "hypervisorlaunchtype"
+```
+
+当 Hyper-V 打开时，输出如下
+
+```sh
+hypervisorlaunchtype    Auto
+```
+
+当 Hyper-V 关闭时，输出如下
+
+```sh
+hypervisorlaunchtype    Off
+```
+
+打开和关闭 Hyper-V
+
+```sh
+bcdedit /set hypervisorlaunchtype auto
+bcdedit /set hypervisorlaunchtype off
+```
 
 ## 编程语言
 

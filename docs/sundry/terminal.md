@@ -3,7 +3,7 @@ title: 终端大一统
 article: false
 ---
 
-由于个人喜欢 fish 这种开箱即用的 shell，所以难免要在 windows 上使用 fish，用来统一多个操作系统的终端使用习惯，通常 Linux 不需要进行额外的配置
+由于个人喜欢 fish 这种开箱即用的 shell，所以难免要在 Windows 上使用 fish，用来统一多个操作系统的终端使用习惯，通常 Linux 不需要进行额外的配置
 
 ## Windows
 

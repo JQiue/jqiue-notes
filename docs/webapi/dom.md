@@ -67,7 +67,7 @@ Hello World
 
 ## DOM API
 
-DOM 允许使用 JavaScript 来操作它，所以提供了大量的操作DOM 的 API 给 JavaScript。`window.document`对象描述了整个网页，它是页面的入口点，也是 DOM 树最顶层的节点
+DOM 允许使用 JavaScript 来操作它，所以提供了大量的操作 DOM 的 API 给 JavaScript。`window.document`对象描述了整个网页，它是页面的入口点，也是 DOM 树最顶层的节点
 
 DOM 中的节点是有层次关系的，这个关系是构成 DOM 运算的关键：
 

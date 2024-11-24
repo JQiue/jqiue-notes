@@ -107,13 +107,13 @@ ArrayList 是数组实现的，查询快，增删慢，具有以下自身方法�
 + `boolean add(E)` 一定是 true
 + `clear()` 清空集合中的元素
 + `contains()` 判断是否包含该元素
-+ `boolean isEmpty()` 判断是否为空，空则为true
++ `boolean isEmpty()` 判断是否为空，空则为 true
 + `int size()` 返回元素个数
 + `Object[] toArray()` 将集合转换成数组，打印时需要向下转型
 + `addAll(collection c)`将整个集合当成一个对象添加到集合中
 + `containsAll(collection c)`判断调用的集合是否包含传入的集合
-+ `removeAll(collection c)`删除两个集合中的交集，没有交集则返回false
-+ `retainsAll(collection c)`获取集合中的交集，调用的集合改变则返回true,否则返回false，具体看调用集合的值调用完后是否和调用前一样
++ `removeAll(collection c)`删除两个集合中的交集，没有交集则返回 false
++ `retainsAll(collection c)`获取集合中的交集，调用的集合改变则返回 true,否则返回 false，具体看调用集合的值调用完后是否和调用前一样
 
 ### LinkedList
 

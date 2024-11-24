@@ -95,7 +95,7 @@ pip install -r requirements.txt   # 从依赖列表安装包
 
 ### requirements.txt
 
-`requirements.txt`文件列出了当前项目所有依赖的包及其版本，方便在其他环境重新部署项目。手动编写`requirements.txt`较为繁琐,通常使用`pip freeze`命令自动生成
+`requirements.txt`文件列出了当前项目所有依赖的包及其版本，方便在其他环境重新部署项目。手动编写`requirements.txt`较为繁琐，通常使用`pip freeze`命令自动生成
 
 ```
 annotated-types==0.6.0
@@ -115,21 +115,21 @@ uvicorn==0.27.1
 
 ### 虚拟环境
 
-Python 应用通常会使用许多第三方包,不同的应用所需的包也不尽相同。为了避免不同的项目之间产生依赖包的版本冲突，Python 提供了虚拟环境(virtual environment)的功能。虚拟环境是 Python 解释器的一个独立副本，每个虚拟环境都有自己的 Python 二进制文件、库和脚本目录，与系统全局环境和其他虚拟环境隔离
+Python 应用通常会使用许多第三方包，不同的应用所需的包也不尽相同。为了避免不同的项目之间产生依赖包的版本冲突，Python 提供了虚拟环境(virtual environment)的功能。虚拟环境是 Python 解释器的一个独立副本，每个虚拟环境都有自己的 Python 二进制文件、库和脚本目录，与系统全局环境和其他虚拟环境隔离
 
-Python 3.3 及以上版本通过 venv 模块原生支持虚拟环境,无需额外安装。创建虚拟环境的命令:
+Python 3.3 及以上版本通过 venv 模块原生支持虚拟环境，无需额外安装。创建虚拟环境的命令:
 
 ```sh
 python -m venv /path/to/new/virtual/environment
 ```
 
-例如要在当前目录下创建一个名为 venv 的虚拟环境,可以运行:
+例如要在当前目录下创建一个名为 venv 的虚拟环境，可以运行:
 
 ```sh
 python -m venv venv
 ```
 
-创建好虚拟环境后,需要激活才能使用,Windows 下激活虚拟环境:
+创建好虚拟环境后，需要激活才能使用,Windows 下激活虚拟环境:
 
 ```sh
 venv\Scripts\activate
@@ -141,9 +141,9 @@ Linux 或 macOS 下激活虚拟环境:
 source venv/bin/activate
 ```
 
-进入虚拟环境后,命令行提示符前面会出现虚拟环境的名称,表示当前正在虚拟环境中运行。在虚拟环境中安装的包不会影响系统全局环境
+进入虚拟环境后，命令行提示符前面会出现虚拟环境的名称，表示当前正在虚拟环境中运行。在虚拟环境中安装的包不会影响系统全局环境
 
-退出虚拟环境,只需运行:
+退出虚拟环境，只需运行:
 
 ```sh
 deactivate

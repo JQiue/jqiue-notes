@@ -465,7 +465,7 @@ class TodoList extends Component {
   }
   render() {
     return (
-      <button onClick={this.btnClick} ref={(button) => {this.buttonElem = button}}>获取button</button>
+      <button onClick={this.btnClick} ref={(button) => {this.buttonElem = button}}>获取 button</button>
     )
   }
 }

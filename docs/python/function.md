@@ -9,8 +9,8 @@ article: false
 
 ```python
 def 函数名():
-    语句1
-    语句2
+    语句 1
+    语句 2
     .....
 ```
 

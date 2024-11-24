@@ -123,9 +123,9 @@ geometry = { path = "crates/geometry" }
 Cargo.lock 文件在 Rust 项目中有以下几个主要作用：
 
 1. 锁定 crate 依赖的版本：Cargo.lock 记录了项目第一次执行 cargo check/build/test 时将哪个具体版本的依赖包拉取下来，并锁定依赖包不会随 cargo update 变更版本
-2. 重复构建：当重复运行 cargo build 时，Cargo 会用 Cargo.lock 中记录的版本来建立包依赖关系,不会重新下载版本。保证重复构建结果一致
+2. 重复构建：当重复运行 cargo build 时，Cargo 会用 Cargo.lock 中记录的版本来建立包依赖关系，不会重新下载版本。保证重复构建结果一致
 3. CI/CD 环境：通过提交 Cargo.lock 到版本控制中可以确保其他开发者的 CI 环境在构建项目时使用完全一致的包依赖版本
-4. 孤立环境构建：在没有联网的环境下,通过 Cargo.lock 记录的本地依赖版本信息可以完成项目构建
+4. 孤立环境构建：在没有联网的环境下，通过 Cargo.lock 记录的本地依赖版本信息可以完成项目构建
 5. 依赖升级：cargo update 会更新 Cargo.lock 中的依赖版本，方便跟踪依赖是否已经升级
 
 ## Rustfmt

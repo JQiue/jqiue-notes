@@ -40,7 +40,7 @@ foo[4] # o
 3. string.isalpha()：至少有一个字符，并且所有的字符都是字母则返回 True
 4. string.isdecimal()：只包含数字则返回 True，全角数字，不能判断小数
 5. string.isdigit()：只包含数字则返回 True，全角数字，Unicode，转义数字，不能判断小数
-6. string.isnumeric()：只包含数字则返回 True，全角数字，中文数字，不能判断1.
+6. string.isnumeric()：只包含数字则返回 True，全角数字，中文数字，不能判断 1
 7. string.istitle()：如果 String 是标题化（每个单词的首字母大写）则返回 True
 8. string.islower()：所有的字符都是小写则返回 True
 9. string.isupper()：素有的字符都是大写则返回 True
@@ -180,7 +180,7 @@ Python 的集合，和数学中的集合一样，用于保存不重复的元素�
 
 set 集合可以通过 add 方法实现增加元素，但是必须是不可变类型
 
-同样的,也提供了 remove 方法删除元素，如果不存在则会抛出 KeyError 错误，如果不想抛出错误，也可以使用 discard 方法，使用效果和 remove 一样
+同样的，也提供了 remove 方法删除元素，如果不存在则会抛出 KeyError 错误，如果不想抛出错误，也可以使用 discard 方法，使用效果和 remove 一样
 
 ### 集合的运算
 

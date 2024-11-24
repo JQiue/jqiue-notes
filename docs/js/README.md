@@ -76,7 +76,7 @@ JavaScript 的语法也不能满足所有人的需求，这是正常的，因此
 
 ## 规范
 
-ECMA-262 规范 包含了大部分深入的、详细的、规范化的关于 JavaScript 的信息，这份规范明确地定义了这门语言，但正因其规范化，对于新手来说难以理解。所以，如果你需要关于这门语言细节最权威的信息来源，这份规范就很适合你（去阅读）。但它并不适合日常使用。
+ECMA-262 规范 包含了大部分深入的、详细的、规范化的关于 JavaScript 的信息，这份规范明确地定义了这门语言，但正因其规范化，对于新手来说难以理解。所以，如果你需要关于这门语言细节最权威的信息来源，这份规范就很适合你（去阅读）。但它并不适合日常使用
 
 每年都会发布一个新版本的规范，最新的规范草案请见 [https://tc39.es/ecma262/](https://tc39.es/ecma262/)，想了解最新最前沿的功能，包括“即将纳入规范的”（所谓的 “stage 3”），请看这里的提案 [https://github.com/tc39/proposals](https://github.com/tc39/proposals)
 
@@ -101,7 +101,7 @@ ECMA-262 规范 包含了大部分深入的、详细的、规范化的关于 Jav
 + FireFox：其次的选择
 + 其他浏览器（opera，Safari）
 
-在浏览器中按下`F12`即可显示开发者工具，在 Console 标签页中会显示 JavaScript 执行的信息，一些错误会在这里得到提示，同时也可以在这里输入 JavaScript 代码并执行，通常输入单行代码按下`enter`就执行了，但可以使用`Shift+enter`来进行换行输入多行代码，对于 windows 操作系统上的大多数浏览器来说，都是通过`F12`打开开发者工具
+在浏览器中按下`F12`即可显示开发者工具，在 Console 标签页中会显示 JavaScript 执行的信息，一些错误会在这里得到提示，同时也可以在这里输入 JavaScript 代码并执行，通常输入单行代码按下`enter`就执行了，但可以使用`Shift+enter`来进行换行输入多行代码，对于 Windows 操作系统上的大多数浏览器来说，都是通过`F12`打开开发者工具
 
 ## 运行 JavaScript
 
@@ -175,4 +175,4 @@ JavaScript 划分了两种内存：
 + JavaScript 忍者秘籍
 + JavaScript 二十年
 + 学习 JavaScript 设计模式
-+ [JavaScript中的怪异行为](https://www.thomas-yang.me/projects/oh-my-dear-js/)
++ [JavaScript 中的怪异行为](https://www.thomas-yang.me/projects/oh-my-dear-js/)

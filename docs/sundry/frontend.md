@@ -12,7 +12,7 @@ article: false
 
 Lint 工具的优势：
 
-+ 避免低级bug，找出可能发生的语法错误
++ 避免低级 bug，找出可能发生的语法错误
 + 提示删除多余的代码
 + 确保代码遵循最佳实践
 + 统一团队的代码风格
@@ -501,7 +501,7 @@ console.log(data);
 
 当属性值为数字时：
 
-+ `'name|+1': number`：属性值自动加 1，初始值为 number。
++ `'name|+1': number`：属性值自动加 1，初始值为 number
 + `'name|min-max': number`：生成 min ~ max 之间的整数
 + `'name|min-max.dmin-dmax': number`：生成 min ~ max 之间的整数且小数部分保留 dmin ~ dmax 位
 
@@ -547,29 +547,29 @@ Monorepo 可以理解为：利用单一仓库来管理多个 packages 的一种�
 可以看项目结构来区分：
 
 ```sh
-# monorepo目录结构
-|-- monorepo-demo              
-|   |-- packages                  # packages目录
-|   |   |-- compiler              # compiler子包
-|   |   |   |-- package.json      # compiler子包特有的依赖
-|   |   |-- reactivity            # reactivity子包
-|   |   |   |-- package.json      # reactivity子包特有的依赖
-|   |   |-- shared                # shared子包
-|   |   |   |-- package.json      # shared子包特有的依赖
+# monorepo 目录结构
+|-- monorepo-demo
+|   |-- packages                  # packages 目录
+|   |   |-- compiler              # compiler 子包
+|   |   |   |-- package.json      # compiler 子包特有的依赖
+|   |   |-- reactivity            # reactivity 子包
+|   |   |   |-- package.json      # reactivity 子包特有的依赖
+|   |   |-- shared                # shared 子包
+|   |   |   |-- package.json      # shared 子包特有的依赖
 |   |-- package.json              # 所有子包都公共的依赖
 ```
 
 ```sh
 # multirepo-a 目录结构
 |-- multirepo-a
-|   |-- src 
+|   |-- src
 |   |   |-- feature1              # feature1 目录
 |   |   |-- feature2              # featrue2 目录
 |   |-- package.json              # 整个项目依赖
 
 # multirepo-b 目录结构
 |-- multirepo-b
-|   |-- src 
+|   |-- src
 |   |   |-- feature3              # feature3 目录
 |   |   |-- feature4              # featrue4 目录
 |   |-- package.json              # 整个项目依赖
@@ -586,7 +586,7 @@ Monorepo 可以理解为：利用单一仓库来管理多个 packages 的一种�
 + pnpm
 
 ```sh
-|-- monorepo-demo              
+|-- monorepo-demo
 |   |-- packages                  # packages 目录
 |   |   |-- compiler              # compiler 子包
 |   |   |-- reactivity            # reactivity 子包
@@ -596,7 +596,7 @@ Monorepo 可以理解为：利用单一仓库来管理多个 packages 的一种�
 随后，在根目录以及每一个子包目录下都执行一遍 npm init -y 命令，让其创建一个 package.json 文件到
 
 ```sh
-|-- monorepo-demo              
+|-- monorepo-demo
 |   |-- packages                  # packages 目录
 |   |   |-- compiler              # compiler 子包
 |   |   |   |-- package.json      # compiler 子包特有的依赖
@@ -611,7 +611,7 @@ Monorepo 可以理解为：利用单一仓库来管理多个 packages 的一种�
 
 ```json
 {
-  "name": "MyVue", // 避免pnpm安装时重名
+  "name": "MyVue", // 避免 pnpm 安装时重名
   "private": true,  // 标记私有，防止意外发布
   "version": "1.0.0",
   "scripts": {
@@ -637,7 +637,7 @@ Monorepo 可以理解为：利用单一仓库来管理多个 packages 的一种�
 }
 ```
 
-最后回到根目录，创建pnpm-workspace.yaml文件，并撰写如下内容：
+最后回到根目录，创建 pnpm-workspace.yaml 文件，并撰写如下内容：
 
 ```yaml
 packages:
@@ -647,16 +647,16 @@ packages:
 至此，Monorepo 项目结构已经初步搭建完毕，此时的目录结构如下：
 
 ```sh
-|-- monorepo-demo              
-|   |-- packages                  # packages目录
-|   |   |-- compiler              # compiler子包
-|   |   |   |-- package.json      # compiler子包特有的依赖
-|   |   |-- reactivity            # reactivity子包
-|   |   |   |-- package.json      # reactivity子包特有的依赖
-|   |   |-- shared                # shared子包
-|   |   |   |-- package.json      # shared子包特有的依赖
+|-- monorepo-demo
+|   |-- packages                  # packages 目录
+|   |   |-- compiler              # compiler 子包
+|   |   |   |-- package.json      # compiler 子包特有的依赖
+|   |   |-- reactivity            # reactivity 子包
+|   |   |   |-- package.json      # reactivity 子包特有的依赖
+|   |   |-- shared                # shared 子包
+|   |   |   |-- package.json      # shared 子包特有的依赖
 |   |-- package.json              # 所有子包都公共的依赖
-|   |-- pnpm-workspace.yaml       # pnpm配置文件
+|   |-- pnpm-workspace.yaml       # pnpm 配置文件
 ```
 
 依赖分为两部分，第一部分是公共依赖，第二部分是特有依赖

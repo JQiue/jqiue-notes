@@ -1030,7 +1030,7 @@ document.querySelector('input').onkeydown = function (e) {
 ::: normal-demo scroll
 
 ```html
-<p>当前窗口已滚动的像素：<span>0 px</span></p>
+<p>当前窗口已滚动的像素：<span>0px</span></p>
 ```
 
 ```js

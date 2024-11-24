@@ -80,9 +80,9 @@ You are beautiful. 你太美了
 
 句子成分除了”主语“，”谓语“，”宾语“，”宾语“，”宾语补语“，”主语补语/表语“，还有”定语“（Atributive），主要用来修饰主语或宾语，比如`The little boy likes beautiful girl`，其中`The little`是主语`boy`的定语，而`beautiful`是宾语`girl`的定语。还有”状语“（adverbial），用于修饰谓语动词，比如`The rabbit ate quickly`，`quickly`就是`ate`的状语，还有”同位语“（Appositive），用于将主语重新说明一边，比如`Mr. Wang, a programmer, likes singing`，`a programmer`其实就是将`Mr. Wang`用不同的方式说一遍，和主语具有同等地位
 
-到现在为止几乎说出了英语句子中所有可能出现的句子成分，这些都是所谓的“简单句”（simple sentences），可是说话写文章不一定都是简单句一个一个的说，为了使句子更加丰富，经常把这些不同的简单句互相组合，形成所谓的 compound sentences 和 complex sentences。
+到现在为止几乎说出了英语句子中所有可能出现的句子成分，这些都是所谓的“简单句”（simple sentences），可是说话写文章不一定都是简单句一个一个的说，为了使句子更加丰富，经常把这些不同的简单句互相组合，形成所谓的 compound sentences 和 complex sentences
 
-compound sentences 其实就是简单的句子叠加，是并列关系，直接翻译为“复合句”或“并列句”。
+compound sentences 其实就是简单的句子叠加，是并列关系，直接翻译为“复合句”或“并列句”
 
 而 complex sentences 就是把一个句子套在另一个句子里，甚至还能继续套下去，并不禁止重复套娃，这是一种从属关系，直接翻译为“复杂句”，在英语语法中分别叫做“主句”（main clause）和从句（subordinate clause），从句就是将一个简单句修改一下作为另一个句子的成分，比如一个简单句可以充当另一个句子的主语，就是主语从句，将一个简单句作为一个句子的宾语，就是宾语从句，将一个简单句作为另一个句子的主语补语，就是表语从句，将一个简单句作为另一个句子的同位语，就是同位语从句，这些具有名词性质的从句，叫做名词性从句，另外将一个简单句作为定语或状语，很显然那就是定语从句和状语从句
 
@@ -469,7 +469,7 @@ I put your book on the shelf. 放
 I put on my hat and left the house. 带上（放到...上 ）
 Come and look at my phtograph album. 看着（看向某一点）
 I am looking for my pen. I lost it this morning. 寻找（为了...看）
-Will you look after the children for me please? 照顾（跟...后面k看）
+Will you look after the children for me please? 照顾（跟...后面看）
 ```
 
 ## 代词
@@ -1019,7 +1019,7 @@ Tony finished his work. and then he would leave for London.
 | below    | 表示在下面                       | the box below the table             |
 | opposite | 表示在对面                       | opposite the post office            |
 
-除位置介词外,还有一些辅助性的位置词用于更精细地描述位置关系：
+除位置介词外，还有一些辅助性的位置词用于更精细地描述位置关系：
 
 + Front(前面):如front door字面为前门
 + Back(后面):如backyard字面为后院

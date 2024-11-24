@@ -146,11 +146,11 @@ Notification.requestPermission( function(status) {
 
 `options`包含以下属性：
 
-+ `dir` : 文字的方向；它的值可以是 `auto（自动）`, `ltr（从左到右）`, or `rtl（从右到左）`
++ `dir`: 文字的方向；它的值可以是 `auto（自动）`, `ltr（从左到右）`, or `rtl（从右到左）`
 + `lang`: 指定通知中所使用的语言
 + `body`: 通知中额外显示的字符串
-+ `tag`: 赋予通知一个 ID，以便在必要的时候对通知进行刷新、替换或移除。
-+ `icon`: 一个图片的 URL，将被用于显示通知的图标。
++ `tag`: 赋予通知一个 ID，以便在必要的时候对通知进行刷新、替换或移除
++ `icon`: 一个图片的 URL，将被用于显示通知的图标
 
 ```js
 const notice = new Notifications('title', {body: '这是一个通知'})

@@ -522,7 +522,6 @@ fn do_something_anyhow() -> anyhow::Result<()> {
 
 ```toml
 [dependencies]
-
 sea-orm = { version = "0.12", features = [
   "sqlx-mysql",
   "runtime-tokio-rustls",
@@ -536,21 +535,40 @@ sea-orm = { version = "0.12", features = [
 cargo install sea-orm-cli
 ```
 
+### 迁移
+
+将模型同步到数据库中
+
+```sh
+sea migration init      Initialize migration directory
+sea migration generate  Generate a new, empty migration
+sea migration fresh     Drop all tables from the database, then reapply all migrations
+sea migration refresh   Rollback all applied migrations, then reapply all migrations
+sea migration reset     Rollback all applied migrations
+sea migration status    Check the status of all migrations
+sea migration up        Apply pending migrations
+sea migration down      Rollback applied migrations
+sea migration help      Print this message or the help of the given subcommand(s)
+```
+
+Sea ORM Migration 系统会记录已执行过的迁移文件，如果直接修改已执行过的迁移文件，这些更改不会自动应用。要更新架构，有如下选择：
+
+1. 生成新的迁移文件，`sea migrate generate <filename>`
+2. 如果是开发环境，可直接`sea migarte fresh`重新执行所有的迁移
+
 ### 从现有数据库中生成实体
 
-需要提供`.env`
+需要提供`DATABASE_URL`，默认会读取`.env`
 
 ```plain
 DATABASE_URL=mysql://username:password@host/database
 ```
 
-使用下面命令迁移
+使用下面生成实体，实体是进行 CRUD 关键
 
 ```sh
 sea-orm-cli generate entity -o src/entitys
 ```
-
-实体是进行 CRUD 关键
 
 ### Select
 
@@ -592,7 +610,7 @@ Entity::find().filter(Column::Name.contains("foo")).all(db).await;
 
 ### Insert
 
-插入一个 model
+插入一个 Model
 
 ```rust
 let model = ActiveModel {
@@ -603,7 +621,7 @@ let model = ActiveModel {
 Entity::insert(model).exec(&db).await?;
 ```
 
-插入多个 model
+插入多个 Model
 
 ```rust
 let foo = ActiveModel {
@@ -620,7 +638,7 @@ Entity::insert_many([foo, bar]).exec(&db).await?;
 
 ### Update
 
-更新一个 model
+更新一个 Model
 
 ```rust
 let model = ActiveModel {
@@ -635,7 +653,7 @@ Entity::update(model.clone())
   .await?,
 ```
 
-更新多个 model
+更新多个 Model
 
 ```rust
 Entity::update_many()
@@ -647,7 +665,7 @@ Entity::update_many()
 
 ### Delete
 
-删除一个 model
+删除一个 Model
 
 ```rust
 let model = ActiveModel {
@@ -659,14 +677,14 @@ let model = ActiveModel {
 Entity::delete(model).exec(&db).await?;
 ```
 
-根据主键删除 model
+根据主键删除 Model
 
 ```rust
 // WHERE "id" = $1",
 Entity::delete_by_id(1).exec(&db).await?;
 ```
 
-删除多个 model
+删除多个 Model
 
 ```rust
 Entity::delete_many()
