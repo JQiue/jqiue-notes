@@ -1,4 +1,4 @@
-name: Push to the deploy branch
+name: Deploy
 permissions:
   contents: write
 on: push
@@ -16,12 +16,10 @@ jobs:
           # with:
           #   token: {{ secrets.ACCESS_TOKN }}
       - name: Install dependency
-        run: |
-          npm i pnpm -g
-          pnpm i
+        run: npm i
       - name: Build
-        run: pnpm run build
-      - name: Deploy
+        run: npm run build
+      - name: Push Deploy Branch
         run: |
           cd ./dist
           git init
@@ -31,3 +29,15 @@ jobs:
           git commit -m 'deploy'
           git checkout -b deploy
           git push -f https://${{secrets.ACCESS_TOKN}}@github.com/JQiue/jqiue-notes.git deploy
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script_stop: true
+          script: |
+            bash
+            cd jqiue-notes/
+            git fetch && git reset --hard origin/deploy
