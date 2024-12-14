@@ -16,9 +16,11 @@ jobs:
           # with:
           #   token: {{ secrets.ACCESS_TOKN }}
       - name: Install dependency
-        run: npm i
+        run: |
+          npm i -g pnpm
+          pnpm i
       - name: Build
-        run: npm run build
+        run: pnpm run build
       - name: Push Deploy Branch
         run: |
           cd ./dist
