@@ -144,7 +144,7 @@ fn main() {
 
 ## Lettre
 
-lettre 是一个功能强大的邮件库
+Lettre 是一个功能强大的邮件库
 
 ## Reqwest
 
@@ -320,7 +320,6 @@ fn main() {
         }
     }
 }
-
 ```
 
 ## Chrono
@@ -437,3 +436,7 @@ thiserror 主要解决以下问题：
 + 静态错误：与 anyhow 不同，thiserror 创建的是静态类型的错误，这意味着它们在编译时就确定了类型
 + 错误消息模板：thiserror 允许你为每种错误类型定义自定义的错误消息模板
 + 适合库级别使用：thiserror 当需要定义明确的错误类型
+
+## Tonic
+
+gRPC 的 Rust 实现，高性能，开源，为移动设备与 HTTP/2 准备的通用 RPC 框架

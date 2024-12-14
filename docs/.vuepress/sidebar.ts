@@ -1,11 +1,13 @@
 import { sidebar } from 'vuepress-theme-hope';
 
 export const zh = sidebar({
-  '/about': 'structure',
+  '/': ['about'],
   '/composition/': 'structure',
   '/operating-system/': ['', 'windows', 'linux'],
   '/compiler/': 'structure',
   '/network/': 'structure',
+  '/ds-algorithm/': 'structure',
+  '/database/': ['', 'sql', 'nosql'],
   '/ai/': 'structure',
   '/c/': 'structure',
   '/java/': 'structure',
@@ -40,8 +42,6 @@ export const zh = sidebar({
     'practice',
   ],
   '/rust/': 'structure',
-  '/ds-algorithm/': 'structure',
-  '/database/': ['', 'sql', 'nosql'],
   '/html-css/': [
     '',
     'elements',

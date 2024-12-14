@@ -3,20 +3,42 @@ title: Linux
 article: false
 ---
 
-Linux 是一种免费开源的类 Unix 操作系统，使用了 UNIX 设计哲学，支持多任务多用户，性能稳定可靠，没有统一的桌面环境，常见的有 GNOME、KDE、XFCE 等，与 Unix 兼容性好。在服务器上 Linux 使用率极高，也支持在个人电脑和嵌入式设备上使用。提供虚拟化能力强，在云计算场景中广泛应用。安全性好，病毒几乎没有针对性，适合网络服务器
+Linux 是一种自由开源的类 Unix 操作系统，它具有以下核心特性:
+
+- 多用户多任务支持
+- 优秀的系统稳定性和可靠性
+- 强大的网络功能和安全特性
+- 丰富的开发工具和程序库
+- 良好的硬件兼容性
+- 活跃的社区支持
+
+主要应用场景：
+
+- 服务器系统
+- 个人桌面系统
+- 嵌入式设备
+- 云计算平台
+- 科学计算
+
+Linux 系统主要由以下部分组成:
+
+1. Linux 内核 - 系统核心
+2. GNU 工具集 - 基础命令工具
+3. 桌面环境 - 图形界面（如 GNOME、KDE）
+4. 应用程序 - 各类应用软件
 
 ## 发行版
 
 Linux 发行版是指基于 Linux 内核开发的完整操作系统，它们会额外打包一些应用软件并提供生态支持，主要的 Linux 发行版有：
 
-+ Debian：非常成熟稳定，用于种服务器及工作站
-+ Ubuntu：基于 Debian 开发，桌面版用户体验好，很受个人用户欢迎
-+ CentOS：免费版本 RHEL，与企业 Linux 流通性好，也常用于服务器
-+ Fedora：源自 Red Hat，重视开放源代码，内置最新软件版本
-+ SUSE：来自德国，适用于企业 server 和工作站
-+ Arch Linux: Rolling 发行版，源代码最新但需自行配置
-+ Gentoo：源代码编译性能优化，但安装配置难度大
-+ Deepin：基于 Debian 开发的中文系統，注重视觉交互
+- Debian：非常成熟稳定，用于各种服务器及工作站
+- Ubuntu：基于 Debian 开发，桌面版用户体验好，很受个人用户欢迎
+- CentOS：免费版本 RHEL，与企业 Linux 流通性好，也常用于服务器
+- Fedora：源自 Red Hat，重视开放源代码，内置最新软件版本
+- SUSE：来自德国，适用于企业 server 和工作站
+- Arch Linux: Rolling 发行版，源代码最新但需自行配置
+- Gentoo：源代码编译性能优化，但安装配置难度大
+- Deepin：基于 Debian 开发的中文系統，注重视觉交互
 
 ### Ubuntu
 
@@ -216,7 +238,7 @@ Windows 存在盘符的概念，而 Linux 则不存在，只有一个根目录�
 + `mv <file1> <file2>`：移动`file1`到`file2`，会将`file2`覆盖掉，因此不再有`file2`
 + `rm <file>`：删除文件，没有任何提示，最好添加`-v`参数获得提示
 + `rm <folder>`：删除空目录，没有任何提示，最好添加`-v`获得提示，不能删除非空目录
-+ `rm -rf <folder>`：删除目录，最好添加`-v`获得提示
++ `rm -rf <folder>`：递归删除目录，最好添加`-v`获得提示，此命令非常危险，不要轻易使用
 + `touch <file>`：创建空白文件
 
 ::: tip
@@ -446,11 +468,7 @@ root@VM-4-14-ubuntu:~# ps x
 
 ## 网络
 
-+ `netstat`：
-+ `netstat -a`：列出所有端口
-+ `netstat -at`：列出所有 TCP 端口
-+ `netstat -au`：列出所有 UDP 端口
-+ `netstat -ap`：列出所有端口并显示与程序相关的程序名和 PID
++ `netstat -atup`：列出所有 TCP 和 UDP 端口并显示与程序相关的程序名和 PID
 + `lsof -i`：列出打开文件
 + `fuser -n tcp 80`：查看 80 端口被哪个程序占用
 
@@ -517,17 +535,22 @@ sudo journalctl --vacuum-files=2
 sudo systemctl restart systemd-journald
 ```
 
-## 性能信息
+## 系统监控与性能分析
+
+### 系统基本信息
+
++ `lsb_release -a`：查看发行版本
++ `cat /proc/cpuinfo`：查看硬件配置
+
+### 性能监控
 
 + `top`：实时查看进程变化，监控 Linux 系统状况
 + `uptime`：查看系统运行了多少时间
 + `free`：查看内存
 + `vmstat`：进程，内存，分页，块 IO，陷阱，磁盘和 cpu 活动的信息
 
-## 系统信息
+### 存储空间
 
-+ `lsb_release -a`：查看发行版本
-+ `cat /proc/cpuinfo`：查看硬件配置
 + `df` - 查看文件系统的空间使用情况，只能查看一级文件夹的大小、使用比例、档案系统以及挂载点
 + `df -h` - 查看文件系统的空间使用情况，以`1024`为单位
 + `du` - 可以查看文件以及文件夹的大小，会统计文件大小相加

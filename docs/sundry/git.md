@@ -577,6 +577,14 @@ chore: 将表格中的查看详情改为详情
 
 其他类型的 commit 和上面三个示例差不多，在此不再叙述
 
+## 自动生成修改日志
+
+```
+cargo install git-cliff
+git cliff --init
+git cliff -o CHANGELOG.md
+```
+
 ## 参考资料
 
 + GitHub 入门与实践

@@ -17,15 +17,6 @@ const theme = hopeTheme({
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
   docsDir: 'docs',
   docsBranch: 'master',
-  pageInfo: [
-    'Author',
-    'Original',
-    'Date',
-    'Category',
-    'Tag',
-    'ReadingTime',
-    'PageView',
-  ],
   locales: {
     '/': {
       navbar: navbar.zh,
@@ -33,15 +24,6 @@ const theme = hopeTheme({
       blog: {
         intro: 'about.html',
         avatar: '/avatar.png',
-        articleInfo: [
-          'Author',
-          'Original',
-          'Date',
-          'Category',
-          'Tag',
-          'ReadingTime',
-          'PageView',
-        ],
         medias: {
           QQ: 'http://wpa.qq.com/msgrd?v=3&uin=861947542&site=qq&menu=yes',
           Email: 'mailto:jqiue@foxmail.com',
@@ -64,28 +46,18 @@ const theme = hopeTheme({
       '/sundry/interview': '123456',
     },
   },
-  plugins: {
-    blog: {},
-    comment: {
-      provider: 'Waline',
-      serverURL:
-        process.env.NODE_ENV == 'production'
-          ? 'https://waline.jinqiu.wang'
-          : 'http://127.0.0.1:8360',
-      reaction: true,
-    },
-    mdEnhance: {
-      katex: true,
-      demo: true,
-      align: true,
-      sup: true,
-      sub: true,
-      tasklist: true,
-      codetabs: true,
-      echarts: true,
-      tabs: true,
-    },
-    shiki: {
+  markdown: {
+    demo: true,
+    align: true,
+    sup: true,
+    sub: true,
+    tasklist: true,
+    codeTabs: true,
+    math: true,
+    echarts: true,
+    tabs: true,
+    highlighter: {
+      type: 'shiki',
       langs: [
         'js',
         'properties',
@@ -107,11 +79,23 @@ const theme = hopeTheme({
         'tex',
         'python',
         'kotlin',
+        'scss',
       ],
       themes: {
         light: 'one-light',
         dark: 'one-dark-pro',
       },
+    },
+  },
+  plugins: {
+    blog: true,
+    comment: {
+      provider: 'Waline',
+      serverURL:
+        process.env.WALINE_ENV == 'production'
+          ? 'https://waline.jinqiu.wang'
+          : 'http://127.0.0.1:8360',
+      reaction: true,
     },
     pwa: {
       favicon: '/favicon.ico',
@@ -120,14 +104,9 @@ const theme = hopeTheme({
       maxSize: 40000,
       apple: {
         icon: '/assets/icon/appleIcon152.png',
-        statusBarColor: 'black',
-      },
-      msTile: {
-        image: '/assets/icon/msIcon144.png',
-        color: '#ffffff',
       },
       manifest: {
-        id: '/',
+        id: 'jn',
         scope: '/',
         start_url: '/',
       },

@@ -23,11 +23,11 @@ date: 2019-04-12
 
 ```js
 // 好
-let maxCount = 10; 
-let tableTitle = '啦啦啦'; 
+let maxCount = 10;
+let tableTitle = '啦啦啦';
 // 不好
-let setConut = 10; 
-let getTitle = '啦啦啦'; 
+let setConut = 10;
+let getTitle = '啦啦啦';
 ```
 
 当 const 仅限常量而不是引用时全部大写，用下划线分割单词

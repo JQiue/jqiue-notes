@@ -1,5 +1,6 @@
 ---
 title: 使用 MeiliSearch 构建轻量级搜素引擎
+category: 知识分享
 ---
 
 MeiliSearch 是 Rust 编写的轻量级搜素引擎，快而高效

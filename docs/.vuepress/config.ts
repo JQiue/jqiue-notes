@@ -1,10 +1,8 @@
 import { defineUserConfig } from 'vuepress';
-import { viteBundler } from '@vuepress/bundler-vite';
 import { MeiliSearchPlugin } from 'vuepress-plugin-meilisearch2';
-import theme from './theme.ts';
+import theme from './theme.js';
 
 const app = defineUserConfig({
-  bundler: viteBundler(),
   theme,
   base: '/',
   dest: './dist',
@@ -16,15 +14,15 @@ const app = defineUserConfig({
       description: '每一个想要学习的念头，都有可能是未来的你在向你求救',
     },
   },
+  shouldPrefetch: false,
   plugins: [
     MeiliSearchPlugin({
       host: 'https://search.jinqiu.wang',
       apiKey:
-        'b172d836e622bd80787992d0ad189cca8bd1735fe9ca767e8c8340b0cdfd6638',
-      index: 'jinqiu-wang',
+        'a0c876c569b64568373f8488c81eafb04d157b9d5203da647fac4c0417a3d6f5',
+      indexUid: 'jinqiu-wang',
     }),
   ],
-  shouldPrefetch: false,
 });
 
 app.onWatched = (app: any) => {

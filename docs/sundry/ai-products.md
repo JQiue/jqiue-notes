@@ -1,7 +1,6 @@
 ---
 title: AI 产品
 category: 知识分享
-article: true
 ---
 
 ## 聊天 AI

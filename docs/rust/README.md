@@ -155,6 +155,30 @@ cargo clippy
 cargo fix
 ```
 
+## Release
+
+如果想发布一个 crate 到 crate.io，那么 cargo-release 是一个很好的工具
+
+```sh
+# 执行一次发布演习
+cargo release [major|minor|patch] --registry crates-io
+# 执行一次真实的发布
+cargo release [major|minor|patch] --registry crates-io --execute
+```
+
+在这之前，完全可以配合`git-cliff`做到发布自动生成日志，首先要在项目根目录中创建`release.toml`写下预发布钩子
+
+```toml
+pre-release-hook = [
+  "git",
+  "cliff",
+  "-o",
+  "CHANGELOG.md",
+  "--tag",
+  "{{version}}",
+]
+```
+
 ## Workspace
 
 工作空间用于将代码拆分多个代码包，`Cargo.toml`有所不同，以`workspace`区域开始，同时指定二进制包的位置来添加成员
