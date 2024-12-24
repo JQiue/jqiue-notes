@@ -19,13 +19,25 @@ vim /etc/hysteria/config.yaml
 开始启动前一定要关掉 nginx，配置的域名 dns 一定要指向本机 ip，否则无法申请证书成功，启动如果没有问题，那么，便可以启动 nginx 反代并添加如下内容
 
 ```plain
-# 不要添加到 http 块
 stream {
+  log_format stream_logging '$remote_addr [$time_local] '
+                          'Protocol: $protocol '
+                          'Status: $status '
+                          'Bytes sent: $bytes_sent '
+                          'Bytes received: $bytes_received '
+                          'Session time: $session_time';
   server {
-    listen 443 udp;
-    listen [::]:443 udp;
-    listen 443;
-    listen [::]:443;
+    access_log /etc/nginx/log/stream_access.log stream_logging;
+    error_log /etc/nginx/log/stream_error.log;
+    proxy_next_upstream_tries 3;
+    proxy_connect_timeout 10s;     # 连接超时时间
+    proxy_timeout 1h;               # 空闲连接保持时间
+    proxy_buffer_size 16k;          # 代理缓冲区大小
+    proxy_responses 1;              # 响应次数
+    listen 4433;
+    listen [::]:4433;
+    listen 4433 udp;
+    listen [::]:4433 udp;
     proxy_pass 127.0.0.1:1443;
   }
 }

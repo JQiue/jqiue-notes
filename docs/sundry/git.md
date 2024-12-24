@@ -585,6 +585,22 @@ git cliff --init
 git cliff -o CHANGELOG.md
 ```
 
+## 现代 diff 工具
+
+Difftastic is a structural diff tool that understands syntax. It supports over 30 programming languages and when it works, it's fantastic.
+
+```plain
+[alias]
+    # 查看未提交的更改
+    ddiff = -c diff.external=difft diff
+    # Difftastic aliases, so `git dlog` is `git log` with difftastic and so on.
+    # 查看最近一次提交的更改
+    dshow = -c diff.external=difft show --ext-diff
+    # 查看当前分支上最近提交的更改
+    dlog = -c diff.external=difft log --ext-diff
+```
+
 ## 参考资料
 
-+ GitHub 入门与实践
++ [Learn Git Branching](https://learngitbranching.js.org/)
++ [badges](https://shields.io/)

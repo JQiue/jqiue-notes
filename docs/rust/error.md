@@ -34,7 +34,7 @@ panic = 'abort'
 
 ## Result
 
-大部分错误没有严重到需要终止程序的地步，`Result<T, E>`是 Rust 处理可恢复错误的主要方式，有两个变体：`Ok`和`Err`，比如在读取文件中
+大部分错误没有严重到需要终止程序的地步，`Result<T, E>`是 Rust 处理可恢复错误的主要方式，比如在读取文件中
 
 ```rust
 use std::fs::File;
@@ -83,40 +83,6 @@ fn main() {
       panic!("There was a problem opening the file: {:?}", error);
     }
   });
-}
-```
-
-### 方法
-
-`Result`类型本身也定义了很多方法用来应对，比如`unwrap`方法，当返回值是 OK 则返回内部值，否则就会调用`panic!`
-
-```rust
-let file = File::open("hello.txt").unwrap();
-```
-
-还有一个`expect`用于在`unwrap`的基础上指定错误信息
-
-```rust
-let file = File::open("hello.txt").expect("Failed to open hello.txt");
-```
-
-这是一些其他的常用方法：
-
-+ `is_ok()`和`is_err()`：返回 bool 值，告诉 Result 是成功的结果还是错误的结果
-+ `ok()`：返回`Option<T>`类型的成功值，否则返回`None`
-+ `err()`：返回`Option<E>`类型的错误值
-+ `unwrap_or(fallback)`：返回成功值，否则返回 fallback，丢弃错误值
-
-## ? 运算符
-
-Rust 提供了`?`运算符用来传播错误，用来将错误返回给调用者，如果出现错误，就会提前终止函数执行，并返回错误。只能用于返回`Result`类型的函数
-
-```rust
-fn read_file() -> Result<String, io::Error> {
-  let mut file = File::open("hello.txt")?;
-  let mut s = String::new();
-  file.read_to_string(&mut s)?;
-  Ok(s)
 }
 ```
 

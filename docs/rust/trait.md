@@ -203,7 +203,7 @@ let bigger = i32::from(123_i16);
 println!("{s}, {addr}, {one}, {bigger}");
 ```
 
-实现 From 后，系统会自动实现 Into：
+实现 From 后，会自动实现 Into，提供对称的转换能力：
 
 ```rust
 let s: String = "hello".into();
@@ -212,6 +212,10 @@ let one: i16 = true.into();
 let bigger: i32 = 123_i16.into();
 println!("{s}, {addr}, {one}, {bigger}");
 ```
+
+### TryFrom 和 TryInto
+
+TryFrom 要比 From 更加安全，适用于不总是能够成功转换的场景
 
 ### Eq 和 PartialEq
 
@@ -265,3 +269,7 @@ fn main() {
   // println!("{}", s);
 }
 ```
+
+### Iterator
+
+### Send 和 Sync

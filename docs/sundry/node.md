@@ -987,3 +987,5 @@ npm i 0x -g
 + Node 与 Express 开发
 + 了不起的 Node.js 将 JavaScript 进行到底
 + 深入浅出 Node.js
++ [NodeSchool](https://nodeschool.io/zh-cn/)
++ [基于 Node.js 的轻量级私有仓库](https://verdaccio.org/)

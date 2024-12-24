@@ -223,4 +223,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace){
   console.log('Value in '+ namespace +' has been changed:');
   console.log(changes);
 });
-···
+```
+
+## 参考资料
+
++ [让你的扩展更容易制作](https://extension.js.org/)

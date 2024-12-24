@@ -555,7 +555,7 @@ SELECT MIN(stu_score) FROM student;
 + `IFNULL(v1,v2)` - 如果 v1 为 NULL，则返回 v2
 
 更多函数：<https://www.hxstrive.com/tools/command_manual_mysql.htm>
-  
+
 MYSQL 中可以自定义函数
 
 ### 日期操作
@@ -810,3 +810,4 @@ INSERT INTO table_1 SELECT * FROM table_2;
 + [SQLite 学习手册](https://wizardforcel.gitbooks.io/sqlite-learning-manual/content/index.html)
 + SQLite 权威指南
 + [SQL 样式指南](https://www.sqlstyle.guide/zh/)
++ [开源的数据库结构设计工具](https://www.drawdb.app/)

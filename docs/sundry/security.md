@@ -6,7 +6,25 @@ article: false
 
 ## 跨站脚本攻击（XSS）
 
-XSS（Cross-Site Scripting）攻击是指攻击者将恶意脚本注入到网页中，当用户访问该页面时，脚本被执行并可能窃取用户信息或执行其他恶意操作。防范 XSS 的措施包括:
+XSS（Cross-Site Scripting）攻击是指攻击者将恶意脚本注入到网页中，当用户访问该页面时，脚本被执行并可能窃取用户信息或执行其他恶意操作，常见的注入点：评论区，用户资料，搜索框，表单输入
+
+攻击场景示例：
+
+```js
+// （你需要渲染评论）不安全的代码
+function renderUserComment(comment) {
+  // 直接将用户输入插入DOM
+  document.getElementById('comments').innerHTML = comment;
+}
+```
+
+攻击者可以提交
+
+```js
+<script>alert('XSS');</script>
+```
+
+防范 XSS 的措施包括:
 
 + 对所有用户输入进行严格的转义和过滤，确保不会注入恶意脚本
 + 使用 Content-Security-Policy （CSP） 头，限制页面加载的资源，减少 XSS 攻击的可能性
