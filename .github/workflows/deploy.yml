@@ -6,7 +6,7 @@ on:
     branches:
       - master
 jobs:
-  push:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Install node environment
@@ -31,7 +31,11 @@ jobs:
           git commit -m 'deploy'
           git checkout -b deploy
           git push -f https://${{secrets.ACCESS_TOKN}}@github.com/JQiue/jqiue-notes.git deploy
-      - name: Executing remote ssh commands using ssh key
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.HOST }}
