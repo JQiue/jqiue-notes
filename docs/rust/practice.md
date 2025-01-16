@@ -727,9 +727,96 @@ rustflags = [
 
 Rouille 是一个微型 web 同步I/O框架库，但是它的性能也是足够的
 
+```toml
+[dependencies]
+rouille = "3.6.2"
+```
+
+```rust
+use rouille::Request;
+use rouille::Response;
+
+rouille::start_server("0.0.0.0:80", move |request| {
+  Response::text("hello world")
+});
+```
+
+### router
+
+```rust
+pub fn handle_routing(request: &Request) -> Response {
+  router!(request,
+    (GET) (/) => {
+      Response::text("hello world")
+    },
+    (GET) (/get_html) => {
+      Response::html("html")
+    },
+    (GET)(/user) => {
+      if let Ok(user) = store.get_users() {
+        Response::json(&ResponseJson{ data: user, code: 1})
+      } else {
+        Response::json(&ResponseJson::<Vec<i32>>{ data: vec![], code: 0})
+      }
+    },
+    (POST) (/user) => {
+      let body = try_or_400!(post_input!(request, {
+        id: String,
+        display_name: String
+      }));
+      if let Ok(_) = store.create_user(body.id, body.display_name) {
+        Response::text("user created successfully!")
+      } else {
+        Response::text("user created failed!")
+      }
+    },
+    _ => log(request, io::stdout(), || Response::empty_404())
+  )
+}
+```
+
+### middleware
+
+```rust
+use std::io;
+
+use rouille::{log, Response};
+
+pub fn log_middleware(request: &rouille::Request, response: Response) -> Response {
+  log(request, io::stdout(), || response)
+}
+
+pub fn cors_middleware(request: &rouille::Request, response: Response) -> Response {
+  let response = response
+    .with_additional_header("Access-Control-Allow-Origin", "*")
+    .with_additional_header("Access-Control-Allow-Methods", "*")
+    .with_additional_header("Access-Control-Allow-Headers", "*");
+  if request.method() == "OPTIONS" {
+    Response::empty_204()
+      .with_additional_header("Access-Control-Allow-Origin", "*")
+      .with_additional_header("Access-Control-Allow-Methods", "*")
+      .with_additional_header("Access-Control-Allow-Headers", "*")
+  } else {
+    response
+  }
+}
+```
+
+```rust
+start_server("localhost:3000", move |request| {
+  log_middleware(request, cors_middleware(request, handle_routing(request)))
+});
+```
+
 ## Prisma Client Rust
 
 Prisma Client Rust 是一个自动生成的查询构建器，它利用 Prisma 生态系统提供简单且完全类型安全的数据库访问
+
+```rust
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.11", default-features = false, features = [
+  "sqlite",
+] }
+```
 
 ## 参考资料
 

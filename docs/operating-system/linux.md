@@ -720,7 +720,31 @@ crontab -e
 0 23 * * * rtcwake -v -s 32400 -m mem
 ```
 
-## benchmark
+## 解压缩
+
+```sh
+# 解打包
+tar -xf file.tar
+# 打包
+tar -cf archive.tar files/file
+# 使用 gzip 算法压缩
+tar -zcf archive.tar.gz files/file
+# 解 gzip 包
+tar -zxf archive.tar.gz
+# 使用 bzip2 算法压缩
+tar -zcf archive.tar.bz2 files/file
+# 解 bzip2 包
+tar -zxf archive.tar.bz2
+
+# 解 zip
+unzip file.zip
+# 打包
+zip archive.zip files/directories
+# 递归打包
+zip -r archive.zip directory
+```
+
+## Benchmark
 
 购买了一台 Linux 服务器怎么不跑一下各种测试呢？
 

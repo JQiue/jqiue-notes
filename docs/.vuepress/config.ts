@@ -1,4 +1,4 @@
-import { defineUserConfig } from 'vuepress';
+import { App, defineUserConfig } from 'vuepress';
 import { MeiliSearchPlugin } from 'vuepress-plugin-meilisearch2';
 import theme from './theme.js';
 
@@ -25,7 +25,7 @@ const app = defineUserConfig({
   ],
 });
 
-app.onWatched = (app: any) => {
+app.onWatched = (app) => {
   let m = 0,
     w = 0;
   for (let i = 0; i < app.pages.length; i++) {

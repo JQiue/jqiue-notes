@@ -2195,6 +2195,13 @@ watch(() => props.data, () => {
 + [Ant Design of Vue](https://antdv.com/docs/vue/introduce-cn/)
 + [Vuestic UI](https://vuestic.dev/)
 + [Naive UI](https://www.naiveui.com/zh-CN/os-theme)
++ [Material Design 组件库](https://varletjs.org/#/zh-CN/index)
++ [基于 Bulma 的 Vue.js 轻量级 UI 组件](https://buefy.org/)
++ [Vue Material](https://www.creative-tim.com/vuematerial)
++ [Vuetify](https://vuetifyjs.com/zh-Hans/)
++ [PrimeVue](https://primevue.org/)
++ [Vant](https://vant-ui.github.io/vant/#/zh-CN)
++ [TDesign](https://tdesign.tencent.com/)
 
 ## 总结
 
@@ -2213,7 +2220,7 @@ watch(() => props.data, () => {
 + 子组件修改父祖家只能间接调用父组件的修改方法
 + `keep-alive`会缓存组件的状态，避免更多的性能开销，同时会触发一个对应的生命周期函数
 + 插槽用于给组件提供一个填充数据的接口
-+ 作用于插槽用于子组件向父组件暴露的自己数据，交给父组件决定如何渲染
++ 作用域插槽用于子组件向父组件暴露的自己数据，交给父组件决定如何渲染
 + 如果两个组件没有关系，可以使用一个中转实现传值
 + `props`比`data`的优先级更高，props => methods => data => computed => watch
 + 路由更好的控制单页面改变的内容

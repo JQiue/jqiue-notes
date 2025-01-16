@@ -14,6 +14,10 @@ order: 16
 
 `serde`是一个处理数据结构的序列化和反序列化的框架，`serde_json`则是用来处理 JSON 的库
 
+::: tip 序列化和反序列化
+序列化是将 Rust 数据结构转换为其他格式，而反序列化则是将其他格式的数据转换回 Rust 数据结构
+:::
+
 可以快速地使用`json!`构建一个 JSON 对象
 
 ```rust
@@ -66,7 +70,6 @@ use serde_json;
 
 #[derive(Serialize, Deserialize)]
 struct Mobile {
-  model: String,
   processor: String,
   memory: u8,
   // 指定默认值
@@ -74,7 +77,6 @@ struct Mobile {
   display: Display,
   storage: u32,
   battery: u32,
-  ttm: String,
   price: u32,
 }
 
@@ -98,14 +100,44 @@ impl Default for Display {
 
 fn main() {
   let mut mobiles: Vec<Mobile> = Vec::new();
-
   let mobiles_json_str = fs::read_to_string("mobiles.json").unwrap();
-
   mobiles = serde_json::from_str(&mobiles_json_str).unwrap();
 }
 ```
 
-可以对一个字段设置默认值
+### 属性
+
+属性分为三类：
+
++ 容器属性 - 适用于结构体和枚举
++ 变体属性 - 适用于枚举变体
++ 字段属性 - 适用于结构体字段或者枚举变体的字段
+
+```rust
+#[derive(Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]  // <-- 这是一个容器属性
+struct S {
+  #[serde(default)]  // <-- 这是一个字段属性
+  f: i32,
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(rename = "e")]  // <-- 这也是一个容器属性
+enum E {
+  #[serde(rename = "a")]  // <-- 这是一个变体属性
+  A(String),
+}
+```
+
++ `#[serde(rename_all = "...")]` - 重命名所有字段以符合给定的命名约定，比如：`lowercase`，`UPPERCASE`，`PascalCase`，`camelCase`，`snake_case`
++ `#[serde(rename = "name")]` - 序列化和反序列化此字段时使用给定的名称而不是其 Rust 名称。这对于将字段序列化为驼峰式或序列化名称为 Rust 保留关键字的字段很有用
++ `#[serde(alias = "name")]` - 从给定名称反序列化此字段。可以重复指定同一字段的多个可能名称
++ `#[serde(default)]` - 如果反序列化时值不存在，则使用`Default::default()`
++ `#[serde(default = "path")]` - 如果反序列化时值不存在，则调用一个必须是该`fn() -> T`形式的函数
++ `#[serde(skip)]` - 跳过此字段，不要序列化和反序列化
++ `#[serde(skip_serializing_if = "path")]` - 调用一个函数以确定是否跳过序列化此字段。给定的函数必须为`fn(&T) -> bool`，比如`skip_serializing_if = "Option::is_none"`将跳过字段为`None`的序列化
+
+`#[serde(default)]` 可以对一个字段设置默认值
 
 ```rust
 #[derive(Deserialize, Debug)]
@@ -324,54 +356,45 @@ fn main() {
 
 ## Chrono
 
-Chrono 是时间库的首选
+Chrono 是时间库的首选，Chrono 提供了一个`DateTime`类型来表示时区中的日期和时间，必须依赖`Timezone`对象进行构造，该对象定义了本地日期如何转换为 UTC 日期以及反向转换，有三种实现：
 
-获取当前时间
++ Utc 指定的是 UTC 时区，这是最高效的
++ Local 指定系统本地时区
++ FixedOffset 指定任意固定时区
 
 ```rust
 use chrono::Utc;
 
+// 获取当前 UTC 时间
 let now: chrono::DateTime<Utc> = Utc::now();
 println!("Current time: {}", now);
 
+// 解析字符串格式的时间
 let date_time_str = "2023-04-25 12:34:56";
 let date_time: DateTime<Utc> = DateTime::parse_from_str(date_time_str, "%Y-%m-%d %H:%M:%S")
     .unwrap()
     .with_timezone(&Utc);
 println!("Parsed time: {}", date_time);
-```
 
-解析字符串格式的时间
+// 获取本地时区时间
+let local: DateTime<Local> = Local::now();
 
-```rust
+// 格式化时间
 let formatted = date_time.format("%Y-%m-%d %H:%M:%S").to_string();
-```
 
-格式化时间
-
-```rust
 let start = Utc::now();
 // 执行某些操作
 let end = Utc::now();
 let duration = end - start;
 println!("Operation took: {:?}", duration);
-```
 
-计算时间差
-
-```rust
+// 计算时间差
 let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(timestamp, 0), Utc);
-```
 
-将时间转换为时间戳
-
-```rust
+// 转换为时间戳
 let timestamp: i64 = date_time.timestamp();
-```
 
-从时间戳创建时间
-
-```rust
+// 从时间戳创建
 let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(timestamp, 0), Utc);
 ```
 
@@ -381,6 +404,8 @@ let date_time: DateTime<Utc> = DateTime::from_utc(NaiveDateTime::from_timestamp(
 let tomorrow = date_time.checked_add_days(1).unwrap();
 let last_month = date_time.checked_sub_months(1).unwrap();
 ```
+
+`NaiveDateTime` 是一个不带有时区的日期和时间组合
 
 ## Regex
 
@@ -440,3 +465,49 @@ thiserror 主要解决以下问题：
 ## Tonic
 
 gRPC 的 Rust 实现，高性能，开源，为移动设备与 HTTP/2 准备的通用 RPC 框架
+
+## Cron
+
+一个 cron 表达式解析器和调度资源管理器
+
+```rust
+let expression = "* 0 8 * * *";
+let schedule = Schedule::from_str(expression).unwrap();
+println!("Upcoming fire times:");
+for datetime in schedule.upcoming(Utc).take(10) {
+  println!("-> {}", datetime);
+}
+```
+
+## Instant_akismet
+
+这是一个 akismet 的 client 实现
+
+```rust
+let akismet_client = AkismetClient::new(
+  String::from("https://exampleblog.com"), // The URL for your blog
+  "86f1r1r5ea50".to_owned(),               // Your Akismet API key
+  reqwest::Client::new(),                  // Reqwest client to use for requests
+  AkismetOptions::default(),               // AkismetOptions config
+);
+akismet_client.verify_key().await?;
+let comment = Comment::new(&akismet_client.blog, "127.0.0.1")
+  .comment_author("viagra-test-123")
+  .comment_author_email("akismet-guaranteed-spam@example.com")
+  .comment_content("test");
+let is_spam = akismet_client.check_comment(comment).await?;
+println!("{:#?}", is_spam);
+```
+
+## Image
+
+## Rusty-tesseract
+
+```rust
+let img = Image::from_path("images/excuse_me.png").unwrap();
+let default_args = Args::default();
+let output = rusty_tesseract::image_to_string(&img, &default_args)
+  .unwrap()
+  .replace("", "");
+println!("The String output is: {:?}", output);
+```

@@ -169,7 +169,7 @@ JavaScript 划分了两种内存：
 + JavaScript 高级程序设计
 + JavaScript 权威指南
 + 你不知道的 JavaScript
-+ 现代 JavaScript 教程
++ [现代 JavaScript 教程](https://zh.javascript.info/)
 + 廖雪峰
 + JavaScript 语言精髓与编程实践
 + JavaScript 忍者秘籍

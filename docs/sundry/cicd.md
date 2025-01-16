@@ -20,3 +20,7 @@ Github actions 是 Github 2019 年发布的一个 CI/CD 工具，持续集成有
 + action - 每个 step 可以依次执行的一个或多个命令
 
 要想配置工作流，必须将一个 workflow 文件放到项目的`.github/workflow`中，采用 YAML 格式，后缀名为`.yml`，可以有多个 YAML 文件，Github 一旦发现就会自动执行该文件中的内容
+
+## working-directory
+
+默认情况下，每条命令都在仓库的根目录中执行，但可以通过使用 working-directory 并指定明确的路径来覆盖此行为

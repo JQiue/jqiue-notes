@@ -80,6 +80,7 @@ const theme = hopeTheme({
         'python',
         'kotlin',
         'scss',
+        'dockerfile',
       ],
       themes: {
         light: 'one-light',
