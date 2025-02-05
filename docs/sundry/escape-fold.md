@@ -4,6 +4,8 @@ category: 知识分享
 article: false
 ---
 
+## hy2
+
 hy2 是一个比较好用的工具，在 Ubuntu 下：
 
 ```sh
@@ -44,3 +46,7 @@ stream {
 ```
 
 客户端填上域名和服务器配置的密码开始逃离吧
+
+## tj
+
+<!-- todo -->

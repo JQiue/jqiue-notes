@@ -3,33 +3,31 @@ title: AI 产品
 category: 知识分享
 ---
 
-## 聊天 AI
+## 语言模型
 
 GPT-4 算是地表最强了，而 Claude-3.5 算是 GPT-4 强有力的竞争对手
 
-| 模型               | 发布者    | 是否收费 | Token | 数据时效性 |
-| ------------------ | --------- | -------- | ----- | ---------- |
-| GPT-3.5-Turbo      | OpenAI    | 免费     | 16k   | 2021年9月  |
-| GPT-4              | OpenAI    | 收费     | 8k    |            |
-| GPT-4o             | OpenAI    | 免费     | 128k  |            |
-| GPT-4o-Mini        | OpenAI    | 免费     | 128k  |            |
-| Gemini 1.5 Pro     | Google    | 收费     | 2m    |            |
-| Llama 2 Chat 70B   | Meta      | 收费     | 4k    |            |
-| Llama 3 70B        | Meta      | 收费     | 8k    |            |
-| Llama 3.1 Chat 70B | Meta      | 收费     | 128k  |            |
-| Llama 3.1 405B     | Meta      | 收费     | 128k  |            |
-| Claude-3-Haiku     | Anthropic | 免费     | 200k  |            |
-| Claude-3-Sonnet    | Anthropic | 免费     | 200k  |            |
-| Claude-3-Opus      | Anthropic | 免费     | 200k  |            |
-| Claude-3.5-Sonnet  | Anthropic | 免费     | 200k  |            |
-| Mistral Large 2    | Anthropic | 免费     | 128k  |            |
-| 讯飞星火           | 讯飞      | 免费     |       |            |
-| 文心一言           | 百度      | 免费     |       |            |
-| Qwen2 72B          | 阿里云    | 免费     | 128k  |            |
+| 模型              | 发布者    | 是否收费 | Token | 数据时效性 |
+| ----------------- | --------- | -------- | ----- | ---------- |
+| GPT-4             | OpenAI    | 收费     | 8k    |            |
+| GPT-4o            | OpenAI    | 免费     | 128k  |            |
+| GPT-4o-Mini       | OpenAI    | 免费     | 128k  |            |
+| o1                | OpenAI    | 免费     | 128k  |            |
+| Gemini 1.5 Pro    | Google    | 收费     | 2m    |            |
+| Llama 3.1 70B     | Meta      | 收费     | 128k  |            |
+| Llama 3.1 405B    | Meta      | 收费     | 128k  |            |
+| Claude 3.5 Haiku  | Anthropic | 免费     | 200k  |            |
+| Claude 3.5 Sonnet | Anthropic | 免费     | 200k  |            |
+| Claude 3.5 Opus   | Anthropic | 免费     | 200k  |            |
+| Mistral Large 2   | Anthropic | 免费     | 128k  |            |
+| Qwen2 72B         | 阿里云    | 免费     | 128k  |            |
+| Qwen2.5 Max       | 阿里云    | 免费     | 128k  |            |
+| DeepSeek R1       | 深度求索  | 免费     | 128k  |            |
+| DeepSeek V3       | 深度求索  | 免费     | 128k  |            |
 
 推荐 GPT-4o，Mistral Large 2，Claude-3.5-Sonnet
 
-## 绘画 AI
+## 图像生成模型
 
 Midjourney 算是地表最强的绘画 AI 了
 

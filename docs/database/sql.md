@@ -1,7 +1,7 @@
 ---
 title: SQL
 category: 数据库
-tag: ["MySQL", "MariaDB"]
+tag: ["MySQL", "MariaDB", "SQLite", "SQL"]
 article: false
 ---
 
@@ -385,7 +385,7 @@ ROLLBACK;
 + 外键
 + 索引
 
-### 安装，启动以及卸载
+### 安装，启动及卸载
 
 ::: tabs
 
@@ -402,6 +402,12 @@ apt install mysql-server
 ```sh
 pacman -S mysql
 ```
+
+@tab Windows
+
+MySQL：
+[5.7.30](http://ftp.ntu.edu.tw/MySQL/Downloads/MySQLInstaller/mysql-installer-community-5.7.30.0.msi)
+[8.0.20](http://ftp.ntu.edu.tw/MySQL/Downloads/MySQLInstaller/mysql-installer-community-8.0.20.0.msi)
 
 :::
 
@@ -811,3 +817,4 @@ INSERT INTO table_1 SELECT * FROM table_2;
 + SQLite 权威指南
 + [SQL 样式指南](https://www.sqlstyle.guide/zh/)
 + [开源的数据库结构设计工具](https://www.drawdb.app/)
++ [一个查询可视化你的数据库](https://chartdb.io/)

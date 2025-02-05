@@ -1,7 +1,7 @@
 ---
 title: NoSQL
 category: 数据库
-tag: ["MongoDB", "Redis"]
+tag: ["MongoDB", "Redis", "NoSQL"]
 article: false
 ---
 
@@ -16,6 +16,15 @@ MongoDB 是面向文档的非关系型数据库管理系统，并不是传统的
 + 文档（Document）：相当于关系型数据库中的记录
 
 在 NoSQL 中，操作数据库都是通过指令或程序语言来完成的，在 MongoDB 中就是使用 JavaScript 来完成大部分操作
+
+### 安装
+
+::: tabs
+
+@tab:active Windows
+
++ [MongoDB](https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-4.4.1.zip)
+:::
 
 ### 基本操作
 
@@ -109,21 +118,21 @@ db.users.insert([
 
 这是一部分运算符：
 
-运算符|作用
----|---
-$gt|大于
-$gte|大于等于
-$lt|小于
-$lte|小于等于
-$ne|不等于
-$in|值在一个范围内（数组）
-$nin|值不在一个范围中（数组）
-$inc|递增
-$rename|重命名列
-$set|修改列值
-$unset|删除列
-/Reg/|正则表达式
-$or|或
+| 运算符  | 作用                     |
+| ------- | ------------------------ |
+| $gt     | 大于                     |
+| $gte    | 大于等于                 |
+| $lt     | 小于                     |
+| $lte    | 小于等于                 |
+| $ne     | 不等于                   |
+| $in     | 值在一个范围内（数组）   |
+| $nin    | 值不在一个范围中（数组） |
+| $inc    | 递增                     |
+| $rename | 重命名列                 |
+| $set    | 修改列值                 |
+| $unset  | 删除列                   |
+| /Reg/   | 正则表达式               |
+| $or     | 或                       |
 
 第二个参数可以控制查询的返回列，如果`{列名:1/true}`，则只查询该列数据，如果`{列名:0/false}`，则查询除了该列以外的所有列的数据。当条件参数省略时，必须传入一个空对象，比如`db.集合名.find({}, {列名:0})`，如果想要去除`_id`，则应该这样`db.集合名.find({}, {_id: 0})`
 

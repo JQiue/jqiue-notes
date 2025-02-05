@@ -534,32 +534,40 @@ class Foo extends Component {
 路由会根据地址变化来展示不同的组件，以实现页面的变化，需要额外的安装：
 
 ```sh
-npm i react-router-dom
+npm i react-router
 ```
 
 引入，并使用
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router'
 
 import Home from './Home';
 import Foo from './Foo';
 import Bar from './Bar';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home/>}></Route>
-        <Route path="/foo" element={<Foo/>}></Route>
-        <Route path="/bar" element={<Bar/> }></Route>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const rootEl = document.getElementById('root');
+
+if (rootEl) {
+  const root = ReactDOM.createRoot(rootEl);
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/foo" element={<Foo/>}></Route>
+          <Route path="/bar" element={<Bar/> }></Route>
+        </Routes>
+        <nav>
+          <Link to="/">home</Link>
+          <Link to="/foo">foo</Link>
+          <Link to="/bar">bar</Link>
+        </nav>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+}
 ```
 
 ## Ant Design
@@ -585,7 +593,7 @@ import {
 
 ## Redux
 
-React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx）,Redux 是第三方全局状态管理库
+React 的状态管理方案百花齐放：state（useState、useReducer）、Context（useContext）、第三方库（Redux、Mobx），Redux 是第三方全局状态管理库
 
 ```js
 npm i redux
@@ -757,3 +765,10 @@ Redux-Saga 就是 Redux 的一个中间件，用来处理副作用（异步）�
 ```js
 
 ```
+
+## 组件库
+
++ [HeroUI](https://www.heroui.com)
++ [Shadcn](https://ui.shadcn.com)
++ [ArkUI](https://ark-ui.com)
++ [PrimeReact](https://primereact.org)

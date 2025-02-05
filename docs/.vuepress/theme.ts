@@ -10,8 +10,6 @@ const theme = hopeTheme({
     url: 'https://jinqiu.wang/',
   },
   breadcrumb: false,
-  iconPrefix: 'iconfont icon-',
-  iconAssets: '//at.alicdn.com/t/c/font_1939991_k8fgokhl9ol.css',
   logo: '/logo.png',
   repo: 'https://github.com/JQiue/jqiue-notes',
   docsRepo: 'https://github.com/JQiue/jqiue-notes',
@@ -90,6 +88,10 @@ const theme = hopeTheme({
   },
   plugins: {
     blog: true,
+    icon: {
+      assets: '//at.alicdn.com/t/c/font_1939991_k8fgokhl9ol.css',
+      prefix: 'iconfont icon-',
+    },
     comment: {
       provider: 'Waline',
       serverURL:
