@@ -109,10 +109,10 @@ var docCookies = {
 
 cookie 不仅有必须写入的 name 和 value 还有一些其他的可选参数，比如：
 
-+ expires：规定 cookie 有效期（GMT），没有则为会话 Cookie
-+ path：规定 cookie 的路径
-+ domain：规定 cookie 的域名
-+ secure：规定 cookie 是否通过 https 所访问（boolean/null）
+- expires：规定 cookie 有效期（GMT），没有则为会话 Cookie
+- path：规定 cookie 的路径
+- domain：规定 cookie 的域名
+- secure：规定 cookie 是否通过 https 所访问（boolean/null）
 
 这是一个限制有效期 cookie 的例子：
 
@@ -148,12 +148,12 @@ console.log(sessionStorage.testData) // '测试数据'
 
 本地存储和会话存储的接口都会返回`Storage`类型，`Storage`的机制是通过键值对形式来存储的，它还有一些其他属性和方法来实现更强大的功能
 
-+ `Storage.length`：返回键值对的数量
-+ `Storage.key(index)`：根据索引返回 key
-+ `Storage.getItem(key)`：根据 key 返回 value
-+ `Storage.clear()`：删除所有的键值对
-+ `Storage.removeItem(key)`：根据 key 删除指定的键值对
-+ `Storage.setItem(key, value)`：添加新的键值对
+- `Storage.length`：返回键值对的数量
+- `Storage.key(index)`：根据索引返回 key
+- `Storage.getItem(key)`：根据 key 返回 value
+- `Storage.clear()`：删除所有的键值对
+- `Storage.removeItem(key)`：根据 key 删除指定的键值对
+- `Storage.setItem(key, value)`：添加新的键值对
 
 ::: tip 存储类型
 无论如何，被存储的类型都会被转换为字符串，如果要存储对象类型，则应该将对象转换为字符串类型，在取出时进行解析

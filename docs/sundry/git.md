@@ -1,7 +1,7 @@
 ---
 title: Git 指南
 category: 知识分享
-article: false
+date: 2021-6-20
 ---
 
 Git 是一套程序源代码的分布式版本管理系统，最初用于管理 Linux 核心代码的开发，后来被多个开源工程使用，如今已经成为互联网协作开发的标准源代码管理工具。从开发者的角度上来看，Git 有以下功能：
@@ -236,9 +236,19 @@ Git 有一个名为`main`默认主分支，初始化后的 Git 默认都是在�
 
 ## git rebase - 变基
 
-变基是相对于合并来说 Git 的另一种整合更改的方式，实际上就是将当前分支的提交记录提取，然后在另一个分支上逐个的放下去，rebase 的优势就是创造更加线性的提交历史，对于提交历史非常的清晰
+变基（rebase）是 Git 中另一种整合更改的方式，与合并（merge）不同，它通过将当前分支的提交记录“移植”到另一个分支的最新提交之上，来创造更加线性的提交历史。变基的优势在于，它可以使提交历史更加清晰，易于追踪更改和理解项目的演变过程
 
-假设有`master`和`dev`分支，此时对`dev`进行一次提交，然后在`dev`分支上使用`git rebase master`就会将当前分支上的修改放到`master`上，此时签出`master`分支，使用`git log`会发现`master`指向的记录不是最新的历史，因此需要使用`git rebase dev`来将`master` rebase 到最新的记录上，其实什么也没做，仅仅只是将`master`移动到`dev` rebase 过来的修改上罢了，此时代码就相当于合并完毕了
+具体来说，`git rebase <base_branch>`会找到当前分支和`<base_branch>`的共同祖先，然后将当前分支上从该祖先开始的所有提交记录“复制”到`<base_branch>`的最新提交之后。注意，这里实际上是创建了新的提交，而不是简单地移动现有的提交
+
+假设从 master 分支创建了 dev 分支，并在 dev 分支上进行了一些提交。现在，master 分支也有了新的提交
+
+如果想将 dev 分支的更改整合到 master 分支，并且保持提交历史的线性，可以这样做：
+
+1. 切换到 dev 分支： git checkout dev
+2. 将 dev 分支变基到 master 分支： git rebase master
+3. 这会将 dev 分支的提交“移植”到 master 分支的最新提交之后。如果在此过程中发生冲突，你需要解决冲突并使用 git rebase --continue 继续变基过程
+4. 切换到 master 分支： git checkout master
+5. 将 master 分支指向 dev 分支： git merge dev。由于 dev 分支现在包含了 master 分支的所有提交，因此 git merge dev 实际上是一个“快进合并”（fast-forward merge），它只是简单地将 master 分支的指针移动到 dev 分支的最新提交
 
 ## HEAD
 

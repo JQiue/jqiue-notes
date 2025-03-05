@@ -6,9 +6,9 @@ article: false
 
 ::: info 前置知识
 
-+ HTML
-+ CSS
-+ JavaScript
+- HTML
+- CSS
+- JavaScript
 :::
 
 JavaScript 最初就是为 Web 浏览器创建的，虽然在此之后发展成了具有多种用途和平台的语言，平台可以是浏览器，一个 Web 服务器，或者其他的主机，它们每一个都提供了特定于平台的功能，JavaScript 将它称之为宿主
@@ -52,8 +52,8 @@ BOM 并没有官方意义上的标准，只是一个民间模糊的称谓。BOM 
 
 ## 参考资料
 
-+ [web.dev](web.dev)
-+ JavaScript DOM 编程艺术
-+ DOM 启蒙
-+ WebAssembly 实战
-+ Three.js 开发指南：基于 WebGL 和 HTML5 在网页上渲染 3D 图形和动画
+- [web.dev](web.dev)
+- JavaScript DOM 编程艺术
+- DOM 启蒙
+- WebAssembly 实战
+- Three.js 开发指南：基于 WebGL 和 HTML5 在网页上渲染 3D 图形和动画

@@ -818,3 +818,5 @@ INSERT INTO table_1 SELECT * FROM table_2;
 + [SQL 样式指南](https://www.sqlstyle.guide/zh/)
 + [开源的数据库结构设计工具](https://www.drawdb.app/)
 + [一个查询可视化你的数据库](https://chartdb.io/)
++ [Limbo](https://github.com/tursodatabase/limbo) - Limbo 是一个用 Rust 编写的正在进行的进程中的 OLTP 数据库引擎库
++ [SQL 学习之旅](https://sql.programmable.net/dashboard)

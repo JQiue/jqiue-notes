@@ -71,7 +71,7 @@ You are beautiful. 你太美了
 这里的主语一般是人或物，不管是抽象还是具体的，怎么样都有一个广义的”动作/发生了什么事“，注意，这个”动作“并不是平时狭义所说的那种要”动起来“的”动作“，而是语法上的”动词“（Verbs）。世上有很多不同类型的动作：
 
 1. 可以独立完成的动作，**主语 + 不及物动词**，`I run.`
-2. 有一个动作的承受者，否则意思就有点不完整，动作承受者就是宾语，**主语 + 单及物动词 + 宾语**，`I likes you.`
+2. 有一个动作的承受者，否则意思就有点不完整，动作承受者就是宾语，**主语 + 单及物动词 + 宾语**，`I like you.`
 3. 有两个动作的承受者，在语法上将这样的两个承受者分别称为”直接宾语“（direct object）和”间接宾语“（indirect object），**主语 + 双及物动词 + 间接宾语 + 直接宾语**，`I teaches you English.`
 4. 只有一个动作的承受者，但不同于 2 项，必须对补充承受者的信息意义才完整，这补充的信息，在语法上称为补足语或补语（complement），更明确点也可说是宾语补语（object complement），**主语 + 复杂及物动词 + 宾语 + 宾语补语**，`I considers you smart.`
 5. 虽然是动词，但不是动作，通常将后面的信息赋予给前面的主语，只是将主语与后面的信息画上等号而已，没有什么实在意义上的动作，只是将状态赋予给主语，这种动词称为”连系动词“（linking verbs），也被称为”系动词“，系动词后面的补充信息自然是补足语，精确点就是主语补语，但在中国英语教育中还有另外一个名字叫表语（predicative），，**主语 + 系动词 + 主语补语/表语**，`He is tall.`
@@ -292,7 +292,7 @@ eleventh twelfth thirteenth fifteenth ...
 
 ```
 1/3 one-third
-3/37 three and three-sevenths
+3/37 three three-sevenths
 ```
 
 表示百分数：基数词 + percent
@@ -371,7 +371,7 @@ Here comes the bus!
 有些名词即是个体名词和集体名词，比如 family 表示家人是个体名词，表示家庭是集体名词
 :::
 
-在英语中名词用词尾表示单复数，在名词短语的开头还有一些词语用来指定名词的范围。这叫做**限定词**，与词尾的单复数互相呼应。名词短短语中的每个部分都可以拿掉，比如 a new book 变成 a book，the best answer 变成 the best，those sweet roses 变成 those，这都是正确的。a new book 如果把 a 拿掉就错误了，因为 a 是 one 的弱化，只是语气弱，都是交代后面的名词只有“一个”，但如果后面的名词不适合用“一个”就可以不用限定词，或者说复数名词以及没有复数形态的词不能加限定词。专有名词则稍微麻烦一点，在某些情况要特殊一点
+在英语中名词用词尾表示单复数，在名词短语的开头还有一些词语用来指定名词的范围。这叫做**限定词**，与词尾的单复数互相呼应。名词短语中的每个部分都可以拿掉，比如 a new book 变成 a book，the best answer 变成 the best，those sweet roses 变成 those，这都是正确的。a new book 如果把 a 拿掉就错误了，因为 a 是 one 的弱化，只是语气弱，都是交代后面的名词只有“一个”，但如果后面的名词不适合用“一个”就可以不用限定词，或者说复数名词以及没有复数形态的词不能加限定词。专有名词则稍微麻烦一点，在某些情况要特殊一点
 
 一个名词可数还是不可数是看上下文语境的，可数名词在形容两个以上时要进行变化：
 
@@ -466,7 +466,7 @@ He is going into a shop.
 
 ```text
 I put your book on the shelf. 放
-I put on my hat and left the house. 带上（放到...上 ）
+I put on my hat and left the house. 戴上（放到...上 ）
 Come and look at my phtograph album. 看着（看向某一点）
 I am looking for my pen. I lost it this morning. 寻找（为了...看）
 Will you look after the children for me please? 照顾（跟...后面看）
@@ -545,7 +545,6 @@ This computer is theirs.
 + 复：yourselves，ourselves，themselves
 
 ```
-The old lady is talking to herself.  
 The old lady is talking to herself.
 Please help yourself to some fish. 随便吃一些鱼吧（作宾语）
 We enjoyed ourselves last night.
@@ -576,7 +575,7 @@ I have something to tell you. 我有一些事告诉你
 主系表结构是较为特殊的结构，是一种对主语进行补充说明的句式，这里的动词在这个句式中叫做连系动词，用来连接主语和表语，没有实际意义。表语即对主语的说明部分，用来修饰主语的状态，比如性质、特点、位置。只有解释为“是”的动词才需要补语补足句子的意思，但在翻译中是不必要的，这种动词叫做连系动词，后面跟上补语使句子完整，比如一下连系动词：look,seem,appear,sound,feel,turn,prove,become,make，将包含以上句子里的动词换成 be 意思也是不会有太大的改变
 
 ```text
-The food is delicions. 食物很美味
+The food is delicious. 食物很美味
 ```
 
 一般主系表结构的系动词有三类：
@@ -802,7 +801,7 @@ Knowledge is power. 名言警句
 do 也要变成三单形式
 :::
 
-现在进行时主要强调此时此刻正在发生的动作，将来确定要发生的事，一般与 now，at the moment，today，this afternoon，this evening，tonight 等连用，谓语动词主要有一下变化：
+现在进行时主要强调此时此刻正在发生的动作，将来确定要发生的事，一般与 now，at the moment，today，this afternoon，this evening，tonight 等连用，谓语主要有以下变化：
 
 + am/is/are + doing
 + doing
@@ -906,7 +905,7 @@ Last summber I went to Italy. go 使用过去式
 
 宾语补语中间有个暗示的“是”存在，比如 I find the dress pretty，将宾语和补语拿出来用 be 动词连系，发现就是主系表结构，因此这是快速检验 SVOC 句型的方法
 
-有一种动词可以接两个宾语，既 SVOO 句型，它不同于 SVOC，SVOC 的宾语和补语存在“等于是”的关系，比如 I call your a dog，而 SVOO 并不是宾语和补语的关系
+有一种动词可以接两个宾语，既 SVOO 句型，它不同于 SVOC，SVOC 的宾语和补语存在“等于是”的关系，比如 I call you a dog，而 SVOO 并不是宾语和补语的关系
 
 主谓双宾是指一个句式有两个动作对象，这对及物动词具有一定的要求，它必须能够接下两个对象，常见的有：send、teach、lend、give、ask、tell、offer、cook、buy、get、make、write、bring、show
 
@@ -929,7 +928,7 @@ I had learned English for 10 years when I graduated.
 
 I will have learned English for 10 years when I graduate.
 
-I have learned English for 10 years ago.
+I have learned English for 10 years.
 
 They have spent all their money, so they have to walk home.
 ```
@@ -964,7 +963,7 @@ He's very fat.
 
 形容词转换副词的规则：
 
-+ 一般加`ly`，qucik quickly
++ 一般加`ly`quick quickly
 + 以`y`结尾的，变`y`为`i`再加`ly` happy happily
 + 形容词和副词形式相同
 
@@ -979,7 +978,7 @@ While he was reading the letter, he heard a knock at the door.
 A young man and a young woman were sitting behind me.
 ```
 
-when/while/as 都可以接进行时态，但只有 when 能够接过去时态
+when/while/as 都可以接进行时态和过去时态
 
 ```text
 While/When/As two detectives were keeping guard at the door, two others opened the parcel.
@@ -1021,18 +1020,18 @@ Tony finished his work. and then he would leave for London.
 
 除位置介词外，还有一些辅助性的位置词用于更精细地描述位置关系：
 
-+ Front(前面):如front door字面为前门
-+ Back(后面):如backyard字面为后院
-+ Top(顶部):如on top of字面为在...的顶部
-+ Bottom(底部):如at the bottom字面是在底部
-+ Side(侧面):如by side指相邻的位置
-+ Edge(边缘):如ontheedgeof指在...的边缘
-+ Corner(角落):如in the corner指在角落里
-+ Center(中间部位):如atthecenter指在中间
-+ Inside(内部):如insidethebox指在箱子内部
-+ Outside(外部):如outsidethebuilding指在外面
-+ Above(上面):如above the table指在桌子上面
-+ Below(下面):如belowthewindow指在窗口下面
++ Front(前面):如 front door 字面为前门
++ Back(后面):如 backyard 字面为后院
++ Top(顶部):如 on top of 字面为在...的顶部
++ Bottom(底部):如 at the bottom 字面是在底部
++ Side(侧面):如 by side 指相邻的位置
++ Edge(边缘):如 ontheedgeof 指在...的边缘
++ Corner(角落):如 in the corner 指在角落里
++ Center(中间部位):如 atthecenter 指在中间
++ Inside(内部):如 insidethebox 指在箱子内部
++ Outside(外部):如 outsidethebuilding 指在外面
++ Above(上面):如 above the table 指在桌子上面
++ Below(下面):如 belowthewindow 指在窗口下面
 
 ### 时间
 
@@ -1391,7 +1390,7 @@ All the coffee is served on time.
 
 + both 表示“两者都”，可作形容词，代词或副词
 + either 表示“两者中的任意一个”
-+ neigher 表示“两者都不”
++ neither 表示“两者都不”
 
 ```
 Both his eyes were severely burned.
@@ -1458,7 +1457,7 @@ I have seen the movie
 
 I had seen the movie when she invited me.
 
-I will have seen the seen movie when she arrived in Beijing.
+I will have seen the movie when she arrives in Beijing.
 
 ### 将来完成时
 
@@ -1470,7 +1469,7 @@ I will have seen the seen movie when she arrived in Beijing.
 
 一般情况下，都是主语发生的动作，这叫做主动语态，只要句子不是被动的，那么就是主动的，只需要学习被动语态即可
 
-被动语态就是表示客观事实，比如`我吃了那个蛋糕`就是主观事实，如果想表示“谁吃了那个蛋糕”，就无法用主观来表达了，但是从意思上来讲已经知道“蛋糕被吃了”，但不知道谁是动作的发出者，这就是客观事实，只要将宾语提前就变成了“蛋糕被狗吃了”，但是被动语态不一定有表面上的“被”，比如“教师每天都打扫”，这说明被动语态跟“被”字是没关系的，得根据句子中的意思来判断
+被动语态就是表示客观事实，比如`我吃了那个蛋糕`就是主观事实，如果想表示“谁吃了那个蛋糕”，就无法用主观来表达了，但是从意思上来讲已经知道“蛋糕被吃了”，但不知道谁是动作的发出者，这就是客观事实，只要将宾语提前就变成了“蛋糕被狗吃了”，但是被动语态不一定有表面上的“被”，比如“教室每天都被打扫”，这说明被动语态跟“被”字是没关系的，得根据句子中的意思来判断
 
 + 及物动词
 + 不及物动词 + 介词
@@ -1674,6 +1673,7 @@ score 有 20 的意思，这来源于以前欧洲喜欢用 20 进制作为数词
 ## 工具
 
 - [Grammarly](https://www.grammarly.com/) - 强大的语法纠错工具
+- [Wordpecker](https://github.com/baturyilmaz/wordpecker-app) - 一个个性化的语言学习工具，将多邻国风格的课程与您自己策划的词汇表相结合
 
 ## 参考资料
 

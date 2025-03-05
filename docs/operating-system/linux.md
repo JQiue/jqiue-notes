@@ -751,3 +751,7 @@ zip -r archive.zip directory
 ```sh
 wget -qO- bench.sh | bash
 ```
+
+## 参考资料
+
++ [tldr In Browser](是一个用于 tldr 页面的离线 PWA 网页)

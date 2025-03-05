@@ -493,8 +493,6 @@ async fn get_json() -> impl Responder {
 
 ### Extractors
 
-### use SeaORM
-
 ## Anyhow
 
 `anyhow`用于简化错误处理和提供更好的错误报告。这个库适合用于应用程序，而不是用于创建库，因为它提供了一个非结构化的，方便使用的错误类型
@@ -522,7 +520,7 @@ fn do_something_anyhow() -> anyhow::Result<()> {
 
 ```toml
 [dependencies]
-sea-orm = { version = "0.12", features = [
+sea-orm = { version = "1.1.4", features = [
   "sqlx-mysql",
   "runtime-tokio-rustls",
   "macros",

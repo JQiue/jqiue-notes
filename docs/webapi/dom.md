@@ -1,7 +1,7 @@
 ---
 title: DOM
 category: Web
-article: false
+date: 2021-03-02
 ---
 
 ::: info 前置知识

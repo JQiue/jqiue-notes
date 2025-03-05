@@ -158,7 +158,7 @@ uv python install           # 安装最新版 Python
 uv python install 3.11 3.12 # 安装特定版本以及多个版本
 uv python install pypy@3.12 # 安装其他实现
 uv python list              # 查看可用和已安装的 Python 版本
-uv run example.py           # 运行脚本
+uv run example.py           # 运行脚本··
 uv tool install ruff        # 安装工具
 uv tool upgrade ruff        # 升级工具
 uv init hello-world         # 初始化一个项目
@@ -171,3 +171,4 @@ uvx ruff                    # 运行工具
 ## 参考资料
 
 + Python 编程：从入门到实践
++ [创建数学动画的Python库](https://www.manim.community/)

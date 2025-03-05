@@ -1,6 +1,7 @@
 ---
 title: AI 产品
 category: 知识分享
+article: false
 ---
 
 ## 语言模型

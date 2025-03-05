@@ -2,8 +2,7 @@
 title: JavaScript
 category: 编程语言
 tag: [JavaScript]
-excerpt: "JavaScript 简介"
-article: false
+date: 2020-11-11
 ---
 
 作为万维网 Web 前端最重要的编程语言，JavaScript 的出现使网页和用户之间实现了实时和动态的交互关系，所有的浏览器都嵌入了 JavaScript 解释引擎
@@ -166,13 +165,10 @@ JavaScript 划分了两种内存：
 
 ## 参考资料
 
-+ JavaScript 高级程序设计
-+ JavaScript 权威指南
 + 你不知道的 JavaScript
 + [现代 JavaScript 教程](https://zh.javascript.info/)
-+ 廖雪峰
 + JavaScript 语言精髓与编程实践
-+ JavaScript 忍者秘籍
 + JavaScript 二十年
 + 学习 JavaScript 设计模式
 + [JavaScript 中的怪异行为](https://www.thomas-yang.me/projects/oh-my-dear-js/)
++ [Todoctor](https://todoctor.azat.io/) - 用于分析和报告 JavaScript 和 TypeScript Git 存储库中的 TODO 注释

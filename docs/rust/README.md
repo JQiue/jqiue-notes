@@ -2,8 +2,7 @@
 title: Rust
 category: 编程语言
 tag: [Rust]
-excerpt: "Rust 简介"
-article: false
+date: 2023-1-27
 ---
 
 Rust 由 Mozila 一位工程师创造，他对这个语言的期望是：安全，性能，特性广泛，以内存安全为第一原则，注重并发安全，持续提升性能，现代化语言特性，拥抱开源社区。Rust 是通用型语言，适用所有领域绝大数场景，但本质是弥补 C 的内存安全问题，因为百分之 70 的安全漏洞都是非法访问内存引起。Rust 将会为各领域的基础设施做出贡献，但也有可能会出现杀手级应用
@@ -141,9 +140,7 @@ tab_spaces = 2                    // 设置缩进宽度为 2 个空格
 
 ## Clippy
 
-Clippy 是 Rust 的 lint 工具
-
-对整个项目进行静态检查
+Clippy 是 Rust 的 lint 工具，对整个项目进行代码改进
 
 ```sh
 cargo clippy
@@ -163,7 +160,7 @@ cargo fix
 # 执行一次发布演习
 cargo release [major|minor|patch] --registry crates-io
 # 执行一次真实的发布
-cargo release [major|minor|patch] --registry crates-io --execute
+cargo release [major|minor|patch] --registry crates-io -x
 ```
 
 在这之前，完全可以配合`git-cliff`做到发布自动生成日志，首先要在项目根目录中创建`release.toml`写下预发布钩子
@@ -181,7 +178,9 @@ pre-release-hook = [
 
 ## Workspace
 
-工作空间用于将代码拆分多个代码包，`Cargo.toml`有所不同，以`workspace`区域开始，同时指定二进制包的位置来添加成员
+Workspace 是 Cargo 提供的一种机制，用于将大型项目拆分成多个代码包，并在逻辑上和构建上进行统一管理
+
+在根目录的`Cargo.toml`中，使用`[workspace]`区域来定义工作空间成员：
 
 ```toml
 [workspace]
@@ -190,7 +189,7 @@ members=[
 ]
 ```
 
-此时整个目录如下：
+典型的目录结构如下：
 
 ```
 ├── Cargo.toml
@@ -200,8 +199,6 @@ members=[
 │     └── main.rs
 └── target
 ```
-
-`cargo build`会将所有成员的产物放在根目录的`target`中
 
 添加一个库包`cargo new add-one --lib`，此时目录如下：
 
@@ -217,7 +214,7 @@ members=[
      └── main.rs
 ```
 
-Cargo 不会自动引入依赖，所以需要主动引入包之间的依赖关系
+Cargo 不会自动引入依赖，需要主动配置依赖关系
 
 ```toml
 [package]
@@ -235,9 +232,40 @@ members=[
 add-one = { path = "../add-one" }
 ```
 
-为了在根目录运行二进制包，需要使用`cargo run -p main`来指定
+为了在根目录运行二进制包，需要使用`cargo run -p main`来指定，`cargo build`会将所有成员的产物放在根目录的`target`中
 
 整个工作空间只会在根目录下有`Cargo.lock`文件，即使在每个包中添加相同的依赖包，Cargo 也不会重复下载，保证相同的包都是一个版本，节约了磁盘空间，确保了包之间彼此兼容
+
+还能将根目录本身作为 workspace 成员：
+
+```toml
+[package]
+name = "thtn"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members=[
+  ".",
+  "migration"
+]
+```
+
+目录结构如下：
+
+```plain
+project_root/
+│
+├── Cargo.toml  # 根目录的 Cargo.toml
+├── src/
+│   ├── main.rs 或 lib.rs
+│
+└── migration/
+    ├── Cargo.toml
+    └── src/
+        ├── main.rs
+        └── lib.rs
+```
 
 除此之外，还有不包含的`[package]`的工作目录，被称为**虚拟清单**（virtual manifest）。对于没有主`package`的场景且希望将所有的`package`组织在一起时非常适合，虚拟清单是不能够添加`dependencies`的
 

@@ -134,3 +134,4 @@ curl \
 ## 参考资料
 
 + <https://www.meilisearch.com/docs>
++ [Typesense](https://typesense.org/) - Cpp 写的类似的开源搜索引擎

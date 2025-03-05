@@ -43,6 +43,12 @@ JSX 必须严格闭合
   <div></div>
   <div></div>
 </Fragment>
+
+// 正确
+<>
+  <div></div>
+  <div></div>
+</>
 ```
 
 在一个组件中可以引用其他组件，当引用一个自定义组件时要大写首字母，否则会看做成普通标签
@@ -758,7 +764,7 @@ function Foo(props) {
 }
 ```
 
-redux 借鉴了 Express 和 Koa 的中间件的概念，将 Actoin -> Reducer 变成了 Action -> Middlewares -> Reducer。这种机制可以改变数据流，实现异步 Action，过滤，日志输入，异常报告等
+Redux 借鉴了 Express 和 Koa 的中间件的概念，将 Action -> Reducer 变成了 Action -> Middlewares -> Reducer。这种机制可以改变数据流，实现异步 Action，过滤，日志输入，异常报告等
 
 Redux-Saga 就是 Redux 的一个中间件，用来处理副作用（异步），采用的是 ES6 的 Generator
 
@@ -766,9 +772,123 @@ Redux-Saga 就是 Redux 的一个中间件，用来处理副作用（异步）�
 
 ```
 
+## React 渲染原理
+
+React 本质上是一个用于构建用户界面的库，而不是框架，整个模型可以概括为“view = function(state)”。渲染只不过是 React 调用函数组件以最终更新视图的一种说法，当 React 渲染一个组件时，会发生两件事。
+
+首先，React 会创建一个组件的快照，该快照捕捉了 React 更新视图所需的所有内容。props、state、事件处理程序以及基于这些 props 和 state 的 UI 描述都会被包含在该快照中。然后，React 使用该 UI 描述来更新视图
+
+为了获取应用程序的初始 UI，React 将进行一次初始渲染，从应用程序的 root 开始
+
+::: tip
+要创建一个 root ，首先获取要挂载 React 应用的 HTML 元素，将其传递给 React DOM 的 createRoot 函数，然后调用 root.render ，并将其传递一个 React 元素，React 将使用该元素作为起点来获取应用的初始 UI
+:::
+
+根据`v=f(s)`，直觉是每次 s 变化时调用 f，不希望在 s 没有变化时重新计算 v，这很简单。React 只有在组件的状态发生变化时才会重新渲染，且唯一能触发 React 组件重新渲染的东西是状态变化
+
+React 究竟如何知道组件的状态发生了变化？这和快照有关，当事件处理程序被调用时，该事件处理程序可以访问快照创建时刻的 props 和 state。从这里，如果事件处理程序调用了 useState 的更新函数，并且 React 发现新状态与快照中的状态不同，React 将会触发组件的重新渲染并创建一个新的快照并更新视图
+
+在这个例子中，当事件处理程序运行时，它能够访问快照创建时刻的 props 和 state，此时`status`是`clean`，所以得到`clean`，由于改变状态触发重新渲染，之后无论如何点击都会得到`dirty`
+
+```jsx
+export default function VibeCheck () {
+  const [status, setStatus] = React.useState("clean")
+
+  const handleClick = () => {
+    setStatus("dirty")
+    alert(status)
+  }
+
+  return (
+    <button onClick={handleClick}>
+      {status}
+    </button>
+  )
+}
+```
+
+在这个例子中，当事件处理程序运行时，它能够访问快照创建时刻的 props he state，此时`count`是`0`，一旦 React 计算出状态`1`和快照中的状态`0`不同，React 就会重新渲染组件，并创建一个新的快照并更新 View
+
+```jsx
+export default function Counter () {
+  const [count, setCount] = React.useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1)
+    setCount(count + 1)
+    setCount(count + 1)
+  }
+
+  return (
+      <h1>{count}</h1>
+      <button onClick={handleClick}>
+        +
+      </button>
+  )
+}*
+```
+
+在最后一个例子中，虽然处理函数更新了 3 次状态，但实际上只会重新渲染一次，因为每次使用的都是是快照当前的状态`0`，因此相当于三次`setCount(0 + 1)`
+
+React 在内部使用了“批处理“算法计算新状态，在同一处理函数的多次状态修改时，只有最后一次状态修改生效
+
+因此下面的例子理所应当的是`3`，且只会重新触发渲染一次
+
+```js
+const handleClick = () => {
+  setCount(1)
+  setCount(2)
+  setCount(3)
+}
+```
+
+如果希望总是使用最新的状态，则可以传递一个更新函数，由于`2`是最后一次生效的状态修改，在回调函数运行`2`就是最新状态，因此最终状态就是`2+3`
+
+```js
+const handleClick = () => {
+  setCount(1)
+  setCount(2)
+  setCount((c) => c + 3)
+}
+```
+
+状态依次是`1`，`1+3`，`7`，`7+10`
+
+```js
+const handleClick = () => {
+  setCount(1)
+  setCount((c) => c + 3)
+  setCount(7)
+  setCount((c) => c + 10)
+}
+```
+
+状态依次是`1`，`1+3`，`7`，`7+10`
+
+```js
+const handleClick = () => {
+  setCount((c) => 1)
+  setCount((c) => c + 3)
+  setCount((c) => 7)
+  setCount((c) => c + 10)
+}
+```
+
+虽然事件处理程序中包含多个状态更新，但它们都会被合并为同一次批处理内，最终只渲染一次
+
+在默认情况下，React 重新渲染组件时，会重新渲染子组件。这看起来非常浪费性能，实际上遇到性能问题很少是因为渲染次数过多。如果确实想避免不必要的子组件重渲染，则可以使用`React.memo(child)`进行包装，这样子组件仅在 props 变化时才重新渲染
+
+React 为什么在启用`StrictMode`时，会额外重新渲染一次组件？
+
+这不奇怪，因为`StrictMode`会保证应用重新渲染时保证视图应该是状态的一个函数，从而保证组件是纯的，如果不是纯的，则在第二次渲染后变的明显用于检测潜在的问题，且只会在开发环境下生效，不会影响生产环境的运行和性能
+
 ## 组件库
 
 + [HeroUI](https://www.heroui.com)
 + [Shadcn](https://ui.shadcn.com)
 + [ArkUI](https://ark-ui.com)
 + [PrimeReact](https://primereact.org)
+
+## 参考资料
+
++ [React <Scan></Scan>](https://react-scan.com/) - React Scan 自动检测 React 应用程序中的性能问题

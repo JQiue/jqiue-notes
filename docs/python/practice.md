@@ -173,8 +173,6 @@ pip install fastapi
 pip install uvicorn
 ```
 
-### HelloWorld
-
 ```python
 import uvicorn
 from fastapi import FastAPI, Request

@@ -136,6 +136,15 @@ docker login
 docker push <appimage>:latest
 ```
 
+一般来说推送两个镜像，比如：
+
+```sh
+docker build -t jqiue/app:0.1.0 .
+docker tag jqiue/app:0.1.0 jqiue/app:latest
+docker push jqiue/app:0.1.0
+docker push jqiue/app:latest
+```
+
 ## 连接网络
 
 Docker 支持多种类型的网络，包括桥接网络（bridge）、主机网络（host）、无网络（none）以及用户定义的覆盖网络（overlay）。使用`--network`选项可以在启动容器时指定容器要连接到哪个网络

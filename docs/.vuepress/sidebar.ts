@@ -26,7 +26,6 @@ export const zh = sidebar({
     'module',
     'event-loop',
     'standard',
-    'quality',
   ],
   '/python/': [
     '',

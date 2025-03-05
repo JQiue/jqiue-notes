@@ -4,9 +4,15 @@ import theme from './theme.js';
 
 const app = defineUserConfig({
   theme,
-  base: '/',
   dest: './dist',
-  head: [],
+  head: [
+    [
+      'script',
+      {
+        src: 'http://localhost:3000/js/tracker.js',
+      },
+    ],
+  ],
   locales: {
     '/': {
       lang: 'zh-CN',

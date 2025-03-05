@@ -9,11 +9,11 @@ article: false
 
 ## 关键字
 
-关键字指的是 CSS 里面很关键的单词，这里的单词特指英文单词，solid、inherit 等都是关键字，其中 inherit 也称作“泛关键字”，所谓泛关键字，就是“所有 CSS 属性都可以使用的关键字”的意思
+关键字指的是 CSS 中固有的英文单词，如`solid`、`inherit`等，其中`inherit`也称作“泛关键字”，所谓泛关键字，就是“所有 CSS 属性都可以使用的关键字”
 
 ## inherit
 
-`inherit`可用于任何属性，如果希望该属性的取值继承父元素，就可以使用它
+`inherit`可用于任何属性，当希望属性的值继承父元素就可以使用
 
 ::: normal-demo inherit
 
@@ -36,7 +36,7 @@ p {
 
 ## 预定义的值
 
-大部分属性都有可供使用的预定值，比如，`text-align`可被设置为`center`、`left`、`right`，这些预定值都不需要引号包裹
+很多属性都有可供使用的预定值，比如，`text-align`可被设置为`center`、`left`、`right`，这些预定值都不需要引号包裹
 
 ::: normal-demo
 
