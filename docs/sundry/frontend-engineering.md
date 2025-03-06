@@ -1,5 +1,5 @@
 ---
-title: 关于 Web 前端的一切
+title: Web 工程技术
 category: Web
 article: false
 ---
@@ -39,7 +39,7 @@ npm install -g eslint
 
 ### CSSLint
 
-## prettier
+## Prettier
 
 是一款代码格式化工具，它不同于 Lint，只是做一些代码风格检查
 
@@ -238,7 +238,7 @@ span {
 }
 ```
 
-## babel
+## Babel
 
 Babel 是一个 JavaScript 转义器，它将使用了最新的 ECMAScript 特性代码转换成了使用最广泛支持的 ES5 特性的等价代码，让开发人员享受新特性带来的爽点同时，避免了大部分兼容性问题
 
@@ -260,7 +260,7 @@ npm install --save-dev @babel/core @babel/cli @babel/preset-env
 babel src --out-dir dist
 ```
 
-## webpack
+## Webpack
 
 模块化虽然解决了代码了维护性和复用性，但是由于导入资源变多了，请求次数变多了，网页性能也就变差了，因此需要一个打包工具将所有的模块合并到一个文件中，再引入到网页中去，而 webpack 恰恰就是这样的工具
 
@@ -412,7 +412,7 @@ npm install --save-dev webpack-dev-server
 
 <!-- more -->
 
-## swc
+## Swc
 
 SWC 是一个基于 Rust 编写的高性能 JavaScript 转义器，它对标 Babel，比 Babel 要快很多
 
@@ -422,7 +422,7 @@ npm i -D @swc/cli @swc/core
 npx swc ./file.js
 ```
 
-## esbuild
+## Esbuild
 
 esbuild 是新一代打包器，它对标于 Webpack，速度与之更快
 
@@ -432,7 +432,7 @@ npm install esbuild -D
 npx esbuild app.js --bundle --outfile=out.js
 ```
 
-## mock
+## Mock
 
 常见的 Mock 方案：
 

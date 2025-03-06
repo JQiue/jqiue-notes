@@ -25,7 +25,7 @@ const app = defineUserConfig({
     MeiliSearchPlugin({
       host: 'https://search.jinqiu.wang',
       apiKey:
-        'a0c876c569b64568373f8488c81eafb04d157b9d5203da647fac4c0417a3d6f5',
+        '64294e4e662062d21cdd1a3b7464ccdcf1477f5c9f3f0b8e9b521baf5a39a7ff',
       indexUid: 'jinqiu-wang',
     }),
   ],
