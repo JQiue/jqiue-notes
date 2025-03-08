@@ -9,7 +9,11 @@ const app = defineUserConfig({
     [
       'script',
       {
-        src: 'http://localhost:3000/js/tracker.js',
+        src:
+          process.env.WALINE_ENV == 'production'
+            ? 'https://track.jinqiu.wang/js/tracker.js'
+            : 'http://localhost:3000/js/tracker.js',
+        'data-website-id': '1',
       },
     ],
   ],
@@ -31,7 +35,7 @@ const app = defineUserConfig({
   ],
 });
 
-app.onWatched = (app) => {
+app.onWatched = (app: any) => {
   let m = 0,
     w = 0;
   for (let i = 0; i < app.pages.length; i++) {
