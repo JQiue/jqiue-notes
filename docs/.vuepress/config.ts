@@ -4,6 +4,7 @@ import theme from './theme.js';
 
 const app = defineUserConfig({
   theme,
+  dest: './dist',
   head: [
     [
       'script',

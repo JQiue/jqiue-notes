@@ -23,7 +23,7 @@ jobs:
         run: pnpm run build
       - name: Push Deploy Branch
         run: |
-          cd ./docs/.vuepress./dist
+          cd ./dist
           git init
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
