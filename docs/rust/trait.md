@@ -272,4 +272,57 @@ fn main() {
 
 ### Iterator
 
-### Send 和 Sync
+Iterator trait 用于实现迭代器。迭代器是一种可以产生一系列值的对象。Rust 的标准库提供了多种迭代器，例如 `iter`、`iter_mut` 和 `into_iter`。
+
+```rust
+let v = vec![1, 2, 3];
+
+// iter() 返回一个迭代器，它产生对 vector 中元素的不可变引用
+for i in v.iter() {
+    println!("{}", i);
+}
+
+// iter_mut() 返回一个迭代器，它产生对 vector 中元素的可变引用
+for i in v.iter_mut() {
+    *i += 1;
+    println!("{}", i);
+}
+
+// into_iter() 返回一个迭代器，它会消耗 vector 并产生 vector 中的值
+for i in v.into_iter() {
+    println!("{}", i);
+}
+```
+
+### Trait 分类
+
+为了更好地理解和使用 Trait，我们可以将其按照功能进行分类：
+
+- **基本 Trait：** 例如 `Clone`、`Copy`、`Default` 等，这些 Trait 提供了类型基本的能力。
+- **运算符 Trait：** 例如 `Add`、`Sub`、`Mul` 等，这些 Trait 允许我们重载运算符。
+- **格式化 Trait：** 例如 `Display`、`Debug` 等，这些 Trait 用于控制类型的格式化输出。
+- **迭代器 Trait：** 例如 `Iterator`，这个 Trait 用于实现迭代器。
+- **并发 Trait：** 例如 `Send`、`Sync` 等，这些 Trait 用于并发编程。
+
+### 并发 Trait
+
+`Send` 和 `Sync` 是 Rust 中用于并发编程的两个重要的 trait。它们用于标记类型是否可以在线程之间安全地传递和共享。
+
+- `Send` trait 标记类型的所有权可以在线程之间安全地传递。如果一个类型实现了 `Send` trait，那么它的值就可以安全地从一个线程移动到另一个线程。这对于在线程之间传递数据至关重要。例如，`MutexGuard` 没有实现 Send，因为在线程之间传递 `MutexGuard` 会导致数据竞争。
+- `Sync` trait 标记类型可以在多个线程之间安全地共享（通过引用）。如果一个类型实现了 `Sync` trait，那么它的值就可以安全地被多个线程同时访问。这对于在多个线程之间共享数据至关重要。例如，`Arc<T>` 实现了 Sync，因为它允许多个线程安全地访问同一个数据。
+
+Rust 的编译器会自动为满足特定条件的类型实现 `Send` 和 `Sync` trait。一般来说，如果一个类型的所有字段都实现了 `Send` 和 `Sync` trait，那么这个类型也会自动实现 `Send` 和 `Sync` trait。
+
+但是，如果一个类型包含裸指针或者使用了不安全的代码，那么它可能无法自动实现 `Send` 和 `Sync` trait。在这种情况下，开发者需要手动实现这些 trait，并确保类型的并发安全性。
+
+### 实际应用场景
+
+Trait 在 Rust 中有广泛的应用，以下是一些常见的场景：
+
+- **实现泛型编程：** Trait 可以用于编写泛型函数和结构体，使其可以处理多种类型的数据。例如，可以编写一个泛型函数，用于计算任何实现了 `Add` Trait 的类型的和。
+- **实现代码复用：** Trait 可以用于定义共享的行为，并在不同的类型中实现这些行为。例如，可以定义一个 `Drawable` Trait，用于描述可以在屏幕上绘制的类型，然后在不同的图形类型（例如 `Circle`、`Rectangle`）中实现这个 Trait。
+- **实现接口：** Trait 可以用于定义接口，并强制类型实现这些接口。例如，可以定义一个 `Read` Trait，用于描述可以读取数据的类型，然后强制所有实现了 `Read` Trait 的类型都必须实现 `read` 方法。
+
+### 总结
+
+总而言之，Trait 是 Rust 中一种强大的抽象机制，它可以用于实现代码的复用和扩展。通过合理地使用 Trait，我们可以编写出更加灵活和可维护的代码。

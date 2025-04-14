@@ -196,21 +196,32 @@ Date:   Mon Sep 6 14:04:25 2021 +0800
 
 除此之外，`git reset`还能向前重置，这必须借助`git reflog`命令，它会保留所有的版本提交修改操作，其中包括每一次的提交 ID，这太妙了，只要有 ID，就能够通过`git reset`回到任意历史，也需要额外的参数来决定的
 
-## git branch - 分支
+## git branch - 分支管理
 
 分支是 Git 最重要的功能，代码库应该有且只有一个主分支，所有的正式版本都会在这个分支下进行发布，分支简单来说就是指向某一个提交记录仅此而已，即使创建再多的分支也不会造成额外的存储开销
 
 Git 有一个名为`main`默认主分支，初始化后的 Git 默认都是在这个分支下的，想要查看当前的分支可以使用`git branch`，并且用`*`表示当前处于的分支，增加`-a`参数可以查看本地和远程的所有分支
 
-主分支只用来发布重大的版本，但是一般的日常开发都会在另一条分支上完成。使用`git branch <branch_name>`即可创建一个新的分支，使用`git checkout <branch_name>`即可切换到指定的分支下，当然也可以使用`git checkout -b <branch_name>`命令创建分支的同时进行切换
+主分支（默认为 main）只用来发布重大版本，日常开发应在特性分支进行
 
 如果工作区发生改变，这些改变对所有的分支可见，如果某个分支将这些改变作为一个提交，这个分支就是最新的，其他分支再也不会检测到状态变化
 
-删除分支：
-
-+ 本地：`git branch -d <branch_name>`
-+ 远程：`git push --delete <remote> <branch_name>`
-+ 追踪：`git branch --delete --remotes <remote>/<branch_name>`
+```sh
+# 列出所有本地分支
+git branch
+# 列出所有本地分支和远程分支
+git branch -a
+# 创建分支
+git branch <new_branch_name>
+# 删除本地分支
+git branch -d <branch_name>
+# 删除远程分支
+git push --delete <remote> <branch_name>
+# 删除追踪分支
+git branch --delete --remotes <remote>/<branch_name>
+# 重命名分支
+git branch -m <old_branch_name> <new_branch_name>
+```
 
 ### 分支开发
 
@@ -229,6 +240,39 @@ Git 有一个名为`main`默认主分支，初始化后的 Git 默认都是在�
 功能分支是从开发分支上分离出来的，当功能开发完成后再次合并到开发分支。预发布分支是从开发分支上分离出来的，用来在发布正式版本前测试的版本，当确认没有问题后就合并到主分支和开发分支上。热修复分支是一种修复 BUG 的分支，正式版本的软件难免会有问题，从主分支上分离出来进行修补，然后再合并到主分支和开发分支上
 
 当主分支和其它分支对同一个文件的相同部分各自有新的提交时，这种情况下，Git 无法执行”快速合并“，只能试图把各自的修改合并起来，于是就产生了合并冲突，这时 Git 就会提示哪里出现了冲突内容，要手动处理冲突内容再次提交
+
+## git switch
+
+```sh
+# 切换到已存在的分支
+git switch <branch_name>
+# 创建并切换到新分支
+git switch -c <branch_name>
+```
+
+## git checkout
+
+```sh
+# 检出指定版本的文件
+git checkout <commit_id> <file_path>
+# 切换分支，被 switch 替代
+git checkout <branch_name>
+```
+
+## git restore
+
+git restore 命令是 Git 2.23 版本引入的，主要用于恢复工作树中的文件。它可以用于撤销修改、恢复暂存区的文件或恢复到指定提交的版本。git restore 的目的是为了替代 git checkout 的部分功能，使得命令的职责更加清晰
+
+```sh
+# 丢弃所有未暂存的更改
+git restore .
+# 撤销工作目录中的修改（恢复到上次提交的状态）
+git restore <file_path>
+# 从暂存区恢复文件（移出暂存区）
+git restore --staged <file_path>
+# 恢复指定提交的文件到工作目录
+git restore --source=<commit_id> <file_path>
+```
 
 ## git merge - 合并
 
@@ -338,7 +382,7 @@ sparse-checkout 功能允许只从 Git 仓库克隆或检出指定的子目录�
 
 流程：
 
-1. `git inti`
+1. `git init`
 2. `git remote add origin <remote>`
 3. `git sparse-checkout init`
 4. `git sparse-checkout set <directory-or-file-path>`或`git sparse-checkout set <directory-or-file-path>`
@@ -354,6 +398,11 @@ sparse-checkout 功能允许只从 Git 仓库克隆或检出指定的子目录�
 另一种更新办法是使用`git fetch <remote> <branch>`，它不会像`git pull`那样暴力的更新代码，它只会跟踪远程分支的最新状态，此时本地分支并没有发生变化，这个时候可以使用`git merge`命令来将远程分支和本地分支进行合并，此时才发生变化，本地已存在仓库则使用
 
 虽然看起来`git pull = git fetch + git merge`一样，但是推荐使用`git fetch`，因为`git pull`的会将一些过程的细节隐藏起来，一旦代码出现问题，就很难找到出错的地方
+
+常用 fetch 命令：
+
++ `git fetch -p origin`：在获取最新信息后，删除本地已经不存在于远程仓库中的远程跟踪分支
++ `git fetch --depth=1 origin`：进行浅克隆（shallow clone），只获取指定深度的历史记录。这可以显著减少下载的数据量，加快获取速度
 
 ### git push - 推送
 

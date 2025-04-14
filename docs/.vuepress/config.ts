@@ -4,11 +4,11 @@ import theme from './theme.js';
 
 const app = defineUserConfig({
   theme,
-  dest: './dist',
   head: [
     [
       'script',
       {
+        deref: true,
         src:
           process.env.WALINE_ENV == 'production'
             ? 'https://track.jinqiu.wang/js/tracker.js'
@@ -18,6 +18,14 @@ const app = defineUserConfig({
           process.env.WALINE_ENV == 'production'
             ? 'https://track.jinqiu.wang'
             : 'http://localhost:3000',
+      },
+    ],
+    [
+      'script',
+      {
+        deref: true,
+        src: 'https://cloud.umami.is/script.js',
+        'data-website-id': 'cd79408f-2a8a-4080-86ae-690bc92cf783',
       },
     ],
   ],

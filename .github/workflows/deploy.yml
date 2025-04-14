@@ -23,7 +23,7 @@ jobs:
         run: pnpm run build
       - name: Push Deploy Branch
         run: |
-          cd ./dist
+          cd ./docs/.vuepress./dist
           git init
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
@@ -47,3 +47,20 @@ jobs:
             bash
             cd jqiue-notes/
             git fetch origin deploy && git reset --hard origin/deploy
+  scrapy:
+    needs: deploy
+    runs-on: ubuntu-latest
+    name: scrape and push content on Meilisearch instance
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run scraper
+        env:
+          HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
+        run: |
+          docker run -t --rm \
+            -e MEILISEARCH_HOST_URL=$HOST_URL \
+            -e MEILISEARCH_API_KEY=$API_KEY \
+            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
+            getmeili/docs-scraper:latest pipenv run ./docs_scraper config.json

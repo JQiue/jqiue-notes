@@ -23,6 +23,12 @@ apt install nginx
 pacman -S nginx
 ```
 
+@tab Alpine
+
+```sh
+apk add nginx
+```
+
 :::
 
 在 Ubuntu 中安装后的目录结构大致如下：
@@ -58,14 +64,14 @@ Nginx 采用的是简单文件格式的配置文件，下面是指令的一些�
 + 包含指令 - `include`
 
 ```text
-events 
+events
 {
-  # ... 
+  # ...
 }
-http  
+http
 {
   server
-  { 
+  {
     location path
     {
       # ...
@@ -95,7 +101,7 @@ http
 很简单，这是是一个基于域名的虚拟主机
 
 ```text
-server { 
+server {
   listen 80;
   server_name one.com;
   location / {
@@ -104,12 +110,12 @@ server {
   }
 }
 
-server { 
+server {
   listen 80;
   server_name two.com;
   location / {
     root /dist;
-  index index.html;
+    index index.html;
   }
 }
 ```
@@ -117,16 +123,16 @@ server {
 基于 IP 的主机
 
 ```plain
-server { 
+server {
   listen 80;
   server_name 192.168.2.0;
   location / {
     root /dist;
-  index index.html;
+    index index.html;
   }
 }
 
-server { 
+server {
   listen 80;
   server_name 192.168.2.1;
   location / {
@@ -139,8 +145,7 @@ server {
 基于端口的主机
 
 ```plain
-server
-{ 
+server {
   listen 80;
   server_name one.com;
   location / {
@@ -148,8 +153,7 @@ server
     index index.html;
   }
 }
-server
-{ 
+server {
   listen 8000;
   server_name one.com;
   location / {
@@ -165,7 +169,6 @@ server
 | ------------------ | --------------------------------------------------------------- |
 | `$host`            | 请求信息中的 Host，如果请求中没有 Host 行，则等于设置的服务器名 |
 | `$request_method`  | 客户端请求类型，如 GET、POST                                    |
-| `$remote_addr`     | 客户端的 IP 地址                                                |
 | `$args`            | 请求中的参数                                                    |
 | `$content_length`  | 请求头中的 Content-length 字段                                  |
 | `$http_user_agent` | 客户端 agent 信息                                               |
@@ -183,7 +186,7 @@ server
 
 反向代理是为服务端服务的，反向代理可以帮助服务端接受请求，进行请求转发，负载均衡等。反向代理隐藏了真实的服务端，这对于客户端来说是没有感知的，就像拨打`10086`一样，每次接电话的客服并不是同一个人，而是由`10086`分配一个客服，`10086`就承担着反向代理的角色
 
-nginx 反向代理靠`proxy_pass`项来完成，比如：
+Nginx 反向代理靠`proxy_pass`项来完成，比如：
 
 ```text
 server {
@@ -280,7 +283,7 @@ server {
 
 ## gzip 压缩传输
 
-gzip 压缩能够提高网站速度节约网站流量，开启 gzip 之后的网站加载速度几乎是未开启的两倍，所以非常推荐开启，将下面的内容添加到配置文件，重启 nginx
+gzip 压缩能够提高网站速度节约网站流量，开启 gzip 之后的网站加载速度几乎是未开启的两倍，所以非常推荐开启，将下面的内容添加到配置文件，重启 Nginx
 
 ```plain
 gzip on;
@@ -300,7 +303,7 @@ gzip_types application/atom+xml application/geo+json application/javascript appl
 
 ## 负载均衡
 
-负载均衡是为了解决某一个服务挂掉不能访问，而影响用户的体验，一般来说 nginx 的配置会将请求分发到同一个服务，如果挂掉了话仍然会分发给这个服务，这时候就需要负载均衡
+负载均衡是为了解决某一个服务挂掉不能访问，而影响用户的体验，一般来说 Nginx 的配置会将请求分发到同一个服务，如果挂掉了话仍然会分发给这个服务，这时候就需要负载均衡
 
 ```
 upstream youngfitapp { 
@@ -409,7 +412,7 @@ location ~* \.(gif|jpg|jpeg)$ {
 
 ## 配置 HTTPS
 
-必须先有 SSL 证书，通常在第三方申请，下载私钥和证书在 nginx 中配置
+必须先有 SSL 证书，通常在第三方申请，下载私钥和证书在 Nginx 中配置
 
 ```plain
 server {
@@ -441,9 +444,9 @@ server {
 
 ## 自动 HTTPS
 
-Nginx 可以通过 Let's Encrypt 来自动申请证书
+Nginx 可以通过两种方式来自动申请证书
 
-安装 cerbot 以及 certbot-nginx
+安装 cerbot 以及 certbot-nginx，这需要 Python 环境
 
 ```sh
 pacman -S certbot certbot-nginx
@@ -493,4 +496,20 @@ Let's Encrypt 的证书有效期为 90 天，certbot 已经提供自动续期服
 ```sh
 systemctl enable certbot-renew.timer
 systemctl start certbot-renew.timer
+```
+
+使用 acme.sh 获取证书
+
+```sh
+# 安装
+curl https://get.acme.sh | sh -s email=my@example.com
+
+# 从 nginx 中申请证书
+acme.sh --issue --nginx -d example.com -d www.example.com -d cp.example.com
+
+# 安装证书
+acme.sh --install-cert -d example.com \
+--key-file       /path/to/keyfile/in/nginx/key.pem  \
+--fullchain-file /path/to/fullchain/nginx/cert.pem \
+--reloadcmd     "service nginx reload"
 ```

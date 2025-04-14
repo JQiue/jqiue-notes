@@ -336,6 +336,9 @@ let deque = VecDeque::from([1, 2, 3]);
 
 `LinkedList<T>`是 Rust 提供的双向链表
 
+```rust
+```
+
 <!-- todo -->
 
 ## HashMap
@@ -352,8 +355,8 @@ colors.get("red");
 
 + insert(): 插入新的 key-value 对，如果 key 已存在就替换 value，返回 Option
 + entry(): 获取 key 对应的访问权限，可以决定是否插入还是获取已有的值
-+ contains_key(): 检查key是否存在
-+ get(): 获取 key 对应的value,如果 key 不存在返回 None
++ contains_key(): 检查 key 是否存在
++ get(): 获取 key 对应的 value，如果 key 不存在返回 None
 + remove(): 删除 key-value 对，如果 key 不存在返回 None
 + clear(): 删除 HashMap 中的所有项
 + iter(): 迭代器，用于遍历 key-value 对
@@ -364,7 +367,7 @@ colors.get("red");
 + entry.or_insert(): 如果 key 不存在，插入默认值，如果存在返回修改权限
 + entry.or_insert_with(): 如果 key 不存在，使用函数生成默认值插入
 + entry.or_default(): 如果 key 不存在返回默认值，存在返回修改权限
-+ entry.or_insert_with(): 根据key是否存在决定操作
++ entry.or_insert_with(): 根据 key 是否存在决定操作
 
 <!-- to be updated -->
 

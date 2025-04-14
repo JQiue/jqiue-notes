@@ -15,7 +15,7 @@ article: false
 + `Number()`：将一个数值转换为数值对象，如果是`undefined`则返回`NaN`
 + `Boolean()`：将一个布尔值转换为布尔对象
 
-## Math
+## 数学
 
 `Math`是用来进行数值运算的对象，它不是构造器
 
@@ -123,10 +123,14 @@ setInterval(() => {
   let nd = new Date();
   let td = new Date(new Date().getFullYear(), 5, 7);
   let diff = td - nd;
-  let day = parseInt(diff / (1000 * 60 * 60 * 24));
-  let hours = parseInt(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-  let minutes = parseInt(diff % (1000 * 60 * 60) / (1000 * 60));
-  let seconds = parseInt(diff % (1000 * 60 * 60) % (1000 * 60) / 1000);
+  let oneDay = 1000 * 60 * 60 * 24;
+  let oneHour = 1000 * 60 *60;
+  let oneMinute = 1000 * 60;
+  let oneSecond = 1000;
+  let day = parseInt(diff / oneDay);
+  let hours = parseInt(diff % oneDay / oneHour);
+  let minutes = parseInt(diff % oneHour / oneMinute);
+  let seconds = parseInt(diff % oneHour % oneMinute / oneSecond);
   span.textContent = `${day}天${hours}小时${minutes}分钟${seconds}秒`;
 }, 1000);
 ```

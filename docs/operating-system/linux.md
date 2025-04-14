@@ -37,6 +37,7 @@ Linux 发行版是指基于 Linux 内核开发的完整操作系统，它们会�
 - Fedora：源自 Red Hat，重视开放源代码，内置最新软件版本
 - SUSE：来自德国，适用于企业 server 和工作站
 - Arch Linux: Rolling 发行版，源代码最新但需自行配置
+- Alpine：轻量级发行版，面向安全性，适合容器和嵌入式系统
 - Gentoo：源代码编译性能优化，但安装配置难度大
 - Deepin：基于 Debian 开发的中文系統，注重视觉交互
 
@@ -199,7 +200,43 @@ systemctl start NetworkManager sshd
 
 AUR（Arch User Repository）是 Arch 社区维护的软件包存储库，其中包含大量的第三方软件包。允许 Arch 用户共享和安装不在官方仓库中的软件包。它为用户提供了更广泛的软件选择和灵活性
 
-## 根目录
+### Alpine
+
+Alpine Linux 是面向安全的轻量级 Linux 发行版，广泛用于容器和嵌入式系统
+
+- 使用 musl libc 代替 glibc
+- 默认使用 OpenRC 初始化系统
+- 软件包采用最小化设计
+- 内置防火墙配置工具 iptables/nftables
+
+#### 安装
+
+1. 下载镜像：<https://mirrors.tuna.tsinghua.edu.cn/alpine/>
+2. 制作启动 U 盘后从 BIOS/UEFI 启动
+3. 使用 setup-alpine 交互式安装脚本
+
+```sh
+# 更新仓库索引
+apk update
+# 安装软件包
+apk add <package>
+# 删除软件包
+apk del <package>
+# 搜索软件包
+apk search <pattern>
+# 系统升级
+apk upgrade
+```
+
+编辑 /etc/apk/repositories：
+
+```sh
+# 清华大学镜像源
+https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.19/main
+https://mirrors.tuna.tsinghua.edu.cn/alpine/v3.19/community
+```
+
+## 系统目录
 
 Windows 存在盘符的概念，而 Linux 则不存在，只有一个根目录，所有的文件都在`/`下面，每个用户都在`/home`建立自己的文件夹
 
@@ -210,12 +247,12 @@ Windows 存在盘符的概念，而 Linux 则不存在，只有一个根目录�
 + 红色表示压缩文件或者包文件
 + 绿色表示表示可执行文件
 
-根目录解释：
+系统目录解释：
 
-+ etc - 存放几乎所有的系统配置文件
 + home - 这是预设的用户主目录
 + root - 超级用户的主目录
 + bin - 命令程序
++ etc - 存放几乎所有的系统配置文件
 + opt - 第三方软件
 + usr - 应用程序和文件存放的目录
 + var - 存放经常被修改的文件
@@ -245,9 +282,11 @@ Windows 存在盘符的概念，而 Linux 则不存在，只有一个根目录�
 对应`rm`来说，一定要加上`verbose`选项，通常是`-v`，不要让自己陷入危险的命令当中
 :::
 
-## shell
+## Shell
 
 shell 是运行在终端上的文本互动程序，bash 是最常用的一种 shell，是大多数 Linux 发行版的默认 shell。所有的输入都交给 shell，它会解释其中的内容，并执行对应的操作
+
+`/etc/shells`包含了系统上所有可用的 shell，`/etc/passwd`指定用户登陆时默认使用的 shell
 
 + `ls -al`：打印当前目录中的所有文件，包括隐藏的文件
 + `ls -altr`：打印当前目录中所有的文件，但是打印的顺序是最后修改的文件在最后面
@@ -305,6 +344,15 @@ vim 总是令新手头疼，它不像 Windows 记事本那样是可视化的，v
 + `:wq`：保存并退出
 + `:q!`：不对文件进行修改并退出
 + `/`：搜索
++ `yy`：复制光标所在行
++ `5yy`: 复制 5 行
++ `p`：粘贴
++ `u`：撤销
++ `v`：进入可视化模式，可以用`h`、`j`、`k`、`l`移动光标，选中需要的文本，然后按下`d`删除选中的文本，按下`y`复制选中的文本，按下`p`粘贴选中的文本
++ `.`：重复上一个操作
++ `=`：格式化文本
++ `gg`：光标移动到文件的开头
++ `G`：光标移动到文件的结尾
 
 如果想要查看某个文件而不是想修改它，使用 vim 是有点过度的，这时候就使用另一个文本浏览器 less，输入`less <file>`即可查看，使用熟悉的`j`、`k`命令来浏览文件，退出浏览使用`q`，使用`--ch<enter><enter>`水平滚动（对于放不下的行来说）
 
@@ -364,10 +412,10 @@ scp 本地文件路径 目标机器:目标机器的文件路径
 在 Linux 中，进行语言选择像导出变量一样简单，通过查看这个变量，程序会决定如何跟你交流
 
 + `echo $LANG`：打印变量`LANG`
++ `export LANG=zh_CN.UTF-8`，修改`Lang`切换区域语言
 + `locale`：显示当前区域语言
 + `man man`：显示 unix 系统手册
 + `sudo dpkg-reconfigure locales`：重新配置区域设置，因为变化是系统层次，所以要用到`sudo`，使用方向键选择一个语言，按空格选中
-+ `export LANG=zh_CN.UTF-8`，修改`Lang`切换区域语言
 
 不出意外，这是`dpkg-reconfigure locales`执行后的结果：
 
@@ -409,7 +457,7 @@ Package configuration
 Linux 是一个多任务操作系统，意味着可以有很多程序同时运行，对于 bash 来说肯定有很多工具来控制多个任务的执行
 
 + `Ctrl + z`：将当前非终止程序放到后台并暂停运行，允许继续执行其他命令
-+ `Ctrl + c`：可以停止当前正在执行的程序
++ `Ctrl + c`：停止当前正在执行的程序或者清除当前输入的命令
 + `jobs`：列出所有的后台程序
 + `fg <num>`：指定程序带到前台运行，需要一个数字参数，可以从`jobs`中获取，如果没有则将最后一个挂起的程序带到前台
 + `bg <num>`：指定后台程序在后台恢复运行，需要一个数字参数，从`jobs`获取，如果没有则将最后一个挂起的程序恢复
@@ -468,11 +516,17 @@ root@VM-4-14-ubuntu:~# ps x
 
 ## 网络
 
+Linux 系统的 DNS 设置通常由`/etc/resolv.conf`文件控制， 这是最基本和最常用的 DNS 配置文件。它包含了 DNS 解析器的配置信息，例如域名服务器的 IP 地址
+
++ `ip addr`: 显示网络接口信息
++ `ip route`: 显示路由表
 + `netstat -atup`：列出所有 TCP 和 UDP 端口并显示与程序相关的程序名和 PID
 + `lsof -i`：列出打开文件
 + `fuser -n tcp 80`：查看 80 端口被哪个程序占用
 
-## 系统启动
+## 服务管理器
+
+### Systemd
 
 Systemd 是 Linux 操作系统中用于初始化、管理和监控系统和服务的系统和服务管理器
 
@@ -535,6 +589,42 @@ sudo journalctl --vacuum-files=2
 sudo systemctl restart systemd-journald
 ```
 
+### OpenRC
+
+与 systemd 类似，OpenRC 负责在系统启动时启动服务，并在系统运行时管理这些服务。虽然 OpenRC 的设计理念和实现方式与 systemd 有很大不同，但它们都旨在提供服务管理的功能
+
+- 服务脚本：服务脚本通常位于 /etc/init.d/ 目录下。服务脚本是一个 shell 脚本，用于启动、停止、重启和查询服务的状态。服务脚本的名称通常与服务的名称相同。例如，nginx 服务的脚本可能位于 /etc/init.d/nginx
+
+OpenRC 使用 Runlevels 来定义系统在不同状态下应该运行哪些服务
+
+- default：系统默认运行的 runlevel，通常用于多用户图形界面或命令行界面
+- boot：在系统启动时运行的基本服务
+- shutdown：在系统关闭时运行的服务
+
+rc-update 命令用于将服务添加到特定的 runlevel 或从 runlevel 中删除服务
+
+```sh
+# 将 nginx 服务添加到 default runlevel
+rc-update add nginx default
+# 从 default runlevel 中删除 nginx 服务
+rc-update del nginx default
+# 显示所有服务及其所属的 runlevel
+rc-update show
+```
+
+rc-service 命令用于控制服务的状态，例如启动、停止、重启和查询服务的状态
+
+```sh
+# 启动 nginx 服务
+rc-service nginx start
+# 停止 nginx 服务
+rc-service nginx stop
+# 重启 nginx 服务
+rc-service nginx restart
+# 查询 nginx 服务的状态
+rc-service nginx status
+```
+
 ## 系统监控与性能分析
 
 ### 系统基本信息
@@ -555,15 +645,31 @@ sudo systemctl restart systemd-journald
 + `df -h` - 查看文件系统的空间使用情况，以`1024`为单位
 + `du` - 可以查看文件以及文件夹的大小，会统计文件大小相加
 
-## 用户操作
+## 用户和用户组操作
 
 `$`是普通用户，`#`是超级用户
 
-+ `useradd <username>` - 新建用户
++ `useradd <username>` - 新建用户，默认创建同名用户组
++ `useradd -g <existinggroup> <username>` - 新建用户指定用户组，不会创建同名用户组
 + `userdel <username>` - 删除用户
-+ `passwd <username>` - 修改用户名，root 用户可以修改自己和其他用户，其他用户只能修改自己
++ `passwd <username>` - 修改用户密码，root 用户可以修改自己和其他用户，其他用户只能修改自己
 + `su <username>` - 切换用户
++ `id <username>` - 显示用户的信息
++ `groupadd` - 创建用户组
++ `groupdel` - 删除用户组
 + `sudo <cmd>` - 提权这次执行的命令
+
+`/etc/passwd`此文件包含系统中所有用户帐户的基本信息。每行代表一个用户，包含以下字段，用冒号分隔
+
+```plain
+用户名:密码:用户ID:组ID:用户描述:Home目录:登录shell
+```
+
+`/etc/group`此文件包含系统中所有用户组的基本信息。每行代表一个用户组，包含以下字段，用冒号分隔
+
+```plain
+组名:密码:组ID:组成员
+```
 
 ## 文件权限
 
@@ -587,7 +693,7 @@ sudo systemctl restart systemd-journald
 
 可以通过`ls -l filename.txt`查看文件权限
 
-以及管理权限的命令，只有 root，文件所有者的用户才能修改：
+以及管理权限的命令，只有 root 或者 文件所有者的用户才能修改：
 
 + `chmod` — 修改文件权限
 + `chown` — 修改所有者
@@ -613,6 +719,17 @@ chmod g=r filename
 chmod a-x filename
 # 递归删除其他用户的写权限
 chmod -R o-w dirname
+```
+
+ACL 允许为特定用户或组设置文件和目录的权限，而无需更改文件或目录的所有者或所属组
+
+```sh
+# 设置 ACL 权限
+setfacl -m u:username:rwx file.txt
+setfacl -m g:groupname:rx file.txt
+
+# 获取 ACL 权限
+getfacl file.txt
 ```
 
 ## 挂载共享目录
@@ -689,7 +806,7 @@ Windows 的`cmd`和`powershell`是没有`ssh-copy-id`命令的，最好使用比
 
 不要在远程机中通过防火墙程序来控制端口，因为控制台会有专门预设好的防火墙设置，在这里指定规则即可
 
-如果通过远程机防火墙程序控制了规则，可能会导致 SSH 连接工具无法连接的现象发生，这时的防火墙规以远程机
+如果通过远程机防火墙程序控制了规则，可能会导致 SSH 连接工具无法连接的现象发生，这时的防火墙规以远程机为主
 
 ## 设置代理
 
@@ -754,4 +871,4 @@ wget -qO- bench.sh | bash
 
 ## 参考资料
 
-+ [tldr In Browser](是一个用于 tldr 页面的离线 PWA 网页)
++ [tldr In Browser](https://tldr.inbrowser.app/) - 是一个用于 tldr 页面的离线 PWA 网页

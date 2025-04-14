@@ -14,7 +14,7 @@
     "url": "https://github.com/JQiue/jqiue-notes"
   },
   "scripts": {
-    "dev": "cross-env WALINE_ENV=devlopment vuepress-vite dev docs --open",
+    "dev": "cross-env WALINE_ENV=devlopment vuepress-vite dev docs",
     "prod": "cross-env WALINE_ENV=production vuepress-vite dev docs --open",
     "build": "cross-env WALINE_ENV=production vuepress-vite build docs",
     "lint:md": "markdownlint **/*.md --ignore node_modules -f",

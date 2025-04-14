@@ -214,6 +214,35 @@ fn create_temp_directory() -> io::Result<()> {
 }
 ```
 
+## 路径
+
+Rust 的 std::path 提供了用于处理文件路径的类型和函数，Path 表示一个文件系统路径，Pathbuf 是一个可变的文件系统路径
+
+Path 常用方法
+
++ new(s: &str): 从字符串切片创建一个新的 Path
++ parent(): 获取父目录的 Path。如果当前路径没有父目录，则返回 None
++ file_name(): 获取文件名的 OsStr。如果当前路径没有文件名，则返回 None
++ extension(): 获取文件扩展名的 OsStr。如果当前路径没有扩展名，则返回 None
++ is_absolute(): 检查路径是否为绝对路径
++ is_relative(): 检查路径是否为相对路径
++ join(path: &str): 将给定的路径连接到当前路径。如果给定的路径是绝对路径，则返回给定的路径
++ exists(): 检查路径是否存在
++ is_file(): 检查路径是否指向一个文件
++ is_dir(): 检查路径是否指向一个目录
++ canonicalize(): 返回路径的规范、绝对形式，并解析所有符号链接
++ components(): 返回一个迭代器，该迭代器遍历路径的各个组成部分
++ display(): 返回一个实现了 Display trait 的对象，用于打印路径
+
+PathBuf 常用方法
+
++ new(): 创建一个新的空 PathBuf
++ from(s: &str): 从字符串切片创建一个新的 PathBuf
++ push(path: &str): 将给定的路径追加到当前路径。如果给定的路径是绝对路径，则替换当前路径
++ pop(): 移除路径的最后一个组成部分
++ set_file_name(file_name: &str): 设置文件名
++ set_extension(extension: &str): 设置文件扩展名
+
 ## 网络编程
 
 Rust 标准库提供了`std::net`模块，用于网络编程。这个模块包含了处理 TCP 和 UDP 通信的基本类型

@@ -1,0 +1,69 @@
+{
+  "index_uid": "jinqiu-wang",
+  "start_urls": ["https://jinqiu.wang/"],
+  "sitemap_urls": ["https://jinqiu.wang/sitemap.xml"],
+  "selectors": {
+    "lvl0": {
+      "selector": ".sidebar-heading.active",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl1": {
+      "selector": ".vp-page-title h1",
+      "global": true,
+      "default_value": "Article"
+    },
+    "lvl2": ".theme-hope-content h2",
+    "lvl3": ".theme-hope-content h3",
+    "content": ".theme-hope-content p, .theme-hope-content li",
+    "lang": {
+      "selector": "/html/@lang",
+      "global": true,
+      "type": "xpath"
+    }
+  },
+  "custom_settings": {
+    "searchableAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "content",
+      "lang",
+      "objectID",
+      "page_rank",
+      "level",
+      "position"
+    ],
+    "displayedAttributes": [
+      "hierarchy_radio_lvl0",
+      "hierarchy_radio_lvl1",
+      "hierarchy_radio_lvl2",
+      "hierarchy_radio_lvl3",
+      "hierarchy_radio_lvl4",
+      "hierarchy_radio_lvl5",
+      "hierarchy_lvl0",
+      "hierarchy_lvl1",
+      "hierarchy_lvl2",
+      "hierarchy_lvl3",
+      "hierarchy_lvl4",
+      "hierarchy_lvl5",
+      "hierarchy_lvl6",
+      "anchor",
+      "url",
+      "lang",
+      "content",
+      "objectID"
+    ],
+    "filterableAttributes": ["lang"]
+  }
+}
