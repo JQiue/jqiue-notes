@@ -15,7 +15,7 @@
     },
     "lvl2": ".theme-hope-content h2",
     "lvl3": ".theme-hope-content h3",
-    "content": ".theme-hope-content p, .theme-hope-content li",
+    "content": ".theme-hope-content p, .theme-hope-content li, .line",
     "lang": {
       "selector": "/html/@lang",
       "global": true,
