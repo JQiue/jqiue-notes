@@ -281,6 +281,25 @@ server {
 }
 ```
 
+## 请求速率限制
+
+默认情况下，Nginx 会尽可能的处理所有的请求，但 Nginx 允许限制来自某个 ip 的请求速率：
+
+```text
+limit_req_zone $binary_remote_addr zone=mylimit:50m rate=1r/s;
+
+server {
+  listen 80;
+  server_name example.com;
+  limit_req zone=mylimit burst=5;
+  location / {
+    root /root/meilisearch-ui/;
+  }
+}
+```
+
+在这个例子中，客户端发送一个请求到配置了`limit_req`的`location`，Nginx 使用`limit_req`中引用的`zone`名称，并在该区域中查找基于`limit_req_zone`中定义的`key`（例如客户端 IP）的状态信息。Nginx 检查该客户端在区域中记录的请求速率，如果当前请求速率低于或等于区域设定的`rate`请求会被正常处理。如果当前请求速率超过了区域设定的`rate`，Nginx 会检查 limit_req 指令中的`burst`参数，如果超出的请求数量仍在`burst`限制内，如果指定了`nodelay`，请求会立即处理。但请注意，如果持续超出速率，后续没有`burst`缓冲的请求仍会被拒绝。如果没有指定`nodelay`(默认 delay)，请求会被放入一个内部队列，并按照区域设定的`rate`逐个被处理。这会导致请求响应延迟，如果超出的请求数量超出了`burst`限制:，Nginx 会立即拒绝该请求，通常返回 503 Service Unavailable 错误
+
 ## gzip 压缩传输
 
 gzip 压缩能够提高网站速度节约网站流量，开启 gzip 之后的网站加载速度几乎是未开启的两倍，所以非常推荐开启，将下面的内容添加到配置文件，重启 Nginx

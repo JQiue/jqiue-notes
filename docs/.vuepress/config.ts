@@ -21,14 +21,6 @@ const app = defineUserConfig({
             : 'http://localhost:3000',
       },
     ],
-    [
-      'script',
-      {
-        deref: true,
-        src: 'https://cloud.umami.is/script.js',
-        'data-website-id': 'cd79408f-2a8a-4080-86ae-690bc92cf783',
-      },
-    ],
   ],
   locales: {
     '/': {

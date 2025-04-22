@@ -52,7 +52,7 @@ BOM 并没有官方意义上的标准，只是一个民间模糊的称谓。BOM 
 
 ## 参考资料
 
-- [web.dev](web.dev)
+- [web.dev](https://web.dev)
 - JavaScript DOM 编程艺术
 - DOM 启蒙
 - WebAssembly 实战
