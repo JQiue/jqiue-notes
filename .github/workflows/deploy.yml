@@ -53,6 +53,10 @@ jobs:
     name: scrape and push content on Meilisearch instance
     steps:
       - uses: actions/checkout@v4
+      - name: Cache Docker images.
+        uses: ScribeMD/docker-cache@0.5.0
+        with:
+          key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
       - name: Run scraper
         env:
           HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
