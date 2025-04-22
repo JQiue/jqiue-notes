@@ -23,47 +23,7 @@
     }
   },
   "custom_settings": {
-    "searchableAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "content",
-      "lang",
-      "objectID",
-      "page_rank",
-      "level",
-      "position"
-    ],
-    "displayedAttributes": [
-      "hierarchy_radio_lvl0",
-      "hierarchy_radio_lvl1",
-      "hierarchy_radio_lvl2",
-      "hierarchy_radio_lvl3",
-      "hierarchy_radio_lvl4",
-      "hierarchy_radio_lvl5",
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "anchor",
-      "url",
-      "lang",
-      "content",
-      "objectID"
-    ],
     "filterableAttributes": ["lang"]
-  }
+  },
+  "only_urls": []
 }
