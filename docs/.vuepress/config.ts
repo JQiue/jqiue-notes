@@ -1,5 +1,5 @@
-import { App, defineUserConfig } from 'vuepress';
-import { MeiliSearchPlugin } from 'vuepress-plugin-meilisearch2';
+import { defineUserConfig } from 'vuepress';
+import { meilisearchPlugin } from '@vuepress/plugin-meilisearch';
 import theme from './theme.js';
 
 const app = defineUserConfig({
@@ -31,7 +31,7 @@ const app = defineUserConfig({
   },
   shouldPrefetch: false,
   plugins: [
-    MeiliSearchPlugin({
+    meilisearchPlugin({
       host: 'https://search.jinqiu.wang',
       apiKey:
         '64294e4e662062d21cdd1a3b7464ccdcf1477f5c9f3f0b8e9b521baf5a39a7ff',

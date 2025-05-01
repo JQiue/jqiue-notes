@@ -137,3 +137,4 @@ cargo install cargo-wizard
 ## 参考资料
 
 + [Rust 性能手册](https://blues-star.github.io/perf-book-zh/title-page.html)
++ [优化 Rust 二进制大小](https://github.com/johnthagen/min-sized-rust)

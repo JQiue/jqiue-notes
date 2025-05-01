@@ -511,3 +511,19 @@ let output = rusty_tesseract::image_to_string(&img, &default_args)
   .replace("", "");
 println!("The String output is: {:?}", output);
 ```
+
+## console
+
+用于构建控制台用户界面的库，它提供颜色、样式和终端操作
+
+## dialoguer
+
+用于在命令行中提示用户的库，它支持各种提示类型，例如选择、输入和确认
+
+## indicatif
+
+用于在命令行中显示进度条的库，它支持各种进度条样式和功能，例如消息和速度估计
+
+## clap
+
+用于解析命令行参数的库，它允许你定义应用程序接受的参数，并自动生成帮助消息

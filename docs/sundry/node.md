@@ -314,7 +314,7 @@ NPM 包的版本号借鉴了[https://semver.org/](https://semver.org/)
 可以将自己写的包上传到官方仓库，供给其他人下载使用，首先拥有一个[NPM](https://www.npmjs.com) 官方账号是必须的，如果是第一次使用则用`npm adduser`注册一个账户，成功后就会以该账户进行登录，如果不是第一次则使用`npm login`登录账户，登陆成功后使用`npm publish`命令发布包
 
 ::: tip
-在发布前，最好检查一下源地址，必须是官方源地址
+在发布前，最好检查一下源地址，必须是官方源地址，其次运行`npm publish --dry-run`模拟发布流程检查错误
 :::
 
 如果想要撤销发布的包，可以使用`npm unpublish <package> --force`

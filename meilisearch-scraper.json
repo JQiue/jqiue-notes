@@ -1,7 +1,11 @@
 {
   "index_uid": "jinqiu-wang",
-  "start_urls": ["https://jinqiu.wang/"],
-  "sitemap_urls": ["https://jinqiu.wang/sitemap.xml"],
+  "start_urls": [
+    "https://jinqiu.wang/"
+  ],
+  "sitemap_urls": [
+    "https://jinqiu.wang/sitemap.xml"
+  ],
   "selectors": {
     "lvl0": {
       "selector": ".sidebar-heading.active",
@@ -23,7 +27,15 @@
     }
   },
   "custom_settings": {
-    "filterableAttributes": ["lang"]
+    "filterableAttributes": [
+      "lang"
+    ]
   },
-  "only_urls": ["https://jinqiu.wang/sundry/ai-products.html"]
+  "only_urls": [
+    "https://jinqiu.wang/rust/async.html",
+    "https://jinqiu.wang/rust/libraries.html",
+    "https://jinqiu.wang/rust/performance.html",
+    "https://jinqiu.wang/sundry/ai-products.html",
+    "https://jinqiu.wang/sundry/node.html"
+  ]
 }
