@@ -1,9 +1,11 @@
 import { defineUserConfig } from 'vuepress';
 import { meilisearchPlugin } from '@vuepress/plugin-meilisearch';
 import theme from './theme.js';
+import { viteBundler } from '@vuepress/bundler-vite';
 
 const app = defineUserConfig({
   theme,
+  bundler: viteBundler(),
   dest: './dist',
   head: [
     [

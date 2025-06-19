@@ -325,14 +325,14 @@ gzip_types application/atom+xml application/geo+json application/javascript appl
 负载均衡是为了解决某一个服务挂掉不能访问，而影响用户的体验，一般来说 Nginx 的配置会将请求分发到同一个服务，如果挂掉了话仍然会分发给这个服务，这时候就需要负载均衡
 
 ```
-upstream youngfitapp { 
+upstream youngfitapp {
   server 192.168.1.0:8080;
   server 192.168.1.1:8080;
 }
 server {
   listen 80;
   server_name localhost;
-  location / {         
+  location / {
     proxy_pass  http://youngfitapp;
     proxy_set_header Host $http_host;
     proxy_set_header X-Real-IP $remote_addr;
@@ -360,7 +360,7 @@ upstream youngfitapp {
 也可以更改权重，比如下面的顺序为：ABBABBABBABB...
 
 ```plain
-upstream youngfitapp { 
+upstream youngfitapp {
   server 192.168.1.0:8080 weight=1;
   server 192.168.1.1:8080 weight=2;
 }
@@ -371,8 +371,8 @@ ip_hash
 ```plain
 upstream youngfitapp {
   ip_hash;
-  server 192.168.62.157:8080; 
-  server 192.168.62.158:8080;   
+  server 192.168.62.157:8080;
+  server 192.168.62.158:8080;
 }
 ```
 
@@ -392,7 +392,7 @@ upstream youngfitapp {
 可以指定某个服务器为热备，当其他服务器挂掉时才使用该服务器提供服务
 
 ```plain
-upstream youngfitapp { 
+upstream youngfitapp {
   server 192.168.1.0:8080;
   server 192.168.1.1:8080;
   server 192.168.1.2:8080 down;
@@ -531,4 +531,68 @@ acme.sh --install-cert -d example.com \
 --key-file       /path/to/keyfile/in/nginx/key.pem  \
 --fullchain-file /path/to/fullchain/nginx/cert.pem \
 --reloadcmd     "service nginx reload"
+```
+
+## 热部署
+
+热部署也被称为平滑升级，是指在不停止当前 Nginx 服务的情况下，更新 Nginx 的可执行文件或重新加载其配置文件，这一特性对于需要保持高可用性的 Web 服务至关重要，因为它允许在不中断用户请求的情况下进行维护或版本升级
+
+热部署的核心原理依赖于 Nginx 的主进程（Master Process）和工作进程（Worker Processes）架构以及操作系统信号的运用，Nginx 主进程负责管理工作进程，接收信号，并执行特权操作，而工作进程则负责处理实际的网络连接和请求
+
+实现 Nginx 热部署的步骤如下：
+
+1. 使用新的 Nginx 可执行文件启动一个新的主进程，新的主进程会读取配置文件并创建新的工作进程
+2. 向正在运行的旧 Nginx 主进程发送 USR2 信号，这个信号通知老的主进程即将进行升级，收到 USR2 信号后，旧的主进程会启动一个新的 Nginx 主进程，该新主进程使用新的可执行文件和当前的配置文件，此时，新老主进程会并存，并且它们各自生成的工作进程会共享监听的端口，同时处理进来的请求，而不会发生冲突
+3. 确认新的 Nginx 进程正常运行后，向旧的主进程发送 WINCH 信号，这个信号会使旧的主进程开始优雅地关闭其所有工作进程，旧的工作进程会等待处理完当前的请求后再退出
+4. 当旧的工作进程全部退出后，只有新的 Nginx 工作进程在处理请求，此时，升级基本完成
+5. 如果升级成功并符合预期，可以向旧的主进程发送 QUIT 信号，使其优雅地退出
+
+这个过程的优势在于，在整个升级过程中，Nginx 服务始终在运行，能够持续处理用户请求。同时，由于旧的主进程在升级成功前并不会立即退出，这提供了一个快速回滚的机制：如果新的 Nginx 版本有问题，可以通过向新的主进程发送终止信号（如 TERM）并利用仍在运行的老主进程重新生成工作进程来恢复到旧版本
+
+## 日志切割
+
+## 反向代理缓存
+
+反向代理缓存是指 Nginx 作为反向代理服务器时，将从后端服务器获取的响应数据缓存到本地，以便在后续请求中直接返回缓存的数据，而不必再次请求后端服务器，这样可以显著提高响应速度，减轻后端服务器的负担
+
+```plain
+http {
+    # 定义缓存存储区域
+    # 指定缓存文件的存储路径、用于哈希的文件级别、存储缓存密钥的共享内存区域名称和大小、
+    # 最大缓存大小、非活动缓存的清理时间、以及多久检查一次缓存以删除非活动和超出大小限制的缓存。
+    proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=my_cache:10m max_size=10g inactive=60m use_temp_path=off;
+
+    server {
+        listen 80;
+        server_name example.com;
+
+        location / {
+            # 启用并指定使用哪个缓存区域
+            proxy_cache my_cache;
+            # 定义生成缓存密钥的规则。这里使用 scheme (http/https) + 请求方法 + 请求 URI
+            proxy_cache_key "$scheme$request_method$request_uri";
+            # 定义不同状态码的响应应该被缓存多久
+            # 对于 200 和 304 状态码的响应，缓存 10 分钟 (10m)
+            # 对于 301 和 302 状态码的响应，缓存 24 小时 (24h)
+            # 对于任意状态码的响应，至少缓存 5 分钟 (5m)
+            proxy_cache_valid 200 304 10m;
+            proxy_cache_valid 301 302 24h;
+            proxy_cache_valid any 5m;
+            # 定义在哪些条件下不从缓存中获取响应
+            # 例如，如果请求头中包含 Cache-Control: no-cache, Pragma: no-cache 或 Authorization，则绕过缓存
+            proxy_cache_bypass $http_pragma $http_authorization;
+            # 定义在哪些条件下不对响应进行缓存
+            # 例如，如果请求头中包含 Cache-Control: no-cache 或 Pragma: no-cache，则不缓存此响应
+            proxy_no_cache $http_pragma $http_authorization;
+            # http://backend_servers
+            proxy_pass http://backend_servers;
+            # 可选：添加一个响应头，用于调试和了解缓存状态（HIT, MISS, BYPASS等）
+            add_header X-Cache-Status $upstream_cache_status;
+            # 设置代理连接和发送/读取响应的超时时间
+            proxy_connect_timeout 60s;
+            proxy_send_timeout 60s;
+            proxy_read_timeout 60s;
+        }
+    }
+}
 ```

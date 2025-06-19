@@ -1,25 +1,16 @@
 {
   "index_uid": "jinqiu-wang",
-  "start_urls": [
-    "https://jinqiu.wang/"
-  ],
-  "sitemap_urls": [
-    "https://jinqiu.wang/sitemap.xml"
-  ],
+  "start_urls": ["https://jinqiu.wang/"],
+  "sitemap_urls": ["https://jinqiu.wang/sitemap.xml"],
   "selectors": {
     "lvl0": {
-      "selector": ".sidebar-heading.active",
+      "selector": ".vp-page-title h1",
       "global": true,
       "default_value": "Documentation"
     },
-    "lvl1": {
-      "selector": ".vp-page-title h1",
-      "global": true,
-      "default_value": "Article"
-    },
-    "lvl2": ".theme-hope-content h2",
-    "lvl3": ".theme-hope-content h3",
-    "content": ".theme-hope-content p, .theme-hope-content li, .line",
+    "lvl1": ".theme-hope-content h2",
+    "lvl2": ".theme-hope-content h3",
+    "content": ".theme-hope-content p, .theme-hope-content li",
     "lang": {
       "selector": "/html/@lang",
       "global": true,
@@ -27,15 +18,6 @@
     }
   },
   "custom_settings": {
-    "filterableAttributes": [
-      "lang"
-    ]
-  },
-  "only_urls": [
-    "https://jinqiu.wang/rust/async.html",
-    "https://jinqiu.wang/rust/libraries.html",
-    "https://jinqiu.wang/rust/performance.html",
-    "https://jinqiu.wang/sundry/ai-products.html",
-    "https://jinqiu.wang/sundry/node.html"
-  ]
+    "filterableAttributes": ["lang"]
+  }
 }
