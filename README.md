@@ -1,10 +1,24 @@
-# jqiue-notes
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/JQiue/jqiue-notes)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/JQiue/jqiue-notes/deploy.yml)
-![GitHub License](https://img.shields.io/github/license/JQiue/jqiue-notes)
-[![wakatime](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23.svg)](https://wakatime.com/badge/user/5bcf8674-5e4a-4383-ab13-8472206d4e1e/project/a02fd649-0f99-49f9-b15b-1cc11722fd23)
-
-欢迎!:blush:
-
-这里是我的[笔记](https://jinqiu.wang)，正在持续记录中...
+---
+home: true
+layout: Blog
+icon: home
+title: 首页
+heroText: 嗨，欢迎来到这里！
+bgImage: bgImage.jpg
+heroFullScreen: true
+tagline: 每一个想要学习的念头，都有可能是未来的你在向你求救
+projects:
+  - icon: article
+    name: 正则表达式
+    link: /sundry/regex
+  - icon: article
+    name: 数据结构与算法
+    link: /ds-algorithm/
+  - icon: article
+    name: Git 指南
+    link: /sundry/git
+  - icon: article
+    name: 资源和工具
+    link: /sundry/tools
+footer: <a href="https://beian.miit.gov.cn/" target="_blank">备案号：鄂ICP备2021016538号</a>
+---
