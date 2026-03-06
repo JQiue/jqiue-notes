@@ -240,7 +240,7 @@ server {
 如果上传的文件过大，会返回 413 错误，Nginx 默认是 1m 大小的限制，但是可以添加`client_max_body_size`进行修改
 
 ```text
-server {
+server {1
   listen 80;
   server_name space.jinqiu.wang;
   location / {

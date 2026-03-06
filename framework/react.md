@@ -1,78 +1,167 @@
 ---
-title: React
-category: 框架
+title: React：从 15 到 16，从 Class 到 Hooks
 tag: [React]
 article: false
 ---
 
-React 是 FaceBook 开源的一套构建用户界面的 JavaScript 框架，React 的流行不仅局限于普通开发工程师对它的认可，其他大量的流行框架都借鉴 React。其中 Vue 设计之初很多灵感来源于此，包括 Vue3 很多新特性都借鉴了 React。React Hook 是一个非常开创性的功能，Vue3 中的 Compostion API 都借鉴了 React Hook 的思想
+## React 是怎么一步步变成今天这样的？
 
-## JSX
+还记得第一次写 React 吗？
 
-JSX（JavaScript XML）是 js 内定义的一套 XML 语法，可以解析出目标 js 代码，颠覆传统 js 写法。实质上 HTML 也是 xml 协议，由浏览器解析，而 JSX 是由 js 解析。当然也可以通过构建工具解析，如 Babel
-
-不用觉得很奇怪，`div`就等于`<div></div>`
+那时候，组件是个 class，方法要手动 bind，状态藏在`this.state`里，更新靠`this.setState`。一切都很“规矩”，但也笨重。比如那个 Counter：
 
 ```jsx
-let div = <div></div>
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({ count: this.state.count + 1 });
+  }
+  render() {
+    return <button onClick={this.handleClick}>{this.state.count}</button>;
+  }
+}
 ```
 
-JSX 必须严格闭合
+不是不能用，只是……为什么要写这么多和“计数”本身无关的代码？
+
+## React 16 带来了什么？
+
+很多人说 React 16 是“大版本”，但真正改变游戏规则的，不是某个新 API，而是 Fiber——一个全新的协调引擎
+
+可以把它想象成导演拍电影：
+
+以前（React 15），导演必须一口气把整场戏拍完，中间不能停。如果场景复杂，演员就得干等着，观众也卡住。
+
+现在（React 16），导演可以把一场戏切成很多小镜头，拍完一个就问问：“观众有新指令吗？”如果有，先处理观众的事（比如点击按钮），再回来继续拍。
+
+这就是可中断的渲染。它让 React 能优先响应用户交互，而不是死磕一个耗时的更新。
+
+也是在这个版本，React 第一次有了**错误边界**。以前，一个组件报错，整个页面白屏。现在，可以像 try-catch 一样，把错误“兜住”：
 
 ```jsx
-<div>       // 错误
-<div></div> // 正确
-<div/>      // 正确（也行，看需求）
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error, info) {
+    // 上报错误，或者……等三秒后自动恢复
+    setTimeout(() => this.props.onReset(), 3000);
+  }
+  render() {
+    return this.state.hasError ? <h1>出错了</h1> : this.props.children;
+  }
+}
 ```
 
-同级组件时必须拥有一个根元素，这会多出一个标签，React 中允许使用内置组件`Fragment`来解决这个问题，它不会额外生成什么
+注意：错误边界至今仍必须用 class 写，函数组件还做不到，但是不必自己编写错误边界类。可以使用`react-error-boundary`包来代替。
+
+## 然后，Hooks 来了
+
+React 16.8 发布那天，很多人松了一口气：终于不用写 class 了！
+
+但 Hooks 的意义，远不止“少写几行代码”。它让函数组件拥有了**状态**和**副作用**的能力，而方式极其克制：
+
+- useState：记住一个值，当它变时，重新渲染；
+- useEffect：当某些东西变了，去做点“外面的事”。
+
+比如计数器，现在可以这样写：
 
 ```jsx
-// 错误
-<div></div>
-<div></div>
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [history, setHistory] = useState([]);
+  const isFirst = useRef(true);
 
-// 正确
-<div>
-  <div></div>
-  <div></div>
-</div>
+  useEffect(() => {
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
+    setHistory(h => [...h, count]);
+  }, [count]);
 
-// 正确
-<Fragment>
-  <div></div>
-  <div></div>
-</Fragment>
-
-// 正确
-<>
-  <div></div>
-  <div></div>
-</>
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCount(c => c + 1)}>+</button>
+      <ul>{history.map((v, i) => <li key={i}>{v}</li>)}</ul>
+    </div>
+  );
+}
 ```
 
-在一个组件中可以引用其他组件，当引用一个自定义组件时要大写首字母，否则会看做成普通标签
+这段代码里藏着几个微妙的设计：
+
+- 为什么用 setCount(c => c + 1) 而不是 setCount(count + 1)？
+
+因为 count 可能是“旧的”（闭包陷阱）。函数式更新总能拿到最新值。
+
+- 为什么 useEffect 会记录初始的 0？
+
+因为 effect 在组件挂载后一定会跑一次。它不知道这是“初始化”还是“用户操作”。
+
+- useRef 在这里做什么？
+
+它就像一个藏在组件里的小记事本，写着“我已经初始化过了”。改它不会让界面刷新，但它记得住。
+
+## 副作用，到底是什么？
+
+这是最容易被忽略，却最关键的概念。
+
+副作用，就是那些“走出组件”的事：
+
+- 操作 DOM（比如聚焦输入框）
+- 发网络请求
+- 开定时器
+- 写日志
+- 甚至……更新另一个状态
+
+这些事，不能在 render 里做。因为 render 只负责“描述 UI 应该长什么样”，它可能被调用多次（比如 Fiber 尝试不同调度路径），也可能被丢弃。
+
+所以，React 给你一个安全区：等 UI 真的画到屏幕上之后，再执行副作用。这个安全区，就是`useEffect`。
+
+为什么必须“DOM 渲染完成后”？
 
 ```jsx
-<Foo>
-  <Bar></Bar>
-</Foo>
+function MyInput() {
+  // ❌ 千万不能这么写！
+  const input = document.getElementById('my-input');
+  input.focus(); // render 时 DOM 还不存在！
+
+  return <input id="my-input" />;
+}
 ```
 
-可以在 JSX 中使用`{expression}`嵌入 js 支持的表达式
+报错：input is null，因为 render 只是返回虚拟 DOM，真实`<input>`还没插入页面！
 
-```js
-const content = 'Hello, World'
-<div>{content}</div>
+```jsx
+function MyInput() {
+  const ref = useRef();
+  useEffect(() => {
+    // ✅ 此时 DOM 已经渲染完成！
+    ref.current.focus();
+  }, []);
+
+  return <input ref={ref} />;
+}
 ```
 
-在 JSX 内中写 js 注释必须在外面要套一个`{}`，很简单，会看做成表达式
+用`useEffect`是正确的做法，`useEffect`的回调，是在 React 把所有 DOM 变更“提交（commit）”到页面之后才调用的
 
-```js
-<div>{/* 这是一个 div */}</div>
-```
+这保证了：
 
-不要使用危险的<code v-pre>dangerouslySetInnerHTML={{__html: value}}</code>禁止转义
+- 用户看到 UI 更新了
+- 紧接着你的逻辑（如打日志、埋点）就能基于这个新 UI 执行
+- 不会出现“UI 显示加载中，但请求其实早发完了”的状态错乱
+
+## useRef 的误区
+
+`useRef`用于在组件多次渲染之间“记住”某个值，且修改它不会导致组件重新渲染。
 
 ## 示例程序
 
@@ -133,83 +222,6 @@ function Foo() {
 + 没有自己的 State
 + 没有 this
 + 没有生命周期
-
-## 数据驱动
-
-每个类组件都可以在构造函数中维护一份属于自己的数据，一旦`state`中的数据改变后，React 就会更新页面
-
-```js
-class Foo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'hello, world',
-    };
-  }
-  render() {
-    return <div>{this.state.value}</div>
-  }
-}
-```
-
-不要直接修改`state`，而是使用`setState()`，它是异步的，这非常重要，如果想要更改数据后才开始做一些操作，不应该传入一个对象，而是两个回调函数
-
-```js
-this.setState(() => {
-  return {
-    // 更改数据项
-  }
-}, () => {
-  // 更改完成后需要执行的代码
-})
-```
-
-如果想干掉令人讨厌的`bind`，可以在构造函数中处理，但只适用于不需要传入参数的处理函数
-
-```js
-class Foo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'hello',
-    };
-  }
-  click(event) {
-    this.setState({
-      value: 'world'
-    })
-  }
-  render() {
-    return (
-      <div onClick={this.click.bind(this)}>{this.state.value}</div>
-    )
-  }
-}
-```
-
-如果要为元素增加`class`，请使用`className`
-
-有些属性可能具有歧义，比如`<label>`的`for`属性，应该使用`htmlFor`，其它的都是类似
-
-React 中的数据是一种单向的数据流
-
-当组件被创建的时候，Render 会调用一次，一个组件被`ReactDOM.render()`渲染的时候调用，由此依次调用其它的组件 Render
-
-State 和 Props 变化都会导致渲染
-
-## 生命周期
-
-生命周期是类组件在某一个时机自动执行的函数，比如 Render 就是其中的一个生命周期函数，在数据改变时触发。除此之外，还有很多其它的生命周期函数：
-
-+ componentWillMount - 即将挂载到页面
-+ componentDidMount - 已经挂载到页面
-+ shouldComponetUpdate - 数据更新前时执行
-+ render - 数据发生变化时执行
-+ componetWillUpdate - 数据更新前时执行
-+ componetDidUpdate - 数据更新后时执行
-+ componetWillUnmount - 组件将被移除时执行
-
-如果在`shouldComponetUpdate`中返回了`false`，后续的生命周期不会执行，性能将得到提高
 
 ## Hook
 

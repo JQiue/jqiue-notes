@@ -9,6 +9,7 @@ article: false
 hy2 是一个比较好用的工具，在 Ubuntu 下：
 
 ```sh
+# 仅支持 systemd
 curl -fsSL https://get.hy2.sh | bash
 ```
 
@@ -32,7 +33,7 @@ stream {
     access_log /etc/nginx/log/stream_access.log stream_logging;
     error_log /etc/nginx/log/stream_error.log;
     proxy_next_upstream_tries 3;
-    proxy_connect_timeout 10s;     # 连接超时时间
+    proxy_connect_timeout 10s;      # 连接超时时间
     proxy_timeout 1h;               # 空闲连接保持时间
     proxy_buffer_size 16k;          # 代理缓冲区大小
     proxy_responses 1;              # 响应次数

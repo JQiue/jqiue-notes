@@ -43,6 +43,7 @@ const theme = hopeTheme({
     config: {
       '/subject/': '123456',
       '/sundry/interview': '123456',
+      '/sundry/escape-fold': '7410',
     },
   },
   markdown: {
@@ -107,6 +108,12 @@ const theme = hopeTheme({
         '404f43198e3f308584c311410a93dc79cc27e0d70137a2c1833d5f3546839881',
       indexUid: 'jinqiu-wang',
     },
+    // meilisearch: {
+    //   host: 'http://search.is.me',
+    //   apiKey:
+    //     '90992298223e9ed4848ce10ad0648e78c00c1df95ec43e1c5ed48bdd5b8097b3',
+    //   indexUid: 'docs',
+    // },
     // pwa: {
     //   favicon: '/favicon.ico',
     //   themeColor: '#5c92d1',

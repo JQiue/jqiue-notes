@@ -61,7 +61,7 @@ fn also_takes_a_string(input: String) {
 
 fn main() {
   let user_name = String::from("User MacUserson");
-  
+
   takes_a_string(user_name);
   also_takes_a_string(user_name); // error
 }
@@ -72,8 +72,8 @@ fn main() {
 ```rust
 fn main() {
   let s = Rc::new("hello".to_string());
-  takes_a_string(s.to_string());
-  also_takes_a_string(s.to_string());
+  takes_a_string(Rc::clone(s));
+  also_takes_a_string(Rc::clone(s));
 }
 ```
 

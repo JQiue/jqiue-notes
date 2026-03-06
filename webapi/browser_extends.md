@@ -227,4 +227,5 @@ chrome.storage.onChanged.addListener(function(changes, namespace){
 
 ## 参考资料
 
++ [Google 扩展教程](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=zh-cn)
 + [让你的扩展更容易制作](https://extension.js.org/)

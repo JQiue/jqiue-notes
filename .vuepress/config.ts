@@ -10,21 +10,27 @@ const app = defineUserConfig({
   bundler: viteBundler(),
   dest: './dist',
   head: [
-    [
-      'script',
-      {
-        deref: true,
-        src:
-          process.env.WALINE_ENV == 'production'
-            ? 'https://track.jinqiu.wang/js/tracker.js'
-            : 'http://localhost:3000/js/tracker.js',
-        'data-website-id': '1',
-        'data-server-url':
-          process.env.WALINE_ENV == 'production'
-            ? 'https://track.jinqiu.wang'
-            : 'http://localhost:3000',
-      },
-    ],
+    // [
+    //   'script',
+    //   {
+    //     deref: true,
+    //     src:
+    //       process.env.WALINE_ENV == 'production'
+    //         ? 'https://track.jinqiu.wang/js/tracker.js'
+    //         : 'http://localhost:3000/js/tracker.js',
+    //     'data-website-id': '1',
+    //     'data-server-url':
+    //       process.env.WALINE_ENV == 'production'
+    //         ? 'https://track.jinqiu.wang'
+    //         : 'http://localhost:3000',
+    //   },
+    // ],
+    // [
+    //   'script',
+    //   {
+    //     src: 'http://localhost:7410/static/yoin.js',
+    //   },
+    // ],
   ],
   locales: {
     '/': {

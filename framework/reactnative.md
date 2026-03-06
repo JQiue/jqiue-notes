@@ -179,10 +179,12 @@ Android 限制发送不安全的请求时，`AndroidManifest.xml`添加以下条
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 ```
 
-## 库
-
-+ [React Native Paper](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator)
-
 ## 参考资料
 
 + 第一行代码（第3版）
++ [ReactNativeVectorIcons](https://oblador.github.io/react-native-vector-icons/)
++ [React Native 开发指南](https://todoit.tech/)
++ [原生循环进度指示器库](https://github.com/nithinpp69/react-native-circular-progress-indicator)
++ [基于 Apache ECharts 的图表库](https://supervons.github.io/react-native-echarts-pro-docs/zh-cn/)
++ [React Native Paper 组件库](https://callstack.github.io/react-native-paper/)
++ [Tamagui 是一个全面的样式库](https://tamagui.dev/)

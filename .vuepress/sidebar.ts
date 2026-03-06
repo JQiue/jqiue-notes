@@ -7,7 +7,7 @@ export const zh = sidebar({
   '/compiler/': 'structure',
   '/network/': 'structure',
   '/ds-algorithm/': 'structure',
-  '/database/': ['', 'sql', 'nosql'],
+  '/database/': ['structure'],
   '/ai/': 'structure',
   '/c/': 'structure',
   '/java/': 'structure',

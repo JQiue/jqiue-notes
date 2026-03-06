@@ -5,20 +5,30 @@ article: false
 order: 2
 ---
 
-存储多个元素，数组是最常见的数据结构，几乎每种语言都实现了数组，这很方便。但是它有一个很严重的缺点，插入和删除的成本都非常高，可能需要移动大量的元素
-
 链表也是一种存储有序元素的结构，但和数组不同的是，元素在内存中地址不一定是连续的，每个元素由一个数据项和指向下一个元素的引用组成，相对于传统的数组容量是无限的，在进行插入和删除元素的时候不需要移动其他元素。缺点也很明显，不能像数组那样随机访问，访问某一个元素，必须从表头开始遍历
+
+## 指针链表：用“缓存缺失”换取的极致灵活性
 
 相对顺序存储来说，链式存储的存储空间地址是可以连续的，也可以是不连续的，地址并不对应逻辑关系，链式存储有以下优势：
 
-+ 大小是无限的，不会产生额外的空间浪费
-+ 插入和删除元素的复杂度为 O(1)
++ 不需要预先分配大块连续空间，能利用零散的内存
++ 插入和删除元素的复杂度为 O(1)，仅在已知位置（如头结点）时
 
 劣势：
 
++ 由于内存不连续，CPU 无法进行预取（Prefetch），每次访问节点都可能导致严重的缓存缺失（Cache Miss），执行速度比数组慢几个量级
 + 访问元素的复杂度为 O(n)，必须从第一个元素按顺序访问元素
-+ 存储密度低，需要额外的空间表示存储关系
-+ 对缓存不是很友好
++ 存储密度低，需要额外的空间表示存储关系，在存储小对象时，额外开销甚至超过数据本身
+
+适用场景：
+
++ 实现栈或队列（仅操作头尾）
++ 需要频繁地在头部插入数据
++ 对内存地址稳定性有特殊要求的底层算法
+
+::: tip
+在现代计算机中，“空间换时间”的准则正在发生变化。由于 CPU 与内存之间的性能鸿沟，顺序存储（数组）带来的缓存收益往往远超链表逻辑上的 $O(1)$ 优势。除非有明确的动态扩容或地址稳定需求，否则首选数组
+:::
 
 链表由指向第一个节点的指针表示，第一个节点称为头部，如果链表为空，则头部的值为`NULL`
 
@@ -26,14 +36,6 @@ order: 2
 
 + 数据
 + 指向下一个节点的引用
-
-ADT：
-
-+ 插入
-+ 删除元素
-+ 删除链表
-+ 计数
-+ 查找
 
 ::: code-tabs
 
@@ -348,20 +350,127 @@ class LinkedList {
 @tab Rust
 
 ```rust
+#[derive(Debug)]
+struct Node<T> {
+  data: T,
+  next: Option<Box<Node<T>>>,
+}
 
-```
+#[derive(Debug)]
+struct List<T> {
+  head: Option<Box<Node<T>>>,
+  count: u32,
+}
 
-@tab Java
+impl<T> List<T> {
+  pub fn new() -> Self {
+    Self {
+      head: None,
+      count: 0,
+    }
+  }
 
-```java
-this.addLast(new Object[](root, new ArrayList<Integer>()));
+  pub fn push_front(&mut self, data: T) {
+    // Take the current head, leaving None in its place
+    let old_head = self.head.take();
+    // Create a new node that points to the old head
+    let node = Node {
+      data,
+      next: old_head,
+    };
+    // Update the head to the new node and increment count
+    self.head = Some(Box::new(node));
+    self.count += 1;
+  }
+
+  pub fn pop_front(&mut self) -> Option<T> {
+    self.head.take().map(|node| {
+      self.count -= 1;
+      self.head = node.next;
+      node.data
+    })
+  }
+
+  pub fn insert(&mut self, data: T, index: u32) {
+    if index > self.count {
+      return;
+    }
+
+    if index == 0 {
+      let old_head = self.head.take();
+      self.head = Some(Box::new(Node {
+        data,
+        next: old_head,
+      }));
+      self.count += 1;
+      return;
+    }
+
+    let mut cur_node = &mut self.head;
+
+    for _ in 0..(index - 1) {
+      if let Some(node) = cur_node {
+        cur_node = &mut node.next;
+      }
+    }
+
+    if let Some(ref mut prev_node) = cur_node {
+      let new_node = Box::new(Node {
+        data,
+        next: prev_node.next.take(),
+      });
+      prev_node.next = Some(new_node);
+      self.count += 1;
+    }
+  }
+
+  pub fn len(&self) -> u32 {
+    self.count
+  }
+
+  pub fn is_empty(&self) -> bool {
+    self.count == 0
+  }
+
+  pub fn peek(&self) -> Option<&T> {
+    self.head.as_ref().map(|node| &node.data)
+  }
+
+  pub fn clear(&mut self) {
+    self.head.take();
+    self.count = 0;
+  }
+}
+
+// 触发递归 drop 调用时，可能导致栈溢出
+impl<T> Drop for List<T> {
+  fn drop(&mut self) {
+    // Take the head to start the iterative drop process
+    let mut cur_link = self.head.take();
+    while let Some(node) = cur_link {
+      // By taking the next node, we drop the current node without
+      cur_link = node.next
+    }
+  }
+}
 ```
 
 :::
 
-## 双向链表
+## 静态链表：披着数组外壳的链表灵魂
 
-在链表中，一个节点只有链向下一个节点的链接。而在双向链表中，链接是双向的，一个节点链向下一个元素，另一个节点链向前一个元素，可以很方便的访问回到上一个节点
+使用数组实现的链表，下标即指针
+
++ **本质：** 兼顾了数组的**物理连续性**与链表的**逻辑跳跃性**。
++ **优化点：** 极大地提高了**Cache 命中率**，且规避了频繁申请/释放内存（malloc/new）的系统调用开销。
++ **局限：** 必须预先确定最大容量，丧失了动态链表“无限扩展”的优势。
+
+## 双向链表：LRU 算法的基石与删尾利器
+
+每个节点包含两个指针：`next`（后继）和 `prev`（前驱）
+
++ **杀手锏：** 实现真正的 **$O(1)$ 删尾**。单链表即便有尾指针，删尾也需要 $O(n)$ 找前驱。
++ **典型应用：LRU (Least Recently Used) 缓存**。**哈希表**负责 $O(1)$ 定位数据。**双向链表**负责 $O(1)$ 移动访问项到头，以及 $O(1)$ 移除过期尾部。
 
 ::: code-tabs
 
@@ -498,12 +607,26 @@ class DoublyLinkedList {
 
 ## 循环链表
 
-循环链表和普通链表的唯一区别就是最后一个元素的指针总是指向第一个元素，它可以是单向或双向的
+最后一个节点的指针指向第一个元素，形成闭环。可以是单向或双向。
 
-## 有序链表
++ **应用：** 操作系统进程的时间片调度、播放列表循环、环形缓冲区。
+
+## 有序链表：二分查找的“禁区”
 
 有序链表中的元素是按照一定的顺序进行排列的
 
-## 静态链表
+## 侵入式链表：当数据不再被“包装”，而是自带挂钩
 
-静态链表兼顾了顺序表和链表的优点，在插入和删除是不需要移动元素，同时可以进行随机访问
+## 快慢指针：在单次遍历中捕捉“中点”与“环”的几何艺术
+
+在链表的世界里，如果说普通遍历是“散步”，那么**快慢指针（Fast & Slow Pointers）**就是一场精心设计的“赛跑”。它又被称为**龟兔赛跑算法（Tortoise and Hare Algorithm）**
+
+其核心思想是：利用两个步调不一致的指针（通常快指针走 2 步，慢指针走 1 步），通过它们**距离或位置的差值**，来解决链表中的特定问题。
+
+链表不支持随机访问（$O(n)$），这导致很难直接定位“中间点”或检测“环”。快慢指针通过在单次遍历中创造相对位移，强行抵消了链表无法直接计算物理地址的短板。
+
+设定两个指针 slow 和 fast，初始都在 head
+
++ 步长： $v_{slow} = 1$，$v_{fast} = 2$。
++ 物理效应：当快指针到达终点时，慢指针恰好在链表的中点位置（因为时间相同，路程减半）。
++ 追赶效应：如果链表有环，快指针最终会像操场跑步一样“扣圈”，从后面追上并撞向慢指针。

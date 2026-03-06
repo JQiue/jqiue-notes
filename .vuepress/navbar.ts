@@ -65,7 +65,7 @@ export const zh = navbar([
       {
         text: '经济和金融',
         icon: 'economics-finance',
-        link: 'economics-finance/',
+        link: 'interdisciplinarity/',
       },
     ],
   },

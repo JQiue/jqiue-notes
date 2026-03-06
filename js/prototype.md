@@ -5,9 +5,9 @@ tag: [JavaScript]
 date: 2021-06-28
 ---
 
-JavaScript 的对象有一个非常特殊的隐藏属性，它要么为`null`，要么就是对另一个对象的引用，这个对象叫做**原型对象**。当从一个对象中读取一个它没有的属性时，会从原型对象中获取该属性，这种行为叫做**原型继承**
+JavaScript 的对象拥有一个特殊的内部关联`[[Prototype]]`。它的值要么为`null`，要么指向另一个对象（即其原型）。当读取对象缺失的属性时，引擎会沿此关联向上追溯，这种行为即**原型委托**。
 
-使用对象的`__proto__`属性访问原型对象
+尽管在现代工程中建议使用 Object.getPrototypeOf()，但仍可通过传统的 __proto__ 属性访问此关联：
 
 ```js
 let A = { name: 'A' };
@@ -54,7 +54,7 @@ console.log(B.name); //'B'
 但对于访问器属性来说却是一个例外，因为访问器实际上是一个函数来处理的，写入此属性就相当于调用了一个函数一样
 
 ```js
-let A = { 
+let A = {
   name: 'A',
   get getName() {
     return this.name;
@@ -79,7 +79,9 @@ console.log(B.getName); //'B'
 
 ## F.prototype
 
-每一个函数都有一个`prototype`属性，虽然和对象的`__proto__`有点相似，但它只是一个常规属性。使用`new`构造对象时，会将对象的`__proto__`指向函数的`prototype`
+每一个函数（除了箭头函数）都拥有一个名为 prototype 的常规属性。它在函数被定义时自动创建，其本质是一个对象构造模板。
+
+当使用`new F()`创建实例时，JavaScript 引擎会将新对象的`[[Prototype]]`内部关联直接指向该函数的`F.prototype`对象。
 
 ```js
 let A = { name: 'A' };
@@ -222,9 +224,9 @@ for (let key in B) console.log(key); // name
 
 ```js
 let A = { name: 'A' };
-let B = { 
+let B = {
   ownProp: 'yes',
-  __proto__: A 
+  __proto__: A
 };
 
 for (let key in B) {
@@ -242,7 +244,7 @@ for (let key in B) {
 
 + `Object.create(protoObject)`：创建一个以`protoObject`为原型的新对象
 + `Object.getPrototypeOf(Object)`：返回对象的原型
-+ `Object.setPrototype(Object, protoObject)`：修改对象的原型
++ `Object.setPrototypeOf(Object, protoObject)`：修改对象的原型
 
 ```js
 let A = { name: 'A' };
@@ -262,7 +264,7 @@ console.log(C.name); // 'B'
 在面向对象编程中，属性往往是无法直接读写的，如果想要实现单独的控制就应该使用一些办法来屏蔽外部直接访问属性的接口，通过`this`和`prototype`定义的属性都是可以被读写的，所以应该使用`var`来定义属性，因为`var`定义的属性是有局部作用域的，变相的实现了私有属性，然后通过方法来实现属性的读写
 
 ```js
-function Person() { 
+function Person() {
   var name = null;
   this.getName = function() {
     return name;
@@ -324,4 +326,4 @@ Person.showGender();
 + `this`永远代表当前调用的对象，所以访问访问器属性时，不会改写原型对象上的数据
 + 函数都有一个`prototype`，使用构造器创建对象时，会将对象的`__proto__`指向函数的`prototype`，`prototype`是一个只有`constructor`属性的对象，指向函数自身
 + `in`不仅检查自身的属性检查继承而来的属性，排除继承的属性就应该使用`hasOwnProperty(key)`
-+ `__proto__`是一种过时的原型设置方式，JavaScript 提供了以新的原型设置方式，`Object.create`，`Object.getPrototypeOf`，`Object.setPrototype`
++ `__proto__`是一种过时的原型设置方式，JavaScript 提供了以新的原型设置方式，`Object.create`，`Object.getPrototypeOf`，`Object.setPrototypeOf`

@@ -1,27 +1,39 @@
 ---
-title: 数组
+title: 数组：连续内存与性能的基石
 category: 数据结构与算法
 article: false
 order: 1
 ---
 
-几乎所有的编程语言都原生支持数组类型，因为数组是最简单的内存数据结构，大多数编程语言的数组只能允许存储同一类型的值，少部分语言（JavaScript）允许任意类型的元素。并且大多数语言的数组长度是固定的，无法动态改变，少部分语言的数组长度是可以动态改变的
+数组是计算机内存中最基础、对 CPU 缓存最友好的数据结构。它根据存储方式可分为：
+
++ 值类型数组 (Unboxed)： 如 C/Rust 的 `int[]` 或 `Vec<i32>`。数组直接存储数据值，内存高度紧凑。
++ 引用类型数组 (Boxed)： 如 JavaScript 的 `Array` 或 Java 的 `Object[]`。数组存储的是指向堆上实际数据的指针/引用。
+
+> 引用类型数组牺牲了性能的局部性，因为它需要进行间接寻址（多跳一次内存）
 
 ## 动态数组
 
+动态数组（工程术语：Vector / ArrayList）是对静态数组的封装，核心是实现了**自动扩容**功能
+
 由于数组本身的局限性，有必要进行封装以提供更好的功能，通常又被称为**顺序表**或**动态数组**，特点是逻辑相邻的元素，物理地址也是相邻的
 
-由于存储位置与起始位置都相差一个常数，只要确定了起始位置，计算偏移量，数组中的任意位置都可以随机存取。一些高级语言的数组类型也具有随机存取的特性，所以通常使用数组来实现，虽然很多传统的编程语言都提供了数组，但它们大部分都无法修改容量，实现顺序存储的线性表等于将一个数组封装成一个动态的扩容数组，并提供一些操作它的方法
+核心优势：
 
-相对于链式存储的优势：
-
-+ 内存空间连续，允许随机访问元素
++ $O(1)$ 随机访问： 基于地址偏移量计算，性能极高
++ CPU 缓存友好： 连续内存布局保证了高效的数据预取（Prefetching），遍历速度远超链表
 + 存储密度大，空间利用率高
 
-劣势：
+劣势与均摊成本：
 
-+ 插入和删除元素需要移动元素
-+ 不能确定元素个数，产生额外的空间浪费
++ $O(N)$ 插入/删除： 在数组中间或头部操作代价高昂，需要大量元素搬移（memmove）
++ 扩容成本： 当 Length == Capacity 时，需要申请新内存并将所有旧数据复制到新址。虽然单次耗时 $O(N)$，但由于容量是指数增长（1.5 倍或 2 倍），平摊到每次操作上，追加 (push) 的时间复杂度为均摊 $O(1)$
+
+::: warning ⚠️ 工程警示：为什么现代语言不用手写？
+
+这段代码是学习底层内存管理（malloc/free）和指针操作的绝佳范例。但在现代工程中，我们绝不建议手动实现。Rust 的 `Vec<T>`、C++ 的 `std::vector` 和 Java 的 `ArrayList` 提供了内存安全、异常安全且高度优化的实现。手动操作很容易导致内存泄漏或悬垂指针。
+
+:::
 
 ::: code-tabs
 
@@ -68,7 +80,7 @@ Status destoryList();
 Status ClearList();
 Status concatList();
 
-/* 
+/*
  * 这里的关键点就是创建一个 CAPACITY * sizeof(ElementType) 大小的空间，进行强转后赋值给 elem，此时 elem 指向这个空间地址
  */
 Status initList(SqList *list)
@@ -88,7 +100,7 @@ Status isFull(SqList *list){
   return ERROR;
 }
 
-/* 
+/*
  * 插入函数是根据元素排列的序号来实现的，序号 1 开始，而不是传一个数组的索引
  */
 Status insert(SqList *list, int SequenceNumber, ElementType e)
@@ -114,7 +126,7 @@ Status insert(SqList *list, int SequenceNumber, ElementType e)
   return OK;
 }
 
-/* 
+/*
  * 删除元素的函数也是根据元素序号来实现的
  */
 Status delete(SqList *list, int SequenceNumber)
@@ -133,7 +145,7 @@ Status delete(SqList *list, int SequenceNumber)
   return OK;
 }
 
-/* 
+/*
  * 由于函数的返回值表示了状态，需要额外的参数来接收获取的元素
  */
 Status getElement(SqList *list, int SequenceNumber, ElementType *e)
@@ -146,7 +158,7 @@ Status getElement(SqList *list, int SequenceNumber, ElementType *e)
   return OK;
 }
 
-/* 
+/*
  * 用于查找元素在表中的序号
  */
 Status locateElement(SqList *list, ElementType e, int *SequenceNumber)
@@ -166,7 +178,7 @@ Status locateElement(SqList *list, ElementType e, int *SequenceNumber)
   return ERROR;
 }
 
-/* 
+/*
  * 对数组进行扩容
  */
 Status increaseCapacity(SqList *list)
@@ -175,7 +187,7 @@ Status increaseCapacity(SqList *list)
   list->capacity *= 1.5;
   // 开辟扩容后的新空间
   ElementType *new_elem = (ElementType *)malloc(list->capacity * sizeof(ElementType));
-  // 复制旧表的内容到新的空间
+  // 复制旧表的内容到新的空间，本次操作是昂贵的 O(N) 性能抖动点
   memcpy(new_elem, list->elem, sizeof(ElementType) * list->size);
   // 释放旧表的内存空间
   free(list->elem);
@@ -225,9 +237,7 @@ void toString(SqList *list)
 
 ## 多维数组
 
-当数组元素都是数组，即为多维数组
-
-这是二维数组
+当数组元素都是数组，即为多维数组，这是二维数组
 
 ```js
 const arr = [
@@ -259,9 +269,12 @@ const arr = [
 ];
 ```
 
-## 矩阵
+## 矩阵与遍历
 
-使用二维数组即可形成矩阵，如何遍历二维数组中的每个元素是一个需要关注的点，根据行和列的不同方式可分为行遍历和列遍历
+使用二维数组即可形成矩阵，如何遍历二维数组中的每个元素是一个需要关注的点，多数语言（如 C/Java/JS）采用行主序 (Row-Major) 存储，根据行和列的不同方式可分为行遍历和列遍历：
+
++ 行遍历（Cache-Friendly）： 访问元素在内存中是连续的，能最大限度利用 CPU 缓存。
++ 列遍历（Cache-Unfriendly）： 每次访问下一个元素都跳跃了一个完整的行长，极易导致 Cache Miss。
 
 ```js
 const matrix = [

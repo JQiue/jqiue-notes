@@ -8,6 +8,11 @@
     "forceConsistentCasingInFileNames": true,
     "allowImportingTsExtensions": true
   },
-  "include": [".vuepress/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".vuepress/**/*.ts",
+    ".vuepress/components/Yoin.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

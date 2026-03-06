@@ -36,3 +36,162 @@ cdylib 也是动态库，但不包含 Rust 特有的元数据，适合外部程�
 ## libloading
 
 libloading 是一个 Rust crate，允许在运行时动态加载共享库（如 `.so` 或 `.dll`），并调用其中的函数。它提供了一种跨平台的方式来处理动态库加载，适用于需要在运行时决定加载哪个库的场景，例如插件系统，使用 Rust 自己的 ABI 能够支持更为丰富的 Rust 类型包括泛型和 trait 对象
+
+公用的插件类型
+
+```toml
+[package]
+name = "plugin-api"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+```
+
+```rust
+#[derive(Debug)]
+pub struct Comment {
+    pub comment: String,
+    pub user_id: String,
+    pub ua: Option<String>,
+    pub ip: Option<String>,
+}
+
+pub type NameFn = fn() -> String;
+pub type VersionFn = fn() -> String;
+pub type PreSaveFn = fn(comment: &mut Comment);
+pub type PostSaveFn = fn(comment: Comment) -> Comment;
+```
+
+插件1
+
+```toml
+[package]
+name = "plugin-one"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+plugin-api = { workspace = true }
+```
+
+```rust
+use plugin_api::Comment;
+
+#[unsafe(no_mangle)]
+pub fn name() -> String {
+    "Plugin One".to_string()
+}
+
+#[unsafe(no_mangle)]
+pub fn version() -> String {
+    "0.0.1".to_string()
+}
+
+#[unsafe(no_mangle)]
+pub fn pre_save(comment: &mut Comment) {
+    comment.ip = None;
+}
+```
+
+插件2
+
+```toml
+[package]
+name = "plugin-two"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+plugin-api = { workspace = true }
+```
+
+```rust
+use plugin_api::Comment;
+
+#[unsafe(no_mangle)]
+pub fn name() -> String {
+    "Plugin Two".to_string()
+}
+
+#[unsafe(no_mangle)]
+pub fn version() -> String {
+    "0.0.1".to_string()
+}
+
+#[unsafe(no_mangle)]
+pub fn pre_save(comment: &mut Comment) {
+    comment.comment = "[Plugin Two]".to_string();
+}
+```
+
+main.rs
+
+```toml
+[package]
+name = "call"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+libloading = { workspace = true }
+plugin-api = { workspace = true }
+```
+
+```rust
+use std::fs::{self};
+
+use libloading::{Library, Symbol};
+use plugin_api::{Comment, NameFn, PreSaveFn, VersionFn};
+
+pub fn scan_plugins() {
+    let entries = fs::read_dir("./plugins").unwrap();
+    for entry in entries {
+        let path = entry.unwrap().path();
+        if path.is_file() {
+            println!("Found plugin file: {:?}", path);
+            let lib = unsafe { Library::new(path).unwrap() };
+            let name: Symbol<NameFn> = unsafe { lib.get(b"name").unwrap() };
+            let version: Symbol<VersionFn> = unsafe { lib.get(b"version").unwrap() };
+            println!("Loaded plugin: {} v{}", name(), version());
+        }
+    }
+}
+
+pub fn plugin_call_pre_save(comment: &mut Comment) {
+    let entries = fs::read_dir("./plugins").unwrap();
+    for entry in entries {
+        let path = entry.unwrap().path();
+        if path.is_file() {
+            println!("Found plugin file: {:?}", path);
+            let lib = unsafe { Library::new(path).unwrap() };
+            let pre_save_fn: Symbol<PreSaveFn> = unsafe { lib.get(b"pre_save").unwrap() };
+            pre_save_fn(comment);
+        }
+    }
+}
+
+fn create_comment(mut comment: &mut Comment) {
+    plugin_call_pre_save(&mut comment);
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    scan_plugins();
+    let mut comment = Comment {
+        user_id: 1.to_string(),
+        comment: "1".to_string(),
+        ua: Some("edge".to_string()),
+        ip: Some("127.0.0.1".to_string()),
+    };
+    println!("before {:?}", comment);
+    create_comment(&mut comment);
+    println!("after {:?}", comment);
+    Ok(())
+}
+```

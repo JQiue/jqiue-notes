@@ -167,18 +167,53 @@ Pacman 是 Arch 的官方软件包管理器，以下是常见的命令：
 pacman -Syy
 # 安装软件包
 pacman -S package_name
-# 删除软件包
-pacman -R package_name
+# 删除软件包以及该包引入且不再被需要的依赖
+pacman -Rs package_name
+# 查找并删除所有孤儿包
+pacman -Rs $(pacman -Qdtq)
 # 搜索软件包
 pacman -Ss keyword
+# 列出显示安装的包
+pacman -Qe
+# 查看包的详细信息（包括安装日期、大小、描述）
+pacman -Qi package_name
 # 更新系统（使用 Arch 最好定期更新系统，否则不如用 Ubuntu）
 pacman -Syu
 ```
 
+::: tip 滚动更新
+由于 Arch 哲学是保持软件包尽可能新，这意味着：
+
++ 密钥更新快：Arch Linux 的开发者和维护者会定期更新用于签名软件包的 PGP 密钥
++ 安全需求高：旧的密钥会被废弃，新的密钥会被引入
+
+如果系统几个月甚至更久没有更新，本地密钥环（存储在 /etc/pacman.d/gnupg）仍然保留着很久以前的密钥记录。当 pacman 试图安装最新的软件包时，它发现这些包是用它不认识的、或者已被标为“不被信任”的新密钥签名的。所以要定期每周更新
+
+如果很久没有更新，可能会更新失败，因此要先仅更新密钥环：
+
+```sh
+sudo pacman -Sy archlinux-keyring
+```
+
+如果以上方式不行，说明本地`gpg`信任数据库已经和官方对不上了，因此需要强制删除本地 PGP 签名数据库，并强制重新生成并导入密钥：
+
+```sh
+# 彻底删除旧的 PGP 目录
+sudo rm -rf /etc/pacman.d/gnupg
+# 重新初始化本地签名数据库
+sudo pacman-key --init
+# 从系统镜像重新填充官方开发者密钥
+sudo pacman-key --populate archlinux
+# 强制更新密钥环包
+sudo pacman -Sy archlinux-keyring
+```
+
+:::
+
 安装一些必要的包：
 
 ```sh
-pacman -S openssh vim networkmanager git zsh
+pacman -S openssh vim networkmanager git fish
 ```
 
 启动服务：
@@ -186,17 +221,6 @@ pacman -S openssh vim networkmanager git zsh
 ```sh
 systemctl start NetworkManager sshd
 ```
-
-配置 shell，使用更好的 Oh-my-zsh：
-
-1. 使用 curl 下载脚本并安装：`sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-2. 同意使用 Oh-my-zsh 的配置模板覆盖已有的`.zshrc`
-3. 使用`powerlevel10k`主题,`git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
-4. 在`.zshrc`设置`ZSH_THEME="powerlevel10k/powerlevel10k"`启用主题
-5. 执行`source ~/.zshrc`配置生效
-6. 启用`z`获取快速跳转目录的能力，不需要安装，直接在`.zshrc`中设置`plugins=(z)`启用
-7. 安装`zsh-autosuggestions`获取命令提示，`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`，在`.zshrc`中设置`plugins=(zsh-autosuggestions)`
-8. 安装`zsh-syntax-highlighting`获取语法检查，`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git`，`echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc`
 
 AUR（Arch User Repository）是 Arch 社区维护的软件包存储库，其中包含大量的第三方软件包。允许 Arch 用户共享和安装不在官方仓库中的软件包。它为用户提供了更广泛的软件选择和灵活性
 

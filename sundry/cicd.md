@@ -24,3 +24,7 @@ Github actions 是 Github 2019 年发布的一个 CI/CD 工具，持续集成有
 ## working-directory
 
 默认情况下，每条命令都在仓库的根目录中执行，但可以通过使用 working-directory 并指定明确的路径来覆盖此行为
+
+## 参考资料
+
++ [在本地运行 Github Action](https://github.com/nektos/act)

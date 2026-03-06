@@ -29,7 +29,7 @@
     "@vuepress/plugin-remove-pwa": "2.0.0-rc.112",
     "@vuepress/plugin-shiki": "2.0.0-rc.112",
     "@waline/client": "3.6.0",
-    "cross-env": "^7.0.3",
+    "cross-env": "7.0.3",
     "echarts": "5.6.0",
     "katex": "0.16.22",
     "sass-embedded": "1.87.0",

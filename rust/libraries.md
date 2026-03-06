@@ -360,35 +360,38 @@ fn main() {
 
 ## Chrono
 
-Chrono 是时间库的首选，Chrono 提供了一个`DateTime`类型来表示时区中的日期和时间，必须依赖`Timezone`对象进行构造，该对象定义了本地日期如何转换为 UTC 日期以及反向转换，有三种实现：
+Chrono 是 Rust 中处理日期和时间的事实标准库。
+它提供 `DateTime<Tz>` 类型表示带时区的日期和时间，其中 `Tz` 必须实现 `TimeZone` trait。 主要的 `TimeZone` 实现有三种：
 
-+ Utc 指定的是 UTC 时区，这是最高效的
-+ Local 指定系统本地时区
-+ FixedOffset 指定任意固定时区
+- `Utc`: 表示协调世界时（UTC），性能最高，推荐用于存储和传输。
+- `Local`: 表示操作系统当前的本地时区（依赖系统环境）。
+- `FixedOffset`: 表示固定的 UTC 偏移（如 +08:00），不包含夏令时规则。
 
 ```rust
 use chrono::Utc;
 
 // 获取当前 UTC 时间
-let now: chrono::DateTime<Utc> = Utc::now();
+let now: DateTime<Utc> = Utc::now();
 println!("Current time: {}", now);
-
-// 解析字符串格式的时间
-let date_time_str = "2023-04-25 12:34:56";
-let date_time: DateTime<Utc> = DateTime::parse_from_str(date_time_str, "%Y-%m-%d %H:%M:%S")
-    .unwrap()
-    .with_timezone(&Utc);
-println!("Parsed time: {}", date_time);
 
 // 获取本地时区时间
 let local: DateTime<Local> = Local::now();
 
+// 解析带时区的字符串格式的时间
+let with_offset = "2023-04-25 12:34:56 +08:00";
+let dt_fixed: DateTime<FixedOffset> = DateTime::parse_from_str(with_offset, "%Y-%m-%d %H:%M:%S %z").unwrap();
+let dt_as_utc = dt_fixed.with_timezone(&Utc); // 转为 UTC
+println!("{}", dt_as_utc);
+
 // 格式化时间
 let formatted = date_time.format("%Y-%m-%d %H:%M:%S").to_string();
 
+// 计算时间差
 let start = Utc::now();
 // 执行某些操作
+sleep(Duration::from_secs(10));
 let end = Utc::now();
+// end - start 的类型现在是 TimeDelt
 let duration = end - start;
 println!("Operation took: {:?}", duration);
 
@@ -410,6 +413,13 @@ let last_month = date_time.checked_sub_months(1).unwrap();
 ```
 
 `NaiveDateTime` 是一个不带有时区的日期和时间组合
+
+```rust
+// 解析无时区字符串
+let date_time_str = "2023-04-25 12:34:56";
+let naive_dt = chrono::NaiveDateTime::parse_from_str(date_time_str, "%Y-%m-%d %H:%M:%S").unwrap();
+println!("{:?}", naive_dt);
+```
 
 ## Regex
 
@@ -516,15 +526,15 @@ let output = rusty_tesseract::image_to_string(&img, &default_args)
 println!("The String output is: {:?}", output);
 ```
 
-## console
+## Console
 
 用于构建控制台用户界面的库，它提供颜色、样式和终端操作
 
-## dialoguer
+## Dialoguer
 
 用于在命令行中提示用户的库，它支持各种提示类型，例如选择、输入和确认
 
-## indicatif
+## Indicatif
 
 用于在命令行中显示进度条的库，它支持各种进度条样式和功能，例如消息和速度估计
 

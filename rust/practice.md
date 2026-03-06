@@ -37,7 +37,6 @@ readme = "README.md"
 
 ```toml
 [dependencies]
-
 axum = "~0.7.0"
 tower = "~0.4.13"
 hyper = { version = "~1.0.1", features = ["full"] }
@@ -527,13 +526,12 @@ async fn get_json() -> impl Responder {
 ```rust
 App::new()
   .wrap_fn(|req, srv| {
-    if let Some(host_header) = req.headers().get(USER_AGENT) {
-      if let Ok(host_value) = host_header.to_str() {
-        req.extensions_mut().insert(host_value.to_string());
-      }
+    if let Some(host_header) = req.headers().get(USER_AGENT)
+      && let Ok(host_value) = host_header.to_str()
+    {
+      req.extensions_mut().insert(host_value.to_string());
     }
-    let fut = srv.call(req);
-    async { fut.await }
+    srv.call(req)
   })
   .wrap(SecureDomians::new(secure_domians.clone()))
   .wrap(middleware::Logger::default())
@@ -738,6 +736,60 @@ Entity::delete_many()
     .filter(Column::Name.contains("foo"))
     .exec(&db)
     .await?;
+```
+
+### Hook
+
+用于对 ActiveModel 的不同操作的 hook
+
+```rust
+#[async_trait]
+impl ActiveModelBehavior for ActiveModel {
+    /// Create a new ActiveModel with default values. Also used by `Default::default()`.
+    fn new() -> Self {
+        Self {
+            uuid: Set(Uuid::new_v4()),
+            ..ActiveModelTrait::default()
+        }
+    }
+
+    /// Will be triggered before insert / update
+    async fn before_save<C>(self, db: &C, insert: bool) -> Result<Self, DbErr>
+    where
+        C: ConnectionTrait,
+    {
+        let now = chrono::Utc::now();
+        if self.created_at.is_not_set() {
+            self.created_at = Set(Some(now));
+        }
+        self.updated_at = Set(Some(now));
+        Ok(self)
+    }
+
+    /// Will be triggered after insert / update
+    async fn after_save<C>(model: Model, db: &C, insert: bool) -> Result<Model, DbErr>
+    where
+        C: ConnectionTrait,
+    {
+        Ok(model)
+    }
+
+    /// Will be triggered before delete
+    async fn before_delete<C>(self, db: &C) -> Result<Self, DbErr>
+    where
+        C: ConnectionTrait,
+    {
+        Ok(self)
+    }
+
+    /// Will be triggered after delete
+    async fn after_delete<C>(self, db: &C) -> Result<Self, DbErr>
+    where
+        C: ConnectionTrait,
+    {
+        Ok(self)
+    }
+}
 ```
 
 ## 静态链接

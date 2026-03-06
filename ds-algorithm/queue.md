@@ -157,6 +157,74 @@ class Queue {
 }
 ```
 
+@tab Rust
+
+```rust
+#[derive(Debug)]
+struct Queue<T, const CAPACITY: usize>
+where
+  T: Copy + Default + Debug,
+{
+  items: [T; CAPACITY],
+  size: usize,
+  tail: usize,
+}
+
+impl<T, const CAPACITY: usize> Queue<T, CAPACITY>
+where
+  T: Copy + Default + Debug,
+{
+  fn new() -> Self {
+    Self {
+      items: [T::default(); CAPACITY],
+      size: 0,
+      tail: 0,
+    }
+  }
+
+  fn is_empty(&self) -> bool {
+    self.size == 0
+  }
+
+  fn en_queue(&mut self, value: T) {
+    if self.size == CAPACITY {
+      println!("队列已满");
+      return;
+    }
+    self.items[self.tail] = value;
+    self.tail = self.tail + 1;
+    self.size += 1;
+  }
+
+  fn de_queue(&mut self) -> Option<T> {
+    if self.is_empty() {
+      return None;
+    }
+    let value = self.items[self.tail - self.size];
+    for i in 0..CAPACITY - 1 {
+      self.items[i] = self.items[i + 1];
+    }
+    self.tail -= 1;
+    self.items[self.tail] = T::default();
+    self.size -= 1;
+    Some(value)
+  }
+
+  fn peek(&self) -> Option<T> {
+    if self.is_empty() {
+      return None;
+    }
+    Some(self.items[self.tail - self.size])
+  }
+
+  fn clear(&mut self) {
+    self.items = [T::default(); CAPACITY];
+    self.size = 0;
+    self.tail = 0;
+  }
+}
+```
+
 :::
 
 ## 链式实现
@@ -332,6 +400,82 @@ class Deque {
 ## 循环队列
 
 当队列的长度是固定的时候，会出现队尾追队头的现象，因为只能在有限的空间上进行入队操作
+
+::: code-tabs
+
+@tab Rust
+
+```rust
+
+#[derive(Debug, Copy, Clone)]
+pub struct CircularQueue<T: Clone + Debug, const CAPACITY: usize> {
+  buffer: [Option<T>; CAPACITY],
+  head: usize,
+  tail: usize,
+  len: usize,
+}
+
+impl<T: Copy + Debug, const CAPACITY: usize> CircularQueue<T, CAPACITY> {
+  pub fn new() -> Self {
+    assert!(CAPACITY > 0, "CAPACITY must be greater than 0");
+    Self {
+      buffer: [None; CAPACITY],
+      head: 0,
+      tail: 0,
+      len: 0,
+    }
+  }
+
+  pub fn is_empty(&self) -> bool {
+    self.len == 0
+  }
+
+  pub fn en_queue(&mut self, value: T) {
+    if self.len == CAPACITY {
+      return println!("Queue is full");
+    }
+    self.buffer[self.tail] = Some(value);
+    self.tail = (self.tail + 1) % CAPACITY;
+    self.len += 1;
+  }
+
+  pub fn de_queue(&mut self) -> Option<T> {
+    if self.is_empty() {
+      return None;
+    }
+    let value = self.buffer[self.head]
+      .take()
+      .expect("Internal error: head slot empty");
+    self.head = (self.head + 1) % CAPACITY;
+    self.len -= 1;
+    Some(value)
+  }
+
+  pub fn peek(&self) -> Option<&T> {
+    if self.is_empty() {
+      None
+    } else {
+      Some(
+        self.buffer[self.head]
+          .as_ref()
+          .expect("Internal error: head slot empty"),
+      )
+    }
+  }
+
+  pub fn clear(&mut self) {
+    self.head = 0;
+    self.tail = 0;
+    self.len = 0;
+    // 显式清空数组，确保 None 状态
+    for slot in self.buffer.iter_mut() {
+      *slot = None;
+    }
+  }
+}
+```
+
+:::
 
 ## 优先级队列
 

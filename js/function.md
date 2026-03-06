@@ -9,7 +9,7 @@ article: false
 
 ```js
 function foo() {}
-foo(); 
+foo();
 ```
 
 由于定义的函数是被看作全局对象`window`的方法，所以也支持这种调用方式：

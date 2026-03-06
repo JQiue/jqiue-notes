@@ -73,9 +73,27 @@ struct KeyValue<K, V> {
 let p = KeyValue { key: "name", value: 42};
 ```
 
+## 常量泛型
+
+Rust 提供了针对值得泛型，这允许在类型定义中使用编译时常量作为泛型参数，主要用于定义基于栈的定长数组，实现零成本抽象数据结构
+
+```rust
+struct Array<T: Default + Copy, const N: usize> {
+  data: [T; N],
+}
+
+impl<T: Default + Copy, const N: usize> Array<T, N> {
+  fn new() -> Self {
+    Self {
+      data: [T::default(); N],
+    }
+  }
+}
+```
+
 ## 约束
 
-trait 约束允许我们限制泛型参数必须实现特定的 trait，传入其他类型会导致无法通过编译
+Trait 约束允许我们限制泛型参数必须实现特定的 Trait，传入其他类型会导致无法通过编译
 
 ```rust
 fn notify(msg: impl Debug) {
@@ -107,8 +125,8 @@ fn notify<T: Foo + Bar>(item: T) {}
 ```rust
 fn sn<T: Foo + Bar, U: Display + Clone>(t: T, u: U) -> i32;
 
-fn sn<T, U>(t: T, u: U) -> i32 
-where 
+fn sn<T, U>(t: T, u: U) -> i32
+where
   T: Foo + Bar,
   U: Display + Clone;
 ```
@@ -118,6 +136,27 @@ where
 ```rust
 fn returns() -> impl Debug {
   1
+}
+```
+
+## 关联类型
+
+关联类型是 Trait 的一个强大特性，它经常与泛型一起使用，用于定义 Trait 的输出或辅助类型。关联类型使得实现 Trait 的结构体只需要指定一次类型，而不需要在每个方法签名中重复指定泛型
+
+```rust
+// T 是传统的泛型，I 是关联类型
+trait Iterator {
+    // Item 是一个关联类型，表示迭代器返回的元素类型
+  type Item;
+
+  fn next(&mut self) -> Option<Self::Item>;
+}
+
+// 实现 Iterator 时，只需要指定 Item 一次
+impl Iterator for MyVecIterator {
+  type Item = i32;
+
+  fn next(&mut self) -> Option<Self::Item> { /* ... */ }
 }
 ```
 
@@ -154,7 +193,7 @@ foo(Vec::<i32>::new());
 
 ```rust
 let closure = |x: i32| {
-  x 
+  x
 };
 
 let c = closure as fn(i32) -> i32;

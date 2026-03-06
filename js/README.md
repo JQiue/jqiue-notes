@@ -165,8 +165,8 @@ JavaScript 划分了两种内存：
 
 ## 参考资料
 
-+ 你不知道的 JavaScript
 + [现代 JavaScript 教程](https://zh.javascript.info/)
++ 你不知道的 JavaScript
 + JavaScript 语言精髓与编程实践
 + JavaScript 二十年
 + 学习 JavaScript 设计模式
