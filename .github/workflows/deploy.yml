@@ -6,49 +6,49 @@ on:
     branches:
       - master
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install node environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - name: Check out Git repository
-        uses: actions/checkout@v4
-      - name: Install dependency
-        run: |
-          npm i -g pnpm
-          pnpm i
-      - name: Build
-        run: pnpm run build
-      - name: Push Deploy Branch
-        run: |
-          cd ./dist
-          git init
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git add -A
-          git commit -m 'deploy'
-          git checkout -b deploy
-          git push -f https://${{secrets.ACCESS_TOKEN}}@github.com/JQiue/jqiue-notes.git deploy
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script_stop: true
-          script: |
-            bash
-            cd jqiue-notes/
-            git fetch origin deploy && git reset --hard origin/deploy
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Install node environment
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #     - name: Check out Git repository
+  #       uses: actions/checkout@v4
+  #     - name: Install dependency
+  #       run: |
+  #         npm i -g pnpm
+  #         pnpm i
+  #     - name: Build
+  #       run: pnpm run build
+  #     - name: Push Deploy Branch
+  #       run: |
+  #         cd ./dist
+  #         git init
+  #         git config user.name github-actions[bot]
+  #         git config user.email github-actions[bot]@users.noreply.github.com
+  #         git add -A
+  #         git commit -m 'deploy'
+  #         git checkout -b deploy
+  #         git push -f https://${{secrets.ACCESS_TOKEN}}@github.com/JQiue/jqiue-notes.git deploy
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to server
+  #       uses: appleboy/ssh-action@v0.1.8
+  #       with:
+  #         host: ${{ secrets.HOST }}
+  #         username: ${{ secrets.USERNAME }}
+  #         key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #         port: 22
+  #         script_stop: true
+  #         script: |
+  #           bash
+  #           cd jqiue-notes/
+  #           git fetch origin deploy && git reset --hard origin/deploy
   scrapy:
-    needs: deploy
+    # needs: deploy
     runs-on: ubuntu-latest
     name: scrape and push content on Meilisearch instance
     steps:
