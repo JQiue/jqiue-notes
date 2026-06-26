@@ -24,25 +24,98 @@ article: false
 + 禁止在实时对话流中盲目接入 o1： 其推理思考过程（Thought Process）会显著拖累响应性。除非业务场景涉及复杂代码审计或数学证明，否则应优先选择 Claude 3.5/3.7 Sonnet 这种在推理能力与延迟之间取得更优平衡的模型。
 + 谨慎对待长上下文承诺： 尽管 Gemini 或 GPT-4.1 支持 1M+ 上下文，但在实际工程中，随着 Input 增长，模型对文档中间内容的感知度（Needle In A Haystack）会呈非线性衰减。长文本不能取代向量数据库（Vector DB），而是作为 RAG 精排后的最后一道防线。
 
+## 参数量和精度
+
+### Dense vs MOE
+
+## 上下文
+
+## 提供商和中转站
+
+## 按量计费和次数计费
+
+## 协议标准
+
+大模型的应用协议标准的竞争直接反映了行业在技术上的话语权。在当下的大模型开发生态中，OpenAI 协议已经确立了行业标准的地位，成为各大主流大模型通用的兼容接口规范。但是这并不意味着市面上仅仅只有 OpenAI 一家；实际上，多家科技巨头和开源社区都在积极推动自己的协议标准，试图在生态中抢占一席之地
+
+例如，Google 的 Gemini API 虽在接口设计上部分借鉴了 OpenAI 的 RESTful 风格，但在流式响应、多模态输入和安全控制方面提出了自己的规范；Anthropic 的 Claude API 则更强调长上下文处理与系统提示词的结构化表达，形成了差异化的交互协议。与此同时，Meta 开源的 LLaMA 系列模型虽未强制推行私有协议，但通过社区驱动的 vLLM、TGI 等推理框架，衍生出事实上兼容 OpenAI 格式但支持更多自定义参数的中间层接口
+
+在更开放的层面，Hugging Face 联合多家企业推出了开放的 MCP（Model Context Protocol） 草案，旨在定义模型与工具、数据源之间的标准化上下文交换协议，降低多模型切换的适配成本。此外，国内厂商如百度、阿里、腾讯等也各自推出了兼容 OpenAI 格式但附带本地化特性的 API，形成了“协议兼容+功能扩展”的竞争格局。
+
+可以预见，未来协议标准的争夺将不再单纯是接口语法的复制，而是围绕多模态支持、工具调用、安全对齐、成本优化等维度的生态博弈。OpenAI 的先发优势虽强，但开放社区和差异化竞争者的持续演进，正在推动协议标准向更灵活、更分层、更可组合的方向发展。对于开发者而言，掌握一套核心协议的理解能力，同时关注跨平台适配工具（如 LangChain、LiteLLM）的演进，将是应对标准分裂期的理性选择。
+
+### OpenAI
+
+OpenAI 之所以能成为行业事实标准的制定者，并非偶然，而是基于其在技术实力、产品化能力和生态开放策略上的三重领先
+
+1. 技术先行者与产品定义者：OpenAI 持续推动了能力边界的大幅扩展。每一次模型升级都伴随着 API 参数的新增（如 stream、function calling、response_format、structured outputs），这些新特性很快被社区和竞争对手“兼容”或“对标”，成为功能标准
+2. 协议设计的简洁与鲁棒性：OpenAI 的 REST API（特别是 /v1/chat/completions 端点）以极少的必要字段（model、messages）撬动了庞大的功能集。这种极简核心 + 可选扩展的设计哲学，降低了初学者的接入成本，同时为高级用户提供了充分的控制空间（如 temperature、top_p、stop、presence_penalty 等）
+3. 生态杠杆与第三方适配：由于 OpenAI 协议的巨大使用者基数，开源推理引擎（如 vLLM、TGI、llama.cpp）和代理网关（如 LiteLLM、Portkey）纷纷将“兼容 OpenAI 格式”作为核心卖点。这意味着即使用户部署的是 LLaMA 或 Qwen 模型，只需在前端写一套 OpenAI 的 Python SDK 代码，通过修改 base_url 和 api_key 即可切换
+
+OpenAI 提供了官方的 Node.js / JavaScript SDK（openai 包），它本质上是 HTTP 协议的封装器，将 RESTful API 的请求/响应映射成易于调用的方法。理解 SDK 用法，就能理解 OpenAI 协议在代码层面的具体落地。
+
+```js
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // 必填
+  baseURL: "https://api.openai.com/v1", // 可选，默认就是这个
+});
+```
+
++ apiKey：对应 HTTP 头 `Authorization: Bearer <key>`
++ baseURL：允许更换为其他兼容 OpenAI 接口的服务（如 Azure OpenAI、本地 vLLM 代理），这体现了“协议兼容”的实际便利
+
+这是最常用的端点，对应 /v1/chat/completions
+
+```js
+const response = await client.chat.completions.create({
+  model: "gpt-4o-mini",
+  messages: [
+    { role: "system", content: "你是一个幽默的助手。" },
+    { role: "user", content: "讲个关于程序员的笑话。" },
+  ],
+  temperature: 0.7,
+});
+
+console.log(response.choices[0].message.content);
+```
+
+返回值是一个 Response 对象，结构清晰：
+
+```json
+{
+  id: "chatcmpl-xxx",
+  object: "chat.completion",
+  created: 1712345678,
+  model: "gpt-4o-mini",
+  choices: [{
+    index: 0,
+    message: { role: "assistant", content: "..." },
+    finish_reason: "stop"
+  }],
+  usage: { prompt_tokens: 30, completion_tokens: 50, total_tokens: 80 }
+}
+```
+
+### Anthropic
+
 ## 模型场景
 
 ### 大语言模型
 
-| 模型              | 发布者    | 上下文 | 最大输出 | 发布日期            |
-| ----------------- | --------- | ------ | -------- | ------------------- |
-| GPT-4.1 Nano      | OpenAI    | 1.05M  | 33K      | 2025 年 4 月 14 日  |
-| GPT-4.1 Mini      | OpenAI    | 1.05M  | 33K      | 2025 年 4 月 14 日  |
-| GPT-4.1           | OpenAI    | 1.05M  | 33K      | 2025 年 4 月 14 日  |
-| Gemini Flash 2.5  | Google    | 1.05M  | 66K      | 2025 年 4 月 17 日  |
-| Gemini Pro 2.5    | Google    | 1.05M  | 66K      | 2025 年 4 月 17 日  |
-| Claude 3.5 Sonnet | Anthropic | 200K   | 8K       | 2024 年 10 月 22 日 |
-| Claude 3.7 Sonnet | Anthropic | 200K   | 128K     | 2025 年 2 月 24 日  |
-| Qwen2 72B         | 阿里云    | 128K   | 128K     | 2024 年 9 月 19 日  |
-| DeepSeek R1       | 深度求索  | 164K   | 164K     | 2025 年 1 月 20 日  |
-| DeepSeek V3       | 深度求索  | 128K   | 128K     | 2024 年 12 月 26 日 |
-| Grok4 Fast        | xAI       | 2M     | 30K      | 2025 年 9 月 19  日 |
+| 模型                          | 发布者    | 上下文 | 最大输出 | 发布日期           |
+| ----------------------------- | --------- | ------ | -------- | ------------------ |
+| GPT-5.4 Nano                  | OpenAI    | 400K   | 128K     | 2026 年 3 月 17 日 |
+| GPT-5.4 Mini                  | OpenAI    | 400K   | 128K     | 2026 年 3 月 17 日 |
+| GPT-5.4                       | OpenAI    | 1.05M  | 128K     | 2026 年 3 月 17 日 |
+| GPT-5.4 Pro                   | OpenAI    | 1.05M  | 128K     | 2026 年 3 月 5 日  |
+| Gemini 3.1 Flash Lite Preview | Google    | 1.05M  | 65.5K    | 2026 年 3 月 3 日  |
+| Gemini 3.1 Pro Preview        | Google    | 1.05M  | 65.5K    | 2026 年 2 月 19 日 |
+| Claude Sonnet 4.6             | Anthropic | 1M     | 128K     | 2026 年 2 月 24 日 |
+| Claude Opus 4.6               | Anthropic | 1M     | 128K     | 2026 年 2 月 4 日  |
 
-推荐 GPT-4o，Claude-3.5-Sonnet，Claude 3.7 Sonnet，Gemini Flash 2.5
+推荐 GPT-5.4，Claude Sonnet 4.6，Gemini 3.1 Pro Preview
 
 ### 图像生成模型
 
@@ -50,13 +123,11 @@ Midjourney 算是地表最强的绘画 AI 了
 
 当然，Stable Diffusion 也算是最强开源 AI
 
-### 嵌入式
+### 嵌入式模型
 
-## 其他
+### 重排序模型
 
-一般来说，这些 AI 都无法在国内正常使用，有的甚至注册繁琐，如果想省事，就使用 Poe 一步到位，Poe 集成了大部分可以使用的 AI 模型，并具有一定免费额度的使用次数
-
-## 实战
+## 提示词实战
 
 ### 帮你编写 git commit
 

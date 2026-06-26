@@ -10,7 +10,6 @@ export const zh = sidebar({
   '/database/': ['structure'],
   '/ai/': 'structure',
   '/c/': 'structure',
-  '/java/': 'structure',
   '/js/': [
     '',
     'syntax',

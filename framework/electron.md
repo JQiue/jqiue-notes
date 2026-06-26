@@ -146,6 +146,23 @@ yarn add --dev @electron-forge/cli
 
 然后使用`make`命令发布程序
 
+## 安装常见问题
+
+遇到这个怎么办：
+
+```plain
+Error: Electron failed to install correctly, please delete node_modules/electron and try installing again
+```
+
+Electron 的 npm 包本质上只是一个外壳，其正常工作依赖于两样东西：
+
+- node_modules/electron/dist/：内部必须包含完整的 Chromium 和 Node 运行核心（包含 electron.exe 和大量 .dll 文件，总大小约 130MB+）。
+- node_modules/electron/path.txt：一个文本文件，里面必须写入 electron.exe，用来告诉外壳去哪里启动核心。
+
+当该 Bug 发生时，dist 目录往往只有一个可怜的 locales 文件夹或少数碎片文件，且 path.txt 彻底失踪。
+
+既然自动化脚本不靠谱，直接绕过 Node.js，强行解压本地已下载完整的缓存包，`LOCALAPPDATA\electron\Cache\`是下载的压缩包路径，将其中的`electron-v39.8.10-win32-x64.zip`内容解压到`node_modules/electron/dist`，并在`node_modules/electron/`创建一个`path.txt`文件，内容为`electron.exe`。至此，手动修复就完成了
+
 ## 参考资料
 
 + Electron 实战

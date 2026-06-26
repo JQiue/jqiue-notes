@@ -235,3 +235,24 @@ CMD ["sleep", "infinity"]
  "remoteUser": "root"
 }
 ```
+
+## 技巧
+
+### 缓存优化
+
+核心原则： 按照“变动频率”排列指令。先拷贝配置文件，安装依赖，最后拷贝源代码。
+
+### 黑盒容器文件提取
+
+当使用`FROM scratch`这种没有任何工具的镜像时，外部提取是唯一的调试手段。
+
+```sh
+# 利用 Docker 引擎作为“机械臂”
+docker create --name temp-container app:latest
+docker cp temp-container:/app/app ./app-local
+docker rm temp-container
+```
+
+### 运行时潜入
+
+容器里没有 shell 怎么办

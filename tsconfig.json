@@ -10,7 +10,9 @@
   },
   "include": [
     ".vuepress/**/*.ts",
-    ".vuepress/components/Yoin.vue"
+    ".vuepress/components/*.vue",
+    ".vuepress/layouts/*.vue",
+    "./node_modules/vue/**/*.ts"
   ],
   "exclude": [
     "node_modules"

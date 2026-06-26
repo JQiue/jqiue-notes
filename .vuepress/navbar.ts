@@ -21,7 +21,6 @@ export const zh = navbar([
     icon: 'kaifayuyan',
     children: [
       { text: 'C', icon: 'c', link: '/c/' },
-      { text: 'Java', icon: 'java', link: '/java/' },
       { text: 'JavaScript', icon: 'javascript', link: '/js/' },
       { text: 'TypeScript', icon: 'typescript', link: '/sundry/typescript' },
       { text: 'Python', icon: 'python', link: '/python/' },

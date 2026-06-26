@@ -3,16 +3,47 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import {
+  onBeforeUnmount,
+  nextTick,
+  onMounted,
+  watch
+} from 'vue'
+import '../../../yoin/ui/dist/client/client.js'
+
+let instance: any = null
+
+const initYoin = async () => {
+  if (instance && typeof instance.destroy === 'function') {
+    instance.destroy()
+  }
+  await nextTick()
+  if (typeof window !== 'undefined' && (window as any).YoinClient) {
+    const YoinClient = (window as any).YoinClient
+
+    instance = new YoinClient({
+      containerId: 'yoin',
+      api_base: "http://127.0.0.1:7410",
+      site_id: 1
+    })
+  }
+}
 
 onMounted(() => {
-  // window.onload = () => {
-  //   const yoin = new Yoin({
-  //     containerId: "yoin"
-  //   });
-  //   console.log("yoin mounted");
-  // };
-});
+  initYoin();
+})
+
+onBeforeUnmount(() => {
+  if (instance && typeof instance.destroy === 'function') {
+    instance.destroy()
+  }
+})
 </script>
 
-<style scoped></style>
+<style scoped>
+#yoin {
+  all: initial;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+</style>
