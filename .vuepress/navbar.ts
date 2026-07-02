@@ -59,12 +59,11 @@ export const zh = navbar([
       { text: '物理', icon: 'physics', link: 'physics' },
       { text: '化学', icon: 'chemistry', link: 'chemistry' },
       { text: '生物', icon: 'biology', link: 'biology' },
-      { text: '历史', icon: 'history', link: 'history' },
       { text: '逻辑学', icon: 'logic', link: 'logic' },
       {
         text: '经济和金融',
         icon: 'economics-finance',
-        link: 'interdisciplinarity/',
+        link: 'economics-finance/',
       },
     ],
   },

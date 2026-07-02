@@ -129,6 +129,8 @@ Midjourney 算是地表最强的绘画 AI 了
 
 ## 提示词实战
 
+### 零样本和少样本
+
 ### 帮你编写 git commit
 
 主要原理是利用`git diff`生成差异交给 AI 进行分析，同时编写好 Prompt
@@ -302,4 +304,20 @@ git diff --cached --diff-algorithm=minimal > diff.txt
 根据我的水平，设计 1 道思考题或微型任务（确保“跳一跳够得着”）；
 若我处于进阶或精通阶段，请额外推荐 1–2 个延伸资源（如经典论文、开源项目、权威书籍章节）。
 整体要求：语言清晰、逻辑递进、避免信息过载。目标是让我在 10 分钟内建立可靠理解，并产生“我想试试/我想深挖”的动力。
+```
+
+## llama.cpp
+
+llama.cpp 是一个专注于大模型的推理框架，llama.cpp 使用 GGUF 格式的模型文件
+
+llama-server 用于开启一个兼容 OpenAI 的 API 协议，此命令常见的参数有：
+
+- `-t N`：指定用于生成文本（推理）的 CPU 线程数
+- `-ngl N`：卸载多少层模型到 GPU 上
+- `-c N`：限制模型最大上下文长度
+- `-np N`：同时处理的最大并发请求/会话数
+- `--port N`：监听端口
+
+```sh
+llama-server.exe -m .\Qwen3.5-4B-Q4_K_M.gguf --port 8888
 ```

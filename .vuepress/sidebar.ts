@@ -78,12 +78,10 @@ export const zh = sidebar({
   ],
   '/subject/': [
     'english',
-    'nce',
     'math',
     'physics',
     'chemistry',
     'biology',
-    'history',
     'logic',
     'economics-finance',
     'interdisciplinarity',

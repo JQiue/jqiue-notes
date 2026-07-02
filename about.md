@@ -26,7 +26,6 @@ const Person = {
   },
   Skills: {
     C: 'Beginner',
-    Java: 'Beginner',
     'JavaScript/TypeScript': 'Beginner',
     Python: 'Beginner',
     Rust: 'Beginner',
@@ -34,10 +33,11 @@ const Person = {
     NodeJS: 'Beginner',
     React: 'Beginner',
     Vue: 'Beginner',
-    'SQLite/MySQL/MariaDB': 'Beginner',
+    'SQLite/MySQL/MariaDB/PostgreSQL': 'Beginner',
+    LanceDB: "Beginner",
     MongoDB: 'Beginner',
-    Linux: 'Beginner',
-    Git: 'Beginner', 
+    'Linux(Arch/Alpine/Ubuntu)': 'Beginner',
+    Git: 'Beginner',
     BackEnd: 'Beginner',
     CrossPlatform: 'Beginner',
   }, // This is just the tip of the iceberg
@@ -81,7 +81,6 @@ const Person = {
 + [数据库](/database/)
 + 编程语言
   + [C](/c/)
-  + [Java](/java/)
   + [JavaScript](/js/)
     + [TypeScript](/sundry/typescript)
   + [Python](/python/)
