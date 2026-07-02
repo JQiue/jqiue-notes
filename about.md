@@ -100,19 +100,15 @@ const Person = {
 + 基础学科
   + [英语](/subject/english)
   + [数学](/subject/math)
-  + [物理](/subject/physics)
-  + [生物](/subject/biology)
-  + [化学](/subject/chemistry)
   + [逻辑学](/subject/logic)
   + [经济和金融](/subject/economics-finance)
-  + [交叉学科](/subject/interdisciplinarity)
 + 其他杂项
   + [Git](/sundry/git)
   + [Linux](/computer/operating-system.html#linux)
   + [docker](/sundry/docker)
   + [正则表达式](/sundry/regex)
 
-> 全站预估为 432061 字，可花 1440 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 100 万字时开始减少产出，浓缩质量
+> 全站预估为 358085 字，可花 1193 字/分）分钟浏览完成，本人周产 3000 字左右的垃圾。到 50 万字时开始减少产出，浓缩质量
 
 ## 错误更正
 

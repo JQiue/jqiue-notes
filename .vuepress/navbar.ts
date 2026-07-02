@@ -56,9 +56,6 @@ export const zh = navbar([
     children: [
       { text: '英语', icon: 'yingyu', link: 'english' },
       { text: '数学', icon: 'math', link: 'math' },
-      { text: '物理', icon: 'physics', link: 'physics' },
-      { text: '化学', icon: 'chemistry', link: 'chemistry' },
-      { text: '生物', icon: 'biology', link: 'biology' },
       { text: '逻辑学', icon: 'logic', link: 'logic' },
       {
         text: '经济和金融',

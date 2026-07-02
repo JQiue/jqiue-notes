@@ -79,12 +79,8 @@ export const zh = sidebar({
   '/subject/': [
     'english',
     'math',
-    'physics',
-    'chemistry',
-    'biology',
     'logic',
     'economics-finance',
-    'interdisciplinarity',
   ],
   '/sundry/': 'structure',
 });
