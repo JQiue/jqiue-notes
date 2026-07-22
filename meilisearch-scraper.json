@@ -12,11 +12,11 @@
       "global": true,
       "default_value": "Documentation"
     },
-    "lvl1": "[vp-content] h1",
-    "lvl2": "[vp-content] h2",
-    "lvl3": "[vp-content] h3",
-    "lvl4": "[vp-content] h4",
-    "lvl5": "[vp-content] h5",
+    "lvl1": "[vp-content] h2",
+    "lvl2": "[vp-content] h3",
+    "lvl3": "[vp-content] h4",
+    "lvl4": "[vp-content] h5",
+    "lvl5": "[vp-content] h6",
     "content": "[vp-content] p, [vp-content] li",
     "lang": {
       "selector": "/html/@lang",
