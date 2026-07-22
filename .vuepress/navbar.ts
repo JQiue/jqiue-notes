@@ -10,7 +10,6 @@ export const zh = navbar([
       { text: '操作系统', icon: 'caozuoxitong', link: '/operating-system/' },
       { text: '计算机网络', icon: 'wangluo', link: '/network/' },
       { text: '编译原理', icon: 'bianyi', link: '/compiler/' },
-      // { text: '设计模式', icon: 'shejimoshi', link: '/sundry/design-pattern/' },
       { text: '数据库', icon: 'SQL', link: '/database/' },
       { text: '数据结构与算法', icon: 'suanfa', link: '/ds-algorithm/' },
       { text: '人工智能', icon: 'rengongzhineng', link: '/ai/' },
@@ -60,7 +59,7 @@ export const zh = navbar([
       {
         text: '经济和金融',
         icon: 'economics-finance',
-        link: 'economics-finance/',
+        link: 'economics-finance',
       },
     ],
   },
