@@ -8,12 +8,13 @@
   ],
   "selectors": {
     "lvl0": {
-      "selector": ".vp-sidebar-link.active",
+      "selector": "[vp-content] h1",
       "global": true,
       "default_value": "Documentation"
     },
-    "lvl1": "[vp-content] h1",
-    "lvl2": "[vp-content] h2",
+    "lvl1": "[vp-content] h2",
+    "lvl2": "[vp-content] h3",
+    "lvl3": "[vp-content] h4",
     "content": "[vp-content] p, [vp-content] li",
     "lang": {
       "selector": "/html/@lang",
