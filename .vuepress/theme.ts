@@ -95,17 +95,17 @@ const theme = hopeTheme({
 			prefix: "iconfont icon-",
 		},
 		comment: {
-		  provider: 'Waline',
-		  serverURL:
-		    process.env.WALINE_ENV === 'production'
-		      ? 'https://waline.jinqiu.wang'
-		      : 'http://127.0.0.1:8360',
-		  reaction: true,
+			provider: 'Waline',
+			serverURL:
+				process.env.WALINE_ENV === 'production'
+					? 'https://waline.jinqiu.wang'
+					: 'http://127.0.0.1:8360',
+			reaction: true,
 		},
 		meilisearch: {
 			host: "https://search.jinqiu.wang",
 			apiKey:
-				"404f43198e3f308584c311410a93dc79cc27e0d70137a2c1833d5f3546839881",
+				"8ce51d6fc73a966936df991276139251c86a69034e11a2104d52ebc3a951b38b",
 			indexUid: "jinqiu-wang",
 		},
 		// meilisearch: {

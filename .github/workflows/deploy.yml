@@ -47,24 +47,24 @@ jobs:
   #           bash
   #           cd jqiue-notes/
   #           git fetch origin deploy && git reset --hard origin/deploy
-  scrapy:
-    # needs: deploy
-    runs-on: ubuntu-latest
-    name: scrape and push content on Meilisearch instance
-    steps:
-      - uses: actions/checkout@v4
-      - name: Cache Docker images.
-        uses: ScribeMD/docker-cache@0.5.0
-        with:
-          key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
-      - name: Run scraper
-        env:
-          HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
-          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
-        run: |
-          docker run -t --rm \
-            -e MEILISEARCH_HOST_URL=$HOST_URL \
-            -e MEILISEARCH_API_KEY=$API_KEY \
-            -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-            jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
+  # scrapy:
+  # needs: deploy
+  # runs-on: ubuntu-latest
+  # name: scrape and push content on Meilisearch instance
+  # steps:
+  #   - uses: actions/checkout@v4
+  #   - name: Cache Docker images.
+  #     uses: ScribeMD/docker-cache@0.5.0
+  #     with:
+  #       key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
+  #   - name: Run scraper
+  #     env:
+  #       HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
+  #       API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+  #       CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
+  #     run: |
+  #       docker run -t --rm \
+  #         -e MEILISEARCH_HOST_URL=$HOST_URL \
+  #         -e MEILISEARCH_API_KEY=$API_KEY \
+  #         -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
+  #         jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json

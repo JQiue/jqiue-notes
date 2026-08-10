@@ -1,12 +1,9 @@
 {
   "name": "jqiue-notes",
-  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "author": {
-    "name": "JQiue",
-    "email": "jqiue@foxmail.com",
-    "url": "https://jinqiu.wang"
+  "engines": {
+    "node": ">=22"
   },
   "license": "ISC",
   "repository": {
@@ -22,19 +19,19 @@
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.30",
-    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.126",
-    "@vuepress/plugin-google-analytics": "2.0.0-rc.114",
-    "@vuepress/plugin-meilisearch": "2.0.0-rc.126",
-    "@vuepress/plugin-pwa": "2.0.0-rc.126",
-    "@vuepress/plugin-remove-pwa": "2.0.0-rc.126",
-    "@vuepress/plugin-shiki": "2.0.0-rc.126",
-    "@waline/client": "3.6.0",
-    "cross-env": "7.0.3",
-    "echarts": "5.6.0",
-    "katex": "0.16.22",
-    "sass-embedded": "^1.98.0",
-    "vue": "3.5.31",
-    "vuepress": "2.0.0-rc.30",
+    "@vuepress/plugin-baidu-analytics": "2.0.0-rc.131",
+    "@vuepress/plugin-google-analytics": "2.0.0-rc.130",
+    "@vuepress/plugin-meilisearch": "2.0.0-rc.133",
+    "@vuepress/plugin-pwa": "2.0.0-rc.131",
+    "@vuepress/plugin-remove-pwa": "2.0.0-rc.130",
+    "@vuepress/plugin-shiki": "2.0.0-rc.132",
+    "@waline/client": "^3.15.2",
+    "cross-env": "^7.0.3",
+    "echarts": "^5.6.0",
+    "katex": "^0.16.47",
+    "sass-embedded": "^1.100.0",
+    "vue": "^3.5.41",
+    "vuepress": "2.0.0-rc.31",
     "vuepress-theme-hope": "2.0.0-rc.107"
   }
 }
