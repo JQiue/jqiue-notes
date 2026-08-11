@@ -36,18 +36,33 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to server
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script_stop: true
-          script: |
-            bash
-            cd jqiue-notes/
-            git fetch origin deploy && git reset --hard origin/deploy
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Deploy
+        run: |
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -o StrictHostKeyChecking=no \
+            -p 22 \
+            "${{ secrets.USERNAME }}@${{ secrets.HOST }}" \
+            'bash -lc '"'"'cd ~/jqiue-notes && git fetch origin deploy && git reset --hard origin/deploy'"'"''
+
+      # - name: Deploy to server
+      #   uses: appleboy/ssh-action@v1
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     port: 22
+      #     script: |
+      #       bash
+      #       cd jqiue-notes/
+      #       git fetch origin deploy && git reset --hard origin/deploy
 
   scrapy:
     needs: deploy
