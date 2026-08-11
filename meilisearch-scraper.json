@@ -1,4 +1,7 @@
 {
+  "crawl": {
+    "timeout_seconds": 60
+  },
   "start_urls": [
     "https://jinqiu.wang/"
   ],
