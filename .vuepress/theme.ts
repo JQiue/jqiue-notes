@@ -105,7 +105,7 @@ const theme = hopeTheme({
 		meilisearch: {
 			host: "https://search.jinqiu.wang",
 			apiKey:
-				"8ce51d6fc73a966936df991276139251c86a69034e11a2104d52ebc3a951b38b",
+				"3865914d28b48b25171591dc1e7447f57bb3203e2c62853bb140c3e1e3a93dc1",
 			indexUid: "jinqiu-wang",
 		},
 		// meilisearch: {

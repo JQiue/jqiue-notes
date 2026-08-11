@@ -1,5 +1,4 @@
 {
-  "index_uid": "jinqiu-wang",
   "start_urls": [
     "https://jinqiu.wang/"
   ],
@@ -10,33 +9,18 @@
     "lvl0": {
       "selector": ".vp-sidebar-link.active",
       "global": true,
-      "default_value": "Documentation"
+      "default_value": "文档"
     },
     "lvl1": "[vp-content] h2",
     "lvl2": "[vp-content] h3",
     "lvl3": "[vp-content] h4",
     "lvl4": "[vp-content] h5",
     "lvl5": "[vp-content] h6",
-    "content": "[vp-content] p, [vp-content] li",
-    "lang": {
-      "selector": "/html/@lang",
-      "global": true,
-      "type": "xpath"
-    }
+    "content": "[vp-content] p, [vp-content] li"
   },
-  "custom_settings": {
-    "searchableAttributes": [
-      "hierarchy_lvl0",
-      "hierarchy_lvl1",
-      "hierarchy_lvl2",
-      "hierarchy_lvl3",
-      "hierarchy_lvl4",
-      "hierarchy_lvl5",
-      "hierarchy_lvl6",
-      "content"
-    ],
-    "filterableAttributes": [
-      "lang"
-    ]
+  "meilisearch": {
+    "patch_size": 1000,
+    "host": "https://search.jinqiu.wang",
+    "index_uid": "jinqiu-wang"
   }
 }
