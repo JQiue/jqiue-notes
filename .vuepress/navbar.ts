@@ -39,7 +39,6 @@ export const zh = navbar([
     icon: 'framework',
     prefix: '/framework/',
     children: [
-      { text: 'Vue', icon: 'vue', link: 'vue' },
       { text: 'React', icon: 'react', link: 'react' },
       { text: 'Express', icon: 'express', link: 'express' },
       { text: 'Koa', icon: 'koa', link: 'koa' },

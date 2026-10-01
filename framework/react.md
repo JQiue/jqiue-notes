@@ -1,6 +1,5 @@
 ---
 title: React：从 Class 到 Hooks
-category: 框架
 tag: [React]
 article: false
 ---
@@ -291,9 +290,7 @@ function App() {
 
 ## 状态管理
 
-React 的状态管理不是一个单选题，而是分层问题。
-
-最常见的几层大概是：
+React 的状态管理不是一个单选题，而是分层问题。最常见的几层大概是：
 
 + 组件内部状态：`useState`、`useReducer`
 + 跨层共享状态：`Context`
@@ -786,3 +783,7 @@ React 最容易学歪的方式，是一上来就背很多库和写法。
 ## 总结
 
 React 从 class 组件一路走到 Hooks，不只是语法风格变化，而是把组件、状态、副作用和渲染的关系重新组织得更清晰了。理解 React 的关键，不在于记住多少 Hook，而在于真正建立几个核心判断：UI 是状态的函数，render 不是副作用区，状态更新基于快照，复杂度应该分层管理。只要这几个点抓住了，React 的大部分内容都会开始变得顺理成章。
+
+## 参考资料
+
++ [https://component-party.dev](https://component-party.dev) - JavaScript 框架的语法和特性概述

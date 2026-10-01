@@ -8,11 +8,9 @@ article: false
 基于 Tauri v1.2
 :::
 
-Tauri 是一个对标 Electron 的跨平台 UI 框架，采用 Rust 编写，相比 Electron 它有以下优点：
+Tauri 是一个基于 Webview 的跨平台 UI 框架，采用 Rust 编写，相比 Electron 它有以下优点：
 
-+ 应用体积非常小
-+ 运行内存也非常小
-+ 可以使用所有的 Web 前端生态
++ 应用分发体积非常小
 
 ## 配置环境
 

@@ -32,76 +32,54 @@ jobs:
           git checkout -b deploy
           git push -f https://${{secrets.ACCESS_TOKEN}}@github.com/JQiue/jqiue-notes.git deploy
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Setup SSH
+  #       run: |
+  #         mkdir -p ~/.ssh
+  #         chmod 700 ~/.ssh
+  #         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+  #         chmod 600 ~/.ssh/deploy_key
 
-      - name: Deploy
-        run: |
-          ssh \
-            -i ~/.ssh/deploy_key \
-            -o StrictHostKeyChecking=no \
-            -p 22 \
-            "${{ secrets.USERNAME }}@${{ secrets.HOST }}" \
-            'bash -lc '"'"'cd ~/jqiue-notes && git fetch origin deploy && git reset --hard origin/deploy'"'"''
+  #     - name: Deploy
+  #       run: |
+  #         ssh \
+  #           -i ~/.ssh/deploy_key \
+  #           -o StrictHostKeyChecking=no \
+  #           -p 22 \
+  #           "${{ secrets.USERNAME }}@${{ secrets.HOST }}" \
+  #           'bash -lc '"'"'cd ~/jqiue-notes && git fetch origin deploy && git reset --hard origin/deploy'"'"''
 
-      # - name: Deploy to server
-      #   uses: appleboy/ssh-action@v1
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #     port: 22
-      #     script: |
-      #       bash
-      #       cd jqiue-notes/
-      #       git fetch origin deploy && git reset --hard origin/deploy
-
-  scrapy:
-    needs: deploy
-    runs-on: ubuntu-latest
-    name: scrape and push content on Meilisearch instance
-    steps:
-      - uses: actions/checkout@v4
-      - name: Cache Docker images
-        uses: ScribeMD/docker-cache@0.5.0
-        with:
-          key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
-      - name: Run scraper
-        env:
-          API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-          CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
-        run: |
-          docker run -t --rm \
-            -e MEILISEARCH_API_KEY=$API_KEY \
-            -v $CONFIG_FILE_PATH:/config.json:ro \
-            jqiue/docs-scraper:next
+  # - name: Deploy to server
+  #   uses: appleboy/ssh-action@v1
+  #   with:
+  #     host: ${{ secrets.HOST }}
+  #     username: ${{ secrets.USERNAME }}
+  #     key: ${{ secrets.SSH_PRIVATE_KEY }}
+  #     port: 22
+  #     script: |
+  #       bash
+  #       cd jqiue-notes/
+  #       git fetch origin deploy && git reset --hard origin/deploy
 
   # scrapy:
-  # needs: deploy
-  # runs-on: ubuntu-latest
-  # name: scrape and push content on Meilisearch instance
-  # steps:
-  #   - uses: actions/checkout@v4
-  #   - name: Cache Docker images.
-  #     uses: ScribeMD/docker-cache@0.5.0
-  #     with:
-  #       key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
-  #   - name: Run scraper
-  #     env:
-  #       HOST_URL: ${{ secrets.MEILISEARCH_HOST_URL }}
-  #       API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
-  #       CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
-  #     run: |
-  #       docker run -t --rm \
-  #         -e MEILISEARCH_HOST_URL=$HOST_URL \
-  #         -e MEILISEARCH_API_KEY=$API_KEY \
-  #         -v $CONFIG_FILE_PATH:/docs-scraper/config.json \
-  #         jqiue/docs-scraper:latest pipenv run ./docs_scraper config.json
+  #   needs: deploy
+  #   runs-on: ubuntu-latest
+  #   name: scrape and push content on Meilisearch instance
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Cache Docker images
+  #       uses: ScribeMD/docker-cache@0.5.0
+  #       with:
+  #         key: docker-${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}
+  #     - name: Run scraper
+  #       env:
+  #         API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
+  #         CONFIG_FILE_PATH: ${{ github.workspace }}/meilisearch-scraper.json
+  #       run: |
+  #         docker run -t --rm \
+  #           -e MEILISEARCH_API_KEY=$API_KEY \
+  #           -v $CONFIG_FILE_PATH:/config.json:ro \
+  #           jqiue/docs-scraper:next

@@ -145,6 +145,19 @@ docker push jqiue/app:0.1.0
 docker push jqiue/app:latest
 ```
 
+## 拉取镜像
+
+在拉取镜像之前，首先要明确的是，Docker tag 是精确匹配，而不是 SemVer 模糊匹配，所以：
+
++ Tag 没有特殊含义
++ Tag 只是给镜像增加一个引用指向该镜像的 ID
++ Tag 只要有一个字符不一样就是不同的 Tag
++ `latest` 不会寻找版本号最新的镜像
+
+```sh
+docker pull app
+```
+
 ## 连接网络
 
 Docker 支持多种类型的网络，包括桥接网络（bridge）、主机网络（host）、无网络（none）以及用户定义的覆盖网络（overlay）。使用`--network`选项可以在启动容器时指定容器要连接到哪个网络
@@ -163,6 +176,45 @@ Docker 支持多种类型的网络，包括桥接网络（bridge）、主机网�
 如果在启动容器时使用了 -v 或 --mount 选项指定了卷（即使是匿名卷），这些卷中的数据也会被持久化，不会因为容器的停止而丢失。卷是独立于容器生命周期存在的，只有当你显式地删除卷时，其中的数据才会被移除
 
 ## 网络问题
+
+真正建立外部连接的不是 docker CLI，通常是：
+
+```plain
+docker -> /var/run/docker.sock -> dockerd -> Internet
+```
+
+而 Docker Registry Mirror 会改变实际访问的目标：
+
+```json
+// /etc/docker/daemon.json
+{
+  "registry-mirrors": [
+    "https://docker.1ms.run",
+    "https://docker-0.unsee.tech",
+    "https://docker.mybacc.com"
+  ]
+}
+```
+
+这导致会访问定义的 mirror，而不是 `registry-1.docker.io`，所以可以执行`docker info | grep -A10 -i "Registry Mirrors"`进行检查。为了排除 mirror 干扰建议删除 mirror 然后重启 docker 服务
+
+在此之前可以先进行一个具有价值的诊断方法，排除代理的问题：
+
+```sh
+curl -v -x http://127.0.0.1:7890 https://registry-1.docker.io/v2/
+```
+
+如果出现：
+
+```plain
+HTTP/1.1 200 Connection established
+
+SSL connection using TLSv1.3
+
+HTTP/2 401
+```
+
+则证明代理访问现有的 docker registry 没有问题
 
 Docker CLI 会自动寻找 `HTTP_PROXY` 和 `HTTPS_PROXY` 系统环境变量
 
@@ -240,14 +292,13 @@ CMD ["sleep", "infinity"]
 
 ### 缓存优化
 
-核心原则： 按照“变动频率”排列指令。先拷贝配置文件，安装依赖，最后拷贝源代码。
+核心原则：按照“变动频率”排列指令。先拷贝配置文件，安装依赖，最后拷贝源代码。
 
 ### 黑盒容器文件提取
 
 当使用`FROM scratch`这种没有任何工具的镜像时，外部提取是唯一的调试手段。
 
 ```sh
-# 利用 Docker 引擎作为“机械臂”
 docker create --name temp-container app:latest
 docker cp temp-container:/app/app ./app-local
 docker rm temp-container

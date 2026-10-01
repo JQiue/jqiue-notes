@@ -321,3 +321,9 @@ llama-server 用于开启一个兼容 OpenAI 的 API 协议，此命令常见的
 ```sh
 llama-server.exe -m .\Qwen3.5-4B-Q4_K_M.gguf --port 8888
 ```
+
+## 参考资料
+
++ [DeepSWE](https://deepswe.datacurve.ai/) - 统一软件工程 Agent 评测
++ [LiveBench](https://livebench.ai) - 滚动客观题库的综合能力得分评测
++ [AIHOT](https://aihot.virxact.com/leaderboard) - 汇总全网多家公开模型榜单，用统一方法计算 AIHOT 共识分，直观呈现当前主流大模型的综合表现
